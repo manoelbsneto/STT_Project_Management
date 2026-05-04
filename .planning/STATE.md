@@ -7,7 +7,7 @@ Phase 6 — Piloto Controlado + QA
 Phase 7 — Rollout + Governança
 
 ## Active Agent
-Pending — QA validation team (3 PMs piloto)
+Pending — QA Wave 2 browser/manual validation (D1–D2, E1–E4)
 
 ## Active Power Platform Environment
 ColOfertasBrasilPro — `e2d10003-4d8e-e007-9d63-76d5fe89ef56`
@@ -26,6 +26,7 @@ ColOfertasBrasilPro — `e2d10003-4d8e-e007-9d63-76d5fe89ef56`
 11. **Teams Channel Deep Link (obrigatório para acesso browser):** `https://teams.microsoft.com/l/channel/19%3A4c8fe80b169f4e698c9b1b15d1868691%40thread.tacv2/Projetos_Tranforma%C3%A7%C3%A3o_Digital?groupId=96c5b0c4-46cc-46cd-8695-50451db74994&tenantId=7808e005-1489-4374-954b-d3b08f193920` — Channel ID: `19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2`
 
 ## Backlog (Postergado)
+- [ ] **Manual de Operações PMO Hub (pt-BR)** — Passo a passo completo com screenshots reais para PMs. Prioridade imediata após conclusão QA E2E. Deve cobrir: cadastro projeto, status diário, cards, tabs Teams, Copilot, painéis.
 - [x] **Teams Desktop Card Render Screenshots** — ✅ Resolved 2026-05-04. User screenshots show `ResumoDiarioBoard` and `ResumoSemanal` cards rendered in Teams Desktop with real SharePoint data.
 - [ ] **E2E Validation P0 Flows** — Teste interativo no Teams: card submission → SP write → alert behavior. Phase 6 priority.
 - [ ] **Copilot Runtime Conversation QA** — Validar no Teams: saudação, consultar portfólio, consultar projeto, confirmar ação de escrita e acionar fluxo. Phase 6 priority.
@@ -59,3 +60,5 @@ ColOfertasBrasilPro — `e2d10003-4d8e-e007-9d63-76d5fe89ef56`
 - Session 13: G4 programmatic completion; bot pt-BR, GPT restrictions, PMO SharePoint knowledge source, PA action bindings and final solution export verified. Runtime Teams conversation validation moved to Phase 6 QA.
 - Session 14: G5 SharePoint view setup completed, but Teams tab creation remains blocked because Microsoft Graph device-code login attempts expired and the user confirmed they do not have Graph access. Fallback documented in `.planning/comms/G5_NO_GRAPH_FALLBACK.md`.
 - Session 15 (2026-05-04T07:23–07:38): **G2 upgraded to PASSED** (E2E Teams screenshot: ResumoDiarioBoard + ResumoSemanal cards with live SP data). **G5 PASSED** — user manually created 3 SharePoint tabs via Teams UI: `Portfolio_Executivo`, `Projetos_Criticos`, `Decisoes do Board`. Teams channel deep link documented in PRD §1.1, STATE, `.planning/.env`. All G0–G5 now PASSED. Phase 6 Piloto QA is next.
+- Session 16 (2026-05-04T08:32–08:33): **Phase 6 Wave 1 automated QA executed** via `deploy/QA_Phase6_Automated.ps1` in `ColOfertasBrasilPro`. Result: PASS=9, FAIL=0, CHECK=3, NOT_RUN=2. Live ProcessSimple verified 10 PMO flows, recurrence run history, trigger types, Standard-only connectors, 6 card JSON files, Copilot published/active/provisioned, security/language evidence, and 3 action bindings. A1/A2/A5 remain evidence-mode checks; A3/A4 require interactive PnP login. Evidence: `.planning/comms/G6_QA_WAVE1_RESULTS.md` and `.planning/comms/g6_qa_wave1_20260504_083244.json`. Next: Wave 2 browser/manual QA.
+- Session 16 (2026-05-04T08:32): **Phase 6 QA Wave 1 automated completed** via `deploy/QA_Phase6_Automated.ps1` in `ColOfertasBrasilPro`. Result: PASS=9, FAIL=0, CHECK=3, NOT_RUN=2. Live checks passed for 10 PMO flows, recent recurrence run history, trigger types, Standard-only connectors, 6 Adaptive Cards, Copilot published status, security evidence, pt-BR evidence, and 3 active action bindings. A1/A2/A5 remain evidential CHECK from G1/G5 artifacts; A3/A4 require optional interactive PnP write test. Evidence: `.planning/comms/G6_QA_WAVE1_RESULTS.md`.

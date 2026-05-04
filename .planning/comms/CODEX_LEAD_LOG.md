@@ -185,3 +185,12 @@
 - **Artifacts:** User screenshots 2026-05-04T07:32–07:37, `deploy/PHASE5_TEAMS_TABS_BROWSER_GUIDE.md`, `.planning/comms/g5_sharepoint_views_20260503_142829.json`, updated PRD §1.1 Endpoints Oficiais, `.planning/.env`.
 - **Gate:** G5 PASSED.
 - **Next:** Phase 6 — Piloto Controlado + QA (3 PMs, E2E validation, Copilot conversation testing).
+
+### 2026-05-04T08:32:00-03:00 — CODEX-LEAD — G6 QA WAVE 1 AUTOMATED
+- **Phase:** 6
+- **Task:** Execute automated QA Wave 1 for SharePoint evidence, Power Automate, Adaptive Cards, and Copilot structural validation.
+- **Status:** COMPLETED / NO FAILURES
+- **Details:** Ran `deploy/QA_Phase6_Automated.ps1` against `ColOfertasBrasilPro` using PAC and live ProcessSimple API. Result: PASS=9, FAIL=0, CHECK=3, NOT_RUN=2. Passed: 10 PMO flow inventory/state validation, recurrence run history, trigger type checks, Standard-only connector checks, 6 Adaptive Card JSON/schema/size checks, Copilot Published/Active/Provisioned check, Copilot security evidence, pt-BR evidence, and 3 active Power Automate action bindings. A1/A2/A5 are evidential CHECK based on G1/G5 artifacts because live PnP was not run; A3/A4 require optional interactive PnP write/delete test.
+- **Artifacts:** `.planning/comms/G6_QA_WAVE1_RESULTS.md`, `.planning/comms/g6_qa_wave1_20260504_083202.json`, `.planning/comms/g6_wave1_processsimple_flows_20260504_083202.json`, `.planning/comms/g6_wave1_processsimple_runs_20260504_083202.json`, `deploy/QA_Phase6_Automated.ps1`.
+- **Gate:** G6 IN PROGRESS.
+- **Next:** Execute browser/manual QA D1–G3 and optionally run `pwsh -NoProfile -ExecutionPolicy Bypass -File .\deploy\QA_Phase6_Automated.ps1 -RunSharePointPnP` when interactive SharePoint write validation is desired.
