@@ -11,11 +11,11 @@ Execução automatizada concluída via `deploy/QA_Phase6_Automated.ps1` no ambie
 
 - Resultado: **PASS=9; FAIL=0; CHECK=3; NOT_RUN=2**
 - Evidência principal: `.planning/comms/G6_QA_WAVE1_RESULTS.md`
-- JSON validado: `.planning/comms/g6_qa_wave1_20260504_083244.json`
-- Inventário live ProcessSimple: `.planning/comms/g6_wave1_processsimple_flows_20260504_083244.json`
-- Run history live: `.planning/comms/g6_wave1_processsimple_runs_20260504_083244.json`
+- JSON validado: `.planning/comms/g6_qa_wave1_20260504_083202.json`
+- Inventário live ProcessSimple: `.planning/comms/g6_wave1_processsimple_flows_20260504_083202.json`
+- Run history live: `.planning/comms/g6_wave1_processsimple_runs_20260504_083202.json`
 - Observação: A1/A2/A5 ficaram como `CHECK` por modo evidencial baseado em G1/G5; A3/A4 ficaram `NOT_RUN` porque exigem `-RunSharePointPnP`, login interativo e criação/remoção de itens de teste no SharePoint.
-- Próxima execução: Wave 2 manual/browser (D1-D2, E1-E4).
+- Próxima execução: Wave 2 manual/browser (D1-D2, E1-E4) usando `.planning/CODEX_PROMPT_QA_WAVE2_BROWSER.md`.
 
 ---
 
