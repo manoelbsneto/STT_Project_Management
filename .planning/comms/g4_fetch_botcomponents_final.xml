@@ -1,0 +1,12 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="content" />
+    <filter>
+      <condition attribute="parentbotid" operator="eq" value="0c4a9729-d55d-483c-8ec3-db9369583155" />
+    </filter>
+  </entity>
+</fetch>

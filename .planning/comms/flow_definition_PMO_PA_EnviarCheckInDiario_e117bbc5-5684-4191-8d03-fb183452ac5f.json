@@ -1,0 +1,106 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           },
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        }
+                   },
+    "triggers":  {
+                     "Recurrence_9h_BRT":  {
+                                               "recurrence":  {
+                                                                  "frequency":  "Day",
+                                                                  "interval":  1,
+                                                                  "timeZone":  "E. South America Standard Time",
+                                                                  "schedule":  {
+                                                                                   "hours":  [
+                                                                                                 9
+                                                                                             ],
+                                                                                   "minutes":  [
+                                                                                                   0
+                                                                                               ]
+                                                                               }
+                                                              },
+                                               "evaluatedRecurrence":  {
+                                                                           "frequency":  "Day",
+                                                                           "interval":  1,
+                                                                           "timeZone":  "E. South America Standard Time",
+                                                                           "schedule":  {
+                                                                                            "hours":  [
+                                                                                                          9
+                                                                                                      ],
+                                                                                            "minutes":  [
+                                                                                                            0
+                                                                                                        ]
+                                                                                        }
+                                                                       },
+                                               "type":  "Recurrence"
+                                           }
+                 },
+    "actions":  {
+                    "Get_Projetos_Ativos":  {
+                                                "runAfter":  {
+
+                                                             },
+                                                "type":  "OpenApiConnection",
+                                                "inputs":  {
+                                                               "parameters":  {
+                                                                                  "$filter":  "Ativo eq 1",
+                                                                                  "$top":  100,
+                                                                                  "table":  "Projetos",
+                                                                                  "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                              },
+                                                               "host":  {
+                                                                            "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                            "connectionName":  "shared_sharepointonline",
+                                                                            "operationId":  "GetItems"
+                                                                        },
+                                                               "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                           }
+                                            },
+                    "Apply_to_each_Projeto":  {
+                                                  "foreach":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                  "actions":  {
+                                                                  "Post_CheckIn_Message_Channel":  {
+                                                                                                       "runAfter":  {
+
+                                                                                                                    },
+                                                                                                       "type":  "OpenApiConnection",
+                                                                                                       "inputs":  {
+                                                                                                                      "parameters":  {
+                                                                                                                                         "body/recipient/channelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                                                                                                                                         "poster":  "Flow bot",
+                                                                                                                                         "location":  "Channel",
+                                                                                                                                         "body/messageBody":  "\u003cp\u003e\u003cb\u003ePMO Check-in Diario\u003c/b\u003e\u003c/p\u003e\u003cp\u003eAtualize o status do projeto no Adaptive Card oficial: deploy/cards/CheckInDiario.json\u003c/p\u003e",
+                                                                                                                                         "body/recipient/groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994"
+                                                                                                                                     },
+                                                                                                                      "host":  {
+                                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                                                                   "connectionName":  "shared_teams",
+                                                                                                                                   "operationId":  "PostMessageToConversation"
+                                                                                                                               },
+                                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                  }
+                                                                                                   }
+                                                              },
+                                                  "runAfter":  {
+                                                                   "Get_Projetos_Ativos":  [
+                                                                                               "Succeeded"
+                                                                                           ]
+                                                               },
+                                                  "type":  "Foreach"
+                                              }
+                },
+    "outputs":  {
+
+                }
+}

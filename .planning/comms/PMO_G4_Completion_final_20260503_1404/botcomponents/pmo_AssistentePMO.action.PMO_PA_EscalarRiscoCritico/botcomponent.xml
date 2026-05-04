@@ -1,0 +1,10 @@
+<botcomponent schemaname="pmo_AssistentePMO.action.PMO_PA_EscalarRiscoCritico">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>PMO_PA_EscalarRiscoCritico</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

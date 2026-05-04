@@ -1,0 +1,196 @@
+﻿{
+    "name":  "6f712d6e-852c-4336-b84f-3a86a10bddee",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/6f712d6e-852c-4336-b84f-3a86a10bddee",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_RegistrarDecisaoBoard",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "When_Decisao_Created":  {
+                                                                                        "recurrence":  {
+                                                                                                           "frequency":  "Minute",
+                                                                                                           "interval":  1
+                                                                                                       },
+                                                                                        "splitOn":  "@triggerOutputs()?[\u0027body/value\u0027]",
+                                                                                        "type":  "OpenApiConnection",
+                                                                                        "inputs":  {
+                                                                                                       "parameters":  {
+                                                                                                                          "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                          "table":  "Decisoes do Board"
+                                                                                                                      },
+                                                                                                       "host":  {
+                                                                                                                    "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                    "connectionName":  "shared_sharepointonline",
+                                                                                                                    "operationId":  "GetOnNewItems"
+                                                                                                                },
+                                                                                                       "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                   }
+                                                                                    }
+                                                       },
+                                          "actions":  {
+                                                          "Get_Decisao_Detalhes":  {
+                                                                                       "type":  "OpenApiConnection",
+                                                                                       "inputs":  {
+                                                                                                      "parameters":  {
+                                                                                                                         "table":  "Decisoes do Board",
+                                                                                                                         "id":  "@triggerBody()?[\u0027ID\u0027]",
+                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                                     },
+                                                                                                      "host":  {
+                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                   "connectionName":  "shared_sharepointonline",
+                                                                                                                   "operationId":  "GetItem"
+                                                                                                               },
+                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                  },
+                                                                                       "runAfter":  {
+
+                                                                                                    }
+                                                                                   },
+                                                          "Post_Decision_Card_Wait_Response":  {
+                                                                                                   "type":  "OpenApiConnectionWebhook",
+                                                                                                   "inputs":  {
+                                                                                                                  "parameters":  {
+                                                                                                                                     "body/body/recipient/groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994",
+                                                                                                                                     "body/body/recipient/channelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                                                                                                                                     "poster":  "Flow bot",
+                                                                                                                                     "body/body/updateMessage":  "Resposta registrada no Hub PMO.",
+                                                                                                                                     "body/body/messageBody":  "@replace(replace(replace(replace(replace(replace(\u0027{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"ColumnSet\",\"columns\":[{\"type\":\"Column\",\"width\":\"auto\",\"items\":[{\"type\":\"Image\",\"url\":\"https://img.icons8.com/fluency/48/approval.png\",\"size\":\"Small\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"ðŸ“‹ DecisÃ£o Pendente\",\"weight\":\"Bolder\",\"size\":\"Medium\"},{\"type\":\"TextBlock\",\"text\":\"Uma decisÃ£o requer sua aprovaÃ§Ã£o\",\"isSubtle\":true,\"spacing\":\"None\"}]}]},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"Decision ID:\",\"value\":\"${DecisionID}\"},{\"title\":\"Projeto:\",\"value\":\"${ProjectName}\"},{\"title\":\"Solicitante:\",\"value\":\"${Solicitante}\"},{\"title\":\"Prazo:\",\"value\":\"${Prazo}\"},{\"title\":\"Impacto:\",\"value\":\"${Impacto}\"}]},{\"type\":\"TextBlock\",\"text\":\"ðŸ“ **DescriÃ§Ã£o:**\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${Descricao}\",\"wrap\":true},{\"type\":\"Input.Text\",\"id\":\"justificativa\",\"label\":\"ðŸ’¬ Justificativa (obrigatÃ³ria para rejeiÃ§Ã£o/adiamento)\",\"isMultiline\":true,\"placeholder\":\"Adicione sua justificativa...\"}],\"actions\":[{\"type\":\"Action.Submit\",\"title\":\"âœ… Aprovar\",\"style\":\"positive\",\"data\":{\"action\":\"approveDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Aprovada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"âŒ Rejeitar\",\"style\":\"destructive\",\"data\":{\"action\":\"rejectDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Rejeitada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"â¸ï¸ Adiar\",\"data\":{\"action\":\"deferDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Adiada\",\"cardVersion\":\"1.0\"}}]}\u0027, \u0027${DecisionID}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027DecisionID\u0027], triggerBody()?[\u0027DecisionID\u0027], \u0027-\u0027)), \u0027${ProjectName}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ProjectID\u0027], triggerBody()?[\u0027ProjectID\u0027], \u0027-\u0027)), \u0027${Solicitante}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Solicitante\u0027]?[\u0027DisplayName\u0027], body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Solicitante\u0027]?[\u0027Email\u0027], \u0027-\u0027)), \u0027${Prazo}\u0027, coalesce(string(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Prazo\u0027]), \u0027-\u0027)), \u0027${Impacto}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Impacto\u0027]?[\u0027Value\u0027], body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Impacto\u0027], \u0027-\u0027)), \u0027${Descricao}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Descricao\u0027], \u0027-\u0027))",
+                                                                                                                                     "location":  "Channel"
+                                                                                                                                 },
+                                                                                                                  "host":  {
+                                                                                                                               "apiId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                                                               "connectionName":  "shared_teams",
+                                                                                                                               "operationId":  "PostCardAndWaitForResponse"
+                                                                                                                           },
+                                                                                                                  "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                              },
+                                                                                                   "runAfter":  {
+                                                                                                                    "Get_Decisao_Detalhes":  [
+                                                                                                                                                 "Succeeded"
+                                                                                                                                             ]
+                                                                                                                },
+                                                                                                   "limit":  {
+                                                                                                                 "timeout":  "P28D"
+                                                                                                             }
+                                                                                               },
+                                                          "Normalize_Decision_Status":  {
+                                                                                            "type":  "Compose",
+                                                                                            "inputs":  "@coalesce(body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027data\u0027]?[\u0027resposta\u0027], body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027resposta\u0027], \u0027Adiada\u0027)",
+                                                                                            "runAfter":  {
+                                                                                                             "Post_Decision_Card_Wait_Response":  [
+                                                                                                                                                      "Succeeded"
+                                                                                                                                                  ]
+                                                                                                         }
+                                                                                        },
+                                                          "Normalize_Justificativa":  {
+                                                                                          "type":  "Compose",
+                                                                                          "inputs":  "@coalesce(body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027data\u0027]?[\u0027justificativa\u0027], body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027justificativa\u0027], \u0027\u0027)",
+                                                                                          "runAfter":  {
+                                                                                                           "Normalize_Decision_Status":  [
+                                                                                                                                             "Succeeded"
+                                                                                                                                         ]
+                                                                                                       }
+                                                                                      },
+                                                          "Update_Decisao_Board":  {
+                                                                                       "type":  "OpenApiConnection",
+                                                                                       "inputs":  {
+                                                                                                      "parameters":  {
+                                                                                                                         "item/CardVersion":  "1.0",
+                                                                                                                         "item/DecisionID":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027DecisionID\u0027]",
+                                                                                                                         "item/Title":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Title\u0027]",
+                                                                                                                         "table":  "Decisoes do Board",
+                                                                                                                         "id":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ID\u0027]",
+                                                                                                                         "item/ResponseSource/Value":  "AdaptiveCard",
+                                                                                                                         "item/DataResposta":  "@utcNow()",
+                                                                                                                         "item/ApproverUPN":  "@coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Aprovador\u0027]?[\u0027Email\u0027], \u0027\u0027)",
+                                                                                                                         "item/ProjectID":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ProjectID\u0027]",
+                                                                                                                         "item/Justificativa":  "@outputs(\u0027Normalize_Justificativa\u0027)",
+                                                                                                                         "item/Resposta":  "@outputs(\u0027Normalize_Justificativa\u0027)",
+                                                                                                                         "item/StatusDecisao/Value":  "@outputs(\u0027Normalize_Decision_Status\u0027)",
+                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                         "item/Descricao":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Descricao\u0027]"
+                                                                                                                     },
+                                                                                                      "host":  {
+                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                   "connectionName":  "shared_sharepointonline",
+                                                                                                                   "operationId":  "PatchItem"
+                                                                                                               },
+                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                  },
+                                                                                       "runAfter":  {
+                                                                                                        "Normalize_Justificativa":  [
+                                                                                                                                        "Succeeded"
+                                                                                                                                    ]
+                                                                                                    }
+                                                                                   }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                                    "source":  "Invoker",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                },
+                                                    "shared_teams":  {
+                                                                         "connectionName":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                                                         "connectionReferenceLogicalName":  "pmo_teams",
+                                                                         "source":  "Invoker",
+                                                                         "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                         "displayName":  "Microsoft Teams",
+                                                                         "tier":  "Standard",
+                                                                         "apiName":  "teams",
+                                                                         "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                     },
+                                                    "shared_office365":  {
+                                                                             "connectionName":  "306d783533364cb6948ab2830fc3b188",
+                                                                             "connectionReferenceLogicalName":  "pmo_office365",
+                                                                             "source":  "Invoker",
+                                                                             "id":  "/providers/Microsoft.PowerApps/apis/shared_office365",
+                                                                             "displayName":  "Office 365 Outlook",
+                                                                             "tier":  "Standard",
+                                                                             "apiName":  "office365",
+                                                                             "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                         },
+                                                    "shared_planner":  {
+                                                                           "connectionName":  "3c5e9af0-086d-44c5-82ec-b0eeca750b94",
+                                                                           "connectionReferenceLogicalName":  "pmo_planner",
+                                                                           "source":  "Invoker",
+                                                                           "id":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                           "displayName":  "Planner",
+                                                                           "tier":  "Standard",
+                                                                           "apiName":  "planner",
+                                                                           "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                       }
+                                                },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

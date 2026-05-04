@@ -1,0 +1,95 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Resumo Diario do Portfolio",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "${DataReferencia}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            { "type": "TextBlock", "text": "Total", "isSubtle": true, "horizontalAlignment": "Center" },
+            { "type": "TextBlock", "text": "${TotalProjetos}", "weight": "Bolder", "size": "Large", "horizontalAlignment": "Center" }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            { "type": "TextBlock", "text": "Verde", "isSubtle": true, "horizontalAlignment": "Center" },
+            { "type": "TextBlock", "text": "${Verdes}", "weight": "Bolder", "size": "Large", "color": "Good", "horizontalAlignment": "Center" }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            { "type": "TextBlock", "text": "Amarelo", "isSubtle": true, "horizontalAlignment": "Center" },
+            { "type": "TextBlock", "text": "${Amarelos}", "weight": "Bolder", "size": "Large", "color": "Warning", "horizontalAlignment": "Center" }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            { "type": "TextBlock", "text": "Vermelho", "isSubtle": true, "horizontalAlignment": "Center" },
+            { "type": "TextBlock", "text": "${Vermelhos}", "weight": "Bolder", "size": "Large", "color": "Attention", "horizontalAlignment": "Center" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Sem atualizacao ha mais de 24h (${SemUpdateCount})",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${ProjetosSemUpdate}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Decisoes pendentes (${DecisoesPendentesCount})",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${DecisoesPendentes}",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Abrir hub PMO",
+      "url": "${HubUrl}"
+    }
+  ]
+}

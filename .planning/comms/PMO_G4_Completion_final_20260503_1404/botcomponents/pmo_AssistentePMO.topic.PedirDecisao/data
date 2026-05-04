@@ -1,0 +1,66 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: PedirDecisao
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - preciso de uma decisão
+      - preciso de uma decisao
+      - solicitar aprovação
+      - solicitar aprovacao
+      - decisão para projeto
+      - decisao para projeto
+
+  actions:
+    - kind: Question
+      id: ask_decision_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto precisa de decisão?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_desc
+      variable: Topic.Descricao
+      prompt: Descreva a decisão necessária.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_impact
+      variable: Topic.Impacto
+      prompt: Qual é o impacto? Baixo, Médio, Alto ou Crítico.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_due
+      variable: Topic.Prazo
+      prompt: Qual é o prazo da decisão?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_approver
+      variable: Topic.Aprovador
+      prompt: Quem é o aprovador?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_decision
+      variable: Topic.Confirmar
+      prompt: "Solicitação: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_decision_branch
+      conditions:
+        - id: decision_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: decision_confirmed_msg
+              activity: Confirmação recebida. A gravação deve criar item em Decisoes do Board; o fluxo PMO_PA_RegistrarDecisaoBoard será disparado pelo SharePoint.
+
+      elseActions:
+        - kind: SendActivity
+          id: decision_cancelled_msg
+          activity: Ok, não registrei a solicitação de decisão.

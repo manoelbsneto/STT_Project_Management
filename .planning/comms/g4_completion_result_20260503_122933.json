@@ -1,0 +1,16 @@
+﻿{
+    "timestamp":  "2026-05-03T12:31:28.8777301-03:00",
+    "status":  "PASS",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "botId":  "0c4a9729-d55d-483c-8ec3-db9369583155",
+    "botSchema":  "pmo_AssistentePMO",
+    "importedPackage":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\PMO_G4_Completion_20260503_122933.zip",
+    "importLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_import_g4_completion_20260503_122933.txt",
+    "publishExitCode":  0,
+    "publishLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_copilot_publish_g4_completion_20260503_122933.txt",
+    "listLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_copilot_list_g4_completion_20260503_122933.txt",
+    "extractPath":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_assistente_pmo_export_complete_20260503_122933.yaml",
+    "extractLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_copilot_extract_g4_completion_20260503_122933.txt",
+    "manifest":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_completion_package_manifest_20260503_122933.json",
+    "flowEvidence":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_flow_solutionaware_workflowids_20260503_122933.json"
+}

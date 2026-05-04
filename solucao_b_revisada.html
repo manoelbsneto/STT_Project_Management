@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Solução B Revisada — Copilot Studio como MVP</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0e1a;
+      color: #e2e8f0;
+      padding: 0;
+      line-height: 1.6
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b, #312e81, #4338ca);
+      padding: 40px;
+      text-align: center;
+      border-bottom: 2px solid #6366f1
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      border-bottom: 2px solid #6366f1;
+      padding-bottom: 8px;
+      margin: 32px 0 16px
+    }
+
+    .card {
+      background: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0
+    }
+
+    th,
+    td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+      font-size: .85rem
+    }
+
+    th {
+      color: #6366f1;
+      font-size: .72rem;
+      text-transform: uppercase
+    }
+
+    .mermaid {
+      background: #1e1b4b;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      text-align: center
+    }
+
+    .ok {
+      background: rgba(16, 185, 129, .08);
+      border: 1px solid rgba(16, 185, 129, .2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0
+    }
+
+    .ok strong {
+      color: #34d399
+    }
+
+    .warn {
+      background: rgba(245, 158, 11, .08);
+      border: 1px solid rgba(245, 158, 11, .2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0
+    }
+
+    .warn strong {
+      color: #fbbf24
+    }
+
+    .flow {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(99, 102, 241, .05);
+      border-left: 3px solid #6366f1
+    }
+
+    .step-icon {
+      font-size: 1.3rem;
+      min-width: 32px;
+      text-align: center
+    }
+
+    .step strong {
+      color: #e2e8f0;
+      display: block
+    }
+
+    .step span {
+      color: #94a3b8;
+      font-size: .83rem
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0
+    }
+
+    @media(max-width:768px) {
+      .compare {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .col {
+      background: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px
+    }
+
+    .col h3 {
+      margin-bottom: 10px;
+      font-size: 1rem
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 8px 0
+    }
+
+    li {
+      margin: 4px 0;
+      color: #94a3b8;
+      font-size: .85rem
+    }
+
+    .ref {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+      font-size: .8rem
+    }
+
+    .ref a {
+      color: #818cf8;
+      word-break: break-all
+    }
+
+    .ref li {
+      margin: 6px 0
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <h1>🤖 Solução B Revisada — Copilot Studio como MVP</h1>
+    <p style="color:#c7d2fe;margin-top:8px">Reavaliação considerando que a licença Copilot Studio já está disponível</p>
+  </div>
+
+  <div class="container">
+
+    <h2>📊 Reavaliação: Por que B sobe para MVP?</h2>
+    <div class="card">
+      <table>
+        <tr>
+          <th>Fator</th>
+          <th>Antes (sem licença)</th>
+          <th>Agora (com licença)</th>
+        </tr>
+        <tr>
+          <td><strong>Custo</strong></td>
+          <td style="color:#f87171">+$30/user/mês = barreira</td>
+          <td style="color:#34d399">Zero incremental ✅</td>
+        </tr>
+        <tr>
+          <td><strong>UX / Fricção</strong></td>
+          <td colspan="2" style="color:#34d399">Melhor possível — linguagem natural ✅</td>
+        </tr>
+        <tr>
+          <td><strong>STT / Voz</strong></td>
+          <td colspan="2" style="color:#34d399">M365 Copilot tem 🎤 nativo no Teams ✅</td>
+        </tr>
+        <tr>
+          <td><strong>Setup</strong></td>
+          <td style="color:#f87171">Complexidade era barreira no MVP</td>
+          <td style="color:#fbbf24">Investimento justificável pela UX ⚠️</td>
+        </tr>
+        <tr>
+          <td><strong>NLU Risk</strong></td>
+          <td style="color:#f87171">Risco sem mitigação</td>
+          <td style="color:#34d399">Confirm-before-action resolve ✅</td>
+        </tr>
+        <tr>
+          <td><strong>Nota revisada</strong></td>
+          <td>8.0 (Fase 2)</td>
+          <td style="color:#34d399;font-weight:700;font-size:1.1rem">9.5 (MVP candidato) ✅</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>🏗️ Arquitetura Recomendada: D + B (Dados + Agente)</h2>
+    <div class="mermaid">
+      flowchart TD
+      subgraph INPUT["🎯 ENTRADA — Copilot Studio"]
+      VOICE["🎤 Voz (microfone Teams)"]
+      TEXT["⌨️ Texto natural"]
+      AC["📋 Adaptive Card (fallback)"]
+      end
+      subgraph AGENT["🤖 Copilot Studio Agent"]
+      NLU["Extrai: projeto, RAG, resumo, risco"]
+      CONFIRM["Confirma com usuário"]
+      EXEC["Executa ação via PA"]
+      QUERY["Consulta dados SP"]
+      end
+      subgraph ENGINE["⚙️ Power Automate"]
+      PA["Flows de gravação e alerta"]
+      end
+      subgraph DATA["💾 SharePoint Lists"]
+      L1["Projetos"] & L2["Status Diário"] & L3["Riscos"] & L4["Decisões"]
+      end
+      subgraph VIS["👁️ Visibilidade"]
+      T1["Tab Teams: Portfólio"]
+      T2["Tab Teams: Críticos"]
+      C1["Canal: Board Status"]
+      end
+      VOICE & TEXT --> NLU --> CONFIRM --> EXEC --> PA --> L1 & L2 & L3 & L4
+      AC --> PA
+      QUERY --> L1
+      L1 --> T1 & C1
+      L3 --> T2
+    </div>
+
+    <h2>💬 Fluxo Completo: Confirm-Before-Action</h2>
+    <div class="flow">
+      <div class="step"><span class="step-icon">🎤</span>
+        <div><strong>PM João fala no Teams (microfone):</strong><span>"Atualiza o projeto Mobile para amarelo. Sprint
+            atrasada 2 dias por bug no checkout. Risco é atraso na publicação da loja."</span></div>
+      </div>
+      <div class="step" style="border-left-color:#c084fc"><span class="step-icon">🤖</span>
+        <div><strong>Copilot extrai e CONFIRMA (não executa!):</strong><span>Entendi. Vou registrar:<br>📊 Projeto:
+            <b>Mobile App (PRJ-012)</b><br>🟡 Status: <b>Amarelo</b> (anterior: Verde)<br>📝 Resumo: <b>"Sprint atrasada
+              2 dias por bug no checkout"</b><br>⚠️ Risco: <b>"Atraso na publicação da loja"</b><br>📅 Data:
+            <b>01/05/2026 22:15</b><br><br>✅ <b>Confirma?</b></span></div>
+      </div>
+      <div class="step" style="border-left-color:#34d399"><span class="step-icon">👤</span>
+        <div><strong>PM: "Sim"</strong></div>
+      </div>
+      <div class="step" style="border-left-color:#10b981"><span class="step-icon">⚙️</span>
+        <div><strong>Copilot executa via Power Automate:</strong><span>1) Cria item na lista "Status Diário" ✅<br>2)
+            Atualiza StatusRAG e UltimaAtualizacao na lista "Projetos" ✅<br>3) Cria item na lista "Riscos" ✅<br>4)
+            Detecta mudança Verde→Amarelo: notifica Sponsor ✅</span></div>
+      </div>
+      <div class="step" style="border-left-color:#818cf8"><span class="step-icon">🤖</span>
+        <div><strong>Copilot confirma:</strong><span>"Pronto! Mobile App atualizado para 🟡 Amarelo. Sponsor foi
+            notificado. Mais alguma coisa?"</span></div>
+      </div>
+    </div>
+
+    <h2>🎤 Cenário 2: Consulta por Voz</h2>
+    <div class="flow">
+      <div class="step"><span class="step-icon">🎤</span>
+        <div><strong>Diretora Ana fala:</strong><span>"Como está o portfólio hoje?"</span></div>
+      </div>
+      <div class="step" style="border-left-color:#c084fc"><span class="step-icon">🤖</span>
+        <div><strong>Copilot consulta SharePoint e responde:</strong><span>📊 Portfólio hoje: <b>6 projetos
+              ativos</b><br>🟢 Verde: 3 (CRM, Data Analytics, Portal)<br>🟡 Amarelo: 2 (Mobile App, Migração
+            Cloud)<br>🔴 Vermelho: 1 (ERP Modernização — bloqueado)<br>📋 1 decisão pendente (contratação devs
+            Mobile)<br>⏰ 0 projetos sem update hoje</span></div>
+      </div>
+      <div class="step"><span class="step-icon">🎤</span>
+        <div><strong>Ana: "Me conta mais sobre o ERP"</strong></div>
+      </div>
+      <div class="step" style="border-left-color:#c084fc"><span class="step-icon">🤖</span>
+        <div><strong>Copilot faz drill-down:</strong><span>🔴 <b>ERP Modernização</b> | PM: Carlos<br>Status: Vermelho
+            desde 01/05<br>Bloqueio: Ambiente homologação indisponível há 5 dias<br>Risco: Atraso de 3+
+            semanas<br>Avanço: 25% | Alvo: 01/09/2026<br>Último update: hoje 14:00<br>📋 Decisão pendente: escalar para
+            VP Infra (prazo: 03/05)</span></div>
+      </div>
+    </div>
+
+    <h2>🔄 Comparação: MVP sem B vs MVP com B</h2>
+    <div class="compare">
+      <div class="col">
+        <h3 style="color:#818cf8">MVP só com D (sem Copilot)</h3>
+        <ul>
+          <li>PM recebe Adaptive Card → preenche campos → envia</li>
+          <li>Tempo: ~20-30 segundos</li>
+          <li>Voz: via Win+H nos campos (funcional mas não ideal)</li>
+          <li>Consulta: abrir tab → navegar SharePoint list</li>
+          <li>On-demand: clicar botão → receber card → preencher</li>
+          <li>Setup: 4 listas SP + 10 fluxos PA</li>
+          <li>Experiência: <b>funcional, produtiva</b></li>
+        </ul>
+      </div>
+      <div class="col" style="border-color:rgba(16,185,129,.3)">
+        <h3 style="color:#34d399">MVP com D + B (com Copilot) ⭐</h3>
+        <ul>
+          <li>PM fala ou digita em linguagem natural → agente confirma → executa</li>
+          <li>Tempo: ~10-15 segundos</li>
+          <li>Voz: 🎤 nativo do Copilot no Teams (1 clique)</li>
+          <li>Consulta: "como está o portfólio?" → resposta instantânea</li>
+          <li>On-demand: "atualiza X para Y" a qualquer momento</li>
+          <li>Setup: 4 listas SP + 10 fluxos PA + 5-8 topics Copilot</li>
+          <li>Experiência: <b>premium, conversacional, voz-first</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>⚙️ Topics do Copilot Studio (o que configurar)</h2>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Topic</th>
+        <th>Trigger Phrases</th>
+        <th>Ação</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><strong>AtualizarStatus</strong></td>
+        <td>"atualiza projeto X", "muda status", "update"</td>
+        <td>Extrai entidades → Confirma → PA grava SP</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>ConsultarPortfolio</strong></td>
+        <td>"como está o portfólio", "resumo projetos"</td>
+        <td>Consulta SP → Formata resposta</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>ConsultarProjeto</strong></td>
+        <td>"status do projeto X", "me conta sobre X"</td>
+        <td>Consulta SP filtrado → Drill-down</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>RegistrarRisco</strong></td>
+        <td>"novo risco", "risco no projeto X"</td>
+        <td>Extrai → Confirma → PA cria item Riscos</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>RegistrarBloqueio</strong></td>
+        <td>"bloqueio", "impedimento", "projeto bloqueado"</td>
+        <td>Extrai → Confirma → PA + escalar</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>PedirDecisao</strong></td>
+        <td>"decisão necessária", "preciso de aprovação"</td>
+        <td>Extrai → Confirma → PA cria + card Board</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>LowConfidence</strong></td>
+        <td>(fallback quando NLU < 0.6)</td>
+        <td>"Não entendi bem. Pode reformular?"</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Greeting</strong></td>
+        <td>"oi", "olá", "bom dia"</td>
+        <td>Apresentação + menu de ações</td>
+      </tr>
+    </table>
+
+    <div class="warn">
+      <strong>⚠️ O que o Copilot Studio NÃO substitui (ainda precisa de D):</strong>
+      <ul>
+        <li>SharePoint Lists continuam sendo a base de dados — Copilot lê e grava nelas</li>
+        <li>Power Automate continua sendo o motor de execução — Copilot chama os flows</li>
+        <li>Tabs no Teams e Board Views continuam para visibilidade passiva</li>
+        <li>Adaptive Cards continuam como fallback e para reports automáticos</li>
+      </ul>
+    </div>
+
+    <div class="ok">
+      <strong>✅ Recomendação revisada para seu caso:</strong>
+      <p style="margin-top:8px"><b>Solução D + B como MVP</b> — SharePoint como dados, Copilot como interface primária.
+        Adaptive Cards como secundários. O STT funciona nativamente via Copilot. O MVP fica mais premium, mais
+        voice-friendly, e com menor fricção para os PMs.</p>
+      <p style="margin-top:8px">Prazo estimado: <b>4-5 semanas</b> (1 semana a mais que D sozinha por conta dos topics
+        do Copilot).</p>
+    </div>
+
+    <h2>📚 Referências Oficiais</h2>
+    <div class="ref">
+      <ul>
+        <li><strong>Copilot Studio — Create Topics:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-create-edit-topics"
+            target="_blank">learn.microsoft.com/copilot-studio/authoring-create-edit-topics</a></li>
+        <li><strong>Copilot Studio — Use Entities:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-entities-slot-filling"
+            target="_blank">learn.microsoft.com/copilot-studio/advanced-entities-slot-filling</a></li>
+        <li><strong>Copilot Studio — Call Power Automate Flows:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-flow-create"
+            target="_blank">learn.microsoft.com/copilot-studio/advanced-flow-create</a></li>
+        <li><strong>Copilot Studio — Confirm Before Action Pattern:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-send-message"
+            target="_blank">learn.microsoft.com/copilot-studio/authoring-send-message</a></li>
+        <li><strong>Copilot Studio — Fallback / Low Confidence:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-system-fallback-topic"
+            target="_blank">learn.microsoft.com/copilot-studio/authoring-system-fallback-topic</a></li>
+        <li><strong>Copilot Studio — Deploy to Teams:</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams"
+            target="_blank">learn.microsoft.com/copilot-studio/publication-add-bot-to-microsoft-teams</a></li>
+        <li><strong>Real-time Voice Agents (GA Apr 2026):</strong><br><a
+            href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/voice-overview"
+            target="_blank">learn.microsoft.com/copilot-studio/voice-overview</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <script>mermaid.initialize({ theme: 'dark', themeVariables: { primaryColor: '#6366f1', primaryTextColor: '#e2e8f0', lineColor: '#818cf8', secondaryColor: '#312e81' } });</script>
+</body>
+
+</html>

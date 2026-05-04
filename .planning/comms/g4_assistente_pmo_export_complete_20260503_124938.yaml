@@ -1,0 +1,503 @@
+kind: BotDefinition
+entity:
+  accessControlPolicy: GroupMembership
+  authenticationMode: Integrated
+  authenticationTrigger: Always
+  configuration:
+    settings:
+      GenerativeActionsEnabled: false
+
+  template: kickStartTemplate-1.0.0
+
+components:
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: AtualizarStatus
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Coleta status RAG e confirma antes de acionar o fluxo on-demand.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.AtualizarStatus
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: AtualizarStatus
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - atualizar projeto
+            - status do projeto
+            - status de projeto
+            - update projeto
+            - atualizar status
+
+        actions:
+          - kind: Question
+            id: ask_project
+            variable: Topic.ProjectName
+            prompt: Qual projeto você quer atualizar?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_rag
+            variable: Topic.StatusRAG
+            prompt: Qual é o novo status RAG? Responda Verde, Amarelo ou Vermelho.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_resumo
+            variable: Topic.Resumo
+            prompt: Qual é o resumo do status?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_risco
+            variable: Topic.Risco
+            prompt: Há algum risco relevante? Se não houver, responda não.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_next
+            variable: Topic.ProximaAcao
+            prompt: Qual é a próxima ação? Se não houver, responda não.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_percent
+            variable: Topic.Percentual
+            prompt: Qual é o percentual concluído? Responda de 0 a 100.
+            entity: NumberPrebuiltEntity
+
+          - kind: Question
+            id: confirm_update
+            variable: Topic.Confirmar
+            prompt: "Vou registrar: {Topic.ProjectName} como {Topic.StatusRAG}, resumo: {Topic.Resumo}. Confirma?"
+            entity: BooleanPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_update_branch
+            conditions:
+              - id: confirmed
+                condition: =Topic.Confirmar = true
+                actions:
+                  - kind: BeginDialog
+                    id: call_checkin_ondemand
+                    dialog: template-content.action.PMO_PA_CheckInOnDemand
+
+                  - kind: SendActivity
+                    id: update_done
+                    activity: Status do {Topic.ProjectName} atualizado para {Topic.StatusRAG}.
+
+            elseActions:
+              - kind: SendActivity
+                id: update_denied
+                activity: Ok, vamos refazer. Qual projeto?
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: Greeting
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Menu inicial do Assistente PMO.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.Greeting
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: Greeting
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - ola
+            - olá
+            - oi
+            - bom dia
+            - help
+            - ajuda
+
+        actions:
+          - kind: SendActivity
+            id: greeting_menu
+            activity: |-
+              Olá, eu sou o Assistente PMO.
+
+              Posso ajudar com:
+              - atualizar status de projeto
+              - consultar portfólio
+              - consultar detalhes de projeto
+              - registrar risco ou bloqueio
+              - solicitar decisão do board
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_CheckInOnDemand
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_CheckInOnDemand.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.action.PMO_PA_CheckInOnDemand
+    dialog:
+      kind: TaskDialog
+      outputs:
+        - propertyName: success
+
+        - propertyName: message
+
+        - propertyName: errorcode
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: f5aab85e-ff46-f111-bec7-7ced8d955c6c
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: ConsultarProjeto
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Consulta guiada de detalhes de um projeto.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.ConsultarProjeto
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: ConsultarProjeto
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - como está o projeto
+            - como esta o projeto
+            - status de projeto
+            - detalhes projeto
+            - consultar projeto
+
+        actions:
+          - kind: Question
+            id: ask_project_detail
+            variable: Topic.ProjectName
+            prompt: Qual projeto você quer consultar?
+            entity: StringPrebuiltEntity
+
+          - kind: SendActivity
+            id: project_stub
+            activity: |-
+              Projeto: {Topic.ProjectName}
+              Status: consultar Projetos.StatusRAG.
+              Progresso: consultar Projetos.Percentual.
+              Alvo: consultar Projetos.DataAlvo.
+              PM: consultar Projetos.PM.
+              Último update: consultar Status Diario mais recente por ProjectID.
+              Riscos abertos: consultar Riscos e Bloqueios por ProjectID e Status aberto.
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: LowConfidence
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Fallback quando a intenção não for reconhecida.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.LowConfidence
+    dialog:
+      beginDialog:
+        kind: OnUnknownIntent
+        id: main
+        actions:
+          - kind: SendActivity
+            id: low_confidence_msg
+            activity: "Não entendi bem. Você pode reformular? Posso ajudar com: atualizar status, consultar portfólio, registrar risco, solicitar decisão."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: RegistrarBloqueio
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Coleta bloqueio e confirma antes de qualquer gravação.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.RegistrarBloqueio
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: RegistrarBloqueio
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - registrar bloqueio
+            - projeto bloqueado
+            - bloqueio em projeto
+            - novo bloqueio
+
+        actions:
+          - kind: Question
+            id: ask_block_project
+            variable: Topic.ProjectName
+            prompt: Qual projeto está bloqueado?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_block_desc
+            variable: Topic.Descricao
+            prompt: Descreva o bloqueio.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_block_impact
+            variable: Topic.Impacto
+            prompt: Qual é o impacto? Baixo, Médio, Alto ou Crítico.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_block
+            variable: Topic.Confirmar
+            prompt: "Bloqueio: {Topic.Descricao} | Impacto: {Topic.Impacto} | Projeto: {Topic.ProjectName}. Confirma?"
+            entity: BooleanPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_block_branch
+            conditions:
+              - id: block_confirmed
+                condition: =Topic.Confirmar = true
+                actions:
+                  - kind: SendActivity
+                    id: block_confirmed_msg
+                    activity: Confirmação recebida. A gravação deve criar item em Riscos e Bloqueios com Tipo=Bloqueio.
+
+            elseActions:
+              - kind: SendActivity
+                id: block_cancelled_msg
+                activity: Ok, não registrei o bloqueio.
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: RegistrarRisco
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Coleta risco e confirma antes de qualquer gravação.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.RegistrarRisco
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: RegistrarRisco
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - registrar risco
+            - novo risco
+            - risco no projeto
+            - risco em projeto
+
+        actions:
+          - kind: Question
+            id: ask_risk_project
+            variable: Topic.ProjectName
+            prompt: Qual projeto tem o risco?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_risk_desc
+            variable: Topic.Descricao
+            prompt: Descreva o risco.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_risk_severity
+            variable: Topic.Severidade
+            prompt: Qual é a severidade? Baixa, Média, Alta ou Crítica.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_risk
+            variable: Topic.Confirmar
+            prompt: "Risco: {Topic.Descricao} | Severidade: {Topic.Severidade} | Projeto: {Topic.ProjectName}. Confirma?"
+            entity: BooleanPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_risk_branch
+            conditions:
+              - id: risk_confirmed
+                condition: =Topic.Confirmar = true
+                actions:
+                  - kind: SendActivity
+                    id: risk_confirmed_msg
+                    activity: Confirmação recebida. A gravação deve criar item em Riscos e Bloqueios com Tipo=Risco; se a severidade for Crítica, o fluxo PMO_PA_EscalarRiscoCritico será disparado pelo SharePoint.
+
+            elseActions:
+              - kind: SendActivity
+                id: risk_cancelled_msg
+                activity: Ok, não registrei o risco.
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PedirDecisao
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Coleta solicitação de decisão e confirma antes de qualquer gravação.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.PedirDecisao
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: PedirDecisao
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - preciso de uma decisão
+            - preciso de uma decisao
+            - solicitar aprovação
+            - solicitar aprovacao
+            - decisão para projeto
+            - decisao para projeto
+
+        actions:
+          - kind: Question
+            id: ask_decision_project
+            variable: Topic.ProjectName
+            prompt: Qual projeto precisa de decisão?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_desc
+            variable: Topic.Descricao
+            prompt: Descreva a decisão necessária.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_impact
+            variable: Topic.Impacto
+            prompt: Qual é o impacto? Baixo, Médio, Alto ou Crítico.
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_due
+            variable: Topic.Prazo
+            prompt: Qual é o prazo da decisão?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_approver
+            variable: Topic.Aprovador
+            prompt: Quem é o aprovador?
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_decision
+            variable: Topic.Confirmar
+            prompt: "Solicitação: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
+            entity: BooleanPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_decision_branch
+            conditions:
+              - id: decision_confirmed
+                condition: =Topic.Confirmar = true
+                actions:
+                  - kind: SendActivity
+                    id: decision_confirmed_msg
+                    activity: Confirmação recebida. A gravação deve criar item em Decisoes do Board; o fluxo PMO_PA_RegistrarDecisaoBoard será disparado pelo SharePoint.
+
+            elseActions:
+              - kind: SendActivity
+                id: decision_cancelled_msg
+                activity: Ok, não registrei a solicitação de decisão.
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: ConsultarPortfolio
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Resumo do portfolio PMO.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.ConsultarPortfolio
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: ConsultarPortfolio
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - como está o portfólio
+            - como esta o portfolio
+            - resumo dos projetos
+            - dashboard
+            - portfolio pmo
+
+        actions:
+          - kind: SendActivity
+            id: portfolio_stub
+            activity: |-
+              Portfólio PMO
+              Verde: consultar lista Projetos onde Ativo=Yes e StatusRAG=Verde.
+              Amarelo: consultar lista Projetos onde Ativo=Yes e StatusRAG=Amarelo.
+              Vermelho: consultar lista Projetos onde Ativo=Yes e StatusRAG=Vermelho.
+              Total: consultar lista Projetos onde Ativo=Yes.
+              Sem atualização (>24h): consultar Projetos com UltimaAtualizacao anterior a utcNow()-1 dia.
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: SeHouverErro
+    parentBotId: 0c4a9729-d55d-483c-8ec3-db9369583155
+    description: Tratamento de erro do agente.
+    shareContext: {}
+    state: Active
+    status: Active
+    publisherUniqueName: DefaultPublishercolofertasbrasilpro
+    schemaName: template-content.topic.SeHouverErro
+    dialog:
+      startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+      beginDialog:
+        kind: OnError
+        id: main
+        actions:
+          - kind: SendActivity
+            id: error_msg
+            activity: "Ocorreu um erro no Assistente PMO. Código: {System.Error.Code}."

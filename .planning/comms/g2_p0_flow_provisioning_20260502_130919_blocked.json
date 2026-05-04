@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-05-02T13:09:19.0313967-03:00",
+  "phase": 2,
+  "gate": "G2",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentUrl": "https://colofertasbrasilpro.crm4.dynamics.com/",
+  "tenantId": "7808e005-1489-4374-954b-d3b08f193920",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "status": "PARTIAL_BLOCKED",
+  "summary": {
+    "requiredFlows": 5,
+    "createdOrExistingByPriorEvidence": 3,
+    "failedByPriorEvidence": 2,
+    "endToEndValidated": 0,
+    "gateDecision": "G2_NOT_PASS"
+  },
+  "priorEvidence": ".planning/comms/g2_p0_flow_provisioning_20260502_124959.json",
+  "priorProvisioningResults": [
+    {
+      "displayName": "PMO_PA_EnviarCheckInDiario",
+      "status": "CREATED",
+      "flowName": "e117bbc5-5684-4191-8d03-fb183452ac5f",
+      "state": "Started"
+    },
+    {
+      "displayName": "PMO_PA_ProcessarRespostaCheckIn",
+      "status": "FAILED",
+      "error": "Response status code does not indicate success: 400 (Bad Request)."
+    },
+    {
+      "displayName": "PMO_PA_AlertaProjetoVermelho",
+      "status": "FAILED",
+      "error": "Response status code does not indicate success: 400 (Bad Request)."
+    },
+    {
+      "displayName": "PMO_PA_CheckInOnDemand",
+      "status": "CREATED",
+      "flowName": "c9e51483-38e7-422a-98cd-cf7604d14a16",
+      "state": "Started"
+    },
+    {
+      "displayName": "PMO_PA_AlertaSemAtualizacao",
+      "status": "EXISTS",
+      "flowName": "0550c8ba-faf8-4e21-864e-d1fa5f625ce7",
+      "state": "Started"
+    }
+  ],
+  "currentRunAttempt": {
+    "script": "deploy/PA_Provisioning_P0.ps1",
+    "result": "TIMEOUT_NO_NEW_EVIDENCE",
+    "details": "The script timed out after 300 seconds before writing a new evidence JSON. Isolated authentication showed Microsoft.PowerApps.PowerShell cannot acquire a token through username/password because MFA is required."
+  },
+  "authFindings": [
+    "pac env who succeeds and is connected to ColOfertasBrasilPro as mbenicios@minsait.com.",
+    "pac connection list succeeds and confirms Standard SharePoint, Teams, and Office 365 Outlook connections in ColOfertasBrasilPro.",
+    "Microsoft.PowerApps.PowerShell Add-PowerAppsAccount with username/password fails with AADSTS50076 MFA required.",
+    "Microsoft.PowerApps.PowerShell Test-PowerAppsAccount hangs when no interactive MFA is completed.",
+    "m365 login --authType browser timed out and m365 status remains Logged out."
+  ],
+  "connectorEvidence": {
+    "sharePoint": "44f187cde7f54f208cf22bac4e533816",
+    "teams": "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+    "outlook": "306d783533364cb6948ab2830fc3b188"
+  },
+  "knownImplementationGaps": [
+    "Adaptive Card files validated locally, but Teams desktop/mobile rendering was not validated.",
+    "Teams Adaptive Card ProcessSimple action returned 400 in earlier provisioning and was downgraded to channel message fallback in the script.",
+    "SharePoint CreateItem/UpdateItem dynamic schema for PMO_PA_ProcessarRespostaCheckIn returned 400 in earlier provisioning.",
+    "Outlook SendEmailV2 action for PMO_PA_AlertaProjetoVermelho returned 400 in earlier provisioning.",
+    "No flow was end-to-end tested after creation."
+  ],
+  "recommendedDecisionForOpus": "Do not approve G2 PASS yet. Authorize either interactive Power Automate portal completion in ColOfertasBrasilPro or a supported ALM/import path with authenticated ProcessSimple access."
+}

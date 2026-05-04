@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-05-02T14:14:45.8316532-03:00",
+  "phase": 2,
+  "gate": "G2",
+  "task": "G2 Remediation: flow wiring and E2E validation",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "status": "BLOCKED_AUTH_AND_PORTAL_REQUIRED",
+  "userProvidedContext": {
+    "g2State": "CONDITIONAL",
+    "flowExistence": "5/5 flows exist in ColOfertasBrasilPro",
+    "remainingIssue": "2 flows have placeholder actions only",
+    "source": ".planning/comms/CODEX_HANDOFF_G2_WIRING.md"
+  },
+  "attemptedChecks": [
+    {
+      "tool": "pac env who",
+      "result": "PASS",
+      "details": "Connected as mbenicios@minsait.com to ColOfertasBrasilPro."
+    },
+    {
+      "tool": "pac connection list",
+      "result": "PASS",
+      "details": "Standard SharePoint, Teams, and Office 365 Outlook connections are connected in ColOfertasBrasilPro."
+    },
+    {
+      "tool": "pac env fetch workflow",
+      "result": "NO_RESULTS",
+      "details": "No PMO_PA_* records returned from Dataverse workflow FetchXML. The cloud flows are not exposed through this Dataverse workflow query path."
+    },
+    {
+      "tool": "Dataverse MCP",
+      "result": "AUTH_TIMEOUT",
+      "details": "MCP authentication timed out and requested manual mcp-dataverse-auth against ColOfertasBrasilPro."
+    },
+    {
+      "tool": "Microsoft.PowerApps.PowerShell",
+      "result": "BLOCKED",
+      "details": "Prior attempt failed with AADSTS50076 MFA requirement; non-interactive username/password auth is not accepted."
+    },
+    {
+      "tool": "m365 CLI",
+      "result": "BLOCKED",
+      "details": "Prior browser login timed out and m365 status remained Logged out."
+    }
+  ],
+  "localSchemaFindings": [
+    {
+      "area": "Status Diario SharePoint fields",
+      "finding": "G1 schema uses RAG, DataRegistro, Bloqueio. The handoff text says StatusRAG, DataCheckin, Bloqueios. Flow wiring must map card values to the actual internal names."
+    },
+    {
+      "area": "CheckInDiario adaptive card payload",
+      "finding": "Input/action ids are lower/mixed case: projectId, statusRAG, percentual, resumo, risco, bloqueio, proximaAcao. Flow Parse JSON must parse these ids or normalize them."
+    },
+    {
+      "area": "Projetos update",
+      "finding": "Projetos list uses ProjectID text as the business key and item ID as the SharePoint item id. Update item requires a prior Get items by ProjectID unless the card sends the SharePoint item ID."
+    }
+  ],
+  "wiringCompleted": false,
+  "e2eValidationCompleted": false,
+  "teamsRenderValidationCompleted": false,
+  "gateDecision": "G2_REMAINS_CONDITIONAL_NOT_FULL_PASS",
+  "recommendedNextStep": "Complete wiring in the Power Automate portal with an interactive authenticated session, using the field mapping documented in .planning/comms/G2_WIRING_FIELD_MAPPING.md."
+}

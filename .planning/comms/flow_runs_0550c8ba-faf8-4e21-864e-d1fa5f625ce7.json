@@ -1,0 +1,31 @@
+﻿{
+    "value":  [
+                  {
+                      "name":  "08584238699672580348123086820CU13",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/0550c8ba-faf8-4e21-864e-d1fa5f625ce7/runs/08584238699672580348123086820CU13",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs",
+                      "properties":  {
+                                         "startTime":  "2026-05-02T15:48:38.2214759Z",
+                                         "endTime":  "2026-05-02T15:48:52.7563805Z",
+                                         "status":  "Succeeded",
+                                         "correlation":  {
+                                                             "clientTrackingId":  "08584238699672580348123086820CU13"
+                                                         },
+                                         "trigger":  {
+                                                         "name":  "Recurrence_10h_BRT",
+                                                         "startTime":  "2026-05-02T15:48:38.219549Z",
+                                                         "endTime":  "2026-05-02T15:48:38.219969Z",
+                                                         "scheduledTime":  "2026-05-02T15:48:38.1885895Z",
+                                                         "originHistoryName":  "08584238699672580348123086820CU13",
+                                                         "correlation":  {
+                                                                             "clientTrackingId":  "08584238699672580348123086820CU13"
+                                                                         },
+                                                         "code":  "OK",
+                                                         "status":  "Succeeded"
+                                                     },
+                                         "isAborted":  false
+                                     },
+                      "isMigrationSource":  false
+                  }
+              ]
+}

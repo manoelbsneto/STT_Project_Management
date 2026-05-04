@@ -1,0 +1,305 @@
+﻿{
+    "name":  "a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_ResumoDiarioBoard",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "Recurrence_17h_BRT":  {
+                                                                                      "recurrence":  {
+                                                                                                         "frequency":  "Day",
+                                                                                                         "interval":  1,
+                                                                                                         "timeZone":  "E. South America Standard Time",
+                                                                                                         "schedule":  {
+                                                                                                                          "hours":  [
+                                                                                                                                        17
+                                                                                                                                    ],
+                                                                                                                          "minutes":  [
+                                                                                                                                          0
+                                                                                                                                      ]
+                                                                                                                      }
+                                                                                                     },
+                                                                                      "type":  "Recurrence"
+                                                                                  }
+                                                       },
+                                          "actions":  {
+                                                          "Get_Projetos_Ativos":  {
+                                                                                      "type":  "OpenApiConnection",
+                                                                                      "inputs":  {
+                                                                                                     "parameters":  {
+                                                                                                                        "$filter":  "Ativo eq 1",
+                                                                                                                        "table":  "Projetos",
+                                                                                                                        "$top":  200,
+                                                                                                                        "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                                    },
+                                                                                                     "host":  {
+                                                                                                                  "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                  "connectionName":  "shared_sharepointonline",
+                                                                                                                  "operationId":  "GetItems"
+                                                                                                              },
+                                                                                                     "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                 },
+                                                                                      "runAfter":  {
+
+                                                                                                   }
+                                                                                  },
+                                                          "Filter_Verdes":  {
+                                                                                "type":  "Query",
+                                                                                "inputs":  {
+                                                                                               "from":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                                               "where":  "@equals(coalesce(item()?[\u0027StatusRAG\u0027]?[\u0027Value\u0027], item()?[\u0027StatusRAG\u0027]), \u0027Verde\u0027)"
+                                                                                           },
+                                                                                "runAfter":  {
+                                                                                                 "Get_Projetos_Ativos":  [
+                                                                                                                             "Succeeded"
+                                                                                                                         ]
+                                                                                             }
+                                                                            },
+                                                          "Filter_Amarelos":  {
+                                                                                  "type":  "Query",
+                                                                                  "inputs":  {
+                                                                                                 "from":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                                                 "where":  "@equals(coalesce(item()?[\u0027StatusRAG\u0027]?[\u0027Value\u0027], item()?[\u0027StatusRAG\u0027]), \u0027Amarelo\u0027)"
+                                                                                             },
+                                                                                  "runAfter":  {
+                                                                                                   "Filter_Verdes":  [
+                                                                                                                         "Succeeded"
+                                                                                                                     ]
+                                                                                               }
+                                                                              },
+                                                          "Filter_Vermelhos":  {
+                                                                                   "type":  "Query",
+                                                                                   "inputs":  {
+                                                                                                  "from":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                                                  "where":  "@equals(coalesce(item()?[\u0027StatusRAG\u0027]?[\u0027Value\u0027], item()?[\u0027StatusRAG\u0027]), \u0027Vermelho\u0027)"
+                                                                                              },
+                                                                                   "runAfter":  {
+                                                                                                    "Filter_Amarelos":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                                }
+                                                                               },
+                                                          "Filter_Projetos_Sem_Update":  {
+                                                                                             "type":  "Query",
+                                                                                             "inputs":  {
+                                                                                                            "from":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                                                            "where":  "@lessOrEquals(coalesce(item()?[\u0027UltimaAtualizacao\u0027], \u00271900-01-01T00:00:00Z\u0027), addDays(utcNow(), -1))"
+                                                                                                        },
+                                                                                             "runAfter":  {
+                                                                                                              "Filter_Vermelhos":  [
+                                                                                                                                       "Succeeded"
+                                                                                                                                   ]
+                                                                                                          }
+                                                                                         },
+                                                          "Select_Projetos_Sem_Update":  {
+                                                                                             "type":  "Select",
+                                                                                             "inputs":  {
+                                                                                                            "from":  "@body(\u0027Filter_Projetos_Sem_Update\u0027)",
+                                                                                                            "select":  "@concat(\u0027- \u0027, item()?[\u0027ProjectID\u0027], \u0027 | \u0027, coalesce(item()?[\u0027NomeProjeto\u0027], item()?[\u0027Title\u0027], \u0027-\u0027), \u0027 | Ultima: \u0027, coalesce(string(item()?[\u0027UltimaAtualizacao\u0027]), \u0027-\u0027))"
+                                                                                                        },
+                                                                                             "runAfter":  {
+                                                                                                              "Filter_Projetos_Sem_Update":  [
+                                                                                                                                                 "Succeeded"
+                                                                                                                                             ]
+                                                                                                          }
+                                                                                         },
+                                                          "Compose_Projetos_Sem_Update":  {
+                                                                                              "type":  "Compose",
+                                                                                              "inputs":  "@if(equals(length(body(\u0027Select_Projetos_Sem_Update\u0027)), 0), \u0027Nenhum projeto atrasado no check-in.\u0027, join(body(\u0027Select_Projetos_Sem_Update\u0027), \u0027\\n\u0027))",
+                                                                                              "runAfter":  {
+                                                                                                               "Select_Projetos_Sem_Update":  [
+                                                                                                                                                  "Succeeded"
+                                                                                                                                              ]
+                                                                                                           }
+                                                                                          },
+                                                          "Get_Decisoes":  {
+                                                                               "type":  "OpenApiConnection",
+                                                                               "inputs":  {
+                                                                                              "parameters":  {
+                                                                                                                 "$filter":  "StatusDecisao eq \u0027Pendente\u0027",
+                                                                                                                 "table":  "Decisoes do Board",
+                                                                                                                 "$top":  100,
+                                                                                                                 "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                             },
+                                                                                              "host":  {
+                                                                                                           "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                           "connectionName":  "shared_sharepointonline",
+                                                                                                           "operationId":  "GetItems"
+                                                                                                       },
+                                                                                              "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                          },
+                                                                               "runAfter":  {
+                                                                                                "Compose_Projetos_Sem_Update":  [
+                                                                                                                                    "Succeeded"
+                                                                                                                                ]
+                                                                                            }
+                                                                           },
+                                                          "Select_Decisoes":  {
+                                                                                  "type":  "Select",
+                                                                                  "inputs":  {
+                                                                                                 "from":  "@body(\u0027Get_Decisoes\u0027)?[\u0027value\u0027]",
+                                                                                                 "select":  "@concat(\u0027- \u0027, item()?[\u0027DecisionID\u0027], \u0027 | \u0027, item()?[\u0027ProjectID\u0027], \u0027 | \u0027, coalesce(item()?[\u0027Descricao\u0027], \u0027-\u0027))"
+                                                                                             },
+                                                                                  "runAfter":  {
+                                                                                                   "Get_Decisoes":  [
+                                                                                                                        "Succeeded"
+                                                                                                                    ]
+                                                                                               }
+                                                                              },
+                                                          "Compose_Decisoes_Pendentes":  {
+                                                                                             "type":  "Compose",
+                                                                                             "inputs":  "@if(equals(length(body(\u0027Select_Decisoes\u0027)), 0), \u0027Nenhuma decisao no criterio do resumo.\u0027, join(body(\u0027Select_Decisoes\u0027), \u0027\\n\u0027))",
+                                                                                             "runAfter":  {
+                                                                                                              "Select_Decisoes":  [
+                                                                                                                                      "Succeeded"
+                                                                                                                                  ]
+                                                                                                          }
+                                                                                         },
+                                                          "Count_Total":  {
+                                                                              "type":  "Compose",
+                                                                              "inputs":  "@length(body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027])",
+                                                                              "runAfter":  {
+                                                                                               "Compose_Decisoes_Pendentes":  [
+                                                                                                                                  "Succeeded"
+                                                                                                                              ]
+                                                                                           }
+                                                                          },
+                                                          "Count_Verdes":  {
+                                                                               "type":  "Compose",
+                                                                               "inputs":  "@length(body(\u0027Filter_Verdes\u0027))",
+                                                                               "runAfter":  {
+                                                                                                "Count_Total":  [
+                                                                                                                    "Succeeded"
+                                                                                                                ]
+                                                                                            }
+                                                                           },
+                                                          "Count_Amarelos":  {
+                                                                                 "type":  "Compose",
+                                                                                 "inputs":  "@length(body(\u0027Filter_Amarelos\u0027))",
+                                                                                 "runAfter":  {
+                                                                                                  "Count_Verdes":  [
+                                                                                                                       "Succeeded"
+                                                                                                                   ]
+                                                                                              }
+                                                                             },
+                                                          "Count_Vermelhos":  {
+                                                                                  "type":  "Compose",
+                                                                                  "inputs":  "@length(body(\u0027Filter_Vermelhos\u0027))",
+                                                                                  "runAfter":  {
+                                                                                                   "Count_Amarelos":  [
+                                                                                                                          "Succeeded"
+                                                                                                                      ]
+                                                                                               }
+                                                                              },
+                                                          "Count_Sem_Update":  {
+                                                                                   "type":  "Compose",
+                                                                                   "inputs":  "@length(body(\u0027Filter_Projetos_Sem_Update\u0027))",
+                                                                                   "runAfter":  {
+                                                                                                    "Count_Vermelhos":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                                }
+                                                                               },
+                                                          "Count_Decisoes_Pendentes":  {
+                                                                                           "type":  "Compose",
+                                                                                           "inputs":  "@length(body(\u0027Get_Decisoes\u0027)?[\u0027value\u0027])",
+                                                                                           "runAfter":  {
+                                                                                                            "Count_Sem_Update":  [
+                                                                                                                                     "Succeeded"
+                                                                                                                                 ]
+                                                                                                        }
+                                                                                       },
+                                                          "Post_Resumo_Diario_Teams":  {
+                                                                                           "type":  "OpenApiConnection",
+                                                                                           "inputs":  {
+                                                                                                          "parameters":  {
+                                                                                                                             "poster":  "Flow bot",
+                                                                                                                             "body/messageBody":  "@replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(\u0027{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"Container\",\"style\":\"emphasis\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Resumo Diario do Portfolio\",\"weight\":\"Bolder\",\"size\":\"Medium\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${DataReferencia}\",\"isSubtle\":true,\"spacing\":\"None\",\"wrap\":true}]},{\"type\":\"ColumnSet\",\"columns\":[{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Total\",\"isSubtle\":true,\"horizontalAlignment\":\"Center\"},{\"type\":\"TextBlock\",\"text\":\"${TotalProjetos}\",\"weight\":\"Bolder\",\"size\":\"Large\",\"horizontalAlignment\":\"Center\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Verde\",\"isSubtle\":true,\"horizontalAlignment\":\"Center\"},{\"type\":\"TextBlock\",\"text\":\"${Verdes}\",\"weight\":\"Bolder\",\"size\":\"Large\",\"color\":\"Good\",\"horizontalAlignment\":\"Center\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Amarelo\",\"isSubtle\":true,\"horizontalAlignment\":\"Center\"},{\"type\":\"TextBlock\",\"text\":\"${Amarelos}\",\"weight\":\"Bolder\",\"size\":\"Large\",\"color\":\"Warning\",\"horizontalAlignment\":\"Center\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Vermelho\",\"isSubtle\":true,\"horizontalAlignment\":\"Center\"},{\"type\":\"TextBlock\",\"text\":\"${Vermelhos}\",\"weight\":\"Bolder\",\"size\":\"Large\",\"color\":\"Attention\",\"horizontalAlignment\":\"Center\"}]}]},{\"type\":\"TextBlock\",\"text\":\"Sem atualizacao ha mais de 24h (${SemUpdateCount})\",\"weight\":\"Bolder\",\"spacing\":\"Medium\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${ProjetosSemUpdate}\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"Decisoes pendentes (${DecisoesPendentesCount})\",\"weight\":\"Bolder\",\"spacing\":\"Medium\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${DecisoesPendentes}\",\"wrap\":true}],\"actions\":[{\"type\":\"Action.OpenUrl\",\"title\":\"Abrir hub PMO\",\"url\":\"${HubUrl}\"}]}\u0027, \u0027${DataReferencia}\u0027, formatDateTime(convertTimeZone(utcNow(), \u0027UTC\u0027, \u0027E. South America Standard Time\u0027), \u0027dd/MM/yyyy HH:mm\u0027)), \u0027${TotalProjetos}\u0027, string(outputs(\u0027Count_Total\u0027))), \u0027${Verdes}\u0027, string(outputs(\u0027Count_Verdes\u0027))), \u0027${Amarelos}\u0027, string(outputs(\u0027Count_Amarelos\u0027))), \u0027${Vermelhos}\u0027, string(outputs(\u0027Count_Vermelhos\u0027))), \u0027${SemUpdateCount}\u0027, string(outputs(\u0027Count_Sem_Update\u0027))), \u0027${ProjetosSemUpdate}\u0027, outputs(\u0027Compose_Projetos_Sem_Update\u0027)), \u0027${DecisoesPendentesCount}\u0027, string(outputs(\u0027Count_Decisoes_Pendentes\u0027))), \u0027${DecisoesPendentes}\u0027, outputs(\u0027Compose_Decisoes_Pendentes\u0027)), \u0027${HubUrl}\u0027, \u0027https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital/Lists/Projetos/AllItems.aspx\u0027)",
+                                                                                                                             "body/recipient/channelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                                                                                                                             "location":  "Channel",
+                                                                                                                             "body/recipient/groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994"
+                                                                                                                         },
+                                                                                                          "host":  {
+                                                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                                                       "connectionName":  "shared_teams",
+                                                                                                                       "operationId":  "PostCardToConversation"
+                                                                                                                   },
+                                                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                      },
+                                                                                           "runAfter":  {
+                                                                                                            "Count_Decisoes_Pendentes":  [
+                                                                                                                                             "Succeeded"
+                                                                                                                                         ]
+                                                                                                        }
+                                                                                       }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                                    "source":  "Invoker",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                },
+                                                    "shared_teams":  {
+                                                                         "connectionName":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                                                         "connectionReferenceLogicalName":  "pmo_teams",
+                                                                         "source":  "Invoker",
+                                                                         "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                         "displayName":  "Microsoft Teams",
+                                                                         "tier":  "Standard",
+                                                                         "apiName":  "teams",
+                                                                         "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                     },
+                                                    "shared_office365":  {
+                                                                             "connectionName":  "306d783533364cb6948ab2830fc3b188",
+                                                                             "connectionReferenceLogicalName":  "pmo_office365",
+                                                                             "source":  "Invoker",
+                                                                             "id":  "/providers/Microsoft.PowerApps/apis/shared_office365",
+                                                                             "displayName":  "Office 365 Outlook",
+                                                                             "tier":  "Standard",
+                                                                             "apiName":  "office365",
+                                                                             "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                         },
+                                                    "shared_planner":  {
+                                                                           "connectionName":  "6b763b98729c4d99a7a8df4033d381af",
+                                                                           "connectionReferenceLogicalName":  "pmo_planner",
+                                                                           "source":  "Invoker",
+                                                                           "id":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                           "displayName":  "Planner",
+                                                                           "tier":  "Standard",
+                                                                           "apiName":  "planner",
+                                                                           "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                       }
+                                                },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

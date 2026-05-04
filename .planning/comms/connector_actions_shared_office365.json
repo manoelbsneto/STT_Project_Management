@@ -1,0 +1,222 @@
+﻿[
+    {
+        "Id":  "AssignCategory",
+        "Summary":  "Assigns an Outlook category",
+        "Description":  "This operation assigns an Outlook category to an email."
+    },
+    {
+        "Id":  "AssignCategoryBulk",
+        "Summary":  "Assign a category to multiple emails",
+        "Description":  "This operation assigns an Outlook category to multiple emails."
+    },
+    {
+        "Id":  "CalendarDeleteItem_V2",
+        "Summary":  "Delete event (V2)",
+        "Description":  "This operation deletes an event in a calendar."
+    },
+    {
+        "Id":  "CalendarGetTables_V2",
+        "Summary":  "Get calendars (V2)",
+        "Description":  "This operation lists available calendars."
+    },
+    {
+        "Id":  "ContactDeleteItem_V2",
+        "Summary":  "Delete contact (V2)",
+        "Description":  "This operation deletes a contact from a contacts folder."
+    },
+    {
+        "Id":  "ContactGetItem_V2",
+        "Summary":  "Get contact (V2)",
+        "Description":  "This operation gets a specific contact from a contacts folder."
+    },
+    {
+        "Id":  "ContactGetItems_V2",
+        "Summary":  "Get contacts (V2)",
+        "Description":  "This operation gets contacts from a contacts folder."
+    },
+    {
+        "Id":  "ContactGetTablesV2",
+        "Summary":  "Get contact folders (V2)",
+        "Description":  "This operation lists available contacts folders using Graph API"
+    },
+    {
+        "Id":  "ContactPatchItem_V2",
+        "Summary":  "Update contact (V2)",
+        "Description":  "This operation updates a contact in a contacts folder."
+    },
+    {
+        "Id":  "ContactPostItem_V2",
+        "Summary":  "Create contact (V2)",
+        "Description":  "This operation creates a new contact in a contacts folder."
+    },
+    {
+        "Id":  "DeleteEmail_V2",
+        "Summary":  "Delete email (V2)",
+        "Description":  "This operation deletes an email by id."
+    },
+    {
+        "Id":  "DraftEmail",
+        "Summary":  "Draft an email message",
+        "Description":  "This operation drafts an email message."
+    },
+    {
+        "Id":  "ExportEmail_V2",
+        "Summary":  "Export email (V2)",
+        "Description":  "Export the content of the email in the EML file format."
+    },
+    {
+        "Id":  "FindMeetingTimes_V2",
+        "Summary":  "Find meeting times (V2)",
+        "Description":  "Find meeting time suggestions based on organizer, attendee availability, and time or location constraints"
+    },
+    {
+        "Id":  "Flag_V2",
+        "Summary":  "Flag email (V2)",
+        "Description":  "This operation updates an email flag."
+    },
+    {
+        "Id":  "ForwardEmail_V2",
+        "Summary":  "Forward an email (V2)",
+        "Description":  "Forward an email."
+    },
+    {
+        "Id":  "GetAttachment_V2",
+        "Summary":  "Get Attachment (V2)",
+        "Description":  "This operation gets an email attachment by id."
+    },
+    {
+        "Id":  "GetEmailsV3",
+        "Summary":  "Get emails (V3)",
+        "Description":  "This operation gets emails from a folder via graph apis. Please note that filtering related to these fields: To, Cc, To Or Cc, From, Importance, Fetch Only With Attachments, Subject Filter, is performed using first 250 items in a given mail folder. To avoid that limitation you can use \u0027Search Query\u0027 field."
+    },
+    {
+        "Id":  "GetEmailV2",
+        "Summary":  "Get email (V2)",
+        "Description":  "This operation gets an email by id."
+    },
+    {
+        "Id":  "GetEventsCalendarViewV3",
+        "Summary":  "Get calendar view of events (V3)",
+        "Description":  "This operation gets all events (including instances of recurrences) in a calendar using Graph API. Recurrence property is null in this case."
+    },
+    {
+        "Id":  "GetMailTips_V2",
+        "Summary":  "Get mail tips for a mailbox (V2)",
+        "Description":  "Get mail tips for a mailbox such as automatic replies / OOF message or if the mailbox is full. This is not available in GccHigh and Mooncake."
+    },
+    {
+        "Id":  "GetOutlookCategoryNames",
+        "Summary":  "Get Outlook category names",
+        "Description":  "This operation gets Outlook category display names."
+    },
+    {
+        "Id":  "GetRoomLists_V2",
+        "Summary":  "Get room lists (V2)",
+        "Description":  "Get all the room lists defined in the user\u0027s tenant"
+    },
+    {
+        "Id":  "GetRooms_V2",
+        "Summary":  "Get rooms (V2)",
+        "Description":  "Get all the meeting rooms defined in the user\u0027s tenant"
+    },
+    {
+        "Id":  "GetRoomsInRoomList_V2",
+        "Summary":  "Get rooms in room list (V2)",
+        "Description":  "Get the meeting rooms in a specific room list"
+    },
+    {
+        "Id":  "HttpRequest",
+        "Summary":  "Send an HTTP request",
+        "Description":  "Construct a Microsoft Graph REST API request to invoke. These segments are supported: 1st segement: /me, /users/\u003cuserId\u003e 2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api."
+    },
+    {
+        "Id":  "MarkAsRead_V3",
+        "Summary":  "Mark as read or unread (V3)",
+        "Description":  "This operation marks an email as read/unread."
+    },
+    {
+        "Id":  "mcp_ContactsManagement",
+        "Summary":  "Contact Management MCP Server",
+        "Description":  "This MCP server manages contacts"
+    },
+    {
+        "Id":  "mcp_EmailsManagement",
+        "Summary":  "Email Management MCP Server (deprecated)",
+        "Description":  "This MCP server manages email messages from your Office 365 account"
+    },
+    {
+        "Id":  "mcp_MeetingManagement",
+        "Summary":  "Meeting Management MCP Server (deprecated)",
+        "Description":  "This MCP server manages events, calendars and meetings"
+    },
+    {
+        "Id":  "MoveV2",
+        "Summary":  "Move email (V2)",
+        "Description":  "This operation moves an email to the specified folder within the same mailbox."
+    },
+    {
+        "Id":  "ReplyToV3",
+        "Summary":  "Reply to email (V3)",
+        "Description":  "This operation replies to an email."
+    },
+    {
+        "Id":  "RespondToEvent_V2",
+        "Summary":  "Respond to an event invite (V2)",
+        "Description":  "Respond to an event invite."
+    },
+    {
+        "Id":  "SendDraftEmail",
+        "Summary":  "Send a Draft message",
+        "Description":  "This operation sends a Draft message."
+    },
+    {
+        "Id":  "SendEmailV2",
+        "Summary":  "Send an email (V2)",
+        "Description":  "This operation sends an email message."
+    },
+    {
+        "Id":  "SendMailWithOptions",
+        "Summary":  "Send email with options",
+        "Description":  "This operation sends an email with multiple options and waits for the recipient to respond back with one of the options. Please refer to the following link regarding the support of actionable messages in different mail clients: https://docs.microsoft.com/outlook/actionable-messages/#outlook-version-requirements-for-actionable-messages."
+    },
+    {
+        "Id":  "SetAutomaticRepliesSetting_V2",
+        "Summary":  "Set up automatic replies (V2)",
+        "Description":  "Set the automatic replies setting for your mailbox."
+    },
+    {
+        "Id":  "SharedMailboxSendEmailV2",
+        "Summary":  "Send an email from a shared mailbox (V2)",
+        "Description":  "This operation sends an email from a shared mailbox. Your account should have permission to access the mailbox for this operation to succeed."
+    },
+    {
+        "Id":  "UpdateDraftEmail",
+        "Summary":  "Updates an email Draft message",
+        "Description":  "This operation updates an an email Draft message."
+    },
+    {
+        "Id":  "UpdateMyContactPhoto",
+        "Summary":  "Update my contact\u0027s photo",
+        "Description":  "Updates the photo of the specified contact of the current user. The size of the photo must be less than 4 MB."
+    },
+    {
+        "Id":  "V3CalendarGetItem",
+        "Summary":  "Get event (V3)",
+        "Description":  "This operation gets a specific event from a calendar using Graph API. (V3)"
+    },
+    {
+        "Id":  "V4CalendarGetItems",
+        "Summary":  "Get events (V4)",
+        "Description":  "This operation gets events from a calendar using Graph API. (V4)"
+    },
+    {
+        "Id":  "V4CalendarPatchItem",
+        "Summary":  "Update event (V4)",
+        "Description":  "This operation updates an event in a calendar using Graph API."
+    },
+    {
+        "Id":  "V4CalendarPostItem",
+        "Summary":  "Create event (V4)",
+        "Description":  "This operation creates a new event in a calendar."
+    }
+]

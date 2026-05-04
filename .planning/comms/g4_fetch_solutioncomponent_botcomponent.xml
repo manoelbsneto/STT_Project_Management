@@ -1,0 +1,13 @@
+<fetch>
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" />
+    <attribute name="componenttype" />
+    <attribute name="objectid" />
+    <attribute name="rootcomponentbehavior" />
+    <filter type="or">
+      <condition attribute="objectid" operator="eq" value="6b78f98b-5698-427d-bdaa-0115b286dd63" />
+      <condition attribute="objectid" operator="eq" value="0c4a9729-d55d-483c-8ec3-db9369583155" />
+      <condition attribute="objectid" operator="eq" value="48c79516-673f-4c44-acf2-10b2131f1736" />
+    </filter>
+  </entity>
+</fetch>

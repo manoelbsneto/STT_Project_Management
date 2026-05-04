@@ -1,0 +1,11 @@
+<botcomponent schemaname="auto_agent_MBtSt.topic.httpsindra365sharepointcomsitesGrp_T_DN_Arquitetura_Solucoes_Multi_PraticasOf">
+  <componenttype>16</componenttype>
+  <description>This knowledge source provides information found in Ofertas SharePoint.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas/Ofertas</name>
+  <parentbotid>
+    <schemaname>auto_agent_MBtSt</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

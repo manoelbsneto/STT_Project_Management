@@ -1,0 +1,800 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "gstf_sharepoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "reagendar-solicitacao-trigger"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "solicitacaoId": {
+                  "type": "string",
+                  "description": "ID da solicitacao original"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "Email do colaborador autenticado"
+                },
+                "novaDataInicio": {
+                  "type": "string",
+                  "description": "Nova data inicial em YYYY-MM-DD"
+                },
+                "novaDataFim": {
+                  "type": "string",
+                  "description": "Nova data final em YYYY-MM-DD"
+                }
+              },
+              "required": [
+                "solicitacaoId",
+                "email",
+                "novaDataInicio",
+                "novaDataFim"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Sanitizar_Email": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "reagendar-sanitize-email"
+          },
+          "type": "Compose",
+          "inputs": "@replace(trim(toLower(coalesce(triggerBody()?['email'], ''))),'''','''''')"
+        },
+        "Sanitizar_Solicitacao_Id": {
+          "runAfter": {
+            "Sanitizar_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-sanitize-id"
+          },
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['solicitacaoId'], ''))"
+        },
+        "Normalizar_Solicitacao_Id": {
+          "runAfter": {
+            "Sanitizar_Solicitacao_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-normalize-id"
+          },
+          "type": "Compose",
+          "inputs": "@int(outputs('Sanitizar_Solicitacao_Id'))"
+        },
+        "Normalizar_Nova_Data_Inicio": {
+          "runAfter": {
+            "Normalizar_Solicitacao_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-normalize-start"
+          },
+          "type": "Compose",
+          "inputs": "@formatDateTime(trim(string(triggerBody()?['novaDataInicio'])), 'yyyy-MM-dd')"
+        },
+        "Normalizar_Nova_Data_Fim": {
+          "runAfter": {
+            "Normalizar_Nova_Data_Inicio": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-normalize-end"
+          },
+          "type": "Compose",
+          "inputs": "@formatDateTime(trim(string(triggerBody()?['novaDataFim'])), 'yyyy-MM-dd')"
+        },
+        "Validar_Datas": {
+          "runAfter": {
+            "Normalizar_Nova_Data_Fim": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-validate-dates"
+          },
+          "type": "Compose",
+          "inputs": "@if(greaterOrEquals(ticks(outputs('Normalizar_Nova_Data_Fim')), ticks(outputs('Normalizar_Nova_Data_Inicio'))), 'OK', int('DATA_INVALIDA'))"
+        },
+        "Calcular_Novos_Dias_Uteis": {
+          "runAfter": {
+            "Validar_Datas": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-calc-business-days"
+          },
+          "type": "Compose",
+          "inputs": "@max(0, add(add(div(sub(ticks(outputs('Normalizar_Nova_Data_Fim')), ticks(outputs('Normalizar_Nova_Data_Inicio'))), 864000000000), 1), mul(-1, add(div(sub(ticks(outputs('Normalizar_Nova_Data_Fim')), ticks(outputs('Normalizar_Nova_Data_Inicio'))), 6048000000000), if(greaterOrEquals(mod(dayOfWeek(outputs('Normalizar_Nova_Data_Inicio')), 7), mod(dayOfWeek(outputs('Normalizar_Nova_Data_Fim')), 7)), 2, 0)))))"
+        },
+        "Resposta_Entrada_Invalida": {
+          "runAfter": {
+            "Normalizar_Solicitacao_Id": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-response-invalid-input"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "errorcode": {
+                  "type": "string"
+                },
+                "solicitacaoId": {
+                  "type": "string"
+                },
+                "novaSolicitacaoId": {
+                  "type": "string"
+                },
+                "statusOriginal": {
+                  "type": "string"
+                },
+                "novosDiasUteis": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "success": false,
+              "message": "Informe ID e novas datas validas em YYYY-MM-DD.",
+              "errorcode": "VALIDATION_ERROR",
+              "solicitacaoId": "@{outputs('Sanitizar_Solicitacao_Id')}",
+              "novaSolicitacaoId": "",
+              "statusOriginal": "",
+              "novosDiasUteis": 0
+            }
+          }
+        },
+        "Resposta_Data_Invalida": {
+          "runAfter": {
+            "Validar_Datas": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-response-invalid-date"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "errorcode": {
+                  "type": "string"
+                },
+                "solicitacaoId": {
+                  "type": "string"
+                },
+                "novaSolicitacaoId": {
+                  "type": "string"
+                },
+                "statusOriginal": {
+                  "type": "string"
+                },
+                "novosDiasUteis": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "success": false,
+              "message": "Nova data final precisa ser igual ou posterior a nova data inicial.",
+              "errorcode": "INVALID_DATE_RANGE",
+              "solicitacaoId": "@{outputs('Sanitizar_Solicitacao_Id')}",
+              "novaSolicitacaoId": "",
+              "statusOriginal": "",
+              "novosDiasUteis": 0
+            }
+          }
+        },
+        "Obter_Solicitacao": {
+          "runAfter": {
+            "Calcular_Novos_Dias_Uteis": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-get-solicitacao"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+              "table": "GF_QA_SOLICITACOES_FERIAS",
+              "id": "@{outputs('Normalizar_Solicitacao_Id')}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Resposta_Solicitacao_Nao_Encontrada": {
+          "runAfter": {
+            "Obter_Solicitacao": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-response-not-found"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "errorcode": {
+                  "type": "string"
+                },
+                "solicitacaoId": {
+                  "type": "string"
+                },
+                "novaSolicitacaoId": {
+                  "type": "string"
+                },
+                "statusOriginal": {
+                  "type": "string"
+                },
+                "novosDiasUteis": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "success": false,
+              "message": "Erro: A solicitação informada não foi localizada. Por favor, entre em contato com seu gestor direto para orientação.",
+              "errorcode": "REQUEST_NOT_FOUND",
+              "solicitacaoId": "@{outputs('Sanitizar_Solicitacao_Id')}",
+              "novaSolicitacaoId": "",
+              "statusOriginal": "",
+              "novosDiasUteis": "@outputs('Calcular_Novos_Dias_Uteis')"
+            }
+          }
+        },
+        "Condicao_Pode_Reagendar": {
+          "actions": {
+            "Obter_Saldo": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "reagendar-get-saldo"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                  "table": "GF_QA_SALDO_ATUAL",
+                  "$filter": "ColaboradorEmail eq '@{outputs('Sanitizar_Email')}'",
+                  "$top": 1
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "GetItems"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Condicao_Tem_Saldo": {
+              "actions": {
+                "Calcular_Saldo_Ajustado": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "reagendar-calc-adjusted-balance"
+                  },
+                  "type": "Compose",
+                  "inputs": "@if(equals(coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], ''), 'Aprovado'), add(int(coalesce(first(body('Obter_Saldo')?['value'])?['SaldoDisponivel'], 0)), int(coalesce(body('Obter_Solicitacao')?['DiasUteis'], 0))), int(coalesce(first(body('Obter_Saldo')?['value'])?['SaldoDisponivel'], 0)))"
+                },
+                "Condicao_Saldo_Suficiente": {
+                  "actions": {
+                    "Atualizar_Original_Reagendado": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "reagendar-patch-original"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SOLICITACOES_FERIAS",
+                          "id": "@{outputs('Normalizar_Solicitacao_Id')}",
+                          "item/Title": "@{coalesce(body('Obter_Solicitacao')?['Title'], concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id'))))}",
+                          "item/Status/Value": "Reagendado",
+                          "item/Observacoes": "@{concat('Reagendado pelo colaborador em ', utcNow(), '. Nova janela: ', outputs('Normalizar_Nova_Data_Inicio'), ' a ', outputs('Normalizar_Nova_Data_Fim'), '.')}"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "PatchItem"
+                        },
+                        "authentication": {
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                          "type": "Raw"
+                        }
+                      }
+                    },
+                    "Criar_Nova_Solicitacao": {
+                      "runAfter": {
+                        "Atualizar_Original_Reagendado": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "reagendar-create-new-request"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SOLICITACOES_FERIAS",
+                          "item/Title": "@{concat('Reagendamento de Ferias - ', outputs('Sanitizar_Email'), ' - ', formatDateTime(outputs('Normalizar_Nova_Data_Inicio'), 'dd/MM/yyyy'), ' a ', formatDateTime(outputs('Normalizar_Nova_Data_Fim'), 'dd/MM/yyyy'))}",
+                          "item/ColaboradorEmail": "@{outputs('Sanitizar_Email')}",
+                          "item/AprovadorEmail": "@{coalesce(body('Obter_Solicitacao')?['AprovadorEmail'], '')}",
+                          "item/AprovadorNome": "@{coalesce(body('Obter_Solicitacao')?['AprovadorNome'], '')}",
+                          "item/DataInicio": "@{outputs('Normalizar_Nova_Data_Inicio')}",
+                          "item/DataFim": "@{outputs('Normalizar_Nova_Data_Fim')}",
+                          "item/DiasUteis": "@{outputs('Calcular_Novos_Dias_Uteis')}",
+                          "item/Observacoes": "@{concat('Reagendamento da solicitacao ', string(outputs('Normalizar_Solicitacao_Id')), '.')}",
+                          "item/Status/Value": "Pendente"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "PostItem"
+                        },
+                        "authentication": {
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                          "type": "Raw"
+                        }
+                      }
+                    },
+                    "Atualizar_Saldo": {
+                      "runAfter": {
+                        "Criar_Nova_Solicitacao": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "reagendar-update-balance"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SALDO_ATUAL",
+                          "id": "@{first(body('Obter_Saldo')?['value'])?['ID']}",
+                          "item/Title": "@{coalesce(first(body('Obter_Saldo')?['value'])?['Title'], concat('Saldo Atual - ', outputs('Sanitizar_Email')))}",
+                          "item/SaldoDisponivel": "@{sub(outputs('Calcular_Saldo_Ajustado'), outputs('Calcular_Novos_Dias_Uteis'))}",
+                          "item/DiasAgendados": "@{add(max(0, sub(int(coalesce(first(body('Obter_Saldo')?['value'])?['DiasAgendados'], 0)), if(equals(coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], ''), 'Aprovado'), int(coalesce(body('Obter_Solicitacao')?['DiasUteis'], 0)), 0))), outputs('Calcular_Novos_Dias_Uteis'))}"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "PatchItem"
+                        },
+                        "authentication": {
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                          "type": "Raw"
+                        }
+                      }
+                    },
+                    "Resposta_Reagendado": {
+                      "runAfter": {
+                        "Atualizar_Saldo": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "reagendar-response-success"
+                      },
+                      "type": "Response",
+                      "kind": "Skills",
+                      "inputs": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "success": {
+                              "type": "boolean"
+                            },
+                            "message": {
+                              "type": "string"
+                            },
+                            "errorcode": {
+                              "type": "string"
+                            },
+                            "solicitacaoId": {
+                              "type": "string"
+                            },
+                            "novaSolicitacaoId": {
+                              "type": "string"
+                            },
+                            "statusOriginal": {
+                              "type": "string"
+                            },
+                            "novosDiasUteis": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": {}
+                        },
+                        "statusCode": 200,
+                        "headers": {
+                          "Content-Type": "application/json"
+                        },
+                        "body": {
+                          "success": true,
+                          "message": "@concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id')), ' reagendada. Nova solicitacao ', string(body('Criar_Nova_Solicitacao')?['ID']), ' criada como Pendente.')",
+                          "errorcode": "",
+                          "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                          "novaSolicitacaoId": "@{string(body('Criar_Nova_Solicitacao')?['ID'])}",
+                          "statusOriginal": "Reagendado",
+                          "novosDiasUteis": "@outputs('Calcular_Novos_Dias_Uteis')"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Calcular_Saldo_Ajustado": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Resposta_Saldo_Insuficiente": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "reagendar-response-insufficient-balance"
+                        },
+                        "type": "Response",
+                        "kind": "Skills",
+                        "inputs": {
+                          "schema": {
+                            "type": "object",
+                            "properties": {
+                              "success": {
+                                "type": "boolean"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "errorcode": {
+                                "type": "string"
+                              },
+                              "solicitacaoId": {
+                                "type": "string"
+                              },
+                              "novaSolicitacaoId": {
+                                "type": "string"
+                              },
+                              "statusOriginal": {
+                                "type": "string"
+                              },
+                              "novosDiasUteis": {
+                                "type": "integer"
+                              }
+                            },
+                            "additionalProperties": {}
+                          },
+                          "statusCode": 200,
+                          "headers": {
+                            "Content-Type": "application/json"
+                          },
+                          "body": {
+                            "success": false,
+                            "message": "@concat('Saldo insuficiente para reagendar. Disponivel: ', string(outputs('Calcular_Saldo_Ajustado')), ', necessario: ', string(outputs('Calcular_Novos_Dias_Uteis')), '.')",
+                            "errorcode": "INSUFFICIENT_BALANCE",
+                            "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                            "novaSolicitacaoId": "",
+                            "statusOriginal": "@{coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')}",
+                            "novosDiasUteis": "@outputs('Calcular_Novos_Dias_Uteis')"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "greaterOrEquals": [
+                      "@outputs('Calcular_Saldo_Ajustado')",
+                      "@outputs('Calcular_Novos_Dias_Uteis')"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "reagendar-condition-balance"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Obter_Saldo": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Resposta_Saldo_Nao_Encontrado": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "reagendar-response-no-balance"
+                    },
+                    "type": "Response",
+                    "kind": "Skills",
+                    "inputs": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "success": {
+                            "type": "boolean"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "errorcode": {
+                            "type": "string"
+                          },
+                          "solicitacaoId": {
+                            "type": "string"
+                          },
+                          "novaSolicitacaoId": {
+                            "type": "string"
+                          },
+                          "statusOriginal": {
+                            "type": "string"
+                          },
+                          "novosDiasUteis": {
+                            "type": "integer"
+                          }
+                        },
+                        "additionalProperties": {}
+                      },
+                      "statusCode": 200,
+                      "headers": {
+                        "Content-Type": "application/json"
+                      },
+                      "body": {
+                        "success": false,
+                        "message": "Registro de saldo nao encontrado para validar o reagendamento.",
+                        "errorcode": "SALDO_RECORD_NOT_FOUND",
+                        "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                        "novaSolicitacaoId": "",
+                        "statusOriginal": "@{coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')}",
+                        "novosDiasUteis": "@outputs('Calcular_Novos_Dias_Uteis')"
+                      }
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "greater": [
+                  "@length(body('Obter_Saldo')?['value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "reagendar-condition-has-balance"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Obter_Solicitacao": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Resposta_Nao_Permitida": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "reagendar-response-not-allowed"
+                },
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "errorcode": {
+                        "type": "string"
+                      },
+                      "solicitacaoId": {
+                        "type": "string"
+                      },
+                      "novaSolicitacaoId": {
+                        "type": "string"
+                      },
+                      "statusOriginal": {
+                        "type": "string"
+                      },
+                      "novosDiasUteis": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": {}
+                  },
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "success": false,
+                    "message": "Erro: A solicitação informada não pertence ao seu usuário ou já foi processada. Por favor, entre em contato com seu gestor direto para orientação.",
+                    "errorcode": "RESCHEDULE_NOT_ALLOWED",
+                    "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                    "novaSolicitacaoId": "",
+                    "statusOriginal": "@{coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')}",
+                    "novosDiasUteis": "@outputs('Calcular_Novos_Dias_Uteis')"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@toLower(trim(coalesce(body('Obter_Solicitacao')?['ColaboradorEmail'], '')))",
+                  "@outputs('Sanitizar_Email')"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "equals": [
+                      "@coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')",
+                      "Pendente"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')",
+                      "Aprovado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['ColaboradorEmail'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['DataInicio'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['DataFim'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(string(coalesce(body('Obter_Solicitacao')?['DiasUteis'], '')))",
+                    ""
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "reagendar-condition-can-reschedule"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

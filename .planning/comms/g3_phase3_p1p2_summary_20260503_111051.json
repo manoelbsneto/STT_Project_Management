@@ -1,0 +1,179 @@
+﻿{
+    "timestamp":  "2026-05-03T11:13:56.4582318-03:00",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "environmentDisplayName":  "ColOfertasBrasilPro",
+    "account":  {
+                    "note":  "PowerApps authenticated session reused. Test-PowerAppsAccount is intentionally not called because it can hang under MFA-backed cached auth in this tenant."
+                },
+    "siteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "teamsGroupId":  "96c5b0c4-46cc-46cd-8695-50451db74994",
+    "teamsChannelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+    "connectorSources":  {
+                             "sharePoint":  "44f187cde7f54f208cf22bac4e533816",
+                             "teams":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                             "outlook":  "306d783533364cb6948ab2830fc3b188",
+                             "planner":  "6b763b98729c4d99a7a8df4033d381af"
+                         },
+    "standardConnectorsOnly":  true,
+    "plannerOperation":  "shared_planner/ListTasks_V3",
+    "cardValidation":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g3_phase3_card_validation_20260503_111051.json",
+    "results":  [
+                    {
+                        "displayName":  "PMO_PA_ResumoDiarioBoard",
+                        "flowName":  "a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2",
+                        "status":  "PATCHED",
+                        "state":  "Started",
+                        "enabled":  true,
+                        "triggerNames":  [
+                                             "Recurrence_17h_BRT"
+                                         ],
+                        "actionNames":  [
+                                            "Get_Projetos_Ativos",
+                                            "Filter_Verdes",
+                                            "Filter_Amarelos",
+                                            "Filter_Vermelhos",
+                                            "Filter_Projetos_Sem_Update",
+                                            "Select_Projetos_Sem_Update",
+                                            "Compose_Projetos_Sem_Update",
+                                            "Get_Decisoes",
+                                            "Select_Decisoes",
+                                            "Compose_Decisoes_Pendentes",
+                                            "Count_Total",
+                                            "Count_Verdes",
+                                            "Count_Amarelos",
+                                            "Count_Vermelhos",
+                                            "Count_Sem_Update",
+                                            "Count_Decisoes_Pendentes",
+                                            "Post_Resumo_Diario_Teams"
+                                        ],
+                        "connectorApis":  [
+                                              "shared_sharepointonline",
+                                              "shared_teams"
+                                          ],
+                        "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2.json",
+                        "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2.json",
+                        "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_ResumoDiarioBoard_a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2.json"
+                    },
+                    {
+                        "displayName":  "PMO_PA_RegistrarDecisaoBoard",
+                        "flowName":  "f67daf7b-53a7-4d35-9275-7c8c42a35896",
+                        "status":  "PATCHED",
+                        "state":  "Started",
+                        "enabled":  true,
+                        "triggerNames":  [
+                                             "When_Decisao_Created"
+                                         ],
+                        "actionNames":  [
+                                            "Get_Decisao_Detalhes",
+                                            "Post_Decision_Card_Wait_Response",
+                                            "Normalize_Decision_Status",
+                                            "Normalize_Justificativa",
+                                            "Update_Decisao_Board"
+                                        ],
+                        "connectorApis":  [
+                                              "shared_sharepointonline",
+                                              "shared_teams"
+                                          ],
+                        "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_f67daf7b-53a7-4d35-9275-7c8c42a35896.json",
+                        "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_f67daf7b-53a7-4d35-9275-7c8c42a35896.json",
+                        "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_RegistrarDecisaoBoard_f67daf7b-53a7-4d35-9275-7c8c42a35896.json"
+                    },
+                    {
+                        "displayName":  "PMO_PA_SyncPlannerStats_Standard",
+                        "flowName":  "3eb1be49-a9ff-48ca-888d-847ca7ae8b04",
+                        "status":  "CREATED",
+                        "state":  "Started",
+                        "enabled":  true,
+                        "triggerNames":  [
+                                             "Recurrence_Every_6h"
+                                         ],
+                        "actionNames":  [
+                                            "Get_Projetos_Ativos",
+                                            "Filter_Projetos_Com_Planner",
+                                            "Apply_to_each_Projeto_Planner"
+                                        ],
+                        "connectorApis":  [
+                                              "shared_sharepointonline",
+                                              "shared_planner"
+                                          ],
+                        "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_51435870-e13a-4bac-8953-660de008a47d.json",
+                        "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_51435870-e13a-4bac-8953-660de008a47d.json",
+                        "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_SyncPlannerStats_Standard_3eb1be49-a9ff-48ca-888d-847ca7ae8b04.json"
+                    },
+                    {
+                        "displayName":  "PMO_PA_EscalarRiscoCritico",
+                        "flowName":  "cd0467a2-c989-474e-a629-28c704913489",
+                        "status":  "PATCHED",
+                        "state":  "Started",
+                        "enabled":  true,
+                        "triggerNames":  [
+                                             "When_Risco_Created"
+                                         ],
+                        "actionNames":  [
+                                            "Get_Risco_Detalhes",
+                                            "Condition_Risco_Critico"
+                                        ],
+                        "connectorApis":  [
+                                              "shared_sharepointonline",
+                                              "shared_teams",
+                                              "shared_office365"
+                                          ],
+                        "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_cd0467a2-c989-474e-a629-28c704913489.json",
+                        "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_cd0467a2-c989-474e-a629-28c704913489.json",
+                        "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_EscalarRiscoCritico_cd0467a2-c989-474e-a629-28c704913489.json"
+                    },
+                    {
+                        "displayName":  "PMO_PA_ResumoSemanal",
+                        "flowName":  "1964c4bf-ef25-4e46-a88d-4a5a89c71bfb",
+                        "status":  "PATCHED",
+                        "state":  "Started",
+                        "enabled":  true,
+                        "triggerNames":  [
+                                             "Recurrence_Monday_8h_BRT"
+                                         ],
+                        "actionNames":  [
+                                            "Get_Projetos_Ativos",
+                                            "Filter_Verdes",
+                                            "Filter_Amarelos",
+                                            "Filter_Vermelhos",
+                                            "Filter_Projetos_Sem_Update",
+                                            "Select_Projetos_Sem_Update",
+                                            "Compose_Projetos_Sem_Update",
+                                            "Get_Decisoes",
+                                            "Select_Decisoes",
+                                            "Compose_Decisoes_Semana",
+                                            "Count_Total",
+                                            "Count_Verdes",
+                                            "Count_Amarelos",
+                                            "Count_Vermelhos",
+                                            "Count_Sem_Update",
+                                            "Get_Status_Semana",
+                                            "Filter_Projetos_Atrasados",
+                                            "Select_Projetos_Atrasados",
+                                            "Compose_Projetos_Atrasados",
+                                            "Count_Status_Semana",
+                                            "Count_Decisoes_Semana",
+                                            "Count_Atrasados",
+                                            "Post_Resumo_Semanal_Teams"
+                                        ],
+                        "connectorApis":  [
+                                              "shared_sharepointonline",
+                                              "shared_teams"
+                                          ],
+                        "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json",
+                        "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json",
+                        "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_ResumoSemanal_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json"
+                    }
+                ],
+    "errors":  [
+
+               ],
+    "successCount":  5,
+    "failureCount":  0,
+    "status":  "PASS",
+    "notes":  [
+                  "G2 runtime E2E remains deferred to Phase 6 per handoff.",
+                  "Flow 8 uses Planner Standard connector operation ListTasks_V3 with groupId and plan id.",
+                  "No premium, HTTP, Graph direct, Dataverse, or custom connector action is used in these definitions."
+              ]
+}

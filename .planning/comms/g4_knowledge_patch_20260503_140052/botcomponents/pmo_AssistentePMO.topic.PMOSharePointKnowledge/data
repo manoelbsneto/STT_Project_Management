@@ -1,0 +1,4 @@
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital

@@ -1,0 +1,320 @@
+﻿{
+    "name":  "6c8ae320-46e0-42da-bc05-5d5a9622be03",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/6c8ae320-46e0-42da-bc05-5d5a9622be03",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_ProcessarRespostaCheckIn",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "splitOn":  "@triggerBody()[\u0027rows\u0027]",
+                                                                          "metadata":  {
+                                                                                           "operationMetadataId":  "978c3250-c081-4647-8397-952479c6e612",
+                                                                                           "flowSystemMetadata":  {
+                                                                                                                      "swaggerOperationId":  "TeamsCardTrigger",
+                                                                                                                      "taskModuleWidth":  null,
+                                                                                                                      "taskModuleHeight":  null,
+                                                                                                                      "inputsAdaptiveCard":  "{}{}"
+                                                                                                                  }
+                                                                                       },
+                                                                          "type":  "Request",
+                                                                          "kind":  "ApiConnection",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+
+                                                                                                                       },
+                                                                                                        "required":  [
+
+                                                                                                                     ]
+                                                                                                    },
+                                                                                         "host":  {
+                                                                                                      "connection":  {
+                                                                                                                         "name":  "@parameters(\u0027$connections\u0027)[\u0027shared_teams\u0027][\u0027connectionId\u0027]"
+                                                                                                                     }
+                                                                                                  },
+                                                                                         "operationId":  "TeamsCardTrigger",
+                                                                                         "parameters":  {
+                                                                                                            "inputsAdaptiveCard":  "{}{}",
+                                                                                                            "CardTypeId":  "CheckIn"
+                                                                                                        }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Normalize_ProjectID":  {
+                                                                                      "type":  "Compose",
+                                                                                      "inputs":  "@coalesce(triggerBody()?[\u0027projectId\u0027], triggerBody()?[\u0027ProjectID\u0027], triggerBody()?[\u0027data\u0027]?[\u0027projectId\u0027], triggerBody()?[\u0027data\u0027]?[\u0027ProjectID\u0027], \u0027\u0027)",
+                                                                                      "runAfter":  {
+
+                                                                                                   }
+                                                                                  },
+                                                          "Normalize_RAG":  {
+                                                                                "type":  "Compose",
+                                                                                "inputs":  "@coalesce(triggerBody()?[\u0027statusRAG\u0027], triggerBody()?[\u0027StatusRAG\u0027], triggerBody()?[\u0027RAG\u0027], triggerBody()?[\u0027data\u0027]?[\u0027statusRAG\u0027], triggerBody()?[\u0027data\u0027]?[\u0027StatusRAG\u0027], \u0027Verde\u0027)",
+                                                                                "runAfter":  {
+                                                                                                 "Normalize_ProjectID":  [
+                                                                                                                             "Succeeded"
+                                                                                                                         ]
+                                                                                             }
+                                                                            },
+                                                          "Normalize_Resumo":  {
+                                                                                   "type":  "Compose",
+                                                                                   "inputs":  "@coalesce(triggerBody()?[\u0027resumo\u0027], triggerBody()?[\u0027Resumo\u0027], triggerBody()?[\u0027data\u0027]?[\u0027resumo\u0027], triggerBody()?[\u0027data\u0027]?[\u0027Resumo\u0027], \u0027Sem resumo informado\u0027)",
+                                                                                   "runAfter":  {
+                                                                                                    "Normalize_RAG":  [
+                                                                                                                          "Succeeded"
+                                                                                                                      ]
+                                                                                                }
+                                                                               },
+                                                          "Normalize_Risco":  {
+                                                                                  "type":  "Compose",
+                                                                                  "inputs":  "@coalesce(triggerBody()?[\u0027risco\u0027], triggerBody()?[\u0027Risco\u0027], triggerBody()?[\u0027data\u0027]?[\u0027risco\u0027], triggerBody()?[\u0027data\u0027]?[\u0027Risco\u0027], \u0027\u0027)",
+                                                                                  "runAfter":  {
+                                                                                                   "Normalize_Resumo":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                               }
+                                                                              },
+                                                          "Normalize_Bloqueio":  {
+                                                                                     "type":  "Compose",
+                                                                                     "inputs":  "@coalesce(triggerBody()?[\u0027bloqueio\u0027], triggerBody()?[\u0027Bloqueio\u0027], triggerBody()?[\u0027Bloqueios\u0027], triggerBody()?[\u0027data\u0027]?[\u0027bloqueio\u0027], triggerBody()?[\u0027data\u0027]?[\u0027Bloqueio\u0027], triggerBody()?[\u0027data\u0027]?[\u0027Bloqueios\u0027], \u0027\u0027)",
+                                                                                     "runAfter":  {
+                                                                                                      "Normalize_Risco":  [
+                                                                                                                              "Succeeded"
+                                                                                                                          ]
+                                                                                                  }
+                                                                                 },
+                                                          "Normalize_ProximaAcao":  {
+                                                                                        "type":  "Compose",
+                                                                                        "inputs":  "@coalesce(triggerBody()?[\u0027proximaAcao\u0027], triggerBody()?[\u0027ProximaAcao\u0027], triggerBody()?[\u0027data\u0027]?[\u0027proximaAcao\u0027], triggerBody()?[\u0027data\u0027]?[\u0027ProximaAcao\u0027], \u0027\u0027)",
+                                                                                        "runAfter":  {
+                                                                                                         "Normalize_Bloqueio":  [
+                                                                                                                                    "Succeeded"
+                                                                                                                                ]
+                                                                                                     }
+                                                                                    },
+                                                          "Normalize_Percentual":  {
+                                                                                       "type":  "Compose",
+                                                                                       "inputs":  "@coalesce(triggerBody()?[\u0027percentual\u0027], triggerBody()?[\u0027Percentual\u0027], triggerBody()?[\u0027data\u0027]?[\u0027percentual\u0027], triggerBody()?[\u0027data\u0027]?[\u0027Percentual\u0027], 0)",
+                                                                                       "runAfter":  {
+                                                                                                        "Normalize_ProximaAcao":  [
+                                                                                                                                      "Succeeded"
+                                                                                                                                  ]
+                                                                                                    }
+                                                                                   },
+                                                          "Get_Projeto":  {
+                                                                              "type":  "OpenApiConnection",
+                                                                              "inputs":  {
+                                                                                             "parameters":  {
+                                                                                                                "$filter":  "ProjectID eq \u0027@{outputs(\u0027Normalize_ProjectID\u0027)}\u0027",
+                                                                                                                "table":  "Projetos",
+                                                                                                                "$top":  1,
+                                                                                                                "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                            },
+                                                                                             "host":  {
+                                                                                                          "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                          "connectionName":  "shared_sharepointonline",
+                                                                                                          "operationId":  "GetItems"
+                                                                                                      },
+                                                                                             "authentication":  "@parameters(\u0027\u0027)"
+                                                                                         },
+                                                                              "runAfter":  {
+                                                                                               "Normalize_Percentual":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                           }
+                                                                          },
+                                                          "Create_Status_Diario":  {
+                                                                                       "type":  "OpenApiConnection",
+                                                                                       "inputs":  {
+                                                                                                      "parameters":  {
+                                                                                                                         "item/Percentual":  "@if(empty(string(outputs(\u0027Normalize_Percentual\u0027))), 0, int(outputs(\u0027Normalize_Percentual\u0027)))",
+                                                                                                                         "item/StatusID":  "@concat(\u0027ST-\u0027, ticks(utcNow()))",
+                                                                                                                         "item/CardVersion":  "@coalesce(triggerBody()?[\u0027cardVersion\u0027], triggerBody()?[\u0027data\u0027]?[\u0027cardVersion\u0027], \u00271.0\u0027)",
+                                                                                                                         "item/Title":  "@concat(\u0027STATUS-\u0027, ticks(utcNow()))",
+                                                                                                                         "item/OrigemEntrada/Value":  "AdaptiveCard",
+                                                                                                                         "item/Bloqueio":  "@outputs(\u0027Normalize_Bloqueio\u0027)",
+                                                                                                                         "item/ProjectID":  "@outputs(\u0027Normalize_ProjectID\u0027)",
+                                                                                                                         "item/DataRegistro":  "@utcNow()",
+                                                                                                                         "item/ProximaAcao":  "@outputs(\u0027Normalize_ProximaAcao\u0027)",
+                                                                                                                         "item/RAG/Value":  "@outputs(\u0027Normalize_RAG\u0027)",
+                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                         "item/Resumo":  "@outputs(\u0027Normalize_Resumo\u0027)",
+                                                                                                                         "table":  "Status Diario",
+                                                                                                                         "item/Risco":  "@outputs(\u0027Normalize_Risco\u0027)"
+                                                                                                                     },
+                                                                                                      "host":  {
+                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                   "connectionName":  "shared_sharepointonline",
+                                                                                                                   "operationId":  "PostItem"
+                                                                                                               },
+                                                                                                      "authentication":  "@parameters(\u0027\u0027)"
+                                                                                                  },
+                                                                                       "runAfter":  {
+                                                                                                        "Get_Projeto":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                                    }
+                                                                                   },
+                                                          "Apply_to_each_Projeto":  {
+                                                                                        "type":  "Foreach",
+                                                                                        "foreach":  "@body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]",
+                                                                                        "actions":  {
+                                                                                                        "Update_Projeto":  {
+                                                                                                                               "type":  "OpenApiConnection",
+                                                                                                                               "inputs":  {
+                                                                                                                                              "parameters":  {
+                                                                                                                                                                 "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                 "id":  "@items(\u0027Apply_to_each_Projeto\u0027)?[\u0027ID\u0027]",
+                                                                                                                                                                 "item/Title":  "@items(\u0027Apply_to_each_Projeto\u0027)?[\u0027Title\u0027]",
+                                                                                                                                                                 "item/Percentual":  "@if(empty(string(outputs(\u0027Normalize_Percentual\u0027))), 0, int(outputs(\u0027Normalize_Percentual\u0027)))",
+                                                                                                                                                                 "item/NomeProjeto":  "@coalesce(items(\u0027Apply_to_each_Projeto\u0027)?[\u0027NomeProjeto\u0027], items(\u0027Apply_to_each_Projeto\u0027)?[\u0027Nome\u0027])",
+                                                                                                                                                                 "table":  "Projetos",
+                                                                                                                                                                 "item/ProjectID":  "@items(\u0027Apply_to_each_Projeto\u0027)?[\u0027ProjectID\u0027]",
+                                                                                                                                                                 "item/UltimaAtualizacao":  "@utcNow()",
+                                                                                                                                                                 "item/StatusRAG/Value":  "@outputs(\u0027Normalize_RAG\u0027)"
+                                                                                                                                                             },
+                                                                                                                                              "host":  {
+                                                                                                                                                           "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                           "connectionName":  "shared_sharepointonline",
+                                                                                                                                                           "operationId":  "PatchItem"
+                                                                                                                                                       },
+                                                                                                                                              "authentication":  "@parameters(\u0027\u0027)"
+                                                                                                                                          },
+                                                                                                                               "runAfter":  {
+
+                                                                                                                                            }
+                                                                                                                           }
+                                                                                                    },
+                                                                                        "runAfter":  {
+                                                                                                         "Create_Status_Diario":  [
+                                                                                                                                      "Succeeded"
+                                                                                                                                  ]
+                                                                                                     }
+                                                                                    },
+                                                          "Condition_RAG_Vermelho":  {
+                                                                                         "type":  "If",
+                                                                                         "expression":  {
+                                                                                                            "equals":  [
+                                                                                                                           "@outputs(\u0027Normalize_RAG\u0027)",
+                                                                                                                           "Vermelho"
+                                                                                                                       ]
+                                                                                                        },
+                                                                                         "actions":  {
+                                                                                                         "Post_Alerta_Critico_Teams":  {
+                                                                                                                                           "type":  "OpenApiConnection",
+                                                                                                                                           "inputs":  {
+                                                                                                                                                          "parameters":  {
+                                                                                                                                                                             "poster":  "Flow bot",
+                                                                                                                                                                             "body/messageBody":  "{\"type\":\"message\",\"attachments\":[{\"contentType\":\"application/vnd.microsoft.card.adaptive\",\"contentUrl\":null,\"content\":{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"TextBlock\",\"text\":\"ALERTA - Projeto Critico\",\"weight\":\"Bolder\",\"size\":\"Medium\",\"color\":\"Attention\"},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"ProjectID\",\"value\":\"@{outputs(\u0027Normalize_ProjectID\u0027)}\"},{\"title\":\"Status\",\"value\":\"@{outputs(\u0027Normalize_RAG\u0027)}\"},{\"title\":\"Percentual\",\"value\":\"@{outputs(\u0027Normalize_Percentual\u0027)}%\"},{\"title\":\"Resumo\",\"value\":\"@{outputs(\u0027Normalize_Resumo\u0027)}\"},{\"title\":\"Risco\",\"value\":\"@{outputs(\u0027Normalize_Risco\u0027)}\"},{\"title\":\"Bloqueio\",\"value\":\"@{outputs(\u0027Normalize_Bloqueio\u0027)}\"}]}]}}]}",
+                                                                                                                                                                             "body/recipient/channelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                                                                                                                                                                             "location":  "Channel",
+                                                                                                                                                                             "body/recipient/groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994"
+                                                                                                                                                                         },
+                                                                                                                                                          "host":  {
+                                                                                                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                                                                                                       "connectionName":  "shared_teams",
+                                                                                                                                                                       "operationId":  "PostCardToConversation"
+                                                                                                                                                                   },
+                                                                                                                                                          "authentication":  "@parameters(\u0027\u0027)"
+                                                                                                                                                      },
+                                                                                                                                           "runAfter":  {
+
+                                                                                                                                                        }
+                                                                                                                                       },
+                                                                                                         "Send_Email_Sponsor":  {
+                                                                                                                                    "type":  "OpenApiConnection",
+                                                                                                                                    "inputs":  {
+                                                                                                                                                   "parameters":  {
+                                                                                                                                                                      "emailMessage/Importance":  "High",
+                                                                                                                                                                      "emailMessage/Body":  "\u003cp\u003eProjeto @{outputs(\u0027Normalize_ProjectID\u0027)} informado como Vermelho.\u003c/p\u003e\u003cp\u003e\u003cb\u003eResumo:\u003c/b\u003e @{outputs(\u0027Normalize_Resumo\u0027)}\u003c/p\u003e\u003cp\u003e\u003cb\u003eRisco:\u003c/b\u003e @{outputs(\u0027Normalize_Risco\u0027)}\u003c/p\u003e\u003cp\u003e\u003cb\u003eBloqueio:\u003c/b\u003e @{outputs(\u0027Normalize_Bloqueio\u0027)}\u003c/p\u003e",
+                                                                                                                                                                      "emailMessage/Subject":  "ALERTA: Projeto @{outputs(\u0027Normalize_ProjectID\u0027)} em status Vermelho",
+                                                                                                                                                                      "emailMessage/To":  "@coalesce(first(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])?[\u0027Sponsor\u0027]?[\u0027Email\u0027], \u0027mbenicios@minsait.com\u0027)"
+                                                                                                                                                                  },
+                                                                                                                                                   "host":  {
+                                                                                                                                                                "apiId":  "/providers/Microsoft.PowerApps/apis/shared_office365",
+                                                                                                                                                                "connectionName":  "shared_office365",
+                                                                                                                                                                "operationId":  "SendEmailV2"
+                                                                                                                                                            },
+                                                                                                                                                   "authentication":  "@parameters(\u0027\u0027)"
+                                                                                                                                               },
+                                                                                                                                    "runAfter":  {
+                                                                                                                                                     "Post_Alerta_Critico_Teams":  [
+                                                                                                                                                                                       "Succeeded"
+                                                                                                                                                                                   ]
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                     },
+                                                                                         "else":  {
+                                                                                                      "actions":  {
+
+                                                                                                                  }
+                                                                                                  },
+                                                                                         "runAfter":  {
+                                                                                                          "Apply_to_each_Projeto":  [
+                                                                                                                                        "Succeeded"
+                                                                                                                                    ]
+                                                                                                      }
+                                                                                     }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                                    "source":  "Invoker",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                },
+                                                    "shared_teams":  {
+                                                                         "connectionName":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                                                         "connectionReferenceLogicalName":  "pmo_teams",
+                                                                         "source":  "Invoker",
+                                                                         "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                         "displayName":  "Microsoft Teams",
+                                                                         "tier":  "Standard",
+                                                                         "apiName":  "teams",
+                                                                         "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                     },
+                                                    "shared_office365":  {
+                                                                             "connectionName":  "306d783533364cb6948ab2830fc3b188",
+                                                                             "connectionReferenceLogicalName":  "pmo_office365",
+                                                                             "source":  "Invoker",
+                                                                             "id":  "/providers/Microsoft.PowerApps/apis/shared_office365",
+                                                                             "displayName":  "Office 365 Outlook",
+                                                                             "tier":  "Standard",
+                                                                             "apiName":  "office365",
+                                                                             "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                         }
+                                                },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

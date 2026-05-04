@@ -1,0 +1,26 @@
+kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+  - propertyName: solicitacaoId
+
+  - propertyName: novaSolicitacaoId
+
+  - propertyName: statusOriginal
+
+  - propertyName: novosDiasUteis
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e9df82ce-cc41-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+

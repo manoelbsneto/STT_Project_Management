@@ -1,0 +1,75 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarStatus
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - atualizar projeto
+      - status do projeto
+      - status de projeto
+      - update projeto
+      - atualizar status
+
+  actions:
+    - kind: Question
+      id: ask_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto você quer atualizar?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_rag
+      variable: Topic.StatusRAG
+      prompt: Qual é o novo status RAG? Responda Verde, Amarelo ou Vermelho.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_resumo
+      variable: Topic.Resumo
+      prompt: Qual é o resumo do status?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risco
+      variable: Topic.Risco
+      prompt: Há algum risco relevante? Se não houver, responda não.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_next
+      variable: Topic.ProximaAcao
+      prompt: Qual é a próxima ação? Se não houver, responda não.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_percent
+      variable: Topic.Percentual
+      prompt: Qual é o percentual concluído? Responda de 0 a 100.
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: confirm_update
+      variable: Topic.Confirmar
+      prompt: "Vou registrar: {Topic.ProjectName} como {Topic.StatusRAG}, resumo: {Topic.Resumo}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_update_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: BeginDialog
+              id: call_checkin_ondemand
+              dialog: pmo_AssistentePMO.action.PMO_PA_CheckInOnDemand
+
+            - kind: SendActivity
+              id: update_done
+              activity: Status do {Topic.ProjectName} atualizado para {Topic.StatusRAG}.
+
+      elseActions:
+        - kind: SendActivity
+          id: update_denied
+          activity: Ok, vamos refazer. Qual projeto?

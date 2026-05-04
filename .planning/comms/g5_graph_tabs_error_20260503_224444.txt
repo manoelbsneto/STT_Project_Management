@@ -1,0 +1,7 @@
+Connect-MgGraph: D:\VMs\STT_Project_Management\deploy\Teams_Phase5_GraphTabs.ps1:53
+Line |
+  53 |      Connect-MgGraph -TenantId $TenantId -Scopes "Team.ReadBasic.All", …
+     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Authentication timed out after 120 seconds due to inactivity. Please try again.
+
+

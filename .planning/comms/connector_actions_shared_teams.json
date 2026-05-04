@@ -1,0 +1,182 @@
+﻿[
+    {
+        "Id":  "AddMemberToChannel",
+        "Summary":  "Add a member to a channel",
+        "Description":  "Adds a member to a channel in Microsoft Teams"
+    },
+    {
+        "Id":  "AddMemberToTag",
+        "Summary":  "Add a member to a team tag",
+        "Description":  "Adds a user to a team tag"
+    },
+    {
+        "Id":  "AddMemberToTeam",
+        "Summary":  "Add a member to a team",
+        "Description":  "Adds a member to a team in Microsoft Teams"
+    },
+    {
+        "Id":  "AtMentionTag",
+        "Summary":  "Get an @mention token for a team tag",
+        "Description":  "Creates a token that can be inserted into a message or adaptive card sent as a user in a channel to @mention a team tag."
+    },
+    {
+        "Id":  "AtMentionUser",
+        "Summary":  "Get an @mention token for a user",
+        "Description":  "Creates a token that can be inserted into a message or adaptive card to @mention a user."
+    },
+    {
+        "Id":  "CreateATeam",
+        "Summary":  "Create a team",
+        "Description":  "Creates a new team in Microsoft Teams"
+    },
+    {
+        "Id":  "CreateChannel",
+        "Summary":  "Create a channel",
+        "Description":  "Create a new channel within a specified team"
+    },
+    {
+        "Id":  "CreateChat",
+        "Summary":  "Create a chat",
+        "Description":  "Creates a one on one or group chat"
+    },
+    {
+        "Id":  "CreateTag",
+        "Summary":  "Create a tag for a team",
+        "Description":  "Creates a tag in a team"
+    },
+    {
+        "Id":  "CreateTeamsMeeting",
+        "Summary":  "Create a Teams meeting",
+        "Description":  "Create a meeting with a link at the bottom of the invite to join the meeting online on Microsoft Teams."
+    },
+    {
+        "Id":  "DeleteTag",
+        "Summary":  "Delete a team tag",
+        "Description":  "Deletes a tag from a team"
+    },
+    {
+        "Id":  "DeleteTagMember",
+        "Summary":  "Delete a member from a team tag",
+        "Description":  "Deletes a member from a team tag"
+    },
+    {
+        "Id":  "GetAllAssociatedTeams",
+        "Summary":  "List associated teams",
+        "Description":  "Lists all the teams you are a direct member of, or are a member of a shared channel that is hosted inside the team."
+    },
+    {
+        "Id":  "GetAllChannelsForTeam",
+        "Summary":  "List all channels",
+        "Description":  "Lists all the channels for a specific team, including channels that are shared with the team"
+    },
+    {
+        "Id":  "GetAllTeams",
+        "Summary":  "List joined teams",
+        "Description":  "Lists all the teams in Microsoft Teams that you are a member of"
+    },
+    {
+        "Id":  "GetChannel",
+        "Summary":  "Get details for a specific channel in a team",
+        "Description":  "Get the channel details"
+    },
+    {
+        "Id":  "GetChannelsForGroup",
+        "Summary":  "List channels",
+        "Description":  "Lists all the channels for a specific team"
+    },
+    {
+        "Id":  "GetChats",
+        "Summary":  "List chats",
+        "Description":  "Lists recent chats you are a part of"
+    },
+    {
+        "Id":  "GetMessageDetails",
+        "Summary":  "Get message details",
+        "Description":  "Gets the details of a message in a chat or a channel."
+    },
+    {
+        "Id":  "GetMessagesFromChannel",
+        "Summary":  "Get messages in a channel",
+        "Description":  "Gets messages from a channel in a specific team. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel."
+    },
+    {
+        "Id":  "GetMessagesFromChat",
+        "Summary":  "Get messages in a chat",
+        "Description":  "Retrieves messages from a one on one or group chat"
+    },
+    {
+        "Id":  "GetTagMembers",
+        "Summary":  "List the members of a team tag",
+        "Description":  "Lists the members of a team tag"
+    },
+    {
+        "Id":  "GetTags",
+        "Summary":  "List all tags for a team",
+        "Description":  "Lists the team\u0027s tags"
+    },
+    {
+        "Id":  "GetTeam",
+        "Summary":  "Get a team",
+        "Description":  "Gets the details for a team in Microsoft Teams."
+    },
+    {
+        "Id":  "HttpRequest",
+        "Summary":  "Send a Microsoft Graph HTTP request",
+        "Description":  "Construct a Microsoft Graph REST API request to invoke against the Microsoft Teams endpoints. These segments are supported: 1st segment: /teams, /me, /users 2nd segment: channels, chats, installedApps, messages, pinnedMessages, onlineMeetings. Learn more: https://docs.microsoft.com/en-us/graph/use-the-api"
+    },
+    {
+        "Id":  "ListMembers",
+        "Summary":  "List members",
+        "Description":  "List direct members of a group chat or a channel"
+    },
+    {
+        "Id":  "ListRepliesToMessage",
+        "Summary":  "List replies of a channel message",
+        "Description":  "List replies to a message in a channel in a specific team. For shared channels, the team ID must refer to the host team, which is the team that owns the shared channel."
+    },
+    {
+        "Id":  "PostCardAndWaitForResponse",
+        "Summary":  "Post adaptive card and wait for a response",
+        "Description":  "Posts an adaptive card to a chat or a channel and waits for a response from any user. This will pause the flow until any user responds."
+    },
+    {
+        "Id":  "PostCardToConversation",
+        "Summary":  "Post card in a chat or channel",
+        "Description":  "Posts a card to a chat or a channel"
+    },
+    {
+        "Id":  "PostFeedNotification",
+        "Summary":  "Post a feed notification",
+        "Description":  "Posts a notification to a user\u0027s activity feed linking to a chat or team."
+    },
+    {
+        "Id":  "PostMessageToConversation",
+        "Summary":  "Post message in a chat or channel",
+        "Description":  "Posts a message to a chat or a channel"
+    },
+    {
+        "Id":  "RemoveMemberFromChannel",
+        "Summary":  "Remove a direct member from a channel",
+        "Description":  "Removes a direct member from a channel in Microsoft Teams"
+    },
+    {
+        "Id":  "ReplyWithCardToConversation",
+        "Summary":  "Reply with an adaptive card in a channel",
+        "Description":  "Replies with an adaptive card to a channel\u0027s message"
+    },
+    {
+        "Id":  "ReplyWithMessageToConversation",
+        "Summary":  "Reply with a message in a channel",
+        "Description":  "Replies with a message to a channel\u0027s message"
+    },
+    {
+        "Id":  "SubscribeUserMessageWithOptions",
+        "Summary":  "Post a choice of options as the Flow bot to a user",
+        "Description":  "Send a set of options to a Microsoft Teams user, that they must respond to before the flow will continue. This action will pause the flow until the user response to the options"
+    },
+    {
+        "Id":  "UpdateCardInConversation",
+        "Summary":  "Update an adaptive card in a chat or channel",
+        "Description":  "Updates an existing adaptive card"
+    }
+]

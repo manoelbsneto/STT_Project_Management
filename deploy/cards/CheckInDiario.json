@@ -1,0 +1,86 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [{ "type": "Image", "url": "https://img.icons8.com/fluency/48/project-management.png", "size": "Small" }]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            { "type": "TextBlock", "text": "📊 PMO Check-in Diário", "weight": "Bolder", "size": "Medium" },
+            { "type": "TextBlock", "text": "Atualize o status do seu projeto", "isSubtle": true, "spacing": "None" }
+          ]
+        }
+      ]
+    },
+    { "type": "TextBlock", "text": "Projeto: **${ProjectName}**", "wrap": true },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "statusRAG",
+      "label": "🚦 Status (RAG)",
+      "isRequired": true,
+      "choices": [
+        { "title": "🟢 Verde — No prazo", "value": "Verde" },
+        { "title": "🟡 Amarelo — Atenção", "value": "Amarelo" },
+        { "title": "🔴 Vermelho — Crítico", "value": "Vermelho" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "resumo",
+      "label": "📝 Resumo do status",
+      "isRequired": true,
+      "isMultiline": true,
+      "placeholder": "Descreva o progresso atual..."
+    },
+    {
+      "type": "Input.Number",
+      "id": "percentual",
+      "label": "📈 Percentual concluído",
+      "min": 0,
+      "max": 100,
+      "placeholder": "0-100"
+    },
+    {
+      "type": "Input.Text",
+      "id": "risco",
+      "label": "⚠️ Riscos (opcional)",
+      "isMultiline": true,
+      "placeholder": "Descreva riscos atuais..."
+    },
+    {
+      "type": "Input.Text",
+      "id": "bloqueio",
+      "label": "🚫 Bloqueios (opcional)",
+      "isMultiline": true,
+      "placeholder": "Descreva bloqueios atuais..."
+    },
+    {
+      "type": "Input.Text",
+      "id": "proximaAcao",
+      "label": "➡️ Próxima ação",
+      "isMultiline": true,
+      "placeholder": "O que será feito a seguir..."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "✅ Enviar Check-in",
+      "data": {
+        "action": "submitCheckIn",
+        "projectId": "${ProjectID}",
+        "cardVersion": "1.0",
+        "origemEntrada": "AdaptiveCard"
+      }
+    }
+  ]
+}

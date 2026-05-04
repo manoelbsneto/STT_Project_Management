@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO.action.PMO_PA_CheckInOnDemand">
+  <componenttype>9</componenttype>
+  <description>Acao vinculada ao fluxo Power Automate PMO_PA_CheckInOnDemand.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PMO_PA_CheckInOnDemand</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,11 @@
+<botcomponent schemaname="auto_agent_MBtSt.gpt.default">
+  <componenttype>15</componenttype>
+  <description>AI Agent for RFP document risk analysis</description>
+  <iscustomizable>0</iscustomizable>
+  <name>RFP_Risk_Analyzer_Agent</name>
+  <parentbotid>
+    <schemaname>auto_agent_MBtSt</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

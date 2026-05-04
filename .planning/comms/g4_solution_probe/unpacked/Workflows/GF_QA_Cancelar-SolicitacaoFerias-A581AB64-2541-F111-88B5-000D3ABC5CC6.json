@@ -1,0 +1,802 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "gstf_sharepoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "cancelar-solicitacao-trigger"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "solicitacaoId": {
+                  "type": "string",
+                  "description": "ID da solicitacao de ferias a cancelar"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "Email do colaborador autenticado"
+                }
+              },
+              "required": [
+                "solicitacaoId",
+                "email"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Inicializar_var_success": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "cancelar-init-success"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_success",
+                "type": "Boolean",
+                "value": false
+              }
+            ]
+          }
+        },
+        "Inicializar_var_message": {
+          "runAfter": {
+            "Inicializar_var_success": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-init-message"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_message",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Inicializar_var_errorcode": {
+          "runAfter": {
+            "Inicializar_var_message": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-init-errorcode"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_errorcode",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Inicializar_var_status": {
+          "runAfter": {
+            "Inicializar_var_errorcode": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-init-status"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_status",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Inicializar_var_saldoRestaurado": {
+          "runAfter": {
+            "Inicializar_var_status": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-init-saldorestaurado"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_saldoRestaurado",
+                "type": "Integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Sanitizar_Email": {
+          "runAfter": {
+            "Inicializar_var_saldoRestaurado": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-sanitize-email"
+          },
+          "type": "Compose",
+          "inputs": "@replace(trim(toLower(coalesce(triggerBody()?['email'], ''))),'''','''''')"
+        },
+        "Sanitizar_Solicitacao_Id": {
+          "runAfter": {
+            "Sanitizar_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-sanitize-id"
+          },
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['solicitacaoId'], ''))"
+        },
+        "Normalizar_Solicitacao_Id": {
+          "runAfter": {
+            "Sanitizar_Solicitacao_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-normalize-id"
+          },
+          "type": "Compose",
+          "inputs": "@int(outputs('Sanitizar_Solicitacao_Id'))"
+        },
+        "Resposta_Id_Invalido": {
+          "runAfter": {
+            "Normalizar_Solicitacao_Id": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-response-invalid-id"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "errorcode": {
+                  "type": "string"
+                },
+                "solicitacaoId": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "saldoRestaurado": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "success": false,
+              "message": "Informe um ID de solicitacao valido para cancelar.",
+              "errorcode": "VALIDATION_ERROR",
+              "solicitacaoId": "@{outputs('Sanitizar_Solicitacao_Id')}",
+              "status": "",
+              "saldoRestaurado": 0
+            }
+          }
+        },
+        "Obter_Solicitacao": {
+          "runAfter": {
+            "Normalizar_Solicitacao_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-get-solicitacao"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+              "table": "GF_QA_SOLICITACOES_FERIAS",
+              "id": "@{outputs('Normalizar_Solicitacao_Id')}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Resposta_Solicitacao_Nao_Encontrada": {
+          "runAfter": {
+            "Obter_Solicitacao": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-response-not-found"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "errorcode": {
+                  "type": "string"
+                },
+                "solicitacaoId": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "saldoRestaurado": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "success": false,
+              "message": "Erro: A solicitação informada não foi localizada. Por favor, entre em contato com seu gestor direto para orientação.",
+              "errorcode": "REQUEST_NOT_FOUND",
+              "solicitacaoId": "@{outputs('Sanitizar_Solicitacao_Id')}",
+              "status": "",
+              "saldoRestaurado": 0
+            }
+          }
+        },
+        "Condicao_Pode_Cancelar": {
+          "actions": {
+            "Atualizar_Solicitacao_Cancelada": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "cancelar-patch-request"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                  "table": "GF_QA_SOLICITACOES_FERIAS",
+                  "id": "@{outputs('Normalizar_Solicitacao_Id')}",
+                  "item/Title": "@{coalesce(body('Obter_Solicitacao')?['Title'], concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id'))))}",
+                  "item/Status/Value": "Cancelado",
+                  "item/Observacoes": "@{concat('Cancelado pelo colaborador em ', utcNow(), '. Status anterior: ', coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], 'Nao informado'), '. Email: ', outputs('Sanitizar_Email'))}"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PatchItem"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Resposta_Erro_Cancelar": {
+              "runAfter": {
+                "Atualizar_Solicitacao_Cancelada": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cancelar-response-patch-failed"
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "errorcode": {
+                      "type": "string"
+                    },
+                    "solicitacaoId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "saldoRestaurado": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": {}
+                },
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "success": false,
+                  "message": "Falha ao atualizar a solicitacao para Cancelado.",
+                  "errorcode": "PATCH_REQUEST_FAILED",
+                  "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                  "status": "@{coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')}",
+                  "saldoRestaurado": 0
+                }
+              }
+            },
+            "Condicao_Estava_Aprovado": {
+              "actions": {
+                "Obter_Saldo": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cancelar-get-saldo"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                      "table": "GF_QA_SALDO_ATUAL",
+                      "$filter": "ColaboradorEmail eq '@{outputs('Sanitizar_Email')}'",
+                      "$top": 1
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "GetItems"
+                    },
+                    "authentication": {
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                      "type": "Raw"
+                    }
+                  }
+                },
+                "Condicao_Tem_Saldo": {
+                  "actions": {
+                    "Restaurar_Saldo": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "cancelar-restore-saldo"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SALDO_ATUAL",
+                          "id": "@{first(body('Obter_Saldo')?['value'])?['ID']}",
+                          "item/Title": "@{coalesce(first(body('Obter_Saldo')?['value'])?['Title'], concat('Saldo Atual - ', outputs('Sanitizar_Email')))}",
+                          "item/SaldoDisponivel": "@{add(int(coalesce(first(body('Obter_Saldo')?['value'])?['SaldoDisponivel'], 0)), int(coalesce(body('Obter_Solicitacao')?['DiasUteis'], 0)))}",
+                          "item/DiasAgendados": "@{max(0, sub(int(coalesce(first(body('Obter_Saldo')?['value'])?['DiasAgendados'], 0)), int(coalesce(body('Obter_Solicitacao')?['DiasUteis'], 0))))}"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "PatchItem"
+                        },
+                        "authentication": {
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                          "type": "Raw"
+                        }
+                      }
+                    },
+                    "Definir_var_saldoRestaurado": {
+                      "runAfter": {
+                        "Restaurar_Saldo": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "cancelar-set-saldo-restaurado"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_saldoRestaurado",
+                        "value": "@int(coalesce(body('Obter_Solicitacao')?['DiasUteis'], 0))"
+                      }
+                    },
+                    "Definir_var_success_aprovado": {
+                      "runAfter": {
+                        "Definir_var_saldoRestaurado": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "cancelar-set-success-aprovado"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_success",
+                        "value": true
+                      }
+                    },
+                    "Definir_var_message_aprovado": {
+                      "runAfter": {
+                        "Definir_var_success_aprovado": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "cancelar-set-message-aprovado"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_message",
+                        "value": "@concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id')), ' cancelada com sucesso. Saldo restaurado: +', string(variables('var_saldoRestaurado')), ' dias.')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Obter_Saldo": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Definir_var_success_sem_saldo": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "cancelar-set-success-sem-saldo"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "var_success",
+                          "value": true
+                        }
+                      },
+                      "Definir_var_errorcode_sem_saldo": {
+                        "runAfter": {
+                          "Definir_var_success_sem_saldo": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "cancelar-set-error-sem-saldo"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "var_errorcode",
+                          "value": "SALDO_RECORD_NOT_FOUND"
+                        }
+                      },
+                      "Definir_var_message_sem_saldo": {
+                        "runAfter": {
+                          "Definir_var_errorcode_sem_saldo": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "cancelar-set-message-sem-saldo"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "var_message",
+                          "value": "@concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id')), ' cancelada, mas o registro de saldo nao foi localizado para restauracao automatica.')"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "greater": [
+                      "@length(body('Obter_Saldo')?['value'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "cancelar-condition-tem-saldo"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Atualizar_Solicitacao_Cancelada": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Definir_var_success_pendente": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "cancelar-set-success-pendente"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "var_success",
+                      "value": true
+                    }
+                  },
+                  "Definir_var_message_pendente": {
+                    "runAfter": {
+                      "Definir_var_success_pendente": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "cancelar-set-message-pendente"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "var_message",
+                      "value": "@concat('Solicitacao ', string(outputs('Normalizar_Solicitacao_Id')), ' cancelada com sucesso. Nenhum saldo foi restaurado porque estava Pendente.')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')",
+                  "Aprovado"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cancelar-condition-approved"
+              },
+              "type": "If"
+            },
+            "Definir_var_status_cancelado": {
+              "runAfter": {
+                "Condicao_Estava_Aprovado": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cancelar-set-status-cancelado"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "var_status",
+                "value": "Cancelado"
+              }
+            },
+            "Resposta_Cancelamento": {
+              "runAfter": {
+                "Definir_var_status_cancelado": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cancelar-response-success"
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "errorcode": {
+                      "type": "string"
+                    },
+                    "solicitacaoId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "saldoRestaurado": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": {}
+                },
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "success": "@variables('var_success')",
+                  "message": "@variables('var_message')",
+                  "errorcode": "@variables('var_errorcode')",
+                  "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                  "status": "@variables('var_status')",
+                  "saldoRestaurado": "@variables('var_saldoRestaurado')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Obter_Solicitacao": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Resposta_Nao_Permitida": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "cancelar-response-not-allowed"
+                },
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "errorcode": {
+                        "type": "string"
+                      },
+                      "solicitacaoId": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "saldoRestaurado": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": {}
+                  },
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "success": false,
+                    "message": "Erro: A solicitação informada não pertence ao seu usuário ou já foi processada. Por favor, entre em contato com seu gestor direto para orientação.",
+                    "errorcode": "CANCEL_NOT_ALLOWED",
+                    "solicitacaoId": "@{string(outputs('Normalizar_Solicitacao_Id'))}",
+                    "status": "@{coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')}",
+                    "saldoRestaurado": 0
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@toLower(trim(coalesce(body('Obter_Solicitacao')?['ColaboradorEmail'], '')))",
+                  "@outputs('Sanitizar_Email')"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "equals": [
+                      "@coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')",
+                      "Pendente"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], '')",
+                      "Aprovado"
+                    ]
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['ColaboradorEmail'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['Status']?['Value'], body('Obter_Solicitacao')?['Status'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['DataInicio'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(coalesce(body('Obter_Solicitacao')?['DataFim'], ''))",
+                    ""
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@trim(string(coalesce(body('Obter_Solicitacao')?['DiasUteis'], '')))",
+                    ""
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cancelar-condition-can-cancel"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

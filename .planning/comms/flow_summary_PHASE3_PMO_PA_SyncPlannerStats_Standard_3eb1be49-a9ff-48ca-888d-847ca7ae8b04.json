@@ -1,0 +1,22 @@
+﻿{
+    "displayName":  "PMO_PA_SyncPlannerStats_Standard",
+    "flowName":  "3eb1be49-a9ff-48ca-888d-847ca7ae8b04",
+    "status":  "CREATED",
+    "state":  "Started",
+    "enabled":  true,
+    "triggerNames":  [
+                         "Recurrence_Every_6h"
+                     ],
+    "actionNames":  [
+                        "Get_Projetos_Ativos",
+                        "Filter_Projetos_Com_Planner",
+                        "Apply_to_each_Projeto_Planner"
+                    ],
+    "connectorApis":  [
+                          "shared_sharepointonline",
+                          "shared_planner"
+                      ],
+    "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_51435870-e13a-4bac-8953-660de008a47d.json",
+    "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_51435870-e13a-4bac-8953-660de008a47d.json",
+    "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_SyncPlannerStats_Standard_3eb1be49-a9ff-48ca-888d-847ca7ae8b04.json"
+}

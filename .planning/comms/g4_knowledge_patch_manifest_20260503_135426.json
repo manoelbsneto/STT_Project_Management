@@ -1,0 +1,17 @@
+﻿{
+    "timestamp":  "2026-05-03T13:56:31.0472286-03:00",
+    "status":  "PASS",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "botId":  "0c4a9729-d55d-483c-8ec3-db9369583155",
+    "botSchema":  "pmo_AssistentePMO",
+    "knowledgeSchema":  "pmo_AssistentePMO.topic.PMOSharePointKnowledge",
+    "knowledgeName":  "PMO SharePoint Knowledge",
+    "sharePointSite":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "baseUnpackPath":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_carrier_export_20260503_1325\\unpacked",
+    "packageRoot":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_knowledge_patch_20260503_135426",
+    "packageZip":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\PMO_G4_KnowledgePatch_20260503_135426.zip",
+    "importLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_import_g4_knowledge_20260503_135426.txt",
+    "publishLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_publish_g4_knowledge_20260503_135426.txt",
+    "publishExitCode":  0,
+    "listLog":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\pac_list_g4_knowledge_20260503_135426.txt"
+}

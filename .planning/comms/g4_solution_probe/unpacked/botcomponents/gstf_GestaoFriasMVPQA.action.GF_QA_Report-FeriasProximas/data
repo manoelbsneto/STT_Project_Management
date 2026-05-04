@@ -1,0 +1,19 @@
+kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: totalRegistros
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e3658a14-2241-f111-88b5-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

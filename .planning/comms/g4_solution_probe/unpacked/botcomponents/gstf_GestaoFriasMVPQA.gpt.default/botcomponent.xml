@@ -1,0 +1,10 @@
+<botcomponent schemaname="gstf_GestaoFriasMVPQA.gpt.default">
+  <componenttype>15</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Gestao_Férias_MVP_QA</name>
+  <parentbotid>
+    <schemaname>gstf_GestaoFriasMVPQA</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

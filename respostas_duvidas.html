@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Respostas — 4 Dúvidas Críticas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0e1a;color:#e2e8f0;line-height:1.7;padding:0}
+.hero{background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca);padding:48px 40px;text-align:center;border-bottom:2px solid #6366f1}
+.hero h1{font-size:2rem;font-weight:800;background:linear-gradient(90deg,#818cf8,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.container{max-width:1000px;margin:0 auto;padding:32px 20px}
+.q{background:#111827;border:1px solid #1e293b;border-radius:16px;margin:28px 0;overflow:hidden}
+.q-header{padding:20px 24px;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:12px}
+.q-num{background:#6366f1;color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;flex-shrink:0}
+.q-header h2{font-size:1.1rem;font-weight:600}
+.q-body{padding:24px}
+.q-body p{margin:10px 0;color:#94a3b8;font-size:.92rem}
+.q-body strong{color:#e2e8f0}
+.answer{background:#0f172a;border-left:4px solid #6366f1;border-radius:0 8px 8px 0;padding:16px 20px;margin:14px 0}
+.answer-yes{border-left-color:#10b981}.answer-no{border-left-color:#ef4444}.answer-partial{border-left-color:#f59e0b}
+.answer h4{margin-bottom:6px;font-size:1rem}
+.answer h4 .icon{margin-right:6px}
+table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid #1e293b;font-size:.85rem}
+th{color:#6366f1;font-weight:600;text-transform:uppercase;font-size:.75rem}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0;color:#94a3b8;font-size:.88rem}
+.tag{background:#1e1b4b;padding:3px 10px;border-radius:6px;font-size:.75rem;color:#a5b4fc;display:inline-block;margin:2px}
+.warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:14px 18px;margin:14px 0}
+.warn strong{color:#fbbf24}
+.ok{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:14px 18px;margin:14px 0}
+.ok strong{color:#34d399}
+.critical{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:14px 18px;margin:14px 0}
+.critical strong{color:#f87171}
+.divider{height:2px;background:linear-gradient(90deg,transparent,#6366f1,transparent);margin:32px 0}
+</style>
+</head>
+<body>
+<div class="hero"><h1>🔍 Respostas às 4 Dúvidas Críticas</h1></div>
+<div class="container">
+
+<!-- QUESTION 1 -->
+<div class="q">
+<div class="q-header"><div class="q-num">1</div><h2>É possível rastrear tarefas entregues com atraso e medir horas/dias/meses de atraso?</h2></div>
+<div class="q-body">
+
+<div class="answer answer-yes">
+<h4><span class="icon">✅</span> SIM — mas requer desenho específico</h4>
+<p><strong>Planner Basic</strong> registra <code>dueDateTime</code> e <code>completedDateTime</code> em cada tarefa. Via Graph API + Power Automate, podemos calcular: <strong>Atraso = completedDateTime − dueDateTime</strong>.</p>
+</div>
+
+<p><strong>O que o Planner Basic oferece nativamente:</strong></p>
+<table>
+<tr><th>Campo</th><th>Disponível?</th><th>Observação</th></tr>
+<tr><td>Data prevista (due date)</td><td style="color:#34d399">✅ Sim</td><td>Definida pelo PM ao criar a task</td></tr>
+<tr><td>Data de conclusão</td><td style="color:#34d399">✅ Sim</td><td>Gravada automaticamente ao marcar 100%</td></tr>
+<tr><td>Cálculo de atraso</td><td style="color:#f59e0b">⚠️ Calculado</td><td>Não é nativo — PA calcula e grava no SharePoint</td></tr>
+<tr><td>Subtasks com due date</td><td style="color:#ef4444">❌ Não</td><td>Checklist não tem data — só task principal tem</td></tr>
+<tr><td>Horas estimadas vs realizadas</td><td style="color:#ef4444">❌ Não</td><td>Planner Basic não tem time tracking</td></tr>
+</table>
+
+<p><strong>Solução proposta — Lista SharePoint adicional "Marcos e Entregas":</strong></p>
+<p>Para ter granularidade real de atrasos, criar uma 5ª lista SharePoint:</p>
+<table>
+<tr><th>Coluna</th><th>Tipo</th><th>Propósito</th></tr>
+<tr><td>ProjectID</td><td>Lookup</td><td>Vincula ao projeto</td></tr>
+<tr><td>Entrega / Marco</td><td>Text</td><td>Nome da entrega</td></tr>
+<tr><td>Data Planejada</td><td>Date</td><td>Quando deveria ser entregue</td></tr>
+<tr><td>Data Real</td><td>Date</td><td>Quando foi realmente entregue</td></tr>
+<tr><td>Atraso (dias)</td><td>Calculated</td><td>=DataReal - DataPlanejada</td></tr>
+<tr><td>Status</td><td>Choice</td><td>No prazo, Atrasada, Entregue, Cancelada</td></tr>
+<tr><td>Responsável</td><td>Person</td><td>Quem é dono da entrega</td></tr>
+<tr><td>Impacto do Atraso</td><td>Choice</td><td>Baixo, Médio, Alto, Crítico</td></tr>
+</table>
+
+<div class="ok">
+<strong>✅ Com isso podemos reportar:</strong>
+<ul>
+<li>Quantas entregas foram feitas com atraso por projeto</li>
+<li>Média de dias de atraso por projeto/área/PM</li>
+<li>Entregas atrasadas ativas (planejada no passado, sem data real)</li>
+<li>Tendência: projeto está atrasando mais ou menos ao longo do tempo</li>
+<li>SharePoint Board View agrupada por Status → visual imediato</li>
+</ul>
+</div>
+
+<div class="warn">
+<strong>⚠️ Limitação importante:</strong> Para tracking de HORAS (não dias), Planner Basic não serve. Seria necessário Planner Premium (Dataverse) ou uma lista SharePoint com campos de hora. Para o MVP, recomendo trabalhar com <strong>dias como unidade de atraso</strong> — é suficiente para C-level e PMO.
+</div>
+</div>
+</div>
+
+<!-- QUESTION 2 -->
+<div class="q">
+<div class="q-header"><div class="q-num">2</div><h2>Podemos enviar status on-demand, fora dos horários agendados?</h2></div>
+<div class="q-body">
+
+<div class="answer answer-yes">
+<h4><span class="icon">✅</span> SIM — absolutamente. Múltiplos canais de entrada simultâneos.</h4>
+</div>
+
+<p>O card diário das 9h é apenas um <strong>lembrete/gatilho</strong>. O PM pode atualizar a qualquer momento por vários caminhos:</p>
+
+<table>
+<tr><th>Canal de Entrada</th><th>Como funciona</th><th>Disponível no MVP?</th></tr>
+<tr><td>📋 Adaptive Card agendado</td><td>Enviado automaticamente às 9h. PM responde quando quiser.</td><td style="color:#34d399">✅ Fase 1</td></tr>
+<tr><td>📋 Adaptive Card on-demand</td><td>PM digita comando no canal (ex: "/status") ou clica botão → PA envia card imediatamente</td><td style="color:#34d399">✅ Fase 1</td></tr>
+<tr><td>📝 Microsoft Forms</td><td>Link fixo no Teams (tab ou bookmark). PM abre e preenche a qualquer hora.</td><td style="color:#34d399">✅ Fase 1</td></tr>
+<tr><td>📊 Direto no SharePoint</td><td>PM abre a lista "Status Diário" e cria item manualmente</td><td style="color:#34d399">✅ Fase 1</td></tr>
+<tr><td>💬 Chat com Copilot Studio</td><td>PM digita "atualiza Mobile para vermelho" a qualquer momento</td><td style="color:#818cf8">🔮 Fase 2</td></tr>
+<tr><td>🎤 Voz (ditado)</td><td>PM dita usando microfone do teclado/Win+H</td><td style="color:#c084fc">🔮 Fase 2-3</td></tr>
+</table>
+
+<div class="ok">
+<strong>✅ Implementação prática no MVP:</strong>
+<ul>
+<li><strong>Botão fixo no canal:</strong> Um Adaptive Card "pinado" no topo do canal com botão "📋 Atualizar Agora" que dispara um card de check-in sob demanda via Power Automate</li>
+<li><strong>Tab "Forms":</strong> Form sempre disponível como tab no Teams — 1 clique para abrir, preencher e enviar</li>
+<li><strong>Múltiplas atualizações por dia:</strong> O sistema aceita N atualizações por dia. Cada uma vira um registro na lista "Status Diário". O mais recente é sempre considerado o status atual.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- QUESTION 3 -->
+<div class="q">
+<div class="q-header"><div class="q-num">3</div><h2>Podemos reportar projetos com diferentes níveis de granularidade para o C-Level?</h2></div>
+<div class="q-body">
+
+<div class="answer answer-yes">
+<h4><span class="icon">✅</span> SIM — o sistema suporta visões de alto nível E granulares.</h4>
+</div>
+
+<p><strong>A chave é separar as camadas de informação:</strong></p>
+
+<table>
+<tr><th>Nível</th><th>O que mostra</th><th>Para quem</th><th>Onde</th></tr>
+<tr><td style="color:#818cf8;font-weight:700">🔭 Portfólio (alto nível)</td><td>RAG, nome, área, PM, % avanço, data alvo</td><td>C-Level, Board</td><td>Tab SharePoint Board View</td></tr>
+<tr><td style="color:#c084fc;font-weight:700">📊 Projeto (médio)</td><td>Status diários, riscos, bloqueios, decisões, tendência</td><td>Sponsors, PMO</td><td>SharePoint List filtrada por projeto</td></tr>
+<tr><td style="color:#f472b6;font-weight:700">🔬 Execução (granular)</td><td>Tarefas, subtarefas, assignments, due dates, checklist</td><td>PMs, Tech Leads</td><td>Planner Board no Teams</td></tr>
+<tr><td style="color:#fbbf24;font-weight:700">📐 Entregas (atraso)</td><td>Marcos planejados vs reais, dias de atraso</td><td>PMO, Sponsors</td><td>Lista "Marcos e Entregas"</td></tr>
+</table>
+
+<p><strong>Reportes automáticos por audiência:</strong></p>
+<table>
+<tr><th>Reporte</th><th>Audiência</th><th>Frequência</th><th>Conteúdo</th></tr>
+<tr><td>Card Executivo</td><td>Board / C-Level</td><td>Diário 17h</td><td>Distribuição RAG, projetos críticos, decisões pendentes — SEM detalhes de tarefas</td></tr>
+<tr><td>Card PMO</td><td>PMO</td><td>Diário 17h</td><td>Inclui riscos abertos, entregas atrasadas, projetos sem update</td></tr>
+<tr><td>Card de Projeto</td><td>Sponsor específico</td><td>Sob demanda</td><td>Deep-dive: histórico de status, todas entregas, tarefas abertas no Planner</td></tr>
+</table>
+
+<div class="ok">
+<strong>✅ Para projetos complexos de meses:</strong>
+<ul>
+<li>Lista "Marcos e Entregas" rastreia milestones com datas planejadas vs reais</li>
+<li>Planner rastreia tarefas detalhadas com subtarefas (checklist)</li>
+<li>PA pode gerar relatório semanal consolidado com dados de ambas as fontes</li>
+<li>SharePoint views filtradas por projeto mostram toda a história</li>
+<li>C-Level vê só RAG + % + riscos. PM vê tudo.</li>
+</ul>
+</div>
+
+<div class="warn">
+<strong>⚠️ O que Planner Basic NÃO faz (e alternativas):</strong>
+<ul>
+<li><strong>Gantt chart / dependências:</strong> Não disponível no Basic. Alternativa: lista "Marcos" com datas no SharePoint Calendar View</li>
+<li><strong>Resource management:</strong> Não disponível. Alternativa: coluna "Responsável" nas listas</li>
+<li><strong>Budget tracking:</strong> Coluna na lista "Projetos" no SharePoint (OrcamentoStatus)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- QUESTION 4 - STT -->
+<div class="q">
+<div class="q-header"><div class="q-num">4</div><h2>Speech-to-Text: é possível fazer TODA atualização por voz, 100% do tempo?</h2></div>
+<div class="q-body">
+
+<div class="answer answer-partial">
+<h4><span class="icon">⚠️</span> PARCIALMENTE — preciso ser 100% honesto aqui.</h4>
+</div>
+
+<div class="critical">
+<strong>🔴 Realidade atual (Maio 2026):</strong>
+<ul>
+<li>Teams <strong>NÃO tem botão de dictação nativo</strong> nos campos de chat ou Adaptive Cards no desktop</li>
+<li>Adaptive Cards <strong>NÃO suportam input de voz</strong> nos seus campos de texto</li>
+<li>Teams mobile <strong>NÃO transcreve voice messages</strong> automaticamente no chat</li>
+<li>Copilot Studio agents em Teams chat são <strong>primariamente text-based</strong></li>
+</ul>
+</div>
+
+<p><strong>O que FUNCIONA hoje para ditado no Teams:</strong></p>
+
+<table>
+<tr><th>Método</th><th>Plataforma</th><th>Como</th><th>Funciona em Cards?</th><th>Experiência</th></tr>
+<tr><td style="color:#34d399;font-weight:600">🎤 Win + H</td><td>Desktop Windows</td><td>Atalho abre dictação do Windows. Fala → texto aparece no campo focado</td><td style="color:#34d399">✅ Sim</td><td>Boa — mas usuário precisa saber o atalho</td></tr>
+<tr><td style="color:#34d399;font-weight:600">🎤 Teclado Mobile</td><td>iOS / Android</td><td>Ícone 🎤 no teclado virtual. Fala → texto no campo</td><td style="color:#34d399">✅ Sim</td><td>Boa — natural no mobile</td></tr>
+<tr><td style="color:#34d399;font-weight:600">🎤 macOS Dictation</td><td>Mac</td><td>Fn Fn ou configuração de Dictation</td><td style="color:#34d399">✅ Sim</td><td>Boa</td></tr>
+<tr><td style="color:#818cf8;font-weight:600">💬 Copilot Voice Chat</td><td>Desktop/Mobile</td><td>M365 Copilot tem input de voz no chat</td><td>N/A (é chat)</td><td>Excelente — mas requer M365 Copilot license</td></tr>
+</table>
+
+<div class="warn">
+<strong>⚠️ Traduzindo: o STT funciona, mas é via sistema operacional, não via Teams.</strong>
+<p style="margin-top:8px">O usuário clica no campo do Adaptive Card, ativa o microfone do OS (Win+H ou teclado mobile), fala, e o texto aparece. Funciona, mas não é um botão de microfone no card.</p>
+</div>
+
+<p><strong>3 caminhos viáveis para maximizar a experiência de voz:</strong></p>
+
+<div class="ok">
+<strong>🟢 Caminho 1 — Dictação do OS (MVP — Fase 1)</strong>
+<ul>
+<li>Zero desenvolvimento extra</li>
+<li>Treinar usuários: "pressione Win+H e fale" ou "toque no 🎤 do teclado mobile"</li>
+<li>Funciona em qualquer campo: Adaptive Cards, Forms, chat, SharePoint</li>
+<li>Limitação: usuário precisa saber o atalho</li>
+<li><strong>Ação:</strong> Criar guia rápido de 1 página + vídeo de 30s mostrando como usar</li>
+</ul>
+</div>
+
+<div class="ok" style="border-color:rgba(99,102,241,.3);background:rgba(99,102,241,.05)">
+<strong>🔵 Caminho 2 — Copilot Studio com voz (Fase 2)</strong>
+<ul>
+<li>Agente PMO no Teams chat — usuário digita ou dita (via OS) em linguagem natural</li>
+<li>"Atualiza Mobile para amarelo, risco é atraso na loja" → agente processa</li>
+<li>M365 Copilot já tem botão de microfone nativo no chat → o texto ditado vai para o agente</li>
+<li><strong>Esta é a experiência mais próxima de "100% voz"</strong></li>
+<li>Requer: M365 Copilot license ($30/user/mês)</li>
+</ul>
+</div>
+
+<div class="ok" style="border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.05)">
+<strong>🟣 Caminho 3 — Voice Agent dedicado (Fase 3-4)</strong>
+<ul>
+<li>Copilot Studio lançou "Real-time Voice Agents" em Abril 2026 (GA)</li>
+<li>Suporta speech-to-speech em tempo real</li>
+<li>Atualmente disponível para Dynamics 365 Contact Center</li>
+<li>No roadmap para Teams Phone — mas <strong>ainda não disponível para Teams chat</strong></li>
+<li>Quando chegar ao Teams: PM liga para o agente e dita a atualização por chamada</li>
+<li><strong>Ação:</strong> Monitorar roadmap Microsoft. Estimar disponibilidade: 2026 H2 — 2027 H1</li>
+</ul>
+</div>
+
+<div class="divider"></div>
+
+<h3 style="color:#818cf8;margin:20px 0 12px">📊 Resumo — Matriz de STT por Fase</h3>
+<table>
+<tr><th>Fase</th><th>Experiência de Voz</th><th>Esforço</th><th>Cobertura</th></tr>
+<tr><td>Fase 1 (MVP)</td><td>Win+H / Teclado Mobile nos campos do card</td><td>Zero (treinamento)</td><td style="color:#f59e0b">~70% dos cenários</td></tr>
+<tr><td>Fase 2</td><td>Copilot Studio + dictação no chat</td><td>Médio (agent + license)</td><td style="color:#34d399">~90% dos cenários</td></tr>
+<tr><td>Fase 3-4</td><td>Voice Agent real-time (quando disponível)</td><td>Médio-alto</td><td style="color:#34d399">~100% dos cenários</td></tr>
+</table>
+
+<div class="critical">
+<strong>🎯 Minha recomendação honesta:</strong>
+<p style="margin-top:8px">Se STT é <strong>requisito crítico</strong> e não apenas nice-to-have, o <strong>Copilot Studio (Fase 2) precisa ser antecipado para o MVP</strong>. Com M365 Copilot license, o usuário tem microfone nativo no Teams → fala → texto vai pro agente → agente processa. É o caminho mais realista para "100% voz" hoje.</p>
+<p style="margin-top:8px">Sem Copilot license, a voz funciona via OS (Win+H) mas não é tão fluida. Funciona, mas precisa de treinamento.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>

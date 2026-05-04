@@ -1,0 +1,1206 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline-1": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "gstf_sharepoint"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "actions": {
+        "Sanitizar_Email": {
+          "type": "Compose",
+          "inputs": "@replace(trim(toLower(triggerBody()?['text'])),'''','''''')",
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-sanitize-email"
+          }
+        },
+        "Inicializar_var_success": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_success",
+                "type": "Boolean",
+                "value": false
+              }
+            ]
+          },
+          "runAfter": {
+            "Sanitizar_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-success"
+          }
+        },
+        "Inicializar_var_errorCode": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_errorCode",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_success": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-errorcode"
+          }
+        },
+        "Inicializar_var_message": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_message",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_errorCode": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-message"
+          }
+        },
+        "Inicializar_var_solicitacaoId": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_solicitacaoId",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_message": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-solicitacaoid"
+          }
+        },
+        "Inicializar_var_status": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_status",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_solicitacaoId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-status"
+          }
+        },
+        "Inicializar_var_dataInicio": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_dataInicio",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_status": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-datainicio"
+          }
+        },
+        "Inicializar_var_dataFim": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_dataFim",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_dataInicio": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-datafim"
+          }
+        },
+        "Inicializar_var_diasSolicitados": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_diasSolicitados",
+                "type": "Integer",
+                "value": 0
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_dataFim": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-diassolicitados"
+          }
+        },
+        "Inicializar_var_aprovadorNome": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_aprovadorNome",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          },
+          "runAfter": {
+            "Inicializar_var_diasSolicitados": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-init-aprovadornome"
+          }
+        },
+        "Normalizar_Data_Inicio": {
+          "type": "Compose",
+          "inputs": "@if(\r\n  contains(trim(string(triggerBody()?['text_1'])),'-'),\r\n  formatDateTime(trim(string(triggerBody()?['text_1'])),'yyyy-MM-dd'),\r\n  if(\r\n    equals(length(split(trim(string(triggerBody()?['text_1'])),'/')),2),\r\n    concat(\r\n      string(\r\n        if(\r\n          empty(triggerBody()?['anoReferencia']),\r\n          int(formatDateTime(utcNow(),'yyyy')),\r\n          int(triggerBody()?['anoReferencia'])\r\n        )\r\n      ),\r\n      '-',\r\n      formatNumber(int(last(split(trim(string(triggerBody()?['text_1'])),'/'))),'00'),\r\n      '-',\r\n      formatNumber(int(first(split(trim(string(triggerBody()?['text_1'])),'/'))),'00')\r\n    ),\r\n    concat(\r\n      formatNumber(int(last(split(trim(string(triggerBody()?['text_1'])),'/'))),'0000'),\r\n      '-',\r\n      formatNumber(int(first(skip(split(trim(string(triggerBody()?['text_1'])),'/'),1))),'00'),\r\n      '-',\r\n      formatNumber(int(first(split(trim(string(triggerBody()?['text_1'])),'/'))),'00')\r\n    )\r\n  )\r\n)",
+          "runAfter": {
+            "Inicializar_var_aprovadorNome": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-normalizar-data-inicio"
+          }
+        },
+        "Normalizar_Data_Fim": {
+          "type": "Compose",
+          "inputs": "@if( not(empty(triggerBody()?['diasFerias'])), formatDateTime(addDays(outputs('Normalizar_Data_Inicio'),sub(int(triggerBody()?['diasFerias']),1)),'yyyy-MM-dd'), if( contains(trim(string(triggerBody()?['text_2'])),'-'), formatDateTime(trim(string(triggerBody()?['text_2'])),'yyyy-MM-dd'), if( equals(length(split(trim(string(triggerBody()?['text_2'])),'/')),2), concat( string( if( empty(triggerBody()?['anoReferencia']), int(formatDateTime(utcNow(),'yyyy')), int(triggerBody()?['anoReferencia']) ) ), '-', formatNumber(int(last(split(trim(string(triggerBody()?['text_2'])),'/'))),'00'), '-', formatNumber(int(first(split(trim(string(triggerBody()?['text_2'])),'/'))),'00') ), concat( formatNumber(int(last(split(trim(string(triggerBody()?['text_2'])),'/'))),'0000'), '-', formatNumber(int(first(skip(split(trim(string(triggerBody()?['text_2'])),'/'),1))),'00'), '-', formatNumber(int(first(split(trim(string(triggerBody()?['text_2'])),'/'))),'00') ) ) ) )",
+          "runAfter": {
+            "Normalizar_Data_Inicio": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-normalizar-data-fim"
+          }
+        },
+        "Definir_var_errorCode_formato_data_invalido": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_errorCode",
+            "value": "FORMATO_DATA_INVALIDO"
+          },
+          "runAfter": {
+            "Normalizar_Data_Inicio": [
+              "Failed",
+              "TimedOut"
+            ],
+            "Normalizar_Data_Fim": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-error-invalid-date-format"
+          }
+        },
+        "Definir_var_message_formato_data_invalido": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_message",
+            "value": "Formato inválido. Use dataInicio em YYYY-MM-DD ou DD/MM. Informe dataFim no mesmo formato, ou informe diasFerias."
+          },
+          "runAfter": {
+            "Definir_var_errorCode_formato_data_invalido": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-message-invalid-date-format"
+          }
+        },
+        "Condition_Datas_Validas": {
+          "type": "Compose",
+          "inputs": "@if(greaterOrEquals(ticks(outputs('Normalizar_Data_Fim')), ticks(outputs('Normalizar_Data_Inicio'))), 'OK', int('DATA_INVALIDA'))",
+          "runAfter": {
+            "Normalizar_Data_Fim": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-condition-datas-validas"
+          }
+        },
+        "Definir_var_errorCode_data_invalida": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_errorCode",
+            "value": "DATA_INVALIDA"
+          },
+          "runAfter": {
+            "Condition_Datas_Validas": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-error-invalid-date"
+          }
+        },
+        "Definir_var_message_data_invalida": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_message",
+            "value": "A data final deve ser maior ou igual à data inicial."
+          },
+          "runAfter": {
+            "Definir_var_errorCode_data_invalida": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-message-invalid-date"
+          }
+        },
+        "Definir_var_dataInicio_normalizada": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_dataInicio",
+            "value": "@outputs('Normalizar_Data_Inicio')"
+          },
+          "runAfter": {
+            "Condition_Datas_Validas": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-datainicio"
+          }
+        },
+        "Definir_var_dataFim_normalizada": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_dataFim",
+            "value": "@outputs('Normalizar_Data_Fim')"
+          },
+          "runAfter": {
+            "Definir_var_dataInicio_normalizada": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-datafim"
+          }
+        },
+        "Obter_Colaborador": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+              "table": "GF_QA_USUARIOS_APROVADORES",
+              "$filter": "ColaboradorEmail eq '@{outputs('Sanitizar_Email')}'"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetItems",
+              "connectionName": "shared_sharepointonline-1"
+            }
+          },
+          "runAfter": {
+            "Definir_var_dataFim_normalizada": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-get-colaborador"
+          }
+        },
+        "Definir_var_errorCode_erro_obter_colaborador": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_errorCode",
+            "value": "ERRO_OBTER_COLABORADOR"
+          },
+          "runAfter": {
+            "Obter_Colaborador": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-error-get-colaborador"
+          }
+        },
+        "Definir_var_message_erro_obter_colaborador": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_message",
+            "value": "Falha ao consultar dados do colaborador."
+          },
+          "runAfter": {
+            "Definir_var_errorCode_erro_obter_colaborador": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-set-message-get-colaborador"
+          }
+        },
+        "Condition_Colaborador_Existe": {
+          "type": "If",
+          "expression": {
+            "and": [
+              {
+                "greater": [
+                  "@length(body('Obter_Colaborador')?['value'])",
+                  0
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Definir_var_aprovadorNome": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "var_aprovadorNome",
+                "value": "@{first(body('Obter_Colaborador')?['value'])?['AprovadorNome']}"
+              },
+              "metadata": {
+                "operationMetadataId": "criar-solicitacao-set-aprovadornome"
+              }
+            },
+            "Obter_Saldo": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                  "table": "GF_QA_SALDO_ATUAL",
+                  "$filter": "ColaboradorEmail eq '@{outputs('Sanitizar_Email')}'"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "GetItems",
+                  "connectionName": "shared_sharepointonline-1"
+                }
+              },
+              "runAfter": {
+                "Definir_var_aprovadorNome": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "criar-solicitacao-get-saldo"
+              }
+            },
+            "Definir_var_errorCode_erro_obter_saldo": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "var_errorCode",
+                "value": "ERRO_OBTER_SALDO"
+              },
+              "runAfter": {
+                "Obter_Saldo": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "criar-solicitacao-set-error-get-saldo"
+              }
+            },
+            "Definir_var_message_erro_obter_saldo": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "var_message",
+                "value": "Falha ao consultar saldo do colaborador."
+              },
+              "runAfter": {
+                "Definir_var_errorCode_erro_obter_saldo": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "criar-solicitacao-set-message-get-saldo"
+              }
+            },
+            "Condition_Saldo_Existe": {
+              "type": "If",
+              "expression": {
+                "and": [
+                  {
+                    "greater": [
+                      "@length(body('Obter_Saldo')?['value'])",
+                      0
+                    ]
+                  }
+                ]
+              },
+              "actions": {
+                "Calcular_Dias_Uteis": {
+                  "type": "Compose",
+                  "inputs": "@if(not(empty(triggerBody()?['diasFerias'])), int(triggerBody()?['diasFerias']), max(0, add(add(div(sub(ticks(outputs('Normalizar_Data_Fim')), ticks(outputs('Normalizar_Data_Inicio'))), 864000000000), 1), mul(-1, add(div(sub(ticks(outputs('Normalizar_Data_Fim')), ticks(outputs('Normalizar_Data_Inicio'))), 6048000000000), if(greaterOrEquals(mod(dayOfWeek(outputs('Normalizar_Data_Inicio')), 7), mod(dayOfWeek(outputs('Normalizar_Data_Fim')), 7)), 2, 0))))))",
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-calc-dias"
+                  }
+                },
+                "Definir_var_diasSolicitados_calculado": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "var_diasSolicitados",
+                    "value": "@outputs('Calcular_Dias_Uteis')"
+                  },
+                  "runAfter": {
+                    "Calcular_Dias_Uteis": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-set-diassolicitados"
+                  }
+                },
+                "Calcular_Dias_Venda": {
+                  "type": "Compose",
+                  "inputs": "@if(empty(triggerBody()?['diasVenda']), 0, int(triggerBody()?['diasVenda']))",
+                  "runAfter": {
+                    "Definir_var_diasSolicitados_calculado": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-calc-venda"
+                  }
+                },
+                "Calcular_Dias_Comprometidos": {
+                  "type": "Compose",
+                  "inputs": "@add(outputs('Calcular_Dias_Uteis'), outputs('Calcular_Dias_Venda'))",
+                  "runAfter": {
+                    "Calcular_Dias_Venda": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-calc-comprometidos"
+                  }
+                },
+                "Definir_var_errorCode_erro_calcular_dias": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "var_errorCode",
+                    "value": "ERRO_CALCULO_DIAS"
+                  },
+                  "runAfter": {
+                    "Calcular_Dias_Uteis": [
+                      "Failed",
+                      "TimedOut"
+                    ],
+                    "Calcular_Dias_Venda": [
+                      "Failed",
+                      "TimedOut"
+                    ],
+                    "Calcular_Dias_Comprometidos": [
+                      "Failed",
+                      "TimedOut"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-set-error-calc-dias"
+                  }
+                },
+                "Definir_var_message_erro_calcular_dias": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "var_message",
+                    "value": "Não foi possível calcular os dias. Verifique datas e campos numéricos (diasFerias/diasVenda)."
+                  },
+                  "runAfter": {
+                    "Definir_var_errorCode_erro_calcular_dias": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-set-message-calc-dias"
+                  }
+                },
+                "Obter_Solicitacoes_Conflitantes": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                      "table": "GF_QA_SOLICITACOES_FERIAS",
+                      "$filter": "ColaboradorEmail eq '@{outputs('Sanitizar_Email')}' and (Status eq 'Pendente' or Status eq 'Aprovado') and DataInicio le '@{outputs('Normalizar_Data_Fim')}' and DataFim ge '@{outputs('Normalizar_Data_Inicio')}'"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                      "operationId": "GetItems",
+                      "connectionName": "shared_sharepointonline-1"
+                    }
+                  },
+                  "runAfter": {
+                    "Calcular_Dias_Comprometidos": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-get-conflitos"
+                  }
+                },
+                "Definir_var_errorCode_erro_obter_conflitos": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "var_errorCode",
+                    "value": "ERRO_VALIDACAO_CONFLITO"
+                  },
+                  "runAfter": {
+                    "Obter_Solicitacoes_Conflitantes": [
+                      "Failed",
+                      "TimedOut"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-set-error-get-conflitos"
+                  }
+                },
+                "Definir_var_message_erro_obter_conflitos": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "var_message",
+                    "value": "Falha ao validar conflito de datas."
+                  },
+                  "runAfter": {
+                    "Definir_var_errorCode_erro_obter_conflitos": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-set-message-get-conflitos"
+                  }
+                },
+                "Condition_Saldo_Suficiente": {
+                  "type": "If",
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@outputs('Calcular_Dias_Uteis')",
+                          0
+                        ]
+                      },
+                      {
+                        "or": [
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              ""
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "5"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "10"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "15"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "20"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "25"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@string(triggerBody()?['diasFerias'])",
+                              "30"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "greaterOrEquals": [
+                          "@first(body('Obter_Saldo')?['value'])?['SaldoDisponivel']",
+                          "@outputs('Calcular_Dias_Comprometidos')"
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@length(body('Obter_Solicitacoes_Conflitantes')?['value'])",
+                          0
+                        ]
+                      },
+                      {
+                        "greaterOrEquals": [
+                          "@outputs('Calcular_Dias_Venda')",
+                          0
+                        ]
+                      },
+                      {
+                        "lessOrEquals": [
+                          "@outputs('Calcular_Dias_Venda')",
+                          10
+                        ]
+                      },
+                      {
+                        "lessOrEquals": [
+                          "@outputs('Calcular_Dias_Comprometidos')",
+                          30
+                        ]
+                      }
+                    ]
+                  },
+                  "actions": {
+                    "Criar_Solicitacao": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SOLICITACOES_FERIAS",
+                          "item/Title": "@{concat('Solicitacao de Ferias - ', outputs('Sanitizar_Email'), ' - ', formatDateTime(outputs('Normalizar_Data_Inicio'), 'dd/MM/yyyy'), ' a ', formatDateTime(outputs('Normalizar_Data_Fim'), 'dd/MM/yyyy'))}",
+                          "item/ColaboradorEmail": "@{outputs('Sanitizar_Email')}",
+                          "item/AprovadorEmail": "@{coalesce(first(body('Obter_Colaborador')?['value'])?['AprovadorEmail'], '')}",
+                          "item/AprovadorNome": "@{coalesce(first(body('Obter_Colaborador')?['value'])?['AprovadorNome'], variables('var_aprovadorNome'), '')}",
+                          "item/DataInicio": "@{outputs('Normalizar_Data_Inicio')}",
+                          "item/DataFim": "@{outputs('Normalizar_Data_Fim')}",
+                          "item/DiasUteis": "@{outputs('Calcular_Dias_Uteis')}",
+                          "item/Observacoes": "@{concat('Criada pelo colaborador via bot em ', utcNow(), '.')}",
+                          "item/Status/Value": "Pendente"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "operationId": "PostItem",
+                          "connectionName": "shared_sharepointonline-1"
+                        }
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-post"
+                      }
+                    },
+                    "Definir_var_errorCode_erro_criar_solicitacao": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_errorCode",
+                        "value": "ERRO_CRIAR_SOLICITACAO"
+                      },
+                      "runAfter": {
+                        "Criar_Solicitacao": [
+                          "Failed",
+                          "TimedOut"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-error-create"
+                      }
+                    },
+                    "Definir_var_message_erro_criar_solicitacao": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_message",
+                        "value": "Falha ao criar solicitação de férias."
+                      },
+                      "runAfter": {
+                        "Definir_var_errorCode_erro_criar_solicitacao": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-message-create"
+                      }
+                    },
+                    "Definir_var_solicitacaoId_criada": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_solicitacaoId",
+                        "value": "@{string(body('Criar_Solicitacao')?['ID'])}"
+                      },
+                      "runAfter": {
+                        "Criar_Solicitacao": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-solicitacaoid"
+                      }
+                    },
+                    "Definir_var_status_pendente": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_status",
+                        "value": "Pendente"
+                      },
+                      "runAfter": {
+                        "Definir_var_solicitacaoId_criada": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-status-pendente"
+                      }
+                    },
+                    "Obter_Saldo_Atual": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SALDO_ATUAL",
+                          "id": "@{first(body('Obter_Saldo')?['value'])?['ID']}"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "operationId": "GetItem",
+                          "connectionName": "shared_sharepointonline-1"
+                        }
+                      },
+                      "runAfter": {
+                        "Definir_var_status_pendente": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-get-saldo-atual"
+                      }
+                    },
+                    "Definir_var_errorCode_erro_obter_saldo_atual": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_errorCode",
+                        "value": "ERRO_GF_QA_SALDO_ATUAL"
+                      },
+                      "runAfter": {
+                        "Obter_Saldo_Atual": [
+                          "Failed",
+                          "TimedOut"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-error-get-saldo-atual"
+                      }
+                    },
+                    "Definir_var_message_erro_obter_saldo_atual": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_message",
+                        "value": "Falha ao revalidar saldo antes da atualização."
+                      },
+                      "runAfter": {
+                        "Definir_var_errorCode_erro_obter_saldo_atual": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-message-get-saldo-atual"
+                      }
+                    },
+                    "Atualizar_Saldo": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+                          "table": "GF_QA_SALDO_ATUAL",
+                          "id": "@{body('Obter_Saldo_Atual')?['ID']}",
+                          "item/Title": "@{coalesce(body('Obter_Saldo_Atual')?['Title'], concat('Saldo Atual - ', outputs('Sanitizar_Email')))}",
+                          "item/SaldoDisponivel": "@{sub(int(coalesce(body('Obter_Saldo_Atual')?['SaldoDisponivel'], 0)), outputs('Calcular_Dias_Comprometidos'))}",
+                          "item/DiasAgendados": "@{add(int(coalesce(body('Obter_Saldo_Atual')?['DiasAgendados'], 0)), outputs('Calcular_Dias_Comprometidos'))}"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                          "operationId": "PatchItem",
+                          "connectionName": "shared_sharepointonline-1"
+                        }
+                      },
+                      "runAfter": {
+                        "Obter_Saldo_Atual": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-update-saldo"
+                      }
+                    },
+                    "Definir_var_success_sucesso": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_success",
+                        "value": true
+                      },
+                      "runAfter": {
+                        "Atualizar_Saldo": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-success"
+                      }
+                    },
+                    "Definir_var_message_sucesso": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_message",
+                        "value": "Solicitação criada com sucesso e enviada para aprovação."
+                      },
+                      "runAfter": {
+                        "Definir_var_success_sucesso": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-message-success"
+                      }
+                    },
+                    "Definir_var_errorCode_erro_atualizar_saldo": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_errorCode",
+                        "value": "ERRO_ATUALIZAR_SALDO"
+                      },
+                      "runAfter": {
+                        "Atualizar_Saldo": [
+                          "Failed",
+                          "TimedOut"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-error-update-saldo"
+                      }
+                    },
+                    "Definir_var_message_erro_atualizar_saldo": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "var_message",
+                        "value": "Solicitação criada, mas houve falha ao atualizar saldo."
+                      },
+                      "runAfter": {
+                        "Definir_var_errorCode_erro_atualizar_saldo": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "criar-solicitacao-set-message-update-saldo"
+                      }
+                    }
+                  },
+                  "else": {
+                    "actions": {
+                      "Definir_var_errorCode_validacao_negada": {
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "var_errorCode",
+                          "value": "VALIDACAO_NEGADA"
+                        },
+                        "metadata": {
+                          "operationMetadataId": "criar-solicitacao-set-error-validacao"
+                        }
+                      },
+                      "Definir_var_message_validacao_negada": {
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "var_message",
+                          "value": "Não foi possível criar a solicitação. Verifique saldo, conflito de datas e regras de férias (diasVenda entre 0 e 10; total diasSolicitados + diasVenda <= 30)."
+                        },
+                        "runAfter": {
+                          "Definir_var_errorCode_validacao_negada": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "criar-solicitacao-set-message-validacao"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Obter_Solicitacoes_Conflitantes": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "criar-solicitacao-condition"
+                  }
+                }
+              },
+              "else": {
+                "actions": {
+                  "Definir_var_errorCode_saldo_nao_encontrado": {
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "var_errorCode",
+                      "value": "SALDO_NAO_ENCONTRADO"
+                    },
+                    "metadata": {
+                      "operationMetadataId": "criar-solicitacao-set-error-no-saldo"
+                    }
+                  },
+                  "Definir_var_message_saldo_nao_encontrado": {
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "var_message",
+                      "value": "Registro de saldo não encontrado para o email informado. Contacte o RH."
+                    },
+                    "runAfter": {
+                      "Definir_var_errorCode_saldo_nao_encontrado": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "criar-solicitacao-set-message-no-saldo"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "Obter_Saldo": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "criar-solicitacao-condition-saldo-existe"
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Definir_var_errorCode_colaborador_nao_encontrado": {
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "var_errorCode",
+                  "value": "COLABORADOR_NAO_ENCONTRADO"
+                },
+                "metadata": {
+                  "operationMetadataId": "criar-solicitacao-set-error-no-colab"
+                }
+              },
+              "Definir_var_message_colaborador_nao_encontrado": {
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "var_message",
+                  "value": "Colaborador não encontrado na lista de usuários aprovadores. Verifique se o email está cadastrado."
+                },
+                "runAfter": {
+                  "Definir_var_errorCode_colaborador_nao_encontrado": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "criar-solicitacao-set-message-no-colab"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Obter_Colaborador": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-condition-colab-existe"
+          }
+        },
+        "Responder_ao_agente": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "success",
+                  "x-ms-dynamically-added": true,
+                  "type": "boolean"
+                },
+                "errorcode": {
+                  "title": "errorCode",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "message": {
+                  "title": "message",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "solicitacaoid": {
+                  "title": "solicitacaoId",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "status": {
+                  "title": "status",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "datainicio": {
+                  "title": "dataInicio",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "datafim": {
+                  "title": "dataFim",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                },
+                "diassolicitados": {
+                  "title": "diasSolicitados",
+                  "x-ms-dynamically-added": true,
+                  "type": "number"
+                },
+                "aprovadornome": {
+                  "title": "aprovadorNome",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "success": "@variables('var_success')",
+              "errorcode": "@variables('var_errorCode')",
+              "message": "@variables('var_message')",
+              "solicitacaoid": "@variables('var_solicitacaoId')",
+              "status": "@variables('var_status')",
+              "datainicio": "@variables('var_dataInicio')",
+              "datafim": "@variables('var_dataFim')",
+              "diassolicitados": "@variables('var_diasSolicitados')",
+              "aprovadornome": "@variables('var_aprovadorNome')"
+            }
+          },
+          "runAfter": {
+            "Definir_var_message_formato_data_invalido": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "Definir_var_message_data_invalida": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "Definir_var_message_erro_obter_colaborador": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "Condition_Colaborador_Existe": [
+              "Succeeded",
+              "Skipped"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "criar-solicitacao-respond-agent"
+          }
+        }
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "email",
+                  "title": "email",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "dataInicio",
+                  "title": "dataInicio",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "description": "dataFim",
+                  "title": "dataFim",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "573b3ac6-b034-4479-b682-4bc574536789"
+          }
+        }
+      },
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

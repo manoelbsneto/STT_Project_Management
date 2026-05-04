@@ -1,0 +1,10 @@
+<botcomponent schemaname="gstf_GestaoFriasMVPQA.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Recomeçar</name>
+  <parentbotid>
+    <schemaname>gstf_GestaoFriasMVPQA</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

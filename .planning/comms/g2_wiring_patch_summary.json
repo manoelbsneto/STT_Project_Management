@@ -1,0 +1,14 @@
+﻿[
+    {
+        "DisplayName":  "PMO_PA_ProcessarRespostaCheckIn",
+        "FlowName":  "6c8ae320-46e0-42da-bc05-5d5a9622be03",
+        "Request":  ".planning\\comms\\processsimple_patch_request_6c8ae320-46e0-42da-bc05-5d5a9622be03.json",
+        "Result":  ".planning\\comms\\processsimple_patch_result_6c8ae320-46e0-42da-bc05-5d5a9622be03.json"
+    },
+    {
+        "DisplayName":  "PMO_PA_AlertaProjetoVermelho",
+        "FlowName":  "5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd",
+        "Request":  ".planning\\comms\\processsimple_patch_request_5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd.json",
+        "Result":  ".planning\\comms\\processsimple_patch_result_5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd.json"
+    }
+]

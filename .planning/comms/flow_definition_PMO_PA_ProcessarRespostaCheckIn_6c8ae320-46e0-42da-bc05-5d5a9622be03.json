@@ -1,0 +1,70 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        },
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           }
+                   },
+    "triggers":  {
+                     "manual":  {
+                                    "splitOn":  "@triggerBody()[\u0027rows\u0027]",
+                                    "metadata":  {
+                                                     "operationMetadataId":  "978c3250-c081-4647-8397-952479c6e612",
+                                                     "flowSystemMetadata":  {
+                                                                                "swaggerOperationId":  "TeamsCardTrigger",
+                                                                                "taskModuleWidth":  null,
+                                                                                "taskModuleHeight":  null,
+                                                                                "inputsAdaptiveCard":  "{}{}"
+                                                                            }
+                                                 },
+                                    "type":  "Request",
+                                    "kind":  "ApiConnection",
+                                    "inputs":  {
+                                                   "schema":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+
+                                                                                 },
+                                                                  "required":  [
+
+                                                                               ]
+                                                              },
+                                                   "host":  {
+                                                                "connection":  {
+                                                                                   "name":  "@parameters(\u0027$connections\u0027)[\u0027shared_teams\u0027][\u0027connectionId\u0027]"
+                                                                               }
+                                                            },
+                                                   "operationId":  "TeamsCardTrigger",
+                                                   "parameters":  {
+                                                                      "inputsAdaptiveCard":  "{}{}",
+                                                                      "CardTypeId":  "CheckIn"
+                                                                  }
+                                               }
+                                }
+                 },
+    "actions":  {
+                    "Compor":  {
+                                   "runAfter":  {
+
+                                                },
+                                   "metadata":  {
+                                                    "operationMetadataId":  "387b31ec-c0d3-4f5c-86bb-c601d0a036d5"
+                                                },
+                                   "type":  "Compose",
+                                   "inputs":  "Check-in response processed"
+                               }
+                },
+    "outputs":  {
+
+                }
+}

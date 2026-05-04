@@ -1,0 +1,387 @@
+﻿{
+    "name":  "f67daf7b-53a7-4d35-9275-7c8c42a35896",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/f67daf7b-53a7-4d35-9275-7c8c42a35896",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_RegistrarDecisaoBoard",
+                       "userType":  "Owner",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "When_Decisao_Created":  {
+                                                                                        "recurrence":  {
+                                                                                                           "frequency":  "Minute",
+                                                                                                           "interval":  1
+                                                                                                       },
+                                                                                        "evaluatedRecurrence":  {
+                                                                                                                    "frequency":  "Minute",
+                                                                                                                    "interval":  1
+                                                                                                                },
+                                                                                        "splitOn":  "@triggerOutputs()?[\u0027body/value\u0027]",
+                                                                                        "type":  "OpenApiConnection",
+                                                                                        "inputs":  {
+                                                                                                       "parameters":  {
+                                                                                                                          "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                          "table":  "Decisoes do Board"
+                                                                                                                      },
+                                                                                                       "host":  {
+                                                                                                                    "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                    "connectionName":  "shared_sharepointonline",
+                                                                                                                    "operationId":  "GetOnNewItems"
+                                                                                                                },
+                                                                                                       "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                   }
+                                                                                    }
+                                                       },
+                                          "actions":  {
+                                                          "Get_Decisao_Detalhes":  {
+                                                                                       "runAfter":  {
+
+                                                                                                    },
+                                                                                       "type":  "OpenApiConnection",
+                                                                                       "inputs":  {
+                                                                                                      "parameters":  {
+                                                                                                                         "table":  "Decisoes do Board",
+                                                                                                                         "id":  "@triggerBody()?[\u0027ID\u0027]",
+                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                                     },
+                                                                                                      "host":  {
+                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                   "connectionName":  "shared_sharepointonline",
+                                                                                                                   "operationId":  "GetItem"
+                                                                                                               },
+                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                  }
+                                                                                   },
+                                                          "Post_Decision_Card_Wait_Response":  {
+                                                                                                   "runAfter":  {
+                                                                                                                    "Get_Decisao_Detalhes":  [
+                                                                                                                                                 "Succeeded"
+                                                                                                                                             ]
+                                                                                                                },
+                                                                                                   "limit":  {
+                                                                                                                 "timeout":  "P28D"
+                                                                                                             },
+                                                                                                   "type":  "OpenApiConnectionWebhook",
+                                                                                                   "inputs":  {
+                                                                                                                  "parameters":  {
+                                                                                                                                     "body/body/recipient/groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994",
+                                                                                                                                     "body/body/recipient/channelId":  "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                                                                                                                                     "poster":  "Flow bot",
+                                                                                                                                     "body/body/updateMessage":  "Resposta registrada no Hub PMO.",
+                                                                                                                                     "body/body/messageBody":  "@replace(replace(replace(replace(replace(replace(\u0027{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"ColumnSet\",\"columns\":[{\"type\":\"Column\",\"width\":\"auto\",\"items\":[{\"type\":\"Image\",\"url\":\"https://img.icons8.com/fluency/48/approval.png\",\"size\":\"Small\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"ðŸ“‹ DecisÃ£o Pendente\",\"weight\":\"Bolder\",\"size\":\"Medium\"},{\"type\":\"TextBlock\",\"text\":\"Uma decisÃ£o requer sua aprovaÃ§Ã£o\",\"isSubtle\":true,\"spacing\":\"None\"}]}]},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"Decision ID:\",\"value\":\"${DecisionID}\"},{\"title\":\"Projeto:\",\"value\":\"${ProjectName}\"},{\"title\":\"Solicitante:\",\"value\":\"${Solicitante}\"},{\"title\":\"Prazo:\",\"value\":\"${Prazo}\"},{\"title\":\"Impacto:\",\"value\":\"${Impacto}\"}]},{\"type\":\"TextBlock\",\"text\":\"ðŸ“ **DescriÃ§Ã£o:**\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${Descricao}\",\"wrap\":true},{\"type\":\"Input.Text\",\"id\":\"justificativa\",\"label\":\"ðŸ’¬ Justificativa (obrigatÃ³ria para rejeiÃ§Ã£o/adiamento)\",\"isMultiline\":true,\"placeholder\":\"Adicione sua justificativa...\"}],\"actions\":[{\"type\":\"Action.Submit\",\"title\":\"âœ… Aprovar\",\"style\":\"positive\",\"data\":{\"action\":\"approveDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Aprovada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"âŒ Rejeitar\",\"style\":\"destructive\",\"data\":{\"action\":\"rejectDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Rejeitada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"â¸ï¸ Adiar\",\"data\":{\"action\":\"deferDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Adiada\",\"cardVersion\":\"1.0\"}}]}\u0027, \u0027${DecisionID}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027DecisionID\u0027], triggerBody()?[\u0027DecisionID\u0027], \u0027-\u0027)), \u0027${ProjectName}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ProjectID\u0027], triggerBody()?[\u0027ProjectID\u0027], \u0027-\u0027)), \u0027${Solicitante}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Solicitante\u0027]?[\u0027DisplayName\u0027], body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Solicitante\u0027]?[\u0027Email\u0027], \u0027-\u0027)), \u0027${Prazo}\u0027, coalesce(string(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Prazo\u0027]), \u0027-\u0027)), \u0027${Impacto}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Impacto\u0027]?[\u0027Value\u0027], body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Impacto\u0027], \u0027-\u0027)), \u0027${Descricao}\u0027, coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Descricao\u0027], \u0027-\u0027))",
+                                                                                                                                     "location":  "Channel"
+                                                                                                                                 },
+                                                                                                                  "host":  {
+                                                                                                                               "apiId":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                                                               "connectionName":  "shared_teams",
+                                                                                                                               "operationId":  "PostCardAndWaitForResponse"
+                                                                                                                           },
+                                                                                                                  "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                              }
+                                                                                               },
+                                                          "Normalize_Decision_Status":  {
+                                                                                            "runAfter":  {
+                                                                                                             "Post_Decision_Card_Wait_Response":  [
+                                                                                                                                                      "Succeeded"
+                                                                                                                                                  ]
+                                                                                                         },
+                                                                                            "type":  "Compose",
+                                                                                            "inputs":  "@coalesce(body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027data\u0027]?[\u0027resposta\u0027], body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027resposta\u0027], \u0027Adiada\u0027)"
+                                                                                        },
+                                                          "Normalize_Justificativa":  {
+                                                                                          "runAfter":  {
+                                                                                                           "Normalize_Decision_Status":  [
+                                                                                                                                             "Succeeded"
+                                                                                                                                         ]
+                                                                                                       },
+                                                                                          "type":  "Compose",
+                                                                                          "inputs":  "@coalesce(body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027data\u0027]?[\u0027justificativa\u0027], body(\u0027Post_Decision_Card_Wait_Response\u0027)?[\u0027justificativa\u0027], \u0027\u0027)"
+                                                                                      },
+                                                          "Update_Decisao_Board":  {
+                                                                                       "runAfter":  {
+                                                                                                        "Normalize_Justificativa":  [
+                                                                                                                                        "Succeeded"
+                                                                                                                                    ]
+                                                                                                    },
+                                                                                       "type":  "OpenApiConnection",
+                                                                                       "inputs":  {
+                                                                                                      "parameters":  {
+                                                                                                                         "item/CardVersion":  "1.0",
+                                                                                                                         "item/DecisionID":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027DecisionID\u0027]",
+                                                                                                                         "item/Title":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Title\u0027]",
+                                                                                                                         "table":  "Decisoes do Board",
+                                                                                                                         "id":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ID\u0027]",
+                                                                                                                         "item/ResponseSource/Value":  "AdaptiveCard",
+                                                                                                                         "item/DataResposta":  "@utcNow()",
+                                                                                                                         "item/ApproverUPN":  "@coalesce(body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Aprovador\u0027]?[\u0027Email\u0027], \u0027\u0027)",
+                                                                                                                         "item/ProjectID":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ProjectID\u0027]",
+                                                                                                                         "item/Justificativa":  "@outputs(\u0027Normalize_Justificativa\u0027)",
+                                                                                                                         "item/Resposta":  "@outputs(\u0027Normalize_Justificativa\u0027)",
+                                                                                                                         "item/StatusDecisao/Value":  "@outputs(\u0027Normalize_Decision_Status\u0027)",
+                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                         "item/Descricao":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027Descricao\u0027]"
+                                                                                                                     },
+                                                                                                      "host":  {
+                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                   "connectionName":  "shared_sharepointonline",
+                                                                                                                   "operationId":  "PatchItem"
+                                                                                                               },
+                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                  }
+                                                                                   }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "state":  "Started",
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                                    "source":  "Embedded",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                    "brandColor":  "",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                },
+                                                    "shared_teams":  {
+                                                                         "connectionName":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                                                         "connectionReferenceLogicalName":  "pmo_teams",
+                                                                         "source":  "Embedded",
+                                                                         "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                         "displayName":  "Microsoft Teams",
+                                                                         "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1800/1.0.1800.4665/teams/icon.png",
+                                                                         "brandColor":  "",
+                                                                         "tier":  "Standard",
+                                                                         "apiName":  "teams",
+                                                                         "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                     }
+                                                },
+                       "createdTime":  "2026-05-03T14:13:02.5625998Z",
+                       "lastModifiedTime":  "2026-05-03T14:13:02.0555298Z",
+                       "flowSuspensionReason":  "None",
+                       "environment":  {
+                                           "name":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+                                           "type":  "Microsoft.ProcessSimple/environments",
+                                           "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+                                       },
+                       "definitionSummary":  {
+                                                 "triggers":  [
+                                                                  {
+                                                                      "type":  "OpenApiConnection",
+                                                                      "swaggerOperationId":  "GetOnNewItems",
+                                                                      "api":  {
+                                                                                  "name":  "shared_sharepointonline",
+                                                                                  "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                  "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                  "properties":  {
+                                                                                                     "displayName":  "SharePoint",
+                                                                                                     "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                     "metadata":  {
+                                                                                                                      "source":  "marketplace",
+                                                                                                                      "brandColor":  "",
+                                                                                                                      "useNewApimVersion":  "true",
+                                                                                                                      "version":  {
+                                                                                                                                      "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                      "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                                                                  }
+                                                                                                                  },
+                                                                                                     "tier":  "Standard",
+                                                                                                     "isCustomApi":  false,
+                                                                                                     "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                                                                 }
+                                                                              }
+                                                                  }
+                                                              ],
+                                                 "actions":  [
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "GetItem",
+                                                                     "api":  {
+                                                                                 "name":  "shared_sharepointonline",
+                                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                 "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                 "properties":  {
+                                                                                                    "displayName":  "SharePoint",
+                                                                                                    "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                    "metadata":  {
+                                                                                                                     "source":  "marketplace",
+                                                                                                                     "brandColor":  "",
+                                                                                                                     "useNewApimVersion":  "true",
+                                                                                                                     "version":  {
+                                                                                                                                     "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                     "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                                                                 }
+                                                                                                                 },
+                                                                                                    "tier":  "Standard",
+                                                                                                    "isCustomApi":  false,
+                                                                                                    "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                                                                }
+                                                                             }
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnectionWebhook",
+                                                                     "swaggerOperationId":  "PostCardAndWaitForResponse",
+                                                                     "api":  {
+                                                                                 "name":  "shared_teams",
+                                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                                 "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                 "properties":  {
+                                                                                                    "displayName":  "Microsoft Teams",
+                                                                                                    "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1800/1.0.1800.4665/teams/icon.png",
+                                                                                                    "metadata":  {
+                                                                                                                     "source":  "marketplace",
+                                                                                                                     "brandColor":  "",
+                                                                                                                     "useNewApimVersion":  "true",
+                                                                                                                     "version":  {
+                                                                                                                                     "previous":  "releases/v1.0.1800\\1.0.1800.4665",
+                                                                                                                                     "current":  "releases/v1.0.1800\\1.0.1800.4665"
+                                                                                                                                 }
+                                                                                                                 },
+                                                                                                    "tier":  "Standard",
+                                                                                                    "isCustomApi":  false,
+                                                                                                    "description":  "Microsoft Teams enables you to get all your content, tools and conversations in the team workspace with Microsoft 365."
+                                                                                                }
+                                                                             }
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "PatchItem",
+                                                                     "api":  {
+                                                                                 "name":  "shared_sharepointonline",
+                                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                 "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                 "properties":  {
+                                                                                                    "displayName":  "SharePoint",
+                                                                                                    "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                    "metadata":  {
+                                                                                                                     "source":  "marketplace",
+                                                                                                                     "brandColor":  "",
+                                                                                                                     "useNewApimVersion":  "true",
+                                                                                                                     "version":  {
+                                                                                                                                     "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                     "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                                                                 }
+                                                                                                                 },
+                                                                                                    "tier":  "Standard",
+                                                                                                    "isCustomApi":  false,
+                                                                                                    "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                                                                }
+                                                                             }
+                                                                 }
+                                                             ]
+                                             },
+                       "creator":  {
+                                       "tenantId":  "7808e005-1489-4374-954b-d3b08f193920",
+                                       "objectId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userType":  "ActiveDirectory"
+                                   },
+                       "provisioningMethod":  "FromDefinition",
+                       "flowFailureAlertSubscribed":  true,
+                       "referencedResources":  [
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                        "list":  "[DYNAMIC_VALUE]"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetOnNewItems"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItem"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItem"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+                                                                           }
+                                                                       ]
+                                                   },
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetOnNewItems"
+                                                                           }
+                                                                       ]
+                                                   },
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                        "fileId":  "@triggerBody()?[\u0027ID\u0027]"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItem"
+                                                                           }
+                                                                       ]
+                                                   },
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                        "fileId":  "@body(\u0027Get_Decisao_Detalhes\u0027)?[\u0027ID\u0027]"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+                                                                           }
+                                                                       ]
+                                                   }
+                                               ],
+                       "isManaged":  false,
+                       "machineDescriptionData":  {
+
+                                                  },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

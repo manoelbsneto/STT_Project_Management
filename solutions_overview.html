@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMO M365 — Soluções Candidatas</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e1a;--card:#111827;--border:#1e293b;--accent:#6366f1;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--surface:#1e1b4b}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:0}
+.hero{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#4338ca 100%);padding:60px 40px;text-align:center;border-bottom:2px solid var(--accent)}
+.hero h1{font-size:2.5rem;font-weight:800;background:linear-gradient(90deg,#818cf8,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{color:#c7d2fe;font-size:1.1rem;max-width:700px;margin:0 auto}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.section-title{font-size:1.8rem;font-weight:700;margin:40px 0 20px;padding-bottom:12px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:12px}
+.grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:40px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(99,102,241,.2)}
+.card-header{padding:24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.card-header h2{font-size:1.4rem;font-weight:700}
+.badge{padding:6px 16px;border-radius:20px;font-weight:700;font-size:.85rem}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3)}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+.badge-blue{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
+.badge-purple{background:rgba(168,85,247,.15);color:#c084fc;border:1px solid rgba(168,85,247,.3)}
+.star{color:#fbbf24;font-size:1.2rem}
+.card-body{padding:24px}
+.card-body p{color:var(--muted);margin-bottom:16px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{background:var(--surface);padding:4px 12px;border-radius:8px;font-size:.8rem;color:#a5b4fc}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}
+th{color:var(--accent);font-weight:600;text-transform:uppercase;font-size:.75rem;letter-spacing:.5px}
+td:first-child{font-weight:600;color:#e2e8f0}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.pros h4{color:#34d399}.cons h4{color:#f87171}
+.pros ul li::marker{color:#34d399}.cons ul li::marker{color:#f87171}
+ul{padding-left:20px}li{margin:4px 0;color:var(--muted);font-size:.9rem}
+.score-bar{display:flex;align-items:center;gap:12px;margin:16px 0}
+.score-fill{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--accent),#a78bfa)}
+.score-num{font-size:1.8rem;font-weight:800;color:#818cf8}
+.matrix{overflow-x:auto;margin:24px 0}
+.matrix table th{background:#1e1b4b}
+.matrix table td{text-align:center}
+.matrix table td:first-child{text-align:left}
+.winner{background:rgba(99,102,241,.1)}
+.mermaid{background:#1e1b4b;border-radius:12px;padding:24px;margin:16px 0;text-align:center}
+.rec-box{background:linear-gradient(135deg,#1e1b4b,#312e81);border:2px solid var(--accent);border-radius:16px;padding:32px;margin:24px 0}
+.rec-box h3{color:#818cf8;font-size:1.3rem;margin-bottom:12px}
+.steps{counter-reset:step}
+.steps li{counter-increment:step;list-style:none;padding:8px 0 8px 40px;position:relative;border-left:2px solid var(--border);margin-left:16px}
+.steps li::before{content:counter(step);position:absolute;left:-14px;top:8px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.flow-example{background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.flow-step{display:flex;align-items:flex-start;gap:12px;margin:8px 0;padding:12px;border-radius:8px;background:rgba(99,102,241,.05)}
+.flow-icon{font-size:1.5rem;min-width:40px;text-align:center}
+.flow-text{font-size:.9rem}
+.flow-text strong{color:#e2e8f0}
+.flow-text span{color:var(--muted)}
+.divider{height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:48px 0}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>🏗️ PMO com Microsoft 365</h1>
+<p>Avaliação arquitetural de 5 soluções candidatas para gestão automatizada de projetos com baixa fricção e alta visibilidade executiva</p>
+</div>
+
+<div class="container">
+
+<div class="section-title">📊 Resumo Executivo</div>
+<div class="rec-box">
+<h3>⭐ Recomendação: Solução D — SharePoint Project Status Hub + Planner Operacional</h3>
+<p>SharePoint Lists como fonte única da verdade executiva. Planner Basic apenas para tarefas. Teams como front-end. Power Automate orquestra. Adaptive Cards como mecanismo primário de entrada/saída. Zero licença adicional no MVP.</p>
+<p style="margin-top:12px;color:#fbbf24;font-weight:600">Resultado: Gerente atualiza projeto em &lt;20 segundos via Adaptive Card. Board vê portfólio em tempo real via tab no Teams.</p>
+</div>
+
+<!-- SOLUTION A -->
+<div class="divider"></div>
+<div class="section-title">🅰️ Solução A</div>
+<div class="card">
+<div class="card-header">
+<h2>SharePoint Lists + Teams Tabs + PA + Adaptive Cards</h2>
+<span class="badge badge-yellow">7.5/10</span>
+</div>
+<div class="card-body">
+<p>SharePoint Lists como base oficial dos projetos. Teams como front-end. Power Automate envia cards diários e atualiza listas. Planner é opcional/ausente.</p>
+<div class="tag-row">
+<span class="tag">SharePoint Lists</span><span class="tag">Teams</span><span class="tag">Power Automate</span><span class="tag">Adaptive Cards</span>
+</div>
+<div class="mermaid">
+flowchart LR
+  PA[Power Automate]-->|Card diário|Teams[Teams Canal]
+  Teams-->|Resposta|PA
+  PA-->|Atualiza|SPL[SharePoint Lists]
+  SPL-->|Tab embeddada|Teams
+</div>
+<div class="pros-cons">
+<div class="pros"><h4>✅ Prós</h4><ul><li>Simples e rápido de implementar</li><li>Zero licença adicional</li><li>Familiar para usuários M365</li><li>Card direto no Teams, sem sair do contexto</li></ul></div>
+<div class="cons"><h4>❌ Contras</h4><ul><li>Sem camada de tarefas/execução</li><li>Sem inteligência conversacional</li><li>Cards limitados em formatação</li></ul></div>
+</div>
+<table>
+<tr><th>Aspecto</th><th>Detalhe</th></tr>
+<tr><td>Custo</td><td>Zero incremental (M365 standard)</td></tr>
+<tr><td>Complexidade</td><td>Baixa (3-5 fluxos PA)</td></tr>
+<tr><td>Esforço</td><td>2-3 semanas</td></tr>
+<tr><td>Licenças</td><td>M365 E3/E5 standard. PA standard connectors.</td></tr>
+<tr><td>Quando usar</td><td>MVP rápido sem necessidade de gestão de tarefas</td></tr>
+</table>
+</div>
+</div>
+
+<!-- SOLUTION B -->
+<div class="divider"></div>
+<div class="section-title">🅱️ Solução B</div>
+<div class="card">
+<div class="card-header">
+<h2>Copilot Studio PMO Agent + SharePoint + PA + Teams</h2>
+<span class="badge badge-blue">8.0/10 (Fase 2)</span>
+</div>
+<div class="card-body">
+<p>Agente PMO no Copilot Studio recebe mensagens em linguagem natural, interpreta intenção, atualiza SharePoint Lists e publica resumos no Teams.</p>
+<div class="tag-row">
+<span class="tag">Copilot Studio</span><span class="tag">SharePoint Lists</span><span class="tag">Power Automate</span><span class="tag">Teams</span>
+</div>
+<div class="mermaid">
+flowchart LR
+  User[Usuário Teams]-->|Msg natural|CS[Copilot Studio]
+  CS-->|Extrai entidades|PA[Power Automate]
+  PA-->|Grava|SPL[SharePoint Lists]
+  CS-->|Consulta|SPL
+  CS-->|Responde|User
+</div>
+<div class="flow-example">
+<h4 style="color:#818cf8;margin-bottom:12px">💬 Exemplo de Interação</h4>
+<div class="flow-step"><span class="flow-icon">👤</span><div class="flow-text"><strong>"Atualiza o projeto Mobile para amarelo. Risco é atraso na loja."</strong></div></div>
+<div class="flow-step"><span class="flow-icon">🤖</span><div class="flow-text"><span>Vou atualizar: Mobile → 🟡 Amarelo. Risco: atraso na loja. <strong>Confirma?</strong></span></div></div>
+<div class="flow-step"><span class="flow-icon">👤</span><div class="flow-text"><strong>"Sim"</strong></div></div>
+<div class="flow-step"><span class="flow-icon">✅</span><div class="flow-text"><span>Atualizado! Alerta enviado ao canal de riscos.</span></div></div>
+</div>
+<div class="pros-cons">
+<div class="pros"><h4>✅ Prós</h4><ul><li>UX incrível — linguagem natural</li><li>Reduz fricção ao mínimo absoluto</li><li>Consulta e atualização no mesmo chat</li></ul></div>
+<div class="cons"><h4>❌ Contras</h4><ul><li>Requer M365 Copilot ($30/user/mês) ou Copilot Credits</li><li>Risco de interpretação errada do NLU</li><li>Setup mais complexo (topics, entities)</li><li>Não recomendada como MVP</li></ul></div>
+</div>
+</div>
+</div>
+
+<!-- SOLUTION C -->
+<div class="divider"></div>
+<div class="section-title">🅲 Solução C</div>
+<div class="card">
+<div class="card-header">
+<h2>Planner Padrão como Camada Principal + Teams + PA</h2>
+<span class="badge badge-red">5.5/10</span>
+</div>
+<div class="card-body">
+<p>Cada projeto/área tem um Planner Basic. Buckets = fases. Labels = RAG. Teams exibe Planner como aba. Power Automate tenta consolidar.</p>
+<div class="tag-row">
+<span class="tag">Planner Basic</span><span class="tag">Teams</span><span class="tag">Power Automate</span><span class="tag">SharePoint (consolidação)</span>
+</div>
+<div class="pros-cons">
+<div class="pros"><h4>✅ Prós</h4><ul><li>Visual kanban familiar</li><li>Drag-and-drop nativo</li><li>Zero licença extra</li></ul></div>
+<div class="cons"><h4>❌ Contras</h4><ul><li>Planner NÃO é fonte da verdade para status executivo</li><li>Fragmentação: 1 plano por projeto = N planos isolados</li><li>Sem campo "Status RAG" nativo</li><li>Consolidação via Graph API é complexa</li><li>Sem histórico de status</li><li>Labels limitados a 25 por plano</li></ul></div>
+</div>
+<table>
+<tr><td>Esforço</td><td>4-6 semanas (consolidação é o gargalo)</td></tr>
+<tr><td>Recomendação</td><td style="color:#f87171;font-weight:600">NÃO recomendada como base de portfólio. Planner é para tarefas, não para status executivo.</td></tr>
+</table>
+</div>
+</div>
+
+<!-- SOLUTION D -->
+<div class="divider"></div>
+<div class="section-title">🅳 Solução D ⭐ RECOMENDADA</div>
+<div class="card" style="border-color:var(--accent);box-shadow:0 0 30px rgba(99,102,241,.15)">
+<div class="card-header" style="background:linear-gradient(135deg,#1e1b4b,#312e81)">
+<h2>⭐ SharePoint Project Status Hub + Planner Operacional</h2>
+<span class="badge badge-green">9.0/10</span>
+</div>
+<div class="card-body">
+<p>SharePoint Lists são a <strong>fonte oficial do status executivo</strong>. Planner Basic é usado apenas para execução/tarefas dentro de cada equipe. Teams é a interface. Power Automate orquestra tudo.</p>
+<div class="tag-row">
+<span class="tag">SharePoint Lists ×4</span><span class="tag">Teams Tabs</span><span class="tag">Adaptive Cards ×3</span><span class="tag">Power Automate ×8</span><span class="tag">Planner Basic</span><span class="tag">Forms (fallback)</span>
+</div>
+
+<div class="mermaid">
+flowchart TD
+  subgraph INPUT["🎯 Entrada — menos de 30s"]
+    AC["📋 Adaptive Card diário"]
+    FORM["📝 Forms fallback"]
+  end
+  subgraph ORCH["⚙️ Power Automate"]
+    PA["Orquestração"]
+  end
+  subgraph DATA["💾 SharePoint Lists"]
+    P["📊 Projetos"]
+    S["📅 Status Diário"]
+    R["⚠️ Riscos"]
+    D["📋 Decisões"]
+  end
+  subgraph EXEC["🔧 Planner Basic"]
+    PL["Tarefas por equipe"]
+  end
+  subgraph VIS["👁️ Visibilidade"]
+    T1["Tab: Portfólio"]
+    T2["Tab: Críticos"]
+    SP["SharePoint Page"]
+  end
+  AC-->PA
+  FORM-->PA
+  PA-->P & S & R & D
+  PL-.->|sync opcional|PA
+  P-->T1 & SP
+  R-->T2
+</div>
+
+<h4 style="color:#818cf8;margin:20px 0 12px">📐 Separação Clara de Dados</h4>
+<table>
+<tr><th>Dado</th><th>Onde fica</th><th>Por quê</th></tr>
+<tr><td>Status RAG, resumo, riscos, decisões</td><td style="color:#34d399">SharePoint Lists</td><td>Dado executivo — precisa de histórico e auditoria</td></tr>
+<tr><td>Tarefas, sprints, assignments</td><td style="color:#fbbf24">Planner Basic</td><td>Operacional — kanban visual para equipes</td></tr>
+</table>
+
+<h4 style="color:#818cf8;margin:20px 0 12px">🚀 Exemplo Prático — Dia Típico com Solução D</h4>
+<div class="flow-example">
+<div class="flow-step"><span class="flow-icon">⏰</span><div class="flow-text"><strong>09:00 — Power Automate dispara</strong><br><span>Busca todos os projetos ativos na lista "Projetos". Envia um Adaptive Card para cada PM no Teams.</span></div></div>
+<div class="flow-step"><span class="flow-icon">👤</span><div class="flow-text"><strong>09:03 — PM João recebe card do projeto "Mobile App"</strong><br><span>Seleciona 🟡 Amarelo, digita "Sprint atrasada 2 dias por bug crítico", marca risco "Atraso na loja". Clica Enviar. Total: 18 segundos.</span></div></div>
+<div class="flow-step"><span class="flow-icon">⚙️</span><div class="flow-text"><strong>09:03 — Power Automate processa</strong><br><span>Cria item na lista "Status Diário". Atualiza StatusRAG e UltimaAtualizacao na lista "Projetos". Cria item na lista "Riscos".</span></div></div>
+<div class="flow-step"><span class="flow-icon">📊</span><div class="flow-text"><strong>10:00 — Alerta automático</strong><br><span>PA verifica projetos sem update há 24h. Envia lembrete aos PMs que não responderam.</span></div></div>
+<div class="flow-step"><span class="flow-icon">👔</span><div class="flow-text"><strong>10:30 — Diretor abre Teams</strong><br><span>Clica na tab "Portfólio Executivo" → vê SharePoint List com Board View agrupada por StatusRAG. 3 verdes, 2 amarelos, 1 vermelho. Clica no vermelho, vê detalhes.</span></div></div>
+<div class="flow-step"><span class="flow-icon">📋</span><div class="flow-text"><strong>17:00 — Resumo diário automático</strong><br><span>PA posta Adaptive Card consolidado no canal "Board Status": 6 projetos ativos, distribuição RAG, 1 decisão pendente, 0 sem update.</span></div></div>
+</div>
+
+<div class="pros-cons">
+<div class="pros"><h4>✅ Prós</h4><ul><li>Separação clara de concerns (status ≠ tarefas)</li><li>Governança forte (versionamento, audit, permissões)</li><li>Escalável (indexação, views, archiving)</li><li>Zero licença adicional</li><li>Histórico completo de status</li><li>Views ricas (Board, Gallery, Calendar)</li></ul></div>
+<div class="cons"><h4>❌ Contras</h4><ul><li>Setup inicial requer 4 listas + 8 fluxos</li><li>Sem linguagem natural no MVP (vem na Fase 2)</li></ul></div>
+</div>
+<table>
+<tr><td>Custo</td><td style="color:#34d399;font-weight:600">Zero incremental</td></tr>
+<tr><td>Complexidade</td><td>Média (4 listas SP, 8-10 fluxos PA, 3+ cards)</td></tr>
+<tr><td>Esforço</td><td>3-4 semanas para MVP</td></tr>
+<tr><td>Licenças</td><td>M365 E3/E5 standard — todos connectors são standard</td></tr>
+</table>
+</div>
+</div>
+
+<!-- SOLUTION E -->
+<div class="divider"></div>
+<div class="section-title">🅴 Solução E</div>
+<div class="card">
+<div class="card-header">
+<h2>Teams-native PMO Cockpit com Cards e SharePoint Views</h2>
+<span class="badge badge-purple">7.0 solo / 9.5 com D</span>
+</div>
+<div class="card-body">
+<p>Experiência imersiva dentro do Teams com canais temáticos, tabs otimizadas, cards diários e de exceção. <strong>Melhor quando combinada com Solução D.</strong></p>
+<div class="tag-row">
+<span class="tag">Teams Canais</span><span class="tag">Teams Tabs</span><span class="tag">Adaptive Cards</span><span class="tag">SharePoint Views</span><span class="tag">Planner</span>
+</div>
+<h4 style="color:#818cf8;margin:16px 0 8px">📺 Estrutura de Canais</h4>
+<table>
+<tr><th>Canal</th><th>Propósito</th><th>Frequência</th><th>Audiência</th></tr>
+<tr><td>📊 Board Status</td><td>Resumo diário consolidado</td><td>Diário 17h</td><td>Board, PMO</td></tr>
+<tr><td>🔴 Projetos Críticos</td><td>Alertas de projetos vermelhos</td><td>Event-driven</td><td>Board, Sponsors</td></tr>
+<tr><td>⚠️ Riscos e Bloqueios</td><td>Novos riscos registrados</td><td>Event-driven</td><td>PMO, Leads</td></tr>
+<tr><td>📋 Decisões Pendentes</td><td>Cards de aprovação</td><td>Event-driven</td><td>Board</td></tr>
+<tr><td>💬 Atualizações</td><td>PMs postam updates</td><td>Contínuo</td><td>PMs</td></tr>
+</table>
+<div class="pros-cons">
+<div class="pros"><h4>✅ Prós</h4><ul><li>Tudo em um lugar</li><li>Canais organizam informação por audiência</li><li>Cards de exceção evitam ruído</li></ul></div>
+<div class="cons"><h4>❌ Contras</h4><ul><li>Risco de notification fatigue</li><li>Canais podem ser ignorados se mal gerenciados</li><li>Não substitui base de dados (precisa de D)</li></ul></div>
+</div>
+</div>
+</div>
+
+<!-- MATRIX -->
+<div class="divider"></div>
+<div class="section-title">🏆 Matriz de Decisão Ponderada</div>
+<div class="matrix">
+<table>
+<tr><th>Critério (Peso)</th><th>A (7.5)</th><th>B (8.0)</th><th>C (5.5)</th><th class="winner">D ⭐ (9.0)</th><th>E (7.0)</th></tr>
+<tr><td>Facilidade usuário (25%)</td><td>4</td><td>5</td><td>3</td><td class="winner">4</td><td>4</td></tr>
+<tr><td>Baixo custo (20%)</td><td>5</td><td>3</td><td>5</td><td class="winner">5</td><td>5</td></tr>
+<tr><td>Visibilidade executiva (20%)</td><td>4</td><td>4</td><td>2</td><td class="winner">5</td><td>4</td></tr>
+<tr><td>Baixa manutenção (15%)</td><td>4</td><td>3</td><td>3</td><td class="winner">4</td><td>3</td></tr>
+<tr><td>Integração M365 (10%)</td><td>4</td><td>5</td><td>4</td><td class="winner">5</td><td>5</td></tr>
+<tr><td>Escalabilidade (10%)</td><td>4</td><td>4</td><td>2</td><td class="winner">5</td><td>3</td></tr>
+<tr style="font-weight:800;font-size:1.1rem"><td>NOTA FINAL</td><td>4.15</td><td>3.95</td><td>3.10</td><td class="winner" style="color:#818cf8">4.60</td><td>3.95</td></tr>
+</table>
+</div>
+
+<div class="section-title">🗺️ Roadmap Resumido</div>
+<div class="card"><div class="card-body">
+<table>
+<tr><th>Fase</th><th>O quê</th><th>Prazo</th></tr>
+<tr><td style="color:#34d399">Fase 0 — Design</td><td>Modelo de dados, governança, naming convention, piloto</td><td>Semana 0-1</td></tr>
+<tr><td style="color:#818cf8">Fase 1 — MVP (D+E)</td><td>4 listas SP, Teams canais/tabs, 3 cards, 5 fluxos PA, SP Page</td><td>Semana 1-4</td></tr>
+<tr><td style="color:#c084fc">Fase 2 — Copilot</td><td>Agente PMO, linguagem natural, resumo diário automático</td><td>Semana 5-8</td></tr>
+<tr><td style="color:#f472b6">Fase 3 — Voz</td><td>Speech-to-text, validação, atualização por áudio</td><td>Semana 9-12</td></tr>
+<tr><td style="color:#fbbf24">Fase 4 — Escala</td><td>Templates por área, provisionamento, métricas de adoção</td><td>Semana 13+</td></tr>
+</table>
+</div></div>
+
+</div>
+
+<script>mermaid.initialize({theme:'dark',themeVariables:{primaryColor:'#6366f1',primaryTextColor:'#e2e8f0',lineColor:'#818cf8',secondaryColor:'#312e81'}});</script>
+</body>
+</html>

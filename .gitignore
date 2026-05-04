@@ -1,0 +1,24 @@
+# Credentials
+.env
+.planning/.env
+.planning/config.json
+.planning/config.local.json
+*.local.env
+
+# Logs with sensitive data
+*.log
+*.err
+*.out
+
+# Dependencies / local tool caches
+node_modules/
+.kilo/node_modules/
+.venv/
+__pycache__/
+.pytest_cache/
+.cache/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store

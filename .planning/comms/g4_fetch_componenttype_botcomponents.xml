@@ -1,0 +1,14 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="content" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.action.PMO_PA_EscalarRiscoCritico" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.action.PMO_PA_RegistrarDecisaoBoard" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.gpt.default" />
+    </filter>
+  </entity>
+</fetch>

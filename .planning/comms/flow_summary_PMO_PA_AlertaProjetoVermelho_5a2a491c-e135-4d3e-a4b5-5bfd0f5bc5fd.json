@@ -1,0 +1,19 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "OpenApiConnection",
+                         "swaggerOperationId":  "GetOnUpdatedItems",
+                         "metadata":  {
+                                          "operationMetadataId":  "8a9ed8fb-5c2c-42d2-8a2e-0a520dadc0b4"
+                                      }
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "Compose",
+                        "metadata":  {
+                                         "operationMetadataId":  "b0f6c131-c570-4bac-b55d-4efb7c1d9193"
+                                     }
+                    }
+                ]
+}

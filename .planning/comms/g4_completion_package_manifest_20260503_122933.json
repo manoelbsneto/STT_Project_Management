@@ -1,0 +1,33 @@
+﻿{
+    "timestamp":  "2026-05-03T12:30:57.5816138-03:00",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "botId":  "0c4a9729-d55d-483c-8ec3-db9369583155",
+    "botSchema":  "pmo_AssistentePMO",
+    "solutionUniqueName":  "PMO_G4_Completion",
+    "packageRoot":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_completion_package_20260503_122933",
+    "packageZip":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\PMO_G4_Completion_20260503_122933.zip",
+    "flowEvidence":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\g4_flow_solutionaware_workflowids_20260503_122933.json",
+    "flows":  [
+                  {
+                      "DisplayName":  "PMO_PA_EscalarRiscoCritico",
+                      "FlowName":  "cd0467a2-c989-474e-a629-28c704913489",
+                      "Schema":  "pmo_AssistentePMO.action.PMO_PA_EscalarRiscoCritico",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "e5381002-0547-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+                  },
+                  {
+                      "DisplayName":  "PMO_PA_RegistrarDecisaoBoard",
+                      "FlowName":  "f67daf7b-53a7-4d35-9275-7c8c42a35896",
+                      "Schema":  "pmo_AssistentePMO.action.PMO_PA_RegistrarDecisaoBoard",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "b308fe0b-0547-f111-bec7-7ced8d955c6c",
+                      "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+                  }
+              ],
+    "instructionsConfigured":  true,
+    "webBrowsingDisabled":  true,
+    "modelKnowledgeDisabled":  true
+}

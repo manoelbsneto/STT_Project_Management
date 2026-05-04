@@ -1,0 +1,52 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarBloqueio
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - registrar bloqueio
+      - projeto bloqueado
+      - bloqueio em projeto
+      - novo bloqueio
+
+  actions:
+    - kind: Question
+      id: ask_block_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto está bloqueado?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_block_desc
+      variable: Topic.Descricao
+      prompt: Descreva o bloqueio.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_block_impact
+      variable: Topic.Impacto
+      prompt: Qual é o impacto? Baixo, Médio, Alto ou Crítico.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_block
+      variable: Topic.Confirmar
+      prompt: "Bloqueio: {Topic.Descricao} | Impacto: {Topic.Impacto} | Projeto: {Topic.ProjectName}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_block_branch
+      conditions:
+        - id: block_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: block_confirmed_msg
+              activity: Confirmação recebida. A gravação deve criar item em Riscos e Bloqueios com Tipo=Bloqueio.
+
+      elseActions:
+        - kind: SendActivity
+          id: block_cancelled_msg
+          activity: Ok, não registrei o bloqueio.

@@ -1,0 +1,11 @@
+﻿<botcomponent schemaname="pmo_AssistentePMO.topic.PMOSharePointKnowledge">
+  <componenttype>16</componenttype>
+  <description>Knowledge source restricted to the PMO SharePoint site and PMO lists.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>PMO SharePoint Knowledge</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

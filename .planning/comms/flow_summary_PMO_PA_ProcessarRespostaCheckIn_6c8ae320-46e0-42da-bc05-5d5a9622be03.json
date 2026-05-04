@@ -1,0 +1,26 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Request",
+                         "kind":  "ApiConnection",
+                         "swaggerOperationId":  "TeamsCardTrigger",
+                         "metadata":  {
+                                          "operationMetadataId":  "978c3250-c081-4647-8397-952479c6e612",
+                                          "flowSystemMetadata":  {
+                                                                     "swaggerOperationId":  "TeamsCardTrigger",
+                                                                     "taskModuleWidth":  null,
+                                                                     "taskModuleHeight":  null,
+                                                                     "inputsAdaptiveCard":  "{}{}"
+                                                                 }
+                                      }
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "Compose",
+                        "metadata":  {
+                                         "operationMetadataId":  "387b31ec-c0d3-4f5c-86bb-c601d0a036d5"
+                                     }
+                    }
+                ]
+}

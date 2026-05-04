@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Mockups — Cards, Planner, Flows, Reports</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#0a0e1a;color:#e2e8f0;padding:20px;line-height:1.5}
+.section{margin:32px 0}.section h2{font-size:1.4rem;border-bottom:2px solid #6366f1;padding-bottom:8px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:12px;overflow:hidden}
+.card-top{padding:14px 18px;border-bottom:1px solid #1e293b;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center}
+.card-body{padding:18px;font-size:.85rem;color:#94a3b8}
+.card-body strong{color:#e2e8f0}
+.badge{padding:4px 10px;border-radius:12px;font-size:.75rem;font-weight:600}
+.bg{background:rgba(16,185,129,.12);color:#34d399}.by{background:rgba(245,158,11,.12);color:#fbbf24}.br{background:rgba(239,68,68,.12);color:#f87171}.bb{background:rgba(99,102,241,.12);color:#818cf8}
+.field{background:#0f172a;border:1px solid #334155;border-radius:6px;padding:8px 12px;margin:6px 0;font-size:.8rem;color:#64748b}
+.field-label{font-size:.7rem;color:#6366f1;text-transform:uppercase;margin:10px 0 2px;font-weight:600}
+.btn{display:inline-block;padding:8px 16px;border-radius:6px;font-size:.8rem;font-weight:600;margin:4px 4px 4px 0;cursor:pointer}
+.btn-ok{background:#6366f1;color:white}.btn-skip{background:#1e293b;color:#94a3b8}
+.rag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:.75rem;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #1e293b;font-size:.8rem}
+th{color:#6366f1;font-size:.7rem;text-transform:uppercase}
+.bucket{background:#1e1b4b;border-radius:8px;padding:12px;min-height:200px}
+.bucket h4{font-size:.8rem;color:#818cf8;margin-bottom:8px;text-align:center;padding-bottom:6px;border-bottom:1px solid #312e81}
+.task{background:#111827;border:1px solid #1e293b;border-radius:6px;padding:8px 10px;margin:6px 0;font-size:.78rem}
+.task .due{color:#f87171;font-size:.7rem}.task .ok{color:#34d399;font-size:.7rem}
+.ref{background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:16px;margin:20px 0;font-size:.8rem}
+.ref a{color:#818cf8;word-break:break-all}
+.ref li{margin:4px 0}
+.report{background:#111827;border:1px solid #1e293b;border-radius:12px;padding:18px;margin:12px 0}
+.bar{height:12px;border-radius:6px;display:flex;overflow:hidden;margin:8px 0}
+.bar div{height:100%}
+</style></head><body>
+
+<h1 style="text-align:center;font-size:1.8rem;margin:20px 0;background:linear-gradient(90deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent">📋 Mockups Visuais — PMO M365</h1>
+
+<!-- ADAPTIVE CARDS -->
+<div class="section"><h2>🃏 3 Modelos de Adaptive Cards</h2>
+<div class="grid">
+
+<div class="card">
+<div class="card-top">📋 Card 1: Check-in Diário <span class="badge bb">Entrada</span></div>
+<div class="card-body">
+<strong>📊 Check-in Diário — Mobile App</strong><br>
+<span style="font-size:.75rem">Status anterior: 🟢 Verde | Última atualização: ontem 14:30</span>
+<div class="field-label">Status RAG atual *</div>
+<div style="display:flex;gap:6px">
+<span class="rag" style="background:rgba(16,185,129,.15);color:#34d399;border:1px solid #34d399">🟢 Verde</span>
+<span class="rag" style="background:rgba(245,158,11,.15);color:#fbbf24;border:2px solid #fbbf24">🟡 Amarelo</span>
+<span class="rag" style="background:rgba(239,68,68,.1);color:#f87171;border:1px solid #444">🔴 Vermelho</span>
+</div>
+<div class="field-label">Resumo do progresso *</div>
+<div class="field">Sprint atrasada 2 dias por bug no checkout</div>
+<div class="field-label">Risco principal</div>
+<div class="field">Possível atraso na publicação da loja</div>
+<div class="field-label">Próxima ação *</div>
+<div class="field">Hotfix até sexta + revalidar com QA</div>
+<div class="field-label">% avanço</div>
+<div class="field">55</div>
+<div style="margin-top:12px"><span class="btn btn-ok">✅ Enviar Atualização</span><span class="btn btn-skip">⏭️ Sem mudanças</span></div>
+</div></div>
+
+<div class="card" style="border-color:rgba(239,68,68,.3)">
+<div class="card-top" style="background:rgba(239,68,68,.08)">🔴 Card 2: Projeto Crítico <span class="badge br">Alerta</span></div>
+<div class="card-body">
+<div style="color:#f87171;font-weight:700;font-size:1rem;margin-bottom:8px">🔴 ALERTA: Projeto Crítico</div>
+<table>
+<tr><td><strong>Projeto:</strong></td><td>ERP Modernização</td></tr>
+<tr><td><strong>PM:</strong></td><td>Carlos Mendes</td></tr>
+<tr><td><strong>Sponsor:</strong></td><td>Diretora Ana</td></tr>
+<tr><td><strong>Status:</strong></td><td>🟡→🔴 Mudou hoje</td></tr>
+<tr><td><strong>Data alvo:</strong></td><td>01/09/2026</td></tr>
+<tr><td><strong>Avanço:</strong></td><td>25%</td></tr>
+</table>
+<div class="field-label">Resumo</div>
+<div class="field" style="border-color:#ef4444">Ambiente de homologação indisponível há 5 dias. Sem previsão de TI.</div>
+<div class="field-label">⚠️ Risco</div>
+<div class="field">Atraso de 3+ semanas se não resolver até sexta</div>
+<div class="field-label">🚫 Bloqueio</div>
+<div class="field">Infraestrutura não provisionou ambiente</div>
+<div style="margin-top:12px">
+<span class="btn" style="background:#1e293b;color:#818cf8">📊 Ver no SharePoint</span>
+<span class="btn" style="background:#1e293b;color:#f87171">📞 Reunião de Crise</span>
+</div></div></div>
+
+<div class="card" style="border-color:rgba(245,158,11,.3)">
+<div class="card-top" style="background:rgba(245,158,11,.08)">📋 Card 3: Decisão do Board <span class="badge by">Aprovação</span></div>
+<div class="card-body">
+<div style="color:#fbbf24;font-weight:700;margin-bottom:8px">📋 Decisão Pendente</div>
+<table>
+<tr><td><strong>Projeto:</strong></td><td>Mobile App</td></tr>
+<tr><td><strong>Impacto:</strong></td><td style="color:#f87171">Crítico</td></tr>
+<tr><td><strong>Prazo:</strong></td><td>05/05/2026 (4 dias)</td></tr>
+<tr><td><strong>Sponsor:</strong></td><td>VP Produto</td></tr>
+</table>
+<div class="field-label">Decisão necessária</div>
+<div class="field">Aprovar contratação de 2 devs externos para acelerar entrega da v2.0 que está 3 semanas atrasada</div>
+<div class="field-label">Sua decisão</div>
+<div style="display:flex;flex-direction:column;gap:4px;margin:6px 0">
+<span class="rag" style="background:rgba(16,185,129,.1);color:#34d399;border:1px solid #1e293b;padding:6px 10px">✅ Aprovado</span>
+<span class="rag" style="background:rgba(239,68,68,.1);color:#f87171;border:1px solid #1e293b;padding:6px 10px">❌ Rejeitado</span>
+<span class="rag" style="background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid #1e293b;padding:6px 10px">⏸️ Adiar</span>
+</div>
+<div class="field-label">Comentário</div>
+<div class="field">Aprovado. Limitar contrato a 3 meses.</div>
+<div style="margin-top:10px"><span class="btn btn-ok">📤 Registrar Decisão</span></div>
+</div></div>
+
+</div></div>
+
+<!-- PLANNER -->
+<div class="section"><h2>📌 3 Modelos de Gestão no Planner</h2>
+<div class="grid">
+
+<div class="card">
+<div class="card-top">Modelo 1: Projeto de Software (Sprints) <span class="badge bb">Dev</span></div>
+<div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+<div class="bucket"><h4>📥 Backlog</h4>
+<div class="task">Refatorar módulo pagamento<br><span class="due">🏷️ Backend | 👤 Ana</span></div>
+<div class="task">Integrar API parceiro<br><span class="due">🏷️ Integração | 👤 Pedro</span></div></div>
+<div class="bucket"><h4>🔄 Sprint Atual</h4>
+<div class="task">Fix bug checkout <span style="color:#ef4444">🔴</span><br><span class="due">📅 02/05 | 👤 João</span></div>
+<div class="task">Tela de perfil v2<br><span class="due">📅 05/05 | 👤 Maria</span></div></div>
+<div class="bucket"><h4>🧪 Em Review/QA</h4>
+<div class="task">Login SSO<br><span class="ok">✅ QA aprovado | 👤 Carlos</span></div></div>
+<div class="bucket"><h4>✅ Done</h4>
+<div class="task" style="opacity:.6">Push notifications<br><span class="ok">Entregue 28/04</span></div></div>
+</div></div></div>
+
+<div class="card">
+<div class="card-top">Modelo 2: Projeto PMO (Fases) <span class="badge by">PMO</span></div>
+<div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+<div class="bucket"><h4>📐 Iniciação</h4>
+<div class="task" style="opacity:.6">Definir escopo ✅<br><span class="ok">Concluído 15/03</span></div>
+<div class="task" style="opacity:.6">Aprovação budget ✅<br><span class="ok">Concluído 20/03</span></div></div>
+<div class="bucket"><h4>📋 Planejamento</h4>
+<div class="task" style="opacity:.6">Cronograma ✅</div>
+<div class="task">Contratação vendor<br><span class="due">📅 05/05 | ⚠️ Atrasado 3d</span></div></div>
+<div class="bucket"><h4>⚡ Execução</h4>
+<div class="task">Implementação Fase 1<br><span class="due">📅 30/06 | 👤 Tech Lead</span></div>
+<div class="task">Treinamento usuários<br><span class="due">📅 15/07</span></div></div>
+<div class="bucket"><h4>🏁 Encerramento</h4>
+<div class="task" style="opacity:.3">Go-live<br>📅 01/08</div></div>
+</div></div></div>
+
+<div class="card">
+<div class="card-top">Modelo 3: Multi-área (Labels como RAG) <span class="badge bg">Portfólio</span></div>
+<div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div class="bucket"><h4>🟢 No Prazo</h4>
+<div class="task">CRM Integration<br><span class="ok">65% | PM: Maria</span></div>
+<div class="task">Portal Clientes<br><span class="ok">80% | PM: Ana</span></div></div>
+<div class="bucket"><h4>🟡 Atenção</h4>
+<div class="task">Mobile App<br><span style="color:#fbbf24;font-size:.7rem">55% | Risco: loja</span></div>
+<div class="task">Migração Cloud<br><span style="color:#fbbf24;font-size:.7rem">30% | Vendor atrasado</span></div></div>
+<div class="bucket"><h4>🔴 Crítico</h4>
+<div class="task" style="border-color:rgba(239,68,68,.3)">ERP Modernização<br><span class="due">25% | BLOQUEADO</span></div></div>
+</div></div></div>
+</div></div>
+
+<!-- POWER AUTOMATE FLOWS -->
+<div class="section"><h2>⚙️ Todos os Fluxos Power Automate</h2>
+<table>
+<tr><th>#</th><th>Nome do Fluxo</th><th>Trigger</th><th>Ações Principais</th><th>Frequência</th></tr>
+<tr><td>1</td><td><strong>PMO_PA_EnviarCheckInDiario</strong></td><td>Recurrence (Diário 9h)</td><td>Get Items (Projetos Ativos) → For Each → Post Adaptive Card + Wait</td><td>Diário</td></tr>
+<tr><td>2</td><td><strong>PMO_PA_ProcessarRespostaCheckIn</strong></td><td>Resposta do Card #1</td><td>Create Item (Status Diário) → Update Item (Projetos) → Condition (se risco → Create Item Riscos)</td><td>Event</td></tr>
+<tr><td>3</td><td><strong>PMO_PA_AlertaSemAtualizacao</strong></td><td>Recurrence (Diário 10h)</td><td>Get Items (DiasSemUpdate≥1) → For Each → Send Reminder no Teams</td><td>Diário</td></tr>
+<tr><td>4</td><td><strong>PMO_PA_ResumodiarioBoard</strong></td><td>Recurrence (Diário 17h)</td><td>Get Items (todos ativos) → Compose summary → Post Card canal Board Status</td><td>Diário</td></tr>
+<tr><td>5</td><td><strong>PMO_PA_AlertaProjetoVermelho</strong></td><td>When item modified (Projetos, StatusRAG=🔴)</td><td>Post Card Crítico → Notify Sponsor → Notify PMO</td><td>Event</td></tr>
+<tr><td>6</td><td><strong>PMO_PA_RegistrarDecisaoBoard</strong></td><td>When item created (Decisões)</td><td>Post Card Decisão no canal → Wait response → Update Item</td><td>Event</td></tr>
+<tr><td>7</td><td><strong>PMO_PA_CheckInOnDemand</strong></td><td>For selected item (Projetos) OU keyword trigger</td><td>Post Card Check-in para PM específico imediatamente</td><td>On-demand</td></tr>
+<tr><td>8</td><td><strong>PMO_PA_SyncPlannerStats</strong></td><td>Recurrence (Diário 18h)</td><td>Graph API → Get tasks por plano → Count open/closed/late → Update Projetos</td><td>Diário</td></tr>
+<tr><td>9</td><td><strong>PMO_PA_EscalarRiscoCritico</strong></td><td>When item created (Riscos, Severidade=Crítica)</td><td>Post no canal Riscos → Email Sponsor → Create task Planner</td><td>Event</td></tr>
+<tr><td>10</td><td><strong>PMO_PA_ResumoSemanal</strong></td><td>Recurrence (Segunda 8h)</td><td>Get all data → Compose weekly report → Post Card expandido</td><td>Semanal</td></tr>
+</table></div>
+
+<!-- C-LEVEL REPORTS -->
+<div class="section"><h2>👔 3 Exemplos de Reports para C-Level no Teams</h2>
+
+<div class="report">
+<div style="display:flex;justify-content:space-between;margin-bottom:12px"><strong style="font-size:1.1rem">📊 Resumo Diário — 01/05/2026 17:00</strong><span class="badge bb">Canal: Board Status</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0">
+<div style="text-align:center;background:#0f172a;padding:12px;border-radius:8px"><div style="font-size:1.8rem;font-weight:800;color:#818cf8">6</div><div style="font-size:.7rem;color:#94a3b8">Projetos Ativos</div></div>
+<div style="text-align:center;background:#0f172a;padding:12px;border-radius:8px"><div style="font-size:1.8rem;font-weight:800;color:#34d399">3</div><div style="font-size:.7rem;color:#94a3b8">🟢 Verde</div></div>
+<div style="text-align:center;background:#0f172a;padding:12px;border-radius:8px"><div style="font-size:1.8rem;font-weight:800;color:#fbbf24">2</div><div style="font-size:.7rem;color:#94a3b8">🟡 Amarelo</div></div>
+<div style="text-align:center;background:#0f172a;padding:12px;border-radius:8px"><div style="font-size:1.8rem;font-weight:800;color:#f87171">1</div><div style="font-size:.7rem;color:#94a3b8">🔴 Vermelho</div></div>
+</div>
+<div class="bar"><div style="width:50%;background:#10b981"></div><div style="width:33%;background:#f59e0b"></div><div style="width:17%;background:#ef4444"></div></div>
+<table>
+<tr><th>Destaque</th><th>Detalhe</th></tr>
+<tr><td style="color:#f87171">🔴 ERP Modernização</td><td>Bloqueado: ambiente homolog. Decisão pendente do board.</td></tr>
+<tr><td style="color:#fbbf24">🟡 Mobile App</td><td>Sprint atrasada 2 dias. Risco: publicação loja.</td></tr>
+<tr><td>⏰ Sem update 24h</td><td>Nenhum projeto sem atualização hoje ✅</td></tr>
+<tr><td>📋 Decisão pendente</td><td>1 — Contratação devs externos (Mobile App). Prazo: 05/05.</td></tr>
+</table></div>
+
+<div class="report">
+<div style="display:flex;justify-content:space-between;margin-bottom:12px"><strong style="font-size:1.1rem">📈 Status Semanal — Semana 18/2026</strong><span class="badge by">Segunda 8h</span></div>
+<table>
+<tr><th>Projeto</th><th>Status</th><th>Tendência</th><th>%</th><th>Alvo</th><th>Risco</th></tr>
+<tr><td>CRM Integration</td><td><span class="rag" style="background:rgba(16,185,129,.15);color:#34d399">🟢</span></td><td>→ estável</td><td>65%</td><td>15/06</td><td>Nenhum</td></tr>
+<tr><td>Data Analytics</td><td><span class="rag" style="background:rgba(16,185,129,.15);color:#34d399">🟢</span></td><td>↑ melhorando</td><td>40%</td><td>30/07</td><td>Nenhum</td></tr>
+<tr><td>Portal Clientes</td><td><span class="rag" style="background:rgba(16,185,129,.15);color:#34d399">🟢</span></td><td>→ estável</td><td>80%</td><td>20/05</td><td>Nenhum</td></tr>
+<tr><td>Mobile App</td><td><span class="rag" style="background:rgba(245,158,11,.15);color:#fbbf24">🟡</span></td><td style="color:#f87171">↓ piorou</td><td>55%</td><td>10/06</td><td>Loja</td></tr>
+<tr><td>Migração Cloud</td><td><span class="rag" style="background:rgba(245,158,11,.15);color:#fbbf24">🟡</span></td><td>→ estável</td><td>30%</td><td>15/08</td><td>Vendor</td></tr>
+<tr><td>ERP Modernização</td><td><span class="rag" style="background:rgba(239,68,68,.15);color:#f87171">🔴</span></td><td style="color:#f87171">↓ piorou</td><td>25%</td><td>01/09</td><td>Infra</td></tr>
+</table></div>
+
+<div class="report">
+<div style="display:flex;justify-content:space-between;margin-bottom:12px"><strong style="font-size:1.1rem">📋 Decisões Pendentes do Board</strong><span class="badge br">Urgente</span></div>
+<table>
+<tr><th>Projeto</th><th>Decisão</th><th>Impacto</th><th>Prazo</th><th>Status</th></tr>
+<tr><td style="color:#fbbf24">Mobile App</td><td>Aprovar 2 devs externos p/ acelerar v2.0</td><td style="color:#f87171">Crítico</td><td>05/05 (4d)</td><td style="color:#fbbf24">⏳ Pendente</td></tr>
+<tr><td style="color:#f87171">ERP</td><td>Escalar provisioning de ambiente para VP Infra</td><td style="color:#f87171">Crítico</td><td>03/05 (2d)</td><td style="color:#fbbf24">⏳ Pendente</td></tr>
+<tr><td>Migração Cloud</td><td>Renegociar SLA com vendor atual ou trocar</td><td style="color:#fbbf24">Alto</td><td>10/05 (9d)</td><td style="color:#818cf8">🔍 Em análise</td></tr>
+</table></div>
+</div>
+
+<!-- REFERENCES -->
+<div class="section"><h2>📚 Referências Oficiais Microsoft</h2>
+<div class="ref"><ul>
+<li><strong>Planner Task API (dueDateTime, completedDateTime):</strong><br><a href="https://learn.microsoft.com/en-us/graph/api/resources/plannertask?view=graph-rest-1.0" target="_blank">https://learn.microsoft.com/en-us/graph/api/resources/plannertask</a></li>
+<li><strong>Planner API Overview &amp; Limits:</strong><br><a href="https://learn.microsoft.com/en-us/graph/planner-concept-overview" target="_blank">https://learn.microsoft.com/en-us/graph/planner-concept-overview</a></li>
+<li><strong>Adaptive Cards Schema:</strong><br><a href="https://adaptivecards.io/explorer/" target="_blank">https://adaptivecards.io/explorer/</a></li>
+<li><strong>Adaptive Cards in Teams:</strong><br><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference" target="_blank">https://learn.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-reference</a></li>
+<li><strong>Power Automate Limits:</strong><br><a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" target="_blank">https://learn.microsoft.com/en-us/power-automate/limits-and-config</a></li>
+<li><strong>SharePoint List View Threshold (5000 items):</strong><br><a href="https://learn.microsoft.com/en-us/sharepoint/troubleshoot/lists-and-libraries/list-view-threshold" target="_blank">https://learn.microsoft.com/en-us/sharepoint/troubleshoot/lists-and-libraries/list-view-threshold</a></li>
+<li><strong>Copilot Studio Voice Agents (GA Apr 2026):</strong><br><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/voice-overview" target="_blank">https://learn.microsoft.com/en-us/microsoft-copilot-studio/voice-overview</a></li>
+<li><strong>Copilot Studio Licensing:</strong><br><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-licensing" target="_blank">https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-licensing</a></li>
+<li><strong>Windows Voice Typing (Win+H):</strong><br><a href="https://support.microsoft.com/en-us/windows/use-voice-typing-to-talk-instead-of-type-on-your-pc-fec94565-c4bd-329d-e59a-af033fa5d23" target="_blank">https://support.microsoft.com/en-us/windows/use-voice-typing</a></li>
+<li><strong>Power Automate Standard vs Premium Connectors:</strong><br><a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-standard-connectors" target="_blank">https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-standard-connectors</a></li>
+</ul></div></div>
+
+</body></html>

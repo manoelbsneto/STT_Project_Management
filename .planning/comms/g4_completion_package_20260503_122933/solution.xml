@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26041.172" SolutionPackageVersion="9.2" languagecode="1046" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26041.172" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26041.00172">
+  <SolutionManifest>
+    <UniqueName>PMO_G4_Completion</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="PMO G4 Completion" languagecode="1046" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>DefaultPublishercolofertasbrasilpro</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Default publisher for colofertasbrasilpro" languagecode="1046" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>pmo</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{b308fe0b-0547-f111-bec7-7ced8d955c6c}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="pmo_sharepoint" solution="Active" id.connectionreferencelogicalname="pmo_sharepoint" />
+        <Dependent type="29" displayName="PMO_PA_EscalarRiscoCritico" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="pmo_sharepoint" solution="Active" id.connectionreferencelogicalname="pmo_sharepoint" />
+        <Dependent type="29" displayName="PMO_PA_RegistrarDecisaoBoard" id="{b308fe0b-0547-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

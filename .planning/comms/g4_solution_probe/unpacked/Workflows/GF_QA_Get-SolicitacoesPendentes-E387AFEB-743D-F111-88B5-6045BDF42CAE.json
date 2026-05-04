@@ -1,0 +1,320 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedsharepointonline_2b2bc"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-trigger"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Insira sua entrada",
+                  "title": "aprovadorEmail",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Sanitizar_Aprovador_Email": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-sanitize-email"
+          },
+          "type": "Compose",
+          "inputs": "@replace(trim(toLower(triggerBody()?['text'])),'''','''''')"
+        },
+        "Inicializar_var_success": {
+          "runAfter": {
+            "Sanitizar_Aprovador_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-init-success"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_success",
+                "type": "Boolean",
+                "value": false
+              }
+            ]
+          }
+        },
+        "Inicializar_var_message": {
+          "runAfter": {
+            "Inicializar_var_success": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-init-message"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_message",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Inicializar_var_count": {
+          "runAfter": {
+            "Inicializar_var_message": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-init-count"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_count",
+                "type": "Integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Inicializar_var_errorCode": {
+          "runAfter": {
+            "Inicializar_var_count": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-init-errorcode"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "var_errorCode",
+                "type": "String",
+                "value": ""
+              }
+            ]
+          }
+        },
+        "Obter_itens_pendentes": {
+          "runAfter": {
+            "Inicializar_var_errorCode": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-getitems"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Arquitetura_Solucoes_Multi_Praticas_QA",
+              "table": "GF_QA_SOLICITACOES_FERIAS",
+              "$filter": "AprovadorEmail eq '@{outputs('Sanitizar_Aprovador_Email')}' and Status eq 'Pendente'",
+              "$orderby": "Created desc"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Definir_var_success_sucesso": {
+          "runAfter": {
+            "Obter_itens_pendentes": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-success"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_success",
+            "value": true
+          }
+        },
+        "Definir_var_count_sucesso": {
+          "runAfter": {
+            "Definir_var_success_sucesso": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-count"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_count",
+            "value": "@length(body('Obter_itens_pendentes')?['value'])"
+          }
+        },
+        "Definir_var_message_sucesso": {
+          "runAfter": {
+            "Definir_var_count_sucesso": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-message-success"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_message",
+            "value": "Solicitações pendentes encontradas com sucesso."
+          }
+        },
+        "Definir_var_success_erro": {
+          "runAfter": {
+            "Obter_itens_pendentes": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-success-error"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_success",
+            "value": false
+          }
+        },
+        "Definir_var_errorCode_erro": {
+          "runAfter": {
+            "Definir_var_success_erro": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-errorcode"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_errorCode",
+            "value": "ERRO_OBTER_PENDENTES"
+          }
+        },
+        "Definir_var_message_erro": {
+          "runAfter": {
+            "Definir_var_errorCode_erro": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-set-message-error"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "var_message",
+            "value": "Falha ao consultar solicitações pendentes."
+          }
+        },
+        "Responder_ao_agente": {
+          "runAfter": {
+            "Definir_var_message_sucesso": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "Definir_var_message_erro": [
+              "Succeeded",
+              "Skipped"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "get-solicitacoes-pendentes-respond-agent"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "title": "count",
+                  "type": "number",
+                  "x-ms-content-hint": "NUMBER",
+                  "x-ms-dynamically-added": true
+                },
+                "errorcode": {
+                  "title": "errorCode",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "message": {
+                  "title": "message",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "success": {
+                  "title": "success",
+                  "type": "boolean",
+                  "x-ms-content-hint": "BOOLEAN",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "count": "@variables('var_count')",
+              "errorcode": "@variables('var_errorCode')",
+              "message": "@variables('var_message')",
+              "success": "@variables('var_success')"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

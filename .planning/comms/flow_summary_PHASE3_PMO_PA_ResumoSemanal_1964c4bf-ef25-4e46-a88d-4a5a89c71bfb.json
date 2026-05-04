@@ -1,0 +1,42 @@
+﻿{
+    "displayName":  "PMO_PA_ResumoSemanal",
+    "flowName":  "1964c4bf-ef25-4e46-a88d-4a5a89c71bfb",
+    "status":  "PATCHED",
+    "state":  "Started",
+    "enabled":  true,
+    "triggerNames":  [
+                         "Recurrence_Monday_8h_BRT"
+                     ],
+    "actionNames":  [
+                        "Get_Projetos_Ativos",
+                        "Filter_Verdes",
+                        "Filter_Amarelos",
+                        "Filter_Vermelhos",
+                        "Filter_Projetos_Sem_Update",
+                        "Select_Projetos_Sem_Update",
+                        "Compose_Projetos_Sem_Update",
+                        "Get_Decisoes",
+                        "Select_Decisoes",
+                        "Compose_Decisoes_Semana",
+                        "Count_Total",
+                        "Count_Verdes",
+                        "Count_Amarelos",
+                        "Count_Vermelhos",
+                        "Count_Sem_Update",
+                        "Get_Status_Semana",
+                        "Filter_Projetos_Atrasados",
+                        "Select_Projetos_Atrasados",
+                        "Compose_Projetos_Atrasados",
+                        "Count_Status_Semana",
+                        "Count_Decisoes_Semana",
+                        "Count_Atrasados",
+                        "Post_Resumo_Semanal_Teams"
+                    ],
+    "connectorApis":  [
+                          "shared_sharepointonline",
+                          "shared_teams"
+                      ],
+    "request":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_request_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json",
+    "result":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\processsimple_phase3_result_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json",
+    "definition":  "D:\\VMs\\STT_Project_Management\\.planning\\comms\\flow_definition_PHASE3_PMO_PA_ResumoSemanal_1964c4bf-ef25-4e46-a88d-4a5a89c71bfb.json"
+}

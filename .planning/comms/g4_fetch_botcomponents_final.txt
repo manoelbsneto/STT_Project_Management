@@ -1,0 +1,18 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       name                         schemaname                                            componenttype
+6b78f98b-5698-427d-bdaa-0115b286dd63 AtualizarStatus              pmo_AssistentePMO.topic.AtualizarStatus               Tema (V2)
+48c79516-673f-4c44-acf2-10b2131f1736 PMO_PA_CheckInOnDemand       pmo_AssistentePMO.action.PMO_PA_CheckInOnDemand       Tema (V2)
+06315fb5-e3d3-431e-a6c5-40725907a375 PMO_PA_EscalarRiscoCritico   pmo_AssistentePMO.action.PMO_PA_EscalarRiscoCritico   Tema (V2)
+e2dd9a93-3ef5-4427-b932-942fba634976 RegistrarRisco               pmo_AssistentePMO.topic.RegistrarRisco                Tema (V2)
+1d28a2ce-d659-4926-9e2f-f4fb5cfb9485 SeHouverErro                 pmo_AssistentePMO.topic.SeHouverErro                  Tema (V2)
+5f2dc424-aa28-4a31-b0ef-2d72725ac462 ConsultarProjeto             pmo_AssistentePMO.topic.ConsultarProjeto              Tema (V2)
+98cb829b-c85e-4ac1-ac24-756660e423f4 Assistente PMO               pmo_AssistentePMO.gpt.default                         GPT personalizado
+ab64bcb1-f8fe-437a-bf48-9c8d5b20777b PedirDecisao                 pmo_AssistentePMO.topic.PedirDecisao                  Tema (V2)
+1e42ee84-05ef-4f1f-9aac-8a64836f53a2 RegistrarBloqueio            pmo_AssistentePMO.topic.RegistrarBloqueio             Tema (V2)
+8857b01c-189e-42c5-8264-9145369f4bdd PMO_PA_RegistrarDecisaoBoard pmo_AssistentePMO.action.PMO_PA_RegistrarDecisaoBoard Tema (V2)
+048833c0-9214-420f-9253-0debc4309b80 Greeting                     pmo_AssistentePMO.topic.Greeting                      Tema (V2)
+2d57ece5-51c0-4236-84b4-66f98d2c30a8 LowConfidence                pmo_AssistentePMO.topic.LowConfidence                 Tema (V2)
+8a60253e-62a1-4266-b407-f3eb80e64087 ConsultarPortfolio           pmo_AssistentePMO.topic.ConsultarPortfolio            Tema (V2)
+

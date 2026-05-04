@@ -1,0 +1,72 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "attention",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "RISCO CRITICO ESCALADO",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Attention",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Acao executiva necessaria",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Risk ID:", "value": "${RiskID}" },
+        { "title": "Projeto:", "value": "${ProjectID}" },
+        { "title": "Nome:", "value": "${ProjectName}" },
+        { "title": "Tipo:", "value": "${Tipo}" },
+        { "title": "Severidade:", "value": "${Severidade}" },
+        { "title": "Impacto:", "value": "${Impacto}" },
+        { "title": "Owner:", "value": "${Owner}" },
+        { "title": "SLA:", "value": "${SLA}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Descricao",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${Descricao}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Plano de mitigacao",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${PlanoMitigacao}",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Abrir riscos no SharePoint",
+      "url": "${RiskListUrl}"
+    }
+  ]
+}

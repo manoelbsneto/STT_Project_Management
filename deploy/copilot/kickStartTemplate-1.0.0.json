@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "_version.comment": "{locked}",
+  "metadata": {
+    "templateName": "kickStartTemplate",
+    "_templateName.comment": "{locked}",
+    "templateVersion": "1.0.0",
+    "_templateVersion.comment": "{locked}",
+    "name": "Assistente PMO",
+    "description": "Assistente PMO para consulta e registro operacional do portfolio PMO no Microsoft 365.",
+    "source": "CopilotStudio",
+    "_source.comment": "{locked}",
+    "quality": "PrivatePreview",
+    "_quality.comment": "{locked}",
+    "iconBase64": null,
+    "_iconBase64.comment": "{locked}",
+    "iconAltText": null,
+    "isGpt": false,
+    "_isGpt.comment": "{locked}",
+    "documentationUri": null,
+    "_documentationUri.comment": "{locked}",
+    "supportedLanguages": [
+      "pt-BR"
+    ],
+    "_supportedLanguages.comment": "{locked}",
+    "industries": [
+      "Project Management"
+    ],
+    "_industries.comment": "{locked}",
+    "categories": [
+      "Productivity"
+    ],
+    "_categories.comment": "{locked}"
+  },
+  "content": {
+    "displayName": "Assistente PMO",
+    "description": "Agente restrito aos dados operacionais do PMO Intelligent Hub.",
+    "instructions": "Responda sempre em portugues do Brasil, de forma objetiva e profissional. Use somente os dados das listas SharePoint do PMO Intelligent Hub: Projetos, Status Diario, Riscos e Bloqueios, Decisoes do Board. Nao use internet publica, sites publicos, conhecimento generico do modelo, HTTP externo nem Microsoft Graph direto. Quando faltar dado ou conexao validada, informe a limitacao e peca a informacao necessaria. Antes de qualquer gravacao em SharePoint, confirme explicitamente com o usuario.",
+    "conversationStarters": [
+      {
+        "title": "Resumo do portfolio",
+        "text": "como esta o portfolio"
+      },
+      {
+        "title": "Atualizar status",
+        "text": "atualizar projeto"
+      },
+      {
+        "title": "Registrar risco",
+        "text": "registrar risco"
+      },
+      {
+        "title": "Solicitar decisao",
+        "text": "preciso de uma decisao"
+      }
+    ]
+  },
+  "customizations": {
+    "schema": {
+      "type": "object",
+      "_type.comment": "{locked}",
+      "properties": {}
+    }
+  },
+  "spec": {
+    "connectors": []
+  }
+}

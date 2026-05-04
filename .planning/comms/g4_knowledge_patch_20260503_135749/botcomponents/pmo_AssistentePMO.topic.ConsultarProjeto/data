@@ -1,0 +1,31 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarProjeto
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - como está o projeto
+      - como esta o projeto
+      - status de projeto
+      - detalhes projeto
+      - consultar projeto
+
+  actions:
+    - kind: Question
+      id: ask_project_detail
+      variable: Topic.ProjectName
+      prompt: Qual projeto você quer consultar?
+      entity: StringPrebuiltEntity
+
+    - kind: SendActivity
+      id: project_stub
+      activity: |-
+        Projeto: {Topic.ProjectName}
+        Status: consultar Projetos.StatusRAG.
+        Progresso: consultar Projetos.Percentual.
+        Alvo: consultar Projetos.DataAlvo.
+        PM: consultar Projetos.PM.
+        Último update: consultar Status Diario mais recente por ProjectID.
+        Riscos abertos: consultar Riscos e Bloqueios por ProjectID e Status aberto.

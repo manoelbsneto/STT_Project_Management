@@ -1,0 +1,59 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        },
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           }
+                   },
+    "triggers":  {
+                     "Quando_um_item_é_criado_ou_modificado":  {
+                                                                   "recurrence":  {
+                                                                                      "frequency":  "Minute",
+                                                                                      "interval":  5
+                                                                                  },
+                                                                   "evaluatedRecurrence":  {
+                                                                                               "frequency":  "Minute",
+                                                                                               "interval":  5
+                                                                                           },
+                                                                   "splitOn":  "@triggerOutputs()?[\u0027body/value\u0027]",
+                                                                   "metadata":  {
+                                                                                    "operationMetadataId":  "8a9ed8fb-5c2c-42d2-8a2e-0a520dadc0b4"
+                                                                                },
+                                                                   "type":  "OpenApiConnection",
+                                                                   "inputs":  {
+                                                                                  "host":  {
+                                                                                               "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                               "connectionName":  "shared_sharepointonline",
+                                                                                               "operationId":  "GetOnUpdatedItems"
+                                                                                           },
+                                                                                  "parameters":  {
+                                                                                                     "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                     "table":  "0271c9e8-c184-4b91-99f9-5b71f9b08826"
+                                                                                                 },
+                                                                                  "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                              }
+                                                               }
+                 },
+    "actions":  {
+                    "Compor":  {
+                                   "runAfter":  {
+
+                                                },
+                                   "metadata":  {
+                                                    "operationMetadataId":  "b0f6c131-c570-4bac-b55d-4efb7c1d9193"
+                                                },
+                                   "type":  "Compose",
+                                   "inputs":  "Alert RAG Vermelho placeholder"
+                               }
+                }
+}

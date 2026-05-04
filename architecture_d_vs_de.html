@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitetura Detalhada — Solução D e D+E</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e1a;--card:#111827;--border:#1e293b;--accent:#6366f1;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--text:#e2e8f0;--muted:#94a3b8;--surface:#1e1b4b}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.hero{background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca);padding:50px 40px;text-align:center;border-bottom:2px solid var(--accent)}
+.hero h1{font-size:2.2rem;font-weight:800;background:linear-gradient(90deg,#818cf8,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#c7d2fe;font-size:1rem;max-width:700px;margin:8px auto 0}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.section-title{font-size:1.6rem;font-weight:700;margin:40px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--accent)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:20px 0}
+.card-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.card-header h3{font-size:1.2rem}
+.card-body{padding:24px}
+.badge{padding:5px 14px;border-radius:20px;font-weight:700;font-size:.8rem;background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3)}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:.85rem}
+th{color:var(--accent);font-weight:600;text-transform:uppercase;font-size:.75rem;letter-spacing:.5px}
+.mermaid{background:#1e1b4b;border-radius:12px;padding:20px;margin:16px 0;text-align:center}
+.flow-box{background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.flow-step{display:flex;align-items:flex-start;gap:12px;margin:10px 0;padding:12px 16px;border-radius:8px;background:rgba(99,102,241,.05);border-left:3px solid var(--accent)}
+.flow-icon{font-size:1.4rem;min-width:36px;text-align:center}
+.flow-text strong{color:#e2e8f0;display:block;margin-bottom:2px}
+.flow-text span{color:var(--muted);font-size:.85rem}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:20px 0}
+@media(max-width:768px){.compare{grid-template-columns:1fr}}
+.compare-col{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.compare-col h3{margin-bottom:12px;font-size:1.1rem}
+.tag{background:var(--surface);padding:3px 10px;border-radius:6px;font-size:.75rem;color:#a5b4fc;display:inline-block;margin:2px}
+.highlight{background:linear-gradient(135deg,#1e1b4b,#312e81);border:2px solid var(--accent);border-radius:16px;padding:28px;margin:20px 0}
+.highlight h3{color:#818cf8;margin-bottom:10px}
+.divider{height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:40px 0}
+.screen{background:#0f172a;border:1px solid #334155;border-radius:12px;overflow:hidden;margin:16px 0}
+.screen-bar{background:#1e293b;padding:8px 16px;display:flex;gap:6px;align-items:center}
+.screen-dot{width:10px;height:10px;border-radius:50%}
+.screen-body{padding:20px}
+.sp-row{display:flex;gap:8px;padding:8px 12px;border-bottom:1px solid #1e293b;align-items:center;font-size:.85rem}
+.sp-row:hover{background:rgba(99,102,241,.08)}
+.rag{width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem}
+.rag-g{background:rgba(16,185,129,.2);color:#34d399}.rag-y{background:rgba(245,158,11,.2);color:#fbbf24}.rag-r{background:rgba(239,68,68,.2);color:#f87171}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>🏗️ Arquitetura Detalhada</h1>
+<p>Solução D (sozinha) vs D+E (combinada) — com exemplos práticos do dia a dia</p>
+</div>
+
+<div class="container">
+
+<!-- ========== SOLUTION D STANDALONE ========== -->
+<div class="section-title">🅳 Solução D Sozinha — SharePoint Hub + Planner Operacional</div>
+
+<div class="card">
+<div class="card-header"><h3>Arquitetura Completa</h3><span class="badge">Nota 9.0</span></div>
+<div class="card-body">
+<div class="mermaid">
+flowchart TD
+  subgraph ENTRADA["🎯 ENTRADA — menos de 30 segundos"]
+    AC["📋 Adaptive Card\n(Teams — check-in diário)"]
+    FORM["📝 Microsoft Forms\n(fallback mobile)"]
+  end
+  subgraph ENGINE["⚙️ MOTOR"]
+    PA["Power Automate\n8-10 fluxos\nstandard connectors"]
+  end
+  subgraph DATABASE["💾 BASE CENTRAL — SharePoint Lists"]
+    L1["📊 Lista PROJETOS\n20 colunas — cadastro master"]
+    L2["📅 Lista STATUS DIÁRIO\n13 colunas — histórico"]
+    L3["⚠️ Lista RISCOS\n13 colunas"]
+    L4["📋 Lista DECISÕES\n10 colunas"]
+  end
+  subgraph TASKS["🔧 EXECUÇÃO"]
+    PL["📌 Planner Basic\n1 plano por equipe\nBuckets / Tasks / Labels"]
+  end
+  subgraph VIEWS["👁️ VISIBILIDADE — sem Power BI"]
+    V1["Teams Tab:\nSP List Board View\nProjetos agrupados por RAG"]
+    V2["SharePoint Page:\nDashboard PMO\nWeb parts de lista filtradas"]
+    V3["Teams Tab:\nSP List filtrada\nProjetos Vermelhos"]
+  end
+  AC --> PA
+  FORM --> PA
+  PA --> L1 & L2 & L3 & L4
+  PL -.->|"contagem tarefas\n(sync opcional)"| PA
+  L1 --> V1 & V2
+  L3 --> V3
+</div>
+</div>
+</div>
+
+<!-- D - PRACTICAL EXAMPLE -->
+<div class="section-title">🎬 Solução D na Prática — Um Dia Típico</div>
+
+<div class="flow-box">
+<div class="flow-step"><span class="flow-icon">⏰</span><div class="flow-text"><strong>09:00 — Disparo Automático (Power Automate)</strong><span>Fluxo "PMO_PA_EnviarCheckIn" roda. Busca todos projetos com Ativo=Sim na lista Projetos. Para cada projeto, envia Adaptive Card personalizado para o PM responsável no Teams chat 1:1.</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">📱</span><div class="flow-text"><strong>09:02 — PM João recebe card no Teams (mobile)</strong><span>Card mostra: "Mobile App — Status anterior: 🟢 Verde — Última atualização: ontem". João seleciona 🟡 Amarelo, digita "Sprint atrasada por bug crítico no checkout", marca risco "Possível atraso na publicação da loja". Clica "✅ Enviar". <b>Tempo: 18 segundos.</b></span></div></div>
+
+<div class="flow-step"><span class="flow-icon">⚙️</span><div class="flow-text"><strong>09:02 — Power Automate processa resposta</strong><span>1) Cria item na lista "Status Diário" (ProjectID=PRJ-012, RAG=Amarelo, Resumo, Risco, Origem=Card)<br>2) Atualiza lista "Projetos" (StatusRAG=Amarelo, UltimaAtualizacao=agora, AtualizadoPor=João)<br>3) Cria item na lista "Riscos" (Tipo=Risco, Severidade=Alta)<br>4) Como mudou de Verde→Amarelo: notifica Sponsor por email</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">📋</span><div class="flow-text"><strong>09:15 — PM Maria clica "⏭️ Sem mudanças hoje" no card do CRM</strong><span>PA registra que Maria viu o card. Atualiza UltimaAtualizacao na lista Projetos. Não cria status diário (nada mudou). Projeto NÃO aparece como "sem atualização".</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">🔔</span><div class="flow-text"><strong>10:00 — Alerta de Projetos Sem Atualização</strong><span>Fluxo "PMO_PA_AlertaSemUpdate" roda. Verifica DiasSemUpdate >= 1. Encontra 2 projetos sem resposta. Envia lembrete ao PM: "⏰ Seu projeto DataPlatform está sem atualização há 26 horas".</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">👔</span><div class="flow-text"><strong>10:30 — Diretora Ana abre o Teams</strong><span>Clica na tab "📊 Portfólio Executivo" na equipe PMO. Vê a SharePoint List em Board View: colunas 🟢🟡🔴 com projetos como cards. Clica no card do Mobile App → vê detalhes, risco, PM. Sem pedir planilha a ninguém.</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">🔴</span><div class="flow-text"><strong>14:00 — PM Carlos atualiza ERP para Vermelho</strong><span>Recebeu o card de manhã mas só atualizou agora. Seleciona 🔴 Vermelho, informa bloqueio "Ambiente de homologação indisponível". PA automaticamente: cria alerta, notifica Sponsor e PMO.</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">📊</span><div class="flow-text"><strong>17:00 — Resumo Diário Automático</strong><span>PA gera card consolidado: "6 projetos ativos | 3🟢 2🟡 1🔴 | 0 sem update | 1 decisão pendente". Posta no canal General da equipe PMO (ou em um grupo de chat com o board).</span></div></div>
+</div>
+
+<!-- D - WHAT THE USER SEES -->
+<div class="section-title">🖥️ O que o Board Vê — Tab "Portfólio Executivo" (Solução D)</div>
+
+<div class="screen">
+<div class="screen-bar"><div class="screen-dot" style="background:#ef4444"></div><div class="screen-dot" style="background:#f59e0b"></div><div class="screen-dot" style="background:#10b981"></div><span style="margin-left:12px;color:#94a3b8;font-size:.8rem">Teams → PMO → Tab: Portfólio Executivo (SharePoint List Board View)</span></div>
+<div class="screen-body">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+<div>
+<div style="background:rgba(16,185,129,.1);padding:8px 12px;border-radius:8px 8px 0 0;color:#34d399;font-weight:700;text-align:center">🟢 Verde (3)</div>
+<div class="sp-row"><span class="rag rag-g">🟢</span><div><strong style="font-size:.85rem">CRM Integration</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: Maria | 65% | Alvo: 15/06</span></div></div>
+<div class="sp-row"><span class="rag rag-g">🟢</span><div><strong style="font-size:.85rem">Data Analytics</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: Pedro | 40% | Alvo: 30/07</span></div></div>
+<div class="sp-row"><span class="rag rag-g">🟢</span><div><strong style="font-size:.85rem">Portal Clientes</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: Ana | 80% | Alvo: 20/05</span></div></div>
+</div>
+<div>
+<div style="background:rgba(245,158,11,.1);padding:8px 12px;border-radius:8px 8px 0 0;color:#fbbf24;font-weight:700;text-align:center">🟡 Amarelo (2)</div>
+<div class="sp-row"><span class="rag rag-y">🟡</span><div><strong style="font-size:.85rem">Mobile App</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: João | 55% | Alvo: 10/06</span></div></div>
+<div class="sp-row"><span class="rag rag-y">🟡</span><div><strong style="font-size:.85rem">Migração Cloud</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: Lucas | 30% | Alvo: 15/08</span></div></div>
+</div>
+<div>
+<div style="background:rgba(239,68,68,.1);padding:8px 12px;border-radius:8px 8px 0 0;color:#f87171;font-weight:700;text-align:center">🔴 Vermelho (1)</div>
+<div class="sp-row"><span class="rag rag-r">🔴</span><div><strong style="font-size:.85rem">ERP Modernização</strong><br><span style="color:#94a3b8;font-size:.75rem">PM: Carlos | 25% | Alvo: 01/09</span><br><span style="color:#f87171;font-size:.75rem">⚠ Bloqueado: Ambiente homolog.</span></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ========== D+E COMBINED ========== -->
+<div class="divider"></div>
+<div class="section-title">🅳+🅴 Solução Combinada — Hub + PMO Cockpit (Nota 9.5)</div>
+
+<div class="highlight">
+<h3>A combinação D+E é a recomendação máxima</h3>
+<p>D fornece a <strong>base de dados e automação</strong>. E fornece a <strong>experiência imersiva no Teams</strong> com canais temáticos. Juntas, resolvem tanto o problema de dados quanto o de comunicação.</p>
+</div>
+
+<div class="card">
+<div class="card-header"><h3>Arquitetura D+E Combinada</h3><span class="badge" style="background:rgba(168,85,247,.15);color:#c084fc;border-color:rgba(168,85,247,.3)">9.5/10</span></div>
+<div class="card-body">
+<div class="mermaid">
+flowchart TD
+  subgraph ENTRADA["🎯 ENTRADA"]
+    AC["📋 Adaptive Card"]
+    FORM["📝 Forms"]
+  end
+  subgraph ENGINE["⚙️ POWER AUTOMATE"]
+    PA["Orquestração"]
+  end
+  subgraph DB["💾 SHAREPOINT LISTS"]
+    L1["Projetos"] & L2["Status Diário"] & L3["Riscos"] & L4["Decisões"]
+  end
+  subgraph PLANNER["🔧 PLANNER"]
+    PL["Tarefas"]
+  end
+  subgraph TEAMS["📺 TEAMS — PMO COCKPIT"]
+    direction LR
+    subgraph CANAIS["Canais"]
+      C1["📊 Board Status\n(resumo 17h)"]
+      C2["🔴 Proj. Críticos\n(event-driven)"]
+      C3["⚠️ Riscos\n(event-driven)"]
+      C4["📋 Decisões\n(aprovação)"]
+    end
+    subgraph TABS["Tabs"]
+      T1["Portfólio\n(SP Board View)"]
+      T2["Dashboard\n(SP Page)"]
+      T3["Planner\n(Kanban)"]
+    end
+  end
+  AC & FORM --> PA --> L1 & L2 & L3 & L4
+  PL -.-> PA
+  PA -->|resumo| C1
+  PA -->|alerta| C2
+  PA -->|novo risco| C3
+  PA -->|card decisão| C4
+  L1 --> T1 & T2
+  PL --> T3
+</div>
+</div>
+</div>
+
+<!-- D+E PRACTICAL EXAMPLE -->
+<div class="section-title">🎬 D+E na Prática — Diferenças vs D Sozinha</div>
+
+<div class="compare">
+<div class="compare-col">
+<h3 style="color:#818cf8">🅳 Solução D Sozinha</h3>
+<ul>
+<li>PM recebe card → atualiza → dados vão pro SharePoint ✅</li>
+<li>Board abre tab para ver portfólio ✅</li>
+<li>Resumo diário vai para o canal General ⚠️</li>
+<li>Alertas vermelhos vão por email ou chat ⚠️</li>
+<li>Decisões pendentes ficam na lista SharePoint ⚠️</li>
+<li>Sem separação clara de audiências no Teams</li>
+<li>Board pode perder alertas no meio de outras mensagens</li>
+</ul>
+</div>
+<div class="compare-col" style="border-color:var(--accent)">
+<h3 style="color:#c084fc">🅳+🅴 Combinada</h3>
+<ul>
+<li>PM recebe card → atualiza → dados vão pro SharePoint ✅</li>
+<li>Board abre tab para ver portfólio ✅</li>
+<li>Resumo diário vai para canal <strong>📊 Board Status</strong> ✅✅</li>
+<li>Alertas vermelhos vão para canal <strong>🔴 Projetos Críticos</strong> ✅✅</li>
+<li>Decisões pendentes vão como cards interativos no canal <strong>📋 Decisões</strong> ✅✅</li>
+<li><strong>Cada audiência vê o que precisa, onde precisa</strong></li>
+<li>Board nunca perde alerta — canal dedicado com @mentions</li>
+</ul>
+</div>
+</div>
+
+<div class="flow-box">
+<h4 style="color:#c084fc;margin-bottom:16px">🎬 Cenário D+E: Projeto vira Vermelho</h4>
+
+<div class="flow-step"><span class="flow-icon">🔴</span><div class="flow-text"><strong>14:00 — PM Carlos atualiza ERP para Vermelho via card</strong><span>PA processa: grava no SharePoint, cria risco, e detecta mudança para vermelho.</span></div></div>
+
+<div class="flow-step" style="border-left-color:#ef4444"><span class="flow-icon">📢</span><div class="flow-text"><strong>14:01 — Canal 🔴 Projetos Críticos recebe alerta (SÓ na D+E)</strong><span>Card de Projeto Crítico com todos os detalhes: resumo, risco, bloqueio, PM, Sponsor, data alvo. Board e Sponsors são @mencionados. Card tem botão "Agendar Reunião de Crise".</span></div></div>
+
+<div class="flow-step" style="border-left-color:#f59e0b"><span class="flow-icon">⚠️</span><div class="flow-text"><strong>14:01 — Canal ⚠️ Riscos recebe novo registro (SÓ na D+E)</strong><span>Card com detalhes do risco: "Ambiente de homologação indisponível", severidade Crítica, owner, prazo.</span></div></div>
+
+<div class="flow-step" style="border-left-color:#818cf8"><span class="flow-icon">📋</span><div class="flow-text"><strong>14:02 — Se bloqueio requer decisão: Canal 📋 Decisões (SÓ na D+E)</strong><span>Card interativo de Decisão Pendente com botões: Aprovado, Rejeitado, Adiar, Mais Info. Board responde direto no card sem abrir outra ferramenta.</span></div></div>
+
+<div class="flow-step"><span class="flow-icon">📊</span><div class="flow-text"><strong>17:00 — Canal 📊 Board Status recebe resumo (D+E organiza melhor)</strong><span>Card consolidado do dia: "6 projetos | 3🟢 2🟡 1🔴 | 1 novo alerta vermelho hoje | 1 decisão pendente". Em D sozinha, isso iria para General misturado com outras mensagens.</span></div></div>
+</div>
+
+<!-- WHEN TO USE EACH -->
+<div class="section-title">🤔 Quando Usar Cada Uma?</div>
+<div class="card"><div class="card-body">
+<table>
+<tr><th>Cenário</th><th>D Sozinha</th><th>D+E Combinada</th></tr>
+<tr><td>Organização pequena (< 10 projetos)</td><td style="color:#34d399">✅ Suficiente</td><td>Overengineering</td></tr>
+<tr><td>PMO com 10-50 projetos</td><td>Funciona, mas perde comunicação</td><td style="color:#34d399">✅ Ideal</td></tr>
+<tr><td>Board quer canal dedicado</td><td>Não tem estrutura</td><td style="color:#34d399">✅ Canais temáticos</td></tr>
+<tr><td>Risco de notification fatigue</td><td style="color:#34d399">✅ Menos canais</td><td>⚠️ Precisa gerenciar notificações</td></tr>
+<tr><td>Equipe técnica enxuta</td><td style="color:#34d399">✅ Menos setup</td><td>Mais fluxos PA para manter</td></tr>
+<tr><td>Múltiplos Sponsors/áreas</td><td>Todos veem tudo</td><td style="color:#34d399">✅ Canais segmentam audiência</td></tr>
+</table>
+</div></div>
+
+<div class="highlight">
+<h3>💡 Recomendação Prática</h3>
+<p><strong>Comece com D sozinha no MVP (semanas 1-4).</strong> Os canais da E podem ser adicionados incrementalmente na semana 3-4 quando o fluxo de dados já estiver funcionando. A adição dos canais temáticos é simples e não requer retrabalho — é puramente adicionar destinos de publicação nos fluxos Power Automate existentes.</p>
+</div>
+
+</div>
+
+<script>mermaid.initialize({theme:'dark',themeVariables:{primaryColor:'#6366f1',primaryTextColor:'#e2e8f0',lineColor:'#818cf8',secondaryColor:'#312e81'}});</script>
+</body>
+</html>

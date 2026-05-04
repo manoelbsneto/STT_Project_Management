@@ -1,0 +1,22 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Request",
+                         "kind":  "Skills"
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "Response",
+                        "kind":  "Skills"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PostMessageToConversation"
+                    }
+                ]
+}

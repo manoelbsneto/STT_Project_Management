@@ -1,0 +1,83 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Resumo Semanal do Portfolio",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "${Periodo}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Projetos ativos:", "value": "${TotalProjetos}" },
+        { "title": "Verdes:", "value": "${Verdes}" },
+        { "title": "Amarelos:", "value": "${Amarelos}" },
+        { "title": "Vermelhos:", "value": "${Vermelhos}" },
+        { "title": "Projetos sem update:", "value": "${SemUpdateCount}" },
+        { "title": "Status registrados:", "value": "${StatusSemanaCount}" },
+        { "title": "Decisoes na semana:", "value": "${DecisoesSemanaCount}" },
+        { "title": "Projetos com alvo vencido:", "value": "${AtrasadosCount}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Projetos sem atualizacao",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${ProjetosSemUpdate}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Projetos com data alvo vencida",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${ProjetosAtrasados}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Decisoes recentes",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${DecisoesSemana}",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Abrir hub PMO",
+      "url": "${HubUrl}"
+    }
+  ]
+}
