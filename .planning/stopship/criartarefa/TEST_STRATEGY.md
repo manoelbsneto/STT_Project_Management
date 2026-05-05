@@ -5,7 +5,7 @@ Scope: CriarTarefa routing and action contract.
 Automated regression:
 - `tests/Test-CriarTarefaContract.ps1`
 - Inputs: any Copilot `extract-template` YAML or repo template YAML.
-- Checks: selectable intent, exact trigger phrases, fallback capability text, no stale ProjectID prompt/global, action call, output binding, action input/output contract.
+- Checks: selectable intent, exact trigger phrases, fallback capability text, no stale ProjectID prompt/global, action call, absence of fragile topic output binding, action input/output contract.
 
 Regression mapping:
 - ISSUE-001: checks 1-5.
@@ -13,10 +13,10 @@ Regression mapping:
 - ISSUE-004: same checks against `deploy/copilot/AssistentePMO.template.yaml`.
 
 Current results:
-- Known-bad extract fails as expected: 7 failed checks.
-- Fresh live extract passes: 9/9.
+- Known-bad extract fails as expected: 8 failed checks.
+- Fresh no-output live extract passes: 9/9.
 - Repo template passes: 9/9.
-- Raw Dataverse fetch matches the clean contract.
+- Raw Dataverse fetch after the no-output-binding hotfix matches the clean contract.
 - Live Power Automate flow returns `result` in success/error branches.
 
 Not applicable / not yet available:

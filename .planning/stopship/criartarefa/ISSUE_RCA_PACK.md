@@ -9,7 +9,7 @@ Impact: User messages like `Criar tarefa: ...` were not routed to the CriarTaref
 Timeline:
 - Detection: User reported bot response `"Não entendi bem..."`; documented in `.planning/CODEX_HOTFIX_CRIARTAREFA_ROUTING.md`.
 - Triage: Extracted template showed `includeInOnSelectIntent: false`, only 4 trigger phrases, stale fallback, and ProjectID prompt in CriarTarefa.
-- Fix verification: Fresh live extract `.planning/stopship/criartarefa/live_extract_20260505_194946.yaml` has clean routing state.
+- Fix verification: Fresh no-output live extract `.planning/comms/cs_criartarefa_no_output_verify_20260505_202323.yaml` has clean routing state and no fragile output binding.
 - Regression proof: `tests/Test-CriarTarefaContract.ps1` fails the known-bad extract and passes current live/repo templates.
 
 Root causes:
@@ -30,26 +30,31 @@ Corrective actions:
 Prevent recurrence:
 - Run `tests/Test-CriarTarefaContract.ps1` against every fresh `pac copilot extract-template` output before release.
 
-## ISSUE-002: CriarTarefa Action/Flow Contract Mismatch Risk
+## ISSUE-002: CriarTarefa Invalid Topic Output Binding
 
 Severity: P0
 
-Impact: Topic could route correctly but fail or return blank output if the action expected `result` while the flow returned old aliases such as `message`, `projectId`, `success`, or `errorcode`.
+Impact: Copilot Studio blocked publish/test readiness with `BindingKeyNotFoundError` / `InvalidBindingOutput` because `CriarTarefa` bound action output `result` to `Topic.message`, but the topic checker did not resolve that output binding.
 
 Evidence:
-- Live extract uses `result: Topic.message` in `.planning/comms/codex_triplecheck_live_extract_20260505_192913.yaml`.
-- Internal fetch after fix shows raw action/topic data with `result`.
-- Older ProcessSimple request artifacts still show old response shape, so they must not be used as source of truth without package rewrite evidence.
+- User screenshot and diagnostic JSON show `bindingKey: result`, `errorCode: InvalidBindingOutput`, `componentDisplayName: CriarTarefa`, and component ID `b7fbf995-ffd8-4657-ba76-d289f6a9d3a8`.
+- Superseded extracts such as `.planning/stopship/criartarefa/live_extract_20260505_194946.yaml` still had `result: Topic.message`, proving why the earlier SHIP claim was premature.
+- Live no-output hotfix result `.planning/comms/cs_criartarefa_no_output_result_20260505_202323.json` reports `status: PASS`, `noOutputBinding: true`, and `noTopicMessageReference: true`.
+- Raw Dataverse fetch `.planning/stopship/criartarefa/fetch_criartarefa_components_after_no_output_20260505_202323.txt` shows `call_criar_tarefa` invokes `template-content.action.PMO_PA_CriarTarefa` with no `output:` block.
 
 Root cause:
-- Flow response contract and Copilot output binding evolved independently.
+- The topic contained a fragile action-output binding that Copilot Studio's checker rejected even though the action schema exposed `outputs.result`.
+- Earlier validation over-trusted extracted action schema shape and did not include a negative assertion against topic output bindings.
 
 Corrective actions:
-- `deploy/CS_CriarTarefa_ContractFix.ps1` rewrites the workflow response body to `result`.
-- Regression test checks action output and topic binding.
+- Live hotfix: `deploy/CS_CriarTarefa_RemoveOutputBinding.ps1` removes the topic `output:` binding and replaces `{Topic.message}` with a deterministic acknowledgement.
+- Repo fix: `deploy/copilot/AssistentePMO.template.yaml` preserves the same no-output-binding shape.
+- Regression fix: `tests/Test-CriarTarefaContract.ps1` now fails if `call_criar_tarefa` contains `output:` or if the topic references `Topic.message`, `Topic.ProjectIDGerado`, `Topic.CriarSuccess`, or `Topic.CriarErrorCode`.
 
 Closure evidence:
-- `.planning/stopship/criartarefa/get_flow_criartarefa_summary_20260505_195945.json` proves the live flow is enabled/Started and both success/error response bodies return `result`.
+- `.planning/stopship/criartarefa/test_no_output_verify_20260505_202323.json` passes 9/9 checks.
+- `.planning/stopship/criartarefa/fetch_criartarefa_components_after_no_output_20260505_202323.txt` proves the active Dataverse component has no invalid topic output binding.
+- `.planning/stopship/criartarefa/pac_copilot_list_after_no_output_20260505_202323.txt` reports Assistente PMO as Published/Active/Provisioned.
 
 ## ISSUE-003: Publish State Ambiguity
 
@@ -67,8 +72,8 @@ Root cause:
 
 Closure evidence:
 - `.planning/stopship/criartarefa/pac_copilot_list_20260505_2003.txt` reports `Assistente PMO` as Published/Active/Provisioned.
-- `.planning/stopship/criartarefa/live_extract_20260505_194946.yaml` and `test_live_extract_194946.json` prove the extracted live bot contract is clean.
-- `.planning/stopship/criartarefa/fetch_criartarefa_components_20260505_2002.txt` proves raw active Dataverse botcomponents contain the clean contract.
+- `.planning/comms/cs_criartarefa_no_output_verify_20260505_202323.yaml` and `test_no_output_verify_20260505_202323.json` prove the extracted live bot contract is clean after the no-output-binding hotfix.
+- `.planning/stopship/criartarefa/fetch_criartarefa_components_after_no_output_20260505_202323.txt` proves raw active Dataverse botcomponents contain the clean contract.
 
 Prevent recurrence:
 - Treat `pac copilot publish` failure as insufficient by itself. Use the runbook evidence bundle: solution import log, `pac copilot list`, fresh extract regression, and raw `pac org fetch`.

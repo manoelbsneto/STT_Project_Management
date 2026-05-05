@@ -355,16 +355,12 @@ $topicDialogBlock = @"
 
                   - kind: BeginDialog
                     id: call_criar_tarefa
-                    input: {}
                     dialog: $BotSchema.action.PMO_PA_CriarTarefa
-                    output:
-                      binding:
-                        result: Topic.message
 
                   - kind: SendActivity
                     id: criar_done
                     activity: |-
-                      {Topic.message}
+                      Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
 
             elseActions:
               - kind: SendActivity
@@ -375,11 +371,7 @@ $patchedTopicBlock = [regex]::Replace($patchedTopicBlock, "(?ms)    dialog:\r?\n
 $beginDialogNew = @"
                   - kind: BeginDialog
                     id: call_criar_tarefa
-                    input: {}
                     dialog: $BotSchema.action.PMO_PA_CriarTarefa
-                    output:
-                      binding:
-                        result: Topic.message
 "@
 $patchedTopicBlock = [regex]::Replace(
     $patchedTopicBlock,
@@ -391,7 +383,7 @@ $sendActivityNew = @"
                   - kind: SendActivity
                     id: criar_done
                     activity: |-
-                      {Topic.message}
+                      Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
 "@
 $patchedTopicBlock = [regex]::Replace(
     $patchedTopicBlock,
@@ -618,8 +610,8 @@ $checks = [ordered]@{
     hasAction = $verifyActionBlock -match "schemaName: template-content\.action\.PMO_PA_CriarTarefa"
     hasFlowId = $verifyActionBlock -match [regex]::Escape($WorkflowEntityId)
     hasActionInputs = ($verifyActionBlock -match "propertyName: titulo") -and ($verifyActionBlock -match "propertyName: responsavel") -and ($verifyActionBlock -match "propertyName: prazo") -and ($verifyActionBlock -match "propertyName: horas") -and ($verifyActionBlock -match "propertyName: prioridade")
-    hasOutputBindings = ($verifyTopicBlock -match "(?ms)id: call_criar_tarefa.*?result: Topic\.message")
-    noExtraCriarOutputBindings = -not ($verifyTopicBlock -match "Topic\.ProjectIDGerado|Topic\.CriarSuccess|Topic\.CriarErrorCode")
+    noInvalidOutputBinding = -not ($verifyTopicBlock -match "(?ms)id:\s*call_criar_tarefa.*?output:\s*")
+    noExtraCriarOutputBindings = -not ($verifyTopicBlock -match "Topic\.message|Topic\.ProjectIDGerado|Topic\.CriarSuccess|Topic\.CriarErrorCode")
     includeInOnSelectIntent = $verifyTopicBlock -match "includeInOnSelectIntent:\s*true"
     hasExactTriggerQueries = Test-StringArrayEqual -Actual $actualTriggerQueries -Expected $expectedTriggerQueries
     hasTenTriggerQueries = $actualTriggerQueries.Count -eq 10

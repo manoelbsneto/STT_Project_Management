@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Decision | **SHIP GO/GREEN** |
-| Closed | 2026-05-05T20:07 BRT |
+| Closed | 2026-05-05T20:37 BRT |
 | Scope | `CriarTarefa` routing/action contract for Assistente PMO |
 | SEV Level | SEV-0 / Stop-Ship |
 | Diligence Method | Runbook-compliant evidence per `deploy/MASTER_RUNBOOK` |
@@ -29,12 +29,12 @@
 ### ISSUE-001 — CriarTarefa Routes to LowConfidence (P0) ✅ CLOSED
 - **Root cause:** `includeInOnSelectIntent: false`, narrow triggers, stale fallback, ProjectID prompt artifacts.
 - **Fix:** Template updated; 10 trigger phrases; fallback advertises `criar tarefa/projeto`; ProjectID artifacts removed.
-- **Proof:** Known-bad fails 7/9 checks; live extract passes 9/9.
+- **Proof:** Known-bad fails 8/9 checks; live no-output extract passes 9/9.
 
-### ISSUE-002 — Action/Flow Contract Mismatch (P0) ✅ CLOSED
-- **Root cause:** Flow response evolved independently from Copilot output binding.
-- **Fix:** Flow response rewritten to `result`; topic binds `result: Topic.message`.
-- **Proof:** Get-Flow confirms enabled/Started with `result` in success/error responses.
+### ISSUE-002 — Invalid Topic Output Binding (P0) ✅ CLOSED
+- **Root cause:** `CriarTarefa` bound action output `result` to `Topic.message`, but Copilot Studio topic checker rejected that binding with `BindingKeyNotFoundError`.
+- **Fix:** Topic intentionally has no action output binding; it calls `PMO_PA_CriarTarefa` and sends a fixed confirmation message. The action/flow may still expose `result`.
+- **Proof:** No-output live extract passes 9/9; raw Dataverse fetch shows `call_criar_tarefa` with no `output:` block and no `Topic.message`.
 
 ### ISSUE-003 — Publish State Ambiguity (P1) ✅ CLOSED (runbook substitute)
 - **Root cause:** `pac copilot publish` reports stale failure from 15:58:57 even after successful solution import.
@@ -51,15 +51,21 @@
 
 | ID | Evidence File | Proves |
 |---|---|---|
-| E-001 | `test_known_bad_125833.json` | Known-bad reproduction: 7 failed checks |
+| E-001 | `test_known_bad_125833.json` | Known-bad reproduction: 8 failed checks |
 | E-002 | `test_live_extract_192913.json` | First live extract clean: 9/9 pass |
 | E-003 | `test_repo_template.json` | Repo template clean: 9/9 pass |
 | E-008 | `pac_env_who_20260505_2003.txt` | Environment = ColOfertasBrasilPro |
 | E-009 | `pac_connection_list_20260505_2003.txt` | SharePoint, Teams, Office 365 = Connected |
 | E-010 | `pac_copilot_list_20260505_2003.txt` | Bot = Published / Active / Provisioned |
-| E-011 | `test_live_extract_194946.json` | Latest live extract clean: 9/9 pass |
-| E-012 | `fetch_criartarefa_components_20260505_2002.txt` | Raw Dataverse: clean LowConfidence, CriarTarefa, PMO_PA_CriarTarefa |
+| E-011 | `test_live_extract_194946.json` | Superseded extract; retained as historical evidence only |
+| E-012 | `fetch_criartarefa_components_20260505_2002.txt` | Superseded raw fetch; retained as defect evidence only |
 | E-013 | `get_flow_criartarefa_summary_20260505_195945.json` | Flow enabled/Started; `result` in success/error bodies |
+| E-014 | `cs_criartarefa_no_output_result_20260505_202323.json` | Live no-output-binding import passed |
+| E-015 | `test_no_output_verify_20260505_202323.json` | Fresh no-output live extract: 9/9 pass |
+| E-016 | `fetch_criartarefa_components_after_no_output_20260505_202323.txt` | Raw Dataverse: CriarTarefa has no output binding and no `Topic.message` |
+| E-017 | `pac_copilot_list_after_no_output_20260505_202323.txt` | Bot = Published / Active / Provisioned after final hotfix |
+| E-018 | `test_live_extract_no_output_final_20260505_203459.json` | Final fresh live extract: 9/9 pass; no CriarTarefa output binding |
+| E-019 | `pac_copilot_list_final_20260505_203732.txt` | Final bot state = Published / Active / Provisioned |
 
 All evidence files are in `.planning/stopship/criartarefa/`.
 
@@ -71,10 +77,10 @@ All evidence files are in `.planning/stopship/criartarefa/`.
 |---|---|---|
 | Known-bad extract (`125833`) | Expected failure | 7 |
 | Live extract #1 (`192913`) | Pass | 0 |
-| Live extract #2 (`194946`) | Pass | 0 |
+| Live no-output extract (`202323`) | Pass | 0 |
 | Repo template | Pass | 0 |
 
-Harness: `tests/Test-CriarTarefaContract.ps1` — 9 deterministic checks covering routing, triggers, fallback, ProjectID cleanup, action call, output binding, and input/output contract.
+Harness: `tests/Test-CriarTarefaContract.ps1` — 9 deterministic checks covering routing, triggers, fallback, ProjectID cleanup, action call, absence of fragile topic output binding, and action input/output contract.
 
 ---
 
@@ -83,6 +89,7 @@ Harness: `tests/Test-CriarTarefaContract.ps1` — 9 deterministic checks coverin
 | File | Change |
 |---|---|
 | `deploy/CS_CriarTarefa_ContractFix.ps1` | Hardened post-extract validation; exact trigger checks; ProjectID artifact checks; action/topic cleanliness checks |
+| `deploy/CS_CriarTarefa_RemoveOutputBinding.ps1` | Focused live hotfix removing the invalid `CriarTarefa` topic output binding |
 | `deploy/copilot/AssistentePMO.template.yaml` | Added `PMO_PA_CriarTarefa` action component; aligned CriarTarefa topic with action-calling dialog |
 | `tests/Test-CriarTarefaContract.ps1` | Deterministic regression harness (9 checks) |
 
@@ -121,8 +128,8 @@ This is **not a blocker**. The substitute evidence chain is:
 
 1. `pac solution import --publish-changes` → Solution Imported successfully; Published All Customizations
 2. `pac copilot list` → Published / Active / Provisioned
-3. Fresh `pac copilot extract-template` → Passes 9/9 regression checks
-4. `pac org fetch` → Raw Dataverse botcomponents contain clean contract
+3. Fresh no-output `pac copilot extract-template` → Passes 9/9 regression checks
+4. `pac org fetch` → Raw Dataverse botcomponents contain clean no-output-binding contract
 5. `Get-Flow` (Windows PowerShell 5.1) → Enabled / Started / `result` response
 
 ---
@@ -158,7 +165,7 @@ C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Power
 |---|---|
 | `EXEC_SUMMARY.md` | Executive decision summary |
 | `ISSUE_RCA_PACK.md` | Root cause analysis for 4 issues |
-| `EVIDENCE_LOG.md` | 13-item evidence chain |
+| `EVIDENCE_LOG.md` | 19-item evidence chain |
 | `TEST_STRATEGY.md` | Regression strategy and coverage |
 | `RELEASE_READINESS_CHECKLIST.md` | Release gates and rollback plan |
 | `RISK_REGISTER.md` | 6 risks (4 closed, 2 accepted) |

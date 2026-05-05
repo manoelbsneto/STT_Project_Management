@@ -612,15 +612,11 @@ components:
 
                   - kind: BeginDialog
                     id: call_criar_tarefa
-                    input: {}
                     dialog: template-content.action.PMO_PA_CriarTarefa
-                    output:
-                      binding:
-                        result: Topic.message
 
                   - kind: SendActivity
                     id: criar_done
-                    activity: "{Topic.message}"
+                    activity: "Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente."
 
             elseActions:
               - kind: SendActivity
