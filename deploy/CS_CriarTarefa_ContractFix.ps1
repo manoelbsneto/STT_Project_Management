@@ -187,13 +187,9 @@ $actionDialogBlock = @"
           value: =Global.PMO_Criar_Prioridade
 
       outputs:
-        - propertyName: success
-
-        - propertyName: message
-
-        - propertyName: errorcode
-
-        - propertyName: projectId
+        - propertyName: result
+          name: Resultado
+          description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
 
       action:
         kind: InvokeFlowTaskAction
@@ -310,23 +306,11 @@ $topicDialogBlock = @"
                     dialog: template-content.action.PMO_PA_CriarTarefa
                     output:
                       binding:
-                        success: Topic.CriarSuccess
-                        message: Topic.message
-                        errorcode: Topic.CriarErrorCode
-                        projectId: Topic.ProjectIDGerado
+                        result: Topic.message
 
                   - kind: SendActivity
                     id: criar_done
                     activity: |-
-                      Projeto criado com sucesso.
-
-                      Codigo: {Topic.ProjectIDGerado}
-                      Titulo: {Topic.Title}
-                      Responsavel: {Topic.Responsavel}
-                      Prazo: {Topic.DataFim}
-                      Horas: {Topic.HorasEstimadas}h
-                      Prioridade: {Topic.Prioridade}
-
                       {Topic.message}
 
             elseActions:
@@ -342,10 +326,7 @@ $beginDialogNew = @"
                     dialog: template-content.action.PMO_PA_CriarTarefa
                     output:
                       binding:
-                        success: Topic.CriarSuccess
-                        message: Topic.message
-                        errorcode: Topic.CriarErrorCode
-                        projectId: Topic.ProjectIDGerado
+                        result: Topic.message
 "@
 $patchedTopicBlock = [regex]::Replace(
     $patchedTopicBlock,
@@ -357,15 +338,6 @@ $sendActivityNew = @"
                   - kind: SendActivity
                     id: criar_done
                     activity: |-
-                      Projeto criado com sucesso.
-
-                      Codigo: {Topic.ProjectIDGerado}
-                      Titulo: {Topic.Title}
-                      Responsavel: {Topic.Responsavel}
-                      Prazo: {Topic.DataFim}
-                      Horas: {Topic.HorasEstimadas}h
-                      Prioridade: {Topic.Prioridade}
-
                       {Topic.message}
 "@
 $patchedTopicBlock = [regex]::Replace(
@@ -402,6 +374,12 @@ if (-not $processSimpleRequest) {
 }
 
 $flowPayload = Get-Content -LiteralPath $processSimpleRequest.FullName -Raw | ConvertFrom-Json
+$flowPayload.properties.definition.actions.Response_Success.inputs.body = [ordered]@{
+    result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_New_ProjectID'), '.')}"
+}
+$flowPayload.properties.definition.actions.Response_Error.inputs.body = [ordered]@{
+    result = "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
+}
 $rawInvokerAuthentication = [ordered]@{
     value = '@json(decodeBase64(triggerOutputs().headers[''X-MS-APIM-Tokens'']))[''$ConnectionKey'']'
     type = "Raw"
@@ -559,8 +537,8 @@ $checks = [ordered]@{
     hasAction = $verifyText -match "schemaName: template-content\.action\.PMO_PA_CriarTarefa"
     hasFlowId = $verifyText -match [regex]::Escape($WorkflowEntityId)
     hasActionInputs = ($verifyText -match "propertyName: titulo") -and ($verifyText -match "propertyName: responsavel") -and ($verifyText -match "propertyName: prazo") -and ($verifyText -match "propertyName: horas") -and ($verifyText -match "propertyName: prioridade")
-    hasOutputBindings = ($verifyText -match "message: Topic\.message") -and ($verifyText -match "projectId: Topic\.ProjectIDGerado") -and ($verifyText -match "success: Topic\.CriarSuccess") -and ($verifyText -match "errorcode: Topic\.CriarErrorCode")
-    noResultBindingForCriar = -not ($verifyText -match "(?ms)id: call_criar_tarefa.*?result: Topic\.message")
+    hasOutputBindings = ($verifyText -match "(?ms)id: call_criar_tarefa.*?result: Topic\.message")
+    noExtraCriarOutputBindings = -not ($verifyText -match "Topic\.ProjectIDGerado|Topic\.CriarSuccess|Topic\.CriarErrorCode")
     hasCleanBeginDialog = ($verifyText -match "(?m)^\s+beginDialog:\s*$") -and -not ($verifyText -match "Â¿beginDialog|ï»¿beginDialog|Ã¯Â»Â¿beginDialog")
     hasScalarTriggerQueries = ($verifyText -match "(?m)^\s+- criar tarefa\s*$") -and -not ($verifyText -match "(?m)^\s+- Value:")
     flowEnabled = $enableFlowSucceeded

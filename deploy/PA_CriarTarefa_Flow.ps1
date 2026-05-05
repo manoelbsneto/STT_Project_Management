@@ -334,10 +334,7 @@ $flowDefinition = New-FlowDefinition `
                 statusCode = 200
                 headers = [ordered]@{ "Content-Type" = "application/json" }
                 body = [ordered]@{
-                    success = $true
-                    message = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_New_ProjectID'), '.')}"
-                    errorcode = ""
-                    projectId = "@{outputs('Compose_New_ProjectID')}"
+                    result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_New_ProjectID'), '.')}"
                 }
             }
             runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Succeeded") }
@@ -351,10 +348,7 @@ $flowDefinition = New-FlowDefinition `
                 statusCode = 500
                 headers = [ordered]@{ "Content-Type" = "application/json" }
                 body = [ordered]@{
-                    success = $false
-                    message = "Erro ao criar projeto no SharePoint."
-                    errorcode = "SP_CREATE_FAILED"
-                    projectId = ""
+                    result = "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
                 }
             }
             runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Failed", "TimedOut") }
