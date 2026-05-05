@@ -96,7 +96,7 @@ components:
         actions:
           - kind: SendActivity
             id: low_confidence_msg
-            activity: "Não entendi bem. Você pode reformular? Posso ajudar com: atualizar status, consultar portfólio, registrar risco, solicitar decisão."
+            activity: "Não entendi bem. Você pode reformular? Posso ajudar com: criar tarefa/projeto, atualizar tarefa, atualizar status, consultar portfólio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio, solicitar decisão."
 
   - kind: DialogComponent
     managedProperties:
@@ -470,14 +470,18 @@ components:
         id: main
         intent:
           displayName: CriarTarefa
-          includeInOnSelectIntent: false
+          includeInOnSelectIntent: true
           triggerQueries:
             - criar tarefa
             - nova tarefa
             - adicionar tarefa
             - cadastrar tarefa
+            - criar projeto
+            - novo projeto
+            - abrir projeto
+            - registrar projeto
+            - "criar tarefa:"
             - abrir tarefa
-            - registrar tarefa
         actions:
           - kind: Question
             id: ask_task_title

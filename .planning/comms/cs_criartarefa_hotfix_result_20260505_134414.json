@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-05-05T13:46:01.5190171-03:00",
+  "status": "PASS_WITH_PUBLISH_CLI_WARNING",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "botId": "0c4a9729-d55d-483c-8ec3-db9369583155",
+  "botSchema": "pmo_AssistentePMO",
+  "pacImportTemplateAvailable": false,
+  "importMethod": "minimal_solution_package",
+  "beforeTemplate": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\cs_criartarefa_hotfix_before_20260505_134414.yaml",
+  "patchedTemplate": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\cs_criartarefa_hotfix_patched_20260505_134414.yaml",
+  "verifyTemplate": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\cs_criartarefa_hotfix_verify_20260505_134414.yaml",
+  "packageZip": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\PMO_CriarTarefa_RoutingHotfix_20260505_134414.zip",
+  "importLog": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pac_import_criartarefa_hotfix_20260505_134414.txt",
+  "publishLog": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pac_copilot_publish_criartarefa_hotfix_20260505_134414.txt",
+  "publishExitCode": 0,
+  "publishContainsFailure": true,
+  "listLog": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pac_copilot_list_criartarefa_hotfix_20260505_134414.txt",
+  "extractBeforeLog": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pac_copilot_extract_criartarefa_hotfix_before_20260505_134414.txt",
+  "extractVerifyLog": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pac_copilot_extract_criartarefa_hotfix_verify_20260505_134414.txt",
+  "verification": {
+    "criarTarefaIncludeInOnSelectIntent": true,
+    "criarTarefaTriggerPhraseCount": 10,
+    "criarTarefaHasAllTriggerPhrases": true,
+    "lowConfidenceMentionsCriarTarefaProjeto": true,
+    "noAskProjectId": true,
+    "confirmationDoesNotReferenceProjectId": true,
+    "noSetGlobalProjectId": true,
+    "botListShowsPublished": true
+  }
+}
