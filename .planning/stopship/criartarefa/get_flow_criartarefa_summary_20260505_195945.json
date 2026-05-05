@@ -1,0 +1,61 @@
+﻿{
+    "timestamp":  "2026-05-05T20:00:58.7272283-03:00",
+    "displayName":  "PMO_PA_CriarTarefa",
+    "flowName":  "7ca90102-525b-48bb-875e-0f7bda96f85b",
+    "enabled":  true,
+    "state":  "Started",
+    "workflowEntityId":  "71f62da4-9748-f111-bec7-6045bdf42cae",
+    "triggerNames":  [
+                         "Copilot_CriarTarefa_Request"
+                     ],
+    "actionNames":  [
+                        "Compose_NomeProjeto",
+                        "Response_Success",
+                        "Create_Projeto_SharePoint",
+                        "Get_Existing_Projects",
+                        "Compose_New_ProjectID",
+                        "Map_Prioridade",
+                        "Response_Error"
+                    ],
+    "successResponseBody":  {
+                                "result":  "@{concat(\u0027Projeto \u0027, outputs(\u0027Compose_NomeProjeto\u0027), \u0027 criado com codigo \u0027, outputs(\u0027Compose_New_ProjectID\u0027), \u0027.\u0027)}"
+                            },
+    "errorResponseBody":  {
+                              "result":  "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
+                          },
+    "triggerSchema":  {
+                          "type":  "object",
+                          "properties":  {
+                                             "nomeProjeto":  {
+                                                                 "type":  "string",
+                                                                 "description":  "Nome do projeto (fornecido pelo PM)"
+                                                             },
+                                             "titulo":  {
+                                                            "type":  "string",
+                                                            "description":  "Titulo da tarefa/projeto"
+                                                        },
+                                             "responsavel":  {
+                                                                 "type":  "string",
+                                                                 "description":  "Nome do responsavel"
+                                                             },
+                                             "prazo":  {
+                                                           "type":  "string",
+                                                           "description":  "Data alvo no formato ISO 8601 ou dd/MM/yyyy"
+                                                       },
+                                             "horas":  {
+                                                           "type":  "integer",
+                                                           "description":  "Horas estimadas"
+                                                       },
+                                             "prioridade":  {
+                                                                "type":  "string",
+                                                                "description":  "Prioridade: Alta, Media, Baixa ou Critica"
+                                                            }
+                                         },
+                          "required":  [
+                                           "titulo",
+                                           "responsavel",
+                                           "prazo",
+                                           "prioridade"
+                                       ]
+                      }
+}

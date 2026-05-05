@@ -1,0 +1,548 @@
+﻿{
+    "FlowName":  "7ca90102-525b-48bb-875e-0f7bda96f85b",
+    "Enabled":  true,
+    "DisplayName":  "PMO_PA_CriarTarefa",
+    "UserType":  "Owner",
+    "CreatedTime":  "2026-05-05T15:30:44.666497Z",
+    "LastModifiedTime":  "2026-05-05T22:35:54Z",
+    "EnvironmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "Internal":  {
+                     "name":  "7ca90102-525b-48bb-875e-0f7bda96f85b",
+                     "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/7ca90102-525b-48bb-875e-0f7bda96f85b",
+                     "type":  "Microsoft.ProcessSimple/environments/flows",
+                     "properties":  {
+                                        "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                                        "displayName":  "PMO_PA_CriarTarefa",
+                                        "userType":  "Owner",
+                                        "definition":  {
+                                                           "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                                           "contentVersion":  "1.0.0.0",
+                                                           "parameters":  {
+                                                                              "$authentication":  {
+                                                                                                      "defaultValue":  {
+
+                                                                                                                       },
+                                                                                                      "type":  "SecureObject"
+                                                                                                  },
+                                                                              "$connections":  {
+                                                                                                   "defaultValue":  {
+
+                                                                                                                    },
+                                                                                                   "type":  "Object"
+                                                                                               }
+                                                                          },
+                                                           "triggers":  {
+                                                                            "Copilot_CriarTarefa_Request":  {
+                                                                                                                "type":  "Request",
+                                                                                                                "kind":  "Skills",
+                                                                                                                "inputs":  {
+                                                                                                                               "schema":  {
+                                                                                                                                              "type":  "object",
+                                                                                                                                              "properties":  {
+                                                                                                                                                                 "nomeProjeto":  {
+                                                                                                                                                                                     "type":  "string",
+                                                                                                                                                                                     "description":  "Nome do projeto (fornecido pelo PM)"
+                                                                                                                                                                                 },
+                                                                                                                                                                 "titulo":  {
+                                                                                                                                                                                "type":  "string",
+                                                                                                                                                                                "description":  "Titulo da tarefa/projeto"
+                                                                                                                                                                            },
+                                                                                                                                                                 "responsavel":  {
+                                                                                                                                                                                     "type":  "string",
+                                                                                                                                                                                     "description":  "Nome do responsavel"
+                                                                                                                                                                                 },
+                                                                                                                                                                 "prazo":  {
+                                                                                                                                                                               "type":  "string",
+                                                                                                                                                                               "description":  "Data alvo no formato ISO 8601 ou dd/MM/yyyy"
+                                                                                                                                                                           },
+                                                                                                                                                                 "horas":  {
+                                                                                                                                                                               "type":  "integer",
+                                                                                                                                                                               "description":  "Horas estimadas"
+                                                                                                                                                                           },
+                                                                                                                                                                 "prioridade":  {
+                                                                                                                                                                                    "type":  "string",
+                                                                                                                                                                                    "description":  "Prioridade: Alta, Media, Baixa ou Critica"
+                                                                                                                                                                                }
+                                                                                                                                                             },
+                                                                                                                                              "required":  [
+                                                                                                                                                               "titulo",
+                                                                                                                                                               "responsavel",
+                                                                                                                                                               "prazo",
+                                                                                                                                                               "prioridade"
+                                                                                                                                                           ]
+                                                                                                                                          }
+                                                                                                                           }
+                                                                                                            }
+                                                                        },
+                                                           "actions":  {
+                                                                           "Compose_NomeProjeto":  {
+                                                                                                       "runAfter":  {
+                                                                                                                        "Map_Prioridade":  [
+                                                                                                                                               "Succeeded"
+                                                                                                                                           ]
+                                                                                                                    },
+                                                                                                       "type":  "Compose",
+                                                                                                       "inputs":  "@coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027titulo\u0027], \u0027Sem nome\u0027)"
+                                                                                                   },
+                                                                           "Response_Success":  {
+                                                                                                    "runAfter":  {
+                                                                                                                     "Create_Projeto_SharePoint":  [
+                                                                                                                                                       "Succeeded"
+                                                                                                                                                   ]
+                                                                                                                 },
+                                                                                                    "type":  "Response",
+                                                                                                    "kind":  "Skills",
+                                                                                                    "inputs":  {
+                                                                                                                   "statusCode":  200,
+                                                                                                                   "headers":  {
+                                                                                                                                   "Content-Type":  "application/json"
+                                                                                                                               },
+                                                                                                                   "body":  {
+                                                                                                                                "result":  "@{concat(\u0027Projeto \u0027, outputs(\u0027Compose_NomeProjeto\u0027), \u0027 criado com codigo \u0027, outputs(\u0027Compose_New_ProjectID\u0027), \u0027.\u0027)}"
+                                                                                                                            }
+                                                                                                               }
+                                                                                                },
+                                                                           "Create_Projeto_SharePoint":  {
+                                                                                                             "runAfter":  {
+                                                                                                                              "Compose_NomeProjeto":  [
+                                                                                                                                                          "Succeeded"
+                                                                                                                                                      ]
+                                                                                                                          },
+                                                                                                             "type":  "OpenApiConnection",
+                                                                                                             "inputs":  {
+                                                                                                                            "parameters":  {
+                                                                                                                                               "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                               "item/Prioridade/Value":  "@outputs(\u0027Map_Prioridade\u0027)",
+                                                                                                                                               "item/Title":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                               "item/DataAlvo":  "@triggerBody()?[\u0027prazo\u0027]",
+                                                                                                                                               "item/Percentual":  0,
+                                                                                                                                               "item/NomeProjeto":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                               "table":  "Projetos",
+                                                                                                                                               "item/ProjectID":  "@outputs(\u0027Compose_New_ProjectID\u0027)",
+                                                                                                                                               "item/UltimaAtualizacao":  "@utcNow()",
+                                                                                                                                               "item/StatusRAG/Value":  "Verde",
+                                                                                                                                               "item/ResumoExecutivo":  "@concat(\u0027Projeto criado via Copilot Studio. Titulo: \u0027, coalesce(triggerBody()?[\u0027titulo\u0027], \u0027-\u0027), \u0027. Horas estimadas: \u0027, coalesce(string(triggerBody()?[\u0027horas\u0027]), \u0027N/A\u0027), \u0027h. Responsavel: \u0027, coalesce(triggerBody()?[\u0027responsavel\u0027], \u0027-\u0027), \u0027. Prazo: \u0027, coalesce(triggerBody()?[\u0027prazo\u0027], \u0027-\u0027), \u0027.\u0027)",
+                                                                                                                                               "item/Ativo":  true
+                                                                                                                                           },
+                                                                                                                            "host":  {
+                                                                                                                                         "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                         "connectionName":  "shared_sharepointonline",
+                                                                                                                                         "operationId":  "PostItem"
+                                                                                                                                     },
+                                                                                                                            "authentication":  {
+                                                                                                                                                   "value":  "@json(decodeBase64(triggerOutputs().headers[\u0027X-MS-APIM-Tokens\u0027]))[\u0027$ConnectionKey\u0027]",
+                                                                                                                                                   "type":  "Raw"
+                                                                                                                                               }
+                                                                                                                        }
+                                                                                                         },
+                                                                           "Get_Existing_Projects":  {
+                                                                                                         "runAfter":  {
+
+                                                                                                                      },
+                                                                                                         "type":  "OpenApiConnection",
+                                                                                                         "inputs":  {
+                                                                                                                        "parameters":  {
+                                                                                                                                           "table":  "Projetos",
+                                                                                                                                           "$top":  1,
+                                                                                                                                           "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                           "$orderby":  "ID desc"
+                                                                                                                                       },
+                                                                                                                        "host":  {
+                                                                                                                                     "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                     "connectionName":  "shared_sharepointonline",
+                                                                                                                                     "operationId":  "GetItems"
+                                                                                                                                 },
+                                                                                                                        "authentication":  {
+                                                                                                                                               "value":  "@json(decodeBase64(triggerOutputs().headers[\u0027X-MS-APIM-Tokens\u0027]))[\u0027$ConnectionKey\u0027]",
+                                                                                                                                               "type":  "Raw"
+                                                                                                                                           }
+                                                                                                                    }
+                                                                                                     },
+                                                                           "Compose_New_ProjectID":  {
+                                                                                                         "runAfter":  {
+                                                                                                                          "Get_Existing_Projects":  [
+                                                                                                                                                        "Succeeded"
+                                                                                                                                                    ]
+                                                                                                                      },
+                                                                                                         "type":  "Compose",
+                                                                                                         "inputs":  "@if(equals(length(body(\u0027Get_Existing_Projects\u0027)?[\u0027value\u0027]), 0), \u0027PRJ-000001\u0027, concat(\u0027PRJ-\u0027, padLeft(string(add(int(last(split(coalesce(first(body(\u0027Get_Existing_Projects\u0027)?[\u0027value\u0027])?[\u0027ProjectID\u0027], \u0027PRJ-0\u0027), \u0027-\u0027))), 1)), 6, \u00270\u0027)))"
+                                                                                                     },
+                                                                           "Map_Prioridade":  {
+                                                                                                  "runAfter":  {
+                                                                                                                   "Compose_New_ProjectID":  [
+                                                                                                                                                 "Succeeded"
+                                                                                                                                             ]
+                                                                                                               },
+                                                                                                  "type":  "Compose",
+                                                                                                  "inputs":  "@if(or(equals(triggerBody()?[\u0027prioridade\u0027], \u0027Critica\u0027), equals(triggerBody()?[\u0027prioridade\u0027], \u0027CrÃ­tica\u0027)), \u0027Alta\u0027, coalesce(triggerBody()?[\u0027prioridade\u0027], \u0027Media\u0027))"
+                                                                                              },
+                                                                           "Response_Error":  {
+                                                                                                  "runAfter":  {
+                                                                                                                   "Create_Projeto_SharePoint":  [
+                                                                                                                                                     "Failed",
+                                                                                                                                                     "TimedOut"
+                                                                                                                                                 ]
+                                                                                                               },
+                                                                                                  "type":  "Response",
+                                                                                                  "kind":  "Skills",
+                                                                                                  "inputs":  {
+                                                                                                                 "statusCode":  500,
+                                                                                                                 "headers":  {
+                                                                                                                                 "Content-Type":  "application/json"
+                                                                                                                             },
+                                                                                                                 "body":  {
+                                                                                                                              "result":  "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
+                                                                                                                          }
+                                                                                                             }
+                                                                                              }
+                                                                       },
+                                                           "outputs":  {
+
+                                                                       }
+                                                       },
+                                        "triggerSchema":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "nomeProjeto":  {
+                                                                                                     "type":  "string",
+                                                                                                     "description":  "Nome do projeto (fornecido pelo PM)"
+                                                                                                 },
+                                                                                 "titulo":  {
+                                                                                                "type":  "string",
+                                                                                                "description":  "Titulo da tarefa/projeto"
+                                                                                            },
+                                                                                 "responsavel":  {
+                                                                                                     "type":  "string",
+                                                                                                     "description":  "Nome do responsavel"
+                                                                                                 },
+                                                                                 "prazo":  {
+                                                                                               "type":  "string",
+                                                                                               "description":  "Data alvo no formato ISO 8601 ou dd/MM/yyyy"
+                                                                                           },
+                                                                                 "horas":  {
+                                                                                               "type":  "integer",
+                                                                                               "description":  "Horas estimadas"
+                                                                                           },
+                                                                                 "prioridade":  {
+                                                                                                    "type":  "string",
+                                                                                                    "description":  "Prioridade: Alta, Media, Baixa ou Critica"
+                                                                                                }
+                                                                             },
+                                                              "required":  [
+                                                                               "titulo",
+                                                                               "responsavel",
+                                                                               "prazo",
+                                                                               "prioridade"
+                                                                           ]
+                                                          },
+                                        "state":  "Started",
+                                        "sharingType":  "CommonDataService",
+                                        "connectionReferences":  {
+                                                                     "shared_sharepointonline":  {
+                                                                                                     "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                                     "connectionReferenceLogicalName":  "cat_DataverseIndexerSharePoint",
+                                                                                                     "source":  "Invoker",
+                                                                                                     "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                     "displayName":  "SharePoint",
+                                                                                                     "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                     "brandColor":  "",
+                                                                                                     "tier":  "Standard",
+                                                                                                     "apiName":  "sharepointonline",
+                                                                                                     "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                                 }
+                                                                 },
+                                        "installedConnectionReferences":  {
+                                                                              "shared_sharepointonline":  {
+                                                                                                              "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                                              "connectionReferenceLogicalName":  "cat_DataverseIndexerSharePoint",
+                                                                                                              "apiDefinition":  {
+                                                                                                                                    "name":  "shared_sharepointonline",
+                                                                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                    "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                                                                    "properties":  {
+                                                                                                                                                       "displayName":  "SharePoint",
+                                                                                                                                                       "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                                                                       "purpose":  "NotSpecified",
+                                                                                                                                                       "connectionParameters":  {
+                                                                                                                                                                                    "token":  {
+                                                                                                                                                                                                  "type":  "oauthSetting",
+                                                                                                                                                                                                  "oAuthSettings":  {
+                                                                                                                                                                                                                        "identityProvider":  "sharepointonlinecertificateV2",
+                                                                                                                                                                                                                        "clientId":  "7ab7862c-4c57-491e-8a45-d52a7e023983",
+                                                                                                                                                                                                                        "scopes":  [
+
+                                                                                                                                                                                                                                   ],
+                                                                                                                                                                                                                        "redirectMode":  "GlobalPerConnector",
+                                                                                                                                                                                                                        "redirectUrl":  "https://global.consent.azure-apim.net/redirect/sharepointonline",
+                                                                                                                                                                                                                        "properties":  {
+                                                                                                                                                                                                                                           "IsFirstParty":  "True",
+                                                                                                                                                                                                                                           "IsOnbehalfofLoginSupported":  true
+                                                                                                                                                                                                                                       },
+                                                                                                                                                                                                                        "customParameters":  {
+                                                                                                                                                                                                                                                 "ResourceUriAAD":  {
+                                                                                                                                                                                                                                                                        "value":  "https://graph.microsoft.com/"
+                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                 "loginUri":  {
+                                                                                                                                                                                                                                                                  "value":  "https://login.windows.net"
+                                                                                                                                                                                                                                                              },
+                                                                                                                                                                                                                                                 "LoginUriAAD":  {
+                                                                                                                                                                                                                                                                     "value":  "https://login.windows.net"
+                                                                                                                                                                                                                                                                 },
+                                                                                                                                                                                                                                                 "ResourceUri":  {
+                                                                                                                                                                                                                                                                     "value":  "https://graph.microsoft.com"
+                                                                                                                                                                                                                                                                 }
+                                                                                                                                                                                                                                             }
+                                                                                                                                                                                                                    },
+                                                                                                                                                                                                  "uiDefinition":  {
+                                                                                                                                                                                                                       "displayName":  "Log in with SharePoint Credentials",
+                                                                                                                                                                                                                       "description":  "Log in with SharePoint Credentials",
+                                                                                                                                                                                                                       "tooltip":  "Provide SharePoint Credentials",
+                                                                                                                                                                                                                       "constraints":  {
+                                                                                                                                                                                                                                           "required":  "true",
+                                                                                                                                                                                                                                           "capability":  [
+                                                                                                                                                                                                                                                              "cloud"
+                                                                                                                                                                                                                                                          ]
+                                                                                                                                                                                                                                       }
+                                                                                                                                                                                                                   }
+                                                                                                                                                                                              },
+                                                                                                                                                                                    "token:TenantId":  {
+                                                                                                                                                                                                           "type":  "string",
+                                                                                                                                                                                                           "metadata":  {
+                                                                                                                                                                                                                            "sourceType":  "AzureActiveDirectoryTenant"
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                           "uiDefinition":  {
+                                                                                                                                                                                                                                "displayName":  "Tenant",
+                                                                                                                                                                                                                                "description":  "The tenant ID of for the Microsoft Entra ID application",
+                                                                                                                                                                                                                                "constraints":  {
+                                                                                                                                                                                                                                                    "required":  "false",
+                                                                                                                                                                                                                                                    "hidden":  "true"
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                       },
+                                                                                                                                                                                    "gateway":  {
+                                                                                                                                                                                                    "type":  "gatewaySetting",
+                                                                                                                                                                                                    "gatewaySettings":  {
+                                                                                                                                                                                                                            "dataSourceType":  "SharePoint",
+                                                                                                                                                                                                                            "connectionDetails":  [
+
+                                                                                                                                                                                                                                                  ]
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                    "uiDefinition":  {
+                                                                                                                                                                                                                         "tabIndex":  1,
+                                                                                                                                                                                                                         "constraints":  {
+                                                                                                                                                                                                                                             "hidden":  "false",
+                                                                                                                                                                                                                                             "capability":  [
+                                                                                                                                                                                                                                                                "gateway"
+                                                                                                                                                                                                                                                            ]
+                                                                                                                                                                                                                                         }
+                                                                                                                                                                                                                     }
+                                                                                                                                                                                                },
+                                                                                                                                                                                    "authType":  {
+                                                                                                                                                                                                     "type":  "string",
+                                                                                                                                                                                                     "allowedValues":  [
+                                                                                                                                                                                                                           {
+                                                                                                                                                                                                                               "value":  "windows"
+                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                       ],
+                                                                                                                                                                                                     "uiDefinition":  {
+                                                                                                                                                                                                                          "displayName":  "Authentication Type",
+                                                                                                                                                                                                                          "description":  "Authentication type to connect to your database",
+                                                                                                                                                                                                                          "tooltip":  "Authentication type to connect to your database",
+                                                                                                                                                                                                                          "constraints":  {
+                                                                                                                                                                                                                                              "tabIndex":  2,
+                                                                                                                                                                                                                                              "required":  "false",
+                                                                                                                                                                                                                                              "allowedValues":  [
+                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                        "text":  "Windows",
+                                                                                                                                                                                                                                                                        "value":  "windows"
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                ],
+                                                                                                                                                                                                                                              "capability":  [
+                                                                                                                                                                                                                                                                 "gateway"
+                                                                                                                                                                                                                                                             ]
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                 },
+                                                                                                                                                                                    "username":  {
+                                                                                                                                                                                                     "type":  "securestring",
+                                                                                                                                                                                                     "uiDefinition":  {
+                                                                                                                                                                                                                          "displayName":  "Username",
+                                                                                                                                                                                                                          "description":  "Username credential",
+                                                                                                                                                                                                                          "tooltip":  "Username credential",
+                                                                                                                                                                                                                          "constraints":  {
+                                                                                                                                                                                                                                              "tabIndex":  3,
+                                                                                                                                                                                                                                              "clearText":  true,
+                                                                                                                                                                                                                                              "required":  "true",
+                                                                                                                                                                                                                                              "capability":  [
+                                                                                                                                                                                                                                                                 "gateway"
+                                                                                                                                                                                                                                                             ]
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                 },
+                                                                                                                                                                                    "password":  {
+                                                                                                                                                                                                     "type":  "securestring",
+                                                                                                                                                                                                     "uiDefinition":  {
+                                                                                                                                                                                                                          "displayName":  "Password",
+                                                                                                                                                                                                                          "description":  "Password credential",
+                                                                                                                                                                                                                          "tooltip":  "Password credential",
+                                                                                                                                                                                                                          "constraints":  {
+                                                                                                                                                                                                                                              "tabIndex":  4,
+                                                                                                                                                                                                                                              "required":  "true",
+                                                                                                                                                                                                                                              "capability":  [
+                                                                                                                                                                                                                                                                 "gateway"
+                                                                                                                                                                                                                                                             ]
+                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                 }
+                                                                                                                                                                                },
+                                                                                                                                                       "scopes":  {
+                                                                                                                                                                      "will":  [
+                                                                                                                                                                                   "Read list and library names, as well as the names of the columns",
+                                                                                                                                                                                   "Create, read, update, copy and delete files and metadata",
+                                                                                                                                                                                   "Create, read, update, and delete list items"
+                                                                                                                                                                               ],
+                                                                                                                                                                      "wont":  [
+
+                                                                                                                                                                               ]
+                                                                                                                                                                  },
+                                                                                                                                                       "runtimeUrls":  [
+                                                                                                                                                                           "https://e2d10003-4d8e-e007-9d63-76d5fe89ef56.19.common.europe002.azure-apihub.net/apim/sharepointonline"
+                                                                                                                                                                       ],
+                                                                                                                                                       "primaryRuntimeUrl":  "https://e2d10003-4d8e-e007-9d63-76d5fe89ef56.19.common.europe002.azure-apihub.net/apim/sharepointonline",
+                                                                                                                                                       "metadata":  {
+                                                                                                                                                                        "source":  "marketplace",
+                                                                                                                                                                        "brandColor":  "",
+                                                                                                                                                                        "useNewApimVersion":  "true",
+                                                                                                                                                                        "version":  {
+                                                                                                                                                                                        "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                                                                        "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                                                                                                                    }
+                                                                                                                                                                    },
+                                                                                                                                                       "capabilities":  [
+                                                                                                                                                                            "tabular",
+                                                                                                                                                                            "gateway",
+                                                                                                                                                                            "cloud",
+                                                                                                                                                                            "federatedKnowledgeSource"
+                                                                                                                                                                        ],
+                                                                                                                                                       "tier":  "Standard",
+                                                                                                                                                       "isCustomApi":  false,
+                                                                                                                                                       "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items.",
+                                                                                                                                                       "createdTime":  "2018-07-31T14:29:25.515029Z",
+                                                                                                                                                       "changedTime":  "2026-03-27T02:58:17.6651857Z",
+                                                                                                                                                       "publisher":  "Microsoft"
+                                                                                                                                                   }
+                                                                                                                                },
+                                                                                                              "source":  "Invoker",
+                                                                                                              "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                              "displayName":  "SharePoint",
+                                                                                                              "iconUri":  "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                                              "brandColor":  "",
+                                                                                                              "tier":  "Standard",
+                                                                                                              "apiName":  "sharepointonline",
+                                                                                                              "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                                          }
+                                                                          },
+                                        "createdTime":  "2026-05-05T15:30:44.666497Z",
+                                        "lastModifiedTime":  "2026-05-05T22:35:54Z",
+                                        "flowSuspensionReason":  "None",
+                                        "environment":  {
+                                                            "name":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+                                                            "type":  "Microsoft.ProcessSimple/environments",
+                                                            "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+                                                        },
+                                        "definitionSummary":  {
+                                                                  "triggers":  [
+                                                                                   {
+                                                                                       "type":  "Request",
+                                                                                       "kind":  "Skills"
+                                                                                   }
+                                                                               ],
+                                                                  "actions":  [
+                                                                                  {
+                                                                                      "type":  "Compose"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "Response",
+                                                                                      "kind":  "Skills"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "OpenApiConnection",
+                                                                                      "swaggerOperationId":  "PostItem"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "OpenApiConnection",
+                                                                                      "swaggerOperationId":  "GetItems"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "Compose"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "Compose"
+                                                                                  },
+                                                                                  {
+                                                                                      "type":  "Response",
+                                                                                      "kind":  "Skills"
+                                                                                  }
+                                                                              ]
+                                                              },
+                                        "creator":  {
+                                                        "tenantId":  "7808e005-1489-4374-954b-d3b08f193920",
+                                                        "objectId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                                        "userId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                                        "userType":  "ActiveDirectory"
+                                                    },
+                                        "flowTriggerUri":  "https://e2d10003-4d8e-e007-9d63-76d5fe89ef56.19.common.europe002.azure-apihub.net:443/apim/logicflows/7CA90102525B48BB875E0F7BDA96F85B-49E05A10BE4933DD/triggers/Copilot_CriarTarefa_Request/run?api-version=2016-06-01",
+                                        "installationStatus":  "Installed",
+                                        "provisioningMethod":  "FromDefinition",
+                                        "flowFailureAlertSubscribed":  true,
+                                        "workflowEntityId":  "71f62da4-9748-f111-bec7-6045bdf42cae",
+                                        "referencedResources":  [
+                                                                    {
+                                                                        "service":  "sharepoint",
+                                                                        "resource":  {
+                                                                                         "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                         "list":  "[DYNAMIC_VALUE]"
+                                                                                     },
+                                                                        "referencers":  [
+                                                                                            {
+                                                                                                "referenceSourceType":  "Actions",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+                                                                                            },
+                                                                                            {
+                                                                                                "referenceSourceType":  "Actions",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                                            },
+                                                                                            {
+                                                                                                "referenceSourceType":  "Triggers",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+                                                                                            },
+                                                                                            {
+                                                                                                "referenceSourceType":  "Triggers",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                                            }
+                                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "service":  "sharepoint",
+                                                                        "resource":  {
+                                                                                         "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                     },
+                                                                        "referencers":  [
+                                                                                            {
+                                                                                                "referenceSourceType":  "Actions",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+                                                                                            },
+                                                                                            {
+                                                                                                "referenceSourceType":  "Actions",
+                                                                                                "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                                            }
+                                                                                        ]
+                                                                    }
+                                                                ],
+                                        "isManaged":  false,
+                                        "machineDescriptionData":  {
+
+                                                                   }
+                                    }
+                 }
+}

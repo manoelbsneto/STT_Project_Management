@@ -83,6 +83,58 @@ components:
     managedProperties:
       isCustomizable: true
 
+    displayName: PMO_PA_CriarTarefa
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_CriarTarefa.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_CriarTarefa
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: nomeProjeto
+          value: =Global.PMO_Criar_Title
+
+        - kind: ManualTaskInput
+          propertyName: titulo
+          value: =Global.PMO_Criar_Title
+
+        - kind: ManualTaskInput
+          propertyName: responsavel
+          value: =Global.PMO_Criar_Responsavel
+
+        - kind: ManualTaskInput
+          propertyName: prazo
+          value: =Global.PMO_Criar_DataFim
+
+        - kind: ManualTaskInput
+          propertyName: horas
+          value: =Global.PMO_Criar_HorasEstimadas
+
+        - kind: ManualTaskInput
+          propertyName: prioridade
+          value: =Global.PMO_Criar_Prioridade
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 71f62da4-9748-f111-bec7-6045bdf42cae
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
     displayName: LowConfidence
     description: Fallback quando a intenção não for reconhecida.
     shareContext: {}
@@ -459,7 +511,7 @@ components:
       isCustomizable: true
 
     displayName: CriarTarefa
-    description: Cria nova tarefa em um projeto. Aceita input estruturado multiline com Key=Value. O ProjectID é gerado automaticamente pelo sistema.
+    description: Coleta dados de novo projeto/tarefa, confirma e aciona o fluxo CriarTarefa.
     shareContext: {}
     state: Active
     status: Active
@@ -484,60 +536,96 @@ components:
             - abrir tarefa
         actions:
           - kind: Question
-            id: ask_task_title
-            variable: Topic.Titulo
-            prompt: "Qual o título da tarefa?"
+            id: ask_title
+            variable: Topic.Title
+            prompt: Qual o titulo da tarefa?
             entity: StringPrebuiltEntity
 
           - kind: Question
-            id: ask_task_project_name
-            variable: Topic.NomeProjeto
-            prompt: "Qual o nome do projeto? (se for um projeto novo, informe o nome desejado)"
-            entity: StringPrebuiltEntity
-
-          - kind: Question
-            id: ask_task_owner
+            id: ask_responsavel
             variable: Topic.Responsavel
-            prompt: "Quem é o responsável pela tarefa?"
+            prompt: Quem e o responsavel pela tarefa?
             entity: StringPrebuiltEntity
 
           - kind: Question
-            id: ask_task_due
-            variable: Topic.Prazo
+            id: ask_datafim
+            variable: Topic.DataFim
             prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
             entity: StringPrebuiltEntity
 
           - kind: Question
-            id: ask_task_hours
-            variable: Topic.Horas
-            prompt: "Quantas horas estimadas para essa tarefa?"
+            id: ask_horas
+            variable: Topic.HorasEstimadas
+            prompt: Quantas horas estimadas para essa tarefa?
             entity: NumberPrebuiltEntity
 
           - kind: Question
-            id: ask_task_priority
+            id: ask_prioridade
             variable: Topic.Prioridade
-            prompt: "Qual a prioridade? Escolha: Baixa, Média, Alta ou Crítica."
+            prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
             entity: StringPrebuiltEntity
 
           - kind: Question
-            id: confirm_task
+            id: confirm_criar
             variable: Topic.Confirmar
-            prompt: "Vou criar a tarefa '{Topic.Titulo}' no projeto '{Topic.NomeProjeto}'. Responsável: {Topic.Responsavel}. Prazo: {Topic.Prazo}. Horas: {Topic.Horas}h. Prioridade: {Topic.Prioridade}. O código do projeto (PRJ-XXXXXX) será gerado automaticamente. Confirma?"
+            prompt: |-
+              Vou criar a tarefa '{Topic.Title}'.
+              Responsavel: {Topic.Responsavel}
+              Prazo: {Topic.DataFim}
+              Horas: {Topic.HorasEstimadas}h
+              Prioridade: {Topic.Prioridade}
+              O codigo do projeto sera gerado automaticamente.
+
+              Confirma?
             entity: BooleanPrebuiltEntity
 
           - kind: ConditionGroup
-            id: confirm_task_branch
+            id: confirm_branch
             conditions:
-              - id: task_confirmed
+              - id: confirmed
                 condition: =Topic.Confirmar = true
                 actions:
+                  - kind: SetVariable
+                    id: set_global_title
+                    variable: Global.PMO_Criar_Title
+                    value: =Topic.Title
+
+                  - kind: SetVariable
+                    id: set_global_responsavel
+                    variable: Global.PMO_Criar_Responsavel
+                    value: =Topic.Responsavel
+
+                  - kind: SetVariable
+                    id: set_global_datafim
+                    variable: Global.PMO_Criar_DataFim
+                    value: =Topic.DataFim
+
+                  - kind: SetVariable
+                    id: set_global_horas
+                    variable: Global.PMO_Criar_HorasEstimadas
+                    value: =Topic.HorasEstimadas
+
+                  - kind: SetVariable
+                    id: set_global_prioridade
+                    variable: Global.PMO_Criar_Prioridade
+                    value: =Topic.Prioridade
+
+                  - kind: BeginDialog
+                    id: call_criar_tarefa
+                    input: {}
+                    dialog: template-content.action.PMO_PA_CriarTarefa
+                    output:
+                      binding:
+                        result: Topic.message
+
                   - kind: SendActivity
-                    id: task_confirmed_msg
-                    activity: "✅ Tarefa '{Topic.Titulo}' registrada no projeto '{Topic.NomeProjeto}'. O código do projeto será atribuído automaticamente pelo sistema."
+                    id: criar_done
+                    activity: "{Topic.message}"
+
             elseActions:
               - kind: SendActivity
-                id: task_cancelled_msg
-                activity: "Ok, não criei a tarefa."
+                id: criar_cancelled
+                activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
 
   - kind: DialogComponent
     managedProperties:

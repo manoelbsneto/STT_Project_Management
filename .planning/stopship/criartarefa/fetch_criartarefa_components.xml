@@ -1,0 +1,13 @@
+<fetch count="10">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="data" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.topic.CriarTarefa" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.topic.LowConfidence" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO.action.PMO_PA_CriarTarefa" />
+    </filter>
+  </entity>
+</fetch>

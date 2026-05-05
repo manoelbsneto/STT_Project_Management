@@ -1,0 +1,168 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       name               schemaname                                  data
+2d57ece5-51c0-4236-84b4-66f98d2c30a8 LowConfidence      pmo_AssistentePMO.topic.LowConfidence       kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: SendActivity
+      id: low_confidence_msg
+      activity: "Não entendi bem. Você pode reformular? Posso ajudar com: criar tarefa/projeto, atualizar tarefa, atualizar status, consultar portfólio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio, solicitar decisão."
+
+b7fbf995-ffd8-4657-ba76-d289f6a9d3a8 CriarTarefa        pmo_AssistentePMO.topic.CriarTarefa         kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+      - "criar tarefa:"
+      - abrir tarefa
+
+  actions:
+    - kind: Question
+      id: ask_title
+      variable: Topic.Title
+      prompt: Qual o titulo da tarefa?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_responsavel
+      variable: Topic.Responsavel
+      prompt: Quem e o responsavel pela tarefa?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_datafim
+      variable: Topic.DataFim
+      prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_horas
+      variable: Topic.HorasEstimadas
+      prompt: Quantas horas estimadas para essa tarefa?
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: ask_prioridade
+      variable: Topic.Prioridade
+      prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_criar
+      variable: Topic.Confirmar
+      prompt: |-
+        Vou criar a tarefa '{Topic.Title}'.
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Horas: {Topic.HorasEstimadas}h
+        Prioridade: {Topic.Prioridade}
+        O codigo do projeto sera gerado automaticamente.
+
+        Confirma?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SetVariable
+              id: set_global_title
+              variable: Global.PMO_Criar_Title
+              value: =Topic.Title
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Criar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Criar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_horas
+              variable: Global.PMO_Criar_HorasEstimadas
+              value: =Topic.HorasEstimadas
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Criar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: BeginDialog
+              id: call_criar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO.action.PMO_PA_CriarTarefa
+              output:
+                binding:
+                  result: Topic.message
+
+            - kind: SendActivity
+              id: criar_done
+              activity: |-
+                {Topic.message}
+
+      elseActions:
+        - kind: SendActivity
+          id: criar_cancelled
+          activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
+
+8495ade0-cbcd-4461-80f4-794ff9a68292 PMO_PA_CriarTarefa pmo_AssistentePMO.action.PMO_PA_CriarTarefa kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: nomeProjeto
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: titulo
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: responsavel
+    value: =Global.PMO_Criar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: prazo
+    value: =Global.PMO_Criar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: horas
+    value: =Global.PMO_Criar_HorasEstimadas
+
+  - kind: ManualTaskInput
+    propertyName: prioridade
+    value: =Global.PMO_Criar_Prioridade
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 71f62da4-9748-f111-bec7-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+

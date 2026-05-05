@@ -92,7 +92,60 @@ function Get-DialogData {
 
     $dialogBody = $match.Groups["body"].Value
     $dialogBody = [regex]::Replace($dialogBody, "(?m)^      ", "")
+    if ($dialogBody -match "(?m)^\s*beginDialog:") {
+        $dialogBody = "kind: AdaptiveDialog`r`n" + $dialogBody
+    }
     $dialogBody.TrimEnd() + "`r`n"
+}
+
+function Get-TriggerQueries {
+    param([string]$ComponentBlock)
+
+    $lines = $ComponentBlock -replace "`r`n", "`n" -replace "`r", "`n" -split "`n"
+    $queries = [System.Collections.Generic.List[string]]::new()
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i].Trim() -ne "triggerQueries:") {
+            continue
+        }
+
+        for ($j = $i + 1; $j -lt $lines.Count; $j++) {
+            $line = $lines[$j]
+            if ([string]::IsNullOrWhiteSpace($line)) {
+                break
+            }
+            $match = [regex]::Match($line, "^[ \t]+- (`"|')?(?<query>.+?)(`"|')?[ \t]*$")
+            if (-not $match.Success) {
+                break
+            }
+            $queries.Add($match.Groups["query"].Value.Trim()) | Out-Null
+        }
+        break
+    }
+
+    @($queries)
+}
+
+function Test-StringArrayEqual {
+    param([string[]]$Actual, [string[]]$Expected)
+
+    if ($Actual.Count -ne $Expected.Count) {
+        return $false
+    }
+
+    for ($i = 0; $i -lt $Expected.Count; $i++) {
+        if ($Actual[$i] -ne $Expected[$i]) {
+            return $false
+        }
+    }
+
+    return $true
+}
+
+function Test-NoUtf8Bom {
+    param([string]$Path)
+
+    $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $Path).Path)
+    return -not ($bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF)
 }
 
 function Write-BotComponent {
@@ -303,7 +356,7 @@ $topicDialogBlock = @"
                   - kind: BeginDialog
                     id: call_criar_tarefa
                     input: {}
-                    dialog: template-content.action.PMO_PA_CriarTarefa
+                    dialog: $BotSchema.action.PMO_PA_CriarTarefa
                     output:
                       binding:
                         result: Topic.message
@@ -323,7 +376,7 @@ $beginDialogNew = @"
                   - kind: BeginDialog
                     id: call_criar_tarefa
                     input: {}
-                    dialog: template-content.action.PMO_PA_CriarTarefa
+                    dialog: $BotSchema.action.PMO_PA_CriarTarefa
                     output:
                       binding:
                         result: Topic.message
@@ -533,14 +586,49 @@ $extractVerifyLog = Join-Path $evidenceRoot "pac_copilot_extract_criartarefa_con
 Invoke-Pac -Command "pac copilot extract-template --environment $EnvironmentName --bot $BotId --templateFileName `"$verifyPath`" --overwrite" -LogPath $extractVerifyLog | Out-Null
 $verifyText = Get-Content -LiteralPath $verifyPath -Raw
 
+$verifyActionBlock = Get-ComponentBlock -Yaml $verifyText -DisplayName "PMO_PA_CriarTarefa"
+$verifyTopicBlock = Get-ComponentBlock -Yaml $verifyText -DisplayName "CriarTarefa"
+$verifyLowConfidenceBlock = Get-ComponentBlock -Yaml $verifyText -DisplayName "LowConfidence"
+$actualTriggerQueries = Get-TriggerQueries -ComponentBlock $verifyTopicBlock
+$expectedTriggerQueries = @(
+    "criar tarefa",
+    "nova tarefa",
+    "adicionar tarefa",
+    "cadastrar tarefa",
+    "criar projeto",
+    "novo projeto",
+    "abrir projeto",
+    "registrar projeto",
+    "criar tarefa:",
+    "abrir tarefa"
+)
+$packageActionDataPath = Join-Path $packageRoot "botcomponents\$BotSchema.action.PMO_PA_CriarTarefa\data"
+$packageTopicDataPath = Join-Path $packageRoot "botcomponents\$BotSchema.topic.CriarTarefa\data"
+$packageActionData = Get-Content -LiteralPath $packageActionDataPath -Raw
+$packageTopicData = Get-Content -LiteralPath $packageTopicDataPath -Raw
+$rawDataMojibakePattern = @(
+    "$([char]0x00C2)$([char]0x00BF)",
+    "$([char]0x00EF)$([char]0x00BB)$([char]0x00BF)",
+    "$([char]0x00C3)$([char]0x00AF)$([char]0x00C2)$([char]0x00BB)$([char]0x00C2)$([char]0x00BF)",
+    "$([char]0xFFFD)"
+) -join "|"
+$forbiddenProjectIdPattern = "id:\s*ask_projectid|Topic\.ProjectID\b|id:\s*set_global_projectid"
+
 $checks = [ordered]@{
-    hasAction = $verifyText -match "schemaName: template-content\.action\.PMO_PA_CriarTarefa"
-    hasFlowId = $verifyText -match [regex]::Escape($WorkflowEntityId)
-    hasActionInputs = ($verifyText -match "propertyName: titulo") -and ($verifyText -match "propertyName: responsavel") -and ($verifyText -match "propertyName: prazo") -and ($verifyText -match "propertyName: horas") -and ($verifyText -match "propertyName: prioridade")
-    hasOutputBindings = ($verifyText -match "(?ms)id: call_criar_tarefa.*?result: Topic\.message")
-    noExtraCriarOutputBindings = -not ($verifyText -match "Topic\.ProjectIDGerado|Topic\.CriarSuccess|Topic\.CriarErrorCode")
-    hasCleanBeginDialog = ($verifyText -match "(?m)^\s+beginDialog:\s*$") -and -not ($verifyText -match "Â¿beginDialog|ï»¿beginDialog|Ã¯Â»Â¿beginDialog")
-    hasScalarTriggerQueries = ($verifyText -match "(?m)^\s+- criar tarefa\s*$") -and -not ($verifyText -match "(?m)^\s+- Value:")
+    hasAction = $verifyActionBlock -match "schemaName: template-content\.action\.PMO_PA_CriarTarefa"
+    hasFlowId = $verifyActionBlock -match [regex]::Escape($WorkflowEntityId)
+    hasActionInputs = ($verifyActionBlock -match "propertyName: titulo") -and ($verifyActionBlock -match "propertyName: responsavel") -and ($verifyActionBlock -match "propertyName: prazo") -and ($verifyActionBlock -match "propertyName: horas") -and ($verifyActionBlock -match "propertyName: prioridade")
+    hasOutputBindings = ($verifyTopicBlock -match "(?ms)id: call_criar_tarefa.*?result: Topic\.message")
+    noExtraCriarOutputBindings = -not ($verifyTopicBlock -match "Topic\.ProjectIDGerado|Topic\.CriarSuccess|Topic\.CriarErrorCode")
+    includeInOnSelectIntent = $verifyTopicBlock -match "includeInOnSelectIntent:\s*true"
+    hasExactTriggerQueries = Test-StringArrayEqual -Actual $actualTriggerQueries -Expected $expectedTriggerQueries
+    hasTenTriggerQueries = $actualTriggerQueries.Count -eq 10
+    hasScalarTriggerQueries = ($actualTriggerQueries.Count -gt 0) -and -not ($verifyTopicBlock -match "(?m)^\s+- Value:")
+    lowConfidenceMentionsCriarTarefaProjeto = $verifyLowConfidenceBlock -match "criar tarefa/projeto"
+    noProjectIdRoutingArtifacts = -not ($verifyTopicBlock -match $forbiddenProjectIdPattern)
+    hasCleanBeginDialog = ($verifyTopicBlock -match "(?m)^\s+beginDialog:\s*$") -and -not ($verifyTopicBlock -match $rawDataMojibakePattern)
+    packageActionDataIsClean = ($packageActionData -match "(?m)^kind: TaskDialog\s*$") -and -not ($packageActionData -match "(?m)^\s{4}dialog:|displayName:|schemaName:|$rawDataMojibakePattern") -and (Test-NoUtf8Bom -Path $packageActionDataPath)
+    packageTopicDataIsClean = ($packageTopicData -match "(?m)^kind: AdaptiveDialog\s*$") -and -not ($packageTopicData -match "(?m)^\s{4}dialog:|displayName:|schemaName:|$rawDataMojibakePattern") -and (Test-NoUtf8Bom -Path $packageTopicDataPath)
     flowEnabled = $enableFlowSucceeded
 }
 
@@ -552,8 +640,9 @@ $listLog = Join-Path $evidenceRoot "pac_copilot_list_criartarefa_contract_$times
 Invoke-Pac -Command "pac copilot list --environment $EnvironmentName" -LogPath $listLog | Out-Null
 $listText = Get-Content -LiteralPath $listLog -Raw
 $botListedPublished = $listText -match "Assistente PMO\s+$([regex]::Escape($BotId))\s+Published\s+False\s+\S+\s+Active\s+Provisioned"
+$publishOrListStatusOk = $publishSucceeded -or $botListedPublished
 
-$status = if (($checks.Values -notcontains $false) -and ($publishSucceeded -or $botListedPublished)) {
+$status = if (($checks.Values -notcontains $false) -and $publishOrListStatusOk) {
     if ($publishSucceeded) { "PASS" } else { "PASS_WITH_PAC_PUBLISH_STALE_FAILURE" }
 } else {
     "FAILED"
@@ -581,6 +670,9 @@ Save-Json -Data ([ordered]@{
     publishContainsFailure = $publish.ContainsFailure
     botListLog = $listLog
     botListedPublished = $botListedPublished
+    publishOrListStatusOk = $publishOrListStatusOk
+    expectedTriggerQueries = $expectedTriggerQueries
+    actualTriggerQueries = $actualTriggerQueries
     checks = $checks
     officialPrerequisitesCovered = @(
         "Flow action component exists in the bot template.",
