@@ -6,6 +6,7 @@ param(
     [string]$SolutionUniqueName = "PMO_CriarTarefa_Patch",
     [string]$EvidenceDir = ".planning\comms",
     [Parameter(Mandatory)]
+    [Alias("ExistingFlowEvidence")]
     [string]$FlowEvidencePath
 )
 
@@ -14,8 +15,8 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 Set-Location $repoRoot
 
-$adminModule = "C:\Users\dataops-lab\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.217\Microsoft.PowerApps.Administration.PowerShell.psd1"
-$powerAppsModule = "C:\Users\dataops-lab\Documents\PowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1"
+$adminModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.216\Microsoft.PowerApps.Administration.PowerShell.psd1"
+$powerAppsModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1"
 
 Import-Module $adminModule -ErrorAction Stop
 Import-Module $powerAppsModule -ErrorAction Stop
@@ -34,11 +35,11 @@ function Invoke-Pac {
     $output = & powershell.exe -NoProfile -ExecutionPolicy Bypass -Command $Command *>&1
     $output | Set-Content -LiteralPath $LogPath -Encoding UTF8
     $text = $output | Out-String
-    $containsPacFailure = $text -match "(?m)^\s*Error:" -or $text -match "FAILURE:"
+    $containsPacFailure = $text -match "(?m)^\s*Error:" -or $text -match "FAILURE:" -or $text -match "non-recoverable error" -or $text -match "Exception Type:"
     if ((($LASTEXITCODE -ne 0) -or $containsPacFailure) -and -not $AllowFailure) {
         throw "PAC command failed with exit code $LASTEXITCODE. See $LogPath"
     }
-    [pscustomobject]@{
+    [ordered]@{
         ExitCode = $LASTEXITCODE
         LogPath = $LogPath
         ContainsFailure = $containsPacFailure
@@ -58,6 +59,16 @@ $resolvedEvidence = if ([System.IO.Path]::IsPathRooted($FlowEvidencePath)) {
 $flowEvidence = Get-Content -LiteralPath $resolvedEvidence -Raw | ConvertFrom-Json
 $flowName = $flowEvidence.flowName
 $flowDisplayName = $flowEvidence.displayName
+$flowSolutionEvidenceCandidate = Get-ChildItem -LiteralPath $evidenceRoot -Filter "cs_criartarefa_flow_solutionaware_*.json" -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -First 1
+$priorSolutionEvidence = $null
+if ($flowSolutionEvidenceCandidate) {
+    $candidate = Get-Content -LiteralPath $flowSolutionEvidenceCandidate.FullName -Raw | ConvertFrom-Json
+    if ($candidate.flowName -eq $flowName -and $candidate.workflowEntityId) {
+        $priorSolutionEvidence = $candidate
+    }
+}
 
 Write-Host "Flow: $flowDisplayName ($flowName)"
 
@@ -67,30 +78,47 @@ Write-Host "Flow: $flowDisplayName ($flowName)"
 
 $solutionId = "fd140aaf-4df4-11dd-bd17-0019b9312238"
 
-try {
-    $setOutput = Set-FlowAsSolutionAware -EnvironmentName $EnvironmentName -FlowName $flowName -SolutionId $solutionId *>&1 | Out-String
+$flow = $null
+if ($priorSolutionEvidence) {
+    $workflowEntityId = $priorSolutionEvidence.workflowEntityId
+    $setOutput = "Skipped Set-FlowAsSolutionAware; reused WorkflowEntityId from $($flowSolutionEvidenceCandidate.Name)."
+    $flowEnabled = $priorSolutionEvidence.enabled
+    $flowState = $priorSolutionEvidence.state
 }
-catch {
-    $setOutput = $_.Exception.Message
-}
+else {
+    $flow = Get-Flow -EnvironmentName $EnvironmentName -FlowName $flowName -ErrorAction Stop
+    $workflowEntityId = $flow.Internal.properties.workflowEntityId
+    if ($workflowEntityId) {
+        $setOutput = "Skipped Set-FlowAsSolutionAware; flow already has WorkflowEntityId."
+    }
+    else {
+        try {
+            $setOutput = Set-FlowAsSolutionAware -EnvironmentName $EnvironmentName -FlowName $flowName -SolutionId $solutionId *>&1 | Out-String
+        }
+        catch {
+            $setOutput = $_.Exception.Message
+        }
 
-Start-Sleep -Seconds 4
-$flow = Get-Flow -EnvironmentName $EnvironmentName -FlowName $flowName -ErrorAction Stop
-$workflowEntityId = $flow.Internal.properties.workflowEntityId
-
-if (-not $workflowEntityId) {
-    throw "Flow $flowDisplayName does not have WorkflowEntityId after solution-aware conversion."
+        Start-Sleep -Seconds 4
+        $flow = Get-Flow -EnvironmentName $EnvironmentName -FlowName $flowName -ErrorAction Stop
+        $workflowEntityId = $flow.Internal.properties.workflowEntityId
+        if (-not $workflowEntityId) {
+            throw "Flow $flowDisplayName does not have WorkflowEntityId after solution-aware conversion."
+        }
+    }
+    $flowEnabled = $flow.Enabled
+    $flowState = $flow.Internal.properties.state
 }
 
 Write-Host "WorkflowEntityId: $workflowEntityId"
 
 $flowSolutionEvidence = Join-Path $evidenceRoot "cs_criartarefa_flow_solutionaware_$timestamp.json"
-Save-Json -Data ([pscustomobject]@{
+Save-Json -Data ([ordered]@{
     displayName = $flowDisplayName
     flowName = $flowName
     workflowEntityId = $workflowEntityId
-    enabled = $flow.Enabled
-    state = $flow.Internal.properties.state
+    enabled = $flowEnabled
+    state = $flowState
     solutionAwareOutput = if ($setOutput) { $setOutput.Trim() } else { "" }
 }) -Path $flowSolutionEvidence
 
@@ -236,14 +264,30 @@ outputMode: All
 "@ | Set-Content -LiteralPath (Join-Path $actionDir "data") -Encoding UTF8
 
 # Workflow file
-$liveFlow = Get-Flow -EnvironmentName $EnvironmentName -FlowName $flowName -ErrorAction Stop
+$processSimpleResult = Get-ChildItem -LiteralPath $evidenceRoot -Filter "processsimple_criartarefa_result_*.json" -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTime -Descending |
+    ForEach-Object {
+        $json = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
+        if ($json.name -eq $flowName) { $json }
+    } |
+    Select-Object -First 1
+if (-not $processSimpleResult) {
+    throw "Could not find ProcessSimple result evidence for flow $flowName."
+}
+
 $solutionConnectionReferences = [ordered]@{}
-foreach ($cr in $liveFlow.Internal.properties.connectionReferences.PSObject.Properties) {
+foreach ($cr in $processSimpleResult.properties.connectionReferences.PSObject.Properties) {
     $crValue = $cr.Value
     $runtimeSource = if ($crValue.source) { [string]$crValue.source } else { "Embedded" }
+    $connectionReferenceLogicalName = $crValue.connectionReferenceLogicalName
+    if ($cr.Name -eq "shared_sharepointonline" -and $connectionReferenceLogicalName -eq "pmo_sharepoint") {
+        # The live solution-aware conversion maps this SharePoint connection to the
+        # existing Dataverse connection reference; importing with pmo_sharepoint fails.
+        $connectionReferenceLogicalName = "cat_DataverseIndexerSharePoint"
+    }
     $solutionConnectionReferences[$cr.Name] = [ordered]@{
         api = [ordered]@{ name = $crValue.apiName }
-        connection = [ordered]@{ connectionReferenceLogicalName = $crValue.connectionReferenceLogicalName }
+        connection = [ordered]@{ connectionReferenceLogicalName = $connectionReferenceLogicalName }
         runtimeSource = $runtimeSource.ToLowerInvariant()
     }
 }
@@ -252,7 +296,7 @@ $workflowFile = "PMO_PA_CriarTarefa-$workflowEntityId.json"
 Save-Json -Data ([ordered]@{
     properties = [ordered]@{
         connectionReferences = $solutionConnectionReferences
-        definition = $liveFlow.Internal.properties.definition
+        definition = $processSimpleResult.properties.definition
         templateName = $null
     }
     schemaVersion = "1.0.0.0"
@@ -368,7 +412,7 @@ Invoke-Pac -Command "pac solution import --environment $EnvironmentName --path `
 
 Write-Host "Publishing bot..."
 $publishLog = Join-Path $evidenceRoot "pac_copilot_publish_criartarefa_$timestamp.txt"
-$publish = Invoke-Pac -Command "pac copilot publish --environment $EnvironmentName --bot $BotId" -LogPath $publishLog -AllowFailure
+$publish = Invoke-Pac -Command "pac copilot publish --environment $EnvironmentName --bot $BotId" -LogPath $publishLog
 
 Write-Host "Listing bots..."
 $listLog = Join-Path $evidenceRoot "pac_copilot_list_criartarefa_$timestamp.txt"
@@ -377,21 +421,34 @@ Invoke-Pac -Command "pac copilot list --environment $EnvironmentName" -LogPath $
 Write-Host "Extracting template..."
 $extractPath = Join-Path $evidenceRoot "cs_assistente_pmo_post_criartarefa_$timestamp.yaml"
 $extractLog = Join-Path $evidenceRoot "pac_copilot_extract_criartarefa_$timestamp.txt"
-Invoke-Pac -Command "pac copilot extract-template --environment $EnvironmentName --bot $BotId --templateFile `"$extractPath`" --overwrite" -LogPath $extractLog | Out-Null
+Invoke-Pac -Command "pac copilot extract-template --environment $EnvironmentName --bot $BotId --templateFileName `"$extractPath`" --overwrite" -LogPath $extractLog | Out-Null
 
 # =============================================================================
 # STEP 5: Evidence & Result
 # =============================================================================
 
-$resultPath = Join-Path $evidenceRoot "cs_criartarefa_patch_result_$timestamp.json"
-Save-Json -Data ([pscustomobject]@{
+$extractText = Get-Content -LiteralPath $extractPath -Raw
+$verification = [ordered]@{
+    flowStarted = (($flowEnabled -eq $true) -and ($flowState -eq "Started"))
+    templateHasGenerativeActionsEnabled = ($extractText -match "GenerativeActionsEnabled:\s*true")
+    templateHasCriarTarefaAction = ($extractText -match "PMO_PA_CriarTarefa")
+    templateHasCriarTarefaTopic = ($extractText -match "displayName:\s*CriarTarefa")
+    templateHasFlowId = ($extractText -match [regex]::Escape([string]$workflowEntityId))
+}
+$failedChecks = @($verification.GetEnumerator() | Where-Object { $_.Value -ne $true } | ForEach-Object { $_.Key })
+if ($failedChecks.Count -gt 0) {
+    throw "CriarTarefa verification failed: $($failedChecks -join ', ')"
+}
+
+$resultPath = Join-Path $evidenceRoot "cs_criartarefa_patch_$timestamp.json"
+Save-Json -Data ([ordered]@{
     timestamp = (Get-Date).ToString("o")
-    status = if ($publish.ExitCode -eq 0) { "PASS" } else { "PASS_WITH_PUBLISH_WARNING" }
+    status = "PASS"
     environmentName = $EnvironmentName
     botId = $BotId
     botSchema = $BotSchema
     solutionUniqueName = $SolutionUniqueName
-    flowWired = [pscustomobject]@{
+    flowWired = [ordered]@{
         displayName = "PMO_PA_CriarTarefa"
         flowName = $flowName
         workflowEntityId = $workflowEntityId
@@ -405,6 +462,7 @@ Save-Json -Data ([pscustomobject]@{
     listLog = $listLog
     extractPath = $extractPath
     extractLog = $extractLog
+    verification = $verification
     flowSolutionEvidence = $flowSolutionEvidence
     notes = @(
         "CriarTarefa flow wired to Copilot Studio bot via solution import.",

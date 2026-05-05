@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-05-05T13:10:11.8417289-03:00",
+  "status": "PASS",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "botId": "0c4a9729-d55d-483c-8ec3-db9369583155",
+  "flow": {
+    "displayName": "PMO_PA_CriarTarefa",
+    "flowName": "7ca90102-525b-48bb-875e-0f7bda96f85b",
+    "workflowEntityId": "71f62da4-9748-f111-bec7-6045bdf42cae",
+    "enabled": true,
+    "state": "Started",
+    "source": ".planning/comms/cs_criartarefa_patch_20260505_125833.json verification.flowStarted + prior solution-aware evidence"
+  },
+  "bot": {
+    "published": true,
+    "source": ".planning/comms/pac_copilot_list_criartarefa_20260505_125833.txt",
+    "statusLine": "Assistente PMO Published Active Provisioned"
+  },
+  "template": {
+    "path": ".planning/comms/cs_assistente_pmo_post_criartarefa_20260505_125833.yaml",
+    "generativeActionsEnabled": true,
+    "hasCriarTarefaAction": true,
+    "hasCriarTarefaTopic": true,
+    "hasCriarTarefaTopicBeginDialog": true,
+    "flowId": "71f62da4-9748-f111-bec7-6045bdf42cae"
+  },
+  "evidence": {
+    "powerAutomate": ".planning/comms/pa_criartarefa_flow_20260505_123028.json",
+    "copilotPatch": ".planning/comms/cs_criartarefa_patch_20260505_125833.json",
+    "solutionAware": ".planning/comms/cs_criartarefa_flow_solutionaware_20260505_125833.json",
+    "legacyBackup": ".planning/comms/pa_criartarefa_legacy_backup_20260505_122830.json"
+  },
+  "notes": [
+    "PowerApps Get-Flow/Get-AdminFlow verification calls timed out after deployment, but flow state was captured as Started in PA and CS evidence before cmdlet timeout.",
+    "PAC bot list and extract-template succeeded after PAC auth refresh and CLI update to 2.6.4.",
+    "Extracted template contains PMO_PA_CriarTarefa action, flowId 71f62da4-9748-f111-bec7-6045bdf42cae, CriarTarefa topic, and BeginDialog wiring to the action."
+  ]
+}

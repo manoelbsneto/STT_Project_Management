@@ -13,8 +13,8 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 Set-Location $repoRoot
 
-$adminModule = "C:\Users\dataops-lab\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.217\Microsoft.PowerApps.Administration.PowerShell.psd1"
-$powerAppsModule = "C:\Users\dataops-lab\Documents\PowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1"
+$adminModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.216\Microsoft.PowerApps.Administration.PowerShell.psd1"
+$powerAppsModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1"
 
 Import-Module $adminModule -ErrorAction Stop
 Import-Module $powerAppsModule -ErrorAction Stop
@@ -217,7 +217,10 @@ function New-ProcessSimpleFlow {
     }
 
     $payload = New-FlowPayload -DisplayName $DisplayName -Definition $Definition
-    if ($flowName) { $payload.name = $flowName }
+    if ($flowName) {
+        $payload.name = $flowName
+        $payload.id = "/providers/Microsoft.ProcessSimple/environments/$EnvironmentName/flows/$flowName"
+    }
 
     $requestPath = Join-Path $evidenceRoot "processsimple_criartarefa_request_$($payload.name).json"
     $resultPath = Join-Path $evidenceRoot "processsimple_criartarefa_result_$($payload.name).json"
@@ -237,7 +240,7 @@ function New-ProcessSimpleFlow {
         $f
     }
 
-    [pscustomobject]@{
+    [ordered]@{
         displayName = $DisplayName
         status = $status
         flowName = $createdName
@@ -270,37 +273,23 @@ $flowDefinition = New-FlowDefinition `
                         horas         = [ordered]@{ type = "integer"; description = "Horas estimadas" }
                         prioridade    = [ordered]@{ type = "string"; description = "Prioridade: Alta, Media, Baixa ou Critica" }
                     }
-                    required = @("titulo", "responsavel", "prioridade")
+                    required = @("titulo", "responsavel", "prazo", "prioridade")
                 }
             }
         }
     } `
     -Actions ([ordered]@{
-        # Step 1: Get all existing projects to determine next ProjectID
+        # Step 1: Get latest project to determine next ProjectID
         Get_Existing_Projects = New-SharePointGetItems `
             -ListName "Projetos" `
-            -Top 5000
+            -Top 1 `
+            -OrderBy "ID desc"
 
-        # Step 2: Extract max numeric suffix from existing ProjectIDs
-        Select_ProjectID_Numbers = [ordered]@{
-            type = "Select"
-            inputs = [ordered]@{
-                from = "@body('Get_Existing_Projects')?['value']"
-                select = "@int(coalesce(last(split(coalesce(item()?['ProjectID'], 'PRJ-0'), '-')), '0'))"
-            }
-            runAfter = [ordered]@{ Get_Existing_Projects = @("Succeeded") }
-        }
-
-        Compose_Max_ID = [ordered]@{
-            type = "Compose"
-            inputs = "@if(equals(length(body('Select_ProjectID_Numbers')), 0), 0, max(body('Select_ProjectID_Numbers')))"
-            runAfter = [ordered]@{ Select_ProjectID_Numbers = @("Succeeded") }
-        }
-
+        # Step 2: Generate next ProjectID from latest SharePoint item
         Compose_New_ProjectID = [ordered]@{
             type = "Compose"
-            inputs = "@concat('PRJ-', padLeft(string(add(outputs('Compose_Max_ID'), 1)), 6, '0'))"
-            runAfter = [ordered]@{ Compose_Max_ID = @("Succeeded") }
+            inputs = "@if(equals(length(body('Get_Existing_Projects')?['value']), 0), 'PRJ-000001', concat('PRJ-', padLeft(string(add(int(last(split(coalesce(first(body('Get_Existing_Projects')?['value'])?['ProjectID'], 'PRJ-0'), '-'))), 1)), 6, '0')))"
+            runAfter = [ordered]@{ Get_Existing_Projects = @("Succeeded") }
         }
 
         # Step 3: Map prioridade (Critica → Alta, others pass through)
@@ -327,6 +316,7 @@ $flowDefinition = New-FlowDefinition `
                 "StatusRAG/Value"      = "Verde"
                 "Percentual"           = 0
                 "Ativo"                = $true
+                "DataAlvo"             = "@triggerBody()?['prazo']"
                 "UltimaAtualizacao"    = "@utcNow()"
                 "Prioridade/Value"     = "@outputs('Map_Prioridade')"
                 "ResumoExecutivo"      = "@concat('Projeto criado via Copilot Studio. Titulo: ', coalesce(triggerBody()?['titulo'], '-'), '. Horas estimadas: ', coalesce(string(triggerBody()?['horas']), 'N/A'), 'h. Responsavel: ', coalesce(triggerBody()?['responsavel'], '-'), '. Prazo: ', coalesce(triggerBody()?['prazo'], '-'), '.')"
@@ -372,7 +362,7 @@ $flowDefinition = New-FlowDefinition `
 
 if ($BuildOnly) {
     $buildPath = Join-Path $evidenceRoot "pa_criartarefa_buildonly_$timestamp.json"
-    Save-Json -Data ([pscustomobject]@{
+    Save-Json -Data ([ordered]@{
         timestamp = (Get-Date).ToString("o")
         status = "BUILD_ONLY"
         displayName = "PMO_PA_CriarTarefa"
@@ -389,7 +379,7 @@ try {
     $result = New-ProcessSimpleFlow -DisplayName "PMO_PA_CriarTarefa" -Definition $flowDefinition
 
     $evidencePath = Join-Path $evidenceRoot "pa_criartarefa_flow_$timestamp.json"
-    Save-Json -Data ([pscustomobject]@{
+    Save-Json -Data ([ordered]@{
         timestamp = (Get-Date).ToString("o")
         status = $result.status
         environmentName = $EnvironmentName
@@ -419,7 +409,7 @@ try {
 }
 catch {
     $errorPath = Join-Path $evidenceRoot "pa_criartarefa_error_$timestamp.json"
-    Save-Json -Data ([pscustomobject]@{
+    Save-Json -Data ([ordered]@{
         timestamp = (Get-Date).ToString("o")
         status = "FAILED"
         error = $_.Exception.Message

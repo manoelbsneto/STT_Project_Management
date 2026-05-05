@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-05-05T12:30:54.6371481-03:00",
+  "status": "CREATED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_CriarTarefa",
+  "flowName": "7ca90102-525b-48bb-875e-0f7bda96f85b",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills",
+  "notes": [
+    "CriarTarefa flow creates a new project item in the Projetos SharePoint list.",
+    "ProjectID is auto-generated as PRJ-XXXXXX (sequential).",
+    "PM field (User type) is deferred to V2; responsavel is stored in ResumoExecutivo.",
+    "Prioridade 'Critica' is mapped to 'Alta' (schema constraint).",
+    "Standard connector only (shared_sharepointonline)."
+  ]
+}
