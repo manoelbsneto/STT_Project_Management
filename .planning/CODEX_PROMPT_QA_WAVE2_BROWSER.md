@@ -1,9 +1,13 @@
-# CODEX PROMPT — Phase 6 QA Wave 2: Browser Manual Tests
+# CODEX PROMPT — Phase 6 QA Wave 2: Browser-Light Tests (D1–E4)
 
 Leia `.planning/QA_PHASE6_PLAN.md`, `.planning/STATE.md` e `.planning/comms/G6_QA_WAVE1_RESULTS.md`.
 
 ## Objetivo
-Executar somente os testes browser/manual D1–D2 e E1–E4 da Phase 6.
+Executar somente os testes browser-light D1–D2 e E1–E4 da Phase 6.
+Estes testes são navegação simples e form fill — NÃO exigem interação com Adaptive Cards ou Copilot.
+
+## Executor
+**Codex Sub-Agent** (browser-light) — custo baixo/médio. NÃO usar Opus para estes testes.
 
 ## Contexto
 - Ambiente Power Platform: `ColOfertasBrasilPro` (`e2d10003-4d8e-e007-9d63-76d5fe89ef56`)
@@ -22,7 +26,7 @@ Executar somente os testes browser/manual D1–D2 e E1–E4 da Phase 6.
 | E1 | Verificar tab `Portfolio_Executivo` | Tab abre a view Board RAG com dados agrupados por `StatusRAG`. |
 | E2 | Verificar tab `Projetos_Criticos` | Tab mostra somente projetos `StatusRAG=Vermelho`. |
 | E3 | Verificar tab `Decisoes do Board` | Tab mostra view `Pendentes` com filtro `Status=Pendente`. |
-| E4 | Verificar cards no canal Conversa | Cards `ResumoDiarioBoard` e `ResumoSemanal` visíveis no canal. |
+| E4 | Verificar cards no canal Conversa | Cards `ResumoDiario` e `ResumoSemanal` visíveis no canal. |
 
 ## Dados de Teste
 - ProjectID: `PRJ-QA1`
@@ -37,7 +41,7 @@ Executar somente os testes browser/manual D1–D2 e E1–E4 da Phase 6.
 
 ## Regras
 - Não alterar `PRJ-001`–`PRJ-005`.
-- Não executar F1–F3 nem G1–G3 nesta Wave.
+- Não executar F1–F3 nem G1–G3 nesta Wave (esses são Opus-only).
 - Capturar screenshots ou anotar evidência visual suficiente para cada PASS/FAIL.
 - Se algum campo do formulário tiver nome ligeiramente diferente, usar o equivalente funcional e registrar o ajuste.
 - Se login/browser bloquear, registrar `BLOCKED` com mensagem exata e URL.
@@ -51,3 +55,6 @@ Criar `.planning/comms/G6_QA_WAVE2_BROWSER_RESULTS.md` com:
 Também atualizar:
 - `.planning/QA_PHASE6_PLAN.md` com status da Wave 2.
 - `.planning/STATE.md` com resumo da sessão e próximo passo.
+
+## Próximo Passo Após Wave 2
+Wave 3 (Opus Browser-Critical): F1–F3, G1–G3 — usar prompt separado `.planning/OPUS_PROMPT_QA_WAVE3_CRITICAL.md`

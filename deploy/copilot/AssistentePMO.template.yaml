@@ -7,7 +7,7 @@ entity:
     channels:
       - channelId: MsTeams
     settings:
-      GenerativeActionsEnabled: false
+      GenerativeActionsEnabled: true
     aISettings:
       useModelKnowledge: false
       isFileAnalysisEnabled: false
@@ -453,6 +453,87 @@ components:
               - kind: SendActivity
                 id: decision_cancelled_msg
                 activity: "Ok, não registrei a solicitação de decisão."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: CriarTarefa
+    description: Cria nova tarefa em um projeto. Aceita input estruturado multiline com Key=Value. O ProjectID é gerado automaticamente pelo sistema.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.CriarTarefa
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: CriarTarefa
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - criar tarefa
+            - nova tarefa
+            - adicionar tarefa
+            - cadastrar tarefa
+            - abrir tarefa
+            - registrar tarefa
+        actions:
+          - kind: Question
+            id: ask_task_title
+            variable: Topic.Titulo
+            prompt: "Qual o título da tarefa?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_task_project_name
+            variable: Topic.NomeProjeto
+            prompt: "Qual o nome do projeto? (se for um projeto novo, informe o nome desejado)"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_task_owner
+            variable: Topic.Responsavel
+            prompt: "Quem é o responsável pela tarefa?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_task_due
+            variable: Topic.Prazo
+            prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_task_hours
+            variable: Topic.Horas
+            prompt: "Quantas horas estimadas para essa tarefa?"
+            entity: NumberPrebuiltEntity
+
+          - kind: Question
+            id: ask_task_priority
+            variable: Topic.Prioridade
+            prompt: "Qual a prioridade? Escolha: Baixa, Média, Alta ou Crítica."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_task
+            variable: Topic.Confirmar
+            prompt: "Vou criar a tarefa '{Topic.Titulo}' no projeto '{Topic.NomeProjeto}'. Responsável: {Topic.Responsavel}. Prazo: {Topic.Prazo}. Horas: {Topic.Horas}h. Prioridade: {Topic.Prioridade}. O código do projeto (PRJ-XXXXXX) será gerado automaticamente. Confirma?"
+            entity: BooleanPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_task_branch
+            conditions:
+              - id: task_confirmed
+                condition: =Topic.Confirmar = true
+                actions:
+                  - kind: SendActivity
+                    id: task_confirmed_msg
+                    activity: "✅ Tarefa '{Topic.Titulo}' registrada no projeto '{Topic.NomeProjeto}'. O código do projeto será atribuído automaticamente pelo sistema."
+            elseActions:
+              - kind: SendActivity
+                id: task_cancelled_msg
+                activity: "Ok, não criei a tarefa."
 
   - kind: DialogComponent
     managedProperties:

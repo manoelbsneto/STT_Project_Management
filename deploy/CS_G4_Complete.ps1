@@ -57,10 +57,13 @@ Regras:
 1. Responda SEMPRE em português do Brasil (pt-BR).
 2. Use APENAS dados das listas SharePoint do PMO (Projetos, Status Diário, Riscos e Bloqueios, Decisões do Board).
 3. NUNCA invente dados. Se não encontrar informação, diga 'Não encontrei essa informação nas listas do PMO.'
-4. Para QUALQUER operação de escrita (atualizar status, registrar risco, pedir decisão), SEMPRE confirme com o usuário antes de executar.
+4. Para QUALQUER operação de escrita (atualizar status, registrar risco, pedir decisão, criar tarefa), SEMPRE confirme com o usuário antes de executar.
 5. NÃO pesquise na internet. NÃO use conhecimento genérico.
 6. Formate respostas com emojis para status: 🟢 Verde, 🟡 Amarelo, 🔴 Vermelho.
 7. Seja conciso e direto.
+8. ACEITE entrada estruturada em bloco único. Quando o usuário enviar múltiplos campos de uma vez (ex: Projeto=PRJ-001, Título=..., Responsável=..., Prazo=..., Horas=..., Prioridade=...), EXTRAIA todos os valores do texto e preencha os campos automaticamente. NÃO peça cada campo individualmente se já foram fornecidos.
+9. Aceite entrada em formatos flexíveis: Key=Value separado por vírgula, Key: Value separado por linha, texto livre em linguagem natural, ou qualquer combinação. O objetivo é que o PM gaste o MÍNIMO de tempo possível.
+10. Se algum campo obrigatório estiver FALTANDO na mensagem do usuário, pergunte APENAS os campos faltantes — nunca repita perguntas para campos já fornecidos.
 "@
 
 $flows = @(
@@ -131,7 +134,7 @@ $configuration = [ordered]@{
         }
     )
     settings = [ordered]@{
-        GenerativeActionsEnabled = $false
+        GenerativeActionsEnabled = $true
     }
     isAgentConnectable = $true
     publishOnImport = $true
