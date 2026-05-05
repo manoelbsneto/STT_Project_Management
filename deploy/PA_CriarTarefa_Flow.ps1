@@ -72,7 +72,10 @@ function New-OpenApiAction {
                 operationId = $OperationId
                 connectionName = $ConnectionName
             }
-            authentication = "@parameters('`$authentication')"
+            authentication = [ordered]@{
+                value = "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['`$ConnectionKey']"
+                type = "Raw"
+            }
         }
         runAfter = $RunAfter
     }
@@ -333,6 +336,7 @@ $flowDefinition = New-FlowDefinition `
                 body = [ordered]@{
                     success = $true
                     message = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_New_ProjectID'), '.')}"
+                    errorcode = ""
                     projectId = "@{outputs('Compose_New_ProjectID')}"
                 }
             }
@@ -350,6 +354,7 @@ $flowDefinition = New-FlowDefinition `
                     success = $false
                     message = "Erro ao criar projeto no SharePoint."
                     errorcode = "SP_CREATE_FAILED"
+                    projectId = ""
                 }
             }
             runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Failed", "TimedOut") }

@@ -1,0 +1,16 @@
+<fetch count="50">
+  <entity name="asyncoperation">
+    <attribute name="asyncoperationid" />
+    <attribute name="name" />
+    <attribute name="operationtype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="createdon" />
+    <attribute name="completedon" />
+    <filter type="and">
+      <condition attribute="createdon" operator="on-or-after" value="2026-05-05T18:20:00Z" />
+      <condition attribute="name" operator="like" value="%OnAppModulePublishCreateDataverseSkill%" />
+    </filter>
+    <order attribute="createdon" descending="true" />
+  </entity>
+</fetch>

@@ -1,0 +1,13 @@
+<fetch>
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <filter>
+      <condition attribute="name" operator="like" value="%PMO_PA_%" />
+    </filter>
+    <order attribute="name" />
+  </entity>
+</fetch>

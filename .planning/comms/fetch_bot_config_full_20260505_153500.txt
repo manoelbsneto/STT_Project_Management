@@ -1,0 +1,33 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode language           schemaname        authenticationmode name           configuration                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               componentstate statuscode    botid
+Activo    Portugués (Brasil) pmo_AssistentePMO Integrado          Assistente PMO {
+  "$kind": "BotConfiguration",
+  "channels": [
+    {
+      "$kind": "ChannelDefinition",
+      "channelId": "MsTeams"
+    }
+  ],
+  "settings": {
+    "GenerativeActionsEnabled": true
+  },
+  "isAgentConnectable": true,
+  "publishOnImport": true,
+  "gPTSettings": {
+    "$kind": "GPTSettings",
+    "defaultSchemaName": "pmo_AssistentePMO.gpt.default"
+  },
+  "isLightweightBot": false,
+  "aISettings": {
+    "$kind": "AISettings",
+    "useModelKnowledge": false,
+    "isFileAnalysisEnabled": false,
+    "isSemanticSearchEnabled": false,
+    "contentModeration": "High",
+    "optInUseLatestModels": false
+  }
+}
+ Publicado      Aprovisionado 0c4a9729-d55d-483c-8ec3-db9369583155
+
