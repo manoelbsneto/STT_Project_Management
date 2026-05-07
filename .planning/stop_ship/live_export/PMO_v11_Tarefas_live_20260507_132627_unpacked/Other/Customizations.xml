@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26041.172" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26041.00172">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd">
+      <connectionreferencedisplayname>pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714">
+      <connectionreferencedisplayname>pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365memcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shareda36">
+      <connectionreferencedisplayname>pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365memcp.shareda365memcped1">
+      <connectionreferencedisplayname>pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_a365memcp</connectorid>
+      <iscustomizable>0</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>3082</Language>
+  </Languages>
+</ImportExportXml>

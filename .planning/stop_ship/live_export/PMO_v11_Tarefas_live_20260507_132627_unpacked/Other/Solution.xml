@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26041.172" SolutionPackageVersion="9.2" languagecode="3082" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26041.172" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26041.00172">
+  <SolutionManifest>
+    <UniqueName>PMO_v11_Tarefas</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="PMO v1.1 - Task Management Topics" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="3 topics + 3 action bindings para GerenciarTarefas no Assistente PMO" languagecode="3082" />
+    </Descriptions>
+    <Version>1.1.0.1</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>DefaultPublishercolofertasbrasilpro</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Default publisher for colofertasbrasilpro" languagecode="3082" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Editor predeterminado para esta organizacion" languagecode="3082" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>pmo</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{42d9abd1-8849-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="29" id="{9544f14b-3748-f111-bec7-6045bdf42cae}" behavior="0" />
+      <RootComponent type="29" id="{98408d55-3748-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{b308fe0b-0547-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="29" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{f5aab85e-ff46-f111-bec7-7ced8d955c6c}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa,workflowid.workflowid=98408d55-3748-f111-bec7-000d3abc5cc6" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa" id.workflowid.workflowid="98408d55-3748-f111-bec7-000d3abc5cc6" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand,workflowid.workflowid=f5aab85e-ff46-f111-bec7-7ced8d955c6c" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand" id.workflowid.workflowid="f5aab85e-ff46-f111-bec7-7ced8d955c6c" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.action.PMO_PA_EscalarRiscoCritico" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_EscalarRiscoCritico" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.action.PMO_PA_EscalarRiscoCritico,workflowid.workflowid=e5381002-0547-f111-bec7-000d3abc5cc6" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_EscalarRiscoCritico" id.workflowid.workflowid="e5381002-0547-f111-bec7-000d3abc5cc6" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas,workflowid.workflowid=9544f14b-3748-f111-bec7-6045bdf42cae" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas" id.workflowid.workflowid="9544f14b-3748-f111-bec7-6045bdf42cae" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard,workflowid.workflowid=b308fe0b-0547-f111-bec7-7ced8d955c6c" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard" id.workflowid.workflowid="b308fe0b-0547-f111-bec7-7ced8d955c6c" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview" />
+        <Dependent type="botcomponent_connectionreference" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview,connectionreferenceid.connectionreferencelogicalname=pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview" id.connectionreferenceid.connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="botcomponent" displayName="pmo_AssistentePMO_Clean.topic.WorkIQUserPreview" solution="Active" id.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQUserPreview" />
+        <Dependent type="botcomponent_connectionreference" displayName="botcomponentid.schemaname=pmo_AssistentePMO_Clean.topic.WorkIQUserPreview,connectionreferenceid.connectionreferencelogicalname=pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714" id.botcomponentid.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQUserPreview" id.connectionreferenceid.connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_CopilotStudioKitOutlook" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_CopilotStudioKitOutlook">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_EscalarRiscoCritico" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="Clean_PMO_PA_CriarTarefa" id="{42d9abd1-8849-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_ListarTarefas" id="{9544f14b-3748-f111-bec7-6045bdf42cae}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_AtualizarTarefa" id="{98408d55-3748-f111-bec7-000d3abc5cc6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_RegistrarDecisaoBoard" id="{b308fe0b-0547-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_EscalarRiscoCritico" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_DataverseIndexerSharePoint" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_DataverseIndexerSharePoint">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_CheckInOnDemand" id="{f5aab85e-ff46-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_sharedteams_1ef7e" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_sharedteams_1ef7e">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_RegistrarDecisaoBoard" id="{b308fe0b-0547-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_sharedteams_1ef7e" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_sharedteams_1ef7e">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_EscalarRiscoCritico" id="{e5381002-0547-f111-bec7-000d3abc5cc6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="cat_sharedteams_1ef7e" solution="CopilotStudioAccelerator (20260313.2)" id.connectionreferencelogicalname="cat_sharedteams_1ef7e">
+          <package appName="Copilot Studio Kit" version="20260313.2">CopilotStudioAccelerator (20260313.2)</package>
+        </Required>
+        <Dependent type="29" displayName="PMO_PA_CheckInOnDemand" id="{f5aab85e-ff46-f111-bec7-7ced8d955c6c}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

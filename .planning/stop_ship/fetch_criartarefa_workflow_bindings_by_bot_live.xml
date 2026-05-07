@@ -1,0 +1,28 @@
+<fetch>
+  <entity name="botcomponent_workflow">
+    <attribute name="botcomponent_workflowid" />
+    <attribute name="botcomponentid" />
+    <attribute name="workflowid" />
+    <link-entity name="botcomponent" from="botcomponentid" to="botcomponentid" alias="bc">
+      <attribute name="schemaname" />
+      <attribute name="name" />
+      <attribute name="componenttype" />
+      <attribute name="parentbotid" />
+      <filter type="or">
+        <condition attribute="schemaname" operator="like" value="%PMO_PA_CriarTarefa%" />
+        <condition attribute="schemaname" operator="like" value="%CriarTarefa%" />
+      </filter>
+      <link-entity name="bot" from="botid" to="parentbotid" alias="bot" link-type="outer">
+        <attribute name="botid" />
+        <attribute name="name" />
+        <attribute name="schemaname" />
+      </link-entity>
+    </link-entity>
+    <link-entity name="workflow" from="workflowid" to="workflowid" alias="wf">
+      <attribute name="name" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+      <attribute name="workflowid" />
+    </link-entity>
+  </entity>
+</fetch>

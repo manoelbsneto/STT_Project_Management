@@ -1,0 +1,16 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="description" />
+    <attribute name="componenttype" />
+    <attribute name="data" />
+    <attribute name="parentbotid" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa" />
+    </filter>
+  </entity>
+</fetch>

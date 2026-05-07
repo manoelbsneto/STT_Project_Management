@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa">
+  <componenttype>9</componenttype>
+  <description>Acao vinculada ao fluxo Power Automate Clean_PMO_PA_CriarTarefa - cria tarefa e gera ProjectID automaticamente.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PMO_PA_CriarTarefa</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

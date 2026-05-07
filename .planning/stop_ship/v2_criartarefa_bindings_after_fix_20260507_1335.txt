@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+wf.statecode wf.workflowid                        bot.name          botcomponent_workflowid              wf.name                  wf.statuscode bc.schemaname                                  botcomponentid                       bc.parentbotid    bc.componenttype bot.schemaname       bc.name            workflowid                           bot.botid
+Activado     42d9abd1-8849-f111-bec7-7ced8d955c6c Assistente PMO V2 a144e802-324a-f111-bec7-7ced8d955c6c Clean_PMO_PA_CriarTarefa Activado      pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa 9a6b072b-dd0a-4fc6-8d5f-a5199c1dcc8b Assistente PMO V2 Tema (V2)        pmo_AssistentePMO_V2 PMO_PA_CriarTarefa 42d9abd1-8849-f111-bec7-7ced8d955c6c df148bf8-0a3e-495b-80c4-841dcb61d9a4
+

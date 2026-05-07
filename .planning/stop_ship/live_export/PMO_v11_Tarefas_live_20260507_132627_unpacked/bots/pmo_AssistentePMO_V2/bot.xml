@@ -1,0 +1,11 @@
+<bot schemaname="pmo_AssistentePMO_V2">
+  <authenticationmode>2</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>0</iscustomizable>
+  <language>1033</language>
+  <name>Assistente PMO V2</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{"lastFinishedPublishOperation":{"$kind":"PublishResultDetails","userId":"3882eb28-005d-4948-a668-81263d778f6d","operationStart":"2026-05-07T13:07:31.7681592Z","operationEnd":"2026-05-07T13:08:20.7922803Z","status":"Succeeded"},"contentVersion":2,"$kind":"BotSynchronizationDetails","lastPublishedDetails":{"$kind":"SuccessfulPublishResultDetails","authenticationMode":"Integrated"},"lastPublishedUserId":"3882eb28-005d-4948-a668-81263d778f6d","lastPublishedOnUtc":"2026-05-07T13:08:19.9454018","currentSynchronizationState":{"$kind":"SynchronizationState","botRegistration":{"$kind":"BotRegistrationDetails","botRegistrationIdConsumptionTime":"2026-05-07T13:06:51Z","applicationId":"47adedf0-2509-4cb7-a4e7-f720ad34a4cb","isAppAvailableInTenant":true},"provisioningStatus":"Provisioned","state":"Synchronizing"},"lastSynchronizedOnUtc":"2026-05-07T13:08:26.5275648Z"}</synchronizationstatus>
+  <template>kickStartTemplate-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

@@ -1,0 +1,19 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="componenttype" />
+    <attribute name="data" />
+    <attribute name="parentbotid" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="like" value="%PMO_PA_CriarTarefa%" />
+      <condition attribute="schemaname" operator="like" value="%CriarTarefa%" />
+    </filter>
+    <link-entity name="bot" from="botid" to="parentbotid" alias="bot" link-type="outer">
+      <attribute name="botid" />
+      <attribute name="name" />
+      <attribute name="schemaname" />
+    </link-entity>
+  </entity>
+</fetch>

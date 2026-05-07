@@ -1,0 +1,17 @@
+<fetch>
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="uniquename" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <attribute name="type" />
+    <attribute name="createdon" />
+    <attribute name="modifiedon" />
+    <attribute name="clientdata" />
+    <filter>
+      <condition attribute="workflowid" operator="eq" value="{42d9abd1-8849-f111-bec7-7ced8d955c6c}" />
+    </filter>
+  </entity>
+</fetch>
