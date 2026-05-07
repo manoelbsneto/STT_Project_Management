@@ -491,9 +491,9 @@ Componentes do bot (topics, actions, knowledge) são importados via **solution i
 Tipos de componenttype:
 | Tipo | Código | Exemplo |
 |------|--------|---------|
-| AdaptiveDialog (Topic) | `9` | `pmo_AssistentePMO.topic.CriarTarefa` |
-| TaskDialog (Action) | `9` | `pmo_AssistentePMO.action.PMO_PA_CriarTarefa` |
-| KnowledgeSource | `16` | `pmo_AssistentePMO.topic.PMOSharePointKnowledge` |
+| AdaptiveDialog (Topic) | `9` | `pmo_AssistentePMO_Clean.topic.CriarTarefa` |
+| TaskDialog (Action) | `9` | `pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa` |
+| KnowledgeSource | `16` | `pmo_AssistentePMO_Clean.topic.PMOSharePointKnowledge` |
 
 ## 13. Solution Lifecycle — Export / Unpack / Pack / Import / Delete
 
@@ -1059,4 +1059,3 @@ $zip.Dispose()
     ContainsFailure = $containsPacFailure
 }
 ```
-

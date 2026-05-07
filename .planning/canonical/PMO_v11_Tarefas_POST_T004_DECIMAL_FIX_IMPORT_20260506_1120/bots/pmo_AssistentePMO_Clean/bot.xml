@@ -1,0 +1,39 @@
+<bot schemaname="pmo_AssistentePMO_Clean">
+  <authenticationmode>2</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>0</iscustomizable>
+  <language>1046</language>
+  <name>Assistente PMO Clean</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "userId": "3882eb28-005d-4948-a668-81263d778f6d",
+    "operationStart": "2026-05-06T13:30:56.677822Z",
+    "operationEnd": "2026-05-06T13:31:38.5487512Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "Integrated"
+  },
+  "lastPublishedUserId": "3882eb28-005d-4948-a668-81263d778f6d",
+  "lastPublishedOnUtc": "2026-05-06T13:31:38.0724783",
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2026-05-06T03:39:22Z",
+      "applicationId": "178c5f6c-0dc8-4547-bd0c-46e594f10f5a",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2026-05-06T13:31:41.2999945Z"
+}</synchronizationstatus>
+  <template>kickStartTemplate-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

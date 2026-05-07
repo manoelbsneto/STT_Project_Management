@@ -15,7 +15,7 @@
           "type": "Column",
           "width": "stretch",
           "items": [
-            { "type": "TextBlock", "text": "📊 PMO Check-in Diário", "weight": "Bolder", "size": "Medium" },
+            { "type": "TextBlock", "text": " PMO Check-in Diario", "weight": "Bolder", "size": "Medium" },
             { "type": "TextBlock", "text": "Atualize o status do seu projeto", "isSubtle": true, "spacing": "None" }
           ]
         }
@@ -25,18 +25,18 @@
     {
       "type": "Input.ChoiceSet",
       "id": "statusRAG",
-      "label": "🚦 Status (RAG)",
+      "label": " Status (RAG)",
       "isRequired": true,
       "choices": [
-        { "title": "🟢 Verde — No prazo", "value": "Verde" },
-        { "title": "🟡 Amarelo — Atenção", "value": "Amarelo" },
-        { "title": "🔴 Vermelho — Crítico", "value": "Vermelho" }
+        { "title": " Verde - No prazo", "value": "Verde" },
+        { "title": " Amarelo - Atencao", "value": "Amarelo" },
+        { "title": " Vermelho - Critico", "value": "Vermelho" }
       ]
     },
     {
       "type": "Input.Text",
       "id": "resumo",
-      "label": "📝 Resumo do status",
+      "label": " Resumo do status",
       "isRequired": true,
       "isMultiline": true,
       "placeholder": "Descreva o progresso atual..."
@@ -44,7 +44,7 @@
     {
       "type": "Input.Number",
       "id": "percentual",
-      "label": "📈 Percentual concluído",
+      "label": " Percentual concluido",
       "min": 0,
       "max": 100,
       "placeholder": "0-100"
@@ -52,29 +52,29 @@
     {
       "type": "Input.Text",
       "id": "risco",
-      "label": "⚠️ Riscos (opcional)",
+      "label": " Riscos (opcional)",
       "isMultiline": true,
       "placeholder": "Descreva riscos atuais..."
     },
     {
       "type": "Input.Text",
       "id": "bloqueio",
-      "label": "🚫 Bloqueios (opcional)",
+      "label": " Bloqueios (opcional)",
       "isMultiline": true,
       "placeholder": "Descreva bloqueios atuais..."
     },
     {
       "type": "Input.Text",
       "id": "proximaAcao",
-      "label": "➡️ Próxima ação",
+      "label": " Proxima acao",
       "isMultiline": true,
-      "placeholder": "O que será feito a seguir..."
+      "placeholder": "O que sera feito a seguir..."
     }
   ],
   "actions": [
     {
       "type": "Action.Submit",
-      "title": "✅ Enviar Check-in",
+      "title": " Enviar Check-in",
       "data": {
         "action": "submitCheckIn",
         "projectId": "${ProjectID}",

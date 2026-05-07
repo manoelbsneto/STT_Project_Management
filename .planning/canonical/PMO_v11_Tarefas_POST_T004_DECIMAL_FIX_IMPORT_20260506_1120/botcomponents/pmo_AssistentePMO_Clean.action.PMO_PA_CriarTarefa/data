@@ -1,0 +1,40 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: nomeProjeto
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: titulo
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: responsavel
+    value: =Global.PMO_Criar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: prazo
+    value: =Global.PMO_Criar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: horas
+    value: =Global.PMO_Criar_HorasEstimadas
+
+  - kind: ManualTaskInput
+    propertyName: prioridade
+    value: =Global.PMO_Criar_Prioridade
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 71f62da4-9748-f111-bec7-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

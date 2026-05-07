@@ -1,9 +1,0 @@
-Connected as mbenicios@minsait.com
-
-Argument --templateVersion is invalid. Expected type 1.0.0 and got: 
-
-Loaded 13 components for copilot 'Assistente PMO' with id 0c4a9729-d55d-483c-8ec3-db9369583155. Primary language: English, supported languages: 
-
- -> D:\VMs\STT_Project_Management\.planning\comms\g4_assistente_pmo_export_complete_final_20260503_1325.yaml
-
- -> D:\VMs\STT_Project_Management\kickStartTemplate-1.0.0.json

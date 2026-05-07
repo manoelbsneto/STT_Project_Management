@@ -1,9 +1,0 @@
-Connected as mbenicios@minsait.com
-Connected to... ColOfertasBrasilPro
-
-solutioncomponentid                  componenttype objectid                             rootcomponentbehavior
-daa771b6-ff46-f111-bec7-000d3abc5cc6               0c4a9729-d55d-483c-8ec3-db9369583155 Incluir subcomponentes
-de6dd0ae-ff46-f111-bec7-7ced8d955c6c               0c4a9729-d55d-483c-8ec3-db9369583155 Incluir subcomponentes
-df6dd0ae-ff46-f111-bec7-7ced8d955c6c               6b78f98b-5698-427d-bdaa-0115b286dd63 Incluir subcomponentes
-e16dd0ae-ff46-f111-bec7-7ced8d955c6c               48c79516-673f-4c44-acf2-10b2131f1736 Incluir subcomponentes
-

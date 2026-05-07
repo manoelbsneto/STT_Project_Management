@@ -1,0 +1,52 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarRisco
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - registrar risco
+      - novo risco
+      - risco no projeto
+      - risco em projeto
+
+  actions:
+    - kind: Question
+      id: ask_risk_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto tem o risco?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risk_desc
+      variable: Topic.Descricao
+      prompt: Descreva o risco.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risk_severity
+      variable: Topic.Severidade
+      prompt: Qual e a severidade? Baixa, Media, Alta ou Critica.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_risk
+      variable: Topic.Confirmar
+      prompt: "Risco: {Topic.Descricao} | Severidade: {Topic.Severidade} | Projeto: {Topic.ProjectName}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_risk_branch
+      conditions:
+        - id: risk_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: risk_confirmed_msg
+              activity: Confirmacao recebida. A gravacao deve criar item em Riscos e Bloqueios com Tipo=Risco; se a severidade for Critica, o fluxo PMO_PA_EscalarRiscoCritico sera disparado pelo SharePoint.
+
+      elseActions:
+        - kind: SendActivity
+          id: risk_cancelled_msg
+          activity: Ok, nao registrei o risco.

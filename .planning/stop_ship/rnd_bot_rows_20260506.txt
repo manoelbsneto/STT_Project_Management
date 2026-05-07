@@ -1,0 +1,8 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode schemaname                   name                 componentstate statuscode    botid
+Activo    copilots_header_crbdf_agent1 Gestão Férias        Publicado      Aprovisionado bdeeebd5-89f9-f011-8406-6045bdf42cae
+Activo    gstf_GestaoFriasMVPQA        Gestao_Férias_MVP_QA Publicado      Aprovisionado f9243921-1b3d-f111-88b6-6045bdf42cae
+Activo    pmo_AssistentePMO_Clean      Assistente PMO Clean Publicado      Aprovisionado 77cfb838-6ed1-4488-9e57-ab98751081d3
+

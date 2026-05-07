@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       botcomponent_workflowid              bc.name            wf.statuscode workflowid                           wf.statecode wf.name            bc.schemaname
+8495ade0-cbcd-4461-80f4-794ff9a68292 f4b83d24-9848-f111-bec7-000d3abc5cc6 PMO_PA_CriarTarefa Activado      71f62da4-9748-f111-bec7-6045bdf42cae Activado     PMO_PA_CriarTarefa pmo_AssistentePMO.action.PMO_PA_CriarTarefa
+51347593-c1fb-4947-b555-7c6877aff3dd 04b1acfe-fc48-f111-bec7-000d3abc5cc6 PMO_PA_CriarTarefa Activado      71f62da4-9748-f111-bec7-6045bdf42cae Activado     PMO_PA_CriarTarefa pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa
+b7fbf995-ffd8-4657-ba76-d289f6a9d3a8 c6964447-7649-f111-bec7-000d3abc5cc6 CriarTarefa        Activado      71f62da4-9748-f111-bec7-6045bdf42cae Activado     PMO_PA_CriarTarefa pmo_AssistentePMO.topic.CriarTarefa
+c746c335-ada5-48d4-8e6a-f91cf2a8b096 f0d13141-7649-f111-bec7-000d3abc5cc6 CriarTarefa        Activado      71f62da4-9748-f111-bec7-6045bdf42cae Activado     PMO_PA_CriarTarefa pmo_AssistentePMO_Clean.topic.CriarTarefa
+

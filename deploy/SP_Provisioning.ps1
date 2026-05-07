@@ -1,9 +1,10 @@
-# PMO Hub — SharePoint Provisioning Script (PnP PowerShell)
+# PMO Hub - SharePoint Provisioning Script (PnP PowerShell)
 # Site: Grp_T_DN_Transformacao_Digital
 # Ref: AGENT_CONTRACT.md + PRD v1.3
 
 param(
     [string]$SiteUrl = "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    [string]$DefaultPM = "mbenicios@minsait.com",
     [switch]$SkipConnection,
     [switch]$WhatIf
 )
@@ -55,7 +56,7 @@ Add-DateOnlyField -List "Projetos" -DisplayName "DataAlvo" -InternalName "DataAl
 Add-PnPField -List "Projetos" -DisplayName "UltimaAtualizacao"  -InternalName "UltimaAtualizacao"  -Type DateTime
 Add-PnPField -List "Projetos" -DisplayName "Ativo"              -InternalName "Ativo"              -Type Boolean
 Add-PnPField -List "Projetos" -DisplayName "Unidade"            -InternalName "Unidade"            -Type Choice   -Choices "TI","Digital","Dados","Infra","Seguranca"
-Add-PnPField -List "Projetos" -DisplayName "Prioridade"         -InternalName "Prioridade"         -Type Choice   -Choices "Alta","Media","Baixa"
+Add-PnPField -List "Projetos" -DisplayName "Prioridade"         -InternalName "Prioridade"         -Type Choice   -Choices "Alta","Media","Baixa","Critica"
 Add-PnPField -List "Projetos" -DisplayName "PlannerGroupId"     -InternalName "PlannerGroupId"     -Type Text
 Add-PnPField -List "Projetos" -DisplayName "PlannerPlanId"      -InternalName "PlannerPlanId"      -Type Text
 Add-PnPField -List "Projetos" -DisplayName "LinkPlanner"        -InternalName "LinkPlanner"        -Type URL
@@ -85,7 +86,33 @@ Add-PnPView -List "Projetos" -Title "Todos"         -Fields "ProjectID","NomePro
 Write-Host "Projetos created." -ForegroundColor Green
 
 # =============================================================================
-# LIST 2: Status Diário
+# LIST 2: Tarefas
+# =============================================================================
+Write-Host "Creating list: Tarefas..." -ForegroundColor Yellow
+New-PnPList -Title "Tarefas" -Template GenericList -OnQuickLaunch
+
+Add-PnPField -List "Tarefas" -DisplayName "TaskID"            -InternalName "TaskID"            -Type Text
+Add-PnPField -List "Tarefas" -DisplayName "ProjectID"         -InternalName "ProjectID"         -Type Text     -Required
+Add-PnPField -List "Tarefas" -DisplayName "Status"            -InternalName "Status"            -Type Choice   -Required -Choices "Pendente","Em Andamento","Concluida","Cancelada"
+Add-PnPField -List "Tarefas" -DisplayName "HorasRealizadas"   -InternalName "HorasRealizadas"   -Type Number
+Add-PnPField -List "Tarefas" -DisplayName "Responsavel"       -InternalName "Responsavel"       -Type Text
+Add-DateOnlyField -List "Tarefas" -DisplayName "DataInicio" -InternalName "DataInicio"
+Add-DateOnlyField -List "Tarefas" -DisplayName "DataFim" -InternalName "DataFim"
+Add-PnPField -List "Tarefas" -DisplayName "Prioridade"        -InternalName "Prioridade"        -Type Choice   -Choices "Baixa","Media","Alta","Critica"
+Add-PnPField -List "Tarefas" -DisplayName "HorasEstimadas"    -InternalName "HorasEstimadas"    -Type Number
+Add-PnPField -List "Tarefas" -DisplayName "Ativo"             -InternalName "Ativo"             -Type Boolean
+
+Set-PnPField -List "Tarefas" -Identity "ProjectID"  -Values @{Indexed=$true}
+Set-PnPField -List "Tarefas" -Identity "Status"     -Values @{Indexed=$true}
+Set-PnPField -List "Tarefas" -Identity "DataFim"    -Values @{Indexed=$true}
+Set-PnPField -List "Tarefas" -Identity "Prioridade" -Values @{Indexed=$true}
+
+Add-PnPView -List "Tarefas" -Title "Por Projeto" -Fields "Title","ProjectID","Status","Prioridade","Responsavel","DataInicio","DataFim","HorasEstimadas","HorasRealizadas" -Query "<OrderBy><FieldRef Name='DataFim' Ascending='TRUE'/></OrderBy>"
+
+Write-Host "Tarefas created." -ForegroundColor Green
+
+# =============================================================================
+# LIST 3: Status Diario
 # =============================================================================
 Write-Host "Creating list: Status Diario..." -ForegroundColor Yellow
 New-PnPList -Title "Status Diario" -Template GenericList -OnQuickLaunch
@@ -114,7 +141,7 @@ Add-PnPView -List "Status Diario" -Title "Por Projeto" -Fields "StatusID","Proje
 Write-Host "Status Diario created." -ForegroundColor Green
 
 # =============================================================================
-# LIST 3: Riscos e Bloqueios
+# LIST 4: Riscos e Bloqueios
 # =============================================================================
 Write-Host "Creating list: Riscos e Bloqueios..." -ForegroundColor Yellow
 New-PnPList -Title "Riscos e Bloqueios" -Template GenericList -OnQuickLaunch
@@ -143,7 +170,7 @@ Add-PnPView -List "Riscos e Bloqueios" -Title "Abertos" -Fields "RiskID","Projec
 Write-Host "Riscos e Bloqueios created." -ForegroundColor Green
 
 # =============================================================================
-# LIST 4: Decisões do Board
+# LIST 5: Decisoes do Board
 # =============================================================================
 Write-Host "Creating list: Decisoes do Board..." -ForegroundColor Yellow
 New-PnPList -Title "Decisoes do Board" -Template GenericList -OnQuickLaunch
@@ -172,16 +199,16 @@ Add-PnPView -List "Decisoes do Board" -Title "Pendentes" -Fields "DecisionID","P
 Write-Host "Decisoes do Board created." -ForegroundColor Green
 
 # =============================================================================
-# PILOT DATA — 5 Projetos
+# PILOT DATA - 5 Projetos
 # =============================================================================
 Write-Host "Inserting pilot data..." -ForegroundColor Yellow
 
 $pilotProjects = @(
-    @{ProjectID="PRJ-001"; NomeProjeto="Mobile App Corporativo"; StatusRAG="Verde"; Percentual=65; Prioridade="Alta"; Ativo=$true},
-    @{ProjectID="PRJ-002"; NomeProjeto="Migração Cloud Azure"; StatusRAG="Amarelo"; Percentual=40; Prioridade="Alta"; Ativo=$true},
-    @{ProjectID="PRJ-003"; NomeProjeto="Portal do Colaborador"; StatusRAG="Vermelho"; Percentual=25; Prioridade="Media"; Ativo=$true},
-    @{ProjectID="PRJ-004"; NomeProjeto="Data Lake Analytics"; StatusRAG="Verde"; Percentual=80; Prioridade="Media"; Ativo=$true},
-    @{ProjectID="PRJ-005"; NomeProjeto="Automação RPA Financeiro"; StatusRAG="Amarelo"; Percentual=55; Prioridade="Alta"; Ativo=$true}
+    @{ProjectID="PRJ-001"; NomeProjeto="Mobile App Corporativo"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=65; Prioridade="Alta"; Ativo=$true},
+    @{ProjectID="PRJ-002"; NomeProjeto="Migracao Cloud Azure"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=40; Prioridade="Alta"; Ativo=$true},
+    @{ProjectID="PRJ-003"; NomeProjeto="Portal do Colaborador"; PM=$DefaultPM; StatusRAG="Vermelho"; Percentual=25; Prioridade="Media"; Ativo=$true},
+    @{ProjectID="PRJ-004"; NomeProjeto="Data Lake Analytics"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=80; Prioridade="Media"; Ativo=$true},
+    @{ProjectID="PRJ-005"; NomeProjeto="Automacao RPA Financeiro"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=55; Prioridade="Alta"; Ativo=$true}
 )
 
 foreach ($proj in $pilotProjects) {
@@ -191,6 +218,6 @@ foreach ($proj in $pilotProjects) {
 
 Write-Host ""
 Write-Host "SharePoint Provisioning COMPLETE!" -ForegroundColor Green
-Write-Host "   4 lists created | indexes applied | views configured | 5 pilot projects inserted" -ForegroundColor DarkGreen
+Write-Host "   5 lists created | indexes applied | views configured | 5 pilot projects inserted" -ForegroundColor DarkGreen
 
 Disconnect-PnPOnline

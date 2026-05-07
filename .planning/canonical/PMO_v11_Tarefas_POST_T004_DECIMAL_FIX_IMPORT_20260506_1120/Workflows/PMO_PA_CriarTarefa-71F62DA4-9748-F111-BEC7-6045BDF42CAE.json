@@ -1,0 +1,249 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint"
+        },
+        "runtimeSource": "invoker"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_CriarTarefa_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeProjeto": {
+                  "type": "string",
+                  "description": "Nome do projeto fornecido pelo PM"
+                },
+                "titulo": {
+                  "type": "string",
+                  "description": "Titulo da tarefa/projeto"
+                },
+                "responsavel": {
+                  "type": "string",
+                  "description": "Nome do responsavel"
+                },
+                "prazo": {
+                  "type": "string",
+                  "description": "Data alvo no formato ISO 8601 ou dd/MM/yyyy"
+                },
+                "horas": {
+                  "type": "integer",
+                  "description": "Horas estimadas"
+                },
+                "prioridade": {
+                  "type": "string",
+                  "description": "Prioridade: Alta, Media, Baixa ou Critica"
+                }
+              },
+              "required": [
+                "titulo",
+                "responsavel",
+                "prazo",
+                "horas",
+                "prioridade"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose_NomeProjeto": {
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['titulo'], 'Sem nome'))",
+          "runAfter": {}
+        },
+        "Compose_DataAlvo": {
+          "type": "Compose",
+          "inputs": "@if(or(empty(triggerBody()?['prazo']), not(contains(string(triggerBody()?['prazo']), '/'))), triggerBody()?['prazo'], concat(last(split(string(triggerBody()?['prazo']), '/')), '-', if(equals(length(first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), 1), concat('0', first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), '-', if(equals(length(first(split(string(triggerBody()?['prazo']), '/'))), 1), concat('0', first(split(string(triggerBody()?['prazo']), '/'))), first(split(string(triggerBody()?['prazo']), '/')))))",
+          "runAfter": {
+            "Compose_NomeProjeto": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Map_Prioridade": {
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'cr'), 'Critica', if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'a'), 'Alta', if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'b'), 'Baixa', 'Media')))",
+          "runAfter": {
+            "Compose_DataAlvo": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Get_Duplicate_Projects": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'), '''', '''''')}' and DataAlvo ge datetime'@{outputs('Compose_DataAlvo')}T00:00:00Z' and DataAlvo lt datetime'@{formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-dd')}T00:00:00Z' and Ativo eq 1",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetItems",
+              "connectionName": "shared_sharepointonline"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Map_Prioridade": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Condition_Duplicate_Projeto": {
+          "type": "If",
+          "expression": {
+            "equals": [
+              "@length(body('Get_Duplicate_Projects')?['value'])",
+              0
+            ]
+          },
+          "actions": {
+            "Compose_ProjectID": {
+              "type": "Compose",
+              "inputs": "@concat('PRJ-', toUpper(substring(replace(guid(), '-', ''), 0, 8)))",
+              "runAfter": {}
+            },
+            "Create_Projeto_SharePoint": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "Projetos",
+                  "item/Title": "@outputs('Compose_NomeProjeto')",
+                  "item/ProjectID": "@outputs('Compose_ProjectID')",
+                  "item/NomeProjeto": "@outputs('Compose_NomeProjeto')",
+                  "item/StatusRAG/Value": "Verde",
+                  "item/Percentual": 0,
+                  "item/Ativo": true,
+                  "item/PM/Claims": "@concat('i:0#.f|membership|', if(contains(coalesce(triggerBody()?['responsavel'], ''), '@'), triggerBody()?['responsavel'], 'mbenicios@minsait.com'))",
+                  "item/DataAlvo": "@outputs('Compose_DataAlvo')",
+                  "item/UltimaAtualizacao": "@utcNow()",
+                  "item/Prioridade/Value": "@outputs('Map_Prioridade')",
+                  "item/ResumoExecutivo": "@concat('Projeto criado via Copilot Studio. Titulo: ', coalesce(triggerBody()?['titulo'], '-'), '. Horas estimadas: ', coalesce(string(triggerBody()?['horas']), 'N/A'), 'h. Responsavel: ', coalesce(triggerBody()?['responsavel'], '-'), '. Prazo: ', coalesce(triggerBody()?['prazo'], '-'), '.')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "PostItem",
+                  "connectionName": "shared_sharepointonline"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Compose_ProjectID": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Response_Success": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_ProjectID'), '.')}"
+                }
+              },
+              "runAfter": {
+                "Create_Projeto_SharePoint": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Response_Error_Create": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
+                }
+              },
+              "runAfter": {
+                "Create_Projeto_SharePoint": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Response_Duplicate": {
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "result": "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' ja existia com codigo ', body('Get_Duplicate_Projects')?['value']?[0]?['ProjectID'], '. Nenhum item duplicado foi criado.')}"
+                  }
+                },
+                "runAfter": {}
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Duplicate_Projects": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Response_Error_Lookup": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 500,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "result": "Erro ao consultar duplicidade no SharePoint. Codigo: SP_LOOKUP_FAILED."
+            }
+          },
+          "runAfter": {
+            "Get_Duplicate_Projects": [
+              "Failed",
+              "TimedOut"
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

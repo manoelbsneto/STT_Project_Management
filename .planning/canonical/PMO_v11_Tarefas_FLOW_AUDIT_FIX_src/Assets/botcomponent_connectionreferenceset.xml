@@ -1,0 +1,8 @@
+<botcomponent_connectionreferenceset>
+  <botcomponent_connectionreference botcomponentid.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview" connectionreferenceid.connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="pmo_AssistentePMO_Clean.topic.WorkIQUserPreview" connectionreferenceid.connectionreferencelogicalname="pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+</botcomponent_connectionreferenceset>

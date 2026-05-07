@@ -1,0 +1,18 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <attribute name="type" />
+    <filter type="or">
+      <condition attribute="name" operator="eq" value="PMO_PA_CriarTarefa" />
+      <condition attribute="name" operator="eq" value="PMO_PA_ListarTarefas" />
+      <condition attribute="name" operator="eq" value="PMO_PA_AtualizarTarefa" />
+      <condition attribute="name" operator="eq" value="PMO_PA_CheckInOnDemand" />
+      <condition attribute="name" operator="eq" value="PMO_PA_RegistrarDecisaoBoard" />
+      <condition attribute="name" operator="eq" value="PMO_PA_EscalarRiscoCritico" />
+    </filter>
+  </entity>
+</fetch>

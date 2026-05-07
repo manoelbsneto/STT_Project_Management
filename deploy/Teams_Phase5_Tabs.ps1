@@ -113,12 +113,12 @@ if (-not $SkipConnection) {
 $connectedWeb = Get-PnPWeb -ErrorAction Stop
 
 $viewResults = @()
-$mojibakeView = Get-PnPView -List "Projetos" -ErrorAction Stop | Where-Object { $_.Title -eq "Projetos CrÃ­ticos" } | Select-Object -First 1
+$mojibakeView = Get-PnPView -List "Projetos" -ErrorAction Stop | Where-Object { $_.Title -eq "Projetos CrAticos" } | Select-Object -First 1
 if ($mojibakeView) {
     Remove-PnPView -List "Projetos" -Identity $mojibakeView.Id -Force -ErrorAction Stop
     $viewResults += [pscustomobject]@{
         list = "Projetos"
-        title = "Projetos CrÃ­ticos"
+        title = "Projetos CrAticos"
         action = "removed_mojibake_retry_artifact"
         serverRelativeUrl = $mojibakeView.ServerRelativeUrl
     }

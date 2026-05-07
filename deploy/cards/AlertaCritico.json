@@ -7,8 +7,8 @@
       "type": "Container",
       "style": "attention",
       "items": [
-        { "type": "TextBlock", "text": "🔴 ALERTA — Projeto Crítico", "weight": "Bolder", "size": "Medium", "color": "Attention" },
-        { "type": "TextBlock", "text": "O projeto abaixo foi classificado como VERMELHO e requer atenção imediata.", "wrap": true, "isSubtle": true }
+        { "type": "TextBlock", "text": " ALERTA - Projeto Critico", "weight": "Bolder", "size": "Medium", "color": "Attention" },
+        { "type": "TextBlock", "text": "O projeto abaixo foi classificado como VERMELHO e requer atencao imediata.", "wrap": true, "isSubtle": true }
       ]
     },
     {
@@ -16,23 +16,23 @@
       "facts": [
         { "title": "Projeto:", "value": "${ProjectName}" },
         { "title": "PM:", "value": "${PM}" },
-        { "title": "Status:", "value": "🔴 Vermelho" },
+        { "title": "Status:", "value": " Vermelho" },
         { "title": "Percentual:", "value": "${Percentual}%" },
         { "title": "Data Alvo:", "value": "${DataAlvo}" },
-        { "title": "Última Atualização:", "value": "${UltimaAtualizacao}" }
+        { "title": "Ultima Atualizacao:", "value": "${UltimaAtualizacao}" }
       ]
     },
-    { "type": "TextBlock", "text": "📝 **Resumo:**", "wrap": true },
+    { "type": "TextBlock", "text": " **Resumo:**", "wrap": true },
     { "type": "TextBlock", "text": "${Resumo}", "wrap": true },
-    { "type": "TextBlock", "text": "⚠️ **Riscos:**", "wrap": true },
+    { "type": "TextBlock", "text": " **Riscos:**", "wrap": true },
     { "type": "TextBlock", "text": "${Risco}", "wrap": true },
-    { "type": "TextBlock", "text": "🚫 **Bloqueios:**", "wrap": true },
+    { "type": "TextBlock", "text": " **Bloqueios:**", "wrap": true },
     { "type": "TextBlock", "text": "${Bloqueio}", "wrap": true }
   ],
   "actions": [
     {
       "type": "Action.OpenUrl",
-      "title": "📋 Ver no SharePoint",
+      "title": " Ver no SharePoint",
       "url": "${LinkSharePoint}"
     }
   ]

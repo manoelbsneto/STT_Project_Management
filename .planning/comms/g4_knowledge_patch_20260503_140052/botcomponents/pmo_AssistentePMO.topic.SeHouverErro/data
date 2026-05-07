@@ -1,9 +1,0 @@
-kind: AdaptiveDialog
-startBehavior: UseLatestPublishedContentAndCancelOtherTopics
-beginDialog:
-  kind: OnError
-  id: main
-  actions:
-    - kind: SendActivity
-      id: error_msg
-      activity: "Ocorreu um erro no Assistente PMO. Código: {System.Error.Code}."

@@ -1,7 +1,0 @@
-Connect-MgGraph: D:\VMs\STT_Project_Management\deploy\Teams_Phase5_InteractiveTabs.ps1:51
-Line |
-  51 |      Connect-MgGraph -TenantId $TenantId -Scopes "Team.ReadBasic.All", …
-     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | InteractiveBrowserCredential authentication failed: User canceled authentication. 
-
-

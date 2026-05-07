@@ -828,7 +828,7 @@ $flowDefinitions["PMO_PA_EscalarRiscoCritico"] = New-WorkflowDefinition `
             expression = [ordered]@{
                 or = @(
                     [ordered]@{ equals = @("@coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'])", "Critica") },
-                    [ordered]@{ equals = @("@coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'])", "Crítica") }
+                    [ordered]@{ equals = @("@coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'])", "Critica") }
                 )
             }
             actions = [ordered]@{

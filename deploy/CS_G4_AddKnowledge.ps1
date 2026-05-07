@@ -2,10 +2,10 @@
 param(
     [string]$EnvironmentName = "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
     [string]$BotId = "0c4a9729-d55d-483c-8ec3-db9369583155",
-    [string]$BotSchema = "pmo_AssistentePMO",
+    [string]$BotSchema = "pmo_AssistentePMO_Clean",
     [string]$SolutionUniqueName = "PMO_G4_KnowledgePatch",
     [string]$EvidenceDir = ".planning\comms",
-    [string]$KnowledgeSchema = "pmo_AssistentePMO.topic.PMOSharePointKnowledge",
+    [string]$KnowledgeSchema = "pmo_AssistentePMO_Clean.topic.PMOSharePointKnowledge",
     [string]$KnowledgeName = "PMO SharePoint Knowledge",
     [string]$SharePointSite = "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
     [string]$BaseUnpackPath = ".planning\comms\g4_carrier_export_20260503_1325\unpacked"

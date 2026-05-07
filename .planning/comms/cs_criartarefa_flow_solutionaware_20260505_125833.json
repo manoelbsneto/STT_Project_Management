@@ -1,8 +1,0 @@
-{
-  "displayName": "PMO_PA_CriarTarefa",
-  "flowName": "7ca90102-525b-48bb-875e-0f7bda96f85b",
-  "workflowEntityId": "71f62da4-9748-f111-bec7-6045bdf42cae",
-  "enabled": true,
-  "state": "Started",
-  "solutionAwareOutput": "Skipped Set-FlowAsSolutionAware; reused WorkflowEntityId from cs_criartarefa_flow_solutionaware_20260505_125721.json."
-}

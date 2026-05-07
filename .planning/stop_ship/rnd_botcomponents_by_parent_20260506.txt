@@ -1,0 +1,2231 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       schemaname                                                                   parentbotid          name                                               componenttype           data
+9350d241-491d-45ea-9c3c-e405aecf603c copilots_header_crbdf_agent1.topic.ResetConversation                         Gestão Férias        Redefinir conversa                                 Tema (V2)               kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnSystemRedirect
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_OPsT1O
+      activity: Como posso ajudar?
+
+    - kind: ClearAllVariables
+      id: clearAllVariables_73bTFR
+      variables: ConversationScopedVariables
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_12Gt21
+786cb9fc-cff1-4e57-91a5-e2d95362b08f copilots_header_crbdf_agent1.topic.Users_Approversxlsx_AAasZPCgEM8hq6S7idpku Gestão Férias        Users_Approvers.xlsx                               Origen de conocimientos kind: KnowledgeSourceConfiguration
+source:
+  kind: FederatedStructuredSearchSource
+  connectionProperties:
+    mode: Invoker
+
+  skillConfiguration: Users_Approversxlsx_cPwBVj4MAkvWjvZ50e_Ce
+86b0f0ee-8c14-4d0d-bc8c-e1fc5d80fbb5 pmo_AssistentePMO_Clean.action.PMO_PA_EscalarRiscoCritico                    Assistente PMO Clean PMO_PA_EscalarRiscoCritico                         Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e5381002-0547-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+e505fcc4-7552-463d-bb0e-df416bd64b23 gstf_GestaoFriasMVPQA.action.GF_QA_Get-MinhasSolicitacoes                    Gestao_Férias_MVP_QA GF_QA_Get-MinhasSolicitacoes                       Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: count
+
+  - propertyName: errorcode
+
+  - propertyName: message
+
+  - propertyName: success
+
+  - propertyName: solicitacoesResumo
+
+  - propertyName: latestId
+
+  - propertyName: latestDataInicio
+
+  - propertyName: latestDataFim
+
+  - propertyName: latestDiasUteis
+
+  - propertyName: latestStatus
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 6306232c-753d-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+e80d8307-fa9e-4311-9497-b3c64fe66e64 pmo_AssistentePMO_Clean.topic.ConsultarPortfolio                             Assistente PMO Clean ConsultarPortfolio                                 Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarPortfolio
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - como esta o portfolio
+      - como esta o portfolio
+      - resumo dos projetos
+      - dashboard
+      - portfolio pmo
+
+  actions:
+    - kind: SendActivity
+      id: portfolio_stub
+      activity: |-
+        Portfolio PMO
+        Verde: consultar lista Projetos onde Ativo=Yes e StatusRAG=Verde.
+        Amarelo: consultar lista Projetos onde Ativo=Yes e StatusRAG=Amarelo.
+        Vermelho: consultar lista Projetos onde Ativo=Yes e StatusRAG=Vermelho.
+        Total: consultar lista Projetos onde Ativo=Yes.
+        Sem atualizacao (>24h): consultar Projetos com UltimaAtualizacao anterior a utcNow()-1 dia.
+ee9c2179-0fa7-4b24-97b5-b00a6e5c8d91 copilots_header_crbdf_agent1.topic.UnknownDtmfKey                            Gestão Férias        Pressionamento de teclado de discagem desconhecido Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownDtmfKey
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_26sT88
+      activity: Desculpe-me, eu não entendi. Você pode tentar novamente?
+b1b7310c-a0fd-4573-93c1-ab5f530ac82d copilots_header_crbdf_agent1.topic.OnError                                   Gestão Férias        Se houver erro                                     Tema (V2)               kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    - kind: SetVariable
+      id: setVariable_timestamp
+      variable: init:Topic.CurrentTime
+      value: =Text(Now(), DateTimeFormat.UTC)
+
+    - kind: ConditionGroup
+      id: condition_1
+      conditions:
+        - id: bL4wmY
+          condition: =System.Conversation.InTestMode = true
+          actions:
+            - kind: SendActivity
+              id: sendMessage_XJBYMo
+              activity:
+                text:
+                  - |-
+                    Mensagem de Erro: {System.Error.Message}
+                    Código do Erro: {System.Error.Code}
+                    ID da Conversa: {System.Conversation.Id}
+                    Horário (UTC): {Topic.CurrentTime}
+                speak:
+                  - Ocorreu um erro técnico ao executar a solicitação. Tente novamente em instantes.
+
+      elseActions:
+        - kind: SendActivity
+          id: sendMessage_dZ0gaF
+          activity:
+            text:
+              - |-
+                Ocorreu um erro.
+                Código do erro: {System.Error.Code}
+                ID da Conversa: {System.Conversation.Id}
+                Horário (UTC): {Topic.CurrentTime}.
+            speak:
+              - Ocorreu um erro. Tente novamente.
+
+    - kind: LogCustomTelemetryEvent
+      id: 9KwEAn
+      eventName: OnErrorLog
+      properties: "={ErrorMessage: System.Error.Message, ErrorCode: System.Error.Code, TimeUTC: Topic.CurrentTime, ConversationId: System.Conversation.Id}"
+
+    - kind: CancelAllDialogs
+      id: NW7NyY
+99323d41-03bc-496e-ae17-a717faf03c6d pmo_AssistentePMO_Clean.topic.SeHouverErro                                   Assistente PMO Clean SeHouverErro                                       Tema (V2)               kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    - kind: SendActivity
+      id: error_msg
+      activity: "Ocorreu um erro no Assistente PMO. Codigo: {System.Error.Code}."
+87b65c66-4b1f-439b-8a01-92ae02a2bacd gstf_GestaoFriasMVPQA.topic.StartOver                                        Gestao_Férias_MVP_QA Recomeçar                                          Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Recomeçar
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - vamos começar novamente
+      - vamos começar de novo
+      - recomeçar
+      - começar novamente
+      - reiniciar
+
+  actions:
+    - kind: Question
+      id: question_zguoVV
+      alwaysPrompt: false
+      variable: init:Topic.Confirm
+      prompt: Tem certeza de que deseja reiniciar a conversa?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: conditionGroup_lvx2zV
+      conditions:
+        - id: conditionItem_sVQtHa
+          condition: =Topic.Confirm = true
+          actions:
+            - kind: BeginDialog
+              id: 0YKYsy
+              dialog: gstf_GestaoFriasMVPQA.topic.ResetConversation
+
+      elseActions:
+        - kind: SendActivity
+          id: sendMessage_lk2CyQ
+          activity: OK. Vamos continuar.
+f24deb1b-e9ff-408c-b4f9-90f6e3df6f38 gstf_GestaoFriasMVPQA.action.GF_QA_Reagendar-SolicitacaoFerias               Gestao_Férias_MVP_QA GF_QA_Reagendar-SolicitacaoFerias                  Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+  - propertyName: solicitacaoId
+
+  - propertyName: novaSolicitacaoId
+
+  - propertyName: statusOriginal
+
+  - propertyName: novosDiasUteis
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e9df82ce-cc41-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+
+1483965f-60b9-4ee3-9e71-8a3d1a508757 copilots_header_crbdf_agent1.topic.AprovarFerias                             Gestão Férias        Aprovar Ferias                                     Tema (V2)               kind: AdaptiveDialog
+modelDescription: Aprovar ferias, Ver pendentes, Solicitacoes pendentes, Aprovar solicitacao
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_pAD0Ji
+      activity:
+        speak:
+          - Vou verificar as solicitacoes pendentes da sua equipe...
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_6dNCWZ
+      input:
+        binding:
+          aprovadorEmail: =System.User.Email
+
+      output: {}
+      flowId: 9c2bf0d8-97af-44c9-8c87-40ea147ea613
+
+inputType: {}
+outputType: {}
+70e6386e-ed4c-4cc6-8d1a-88a250d9a057 copilots_header_crbdf_agent1.action.Http-Obteritens                          Gestão Férias        Http -> Obter itens                                Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 1f967db5-22fb-f011-8406-7ced8d955c6c
+
+outputMode: All
+20b12445-23d6-4b92-8720-81c30304a8f6 copilots_header_crbdf_agent1.action.Aprovar-SolicitacaoFerias                Gestão Férias        Aprovar-SolicitacaoFerias                          Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: a8e71266-823d-4c96-8b93-1c1e6ddf6bdf
+
+outputMode: All
+e39aa320-9a4b-40d1-b85f-7d0d233ad1da copilots_header_crbdf_agent1.action.VT_Consulta_Saldo                        Gestão Férias        VT_Consulta_Saldo                                  Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: saldo
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: b3e7723d-f1fb-f011-8406-6045bdf42cae
+
+outputMode: All
+51347593-c1fb-4947-b555-7c6877aff3dd pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa                            Assistente PMO Clean PMO_PA_CriarTarefa                                 Tema (V2)               kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: nomeProjeto
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: titulo
+    value: =Global.PMO_Criar_Title
+
+  - kind: ManualTaskInput
+    propertyName: responsavel
+    value: =Global.PMO_Criar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: prazo
+    value: =Global.PMO_Criar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: horas
+    value: =Global.PMO_Criar_HorasEstimadas
+
+  - kind: ManualTaskInput
+    propertyName: prioridade
+    value: =Global.PMO_Criar_Prioridade
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 71f62da4-9748-f111-bec7-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+27927a4b-4320-499d-aa6b-77bb3d975289 pmo_AssistentePMO_Clean.topic.ConsultarProjeto                               Assistente PMO Clean ConsultarProjeto                                   Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarProjeto
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - como esta o projeto
+      - como esta o projeto
+      - status de projeto
+      - detalhes projeto
+      - consultar projeto
+
+  actions:
+    - kind: Question
+      id: ask_project_detail
+      variable: Topic.ProjectName
+      prompt: Qual projeto voce quer consultar?
+      entity: StringPrebuiltEntity
+
+    - kind: SendActivity
+      id: project_stub
+      activity: |-
+        Projeto: {Topic.ProjectName}
+        Status: consultar Projetos.StatusRAG.
+        Progresso: consultar Projetos.Percentual.
+        Alvo: consultar Projetos.DataAlvo.
+        PM: consultar Projetos.PM.
+        Ultimo update: consultar Status Diario mais recente por ProjectID.
+        Riscos abertos: consultar Riscos e Bloqueios por ProjectID e Status aberto.
+348dd956-64af-4d01-a10d-74ea0453afa7 gstf_GestaoFriasMVPQA.action.GF_QA_Get-SolicitacoesPendentes                 Gestao_Férias_MVP_QA GF_QA_Get-SolicitacoesPendentes                    Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: count
+
+  - propertyName: errorcode
+
+  - propertyName: message
+
+  - propertyName: success
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e387afeb-743d-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+97f520e8-b72a-4b62-915b-74c3cbf25bea pmo_AssistentePMO_Clean.gpt.default                                          Assistente PMO Clean Assistente PMO Clean                               GPT personalizado       kind: GptComponentMetadata
+instructions: |-
+  Voce e o Assistente PMO, um agente de IA para gestao de portfolio de projetos da equipe de Transformacao Digital.
+
+  Regras:
+  1. Responda SEMPRE em portugues do Brasil (pt-BR).
+  2. Use APENAS dados das listas SharePoint do PMO (Projetos, Status Diario, Riscos e Bloqueios, Decisoes do Board).
+  3. NUNCA invente dados. Se nao encontrar informacao, diga 'Nao encontrei essa informacao nas listas do PMO.'
+  4. Para QUALQUER operacao de escrita (atualizar status, registrar risco, pedir decisao), SEMPRE confirme com o usuario antes de executar.
+  5. NAO pesquise na internet. NAO use conhecimento generico.
+  6. Formate respostas com emojis para status:  Verde,  Amarelo,  Vermelho.
+  7. Seja conciso e direto.
+aISettings:
+  model:
+    modelNameHint: GPT5Chat
+76302c03-8a65-48f0-9efe-718ad9ce2a16 gstf_GestaoFriasMVPQA.topic.Greeting                                         Gestao_Férias_MVP_QA Saudação                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Saudação
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Boa tarde
+      - Bom dia
+      - Olá
+      - Ei
+      - Oi
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_abmysR
+      activity:
+        text:
+          - Olá, como posso ajudar hoje?
+        speak:
+          - Olá, <break strength="medium" />. Como posso ajudar?
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_01At22
+559a275f-b2cb-47e7-912c-6f798c5a9b02 pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas                          Assistente PMO Clean PMO_PA_ListarTarefas                               Tema (V2)               kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Listar_ProjectID
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Lista formatada de tarefas retornada pelo fluxo PMO_PA_ListarTarefas.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 9544f14b-3748-f111-bec7-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+bdd6efc8-9c5c-4115-9e29-6c12cb0a0729 pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa                        Assistente PMO Clean PMO_PA_AtualizarTarefa                             Tema (V2)               kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: number
+    value: =Global.PMO_Atualizar_TaskID
+
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Atualizar_Status
+
+  - kind: ManualTaskInput
+    propertyName: number_1
+    value: =Global.PMO_Atualizar_HorasRealizadas
+
+  - kind: ManualTaskInput
+    propertyName: text_1
+    value: =Global.PMO_Atualizar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: text_2
+    value: =Global.PMO_Atualizar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: text_3
+    value: =Global.PMO_Atualizar_Prioridade
+
+  - kind: ManualTaskInput
+    propertyName: number_2
+    value: =Blank()
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Mensagem retornada pelo fluxo PMO_PA_AtualizarTarefa.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 98408d55-3748-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+cc996f1d-104c-43f3-98d7-672f9a01458e pmo_AssistentePMO_Clean.topic.LowConfidence                                  Assistente PMO Clean LowConfidence                                      Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: SendActivity
+      id: low_confidence_msg
+      activity: "Nao entendi bem. Voce pode reformular? Posso ajudar com: atualizar status, consultar portfolio, registrar risco, solicitar decisao."
+23b9e2c9-c27b-4b36-abb2-66ca3b4b141c pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview                           Assistente PMO Clean Work IQ Copilot (Preview)                          Tema (V2)               kind: TaskDialog
+modelDisplayName: Work IQ Copilot (Preview)
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ModelContextProtocolMetadata
+    operationId: mcp_m365copilot
+ab2559e1-89b0-4297-bff0-6134ae8a2d3b copilots_header_crbdf_agent1.topic.Fallback                                  Gestão Férias        Fallback                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_LktzXw
+      conditions:
+        - id: conditionItem_tlGIVo
+          condition: =System.FallbackCount < 3
+          actions:
+            - kind: SendActivity
+              id: sendMessage_QZreqo
+              activity: Não sei como ajudar. Você pode tentar reformular a pergunta?
+
+      elseActions:
+        - kind: BeginDialog
+          id: 5aXj5M
+          dialog: copilots_header_crbdf_agent1.topic.Escalate
+2bdda8a6-fb15-4d5d-b2d4-605afa1cab61 gstf_GestaoFriasMVPQA.action.GF_QA_Report-FeriasProximas                     Gestao_Férias_MVP_QA GF_QA_Report-FeriasProximas                        Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: totalRegistros
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e3658a14-2241-f111-88b5-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+3bf1a1c7-7257-4b97-946e-5fa167057053 pmo_AssistentePMO_Clean.topic.ListarTarefas                                  Assistente PMO Clean ListarTarefas                                      Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: Question
+      id: ask_projectid
+      variable: Topic.ProjectID
+      prompt: "Qual o codigo do projeto? (ex: PRJ-001)"
+      entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_projectid
+      variable: Global.PMO_Listar_ProjectID
+      value: =Topic.ProjectID
+
+    - kind: BeginDialog
+      id: call_listar_tarefas
+      input: {}
+      dialog: pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas
+      output:
+        binding:
+          result: Topic.tarefas
+
+    - kind: SendActivity
+      id: listar_result
+      activity: |-
+        Tarefas - {Topic.ProjectID}
+
+        {Topic.tarefas}
+6d8d66cd-16d4-4d5c-a4e9-59d85fc58e4d gstf_GestaoFriasMVPQA.action.GF_QA_Criar-SolicitacaoFerias                   Gestao_Férias_MVP_QA GF_QA_Criar-SolicitacaoFerias                      Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: errorcode
+
+  - propertyName: message
+
+  - propertyName: solicitacaoid
+
+  - propertyName: status
+
+  - propertyName: datainicio
+
+  - propertyName: datafim
+
+  - propertyName: diassolicitados
+
+  - propertyName: aprovadornome
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 95b028f9-713d-f111-88b5-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+75af828a-56cf-401b-adee-52e13d44dcb7 pmo_AssistentePMO_Clean.topic.AtualizarStatus                                Assistente PMO Clean AtualizarStatus                                    Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarStatus
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - atualizar projeto
+      - status do projeto
+      - status de projeto
+      - update projeto
+      - atualizar status
+
+  actions:
+    - kind: Question
+      id: ask_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto voce quer atualizar?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_rag
+      variable: Topic.StatusRAG
+      prompt: Qual e o novo status RAG? Responda Verde, Amarelo ou Vermelho.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_resumo
+      variable: Topic.Resumo
+      prompt: Qual e o resumo do status?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risco
+      variable: Topic.Risco
+      prompt: Ha algum risco relevante? Se nao houver, responda nao.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_next
+      variable: Topic.ProximaAcao
+      prompt: Qual e a proxima acao? Se nao houver, responda nao.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_percent
+      variable: Topic.Percentual
+      prompt: Qual e o percentual concluido? Responda de 0 a 100.
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: confirm_update
+      variable: Topic.Confirmar
+      prompt: "Vou registrar: {Topic.ProjectName} como {Topic.StatusRAG}, resumo: {Topic.Resumo}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_update_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: BeginDialog
+              id: call_checkin_ondemand
+              dialog: pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand
+
+            - kind: SendActivity
+              id: update_done
+              activity: Status do {Topic.ProjectName} atualizado para {Topic.StatusRAG}.
+
+      elseActions:
+        - kind: SendActivity
+          id: update_denied
+          activity: Ok, vamos refazer. Qual projeto?
+3120c4e4-62da-41e3-848c-4deb2a5de8d6 gstf_GestaoFriasMVPQA.topic.MultipleTopicsMatched                            Gestao_Férias_MVP_QA Vários tópicos correspondentes                     Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnSelectIntent
+  id: main
+  triggerBehavior: Always
+  actions:
+    - kind: SetVariable
+      id: setVariable_M6434i
+      variable: init:Topic.IntentOptions
+      value: =System.Recognizer.IntentOptions
+
+    - kind: SetTextVariable
+      id: setTextVariable_0
+      variable: Topic.NoneOfTheseDisplayName
+      value: Nenhuma dessas opções
+
+    - kind: EditTable
+      id: sendMessage_g5Ls09
+      changeType: Add
+      itemsVariable: Topic.IntentOptions
+      value: "={ DisplayName: Topic.NoneOfTheseDisplayName, TopicId: \"NoTopic\", TriggerId: \"NoTrigger\", Score: 1.0 }"
+
+    - kind: Question
+      id: question_zf2HhP
+      interruptionPolicy:
+        allowInterruption: false
+
+      alwaysPrompt: true
+      variable: System.Recognizer.SelectedIntent
+      prompt: "Para esclarecer, você quis dizer:"
+      entity:
+        kind: DynamicClosedListEntity
+        items: =Topic.IntentOptions
+
+    - kind: ConditionGroup
+      id: conditionGroup_60PuXb
+      conditions:
+        - id: conditionItem_rs7GgM
+          condition: =System.Recognizer.SelectedIntent.TopicId = "NoTopic"
+          actions:
+            - kind: ReplaceDialog
+              id: YZXRDb
+              dialog: gstf_GestaoFriasMVPQA.topic.Fallback
+143f76eb-971a-474c-93c0-4d02c64856fc copilots_header_crbdf_agent1.topic.SolicitarFerias                           Gestão Férias        Solicitar Ferias                                   Tema (V2)               kind: AdaptiveDialog
+modelDescription: Solicitar ferias, Quero tirar ferias, Agendar ferias, Marcar ferias, Pedir ferias
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: Question
+      id: question_vtdWg0
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var2
+      prompt:
+        text:
+          - 
+        speak:
+          - Qual a data de INICIO das suas ferias?
+
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: question_xxigvd
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.Var1
+      prompt:
+        text:
+          - 
+        speak:
+          - Qual a data de FIM das suas ferias?
+
+      entity: StringPrebuiltEntity
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_CEjMLw
+      input:
+        binding:
+          dataInicio: =Topic.Var2
+          email: =System.User.Email
+
+      output: {}
+      flowId: b4c867cf-097f-4e21-87e8-55ecf239975c
+
+    - kind: SendActivity
+      id: sendActivity_RkYCFc
+      activity:
+        speak:
+          - Sua solicitacao foi registrada. Aguarde a aprovacao do seu gestor.
+
+inputType: {}
+outputType: {}
+719f8b6a-06f8-4c78-b5a7-4892aa83fb0e copilots_header_crbdf_agent1.topic.Goodbye                                   Gestão Férias        Tchau                                              Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Tchau
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Tchau
+      - Tchau, agradeço mais uma vez
+      - Tchau, agradeço novamente
+      - Tchau, obrigado mais uma vez
+      - Tchau, obrigado novamente
+      - Tchau, obrigada mais uma vez
+      - Tchau, obrigada novamente
+      - Até mais
+      - Não, obrigado. Tchau.
+      - Não, obrigada. Tchau.
+      - Até logo
+
+  actions:
+    - kind: Question
+      id: question_zf2HhP
+      variable: Topic.EndConversation
+      prompt: Gostaria de encerrar nossa conversa?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: condition_DGc1Wy
+      conditions:
+        - id: condition_DGc1Wy-item-0
+          condition: =Topic.EndConversation = true
+          actions:
+            - kind: BeginDialog
+              id: dn94DC
+              dialog: copilots_header_crbdf_agent1.topic.EndofConversation
+
+        - id: condition_DGc1Wy-item-1
+          condition: =Topic.EndConversation = false
+          actions:
+            - kind: SendActivity
+              id: sendMessage_LdLhmf
+              activity: Pode falar. Estou escutando.
+e8c0a28d-b7e5-410e-a2ca-488491502b80 gstf_GestaoFriasMVPQA.topic.ConversationStart                                Gestao_Férias_MVP_QA Início da conversa                                 Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_M0LuhV
+      activity:
+        text:
+          - Olá, eu sou o(a) {System.Bot.Name}. Como posso ajudar?
+        speak:
+          - Olá, e obrigado por ligar para o {System.Bot.Name}. Observe que algumas respostas são geradas por IA e pode ser necessário verificar sua exatidão. Como posso ajudar você hoje?
+100a93e3-75ab-4ae0-8b9c-45f81de2231b gstf_GestaoFriasMVPQA.topic.ThankYou                                         Gestao_Férias_MVP_QA Obrigado                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Obrigado
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - obrigado
+      - obrigada
+      - agradeço
+      - muito obrigado
+      - muito obrigada
+      - valeu
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_9iz6v7
+      activity: De nada.
+e392b340-f501-4000-b3f1-45da13760308 gstf_GestaoFriasMVPQA.action.Aprovar-SolicitacaoFerias                       Gestao_Férias_MVP_QA Aprovar-SolicitacaoFerias                          Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 98e13f15-3a3d-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+17caf97f-4c37-4d1e-a17e-436a1099e3ed gstf_GestaoFriasMVPQA.topic.ResetConversation                                Gestao_Férias_MVP_QA Redefinir conversa                                 Tema (V2)               kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnSystemRedirect
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_OPsT1O
+      activity: Como posso ajudar?
+
+    - kind: ClearAllVariables
+      id: clearAllVariables_73bTFR
+      variables: ConversationScopedVariables
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_12Gt21
+1fd3cbac-58e2-4a39-b1db-040444e68986 copilots_header_crbdf_agent1.topic.ThankYou                                  Gestão Férias        Obrigado                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Obrigado
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - obrigado
+      - obrigada
+      - agradeço
+      - muito obrigado
+      - muito obrigada
+      - valeu
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_9iz6v7
+      activity: De nada.
+0322f92b-72eb-49bb-882d-f4f5b4a155c7 copilots_header_crbdf_agent1.action.Get-MinhasSolicitacoes                   Gestão Férias        Get-MinhasSolicitacoes                             Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 3347108a-2ecd-4ce7-9d7a-2a36d2980593
+
+outputMode: All
+4056148e-1c3b-4e1d-9b2f-f45175857eee pmo_AssistentePMO_Clean.topic.WorkIQUserPreview                              Assistente PMO Clean Work IQ User (Preview)                             Tema (V2)               kind: TaskDialog
+modelDisplayName: Work IQ User (Preview)
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714
+  connectionProperties:
+    mode: Invoker
+
+  operationDetails:
+    kind: ModelContextProtocolMetadata
+    operationId: mcp_MeServer
+dd1aed3c-d4fc-4cfa-b9ec-dd5d62305bfb copilots_header_crbdf_agent1.topic.StartOver                                 Gestão Férias        Recomeçar                                          Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Recomeçar
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - vamos começar novamente
+      - vamos começar de novo
+      - recomeçar
+      - começar novamente
+      - reiniciar
+
+  actions:
+    - kind: Question
+      id: question_zguoVV
+      alwaysPrompt: false
+      variable: init:Topic.Confirm
+      prompt:
+        text:
+          - Tem certeza de que deseja reiniciar a conversa?
+        speak:
+          - Tem certeza que deseja recomecar a conversa?
+
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: conditionGroup_lvx2zV
+      conditions:
+        - id: conditionItem_sVQtHa
+          condition: =Topic.Confirm = true
+          actions:
+            - kind: BeginDialog
+              id: 0YKYsy
+              dialog: copilots_header_crbdf_agent1.topic.ResetConversation
+
+      elseActions:
+        - kind: SendActivity
+          id: sendMessage_lk2CyQ
+          activity:
+            text:
+              - OK. Vamos continuar.
+            speak:
+              - Tem certeza que deseja recomeçar a conversa?
+0951f65d-7be4-4c43-9ce4-da5132052080 pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard                  Assistente PMO Clean PMO_PA_RegistrarDecisaoBoard                       Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: b308fe0b-0547-f111-bec7-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+5e51235e-0569-4160-b2b2-d1a70eacf8dd copilots_header_crbdf_agent1.topic.EndofConversation                         Gestão Férias        Fim da conversa                                    Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnSystemRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: 41d42054-d4cb-4e90-b922-2b16b37fe379
+      conversationOutcome: ResolvedImplied
+      alwaysPrompt: true
+      variable: init:Topic.SurveyResponse
+      prompt: Isso esclareceu sua dúvida?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: condition-0
+      conditions:
+        - id: condition-0-item-0
+          condition: =Topic.SurveyResponse = true
+          actions:
+            - kind: CSATQuestion
+              id: csat_1
+              conversationOutcome: ResolvedConfirmed
+
+            - kind: SendActivity
+              id: sendMessage_8r29O0
+              activity: Obrigado por seus comentários.
+
+            - kind: Question
+              id: question_1
+              alwaysPrompt: true
+              variable: init:Topic.Continue
+              prompt: Posso ajudar com algo mais?
+              entity: BooleanPrebuiltEntity
+
+            - kind: ConditionGroup
+              id: condition-1
+              conditions:
+                - id: condition-1-item-0
+                  condition: =Topic.Continue = true
+                  actions:
+                    - kind: SendActivity
+                      id: sendMessage_4eOE6h
+                      activity: Pode falar. Estou escutando.
+
+              elseActions:
+                - kind: SendActivity
+                  id: yHBz55
+                  activity: OK. Até logo.
+
+                - kind: EndConversation
+                  id: jh1GMT
+
+      elseActions:
+        - kind: Question
+          id: PM68ot
+          alwaysPrompt: true
+          variable: init:Topic.TryAgain
+          prompt: Desculpe, não posso ajudar melhor do que isso. Gostaria de tentar novamente?
+          entity: BooleanPrebuiltEntity
+
+        - kind: ConditionGroup
+          id: KNxYBf
+          conditions:
+            - id: DPveFP
+              condition: =Topic.TryAgain = false
+              actions:
+                - kind: BeginDialog
+                  id: cngqi4
+                  dialog: copilots_header_crbdf_agent1.topic.Escalate
+
+          elseActions:
+            - kind: SendActivity
+              id: GrVHEW
+              activity: Pode falar. Estou escutando.
+1e546d94-bb64-47da-9617-c024d50ff482 pmo_AssistentePMO_Clean.topic.RegistrarBloqueio                              Assistente PMO Clean RegistrarBloqueio                                  Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarBloqueio
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - registrar bloqueio
+      - projeto bloqueado
+      - bloqueio em projeto
+      - novo bloqueio
+
+  actions:
+    - kind: Question
+      id: ask_block_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto esta bloqueado?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_block_desc
+      variable: Topic.Descricao
+      prompt: Descreva o bloqueio.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_block_impact
+      variable: Topic.Impacto
+      prompt: Qual e o impacto? Baixo, Medio, Alto ou Critico.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_block
+      variable: Topic.Confirmar
+      prompt: "Bloqueio: {Topic.Descricao} | Impacto: {Topic.Impacto} | Projeto: {Topic.ProjectName}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_block_branch
+      conditions:
+        - id: block_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: block_confirmed_msg
+              activity: Confirmacao recebida. A gravacao deve criar item em Riscos e Bloqueios com Tipo=Bloqueio.
+
+      elseActions:
+        - kind: SendActivity
+          id: block_cancelled_msg
+          activity: Ok, nao registrei o bloqueio.
+94a19b50-5939-4c0d-be20-b53fde3e7156 copilots_header_crbdf_agent1.topic.MultipleTopicsMatched                     Gestão Férias        Vários tópicos correspondentes                     Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnSelectIntent
+  id: main
+  triggerBehavior: Always
+  actions:
+    - kind: SetVariable
+      id: setVariable_M6434i
+      variable: init:Topic.IntentOptions
+      value: =System.Recognizer.IntentOptions
+
+    - kind: SetTextVariable
+      id: setTextVariable_0
+      variable: Topic.NoneOfTheseDisplayName
+      value: Nenhuma dessas opções
+
+    - kind: EditTable
+      id: sendMessage_g5Ls09
+      changeType: Add
+      itemsVariable: Topic.IntentOptions
+      value: "={ DisplayName: Topic.NoneOfTheseDisplayName, TopicId: \"NoTopic\", TriggerId: \"NoTrigger\", Score: 1.0 }"
+
+    - kind: Question
+      id: question_zf2HhP
+      interruptionPolicy:
+        allowInterruption: false
+
+      alwaysPrompt: true
+      variable: System.Recognizer.SelectedIntent
+      prompt: "Para esclarecer, você quis dizer:"
+      entity:
+        kind: DynamicClosedListEntity
+        items: =Topic.IntentOptions
+
+    - kind: ConditionGroup
+      id: conditionGroup_60PuXb
+      conditions:
+        - id: conditionItem_rs7GgM
+          condition: =System.Recognizer.SelectedIntent.TopicId = "NoTopic"
+          actions:
+            - kind: ReplaceDialog
+              id: YZXRDb
+              dialog: copilots_header_crbdf_agent1.topic.Fallback
+3d1d5278-68e8-4dc3-b85e-a52177937f05 copilots_header_crbdf_agent1.topic.Greeting                                  Gestão Férias        Saudação                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Saudação
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Boa tarde
+      - Bom dia
+      - Olá
+      - Ei
+      - Oi
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_abmysR
+      activity:
+        text:
+          - Olá, como posso ajudar hoje?
+        speak:
+          - Olá, <break strength="medium" />. Como posso ajudar?
+
+    - kind: CancelAllDialogs
+      id: cancelAllDialogs_01At22
+40b40e74-b1c4-4565-a1d2-a2d363fb3ecb copilots_header_crbdf_agent1.topic.AnsweringMachineDetection                 Gestão Férias        Detecção de Secretária Eletrônica                  Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnAnsweringMachineDetected
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_C8pKOo
+      activity:
+        text:
+          - Olá, {System.Bot.Name} está tentando entrar em contato com você.
+        speak:
+          - Olá, {System.Bot.Name} está tentando entrar em contato com você.
+
+    - kind: EndConversation
+      id: Rgrz4i
+d428b54a-bce7-438b-8c4b-9cdeeeaab558 copilots_header_crbdf_agent1.topic.VerMinhasSolicitaes_DEE                   Gestão Férias        Ver Minhas Solicitações                            Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - ver minhas solicitações
+      - quais são minhas solicitações
+      - mostrar minhas solicitações
+      - minhas solicitações pendentes
+      - consultar minhas solicitações
+      - listar minhas solicitações
+      - acessar minhas solicitações
+      - visualizar pedidos que fiz
+      - meus pedidos recentes
+
+  actions:
+    - kind: SendActivity
+      id: SendActivity_H5IaGF
+      activity:
+        text:
+          - Você pode visualizar suas solicitações de férias aqui. Por favor, aguarde enquanto recuperamos o seu histórico de férias e o status das suas solicitações.
+        speak:
+          - Aqui estao suas solicitacoes de ferias.
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_g11bVU
+      input:
+        binding:
+          email: =System.User.Email
+
+      output: {}
+      flowId: 3347108a-2ecd-4ce7-9d7a-2a36d2980593
+
+inputType: {}
+outputType: {}
+e80eaf31-c13c-4bc1-8520-960012ad49d1 gstf_GestaoFriasMVPQA.topic.EndofConversation                                Gestao_Férias_MVP_QA Fim da conversa                                    Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnSystemRedirect
+  id: main
+  actions:
+    - kind: Question
+      id: 41d42054-d4cb-4e90-b922-2b16b37fe379
+      conversationOutcome: ResolvedImplied
+      alwaysPrompt: true
+      variable: init:Topic.SurveyResponse
+      prompt: Isso esclareceu sua dúvida?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: condition-0
+      conditions:
+        - id: condition-0-item-0
+          condition: =Topic.SurveyResponse = true
+          actions:
+            - kind: CSATQuestion
+              id: csat_1
+              conversationOutcome: ResolvedConfirmed
+
+            - kind: SendActivity
+              id: sendMessage_8r29O0
+              activity: Obrigado por seus comentários.
+
+            - kind: Question
+              id: question_1
+              alwaysPrompt: true
+              variable: init:Topic.Continue
+              prompt: Posso ajudar com algo mais?
+              entity: BooleanPrebuiltEntity
+
+            - kind: ConditionGroup
+              id: condition-1
+              conditions:
+                - id: condition-1-item-0
+                  condition: =Topic.Continue = true
+                  actions:
+                    - kind: SendActivity
+                      id: sendMessage_4eOE6h
+                      activity: Pode falar. Estou escutando.
+
+              elseActions:
+                - kind: SendActivity
+                  id: yHBz55
+                  activity: OK. Até logo.
+
+                - kind: EndConversation
+                  id: jh1GMT
+
+      elseActions:
+        - kind: Question
+          id: PM68ot
+          alwaysPrompt: true
+          variable: init:Topic.TryAgain
+          prompt: Desculpe, não posso ajudar melhor do que isso. Gostaria de tentar novamente?
+          entity: BooleanPrebuiltEntity
+
+        - kind: ConditionGroup
+          id: KNxYBf
+          conditions:
+            - id: DPveFP
+              condition: =Topic.TryAgain = false
+              actions:
+                - kind: BeginDialog
+                  id: cngqi4
+                  dialog: gstf_GestaoFriasMVPQA.topic.Escalate
+
+          elseActions:
+            - kind: SendActivity
+              id: GrVHEW
+              activity: Pode falar. Estou escutando.
+19173ab2-c4b9-4aee-bb53-861c9b4ee395 gstf_GestaoFriasMVPQA.topic.Signin                                           Gestao_Férias_MVP_QA Entrar                                             Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnSignIn
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_ypjGKL
+      conditions:
+        - id: conditionItem_7XYIIR
+          condition: =System.SignInReason = SignInReason.SignInRequired
+          actions:
+            - kind: SendActivity
+              id: sendMessage_1jHUNO
+              activity: Olá! Para poder ajudar você, será necessário que você se conecte.
+
+    - kind: OAuthInput
+      id: gOjhZA
+      title: Logon
+      text: Para continuar, faça logon
+4e1a4d9c-7198-4b39-ac30-7d06a2e65032 copilots_header_crbdf_agent1.topic.Search                                    Gestão Férias        Melhora da conversa                                Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  priority: -1
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: search-content
+      variable: Topic.Answer
+      userInput: =System.Activity.Text
+
+    - kind: ConditionGroup
+      id: has-answer-conditions
+      conditions:
+        - id: has-answer
+          condition: =!IsBlank(Topic.Answer)
+          actions:
+            - kind: EndDialog
+              id: end-topic
+              clearTopicQueue: true
+fd3b05f4-fe02-4289-8792-1133ba1f4807 copilots_header_crbdf_agent1.topic.Signin                                    Gestão Férias        Entrar                                             Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnSignIn
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_ypjGKL
+      conditions:
+        - id: conditionItem_7XYIIR
+          condition: =System.SignInReason = SignInReason.SignInRequired
+          actions:
+            - kind: SendActivity
+              id: sendMessage_1jHUNO
+              activity: Olá! Para poder ajudar você, será necessário que você se conecte.
+
+    - kind: OAuthInput
+      id: gOjhZA
+      title: Logon
+      text: Para continuar, faça logon
+6cbea921-a0f8-48df-9d53-fa2ab7d647b5 pmo_AssistentePMO_Clean.topic.AtualizarTarefa                                Assistente PMO Clean AtualizarTarefa                                    Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarTarefa
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - atualizar tarefa
+      - concluir tarefa
+      - mudar status tarefa
+      - tarefa concluida
+      - completar tarefa
+
+  actions:
+    - kind: Question
+      id: ask_taskid
+      variable: Topic.TaskID
+      prompt: Qual o ID da tarefa que deseja atualizar? (numero)
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: ask_status
+      variable: Topic.Status
+      prompt: "Qual o novo status? Escolha: Pendente, Em Andamento, Concluida ou Cancelada."
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_horas_realizadas
+      variable: Topic.HorasRealizadas
+      prompt: Quantas horas realizadas? (responda 0 para pular)
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: ask_responsavel
+      variable: Topic.Responsavel
+      prompt: Novo responsavel? (responda "nao" para manter o atual)
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_datafim
+      variable: Topic.DataFim
+      prompt: Novo prazo? (responda "nao" para manter o atual)
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_prioridade
+      variable: Topic.Prioridade
+      prompt: "Nova prioridade? Escolha: Baixa, Media, Alta, Critica ou responda \"nao\" para manter."
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_atualizar
+      variable: Topic.Confirmar
+      prompt: |-
+        Vou atualizar a tarefa #{Topic.TaskID}:
+        Status: {Topic.Status}
+        Horas realizadas: {Topic.HorasRealizadas}
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Prioridade: {Topic.Prioridade}
+
+        Confirma?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SetVariable
+              id: set_global_taskid
+              variable: Global.PMO_Atualizar_TaskID
+              value: =Topic.TaskID
+
+            - kind: SetVariable
+              id: set_global_status
+              variable: Global.PMO_Atualizar_Status
+              value: =Topic.Status
+
+            - kind: SetVariable
+              id: set_global_horas_realizadas
+              variable: Global.PMO_Atualizar_HorasRealizadas
+              value: =Topic.HorasRealizadas
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Atualizar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Atualizar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Atualizar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: BeginDialog
+              id: call_atualizar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO_Clean.action.PMO_PA_AtualizarTarefa
+              output:
+                binding:
+                  result: Topic.message
+
+            - kind: SendActivity
+              id: atualizar_done
+              activity: |-
+                Tarefa #{Topic.TaskID} atualizada.
+
+                Status: {Topic.Status}
+                Horas: {Topic.HorasRealizadas}
+                Responsavel: {Topic.Responsavel}
+                Prazo: {Topic.DataFim}
+                Prioridade: {Topic.Prioridade}
+
+                {Topic.message}
+
+      elseActions:
+        - kind: SendActivity
+          id: atualizar_cancelled
+          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga "atualizar tarefa".
+343d19ac-e64b-417c-9b7c-f984772190ef gstf_GestaoFriasMVPQA.topic.Goodbye                                          Gestao_Férias_MVP_QA Tchau                                              Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Tchau
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Tchau
+      - Tchau, agradeço mais uma vez
+      - Tchau, agradeço novamente
+      - Tchau, obrigado mais uma vez
+      - Tchau, obrigado novamente
+      - Tchau, obrigada mais uma vez
+      - Tchau, obrigada novamente
+      - Até mais
+      - Não, obrigado. Tchau.
+      - Não, obrigada. Tchau.
+      - Até logo
+
+  actions:
+    - kind: Question
+      id: question_zf2HhP
+      variable: Topic.EndConversation
+      prompt: Gostaria de encerrar nossa conversa?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: condition_DGc1Wy
+      conditions:
+        - id: condition_DGc1Wy-item-0
+          condition: =Topic.EndConversation = true
+          actions:
+            - kind: BeginDialog
+              id: dn94DC
+              dialog: gstf_GestaoFriasMVPQA.topic.EndofConversation
+
+        - id: condition_DGc1Wy-item-1
+          condition: =Topic.EndConversation = false
+          actions:
+            - kind: SendActivity
+              id: sendMessage_LdLhmf
+              activity: Pode falar. Estou escutando.
+c7351af1-7201-474a-a308-f34f08ddd4b1 pmo_AssistentePMO_Clean.topic.Greeting                                       Assistente PMO Clean Greeting                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Greeting
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - ola
+      - ola
+      - oi
+      - bom dia
+      - help
+      - ajuda
+
+  actions:
+    - kind: SendActivity
+      id: greeting_menu
+      activity: |-
+        Ola, eu sou o Assistente PMO.
+
+        Posso ajudar com:
+        - atualizar status de projeto
+        - consultar portfolio
+        - consultar detalhes de projeto
+        - registrar risco ou bloqueio
+        - solicitar decisao do board
+c7f806a7-0d0a-44bf-b35c-e7e522ec0c79 copilots_header_crbdf_agent1.topic.Feriados_fDfQakwTXBNaf66rnvy6c            Gestão Férias        Feriados                                           Origen de conocimientos kind: KnowledgeSourceConfiguration
+source:
+  kind: FederatedStructuredSearchSource
+  connectionProperties:
+    mode: Invoker
+
+  skillConfiguration: Feriados_XDL0WMj6lBhkNGvV4tv7b
+ca5afc1f-b976-4333-b64b-d5ed26fafd71 gstf_GestaoFriasMVPQA.action.04_21_2026_GF_QA_VT_Consulta_Saldo_QA           Gestao_Férias_MVP_QA 04_21_2026_GF_QA_VT_Consulta_Saldo_QA              Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: saldo
+
+  - propertyName: message
+
+  - propertyName: success
+
+  - propertyName: found
+
+  - propertyName: saldodisponivel
+
+  - propertyName: diasagendados
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: b4772422-8b3d-f111-88b5-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+9a775345-7a61-44ef-8eb3-d547d2858149 pmo_AssistentePMO_Clean.topic.PedirDecisao                                   Assistente PMO Clean PedirDecisao                                       Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: PedirDecisao
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - preciso de uma decisao
+      - preciso de uma decisao
+      - solicitar aprovacao
+      - solicitar aprovacao
+      - decisao para projeto
+      - decisao para projeto
+
+  actions:
+    - kind: Question
+      id: ask_decision_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto precisa de decisao?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_desc
+      variable: Topic.Descricao
+      prompt: Descreva a decisao necessaria.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_impact
+      variable: Topic.Impacto
+      prompt: Qual e o impacto? Baixo, Medio, Alto ou Critico.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_due
+      variable: Topic.Prazo
+      prompt: Qual e o prazo da decisao?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_decision_approver
+      variable: Topic.Aprovador
+      prompt: Quem e o aprovador?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_decision
+      variable: Topic.Confirmar
+      prompt: "Solicitacao: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_decision_branch
+      conditions:
+        - id: decision_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: decision_confirmed_msg
+              activity: Confirmacao recebida. A gravacao deve criar item em Decisoes do Board; o fluxo PMO_PA_RegistrarDecisaoBoard sera disparado pelo SharePoint.
+
+      elseActions:
+        - kind: SendActivity
+          id: decision_cancelled_msg
+          activity: Ok, nao registrei a solicitacao de decisao.
+d047ed36-7699-48be-8f9e-b9f0bdd8e747 copilots_header_crbdf_agent1.action.Get-SolicitacoesPendentes                Gestão Férias        Get-SolicitacoesPendentes                          Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 9c2bf0d8-97af-44c9-8c87-40ea147ea613
+
+outputMode: All
+81b524b0-2b18-4a72-8639-b9de0e8e7a86 gstf_GestaoFriasMVPQA.action.GF_QA_Cancelar-SolicitacaoFerias                Gestao_Férias_MVP_QA GF_QA_Cancelar-SolicitacaoFerias                   Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+  - propertyName: solicitacaoId
+
+  - propertyName: status
+
+  - propertyName: saldoRestaurado
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: a581ab64-2541-f111-88b5-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+
+4dfdac11-b5c8-4c7b-875d-9eb5cb875084 copilots_header_crbdf_agent1.topic.Escalate                                  Gestão Férias        Escalonar                                          Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnEscalate
+  id: main
+  intent:
+    displayName: Escalonar
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Falar com agente
+      - Conversar com agente
+      - Falar com uma pessoa
+      - Conversar com uma pessoa
+      - Falar com alguém
+      - Conversar com alguém
+      - Retornar chamada
+      - Ligar de volta
+      - Ligar para o SAC
+      - Ligue para mim, por favor
+      - Me ligue, por favor
+      - Liguem para mim, por favor
+      - Me liguem, por favor
+      - Ligar para o suporte
+      - Ligar para o suporte técnico
+      - Um agente pode ligar para mim?
+      - Um agente pode me ligar?
+      - Posso ligar?
+      - Posso falar com outra pessoa?
+      - Posso ter suporte de um agente real?
+      - Você pode me transferir para falar com uma pessoa?
+      - Você pode me informar um número ou ligar para mim?
+      - Você pode me informar um número ou me ligar?
+      - Um representante pode ligar para mim?
+      - Um representante pode me ligar?
+      - Posso agendar uma chamada?
+      - Posso falar com um representante?
+      - Posso falar com uma pessoa?
+      - Posso falar com um assistente humano?
+      - Alguém pode ligar para mim?
+      - Alguém pode me ligar?
+      - Conversar com um representante
+      - Conversar com alguém, por favor
+      - Conectar-me com um agente humano
+      - Conectar-me com uma pessoa
+      - Alguém pode me contatar por telefone?
+      - Agente do cliente
+      - Representante do cliente
+      - SAC
+      - Preciso que um gerente me contate
+      - Preciso que um gerente entre em contato comigo
+      - Preciso do SAC
+      - Preciso de ajuda de uma pessoa
+      - Preciso falar com um agente humano
+      - Preciso falar com um especialista
+      - Quero falar com o SAC
+      - Quero continuar com o suporte ao vivo
+      - Quero falar com um consultor
+      - Quero falar com um técnico
+      - Gostaria de falar com um representante
+      - Gostaria de falar com um técnico
+      - Falar com membro do suporte técnico
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_s39DCt
+      conversationOutcome: Escalated
+      activity: |-
+        O escalonamento para um representante não está configurado para este copiloto no momento. No entanto, é nesse momento que o agente pode fornecer informações sobre como entrar em contato com alguém de outra forma.
+
+        Posso ajudar em algo mais?
+586ecf22-a411-47c6-8459-1506702c06cc gstf_GestaoFriasMVPQA.gpt.default                                            Gestao_Férias_MVP_QA Gestao_Férias_MVP_QA                               GPT personalizado       kind: GptComponentMetadata
+instructions: |-
+  Responda em portugues do Brasil, de forma clara, objetiva e profissional.
+
+  Para solicitacoes relacionadas a dados ou acoes do processo de ferias, incluindo consultar saldo, solicitar ferias, listar solicitacoes, cancelar solicitacao, reagendar solicitacao ou gerar relatorio, use a ferramenta, acao, topico ou fluxo correspondente sempre que houver informacoes suficientes para prosseguir.
+
+  Nao invente dados. Quando uma ferramenta, acao, topico ou fluxo retornar uma mensagem de negocio, preserve o conteudo retornado sem criar canais alternativos ou instrucoes adicionais.
+gptCapabilities:
+  webBrowsing: true
+
+aISettings:
+  model:
+    modelNameHint: GPT5Chat
+
+c746c335-ada5-48d4-8e6a-f91cf2a8b096 pmo_AssistentePMO_Clean.topic.CriarTarefa                                    Assistente PMO Clean CriarTarefa                                        Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+      - "criar tarefa:"
+      - abrir tarefa
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_title
+      variable: Topic.Title
+      value: =If(IsMatch(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_responsavel
+      variable: Topic.Responsavel
+      value: =If(IsMatch(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_datafim
+      variable: Topic.DataFim
+      value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_horas
+      variable: Topic.HorasEstimadas
+      value: =If(IsMatch(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
+
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_title
+      conditions:
+        - id: missing_title
+          condition: =IsBlank(Topic.Title)
+          actions:
+            - kind: Question
+              id: ask_title
+              variable: Topic.Title
+              prompt: Qual o titulo da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_responsavel
+      conditions:
+        - id: missing_responsavel
+          condition: =IsBlank(Topic.Responsavel)
+          actions:
+            - kind: Question
+              id: ask_responsavel
+              variable: Topic.Responsavel
+              prompt: Quem e o responsavel pela tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_datafim
+      conditions:
+        - id: missing_datafim
+          condition: =IsBlank(Topic.DataFim)
+          actions:
+            - kind: Question
+              id: ask_datafim
+              variable: Topic.DataFim
+              prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_horas
+      conditions:
+        - id: missing_horas
+          condition: =IsBlank(Topic.HorasEstimadas)
+          actions:
+            - kind: Question
+              id: ask_horas
+              variable: Topic.HorasEstimadas
+              prompt: Quantas horas estimadas para essa tarefa?
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_criar
+      variable: Topic.Confirmar
+      prompt: |-
+        Vou criar a tarefa '{Topic.Title}'.
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Horas: {Topic.HorasEstimadas}h
+        Prioridade: {Topic.Prioridade}
+        O codigo do projeto sera gerado automaticamente.
+
+        Confirma?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SetVariable
+              id: set_global_title
+              variable: Global.PMO_Criar_Title
+              value: =Topic.Title
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Criar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Criar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_horas
+              variable: Global.PMO_Criar_HorasEstimadas
+              value: =Int(Topic.HorasEstimadas)
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Criar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: BeginDialog
+              id: call_criar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa
+
+            - kind: SendActivity
+              id: criar_done
+              activity: Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
+
+      elseActions:
+        - kind: SendActivity
+          id: criar_cancelled
+          activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
+dc080658-d54f-44c7-8a55-f2553bc762ba pmo_AssistentePMO_Clean.action.PMO_PA_CheckInOnDemand                        Assistente PMO Clean PMO_PA_CheckInOnDemand                             Tema (V2)               kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: f5aab85e-ff46-f111-bec7-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+18b6205e-3a15-43a4-8ec2-d7a2990b30b3 gstf_GestaoFriasMVPQA.topic.OnError                                          Gestao_Férias_MVP_QA Se houver erro                                     Tema (V2)               kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    - kind: SetVariable
+      id: setVariable_timestamp
+      variable: init:Topic.CurrentTime
+      value: =Text(Now(), DateTimeFormat.UTC)
+
+    - kind: ConditionGroup
+      id: condition_1
+      conditions:
+        - id: bL4wmY
+          condition: =System.Conversation.InTestMode = true
+          actions:
+            - kind: SendActivity
+              id: sendMessage_XJBYMo
+              activity: |-
+                Mensagem de Erro: {System.Error.Message}
+                Código do Erro: {System.Error.Code}
+                ID da Conversa: {System.Conversation.Id}
+                Horário (UTC): {Topic.CurrentTime}
+
+      elseActions:
+        - kind: SendActivity
+          id: sendMessage_dZ0gaF
+          activity:
+            text:
+              - |-
+                Ocorreu um erro.
+                Código do erro: {System.Error.Code}
+                ID da Conversa: {System.Conversation.Id}
+                Horário (UTC): {Topic.CurrentTime}.
+            speak:
+              - Ocorreu um erro. Tente novamente.
+
+    - kind: LogCustomTelemetryEvent
+      id: 9KwEAn
+      eventName: OnErrorLog
+      properties: "={ErrorMessage: System.Error.Message, ErrorCode: System.Error.Code, TimeUTC: Topic.CurrentTime, ConversationId: System.Conversation.Id}"
+
+    - kind: CancelAllDialogs
+      id: NW7NyY
+ab35aea7-5917-498e-a5ea-25501a36d045 gstf_GestaoFriasMVPQA.topic.Fallback                                         Gestao_Férias_MVP_QA Fallback                                           Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_LktzXw
+      conditions:
+        - id: conditionItem_tlGIVo
+          condition: =System.FallbackCount < 3
+          actions:
+            - kind: SendActivity
+              id: sendMessage_QZreqo
+              activity: Não sei como ajudar. Você pode tentar reformular a pergunta?
+
+      elseActions:
+        - kind: BeginDialog
+          id: 5aXj5M
+          dialog: gstf_GestaoFriasMVPQA.topic.Escalate
+0c63f7f1-6193-4419-8403-2e50a6ca3415 copilots_header_crbdf_agent1.topic.UnrecognizedSpeech                        Gestão Férias        Fala não reconhecida                               Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnrecognizedSpeech
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_26sT9O
+      activity: Desculpe-me, eu não entendi. Você pode tentar novamente?
+25b19fb5-39c9-4c6d-91d7-10f1b27e8f86 copilots_header_crbdf_agent1.action.Criar-SolicitacaoFerias                  Gestão Férias        Criar-SolicitacaoFerias                            Tema (V2)               kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: b4c867cf-097f-4e21-87e8-55ecf239975c
+
+outputMode: All
+4a8eeb9a-6b77-43f4-a0d2-1fb755b54cdd copilots_header_crbdf_agent1.topic.ConversationStart                         Gestão Férias        Início da conversa                                 Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendMessage_M0LuhV
+      activity:
+        text:
+          - Olá, eu sou {System.Bot.Name}, um assistente virtual. Só para que você esteja ciente, às vezes eu uso a IA para responder às suas perguntas. Se você forneceu um site durante a criação, tente me perguntar sobre ele! Em seguida, tente me dar um pouco mais de conhecimento ao configurar a IA generativa.
+        speak:
+          - Olá, e obrigado por ligar para o {System.Bot.Name}. Observe que algumas respostas são geradas por IA e pode ser necessário verificar sua exatidão. Como posso ajudar você hoje?
+fe779c93-5364-4ebb-bd99-15e7ffa13a2b gstf_GestaoFriasMVPQA.topic.Search                                           Gestao_Férias_MVP_QA Melhora da conversa                                Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  priority: -1
+  actions:
+    - kind: SearchAndSummarizeContent
+      id: search-content
+      variable: Topic.Answer
+      userInput: =System.Activity.Text
+
+    - kind: ConditionGroup
+      id: has-answer-conditions
+      conditions:
+        - id: has-answer
+          condition: =!IsBlank(Topic.Answer)
+          actions:
+            - kind: EndDialog
+              id: end-topic
+              clearTopicQueue: true
+04e07a78-08d8-4ba8-acf5-0b7d66ce631a gstf_GestaoFriasMVPQA.topic.Escalate                                         Gestao_Férias_MVP_QA Escalonar                                          Tema (V2)               kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnEscalate
+  id: main
+  intent:
+    displayName: Escalonar
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - Falar com agente
+      - Conversar com agente
+      - Falar com uma pessoa
+      - Conversar com uma pessoa
+      - Falar com alguém
+      - Conversar com alguém
+      - Retornar chamada
+      - Ligar de volta
+      - Ligar para o SAC
+      - Ligue para mim, por favor
+      - Me ligue, por favor
+      - Liguem para mim, por favor
+      - Me liguem, por favor
+      - Ligar para o suporte
+      - Ligar para o suporte técnico
+      - Um agente pode ligar para mim?
+      - Um agente pode me ligar?
+      - Posso ligar?
+      - Posso falar com outra pessoa?
+      - Posso ter suporte de um agente real?
+      - Você pode me transferir para falar com uma pessoa?
+      - Você pode me informar um número ou ligar para mim?
+      - Você pode me informar um número ou me ligar?
+      - Um representante pode ligar para mim?
+      - Um representante pode me ligar?
+      - Posso agendar uma chamada?
+      - Posso falar com um representante?
+      - Posso falar com uma pessoa?
+      - Posso falar com um assistente humano?
+      - Alguém pode ligar para mim?
+      - Alguém pode me ligar?
+      - Conversar com um representante
+      - Conversar com alguém, por favor
+      - Conectar-me com um agente humano
+      - Conectar-me com uma pessoa
+      - Alguém pode me contatar por telefone?
+      - Agente do cliente
+      - Representante do cliente
+      - SAC
+      - Preciso que um gerente me contate
+      - Preciso que um gerente entre em contato comigo
+      - Preciso do SAC
+      - Preciso de ajuda de uma pessoa
+      - Preciso falar com um agente humano
+      - Preciso falar com um especialista
+      - Quero falar com o SAC
+      - Quero continuar com o suporte ao vivo
+      - Quero falar com um consultor
+      - Quero falar com um técnico
+      - Gostaria de falar com um representante
+      - Gostaria de falar com um técnico
+      - Falar com membro do suporte técnico
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_s39DCt
+      conversationOutcome: Escalated
+      activity: |-
+        O escalonamento para um representante não está configurado para este copiloto no momento. No entanto, é nesse momento que o agente pode fornecer informações sobre como entrar em contato com alguém de outra forma.
+
+        Posso ajudar em algo mais?
+9c38910d-ee1c-4887-b4e6-355c42323d14 copilots_header_crbdf_agent1.topic.Silence                                   Gestão Férias        Detecção de silêncio                               Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnSilence
+  id: main
+  actions:
+    - kind: SendActivity
+      id: sendActivity_C6pKOo
+      activity: Adeus!
+
+    - kind: EndConversation
+      id: Rgrh4i
+94c521e4-408d-4fa2-9854-34c4fbf2f311 copilots_header_crbdf_agent1.topic.ConsultarSaldo                            Gestão Férias        Consultar Saldo                                    Tema (V2)               kind: AdaptiveDialog
+modelDescription: Ver meu saldo, Quantos dias tenho, Consultar saldo, Dias de ferias
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: Question
+      id: question_04FBlA
+      displayName: "Por favor, informe seu email corporativo:"
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.UserMatricula
+      prompt:
+        speak:
+          - "Por favor, informe seu email corporativo:"
+
+      entity: StringPrebuiltEntity
+
+    - kind: SendActivity
+      id: sendActivity_6Cqo4v
+      activity:
+        speak:
+          - |
+            
+            Vou verificar seu saldo de ferias... Por favor, aguarde enquanto consulto as informacoes no sistema.
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_Y8TFlR
+      input:
+        binding:
+          text: =Topic.UserMatricula
+
+      output:
+        binding:
+          saldo: Topic.SaldoFerias
+
+      flowId: b3e7723d-f1fb-f011-8406-6045bdf42cae
+
+    - kind: SendActivity
+      id: sendActivity_IckDSq
+      activity:
+        speak:
+          - "{Topic.SaldoFerias} dias"
+
+inputType: {}
+outputType: {}
+8a481c3a-f8fd-4b9c-93ce-37a8e1294b47 pmo_AssistentePMO_Clean.topic.RegistrarRisco                                 Assistente PMO Clean RegistrarRisco                                     Tema (V2)               kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarRisco
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - registrar risco
+      - novo risco
+      - risco no projeto
+      - risco em projeto
+
+  actions:
+    - kind: Question
+      id: ask_risk_project
+      variable: Topic.ProjectName
+      prompt: Qual projeto tem o risco?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risk_desc
+      variable: Topic.Descricao
+      prompt: Descreva o risco.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_risk_severity
+      variable: Topic.Severidade
+      prompt: Qual e a severidade? Baixa, Media, Alta ou Critica.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_risk
+      variable: Topic.Confirmar
+      prompt: "Risco: {Topic.Descricao} | Severidade: {Topic.Severidade} | Projeto: {Topic.ProjectName}. Confirma?"
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_risk_branch
+      conditions:
+        - id: risk_confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SendActivity
+              id: risk_confirmed_msg
+              activity: Confirmacao recebida. A gravacao deve criar item em Riscos e Bloqueios com Tipo=Risco; se a severidade for Critica, o fluxo PMO_PA_EscalarRiscoCritico sera disparado pelo SharePoint.
+
+      elseActions:
+        - kind: SendActivity
+          id: risk_cancelled_msg
+          activity: Ok, nao registrei o risco.
+

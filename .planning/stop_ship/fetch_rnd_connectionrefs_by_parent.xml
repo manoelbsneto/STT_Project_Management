@@ -1,0 +1,25 @@
+<fetch>
+  <entity name="botcomponent_connectionreference">
+    <attribute name="botcomponent_connectionreferenceid" />
+    <attribute name="botcomponentid" />
+    <attribute name="connectionreferenceid" />
+    <link-entity name="botcomponent" from="botcomponentid" to="botcomponentid" alias="bc">
+      <attribute name="schemaname" />
+      <attribute name="name" />
+      <attribute name="componenttype" />
+      <attribute name="parentbotid" />
+      <filter type="or">
+        <condition attribute="parentbotid" operator="eq" value="77cfb838-6ed1-4488-9e57-ab98751081d3" />
+        <condition attribute="parentbotid" operator="eq" value="bdeeebd5-89f9-f011-8406-6045bdf42cae" />
+        <condition attribute="parentbotid" operator="eq" value="f9243921-1b3d-f111-88b6-6045bdf42cae" />
+      </filter>
+    </link-entity>
+    <link-entity name="connectionreference" from="connectionreferenceid" to="connectionreferenceid" alias="cr">
+      <attribute name="connectionreferencelogicalname" />
+      <attribute name="connectionreferencedisplayname" />
+      <attribute name="connectorid" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+    </link-entity>
+  </entity>
+</fetch>

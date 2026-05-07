@@ -1,0 +1,13 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="componenttype" />
+    <attribute name="data" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="like" value="%PMO_PA_CriarTarefa%" />
+      <condition attribute="schemaname" operator="like" value="%CriarTarefa%" />
+    </filter>
+  </entity>
+</fetch>

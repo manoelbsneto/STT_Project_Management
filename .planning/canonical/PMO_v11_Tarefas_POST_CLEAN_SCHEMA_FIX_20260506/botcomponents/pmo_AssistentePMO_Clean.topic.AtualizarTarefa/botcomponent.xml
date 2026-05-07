@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.topic.AtualizarTarefa">
+  <componenttype>9</componenttype>
+  <description>Coleta dados de atualizacao de tarefa, confirma antes de acionar o fluxo AtualizarTarefa com recalculo de percentual inline.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>AtualizarTarefa</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

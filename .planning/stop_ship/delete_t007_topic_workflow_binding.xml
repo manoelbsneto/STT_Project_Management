@@ -1,0 +1,9 @@
+<fetch>
+  <entity name="botcomponent_workflow">
+    <attribute name="botcomponent_workflowid" />
+    <filter>
+      <condition attribute="botcomponentid" operator="eq" value="{c746c335-ada5-48d4-8e6a-f91cf2a8b096}" />
+      <condition attribute="workflowid" operator="eq" value="{71f62da4-9748-f111-bec7-6045bdf42cae}" />
+    </filter>
+  </entity>
+</fetch>

@@ -7,7 +7,7 @@ entity:
     channels:
       - channelId: MsTeams
     settings:
-      GenerativeActionsEnabled: true
+      GenerativeActionsEnabled: false
     aISettings:
       useModelKnowledge: false
       isFileAnalysisEnabled: false
@@ -61,7 +61,7 @@ components:
           includeInOnSelectIntent: false
           triggerQueries:
             - ola
-            - olá
+            - ola
             - oi
             - bom dia
             - help
@@ -70,14 +70,14 @@ components:
           - kind: SendActivity
             id: greeting_menu
             activity: |-
-              Olá, eu sou o Assistente PMO.
+              Ola, eu sou o Assistente PMO.
 
               Posso ajudar com:
               - atualizar status de projeto
-              - consultar portfólio
+              - consultar portfolio
               - consultar detalhes de projeto
               - registrar risco ou bloqueio
-              - solicitar decisão do board
+              - solicitar decisao do board
 
   - kind: DialogComponent
     managedProperties:
@@ -136,7 +136,7 @@ components:
       isCustomizable: true
 
     displayName: LowConfidence
-    description: Fallback quando a intenção não for reconhecida.
+    description: Fallback quando a intencao nao for reconhecida.
     shareContext: {}
     state: Active
     status: Active
@@ -148,7 +148,7 @@ components:
         actions:
           - kind: SendActivity
             id: low_confidence_msg
-            activity: "Não entendi bem. Você pode reformular? Posso ajudar com: criar tarefa/projeto, atualizar tarefa, atualizar status, consultar portfólio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio, solicitar decisão."
+            activity: "Nao entendi bem. Voce pode reformular? Posso ajudar com: criar tarefa/projeto, atualizar tarefa, atualizar status, consultar portfolio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio, solicitar decisao."
 
   - kind: DialogComponent
     managedProperties:
@@ -177,37 +177,37 @@ components:
           - kind: Question
             id: ask_project
             variable: Topic.ProjectName
-            prompt: "Qual projeto você quer atualizar?"
+            prompt: "Qual projeto voce quer atualizar?"
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_rag
             variable: Topic.StatusRAG
-            prompt: "Qual é o novo status RAG? Responda Verde, Amarelo ou Vermelho."
+            prompt: "Qual e o novo status RAG? Responda Verde, Amarelo ou Vermelho."
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_resumo
             variable: Topic.Resumo
-            prompt: "Qual é o resumo do status?"
+            prompt: "Qual e o resumo do status?"
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_risco
             variable: Topic.Risco
-            prompt: "Há algum risco relevante? Se não houver, responda não."
+            prompt: "Ha algum risco relevante? Se nao houver, responda nao."
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_next
             variable: Topic.ProximaAcao
-            prompt: "Qual é a próxima ação? Se não houver, responda não."
+            prompt: "Qual e a proxima acao? Se nao houver, responda nao."
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_percent
             variable: Topic.Percentual
-            prompt: "Qual é o percentual concluído? Responda de 0 a 100."
+            prompt: "Qual e o percentual concluido? Responda de 0 a 100."
             entity: NumberPrebuiltEntity
 
           - kind: Question
@@ -252,7 +252,7 @@ components:
           displayName: ConsultarPortfolio
           includeInOnSelectIntent: false
           triggerQueries:
-            - como está o portfólio
+            - como esta o portfolio
             - como esta o portfolio
             - resumo dos projetos
             - dashboard
@@ -261,12 +261,12 @@ components:
           - kind: SendActivity
             id: portfolio_stub
             activity: |-
-              Portfólio PMO
+              Portfolio PMO
               Verde: consultar lista Projetos onde Ativo=Yes e StatusRAG=Verde.
               Amarelo: consultar lista Projetos onde Ativo=Yes e StatusRAG=Amarelo.
               Vermelho: consultar lista Projetos onde Ativo=Yes e StatusRAG=Vermelho.
               Total: consultar lista Projetos onde Ativo=Yes.
-              Sem atualização (>24h): consultar Projetos com UltimaAtualizacao anterior a utcNow()-1 dia.
+              Sem atualizacao (>24h): consultar Projetos com UltimaAtualizacao anterior a utcNow()-1 dia.
 
   - kind: DialogComponent
     managedProperties:
@@ -286,7 +286,7 @@ components:
           displayName: ConsultarProjeto
           includeInOnSelectIntent: false
           triggerQueries:
-            - como está o projeto
+            - como esta o projeto
             - como esta o projeto
             - status de projeto
             - detalhes projeto
@@ -295,7 +295,7 @@ components:
           - kind: Question
             id: ask_project_detail
             variable: Topic.ProjectName
-            prompt: "Qual projeto você quer consultar?"
+            prompt: "Qual projeto voce quer consultar?"
             entity: StringPrebuiltEntity
 
           - kind: SendActivity
@@ -306,7 +306,7 @@ components:
               Progresso: consultar Projetos.Percentual.
               Alvo: consultar Projetos.DataAlvo.
               PM: consultar Projetos.PM.
-              Último update: consultar Status Diario mais recente por ProjectID.
+              Ultimo update: consultar Status Diario mais recente por ProjectID.
               Riscos abertos: consultar Riscos e Bloqueios por ProjectID e Status aberto.
 
   - kind: DialogComponent
@@ -314,7 +314,7 @@ components:
       isCustomizable: true
 
     displayName: RegistrarRisco
-    description: Coleta risco e confirma antes de qualquer gravação.
+    description: Coleta risco e confirma antes de qualquer gravacao.
     shareContext: {}
     state: Active
     status: Active
@@ -347,7 +347,7 @@ components:
           - kind: Question
             id: ask_risk_severity
             variable: Topic.Severidade
-            prompt: "Qual é a severidade? Baixa, Média, Alta ou Crítica."
+            prompt: "Qual e a severidade? Baixa, Media, Alta ou Critica."
             entity: StringPrebuiltEntity
 
           - kind: Question
@@ -364,18 +364,18 @@ components:
                 actions:
                   - kind: SendActivity
                     id: risk_confirmed_msg
-                    activity: "Confirmação recebida. A gravação deve criar item em Riscos e Bloqueios com Tipo=Risco; se a severidade for Crítica, o fluxo PMO_PA_EscalarRiscoCritico será disparado pelo SharePoint."
+                    activity: "Confirmacao recebida. A gravacao deve criar item em Riscos e Bloqueios com Tipo=Risco; se a severidade for Critica, o fluxo PMO_PA_EscalarRiscoCritico sera disparado pelo SharePoint."
             elseActions:
               - kind: SendActivity
                 id: risk_cancelled_msg
-                activity: "Ok, não registrei o risco."
+                activity: "Ok, nao registrei o risco."
 
   - kind: DialogComponent
     managedProperties:
       isCustomizable: true
 
     displayName: RegistrarBloqueio
-    description: Coleta bloqueio e confirma antes de qualquer gravação.
+    description: Coleta bloqueio e confirma antes de qualquer gravacao.
     shareContext: {}
     state: Active
     status: Active
@@ -396,7 +396,7 @@ components:
           - kind: Question
             id: ask_block_project
             variable: Topic.ProjectName
-            prompt: "Qual projeto está bloqueado?"
+            prompt: "Qual projeto esta bloqueado?"
             entity: StringPrebuiltEntity
 
           - kind: Question
@@ -408,7 +408,7 @@ components:
           - kind: Question
             id: ask_block_impact
             variable: Topic.Impacto
-            prompt: "Qual é o impacto? Baixo, Médio, Alto ou Crítico."
+            prompt: "Qual e o impacto? Baixo, Medio, Alto ou Critico."
             entity: StringPrebuiltEntity
 
           - kind: Question
@@ -425,18 +425,18 @@ components:
                 actions:
                   - kind: SendActivity
                     id: block_confirmed_msg
-                    activity: "Confirmação recebida. A gravação deve criar item em Riscos e Bloqueios com Tipo=Bloqueio."
+                    activity: "Confirmacao recebida. A gravacao deve criar item em Riscos e Bloqueios com Tipo=Bloqueio."
             elseActions:
               - kind: SendActivity
                 id: block_cancelled_msg
-                activity: "Ok, não registrei o bloqueio."
+                activity: "Ok, nao registrei o bloqueio."
 
   - kind: DialogComponent
     managedProperties:
       isCustomizable: true
 
     displayName: PedirDecisao
-    description: Coleta solicitação de decisão e confirma antes de qualquer gravação.
+    description: Coleta solicitacao de decisao e confirma antes de qualquer gravacao.
     shareContext: {}
     state: Active
     status: Active
@@ -449,47 +449,47 @@ components:
           displayName: PedirDecisao
           includeInOnSelectIntent: false
           triggerQueries:
-            - preciso de uma decisão
             - preciso de uma decisao
-            - solicitar aprovação
+            - preciso de uma decisao
             - solicitar aprovacao
-            - decisão para projeto
+            - solicitar aprovacao
+            - decisao para projeto
             - decisao para projeto
         actions:
           - kind: Question
             id: ask_decision_project
             variable: Topic.ProjectName
-            prompt: "Qual projeto precisa de decisão?"
+            prompt: "Qual projeto precisa de decisao?"
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_decision_desc
             variable: Topic.Descricao
-            prompt: "Descreva a decisão necessária."
+            prompt: "Descreva a decisao necessaria."
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_decision_impact
             variable: Topic.Impacto
-            prompt: "Qual é o impacto? Baixo, Médio, Alto ou Crítico."
+            prompt: "Qual e o impacto? Baixo, Medio, Alto ou Critico."
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_decision_due
             variable: Topic.Prazo
-            prompt: "Qual é o prazo da decisão?"
+            prompt: "Qual e o prazo da decisao?"
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: ask_decision_approver
             variable: Topic.Aprovador
-            prompt: "Quem é o aprovador?"
+            prompt: "Quem e o aprovador?"
             entity: StringPrebuiltEntity
 
           - kind: Question
             id: confirm_decision
             variable: Topic.Confirmar
-            prompt: "Solicitação: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
+            prompt: "Solicitacao: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
             entity: BooleanPrebuiltEntity
 
           - kind: ConditionGroup
@@ -500,11 +500,11 @@ components:
                 actions:
                   - kind: SendActivity
                     id: decision_confirmed_msg
-                    activity: "Confirmação recebida. A gravação deve criar item em Decisoes do Board; o fluxo PMO_PA_RegistrarDecisaoBoard será disparado pelo SharePoint."
+                    activity: "Confirmacao recebida. A gravacao deve criar item em Decisoes do Board; o fluxo PMO_PA_RegistrarDecisaoBoard sera disparado pelo SharePoint."
             elseActions:
               - kind: SendActivity
                 id: decision_cancelled_msg
-                activity: "Ok, não registrei a solicitação de decisão."
+                activity: "Ok, nao registrei a solicitacao de decisao."
 
   - kind: DialogComponent
     managedProperties:
@@ -535,35 +535,95 @@ components:
             - "criar tarefa:"
             - abrir tarefa
         actions:
-          - kind: Question
-            id: ask_title
+          - kind: SetVariable
+            id: set_raw_input
+            variable: Topic.RawInput
+            value: =System.Activity.Text
+
+          - kind: SetVariable
+            id: parse_title
             variable: Topic.Title
-            prompt: Qual o titulo da tarefa?
-            entity: StringPrebuiltEntity
+            value: =If(IsMatch(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
 
-          - kind: Question
-            id: ask_responsavel
+          - kind: SetVariable
+            id: parse_responsavel
             variable: Topic.Responsavel
-            prompt: Quem e o responsavel pela tarefa?
-            entity: StringPrebuiltEntity
+            value: =If(IsMatch(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
 
-          - kind: Question
-            id: ask_datafim
+          - kind: SetVariable
+            id: parse_datafim
             variable: Topic.DataFim
-            prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
-            entity: StringPrebuiltEntity
+            value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
 
-          - kind: Question
-            id: ask_horas
+          - kind: SetVariable
+            id: parse_horas
             variable: Topic.HorasEstimadas
-            prompt: Quantas horas estimadas para essa tarefa?
-            entity: NumberPrebuiltEntity
+            value: =If(IsMatch(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
 
-          - kind: Question
-            id: ask_prioridade
+          - kind: SetVariable
+            id: parse_prioridade
             variable: Topic.Prioridade
-            prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
-            entity: StringPrebuiltEntity
+            value: =If(IsMatch(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: ConditionGroup
+            id: ask_missing_title
+            conditions:
+              - id: missing_title
+                condition: =IsBlank(Topic.Title)
+                actions:
+                  - kind: Question
+                    id: ask_title
+                    variable: Topic.Title
+                    prompt: Qual o titulo da tarefa?
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_responsavel
+            conditions:
+              - id: missing_responsavel
+                condition: =IsBlank(Topic.Responsavel)
+                actions:
+                  - kind: Question
+                    id: ask_responsavel
+                    variable: Topic.Responsavel
+                    prompt: Quem e o responsavel pela tarefa?
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_datafim
+            conditions:
+              - id: missing_datafim
+                condition: =IsBlank(Topic.DataFim)
+                actions:
+                  - kind: Question
+                    id: ask_datafim
+                    variable: Topic.DataFim
+                    prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_horas
+            conditions:
+              - id: missing_horas
+                condition: =IsBlank(Topic.HorasEstimadas)
+                actions:
+                  - kind: Question
+                    id: ask_horas
+                    variable: Topic.HorasEstimadas
+                    prompt: Quantas horas estimadas para essa tarefa?
+                    entity: NumberPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_prioridade
+            conditions:
+              - id: missing_prioridade
+                condition: =IsBlank(Topic.Prioridade)
+                actions:
+                  - kind: Question
+                    id: ask_prioridade
+                    variable: Topic.Prioridade
+                    prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+                    entity: StringPrebuiltEntity
 
           - kind: Question
             id: confirm_criar
@@ -612,11 +672,11 @@ components:
 
                   - kind: BeginDialog
                     id: call_criar_tarefa
-                    dialog: template-content.action.PMO_PA_CriarTarefa
+                    dialog: pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa
 
                   - kind: SendActivity
                     id: criar_done
-                    activity: "Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente."
+                    activity: Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
 
             elseActions:
               - kind: SendActivity
@@ -641,4 +701,4 @@ components:
         actions:
           - kind: SendActivity
             id: error_msg
-            activity: "Ocorreu um erro no Assistente PMO. Código: {System.Error.Code}."
+            activity: "Ocorreu um erro no Assistente PMO. Codigo: {System.Error.Code}."

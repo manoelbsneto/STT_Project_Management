@@ -1,5 +1,0 @@
-﻿Connected as mbenicios@minsait.com
-Connected to... ColOfertasBrasilPro
-Connected to... ColOfertasBrasilPro
-Sorry, the app encountered a non-recoverable error and will need to terminate. The exception details have been captured and will be forwarded to the development team, if telemetry has been enabled. Session Id: 0dd77b4c-7d6f-4211-a3b0-3e37e22f625a, Exception Type: System.ServiceModel.FaultException`1[[Microsoft.Xrm.Sdk.OrganizationServiceFault, Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-The diagnostic logs can be found at: C:\Users\dataops-lab\AppData\Local\Microsoft\PowerAppsCli\Microsoft.PowerApps.CLI.2.6.4\tools\logs\pac-log.txt

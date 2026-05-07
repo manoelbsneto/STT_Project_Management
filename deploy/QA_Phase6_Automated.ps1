@@ -85,7 +85,7 @@ if ($RunSharePointPnP) {
             "Riscos e Bloqueios" = @(Get-PnPView -List "Riscos e Bloqueios" | Select-Object -ExpandProperty Title)
             "Decisoes do Board" = @(Get-PnPView -List "Decisoes do Board" | Select-Object -ExpandProperty Title)
         }
-        $requiredViews = @("Board RAG","Projetos Críticos","Gallery","Todos","Por Projeto","Abertos","Pendentes")
+        $requiredViews = @("Board RAG","Projetos Criticos","Gallery","Todos","Por Projeto","Abertos","Pendentes")
         $viewText = ($views.Values | ForEach-Object { $_ }) -join "|"
         $missingViews = @($requiredViews | Where-Object { $viewText -notmatch [regex]::Escape($_) })
         Add-Result "A2" "Verificar views SP existem" $(if($missingViews.Count -eq 0){"PASS"}else{"FAIL"}) ("Missing: " + ($missingViews -join ", "))
@@ -93,7 +93,7 @@ if ($RunSharePointPnP) {
         $created = @()
         $project = Add-PnPListItem -List "Projetos" -Values @{Title="PRJ-QA-TEST"; ProjectID="PRJ-QA-TEST"; NomeProjeto="QA Teste Automatizado"; StatusRAG="Verde"; Ativo=$false}
         $created += [pscustomobject]@{List="Projetos";Id=$project.Id}
-        $status = Add-PnPListItem -List "Status Diario" -Values @{Title="PRJ-QA-TEST"; ProjectID="PRJ-QA-TEST"; RAG="Verde"; Resumo="QA"; Bloqueio="Não"}
+        $status = Add-PnPListItem -List "Status Diario" -Values @{Title="PRJ-QA-TEST"; ProjectID="PRJ-QA-TEST"; RAG="Verde"; Resumo="QA"; Bloqueio="Nao"}
         $created += [pscustomobject]@{List="Status Diario";Id=$status.Id}
         $risco = Add-PnPListItem -List "Riscos e Bloqueios" -Values @{Title="PRJ-QA-TEST"; ProjectID="PRJ-QA-TEST"; Severidade="Baixa"; StatusRisco="Aberto"; Descricao="QA"}
         $created += [pscustomobject]@{List="Riscos e Bloqueios";Id=$risco.Id}
@@ -117,7 +117,7 @@ if ($RunSharePointPnP) {
             }
         }
         $a5Pass = @($indexedChecks | Where-Object { -not $_.Indexed }).Count -eq 0
-        Add-Result "A5" "Verificar indexação de colunas" $(if($a5Pass){"PASS"}else{"FAIL"}) (($indexedChecks | ConvertTo-Json -Compress))
+        Add-Result "A5" "Verificar indexacao de colunas" $(if($a5Pass){"PASS"}else{"FAIL"}) (($indexedChecks | ConvertTo-Json -Compress))
 
         foreach ($item in $created) {
             Remove-PnPListItem -List $item.List -Identity $item.Id -Force -ErrorAction SilentlyContinue
@@ -128,7 +128,7 @@ if ($RunSharePointPnP) {
         Add-Result "A2" "Verificar views SP existem" "NOT_RUN" "Skipped after PnP failure."
         Add-Result "A3" "Criar item teste via PnP em cada lista" "NOT_RUN" "Skipped after PnP failure."
         Add-Result "A4" "Atualizar StatusRAG via PnP" "NOT_RUN" "Skipped after PnP failure."
-        Add-Result "A5" "Verificar indexação de colunas" "NOT_RUN" "Skipped after PnP failure."
+        Add-Result "A5" "Verificar indexacao de colunas" "NOT_RUN" "Skipped after PnP failure."
     }
 }
 else {
@@ -138,7 +138,7 @@ else {
     Add-Result "A2" "Verificar views SP existem" "CHECK" ("Evidence mode. Latest G5 view export: " + $g5Views.Name)
     Add-Result "A3" "Criar item teste via PnP em cada lista" "NOT_RUN" "Requires -RunSharePointPnP interactive SharePoint login."
     Add-Result "A4" "Atualizar StatusRAG via PnP" "NOT_RUN" "Requires A3 live test item."
-    Add-Result "A5" "Verificar indexação de colunas" "CHECK" ("Evidence mode. Prior G1 verification: " + $g1Verify.Name)
+    Add-Result "A5" "Verificar indexacao de colunas" "CHECK" ("Evidence mode. Prior G1 verification: " + $g1Verify.Name)
 }
 
 # B1-B4 live ProcessSimple, B5 local cards.
@@ -259,7 +259,7 @@ $exportText = if ($exportYaml) { Get-Content -LiteralPath $exportYaml.FullName -
 $gateText = if (Test-Path ".planning\comms\GATE_STATUS.md") { Get-Content ".planning\comms\GATE_STATUS.md" -Raw } else { "" }
 $c2Pass = $exportText -match "GenerativeActionsEnabled:\s*false" -and $exportText -match "authenticationMode:\s*Integrated"
 if (-not $c2Pass -and $gateText -match "GenerativeActionsEnabled=false" -and $gateText -match "useModelKnowledge=false") { $c2Pass = $true }
-Add-Result "C2" "Verificar segurança Copilot" $(if($c2Pass){"PASS"}else{"CHECK"}) ("Evidence: " + $(if($exportYaml){$exportYaml.Name}else{"GATE_STATUS.md"}))
+Add-Result "C2" "Verificar seguranca Copilot" $(if($c2Pass){"PASS"}else{"CHECK"}) ("Evidence: " + $(if($exportYaml){$exportYaml.Name}else{"GATE_STATUS.md"}))
 
 $c3Pass = $gateText -match "Portugu" -or $gateText -match "pt-BR" -or $exportText -match "Portugu"
 Add-Result "C3" "Verificar language pt-BR" $(if($c3Pass){"PASS"}else{"CHECK"}) "Validated from G4 live evidence in GATE_STATUS/exports; PAC bot fetch does not expose language cleanly."

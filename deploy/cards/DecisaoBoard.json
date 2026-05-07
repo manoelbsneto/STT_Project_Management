@@ -15,8 +15,8 @@
           "type": "Column",
           "width": "stretch",
           "items": [
-            { "type": "TextBlock", "text": "📋 Decisão Pendente", "weight": "Bolder", "size": "Medium" },
-            { "type": "TextBlock", "text": "Uma decisão requer sua aprovação", "isSubtle": true, "spacing": "None" }
+            { "type": "TextBlock", "text": " Decisao Pendente", "weight": "Bolder", "size": "Medium" },
+            { "type": "TextBlock", "text": "Uma decisao requer sua aprovacao", "isSubtle": true, "spacing": "None" }
           ]
         }
       ]
@@ -31,12 +31,12 @@
         { "title": "Impacto:", "value": "${Impacto}" }
       ]
     },
-    { "type": "TextBlock", "text": "📝 **Descrição:**", "wrap": true },
+    { "type": "TextBlock", "text": " **Descricao:**", "wrap": true },
     { "type": "TextBlock", "text": "${Descricao}", "wrap": true },
     {
       "type": "Input.Text",
       "id": "justificativa",
-      "label": "💬 Justificativa (obrigatória para rejeição/adiamento)",
+      "label": " Justificativa (obrigatoria para rejeicao/adiamento)",
       "isMultiline": true,
       "placeholder": "Adicione sua justificativa..."
     }
@@ -44,19 +44,19 @@
   "actions": [
     {
       "type": "Action.Submit",
-      "title": "✅ Aprovar",
+      "title": " Aprovar",
       "style": "positive",
       "data": { "action": "approveDecision", "decisionId": "${DecisionID}", "resposta": "Aprovada", "cardVersion": "1.0" }
     },
     {
       "type": "Action.Submit",
-      "title": "❌ Rejeitar",
+      "title": " Rejeitar",
       "style": "destructive",
       "data": { "action": "rejectDecision", "decisionId": "${DecisionID}", "resposta": "Rejeitada", "cardVersion": "1.0" }
     },
     {
       "type": "Action.Submit",
-      "title": "⏸️ Adiar",
+      "title": " Adiar",
       "data": { "action": "deferDecision", "decisionId": "${DecisionID}", "resposta": "Adiada", "cardVersion": "1.0" }
     }
   ]

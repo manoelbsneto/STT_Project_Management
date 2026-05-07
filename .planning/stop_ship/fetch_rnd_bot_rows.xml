@@ -1,0 +1,15 @@
+<fetch>
+  <entity name="bot">
+    <attribute name="botid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="componentstate" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="or">
+      <condition attribute="botid" operator="eq" value="77cfb838-6ed1-4488-9e57-ab98751081d3" />
+      <condition attribute="botid" operator="eq" value="bdeeebd5-89f9-f011-8406-6045bdf42cae" />
+      <condition attribute="botid" operator="eq" value="f9243921-1b3d-f111-88b6-6045bdf42cae" />
+    </filter>
+  </entity>
+</fetch>

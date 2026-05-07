@@ -1,0 +1,195 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_teams": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedteams_1ef7e"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_CopilotStudioKitOutlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Risco_Created": {
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "evaluatedRecurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Riscos e Bloqueios"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetOnNewItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Risco_Detalhes": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "table": "Riscos e Bloqueios",
+              "id": "@triggerBody()?['ID']",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_Risco_Critico": {
+          "actions": {
+            "Get_Projeto": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "$filter": "ProjectID eq '@{body('Get_Risco_Detalhes')?['ProjectID']}'",
+                  "table": "Projetos",
+                  "$top": 1,
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "GetItems"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Post_Escalacao_Risco_Teams": {
+              "runAfter": {
+                "Get_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "poster": "Flow bot",
+                  "body/messageBody": "@replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace('{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"Container\",\"style\":\"attention\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"RISCO CRITICO ESCALADO\",\"weight\":\"Bolder\",\"size\":\"Medium\",\"color\":\"Attention\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"Acao executiva necessaria\",\"isSubtle\":true,\"spacing\":\"None\",\"wrap\":true}]},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"Risk ID:\",\"value\":\"${RiskID}\"},{\"title\":\"Projeto:\",\"value\":\"${ProjectID}\"},{\"title\":\"Nome:\",\"value\":\"${ProjectName}\"},{\"title\":\"Tipo:\",\"value\":\"${Tipo}\"},{\"title\":\"Severidade:\",\"value\":\"${Severidade}\"},{\"title\":\"Impacto:\",\"value\":\"${Impacto}\"},{\"title\":\"Owner:\",\"value\":\"${Owner}\"},{\"title\":\"SLA:\",\"value\":\"${SLA}\"}]},{\"type\":\"TextBlock\",\"text\":\"Descricao\",\"weight\":\"Bolder\",\"spacing\":\"Medium\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${Descricao}\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"Plano de mitigacao\",\"weight\":\"Bolder\",\"spacing\":\"Medium\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${PlanoMitigacao}\",\"wrap\":true}],\"actions\":[{\"type\":\"Action.OpenUrl\",\"title\":\"Abrir riscos no SharePoint\",\"url\":\"${RiskListUrl}\"}]}', '${RiskID}', coalesce(body('Get_Risco_Detalhes')?['RiskID'], triggerBody()?['RiskID'], '-')), '${ProjectID}', coalesce(body('Get_Risco_Detalhes')?['ProjectID'], triggerBody()?['ProjectID'], '-')), '${ProjectName}', coalesce(body('Get_Projeto')?['value']?[0]?['NomeProjeto'], body('Get_Projeto')?['value']?[0]?['Title'], '-')), '${Tipo}', coalesce(body('Get_Risco_Detalhes')?['Tipo']?['Value'], body('Get_Risco_Detalhes')?['Tipo'], '-')), '${Severidade}', coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'], '-')), '${Impacto}', coalesce(body('Get_Risco_Detalhes')?['Impacto']?['Value'], body('Get_Risco_Detalhes')?['Impacto'], '-')), '${Owner}', coalesce(body('Get_Risco_Detalhes')?['Owner']?['DisplayName'], body('Get_Risco_Detalhes')?['Owner']?['Email'], '-')), '${SLA}', coalesce(string(body('Get_Risco_Detalhes')?['SLA']), '-')), '${Descricao}', coalesce(body('Get_Risco_Detalhes')?['Descricao'], '-')), '${PlanoMitigacao}', coalesce(body('Get_Risco_Detalhes')?['PlanoMitigacao'], 'Nao informado')), '${RiskListUrl}', 'https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital/Lists/Riscos%20e%20Bloqueios/AllItems.aspx')",
+                  "body/recipient/channelId": "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+                  "location": "Channel",
+                  "body/recipient/groupId": "96c5b0c4-46cc-46cd-8695-50451db74994"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+                  "connectionName": "shared_teams",
+                  "operationId": "PostCardToConversation"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_Email_Sponsor_PMO": {
+              "runAfter": {
+                "Post_Escalacao_Risco_Teams": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "emailMessage/Importance": "High",
+                  "emailMessage/Body": "<p><b>Risco critico escalado.</b></p><p><b>Projeto:</b> @{body('Get_Risco_Detalhes')?['ProjectID']}</p><p><b>Descricao:</b> @{body('Get_Risco_Detalhes')?['Descricao']}</p><p><b>Impacto:</b> @{coalesce(body('Get_Risco_Detalhes')?['Impacto']?['Value'], body('Get_Risco_Detalhes')?['Impacto'], '-')}</p><p>PMO Lead: mbenicios@minsait.com</p>",
+                  "emailMessage/Subject": "RISCO CRITICO: @{coalesce(body('Get_Risco_Detalhes')?['Descricao'], body('Get_Risco_Detalhes')?['RiskID'], 'Sem descricao')}",
+                  "emailMessage/To": "@coalesce(body('Get_Projeto')?['value']?[0]?['Sponsor']?['Email'], 'mbenicios@minsait.com')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                  "connectionName": "shared_office365",
+                  "operationId": "SendEmailV2"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Risco_Detalhes": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_Nao_Critico": {
+                "runAfter": {},
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'])",
+                  "Critica"
+                ]
+              },
+              {
+                "equals": [
+                  "@coalesce(body('Get_Risco_Detalhes')?['Severidade']?['Value'], body('Get_Risco_Detalhes')?['Severidade'])",
+                  "Critica"
+                ]
+              }
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

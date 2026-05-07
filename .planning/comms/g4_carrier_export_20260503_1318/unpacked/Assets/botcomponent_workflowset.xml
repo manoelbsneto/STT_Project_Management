@@ -1,5 +1,0 @@
-<botcomponent_workflowset>
-  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO.action.PMO_PA_CheckInOnDemand" workflowid.workflowid="f5aab85e-ff46-f111-bec7-7ced8d955c6c">
-    <iscustomizable>1</iscustomizable>
-  </botcomponent_workflow>
-</botcomponent_workflowset>

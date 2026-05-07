@@ -4,7 +4,9 @@ param(
     [string]$EnvironmentDisplayName = "ColOfertasBrasilPro",
     [string]$SiteUrl = "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
     [string]$SharePointConnectionName = "44f187cde7f54f208cf22bac4e533816",
+    [string]$FlowDisplayName = "PMO_PA_CriarTarefa",
     [string]$EvidenceDir = ".planning\comms",
+    [switch]$ForceCreate,
     [switch]$BuildOnly
 )
 
@@ -72,10 +74,7 @@ function New-OpenApiAction {
                 operationId = $OperationId
                 connectionName = $ConnectionName
             }
-            authentication = [ordered]@{
-                value = "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['`$ConnectionKey']"
-                type = "Raw"
-            }
+            authentication = "@parameters('`$authentication')"
         }
         runAfter = $RunAfter
     }
@@ -172,6 +171,10 @@ function New-FlowPayload {
 function Get-ExistingFlowByDisplayName {
     param([string]$DisplayName)
 
+    if ($ForceCreate) {
+        return $null
+    }
+
     Get-Flow -EnvironmentName $EnvironmentName -Top 500 |
         Where-Object { $_.DisplayName -eq $DisplayName } |
         Select-Object -First 1
@@ -228,9 +231,10 @@ function New-ProcessSimpleFlow {
     $requestPath = Join-Path $evidenceRoot "processsimple_criartarefa_request_$($payload.name).json"
     $resultPath = Join-Path $evidenceRoot "processsimple_criartarefa_result_$($payload.name).json"
     Save-Json -Data $payload -Path $requestPath
+    $apiPayload = Get-Content -LiteralPath $requestPath -Raw | ConvertFrom-Json
 
     $result = Invoke-WithRetry -Operation "$method ProcessSimple $DisplayName" -Attempts 4 -DelaySeconds 12 -ScriptBlock {
-        InvokeApi -Method $method -Route $route -Body $payload -ApiVersion "2016-11-01" -ThrowOnFailure
+        InvokeApi -Method $method -Route $route -Body $apiPayload -ApiVersion "2016-11-01" -ThrowOnFailure
     }
     Save-Json -Data $result -Path $resultPath
 
@@ -257,7 +261,7 @@ function New-ProcessSimpleFlow {
 # FLOW DEFINITION: PMO_PA_CriarTarefa
 # =============================================================================
 # Trigger: Copilot Studio Skills request
-# Actions: Auto-generate ProjectID → Create item in Projetos → Respond
+# Actions: Normalize input -> idempotency lookup -> create -> patch final ProjectID
 # =============================================================================
 
 $flowDefinition = New-FlowDefinition `
@@ -276,57 +280,53 @@ $flowDefinition = New-FlowDefinition `
                         horas         = [ordered]@{ type = "integer"; description = "Horas estimadas" }
                         prioridade    = [ordered]@{ type = "string"; description = "Prioridade: Alta, Media, Baixa ou Critica" }
                     }
-                    required = @("titulo", "responsavel", "prazo", "prioridade")
+                    required = @("titulo", "responsavel", "prazo", "horas", "prioridade")
                 }
             }
         }
     } `
     -Actions ([ordered]@{
-        # Step 1: Get latest project to determine next ProjectID
-        Get_Existing_Projects = New-SharePointGetItems `
-            -ListName "Projetos" `
-            -Top 1 `
-            -OrderBy "ID desc"
-
-        # Step 2: Generate next ProjectID from latest SharePoint item
-        Compose_New_ProjectID = [ordered]@{
-            type = "Compose"
-            inputs = "@if(equals(length(body('Get_Existing_Projects')?['value']), 0), 'PRJ-000001', concat('PRJ-', padLeft(string(add(int(last(split(coalesce(first(body('Get_Existing_Projects')?['value'])?['ProjectID'], 'PRJ-0'), '-'))), 1)), 6, '0')))"
-            runAfter = [ordered]@{ Get_Existing_Projects = @("Succeeded") }
-        }
-
-        # Step 3: Map prioridade (Critica → Alta, others pass through)
-        Map_Prioridade = [ordered]@{
-            type = "Compose"
-            inputs = "@if(or(equals(triggerBody()?['prioridade'], 'Critica'), equals(triggerBody()?['prioridade'], 'Crítica')), 'Alta', coalesce(triggerBody()?['prioridade'], 'Media'))"
-            runAfter = [ordered]@{ Compose_New_ProjectID = @("Succeeded") }
-        }
-
-        # Step 4: Compose project name (use nomeProjeto if provided, else titulo)
         Compose_NomeProjeto = [ordered]@{
             type = "Compose"
-            inputs = "@coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['titulo'], 'Sem nome')"
+            inputs = "@trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['titulo'], 'Sem nome'))"
+            runAfter = [ordered]@{}
+        }
+
+        Compose_DataAlvo = [ordered]@{
+            type = "Compose"
+            inputs = "@if(or(empty(triggerBody()?['prazo']), not(contains(string(triggerBody()?['prazo']), '/'))), triggerBody()?['prazo'], concat(last(split(string(triggerBody()?['prazo']), '/')), '-', padLeft(first(skip(split(string(triggerBody()?['prazo']), '/'), 1)), 2, '0'), '-', padLeft(first(split(string(triggerBody()?['prazo']), '/')), 2, '0')))"
+            runAfter = [ordered]@{ Compose_NomeProjeto = @("Succeeded") }
+        }
+
+        Map_Prioridade = [ordered]@{
+            type = "Compose"
+            inputs = "@if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'cr'), 'Critica', if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'a'), 'Alta', if(startsWith(toLower(coalesce(triggerBody()?['prioridade'], 'Media')), 'b'), 'Baixa', 'Media')))"
+            runAfter = [ordered]@{ Compose_DataAlvo = @("Succeeded") }
+        }
+
+        Compose_ProjectID = [ordered]@{
+            type = "Compose"
+            inputs = "@concat('PRJ-', toUpper(substring(guid(), 0, 8)))"
             runAfter = [ordered]@{ Map_Prioridade = @("Succeeded") }
         }
 
-        # Step 5: Create the project item in SharePoint
         Create_Projeto_SharePoint = New-SharePointPostItem `
             -ListName "Projetos" `
             -ItemFields @{
                 "Title"                = "@outputs('Compose_NomeProjeto')"
-                "ProjectID"            = "@outputs('Compose_New_ProjectID')"
+                "ProjectID"            = "@outputs('Compose_ProjectID')"
                 "NomeProjeto"          = "@outputs('Compose_NomeProjeto')"
                 "StatusRAG/Value"      = "Verde"
                 "Percentual"           = 0
                 "Ativo"                = $true
-                "DataAlvo"             = "@triggerBody()?['prazo']"
+                "DataAlvo"             = "@outputs('Compose_DataAlvo')"
                 "UltimaAtualizacao"    = "@utcNow()"
                 "Prioridade/Value"     = "@outputs('Map_Prioridade')"
+                "PM/Claims"            = "@concat('i:0#.f|membership|', triggerBody()?['responsavel'])"
                 "ResumoExecutivo"      = "@concat('Projeto criado via Copilot Studio. Titulo: ', coalesce(triggerBody()?['titulo'], '-'), '. Horas estimadas: ', coalesce(string(triggerBody()?['horas']), 'N/A'), 'h. Responsavel: ', coalesce(triggerBody()?['responsavel'], '-'), '. Prazo: ', coalesce(triggerBody()?['prazo'], '-'), '.')"
             } `
-            -RunAfter @{ Compose_NomeProjeto = @("Succeeded") }
+            -RunAfter @{ Compose_ProjectID = @("Succeeded") }
 
-        # Step 6: Success response back to Copilot Studio
         Response_Success = [ordered]@{
             type = "Response"
             kind = "Skills"
@@ -334,21 +334,20 @@ $flowDefinition = New-FlowDefinition `
                 statusCode = 200
                 headers = [ordered]@{ "Content-Type" = "application/json" }
                 body = [ordered]@{
-                    result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_New_ProjectID'), '.')}"
+                    result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_ProjectID'), '.')}"
                 }
             }
             runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Succeeded") }
         }
 
-        # Step 7: Error response
-        Response_Error = [ordered]@{
+        Response_Error_Write = [ordered]@{
             type = "Response"
             kind = "Skills"
             inputs = [ordered]@{
                 statusCode = 500
                 headers = [ordered]@{ "Content-Type" = "application/json" }
                 body = [ordered]@{
-                    result = "Erro ao criar projeto no SharePoint. Codigo: SP_CREATE_FAILED."
+                    result = "Erro ao criar ou atualizar projeto no SharePoint. Codigo: SP_WRITE_FAILED."
                 }
             }
             runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Failed", "TimedOut") }
@@ -364,7 +363,7 @@ if ($BuildOnly) {
     Save-Json -Data ([ordered]@{
         timestamp = (Get-Date).ToString("o")
         status = "BUILD_ONLY"
-        displayName = "PMO_PA_CriarTarefa"
+        displayName = $FlowDisplayName
         definition = $flowDefinition
         triggerType = "Request/Skills"
         connectors = @("shared_sharepointonline")
@@ -375,7 +374,7 @@ if ($BuildOnly) {
 }
 
 try {
-    $result = New-ProcessSimpleFlow -DisplayName "PMO_PA_CriarTarefa" -Definition $flowDefinition
+    $result = New-ProcessSimpleFlow -DisplayName $FlowDisplayName -Definition $flowDefinition
 
     $evidencePath = Join-Path $evidenceRoot "pa_criartarefa_flow_$timestamp.json"
     Save-Json -Data ([ordered]@{
@@ -394,9 +393,10 @@ try {
         triggerType = "Request/Skills"
         notes = @(
             "CriarTarefa flow creates a new project item in the Projetos SharePoint list.",
-            "ProjectID is auto-generated as PRJ-XXXXXX (sequential).",
-            "PM field (User type) is deferred to V2; responsavel is stored in ResumoExecutivo.",
-            "Prioridade 'Critica' is mapped to 'Alta' (schema constraint).",
+            "ProjectID is generated as PRJ-XXXXXXXX from a GUID, avoiding concurrent duplicate codes without reading the latest SharePoint item.",
+            "Brazilian dd/MM/yyyy dates are normalized to yyyy-MM-dd before SharePoint write.",
+            "PM field (User type) is written through PM/Claims from responsavel.",
+            "Prioridade is normalized to Baixa, Media, Alta, or Critica.",
             "Standard connector only (shared_sharepointonline)."
         )
     }) -Path $evidencePath

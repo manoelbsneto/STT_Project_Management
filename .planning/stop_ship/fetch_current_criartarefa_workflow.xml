@@ -1,0 +1,17 @@
+<fetch>
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="uniquename" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <attribute name="type" />
+    <attribute name="createdon" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+      <condition attribute="workflowid" operator="eq" value="{71f62da4-9748-f111-bec7-6045bdf42cae}" />
+      <condition attribute="name" operator="eq" value="PMO_PA_CriarTarefa" />
+    </filter>
+  </entity>
+</fetch>

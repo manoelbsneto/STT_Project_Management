@@ -1,7 +1,0 @@
-kind: TaskDialog
-modelDescription: RFP_Risk_AnalyzerAI tool for analyzing RFP document risks and extracting key information.
-action:
-  kind: InvokeFlowTaskAction
-  flowId: 9e4da3d3-98fb-f011-8406-7ced8d955c6c
-
-outputMode: All
