@@ -23,6 +23,9 @@ function Get-WorkflowText {
     param([string]$NamePrefix)
     $file = Get-ChildItem -LiteralPath $workflowRoot -Filter "$NamePrefix*.json" | Select-Object -First 1
     if (-not $file) {
+        $file = Get-ChildItem -LiteralPath $workflowRoot -Filter "Clean_$NamePrefix*.json" | Select-Object -First 1
+    }
+    if (-not $file) {
         throw "Workflow not found: $NamePrefix"
     }
     Get-Content -LiteralPath $file.FullName -Raw

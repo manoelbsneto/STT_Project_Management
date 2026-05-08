@@ -4,7 +4,7 @@ param(
     [string]$EnvironmentDisplayName = "ColOfertasBrasilPro",
     [string]$SiteUrl = "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
     [string]$SharePointConnectionName = "44f187cde7f54f208cf22bac4e533816",
-    [string]$FlowDisplayName = "PMO_PA_CriarTarefa",
+    [string]$FlowDisplayName = "PMO_PA_CriarTarefa_V3",
     [string]$EvidenceDir = ".planning\comms",
     [switch]$ForceCreate,
     [switch]$BuildOnly
@@ -15,15 +15,42 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 Set-Location $repoRoot
 
-$adminModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.216\Microsoft.PowerApps.Administration.PowerShell.psd1"
-$powerAppsModule = "C:\Users\mbenicios\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1"
-
-Import-Module $adminModule -ErrorAction Stop
-Import-Module $powerAppsModule -ErrorAction Stop
-
 $evidenceRoot = Join-Path $repoRoot $EvidenceDir
 $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
 New-Item -ItemType Directory -Force -Path $evidenceRoot | Out-Null
+
+function Get-RequiredModulePath {
+    param([string]$ModuleName)
+
+    $module = Get-Module -ListAvailable $ModuleName | Select-Object -First 1
+    if ($module) {
+        return $module.Path
+    }
+
+    $candidateRoots = @(
+        (Join-Path $HOME "Documents\PowerShell\Modules"),
+        (Join-Path $HOME "Documents\WindowsPowerShell\Modules")
+    )
+    foreach ($root in $candidateRoots) {
+        $moduleRoot = Join-Path $root $ModuleName
+        if (-not (Test-Path -LiteralPath $moduleRoot)) {
+            continue
+        }
+        $manifest = Get-ChildItem -LiteralPath $moduleRoot -Recurse -Filter "$ModuleName.psd1" |
+            Sort-Object FullName -Descending |
+            Select-Object -First 1
+        if ($manifest) {
+            return $manifest.FullName
+        }
+    }
+
+    throw "$ModuleName module not found."
+}
+
+if (-not $BuildOnly) {
+    Import-Module (Get-RequiredModulePath "Microsoft.PowerApps.Administration.PowerShell") -ErrorAction Stop
+    Import-Module (Get-RequiredModulePath "Microsoft.PowerApps.PowerShell") -ErrorAction Stop
+}
 
 function Save-Json {
     param([object]$Data, [string]$Path, [int]$Depth = 100)
@@ -294,7 +321,7 @@ $flowDefinition = New-FlowDefinition `
 
         Compose_DataAlvo = [ordered]@{
             type = "Compose"
-            inputs = "@if(or(empty(triggerBody()?['prazo']), not(contains(string(triggerBody()?['prazo']), '/'))), triggerBody()?['prazo'], concat(last(split(string(triggerBody()?['prazo']), '/')), '-', padLeft(first(skip(split(string(triggerBody()?['prazo']), '/'), 1)), 2, '0'), '-', padLeft(first(split(string(triggerBody()?['prazo']), '/')), 2, '0')))"
+            inputs = "@if(or(empty(triggerBody()?['prazo']), not(contains(string(triggerBody()?['prazo']), '/'))), triggerBody()?['prazo'], concat(last(split(string(triggerBody()?['prazo']), '/')), '-', if(equals(length(first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), 1), concat('0', first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), first(skip(split(string(triggerBody()?['prazo']), '/'), 1))), '-', if(equals(length(first(split(string(triggerBody()?['prazo']), '/'))), 1), concat('0', first(split(string(triggerBody()?['prazo']), '/'))), first(split(string(triggerBody()?['prazo']), '/')))))"
             runAfter = [ordered]@{ Compose_NomeProjeto = @("Succeeded") }
         }
 
@@ -310,47 +337,81 @@ $flowDefinition = New-FlowDefinition `
             runAfter = [ordered]@{ Map_Prioridade = @("Succeeded") }
         }
 
-        Create_Projeto_SharePoint = New-SharePointPostItem `
+        Get_Duplicate_Projects = New-SharePointGetItems `
             -ListName "Projetos" `
-            -ItemFields @{
-                "Title"                = "@outputs('Compose_NomeProjeto')"
-                "ProjectID"            = "@outputs('Compose_ProjectID')"
-                "NomeProjeto"          = "@outputs('Compose_NomeProjeto')"
-                "StatusRAG/Value"      = "Verde"
-                "Percentual"           = 0
-                "Ativo"                = $true
-                "DataAlvo"             = "@outputs('Compose_DataAlvo')"
-                "UltimaAtualizacao"    = "@utcNow()"
-                "Prioridade/Value"     = "@outputs('Map_Prioridade')"
-                "PM/Claims"            = "@concat('i:0#.f|membership|', triggerBody()?['responsavel'])"
-                "ResumoExecutivo"      = "@concat('Projeto criado via Copilot Studio. Titulo: ', coalesce(triggerBody()?['titulo'], '-'), '. Horas estimadas: ', coalesce(string(triggerBody()?['horas']), 'N/A'), 'h. Responsavel: ', coalesce(triggerBody()?['responsavel'], '-'), '. Prazo: ', coalesce(triggerBody()?['prazo'], '-'), '.')"
-            } `
+            -Filter "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'),'''','''''')}' and DataAlvo ge datetime'@{formatDateTime(outputs('Compose_DataAlvo'), 'yyyy-MM-ddT00:00:00Z')}' and DataAlvo lt datetime'@{formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-ddT00:00:00Z')}'" `
+            -Top 1 `
             -RunAfter @{ Compose_ProjectID = @("Succeeded") }
 
-        Response_Success = [ordered]@{
-            type = "Response"
-            kind = "Skills"
-            inputs = [ordered]@{
-                statusCode = 200
-                headers = [ordered]@{ "Content-Type" = "application/json" }
-                body = [ordered]@{
-                    result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_ProjectID'), '.')}"
+        Condition_Duplicate_Projeto = [ordered]@{
+            type = "If"
+            expression = [ordered]@{
+                greater = @(
+                    "@length(body('Get_Duplicate_Projects')?['value'])",
+                    0
+                )
+            }
+            actions = [ordered]@{
+                Response_Duplicate = [ordered]@{
+                    type = "Response"
+                    kind = "Skills"
+                    inputs = [ordered]@{
+                        statusCode = 200
+                        headers = [ordered]@{ "Content-Type" = "application/json" }
+                        body = [ordered]@{
+                            result = "@{concat('Projeto duplicado: ja existe um projeto com esse nome e data alvo. Nenhum item duplicado foi criado. Codigo existente: ', first(body('Get_Duplicate_Projects')?['value'])?['ProjectID'], '.')}"
+                        }
+                    }
+                    runAfter = [ordered]@{}
                 }
             }
-            runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Succeeded") }
-        }
+            else = [ordered]@{
+                actions = [ordered]@{
+                    Create_Projeto_SharePoint = New-SharePointPostItem `
+                        -ListName "Projetos" `
+                        -ItemFields @{
+                            "Title"             = "@outputs('Compose_NomeProjeto')"
+                            "ProjectID"         = "@outputs('Compose_ProjectID')"
+                            "NomeProjeto"       = "@outputs('Compose_NomeProjeto')"
+                            "StatusRAG/Value"   = "Verde"
+                            "Percentual"        = 0
+                            "Ativo"             = $true
+                            "DataAlvo"          = "@outputs('Compose_DataAlvo')"
+                            "UltimaAtualizacao" = "@utcNow()"
+                            "Prioridade/Value"  = "@outputs('Map_Prioridade')"
+                            "PM/Claims"         = "@concat('i:0#.f|membership|', triggerBody()?['responsavel'])"
+                            "ResumoExecutivo"   = "@concat('Projeto criado via Copilot Studio. Titulo: ', coalesce(triggerBody()?['titulo'], '-'), '. Horas estimadas: ', coalesce(string(triggerBody()?['horas']), 'N/A'), 'h. Responsavel: ', coalesce(triggerBody()?['responsavel'], '-'), '. Prazo: ', coalesce(triggerBody()?['prazo'], '-'), '.')"
+                        } `
+                        -RunAfter @{}
 
-        Response_Error_Write = [ordered]@{
-            type = "Response"
-            kind = "Skills"
-            inputs = [ordered]@{
-                statusCode = 500
-                headers = [ordered]@{ "Content-Type" = "application/json" }
-                body = [ordered]@{
-                    result = "Erro ao criar ou atualizar projeto no SharePoint. Codigo: SP_WRITE_FAILED."
+                    Response_Success = [ordered]@{
+                        type = "Response"
+                        kind = "Skills"
+                        inputs = [ordered]@{
+                            statusCode = 200
+                            headers = [ordered]@{ "Content-Type" = "application/json" }
+                            body = [ordered]@{
+                                result = "@{concat('Projeto ', outputs('Compose_NomeProjeto'), ' criado com codigo ', outputs('Compose_ProjectID'), '.')}"
+                            }
+                        }
+                        runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Succeeded") }
+                    }
+
+                    Response_Error_Write = [ordered]@{
+                        type = "Response"
+                        kind = "Skills"
+                        inputs = [ordered]@{
+                            statusCode = 500
+                            headers = [ordered]@{ "Content-Type" = "application/json" }
+                            body = [ordered]@{
+                                result = "Erro ao criar ou atualizar projeto no SharePoint. Codigo: SP_WRITE_FAILED."
+                            }
+                        }
+                        runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Failed", "TimedOut") }
+                    }
                 }
             }
-            runAfter = [ordered]@{ Create_Projeto_SharePoint = @("Failed", "TimedOut") }
+            runAfter = [ordered]@{ Get_Duplicate_Projects = @("Succeeded") }
         }
     })
 

@@ -1,0 +1,16 @@
+﻿<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+      <condition attribute="name" operator="like" value="%pmo_AssistentePMO%" />
+      <condition attribute="schemaname" operator="like" value="%pmo_AssistentePMO%" />
+    </filter>
+    <order attribute="modifiedon" descending="true" />
+  </entity>
+</fetch>

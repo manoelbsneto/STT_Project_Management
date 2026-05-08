@@ -1,0 +1,209 @@
+﻿{
+    "timestamp":  "2026-05-07T20:21:13.0709325-03:00",
+    "status":  "BUILD_ONLY",
+    "displayName":  "PMO_PA_RegistrarRiscoBot",
+    "definition":  {
+                       "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                       "contentVersion":  "1.0.0.0",
+                       "parameters":  {
+                                          "$authentication":  {
+                                                                  "defaultValue":  {
+
+                                                                                   },
+                                                                  "type":  "SecureObject"
+                                                              },
+                                          "$connections":  {
+                                                               "defaultValue":  {
+
+                                                                                },
+                                                               "type":  "Object"
+                                                           }
+                                      },
+                       "triggers":  {
+                                        "Copilot_Request":  {
+                                                                "type":  "Request",
+                                                                "kind":  "Skills",
+                                                                "inputs":  {
+                                                                               "schema":  {
+                                                                                              "type":  "object",
+                                                                                              "properties":  {
+                                                                                                                 "descricao":  {
+                                                                                                                                   "type":  "string",
+                                                                                                                                   "description":  "Descricao do risco"
+                                                                                                                               },
+                                                                                                                 "projectName":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "description":  "Nome do projeto"
+                                                                                                                                 },
+                                                                                                                 "severidade":  {
+                                                                                                                                    "type":  "string",
+                                                                                                                                    "description":  "Severidade"
+                                                                                                                                }
+                                                                                                             },
+                                                                                              "required":  [
+                                                                                                               "projectName",
+                                                                                                               "descricao",
+                                                                                                               "severidade"
+                                                                                                           ]
+                                                                                          }
+                                                                           }
+                                                            }
+                                    },
+                       "actions":  {
+                                       "Compose_ProjectName":  {
+                                                                   "type":  "Compose",
+                                                                   "inputs":  "@trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))",
+                                                                   "runAfter":  {
+
+                                                                                }
+                                                               },
+                                       "Map_Severidade":  {
+                                                              "type":  "Compose",
+                                                              "inputs":  "@if(startsWith(toLower(coalesce(triggerBody()?[\u0027severidade\u0027], \u0027Media\u0027)), \u0027cr\u0027), \u0027Critica\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027severidade\u0027], \u0027Media\u0027)), \u0027a\u0027), \u0027Alta\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027severidade\u0027], \u0027Media\u0027)), \u0027b\u0027), \u0027Baixa\u0027, \u0027Media\u0027)))",
+                                                              "runAfter":  {
+                                                                               "Get_Projeto":  [
+                                                                                                   "Succeeded"
+                                                                                               ]
+                                                                           }
+                                                          },
+                                       "Condition_Projeto_Encontrado":  {
+                                                                            "type":  "If",
+                                                                            "expression":  {
+                                                                                               "greater":  [
+                                                                                                               "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+                                                                                                               0
+                                                                                                           ]
+                                                                                           },
+                                                                            "actions":  {
+                                                                                            "Create_Risco_SharePoint":  {
+                                                                                                                            "type":  "OpenApiConnection",
+                                                                                                                            "inputs":  {
+                                                                                                                                           "parameters":  {
+                                                                                                                                                              "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                              "item/Severidade/Value":  "@outputs(\u0027Map_Severidade\u0027)",
+                                                                                                                                                              "item/DataCriacao":  "@utcNow()",
+                                                                                                                                                              "item/Title":  "@outputs(\u0027Compose_RiskID\u0027)",
+                                                                                                                                                              "item/Tipo/Value":  "Risco",
+                                                                                                                                                              "item/RiskID":  "@outputs(\u0027Compose_RiskID\u0027)",
+                                                                                                                                                              "table":  "Riscos e Bloqueios",
+                                                                                                                                                              "item/ProjectID":  "@body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027]",
+                                                                                                                                                              "item/StatusRisco/Value":  "Aberto",
+                                                                                                                                                              "item/Descricao":  "@triggerBody()?[\u0027descricao\u0027]"
+                                                                                                                                                          },
+                                                                                                                                           "host":  {
+                                                                                                                                                        "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                        "operationId":  "PostItem",
+                                                                                                                                                        "connectionName":  "shared_sharepointonline"
+                                                                                                                                                    },
+                                                                                                                                           "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                       },
+                                                                                                                            "runAfter":  {
+
+                                                                                                                                         }
+                                                                                                                        },
+                                                                                            "Response_OK":  {
+                                                                                                                "type":  "Response",
+                                                                                                                "kind":  "Skills",
+                                                                                                                "inputs":  {
+                                                                                                                               "statusCode":  200,
+                                                                                                                               "headers":  {
+                                                                                                                                               "Content-Type":  "application/json"
+                                                                                                                                           },
+                                                                                                                               "body":  {
+                                                                                                                                            "result":  "@{concat(\u0027Risco \u0027, outputs(\u0027Compose_RiskID\u0027), \u0027 registrado para projeto \u0027, outputs(\u0027Compose_ProjectName\u0027), \u0027. Severidade: \u0027, outputs(\u0027Map_Severidade\u0027), \u0027.\u0027)}"
+                                                                                                                                        }
+                                                                                                                           },
+                                                                                                                "runAfter":  {
+                                                                                                                                 "Create_Risco_SharePoint":  [
+                                                                                                                                                                 "Succeeded"
+                                                                                                                                                             ]
+                                                                                                                             }
+                                                                                                            },
+                                                                                            "Response_Error_Write":  {
+                                                                                                                         "type":  "Response",
+                                                                                                                         "kind":  "Skills",
+                                                                                                                         "inputs":  {
+                                                                                                                                        "statusCode":  500,
+                                                                                                                                        "headers":  {
+                                                                                                                                                        "Content-Type":  "application/json"
+                                                                                                                                                    },
+                                                                                                                                        "body":  {
+                                                                                                                                                     "result":  "Erro ao registrar risco no SharePoint. Codigo: SP_WRITE_FAILED."
+                                                                                                                                                 }
+                                                                                                                                    },
+                                                                                                                         "runAfter":  {
+                                                                                                                                          "Create_Risco_SharePoint":  [
+                                                                                                                                                                          "Failed",
+                                                                                                                                                                          "TimedOut"
+                                                                                                                                                                      ]
+                                                                                                                                      }
+                                                                                                                     }
+                                                                                        },
+                                                                            "else":  {
+                                                                                         "actions":  {
+                                                                                                         "Response_Project_Not_Found":  {
+                                                                                                                                            "type":  "Response",
+                                                                                                                                            "kind":  "Skills",
+                                                                                                                                            "inputs":  {
+                                                                                                                                                           "statusCode":  200,
+                                                                                                                                                           "headers":  {
+                                                                                                                                                                           "Content-Type":  "application/json"
+                                                                                                                                                                       },
+                                                                                                                                                           "body":  {
+                                                                                                                                                                        "result":  "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                                                                                                                                                                    }
+                                                                                                                                                       },
+                                                                                                                                            "runAfter":  {
+
+                                                                                                                                                         }
+                                                                                                                                        }
+                                                                                                     }
+                                                                                     },
+                                                                            "runAfter":  {
+                                                                                             "Compose_RiskID":  [
+                                                                                                                    "Succeeded"
+                                                                                                                ]
+                                                                                         }
+                                                                        },
+                                       "Compose_RiskID":  {
+                                                              "type":  "Compose",
+                                                              "inputs":  "@concat(\u0027RISK-\u0027, toUpper(substring(guid(), 0, 8)))",
+                                                              "runAfter":  {
+                                                                               "Map_Severidade":  [
+                                                                                                      "Succeeded"
+                                                                                                  ]
+                                                                           }
+                                                          },
+                                       "Get_Projeto":  {
+                                                           "type":  "OpenApiConnection",
+                                                           "inputs":  {
+                                                                          "parameters":  {
+                                                                                             "$filter":  "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Ativo eq 1",
+                                                                                             "table":  "Projetos",
+                                                                                             "$top":  1,
+                                                                                             "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                         },
+                                                                          "host":  {
+                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                       "operationId":  "GetItems",
+                                                                                       "connectionName":  "shared_sharepointonline"
+                                                                                   },
+                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                      },
+                                                           "runAfter":  {
+                                                                            "Compose_ProjectName":  [
+                                                                                                        "Succeeded"
+                                                                                                    ]
+                                                                        }
+                                                       }
+                                   },
+                       "outputs":  {
+
+                                   }
+                   },
+    "triggerType":  "Request/Skills",
+    "connectors":  [
+                       "shared_sharepointonline"
+                   ],
+    "standardOnly":  true
+}
