@@ -27,7 +27,7 @@
 
 | Task ID | Wave | GAP | Activity | Owner | Depends On | Status | Agent | Started At | Completed At | Evidence Path | Est. Time |
 |---------|------|-----|----------|-------|------------|--------|-------|------------|--------------|---------------|-----------|
-| PRE-01 | 0 | — | Add Deleted/DeletedAt/DeletedReason/DeletedByUPN fields to SharePoint lists (Projetos, Tarefas, Status Diario, Riscos e Bloqueios, Decisoes do Board) | Codex 5.5 | NONE | READY | — | — | — | — | 45min |
+| PRE-01 | 0 | — | Add Deleted/DeletedAt/DeletedReason/DeletedByUPN fields to SharePoint lists (Projetos, Tarefas, Status Diario, Riscos e Bloqueios, Decisoes do Board) | Codex 5.5 | NONE | DONE | Codex 5.5 | 2026-05-10T10:43:10-03:00 | 2026-05-10T10:46:38-03:00 | `.planning/cleanup/logical_delete_fields_20260510_104442.md` | 45min |
 | PRE-02 | 0 | — | Verify logical delete fields exist via browser/SharePoint UI | Opus 4.6 | PRE-01 | WAITING | — | — | — | — | 20min |
 | CLN-01 | 0 | — | Freeze test data creation — record timestamp | Opus 4.6 | NONE | DONE | Opus 4.6 | 2026-05-10T10:38:00-03:00 | 2026-05-10T10:39:00-03:00 | `.planning/stop_ship/TEST_DATA_FREEZE_RECORD_20260510.md` | 5min |
 | CLN-02 | 0 | — | Run SharePoint test/trash data discovery script | Codex 5.5 | CLN-01 | WAITING | — | — | — | — | 15min |
@@ -90,4 +90,5 @@
 | 2026-05-10T10:32:00-03:00 | Opus 4.6 | CREATED | — | Registry created. All tasks initialized as READY/WAITING. |
 | 2026-05-10T10:38:00-03:00 | Opus 4.6 | CLAIMED | CLN-01 | Freeze test data creation. |
 | 2026-05-10T10:39:00-03:00 | Opus 4.6 | COMPLETED | CLN-01 | Freeze record at `.planning/stop_ship/TEST_DATA_FREEZE_RECORD_20260510.md`. CLN-02 now unblocked for Codex. |
-
+| 2026-05-10T10:43:10-03:00 | Codex 5.5 | CLAIMED | PRE-01 | Started logical delete field script implementation. |
+| 2026-05-10T10:46:38-03:00 | Codex 5.5 | COMPLETED | PRE-01 | Added logical delete fields to all five SharePoint lists. Evidence: `.planning/cleanup/logical_delete_fields_20260510_104442.md`. |
