@@ -34,8 +34,8 @@
 | PRE-02 | 0 | — | Verify logical delete fields exist via PnP Get-PnPField | Codex 5.5 | PRE-01 | DONE | Codex 5.5 | 2026-05-10T10:47:18-03:00 | 2026-05-10T10:49:04-03:00 | `.planning/cleanup/logical_delete_fields_verify_20260510_104836.md` | 10min |
 | CLN-01 | 0 | — | Freeze test data creation — record timestamp | Opus 4.6 | NONE | DONE | Opus 4.6 | 2026-05-10T10:38:00-03:00 | 2026-05-10T10:39:00-03:00 | `.planning/stop_ship/TEST_DATA_FREEZE_RECORD_20260510.md` | 5min |
 | CLN-02 | 0 | — | Run SharePoint test/trash data discovery script | Codex 5.5 | CLN-01 | DONE | Codex 5.5 | 2026-05-10T10:49:20-03:00 | 2026-05-10T10:50:26-03:00 | `.planning/cleanup/sharepoint_test_data_candidates_20260510_105015.md` | 15min |
-| CLN-03 | 0 | — | Mark test/trash candidates as Deleted=Yes via PnP Set-PnPListItem | Codex 5.5 | PRE-02, CLN-02 | WAITING | — | — | — | — | 20min |
-| CLN-04 | 0 | — | Validate deleted records hidden via OData filter test script | Codex 5.5 | CLN-03 | WAITING | — | — | — | — | 15min |
+| CLN-03 | 0 | — | Mark test/trash candidates as Deleted=Yes via PnP Set-PnPListItem | Codex 5.5 | PRE-02, CLN-02 | DONE | Codex 5.5 | 2026-05-10T10:51:10-03:00 | 2026-05-10T10:53:18-03:00 | `.planning/cleanup/sharepoint_deleted_flag_log_20260510_105318.md` | 20min |
+| CLN-04 | 0 | — | Validate deleted records hidden via OData filter test script | Codex 5.5 | CLN-03 | DONE | Codex 5.5 | 2026-05-10T10:54:05-03:00 | 2026-05-10T10:55:10-03:00 | `.planning/cleanup/deleted_records_hidden_validation_20260510_105425.md` | 15min |
 | W1-01 | 1 | A1 | Verify/rebuild PMO_PA_CriarTarefa_V3 with real SP write logic | Codex 5.5 | CLN-04 | WAITING | — | — | — | — | 60min |
 | W1-02 | 1 | A1 | Verify V3 flow via ProcessSimple API test run + SP item check | Codex 5.5 | W1-01 | WAITING | — | — | — | — | 20min |
 | W1-03 | 1 | A2 | Bind CriarTarefa topic to V3 flow in Copilot Studio UI | Opus 4.6 | W1-02 | WAITING | — | — | — | — | 20min |
@@ -102,3 +102,7 @@
 | 2026-05-10T10:49:04-03:00 | Codex 5.5 | COMPLETED | PRE-02 | Verified all logical delete fields exist on all five SharePoint lists. Evidence: `.planning/cleanup/logical_delete_fields_verify_20260510_104836.md`. |
 | 2026-05-10T10:49:20-03:00 | Codex 5.5 | CLAIMED | CLN-02 | Started read-only SharePoint test/trash data discovery. |
 | 2026-05-10T10:50:26-03:00 | Codex 5.5 | COMPLETED | CLN-02 | Read-only discovery found 11 candidates across five lists. Evidence: `.planning/cleanup/sharepoint_test_data_candidates_20260510_105015.md`. |
+| 2026-05-10T10:51:10-03:00 | Codex 5.5 | CLAIMED | CLN-03 | Started logical deletion of approved test/trash candidates using Deleted=Yes metadata. |
+| 2026-05-10T10:53:18-03:00 | Codex 5.5 | COMPLETED | CLN-03 | Marked 11 approved test/trash candidates as Deleted=Yes. No physical delete performed. Evidence: `.planning/cleanup/sharepoint_deleted_flag_log_20260510_105318.md`. |
+| 2026-05-10T10:54:05-03:00 | Codex 5.5 | CLAIMED | CLN-04 | Started validation that Deleted=Yes records are hidden by default filters. |
+| 2026-05-10T10:55:10-03:00 | Codex 5.5 | COMPLETED | CLN-04 | Verified 11 Deleted=Yes records are hidden by `Deleted ne 1`; post-cleanup discovery returned 0 candidates. Evidence: `.planning/cleanup/deleted_records_hidden_validation_20260510_105425.md`. |
