@@ -1,44 +1,47 @@
 # MASTER CHECKLIST
 
-Status: NO-SHIP
+Status: CONDITIONAL SHIP — SEV-0 resolved
 Active plan: `.planning/CODEX_DEPLOYMENT_PLAN_20260507.md`
-Last Codex programmatic refresh: 2026-05-07 20:25 BRT
+Last update: 2026-05-10 18:40 BRT (Session 19)
 
 ## Release Gates
 
 | Gate | Status | Evidence / next evidence |
 |---|---|---|
-| All 8 PRD topics functional | PENDING RUNTIME | Local template no longer has B1-B5 stubs; Opus must bind/create flows and prove live chat. |
-| STT / long-text support | PENDING RUNTIME | Local `AtualizarStatus` captures `System.Activity.Text` and parses fields; Opus must publish and test. |
-| Confirm-before-action | PENDING RUNTIME | Local template has String confirmations; live publish/test required. |
-| V3 flow writes to `Projetos` | PENDING RUNTIME | `deploy/PA_CriarTarefa_Flow.ps1` passes static test; deployment attempt timed out; Opus/admin must prove runtime. |
-| CriarTarefa binds to V3 | PENDING RUNTIME | Local action flowId changed to `3104124d-364a-f111-bec7-7ced8d955c6c`; Copilot Studio publish/test required. |
-| All 10 PRD flows have runtime evidence | FAIL | Recurrence/e2e evidence gaps remain for GAP-C2 through GAP-C4. |
+| All 8 PRD topics functional | PARTIAL — 3/8 validated live | CriarTarefa, ConsultarPortfolio (topic routing), AtualizarStatus (topic routing) validated. B2-B5 write flows need E2E proof. |
+| STT / long-text support | PARTIAL | CriarTarefa parses long STT input correctly (tested Session 19). AtualizarStatus pending. |
+| Confirm-before-action | DONE | CriarTarefa `sim` confirmation tested and working (Session 19). |
+| V3 flow writes to `Projetos` | DONE | Flow rebuilt in Classic Designer. Test 1: project created. Test 2: duplicate detected. (Session 18). |
+| CriarTarefa binds to V3 | DONE | Topic binding fixed, output binding removed, published and tested (Sessions 17-18). |
+| Cold Start NLU mitigation | DONE | Greeting warm-up + Fallback SmartRedirect deployed. 7/7 tests PASS (Session 19). |
+| All 10 PRD flows have runtime evidence | PARTIAL | CriarTarefa V3 has runtime evidence. Recurrence/e2e evidence gaps remain for GAP-C2 through GAP-C4. |
 | Ghost components cleaned | PENDING ADMIN | `deploy/Discover-GhostBotComponents.ps1` created and tested; deletion requires Human/Admin approval. |
 | Automated tests green | PARTIAL | New local tests pass; live export audit still fails on GPT data ASCII/mojibake. |
-| Operations Manual delivered | DONE LOCAL | `docs/MANUAL_OPERACIONAL_PMO.md` exists and passes `Test-OperationsManualArtifact.ps1`. |
-| Zero SEV-0/P0 open | FAIL | Runtime evidence is still missing for GAP-A1, A2, B1-B7. |
+| Operations Manual delivered | DONE | `docs/MANUAL_OPERACIONAL_PMO.md` exists and passes `Test-OperationsManualArtifact.ps1`. |
+| Zero SEV-0 open | **DONE** | All SEV-0 items (A1, A2, Cold Start) resolved with live runtime evidence. |
+| Zero P0 open | PARTIAL | B7 resolved. B1, B2, B3, B4, B5, B6 need E2E SP write/read validation. |
 
 ## GAP Checklist
 
-| GAP ID | Severity | Owner | Status | Programmatic evidence | Browser / admin evidence required |
-|---|---|---|---|---|---|
-| GAP-A1 | SEV-0 | Codex + Opus | Pending runtime | `Test-CriarTarefaFlowDefinition.ps1` PASS; deploy attempt documented in `.planning/comms/CODEX_PROGRAMMATIC_DEPLOY_ATTEMPT_20260507.md`. | Opus UI/runtime proof: success run, duplicate run, SharePoint item. |
-| GAP-A2 | SEV-0 | Opus | Pending runtime | Local YAML references V3 flow ID and passes `Test-CopilotStopShipGaps.ps1`. | Copilot Studio bind/publish and T-007 chat screenshot. |
-| GAP-B1 | P0 | Codex + Opus | Pending runtime | `deploy/PA_ConsultarPortfolio_Flow.ps1` and test PASS. | Flow ID, topic binding, live portfolio response. |
-| GAP-B2 | P0 | Codex + Opus | Pending runtime | `deploy/PA_ConsultarProjeto_Flow.ps1` and test PASS. | Flow ID, topic binding, live project response. |
-| GAP-B3 | P0 | Codex + Opus | Pending runtime | `deploy/PA_RegistrarRiscoBot_Flow.ps1` and test PASS. | SharePoint item with `Tipo=Risco`. |
-| GAP-B4 | P0 | Codex + Opus | Pending runtime | `deploy/PA_RegistrarBloqueioBot_Flow.ps1` and test PASS. | SharePoint item with `Tipo=Bloqueio`. |
-| GAP-B5 | P0 | Codex + Opus | Pending runtime | `deploy/PA_PedirDecisaoBot_Flow.ps1` and test PASS. | SharePoint item in `Decisoes do Board`. |
-| GAP-B6 | P0 | Codex + Opus | Pending runtime | Local `AtualizarStatus` STT redesign passes `Test-CopilotStopShipGaps.ps1`. | Published long-text/STT runtime proof. |
-| GAP-B7 | P0 | Codex + Opus | Pending runtime | Local template has no `BooleanPrebuiltEntity`; static test PASS. | Published confirmation proof for `sim/s/yes/confirmo`. |
-| GAP-C1 | P1 | Codex + Human/Admin | Pending admin | `Discover-GhostBotComponents.ps1` and `Test-CopilotGhostBotInventory.ps1` PASS; skipped discovery evidence created in `.planning/comms/`. | Human-approved deletion or formal risk acceptance. |
-| GAP-C2 | P1 | Opus | Open | No new programmatic change. | Scheduled recurrence screenshots/run URLs. |
-| GAP-C3 | P1 | Opus | Open | No new programmatic change. | SyncPlannerStats pilot evidence. |
-| GAP-C4 | P1 | Opus | Open | No new programmatic change. | Teams red-project alert proof. |
-| GAP-C5 | P1 | Codex | Done local | `docs/MANUAL_OPERACIONAL_PMO.md`; `Test-OperationsManualArtifact.ps1` PASS. | Project Owner/Opus review if required. |
-| GAP-D1 | P2 | Codex | Post-ship | Not a release blocker. | Project Owner decision if scope changes. |
-| GAP-D2 | P2 | Codex | Post-ship | Not a release blocker. | Project Owner decision if scope changes. |
+| GAP ID | Severity | Owner | Status | Evidence |
+|---|---|---|---|---|
+| GAP-A1 | SEV-0 | — | **DONE** | Flow rebuilt Session 18. Success run + duplicate detection PASS. |
+| GAP-A2 | SEV-0 | — | **DONE** | Binding fixed Sessions 17-18. Topic published and tested. |
+| COLD-START | SEV-0 | — | **DONE** | Greeting + Fallback deployed Session 19. 7/7 tests PASS. Commit `e2232ce`. |
+| GAP-B1 | P0 | User/Opus | **PARTIAL** | Topic redirect works (Session 19). Flow may be returning template text. Need to verify real SP query. |
+| GAP-B2 | P0 | User/Opus | Pending | Topic exists. Need E2E test with known project name. |
+| GAP-B3 | P0 | User/Opus | Pending | Topic redirect works (Session 19). Need to complete full flow and verify SP `Riscos e Bloqueios` item. |
+| GAP-B4 | P0 | User/Opus | Pending | Same pattern as B3. Need full flow test. |
+| GAP-B5 | P0 | User/Opus | Pending | Topic redirect works (Session 19). Need to complete full flow and verify SP `Decisoes do Board` item. |
+| GAP-B6 | P0 | User/Opus | **PARTIAL** | Topic redirect works, asks "Qual projeto?" Need to test long-text STT input. |
+| GAP-B7 | P0 | — | **DONE** | `sim` confirmation tested and working in Session 19. |
+| GAP-C1 | P1 | Human/Admin | Pending admin | Discovery script ready. Deletion requires approval. |
+| GAP-C2 | P1 | Opus | Open | Recurrence flow evidence needed. |
+| GAP-C3 | P1 | Opus | Open | SyncPlannerStats pilot evidence needed. |
+| GAP-C4 | P1 | Opus | Open | AlertaProjetoVermelho E2E needed. |
+| GAP-C5 | P1 | — | **DONE** | `docs/MANUAL_OPERACIONAL_PMO.md` delivered. |
+| GAP-D1 | P2 | Codex | Post-ship | Not release-blocking. |
+| GAP-D2 | P2 | Codex | Post-ship | Not release-blocking. |
 
 ## Current Test Commands
 

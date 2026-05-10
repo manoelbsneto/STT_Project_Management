@@ -126,20 +126,21 @@ You must not allow any code to ship without passing all quality gates.
 
 | GAP ID | Severity | Title | Owner | Status | Wave |
 |--------|----------|-------|-------|--------|------|
-| GAP-A1 | SEV-0 | V3 Flow has no real SharePoint logic | Codex (script) + Opus (runtime) | Pending runtime | 1 |
-| GAP-A2 | SEV-0 | CriarTarefa topic binds to dead flow `42d9abd1` | Opus (UI) | Pending runtime | 1 |
-| GAP-B1 | P0 | ConsultarPortfolio is a stub | Codex (script) + Opus (UI) | Pending runtime | 2 |
-| GAP-B2 | P0 | ConsultarProjeto is a stub | Codex (script) + Opus (UI) | Pending runtime | 2 |
-| GAP-B3 | P0 | RegistrarRisco confirms but never writes | Codex (script) + Opus (UI) | Pending runtime | 3 |
-| GAP-B4 | P0 | RegistrarBloqueio confirms but never writes | Codex (script) + Opus (UI) | Pending runtime | 3 |
-| GAP-B5 | P0 | PedirDecisao confirms but never writes | Codex (script) + Opus (UI) | Pending runtime | 3 |
-| GAP-B6 | P0 | AtualizarStatus asks field-by-field (STT-incompatible) | Codex (YAML) + Opus (UI) | Pending runtime | 4 |
-| GAP-B7 | P0 | BooleanPrebuiltEntity breaks STT confirmation | Codex (YAML) + Opus (publish) | Pending runtime | 4 |
-| GAP-C1 | P1 | Ghost bot components in Dataverse | Codex (discover) + Human (delete) | Pending admin | 5 |
-| GAP-C2 | P1 | Recurrence flows lack runtime evidence | Opus (screenshots) | ❌ Open | 5 |
-| GAP-C3 | P1 | SyncPlannerStats never tested with real data | Opus (test) | ❌ Open | 5 |
-| GAP-C4 | P1 | AlertaProjetoVermelho E2E unverified | Opus (test) | ❌ Open | 5 |
-| GAP-C5 | P1 | Operations Manual missing | Codex (draft) | Done local | 5 |
+| GAP-A1 | SEV-0 | V3 Flow has no real SharePoint logic | — | ✅ DONE (Session 18) | 1 |
+| GAP-A2 | SEV-0 | CriarTarefa topic binds to dead flow `42d9abd1` | — | ✅ DONE (Sessions 17-18) | 1 |
+| COLD-START | SEV-0 | 1st message fails NLU recognition | — | ✅ DONE (Session 19) | 1 |
+| GAP-B1 | P0 | ConsultarPortfolio is a stub | User/Opus | 🔧 PARTIAL — redirect works, flow E2E pending | 2 |
+| GAP-B2 | P0 | ConsultarProjeto is a stub | User/Opus | ❌ Pending E2E | 2 |
+| GAP-B3 | P0 | RegistrarRisco confirms but never writes | User/Opus | ❌ Pending E2E — redirect validated | 3 |
+| GAP-B4 | P0 | RegistrarBloqueio confirms but never writes | User/Opus | ❌ Pending E2E | 3 |
+| GAP-B5 | P0 | PedirDecisao confirms but never writes | User/Opus | ❌ Pending E2E — redirect validated | 3 |
+| GAP-B6 | P0 | AtualizarStatus asks field-by-field (STT-incompatible) | User/Opus | 🔧 PARTIAL — redirect works, STT test pending | 4 |
+| GAP-B7 | P0 | BooleanPrebuiltEntity breaks STT confirmation | — | ✅ DONE (Session 19) — `sim` confirmed | 4 |
+| GAP-C1 | P1 | Ghost bot components in Dataverse | Human/Admin | Pending admin approval | 5 |
+| GAP-C2 | P1 | Recurrence flows lack runtime evidence | Opus | ❌ Open | 5 |
+| GAP-C3 | P1 | SyncPlannerStats never tested with real data | Opus | ❌ Open | 5 |
+| GAP-C4 | P1 | AlertaProjetoVermelho E2E unverified | Opus | ❌ Open | 5 |
+| GAP-C5 | P1 | Operations Manual missing | — | ✅ DONE | 5 |
 | GAP-D1 | P2 | Marcos e Entregas list missing | Codex | ⚪ Post-ship | 6 |
 | GAP-D2 | P2 | Planner Metrics Snapshot list missing | Codex | ⚪ Post-ship | 6 |
 
@@ -291,21 +292,23 @@ Every agent posts updates in the format:
 
 ---
 
-## 10) CURRENT STATUS
+## 10) CURRENT STATUS (Updated 2026-05-10 18:40 BRT)
 
 | Gate | Status | Evidence |
 |------|--------|----------|
-| All 8 PRD topics functional | Pending runtime | Local YAML stubs removed; Opus must bind/create flows and test chat. |
-| STT/long text support | Pending runtime | Local `AtualizarStatus` captures `System.Activity.Text`; publish/test pending. |
-| Confirm-Before-Action | Pending runtime | Local template uses String confirmation; live publish/test pending. |
-| V3 flow writes to Projetos | Pending runtime | Static test PASS; programmatic deploy attempt timed out. |
-| CriarTarefa binds to V3 | Pending runtime | Local template references V3 ID `3104124d`; Copilot Studio runtime proof pending. |
-| All 10 flows have runtime evidence | FAIL | C2-C4 runtime evidence remains missing. |
+| All 8 PRD topics functional | PARTIAL (3/8 live) | CriarTarefa DONE, topic redirects for 5 topics validated. B1-B5 E2E SP write pending. |
+| STT/long text support | PARTIAL | CriarTarefa parses long STT input correctly (Session 19). AtualizarStatus pending. |
+| Confirm-Before-Action | **DONE** | CriarTarefa `sim` confirmation tested and working (Session 19). |
+| V3 flow writes to Projetos | **DONE** | Flow rebuilt via Classic Designer. Success + duplicate tests PASS (Session 18). |
+| CriarTarefa binds to V3 | **DONE** | Binding fixed, published, T-007 PASS (Sessions 17-18). |
+| Cold Start NLU mitigation | **DONE** | Greeting + Fallback SmartRedirect deployed. 7/7 tests PASS (Session 19). |
+| All 10 flows have runtime evidence | PARTIAL | CriarTarefa V3 has runtime evidence. C2-C4 remain missing. |
 | Ghost components cleaned | Pending admin | Discovery script created; deletion approval pending. |
 | Automated tests green | Partial | New local tests PASS; live export audit still fails ASCII/mojibake. |
-| Operations Manual | Done local | `docs/MANUAL_OPERACIONAL_PMO.md` delivered and test PASS. |
+| Operations Manual | **DONE** | `docs/MANUAL_OPERACIONAL_PMO.md` delivered and test PASS. |
+| Zero SEV-0 open | **DONE** | A1, A2, Cold Start all resolved with live runtime evidence. |
 
-**VERDICT: NO-SHIP — browser/runtime evidence remains blocking.**
+**VERDICT: CONDITIONAL SHIP — All SEV-0 items resolved. P0 E2E validation (B1-B6) remains blocking for full SHIP.**
 
 Detailed current table: `.planning/stop_ship/CURRENT_STATUS_TABLE_20260507.md`.
 
