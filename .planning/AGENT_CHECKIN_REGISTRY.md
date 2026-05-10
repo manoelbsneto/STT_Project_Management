@@ -4,6 +4,9 @@
 # BOTH Opus 4.6 AND Codex 5.5 MUST read this file before starting ANY task.
 # A task can only start when ALL its dependencies show status = DONE.
 # =====================================================
+# CODEX 5.5 may use up to 4 SUBAGENTS for parallel execution.
+# OPUS 4.6 handles ONLY browser-mandatory tasks (Copilot Studio UI, bot chat).
+# =====================================================
 
 > **Created:** 2026-05-10T10:32:00-03:00
 > **Created by:** Opus 4.6
@@ -28,13 +31,13 @@
 | Task ID | Wave | GAP | Activity | Owner | Depends On | Status | Agent | Started At | Completed At | Evidence Path | Est. Time |
 |---------|------|-----|----------|-------|------------|--------|-------|------------|--------------|---------------|-----------|
 | PRE-01 | 0 | — | Add Deleted/DeletedAt/DeletedReason/DeletedByUPN fields to SharePoint lists (Projetos, Tarefas, Status Diario, Riscos e Bloqueios, Decisoes do Board) | Codex 5.5 | NONE | DONE | Codex 5.5 | 2026-05-10T10:43:10-03:00 | 2026-05-10T10:46:38-03:00 | `.planning/cleanup/logical_delete_fields_20260510_104442.md` | 45min |
-| PRE-02 | 0 | — | Verify logical delete fields exist via browser/SharePoint UI | Opus 4.6 | PRE-01 | WAITING | — | — | — | — | 20min |
+| PRE-02 | 0 | — | Verify logical delete fields exist via PnP Get-PnPField | Codex 5.5 | PRE-01 | DONE | Codex 5.5 | 2026-05-10T10:47:18-03:00 | 2026-05-10T10:49:04-03:00 | `.planning/cleanup/logical_delete_fields_verify_20260510_104836.md` | 10min |
 | CLN-01 | 0 | — | Freeze test data creation — record timestamp | Opus 4.6 | NONE | DONE | Opus 4.6 | 2026-05-10T10:38:00-03:00 | 2026-05-10T10:39:00-03:00 | `.planning/stop_ship/TEST_DATA_FREEZE_RECORD_20260510.md` | 5min |
-| CLN-02 | 0 | — | Run SharePoint test/trash data discovery script | Codex 5.5 | CLN-01 | WAITING | — | — | — | — | 15min |
-| CLN-03 | 0 | — | Mark test/trash candidates as Deleted=Yes with metadata | Opus 4.6 | PRE-02, CLN-02 | WAITING | — | — | — | — | 30min |
-| CLN-04 | 0 | — | Validate deleted records hidden from default views/queries | Opus 4.6 | CLN-03 | WAITING | — | — | — | — | 20min |
+| CLN-02 | 0 | — | Run SharePoint test/trash data discovery script | Codex 5.5 | CLN-01 | DONE | Codex 5.5 | 2026-05-10T10:49:20-03:00 | 2026-05-10T10:50:26-03:00 | `.planning/cleanup/sharepoint_test_data_candidates_20260510_105015.md` | 15min |
+| CLN-03 | 0 | — | Mark test/trash candidates as Deleted=Yes via PnP Set-PnPListItem | Codex 5.5 | PRE-02, CLN-02 | WAITING | — | — | — | — | 20min |
+| CLN-04 | 0 | — | Validate deleted records hidden via OData filter test script | Codex 5.5 | CLN-03 | WAITING | — | — | — | — | 15min |
 | W1-01 | 1 | A1 | Verify/rebuild PMO_PA_CriarTarefa_V3 with real SP write logic | Codex 5.5 | CLN-04 | WAITING | — | — | — | — | 60min |
-| W1-02 | 1 | A1 | Verify V3 flow writes real SP items + new records have Deleted=false | Opus 4.6 | W1-01 | WAITING | — | — | — | — | 30min |
+| W1-02 | 1 | A1 | Verify V3 flow via ProcessSimple API test run + SP item check | Codex 5.5 | W1-01 | WAITING | — | — | — | — | 20min |
 | W1-03 | 1 | A2 | Bind CriarTarefa topic to V3 flow in Copilot Studio UI | Opus 4.6 | W1-02 | WAITING | — | — | — | — | 20min |
 | W1-04 | 1 | A2 | Publish bot from Copilot Studio UI | Opus 4.6 | W1-03 | WAITING | — | — | — | — | 15min |
 | W1-05 | 1 | — | Test T-007 create path with real runtime evidence | Opus 4.6 | W1-04 | WAITING | — | — | — | — | 20min |
@@ -52,18 +55,21 @@
 | W3-06 | 3 | B5 | Bind/test PedirDecisao in Copilot Studio | Opus 4.6 | W3-03 | WAITING | — | — | — | — | 25min |
 | W4-01 | 4 | B6 | Apply AtualizarStatus STT redesign in Copilot Studio | Opus 4.6 | W3-04, W3-05, W3-06 | WAITING | — | — | — | — | 30min |
 | W4-02 | 4 | B7 | Publish and test String confirmation (sim/s/yes/confirmo) | Opus 4.6 | W4-01 | WAITING | — | — | — | — | 20min |
-| W5-01 | 5 | C1 | Discover ghost orphan botcomponents | Codex 5.5 | W4-02 | WAITING | — | — | — | — | 20min |
+| W5-01 | 5 | C1 | Discover ghost orphan botcomponents via PAC/script | Codex 5.5 | W4-02 | WAITING | — | — | — | — | 20min |
 | W5-02 | 5 | C1 | Get Human/Admin approval for ghost deletion | Opus 4.6 | W5-01 | WAITING | — | — | — | — | 15min |
 | W5-03 | 5 | C1 | Delete approved ghost components (Human/Admin) | Human/Admin | W5-02 | WAITING | — | — | — | — | 30min |
-| W5-04 | 5 | C2 | Capture recurrence flow runtime evidence | Opus 4.6 | W4-02 | WAITING | — | — | — | — | 30min |
-| W5-05 | 5 | C3 | Test SyncPlannerStats with real data | Opus 4.6 | W4-02 | WAITING | — | — | — | — | 30min |
-| W5-06 | 5 | C4 | Test AlertaProjetoVermelho E2E | Opus 4.6 | W4-02 | WAITING | — | — | — | — | 30min |
-| RPT-01 | 5 | — | Validate daily portfolio report (Deleted=1 excluded) | Opus 4.6 | CLN-04, W4-02 | WAITING | — | — | — | — | 20min |
-| RPT-02 | 5 | — | Validate weekly portfolio report | Opus 4.6 | RPT-01 | WAITING | — | — | — | — | 20min |
-| RPT-03 | 5 | — | Validate red project alert | Opus 4.6 | RPT-01 | WAITING | — | — | — | — | 15min |
-| RPT-04 | 5 | — | Validate critical risk escalation card | Opus 4.6 | RPT-01 | WAITING | — | — | — | — | 15min |
-| RPT-05 | 5 | — | Validate pending decision card (approve/reject paths) | Opus 4.6 | RPT-01 | WAITING | — | — | — | — | 25min |
-| EXP-01 | 6 | — | Export final cleaned solution | Opus 4.6 | W5-03, RPT-05 | WAITING | — | — | — | — | 15min |
+| W5-04 | 5 | C2 | Capture recurrence flow evidence via ProcessSimple API run history | Codex 5.5 | W4-02 | WAITING | — | — | — | — | 15min |
+| W5-05 | 5 | C3 | Test SyncPlannerStats via script + verify SP metrics update | Codex 5.5 | W4-02 | WAITING | — | — | — | — | 20min |
+| W5-06 | 5 | C4 | Test AlertaProjetoVermelho: set red item + verify flow run via API | Codex 5.5 | W4-02 | WAITING | — | — | — | — | 20min |
+| W5-06B | 5 | C4 | Capture AlertaProjetoVermelho Teams card screenshot (browser) | Opus 4.6 | W5-06 | WAITING | — | — | — | — | 10min |
+| RPT-01 | 5 | — | Validate daily portfolio flow run via ProcessSimple API (Deleted=1 excluded) | Codex 5.5 | CLN-04, W4-02 | WAITING | — | — | — | — | 15min |
+| RPT-01B | 5 | — | Screenshot daily portfolio Teams card (browser proof) | Opus 4.6 | RPT-01 | WAITING | — | — | — | — | 10min |
+| RPT-02 | 5 | — | Validate weekly portfolio flow run via API | Codex 5.5 | RPT-01 | WAITING | — | — | — | — | 15min |
+| RPT-03 | 5 | — | Validate red project alert flow run via API | Codex 5.5 | RPT-01 | WAITING | — | — | — | — | 10min |
+| RPT-04 | 5 | — | Validate critical risk escalation flow run via API | Codex 5.5 | RPT-01 | WAITING | — | — | — | — | 10min |
+| RPT-05 | 5 | — | Validate decision card approve/reject flow run via API | Codex 5.5 | RPT-01 | WAITING | — | — | — | — | 15min |
+| RPT-05B | 5 | — | Screenshot decision card approve/reject in Teams (browser) | Opus 4.6 | RPT-05 | WAITING | — | — | — | — | 15min |
+| EXP-01 | 6 | — | Export final cleaned solution via pac solution export | Codex 5.5 | W5-03, RPT-05B | WAITING | — | — | — | — | 10min |
 | EXP-02 | 6 | — | Run post-cleanup static audits on exported solution | Codex 5.5 | EXP-01 | WAITING | — | — | — | — | 20min |
 | GATE-01 | 6 | — | Final SHIP/NO-SHIP gate decision | Human/Admin | EXP-02 | WAITING | — | — | — | — | 10min |
 
@@ -92,3 +98,7 @@
 | 2026-05-10T10:39:00-03:00 | Opus 4.6 | COMPLETED | CLN-01 | Freeze record at `.planning/stop_ship/TEST_DATA_FREEZE_RECORD_20260510.md`. CLN-02 now unblocked for Codex. |
 | 2026-05-10T10:43:10-03:00 | Codex 5.5 | CLAIMED | PRE-01 | Started logical delete field script implementation. |
 | 2026-05-10T10:46:38-03:00 | Codex 5.5 | COMPLETED | PRE-01 | Added logical delete fields to all five SharePoint lists. Evidence: `.planning/cleanup/logical_delete_fields_20260510_104442.md`. |
+| 2026-05-10T10:47:18-03:00 | Codex 5.5 | CLAIMED | PRE-02 | Started PnP field existence verification. |
+| 2026-05-10T10:49:04-03:00 | Codex 5.5 | COMPLETED | PRE-02 | Verified all logical delete fields exist on all five SharePoint lists. Evidence: `.planning/cleanup/logical_delete_fields_verify_20260510_104836.md`. |
+| 2026-05-10T10:49:20-03:00 | Codex 5.5 | CLAIMED | CLN-02 | Started read-only SharePoint test/trash data discovery. |
+| 2026-05-10T10:50:26-03:00 | Codex 5.5 | COMPLETED | CLN-02 | Read-only discovery found 11 candidates across five lists. Evidence: `.planning/cleanup/sharepoint_test_data_candidates_20260510_105015.md`. |
