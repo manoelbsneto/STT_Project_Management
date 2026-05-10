@@ -339,7 +339,7 @@ $flowDefinition = New-FlowDefinition `
 
         Get_Duplicate_Projects = New-SharePointGetItems `
             -ListName "Projetos" `
-            -Filter "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'),'''','''''')}' and DataAlvo ge datetime'@{formatDateTime(outputs('Compose_DataAlvo'), 'yyyy-MM-ddT00:00:00Z')}' and DataAlvo lt datetime'@{formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-ddT00:00:00Z')}'" `
+            -Filter "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'),'''','''''')}' and Deleted ne 1 and DataAlvo ge datetime'@{formatDateTime(outputs('Compose_DataAlvo'), 'yyyy-MM-ddT00:00:00Z')}' and DataAlvo lt datetime'@{formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-ddT00:00:00Z')}'" `
             -Top 1 `
             -RunAfter @{ Compose_ProjectID = @("Succeeded") }
 
@@ -376,6 +376,7 @@ $flowDefinition = New-FlowDefinition `
                             "StatusRAG/Value"   = "Verde"
                             "Percentual"        = 0
                             "Ativo"             = $true
+                            "Deleted"           = $false
                             "DataAlvo"          = "@outputs('Compose_DataAlvo')"
                             "UltimaAtualizacao" = "@utcNow()"
                             "Prioridade/Value"  = "@outputs('Map_Prioridade')"

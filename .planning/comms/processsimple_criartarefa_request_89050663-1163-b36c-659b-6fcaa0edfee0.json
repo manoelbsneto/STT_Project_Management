@@ -1,0 +1,251 @@
+﻿{
+    "name":  "89050663-1163-b36c-659b-6fcaa0edfee0",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/89050663-1163-b36c-659b-6fcaa0edfee0",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_CriarTarefa_V3",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 },
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              }
+                                                         },
+                                          "triggers":  {
+                                                           "Copilot_CriarTarefa_Request":  {
+                                                                                               "type":  "Request",
+                                                                                               "kind":  "Skills",
+                                                                                               "inputs":  {
+                                                                                                              "schema":  {
+                                                                                                                             "type":  "object",
+                                                                                                                             "properties":  {
+                                                                                                                                                "nomeProjeto":  {
+                                                                                                                                                                    "type":  "string",
+                                                                                                                                                                    "description":  "Nome do projeto (fornecido pelo PM)"
+                                                                                                                                                                },
+                                                                                                                                                "titulo":  {
+                                                                                                                                                               "type":  "string",
+                                                                                                                                                               "description":  "Titulo da tarefa/projeto"
+                                                                                                                                                           },
+                                                                                                                                                "responsavel":  {
+                                                                                                                                                                    "type":  "string",
+                                                                                                                                                                    "description":  "Nome do responsavel"
+                                                                                                                                                                },
+                                                                                                                                                "prazo":  {
+                                                                                                                                                              "type":  "string",
+                                                                                                                                                              "description":  "Data alvo no formato ISO 8601 ou dd/MM/yyyy"
+                                                                                                                                                          },
+                                                                                                                                                "horas":  {
+                                                                                                                                                              "type":  "integer",
+                                                                                                                                                              "description":  "Horas estimadas"
+                                                                                                                                                          },
+                                                                                                                                                "prioridade":  {
+                                                                                                                                                                   "type":  "string",
+                                                                                                                                                                   "description":  "Prioridade: Alta, Media, Baixa ou Critica"
+                                                                                                                                                               }
+                                                                                                                                            },
+                                                                                                                             "required":  [
+                                                                                                                                              "titulo",
+                                                                                                                                              "responsavel",
+                                                                                                                                              "prazo",
+                                                                                                                                              "horas",
+                                                                                                                                              "prioridade"
+                                                                                                                                          ]
+                                                                                                                         }
+                                                                                                          }
+                                                                                           }
+                                                       },
+                                          "actions":  {
+                                                          "Compose_ProjectID":  {
+                                                                                    "type":  "Compose",
+                                                                                    "inputs":  "@concat(\u0027PRJ-\u0027, toUpper(substring(guid(), 0, 8)))",
+                                                                                    "runAfter":  {
+                                                                                                     "Map_Prioridade":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                                 }
+                                                                                },
+                                                          "Compose_DataAlvo":  {
+                                                                                   "type":  "Compose",
+                                                                                   "inputs":  "@if(or(empty(triggerBody()?[\u0027prazo\u0027]), not(contains(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), triggerBody()?[\u0027prazo\u0027], concat(last(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)), \u0027-\u0027, if(equals(length(first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), 1), concat(\u00270\u0027, first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), \u0027-\u0027, if(equals(length(first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), 1), concat(\u00270\u0027, first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)))))",
+                                                                                   "runAfter":  {
+                                                                                                    "Compose_NomeProjeto":  [
+                                                                                                                                "Succeeded"
+                                                                                                                            ]
+                                                                                                }
+                                                                               },
+                                                          "Condition_Duplicate_Projeto":  {
+                                                                                              "type":  "If",
+                                                                                              "expression":  {
+                                                                                                                 "greater":  [
+                                                                                                                                 "@length(body(\u0027Get_Duplicate_Projects\u0027)?[\u0027value\u0027])",
+                                                                                                                                 0
+                                                                                                                             ]
+                                                                                                             },
+                                                                                              "actions":  {
+                                                                                                              "Response_Duplicate":  {
+                                                                                                                                         "type":  "Response",
+                                                                                                                                         "kind":  "Skills",
+                                                                                                                                         "inputs":  {
+                                                                                                                                                        "statusCode":  200,
+                                                                                                                                                        "headers":  {
+                                                                                                                                                                        "Content-Type":  "application/json"
+                                                                                                                                                                    },
+                                                                                                                                                        "body":  {
+                                                                                                                                                                     "result":  "@{concat(\u0027Projeto duplicado: ja existe um projeto com esse nome e data alvo. Nenhum item duplicado foi criado. Codigo existente: \u0027, first(body(\u0027Get_Duplicate_Projects\u0027)?[\u0027value\u0027])?[\u0027ProjectID\u0027], \u0027.\u0027)}"
+                                                                                                                                                                 }
+                                                                                                                                                    },
+                                                                                                                                         "runAfter":  {
+
+                                                                                                                                                      }
+                                                                                                                                     }
+                                                                                                          },
+                                                                                              "else":  {
+                                                                                                           "actions":  {
+                                                                                                                           "Create_Projeto_SharePoint":  {
+                                                                                                                                                             "type":  "OpenApiConnection",
+                                                                                                                                                             "inputs":  {
+                                                                                                                                                                            "parameters":  {
+                                                                                                                                                                                               "item/DataAlvo":  "@outputs(\u0027Compose_DataAlvo\u0027)",
+                                                                                                                                                                                               "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                                               "item/ResumoExecutivo":  "@concat(\u0027Projeto criado via Copilot Studio. Titulo: \u0027, coalesce(triggerBody()?[\u0027titulo\u0027], \u0027-\u0027), \u0027. Horas estimadas: \u0027, coalesce(string(triggerBody()?[\u0027horas\u0027]), \u0027N/A\u0027), \u0027h. Responsavel: \u0027, coalesce(triggerBody()?[\u0027responsavel\u0027], \u0027-\u0027), \u0027. Prazo: \u0027, coalesce(triggerBody()?[\u0027prazo\u0027], \u0027-\u0027), \u0027.\u0027)",
+                                                                                                                                                                                               "item/Title":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                                                                               "item/Deleted":  false,
+                                                                                                                                                                                               "table":  "Projetos",
+                                                                                                                                                                                               "item/PM/Claims":  "@concat(\u0027i:0#.f|membership|\u0027, triggerBody()?[\u0027responsavel\u0027])",
+                                                                                                                                                                                               "item/Percentual":  0,
+                                                                                                                                                                                               "item/NomeProjeto":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                                                                               "item/Ativo":  true,
+                                                                                                                                                                                               "item/ProjectID":  "@outputs(\u0027Compose_ProjectID\u0027)",
+                                                                                                                                                                                               "item/StatusRAG/Value":  "Verde",
+                                                                                                                                                                                               "item/Prioridade/Value":  "@outputs(\u0027Map_Prioridade\u0027)",
+                                                                                                                                                                                               "item/UltimaAtualizacao":  "@utcNow()"
+                                                                                                                                                                                           },
+                                                                                                                                                                            "host":  {
+                                                                                                                                                                                         "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                                                         "operationId":  "PostItem",
+                                                                                                                                                                                         "connectionName":  "shared_sharepointonline"
+                                                                                                                                                                                     },
+                                                                                                                                                                            "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                                        },
+                                                                                                                                                             "runAfter":  {
+
+                                                                                                                                                                          }
+                                                                                                                                                         },
+                                                                                                                           "Response_Success":  {
+                                                                                                                                                    "type":  "Response",
+                                                                                                                                                    "kind":  "Skills",
+                                                                                                                                                    "inputs":  {
+                                                                                                                                                                   "statusCode":  200,
+                                                                                                                                                                   "headers":  {
+                                                                                                                                                                                   "Content-Type":  "application/json"
+                                                                                                                                                                               },
+                                                                                                                                                                   "body":  {
+                                                                                                                                                                                "result":  "@{concat(\u0027Projeto \u0027, outputs(\u0027Compose_NomeProjeto\u0027), \u0027 criado com codigo \u0027, outputs(\u0027Compose_ProjectID\u0027), \u0027.\u0027)}"
+                                                                                                                                                                            }
+                                                                                                                                                               },
+                                                                                                                                                    "runAfter":  {
+                                                                                                                                                                     "Create_Projeto_SharePoint":  [
+                                                                                                                                                                                                       "Succeeded"
+                                                                                                                                                                                                   ]
+                                                                                                                                                                 }
+                                                                                                                                                },
+                                                                                                                           "Response_Error_Write":  {
+                                                                                                                                                        "type":  "Response",
+                                                                                                                                                        "kind":  "Skills",
+                                                                                                                                                        "inputs":  {
+                                                                                                                                                                       "statusCode":  500,
+                                                                                                                                                                       "headers":  {
+                                                                                                                                                                                       "Content-Type":  "application/json"
+                                                                                                                                                                                   },
+                                                                                                                                                                       "body":  {
+                                                                                                                                                                                    "result":  "Erro ao criar ou atualizar projeto no SharePoint. Codigo: SP_WRITE_FAILED."
+                                                                                                                                                                                }
+                                                                                                                                                                   },
+                                                                                                                                                        "runAfter":  {
+                                                                                                                                                                         "Create_Projeto_SharePoint":  [
+                                                                                                                                                                                                           "Failed",
+                                                                                                                                                                                                           "TimedOut"
+                                                                                                                                                                                                       ]
+                                                                                                                                                                     }
+                                                                                                                                                    }
+                                                                                                                       }
+                                                                                                       },
+                                                                                              "runAfter":  {
+                                                                                                               "Get_Duplicate_Projects":  [
+                                                                                                                                              "Succeeded"
+                                                                                                                                          ]
+                                                                                                           }
+                                                                                          },
+                                                          "Map_Prioridade":  {
+                                                                                 "type":  "Compose",
+                                                                                 "inputs":  "@if(startsWith(toLower(coalesce(triggerBody()?[\u0027prioridade\u0027], \u0027Media\u0027)), \u0027cr\u0027), \u0027Critica\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027prioridade\u0027], \u0027Media\u0027)), \u0027a\u0027), \u0027Alta\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027prioridade\u0027], \u0027Media\u0027)), \u0027b\u0027), \u0027Baixa\u0027, \u0027Media\u0027)))",
+                                                                                 "runAfter":  {
+                                                                                                  "Compose_DataAlvo":  [
+                                                                                                                           "Succeeded"
+                                                                                                                       ]
+                                                                                              }
+                                                                             },
+                                                          "Get_Duplicate_Projects":  {
+                                                                                         "type":  "OpenApiConnection",
+                                                                                         "inputs":  {
+                                                                                                        "parameters":  {
+                                                                                                                           "$filter":  "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_NomeProjeto\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Deleted ne 1 and DataAlvo ge datetime\u0027@{formatDateTime(outputs(\u0027Compose_DataAlvo\u0027), \u0027yyyy-MM-ddT00:00:00Z\u0027)}\u0027 and DataAlvo lt datetime\u0027@{formatDateTime(addDays(outputs(\u0027Compose_DataAlvo\u0027), 1), \u0027yyyy-MM-ddT00:00:00Z\u0027)}\u0027",
+                                                                                                                           "table":  "Projetos",
+                                                                                                                           "$top":  1,
+                                                                                                                           "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                                       },
+                                                                                                        "host":  {
+                                                                                                                     "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                     "operationId":  "GetItems",
+                                                                                                                     "connectionName":  "shared_sharepointonline"
+                                                                                                                 },
+                                                                                                        "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                    },
+                                                                                         "runAfter":  {
+                                                                                                          "Compose_ProjectID":  [
+                                                                                                                                    "Succeeded"
+                                                                                                                                ]
+                                                                                                      }
+                                                                                     },
+                                                          "Compose_NomeProjeto":  {
+                                                                                      "type":  "Compose",
+                                                                                      "inputs":  "@trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027titulo\u0027], \u0027Sem nome\u0027))",
+                                                                                      "runAfter":  {
+
+                                                                                                   }
+                                                                                  }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                                    "source":  "Invoker",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                }
+                                                },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}
