@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas">
+  <componenttype>9</componenttype>
+  <description>Acao vinculada ao fluxo Power Automate PMO_PA_ListarTarefas - lista tarefas de um projeto.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PMO_PA_ListarTarefas</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

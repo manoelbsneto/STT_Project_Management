@@ -339,7 +339,7 @@ $flowDefinition = New-FlowDefinition `
 
         Get_Duplicate_Projects = New-SharePointGetItems `
             -ListName "Projetos" `
-            -Filter "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'),'''','''''')}' and Deleted ne 1 and DataAlvo ge datetime'@{formatDateTime(outputs('Compose_DataAlvo'), 'yyyy-MM-ddT00:00:00Z')}' and DataAlvo lt datetime'@{formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-ddT00:00:00Z')}'" `
+            -Filter "NomeProjeto eq '@{replace(outputs('Compose_NomeProjeto'),'''','''''')}' and Deleted ne 1 and DataAlvo ge datetime'@{convertTimeZone(concat(outputs('Compose_DataAlvo'), 'T00:00:00'), 'Romance Standard Time', 'UTC', 'yyyy-MM-ddTHH:mm:ssZ')}' and DataAlvo lt datetime'@{convertTimeZone(concat(formatDateTime(addDays(outputs('Compose_DataAlvo'), 1), 'yyyy-MM-dd'), 'T00:00:00'), 'Romance Standard Time', 'UTC', 'yyyy-MM-ddTHH:mm:ssZ')}'" `
             -Top 1 `
             -RunAfter @{ Compose_ProjectID = @("Succeeded") }
 

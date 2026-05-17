@@ -1,0 +1,11 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent_connectionreference">
+    <attribute name="botcomponent_connectionreferenceid" />
+    <attribute name="botcomponentid" />
+    <attribute name="connectionreferenceid" />
+    <filter type="or">
+      <condition attribute="botcomponentidname" operator="like" value="%WorkIQ%" />
+      <condition attribute="connectionreferenceidname" operator="like" value="%shared_a365%" />
+    </filter>
+  </entity>
+</fetch>

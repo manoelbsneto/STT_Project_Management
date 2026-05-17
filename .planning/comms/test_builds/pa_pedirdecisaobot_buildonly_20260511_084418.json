@@ -1,0 +1,276 @@
+﻿{
+    "timestamp":  "2026-05-11T08:44:18.1648083-03:00",
+    "status":  "BUILD_ONLY",
+    "displayName":  "PMO_PA_PedirDecisaoBot",
+    "definition":  {
+                       "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                       "contentVersion":  "1.0.0.0",
+                       "parameters":  {
+                                          "$authentication":  {
+                                                                  "defaultValue":  {
+
+                                                                                   },
+                                                                  "type":  "SecureObject"
+                                                              },
+                                          "$connections":  {
+                                                               "defaultValue":  {
+
+                                                                                },
+                                                               "type":  "Object"
+                                                           }
+                                      },
+                       "triggers":  {
+                                        "Copilot_Request":  {
+                                                                "type":  "Request",
+                                                                "kind":  "Skills",
+                                                                "inputs":  {
+                                                                               "schema":  {
+                                                                                              "type":  "object",
+                                                                                              "properties":  {
+                                                                                                                 "projectName":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "description":  "Nome do projeto"
+                                                                                                                                 },
+                                                                                                                 "descricao":  {
+                                                                                                                                   "type":  "string",
+                                                                                                                                   "description":  "Descricao da decisao"
+                                                                                                                               },
+                                                                                                                 "solicitante":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "description":  "UPN do solicitante"
+                                                                                                                                 },
+                                                                                                                 "impacto":  {
+                                                                                                                                 "type":  "string",
+                                                                                                                                 "description":  "Impacto"
+                                                                                                                             },
+                                                                                                                 "prazo":  {
+                                                                                                                               "type":  "string",
+                                                                                                                               "description":  "Prazo"
+                                                                                                                           },
+                                                                                                                 "aprovador":  {
+                                                                                                                                   "type":  "string",
+                                                                                                                                   "description":  "UPN do aprovador"
+                                                                                                                               }
+                                                                                                             },
+                                                                                              "required":  [
+                                                                                                               "projectName",
+                                                                                                               "descricao",
+                                                                                                               "impacto",
+                                                                                                               "prazo",
+                                                                                                               "aprovador"
+                                                                                                           ]
+                                                                                          }
+                                                                           }
+                                                            }
+                                    },
+                       "actions":  {
+                                       "Compose_ProjectName":  {
+                                                                   "type":  "Compose",
+                                                                   "inputs":  "@trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))",
+                                                                   "runAfter":  {
+
+                                                                                }
+                                                               },
+                                       "Condition_Projeto_Encontrado":  {
+                                                                            "type":  "If",
+                                                                            "expression":  {
+                                                                                               "greater":  [
+                                                                                                               "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+                                                                                                               0
+                                                                                                           ]
+                                                                                           },
+                                                                            "actions":  {
+                                                                                            "Create_Decisao_SharePoint":  {
+                                                                                                                              "type":  "OpenApiConnection",
+                                                                                                                              "inputs":  {
+                                                                                                                                             "parameters":  {
+                                                                                                                                                                "item/CardVersion":  "1.0",
+                                                                                                                                                                "item/StatusDecisao/Value":  "Pendente",
+                                                                                                                                                                "item/Impacto/Value":  "@outputs(\u0027Map_Impacto\u0027)",
+                                                                                                                                                                "item/Solicitante/Claims":  "@concat(\u0027i:0#.f|membership|\u0027, outputs(\u0027Compose_Solicitante\u0027))",
+                                                                                                                                                                "table":  "Decisoes do Board",
+                                                                                                                                                                "item/Deleted":  false,
+                                                                                                                                                                "item/Title":  "@outputs(\u0027Compose_DecisionID\u0027)",
+                                                                                                                                                                "item/Prazo":  "@outputs(\u0027Compose_Prazo\u0027)",
+                                                                                                                                                                "item/ApproverUPN":  "@triggerBody()?[\u0027aprovador\u0027]",
+                                                                                                                                                                "item/ProjectID":  "@body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027]",
+                                                                                                                                                                "item/DecisionID":  "@outputs(\u0027Compose_DecisionID\u0027)",
+                                                                                                                                                                "item/Aprovador/Claims":  "@concat(\u0027i:0#.f|membership|\u0027, triggerBody()?[\u0027aprovador\u0027])",
+                                                                                                                                                                "item/ResponseSource/Value":  "CopilotStudio",
+                                                                                                                                                                "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                "item/Descricao":  "@triggerBody()?[\u0027descricao\u0027]"
+                                                                                                                                                            },
+                                                                                                                                             "host":  {
+                                                                                                                                                          "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                          "operationId":  "PostItem",
+                                                                                                                                                          "connectionName":  "shared_sharepointonline"
+                                                                                                                                                      },
+                                                                                                                                             "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                         },
+                                                                                                                              "runAfter":  {
+
+                                                                                                                                           }
+                                                                                                                          },
+                                                                                            "Response_OK":  {
+                                                                                                                "type":  "Response",
+                                                                                                                "kind":  "Skills",
+                                                                                                                "inputs":  {
+                                                                                                                               "statusCode":  200,
+                                                                                                                               "headers":  {
+                                                                                                                                               "Content-Type":  "application/json"
+                                                                                                                                           },
+                                                                                                                               "body":  {
+                                                                                                                                            "message":  "@{concat(\u0027Decisao \u0027, outputs(\u0027Compose_DecisionID\u0027), \u0027 registrada para projeto \u0027, outputs(\u0027Compose_ProjectName\u0027), \u0027.\u0027)}"
+                                                                                                                                        },
+                                                                                                                               "schema":  {
+                                                                                                                                              "type":  "object",
+                                                                                                                                              "properties":  {
+                                                                                                                                                                 "message":  {
+                                                                                                                                                                                 "title":  "message",
+                                                                                                                                                                                 "x-ms-dynamically-added":  true,
+                                                                                                                                                                                 "type":  "string"
+                                                                                                                                                                             }
+                                                                                                                                                             }
+                                                                                                                                          }
+                                                                                                                           },
+                                                                                                                "runAfter":  {
+                                                                                                                                 "Create_Decisao_SharePoint":  [
+                                                                                                                                                                   "Succeeded"
+                                                                                                                                                               ]
+                                                                                                                             }
+                                                                                                            },
+                                                                                            "Response_Error_Write":  {
+                                                                                                                         "type":  "Response",
+                                                                                                                         "kind":  "Skills",
+                                                                                                                         "inputs":  {
+                                                                                                                                        "statusCode":  500,
+                                                                                                                                        "headers":  {
+                                                                                                                                                        "Content-Type":  "application/json"
+                                                                                                                                                    },
+                                                                                                                                        "body":  {
+                                                                                                                                                     "message":  "Erro ao registrar decisao no SharePoint. Codigo: SP_WRITE_FAILED."
+                                                                                                                                                 },
+                                                                                                                                        "schema":  {
+                                                                                                                                                       "type":  "object",
+                                                                                                                                                       "properties":  {
+                                                                                                                                                                          "message":  {
+                                                                                                                                                                                          "title":  "message",
+                                                                                                                                                                                          "x-ms-dynamically-added":  true,
+                                                                                                                                                                                          "type":  "string"
+                                                                                                                                                                                      }
+                                                                                                                                                                      }
+                                                                                                                                                   }
+                                                                                                                                    },
+                                                                                                                         "runAfter":  {
+                                                                                                                                          "Create_Decisao_SharePoint":  [
+                                                                                                                                                                            "Failed",
+                                                                                                                                                                            "TimedOut"
+                                                                                                                                                                        ]
+                                                                                                                                      }
+                                                                                                                     }
+                                                                                        },
+                                                                            "else":  {
+                                                                                         "actions":  {
+                                                                                                         "Response_Project_Not_Found":  {
+                                                                                                                                            "type":  "Response",
+                                                                                                                                            "kind":  "Skills",
+                                                                                                                                            "inputs":  {
+                                                                                                                                                           "statusCode":  200,
+                                                                                                                                                           "headers":  {
+                                                                                                                                                                           "Content-Type":  "application/json"
+                                                                                                                                                                       },
+                                                                                                                                                           "body":  {
+                                                                                                                                                                        "message":  "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                                                                                                                                                                    },
+                                                                                                                                                           "schema":  {
+                                                                                                                                                                          "type":  "object",
+                                                                                                                                                                          "properties":  {
+                                                                                                                                                                                             "message":  {
+                                                                                                                                                                                                             "title":  "message",
+                                                                                                                                                                                                             "x-ms-dynamically-added":  true,
+                                                                                                                                                                                                             "type":  "string"
+                                                                                                                                                                                                         }
+                                                                                                                                                                                         }
+                                                                                                                                                                      }
+                                                                                                                                                       },
+                                                                                                                                            "runAfter":  {
+
+                                                                                                                                                         }
+                                                                                                                                        }
+                                                                                                     }
+                                                                                     },
+                                                                            "runAfter":  {
+                                                                                             "Compose_Solicitante":  [
+                                                                                                                         "Succeeded"
+                                                                                                                     ]
+                                                                                         }
+                                                                        },
+                                       "Compose_Solicitante":  {
+                                                                   "type":  "Compose",
+                                                                   "inputs":  "@coalesce(triggerBody()?[\u0027solicitante\u0027], triggerBody()?[\u0027aprovador\u0027])",
+                                                                   "runAfter":  {
+                                                                                    "Compose_DecisionID":  [
+                                                                                                               "Succeeded"
+                                                                                                           ]
+                                                                                }
+                                                               },
+                                       "Compose_DecisionID":  {
+                                                                  "type":  "Compose",
+                                                                  "inputs":  "@concat(\u0027DEC-\u0027, toUpper(substring(guid(), 0, 8)))",
+                                                                  "runAfter":  {
+                                                                                   "Compose_Prazo":  [
+                                                                                                         "Succeeded"
+                                                                                                     ]
+                                                                               }
+                                                              },
+                                       "Map_Impacto":  {
+                                                           "type":  "Compose",
+                                                           "inputs":  "@if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027cr\u0027), \u0027Critico\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027a\u0027), \u0027Alto\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027m\u0027), \u0027Medio\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027b\u0027), \u0027Baixo\u0027, \u0027Medio\u0027))))",
+                                                           "runAfter":  {
+                                                                            "Get_Projeto":  [
+                                                                                                "Succeeded"
+                                                                                            ]
+                                                                        }
+                                                       },
+                                       "Get_Projeto":  {
+                                                           "type":  "OpenApiConnection",
+                                                           "inputs":  {
+                                                                          "parameters":  {
+                                                                                             "$filter":  "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Ativo eq 1 and Deleted eq 0",
+                                                                                             "table":  "Projetos",
+                                                                                             "$top":  1,
+                                                                                             "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                         },
+                                                                          "host":  {
+                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                       "operationId":  "GetItems",
+                                                                                       "connectionName":  "shared_sharepointonline"
+                                                                                   },
+                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                      },
+                                                           "runAfter":  {
+                                                                            "Compose_ProjectName":  [
+                                                                                                        "Succeeded"
+                                                                                                    ]
+                                                                        }
+                                                       },
+                                       "Compose_Prazo":  {
+                                                             "type":  "Compose",
+                                                             "inputs":  "@if(or(empty(triggerBody()?[\u0027prazo\u0027]), not(contains(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), triggerBody()?[\u0027prazo\u0027], concat(last(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)), \u0027-\u0027, if(equals(length(first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), 1), concat(\u00270\u0027, first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), \u0027-\u0027, if(equals(length(first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), 1), concat(\u00270\u0027, first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)))))",
+                                                             "runAfter":  {
+                                                                              "Map_Impacto":  [
+                                                                                                  "Succeeded"
+                                                                                              ]
+                                                                          }
+                                                         }
+                                   },
+                       "outputs":  {
+
+                                   }
+                   },
+    "triggerType":  "Request/Skills",
+    "connectors":  [
+                       "shared_sharepointonline"
+                   ],
+    "standardOnly":  true
+}

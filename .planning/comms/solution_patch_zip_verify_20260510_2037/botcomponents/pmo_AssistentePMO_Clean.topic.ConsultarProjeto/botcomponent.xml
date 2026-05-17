@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.topic.ConsultarProjeto">
+  <componenttype>9</componenttype>
+  <description>Consulta guiada de detalhes de um projeto.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>ConsultarProjeto</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

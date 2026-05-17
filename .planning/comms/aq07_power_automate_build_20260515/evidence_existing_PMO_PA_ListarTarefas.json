@@ -1,0 +1,450 @@
+﻿{
+    "name":  "9aeed2ff-1fb3-4e75-bc2c-dcbe950c834a",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/9aeed2ff-1fb3-4e75-bc2c-dcbe950c834a",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_ListarTarefas",
+                       "userType":  "Owner",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 },
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "text":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "title":  "ProjectID",
+                                                                                                                                        "x-ms-dynamically-added":  true,
+                                                                                                                                        "description":  "Codigo do projeto (ex: PRJ-001)",
+                                                                                                                                        "x-ms-content-hint":  "TEXT"
+                                                                                                                                    },
+                                                                                                                           "NomeProjeto":  {
+                                                                                                                                               "type":  "string",
+                                                                                                                                               "title":  "NomeProjeto",
+                                                                                                                                               "x-ms-dynamically-added":  true,
+                                                                                                                                               "description":  "Nome ou codigo do projeto (ex: Projeto Alpha ou PRJ-001)",
+                                                                                                                                               "x-ms-content-hint":  "TEXT"
+                                                                                                                                           },
+                                                                                                                           "ProjectID":  {
+                                                                                                                                             "type":  "string",
+                                                                                                                                             "title":  "ProjectID",
+                                                                                                                                             "x-ms-dynamically-added":  true,
+                                                                                                                                             "description":  "Codigo do projeto (ex: PRJ-001)",
+                                                                                                                                             "x-ms-content-hint":  "TEXT"
+                                                                                                                                         }
+                                                                                                                       },
+                                                                                                        "required":  [
+
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Compose_ProjectInput":  {
+                                                                                       "runAfter":  {
+
+                                                                                                    },
+                                                                                       "type":  "Compose",
+                                                                                       "inputs":  "@trim(coalesce(triggerBody()?[\u0027NomeProjeto\u0027], triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027ProjectID\u0027], triggerBody()?[\u0027projectId\u0027], triggerBody()?[\u0027text\u0027], \u0027\u0027))"
+                                                                                   },
+                                                          "Get_Projeto":  {
+                                                                              "runAfter":  {
+                                                                                               "Compose_ProjectInput":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                           },
+                                                                              "type":  "OpenApiConnection",
+                                                                              "inputs":  {
+                                                                                             "parameters":  {
+                                                                                                                "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                "table":  "Projetos",
+                                                                                                                "$filter":  "@{if(startsWith(toLower(outputs(\u0027Compose_ProjectInput\u0027)), \u0027prj-\u0027), concat(\u0027ProjectID eq \u0027\u0027\u0027, replace(outputs(\u0027Compose_ProjectInput\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and Ativo eq 1 and Deleted eq 0\u0027), concat(\u0027NomeProjeto eq \u0027\u0027\u0027, replace(outputs(\u0027Compose_ProjectInput\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and Ativo eq 1 and Deleted eq 0\u0027))}",
+                                                                                                                "$top":  1
+                                                                                                            },
+                                                                                             "host":  {
+                                                                                                          "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                          "connectionName":  "shared_sharepointonline",
+                                                                                                          "operationId":  "GetItems"
+                                                                                                      },
+                                                                                             "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                         }
+                                                                          },
+                                                          "Condition_Projeto_Encontrado":  {
+                                                                                               "actions":  {
+                                                                                                               "Get_Tarefas_Projeto":  {
+                                                                                                                                           "runAfter":  {
+
+                                                                                                                                                        },
+                                                                                                                                           "type":  "OpenApiConnection",
+                                                                                                                                           "inputs":  {
+                                                                                                                                                          "parameters":  {
+                                                                                                                                                                             "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                             "table":  "Tarefas",
+                                                                                                                                                                             "$filter":  "ProjectID eq \u0027@{replace(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027],\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Deleted eq 0",
+                                                                                                                                                                             "$top":  100,
+                                                                                                                                                                             "$orderby":  "DataFim asc"
+                                                                                                                                                                         },
+                                                                                                                                                          "host":  {
+                                                                                                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                                       "connectionName":  "shared_sharepointonline",
+                                                                                                                                                                       "operationId":  "GetItems"
+                                                                                                                                                                   },
+                                                                                                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                               "Check_Tarefas_Exist":  {
+                                                                                                                                           "actions":  {
+                                                                                                                                                           "Respond_Empty":  {
+                                                                                                                                                                                 "runAfter":  {
+
+                                                                                                                                                                                              },
+                                                                                                                                                                                 "type":  "Response",
+                                                                                                                                                                                 "kind":  "Skills",
+                                                                                                                                                                                 "inputs":  {
+                                                                                                                                                                                                "statusCode":  200,
+                                                                                                                                                                                                "body":  {
+                                                                                                                                                                                                             "result":  "Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA."
+                                                                                                                                                                                                         },
+                                                                                                                                                                                                "schema":  {
+                                                                                                                                                                                                               "type":  "object",
+                                                                                                                                                                                                               "properties":  {
+                                                                                                                                                                                                                                  "result":  {
+                                                                                                                                                                                                                                                 "type":  "string",
+                                                                                                                                                                                                                                                 "title":  "Result",
+                                                                                                                                                                                                                                                 "x-ms-dynamically-added":  true,
+                                                                                                                                                                                                                                                 "x-ms-content-hint":  "TEXT"
+                                                                                                                                                                                                                                             }
+                                                                                                                                                                                                                              }
+                                                                                                                                                                                                           }
+                                                                                                                                                                                            }
+                                                                                                                                                                             }
+                                                                                                                                                       },
+                                                                                                                                           "runAfter":  {
+                                                                                                                                                            "Get_Tarefas_Projeto":  [
+                                                                                                                                                                                        "Succeeded"
+                                                                                                                                                                                    ]
+                                                                                                                                                        },
+                                                                                                                                           "else":  {
+                                                                                                                                                        "actions":  {
+                                                                                                                                                                        "Count_Total":  {
+                                                                                                                                                                                            "runAfter":  {
+
+                                                                                                                                                                                                         },
+                                                                                                                                                                                            "type":  "Compose",
+                                                                                                                                                                                            "inputs":  "@length(body(\u0027Get_Tarefas_Projeto\u0027)?[\u0027value\u0027])"
+                                                                                                                                                                                        },
+                                                                                                                                                                        "Filter_Concluidas":  {
+                                                                                                                                                                                                  "runAfter":  {
+
+                                                                                                                                                                                                               },
+                                                                                                                                                                                                  "type":  "Query",
+                                                                                                                                                                                                  "inputs":  {
+                                                                                                                                                                                                                 "from":  "@body(\u0027Get_Tarefas_Projeto\u0027)?[\u0027value\u0027]",
+                                                                                                                                                                                                                 "where":  "@equals(coalesce(item()?[\u0027Status\u0027]?[\u0027Value\u0027], item()?[\u0027Status\u0027]), \u0027Concluida\u0027)"
+                                                                                                                                                                                                             }
+                                                                                                                                                                                              },
+                                                                                                                                                                        "Count_Concluidas":  {
+                                                                                                                                                                                                 "runAfter":  {
+                                                                                                                                                                                                                  "Filter_Concluidas":  [
+                                                                                                                                                                                                                                            "Succeeded"
+                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                              },
+                                                                                                                                                                                                 "type":  "Compose",
+                                                                                                                                                                                                 "inputs":  "@length(body(\u0027Filter_Concluidas\u0027))"
+                                                                                                                                                                                             },
+                                                                                                                                                                        "Select_Tarefas":  {
+                                                                                                                                                                                               "runAfter":  {
+
+                                                                                                                                                                                                            },
+                                                                                                                                                                                               "type":  "Select",
+                                                                                                                                                                                               "inputs":  {
+                                                                                                                                                                                                              "from":  "@body(\u0027Get_Tarefas_Projeto\u0027)?[\u0027value\u0027]",
+                                                                                                                                                                                                              "select":  "@string(item()?[\u0027ID\u0027])"
+                                                                                                                                                                                                          }
+                                                                                                                                                                                           },
+                                                                                                                                                                        "Compose_Lista":  {
+                                                                                                                                                                                              "runAfter":  {
+                                                                                                                                                                                                               "Select_Tarefas":  [
+                                                                                                                                                                                                                                      "Succeeded"
+                                                                                                                                                                                                                                  ],
+                                                                                                                                                                                                               "Count_Total":  [
+                                                                                                                                                                                                                                   "Succeeded"
+                                                                                                                                                                                                                               ],
+                                                                                                                                                                                                               "Count_Concluidas":  [
+                                                                                                                                                                                                                                        "Succeeded"
+                                                                                                                                                                                                                                    ]
+                                                                                                                                                                                                           },
+                                                                                                                                                                                              "type":  "Compose",
+                                                                                                                                                                                              "inputs":  "@concat(\u0027Projeto \u0027, body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027], \u0027. Total \u0027, string(outputs(\u0027Count_Total\u0027)), \u0027. Concluidas \u0027, string(outputs(\u0027Count_Concluidas\u0027)), \u0027. IDs \u0027, join(body(\u0027Select_Tarefas\u0027), \u0027, \u0027), \u0027.\u0027)"
+                                                                                                                                                                                          },
+                                                                                                                                                                        "Respond_Lista":  {
+                                                                                                                                                                                              "runAfter":  {
+                                                                                                                                                                                                               "Compose_Lista":  [
+                                                                                                                                                                                                                                     "Succeeded"
+                                                                                                                                                                                                                                 ]
+                                                                                                                                                                                                           },
+                                                                                                                                                                                              "type":  "Response",
+                                                                                                                                                                                              "kind":  "Skills",
+                                                                                                                                                                                              "inputs":  {
+                                                                                                                                                                                                             "statusCode":  200,
+                                                                                                                                                                                                             "body":  {
+                                                                                                                                                                                                                          "result":  "Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA."
+                                                                                                                                                                                                                      },
+                                                                                                                                                                                                             "schema":  {
+                                                                                                                                                                                                                            "type":  "object",
+                                                                                                                                                                                                                            "properties":  {
+                                                                                                                                                                                                                                               "result":  {
+                                                                                                                                                                                                                                                              "type":  "string",
+                                                                                                                                                                                                                                                              "title":  "Result",
+                                                                                                                                                                                                                                                              "x-ms-dynamically-added":  true,
+                                                                                                                                                                                                                                                              "x-ms-content-hint":  "TEXT"
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                         }
+                                                                                                                                                                                          }
+                                                                                                                                                                    }
+                                                                                                                                                    },
+                                                                                                                                           "expression":  {
+                                                                                                                                                              "equals":  [
+                                                                                                                                                                             "@length(body(\u0027Get_Tarefas_Projeto\u0027)?[\u0027value\u0027])",
+                                                                                                                                                                             0
+                                                                                                                                                                         ]
+                                                                                                                                                          },
+                                                                                                                                           "type":  "If"
+                                                                                                                                       }
+                                                                                                           },
+                                                                                               "runAfter":  {
+                                                                                                                "Get_Projeto":  [
+                                                                                                                                    "Succeeded"
+                                                                                                                                ]
+                                                                                                            },
+                                                                                               "else":  {
+                                                                                                            "actions":  {
+                                                                                                                            "Response_Project_Not_Found":  {
+                                                                                                                                                               "runAfter":  {
+
+                                                                                                                                                                            },
+                                                                                                                                                               "type":  "Response",
+                                                                                                                                                               "kind":  "Skills",
+                                                                                                                                                               "inputs":  {
+                                                                                                                                                                              "statusCode":  200,
+                                                                                                                                                                              "body":  {
+                                                                                                                                                                                           "result":  "Projeto nao encontrado. Codigo PROJECT_NOT_FOUND."
+                                                                                                                                                                                       },
+                                                                                                                                                                              "schema":  {
+                                                                                                                                                                                             "type":  "object",
+                                                                                                                                                                                             "properties":  {
+                                                                                                                                                                                                                "result":  {
+                                                                                                                                                                                                                               "type":  "string",
+                                                                                                                                                                                                                               "title":  "Result",
+                                                                                                                                                                                                                               "x-ms-dynamically-added":  true,
+                                                                                                                                                                                                                               "x-ms-content-hint":  "TEXT"
+                                                                                                                                                                                                                           }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                         }
+                                                                                                                                                                          }
+                                                                                                                                                           }
+                                                                                                                        }
+                                                                                                        },
+                                                                                               "expression":  {
+                                                                                                                  "greater":  [
+                                                                                                                                  "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+                                                                                                                                  0
+                                                                                                                              ]
+                                                                                                              },
+                                                                                               "type":  "If"
+                                                                                           }
+                                                      }
+                                      },
+                       "triggerSchema":  {
+                                             "type":  "object",
+                                             "properties":  {
+                                                                "text":  {
+                                                                             "type":  "string",
+                                                                             "title":  "ProjectID",
+                                                                             "x-ms-dynamically-added":  true,
+                                                                             "description":  "Codigo do projeto (ex: PRJ-001)",
+                                                                             "x-ms-content-hint":  "TEXT"
+                                                                         },
+                                                                "NomeProjeto":  {
+                                                                                    "type":  "string",
+                                                                                    "title":  "NomeProjeto",
+                                                                                    "x-ms-dynamically-added":  true,
+                                                                                    "description":  "Nome ou codigo do projeto (ex: Projeto Alpha ou PRJ-001)",
+                                                                                    "x-ms-content-hint":  "TEXT"
+                                                                                },
+                                                                "ProjectID":  {
+                                                                                  "type":  "string",
+                                                                                  "title":  "ProjectID",
+                                                                                  "x-ms-dynamically-added":  true,
+                                                                                  "description":  "Codigo do projeto (ex: PRJ-001)",
+                                                                                  "x-ms-content-hint":  "TEXT"
+                                                                              }
+                                                            },
+                                             "required":  [
+
+                                                          ]
+                                         },
+                       "state":  "Started",
+                       "sharingType":  "CommonDataService",
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_sharedsharepointonline_6e373",
+                                                                                    "source":  "Embedded",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                                                    "brandColor":  "",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                }
+                                                },
+                       "installedConnectionReferences":  {
+
+                                                         },
+                       "createdTime":  "2026-05-04T22:38:04.4778223Z",
+                       "lastModifiedTime":  "2026-05-14T18:03:37Z",
+                       "flowSuspensionReason":  "None",
+                       "environment":  {
+                                           "name":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+                                           "type":  "Microsoft.ProcessSimple/environments",
+                                           "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+                                       },
+                       "definitionSummary":  {
+                                                 "triggers":  [
+                                                                  {
+                                                                      "type":  "Request",
+                                                                      "kind":  "Skills"
+                                                                  }
+                                                              ],
+                                                 "actions":  [
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "GetItems"
+                                                                 },
+                                                                 {
+                                                                     "type":  "If"
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "GetItems"
+                                                                 },
+                                                                 {
+                                                                     "type":  "If"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Response",
+                                                                     "kind":  "Skills"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Response",
+                                                                     "kind":  "Skills"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Query"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Select"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Response",
+                                                                     "kind":  "Skills"
+                                                                 }
+                                                             ]
+                                             },
+                       "creator":  {
+                                       "tenantId":  "7808e005-1489-4374-954b-d3b08f193920",
+                                       "objectId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userType":  "ActiveDirectory"
+                                   },
+                       "flowTriggerUri":  "https://e2d10003-4d8e-e007-9d63-76d5fe89ef56.19.common.europe002.azure-apihub.net:443/apim/logicflows/9AEED2FF1FB34E75BC2CDCBE950C834A-49E05A10BE4933DD/triggers/manual/run?api-version=2016-06-01",
+                       "installationStatus":  "Installed",
+                       "provisioningMethod":  "FromDefinition",
+                       "flowFailureAlertSubscribed":  true,
+                       "workflowEntityId":  "9544f14b-3748-f111-bec7-6045bdf42cae",
+                       "referencedResources":  [
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                        "list":  "[DYNAMIC_VALUE]"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Triggers",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           }
+                                                                       ]
+                                                   },
+                                                   {
+                                                       "service":  "sharepoint",
+                                                       "resource":  {
+                                                                        "site":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                    },
+                                                       "referencers":  [
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           },
+                                                                           {
+                                                                               "referenceSourceType":  "Actions",
+                                                                               "operationId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+                                                                           }
+                                                                       ]
+                                                   }
+                                               ],
+                       "isManaged":  false,
+                       "machineDescriptionData":  {
+
+                                                  }
+                   }
+}

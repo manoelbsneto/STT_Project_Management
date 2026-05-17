@@ -170,3 +170,161 @@ Current RCA conclusion:
 
 Corrective action:
 - Produce fresh discovery output, backup references, request Human/Admin delete approval or risk acceptance.
+
+## ISSUE-20260512-001 - Solution import rejected generated flow clientdata
+
+Severity: SEV-0 / Stop-Ship.
+
+Impact:
+- Manual import of solution `PMO v1.1 - Task Management Topics` version `2.4` failed before runtime validation.
+- No production import/publish/deploy was completed by Codex. No SharePoint schema change was made by this fix.
+
+Timeline:
+- 2026-05-12 02:17:50 UTC: owner import log started.
+- 2026-05-12 02:18:38 UTC: import failed at 47.83 percent.
+- Triage found `PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json` started with UTF-8 BOM bytes `EF BB BF`.
+- Fix applied locally in `deploy/Build-Solution24LocalPackage.ps1`.
+- Regression gate added in `tests/Test-SolutionZipP24Contracts.ps1`.
+- Package rebuilt as `Solution/PMO_v11_Tarefas_2_4_CREATE_PROJECT_TASK_BATCH_FIX.zip`, SHA256 `0FACF178209722BAE98401418A46C5D36A36B62B57E95373EB8B242EE4D8BA38`.
+
+Root cause:
+- The package builder wrote newly generated workflow JSON with `Set-Content -Encoding UTF8`.
+- On Windows PowerShell 5.1, this emits UTF-8 with BOM.
+- Dataverse flow clientdata import parser expected JSON at byte zero and rejected the BOM before `{`.
+
+Contributing factors:
+- Existing tests verified JSON parse after extraction but did not inspect package bytes for BOM.
+- Previous import failure focused on ZIP path separator normalization, so byte-level clientdata validation was missing.
+
+Corrective actions:
+- Code fix: `deploy/Build-Solution24LocalPackage.ps1` now writes generated text through `System.IO.File.WriteAllText` with UTF-8 no BOM.
+- Regression test: `tests/Test-SolutionZipP24Contracts.ps1` now blocks BOM in `Workflows/*.json` and `botcomponents/*/data`.
+- Evidence: `.planning/comms/solution_2_4_create_project_task_batch_20260511/LOCAL_GATES.md`.
+
+Verification:
+- `Test-SolutionZipP24Contracts.ps1`: PASS, including `No UTF-8 BOM in workflow/clientdata files`.
+- `Test-SolutionZipP0Contracts.ps1`: PASS.
+- `Test-ExcluirSoftDeleteCapability.ps1`: PASS.
+- `Test-PMOFlowStopShipAudit.ps1`: PASS.
+- Byte evidence: generated `PMO_PA_CriarTarefa` starts with `7B 0D 0A 20 20 20 20 22`, `HasBom=False`.
+
+Prevent recurrence:
+- P24 package gate is mandatory before any owner import attempt.
+- ZIP path separator gate and manifest path gate remain mandatory.
+- CI gate is explicitly excluded only when the owner authorizes local gates only; all other stop-ship gates remain required.
+
+Release decision:
+- Local package readiness: PASS.
+- Production release readiness: NO-SHIP until owner manual import/publish and runtime validation pass.
+
+## ISSUE-20260512-003 - CriarTarefa publish blocked by missing CloudFlow action reference
+
+Severity: SEV-0 / Stop-Ship.
+
+Impact:
+- Owner manual import of version 2.7 succeeded, but Copilot Studio publish was blocked before runtime validation.
+- `CriarTarefa` could not be published because the topic referenced a cloud flow ID that was not present as a bot action definition.
+
+Timeline:
+- 2026-05-12: owner provided Copilot Studio diagnostic for component `CriarTarefa`.
+- Diagnostic: `InvalidReferenceError`, `referenceType=CloudFlow`, `referenceId=0a5d2a41-24c0-4d5e-9f6d-000000000241`, `errorCode=NotFound`.
+- Local reproduction found direct `InvokeFlowAction` in `.planning/comms/solution_2_7_batch_topic_no_flow_preview_20260512/unpacked/botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data`.
+- Local package lacked `botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa`.
+- Fix prepared locally in version 2.8 package.
+
+Root cause:
+- `CriarTarefa` topic invoked the cloud flow directly through `InvokeFlowAction`.
+- The package registered the workflow, but did not include the corresponding Copilot Studio action botcomponent expected by the bot definition.
+- This made the topic checker/publish step unable to resolve the `CloudFlow` reference.
+
+Contributing factors:
+- The existing local gates verified the workflow JSON and task-write contract, but did not verify Copilot Studio publish binding shape.
+- A previous fix for `Gerar_Multiplos_Projetos` addressed no-flow preview behavior, but did not audit all direct `InvokeFlowAction` topic references for publish compatibility.
+
+Corrective actions:
+- Code fix: `deploy/Build-Solution24LocalPackage.ps1` now creates `pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa`.
+- Code fix: `CriarTarefa` topic now stages slot values into globals and calls `pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa` through `BeginDialog`.
+- Regression test: `tests/Test-CriarTarefaPublishBinding.ps1` blocks direct `InvokeFlowAction` in `CriarTarefa` and requires the action component.
+- Package: `Solution/PMO_v11_Tarefas_2_8_CRIARTAREFA_ACTION_BINDING_FIX.zip`, SHA256 `4B0F2B5597BA1DFD18479A1D213A8DFC1D5D8BEB5B9060F933751CD2B69E90BC`.
+
+Verification:
+- `Test-CriarTarefaPublishBinding.ps1`: PASS.
+- `Test-CriarTarefaCreatesTarefas.ps1`: PASS.
+- `Test-GerarMultiplosProjetosDefinition.ps1`: PASS.
+- `Test-SolutionZipP24Contracts.ps1`: PASS.
+- `Test-SolutionZipP0Contracts.ps1`: PASS.
+- `Test-ExcluirSoftDeleteCapability.ps1`: PASS.
+- `Test-PMOFlowStopShipAudit.ps1`: PASS.
+
+Prevent recurrence:
+- P24 gate now runs the publish-binding regression test.
+- Any future topic that invokes Power Automate should use an action component with `TaskDialog`/`InvokeFlowTaskAction`, and topic YAML should call that component through `BeginDialog`.
+
+Release decision:
+- Local package readiness: PASS.
+- Production release readiness: NO-SHIP until owner manual import, Copilot Studio publish, and runtime smoke validation pass.
+
+## ISSUE-001 - CriarProjeto ContentFiltered After Success
+
+Severity: SEV-0 stop-ship.
+
+Impact:
+- User completed guided `novo projeto` flow in Copilot Studio.
+- Bot displayed `Projeto criado com sucesso!` and then returned `Ocorreu um erro no Assistente PMO. Codigo: ContentFiltered.`
+- Copilot Studio diagnostics showed `openAIIndirectAttack`.
+
+Timeline:
+- 2026-05-13: Owner imported package 3.1 successfully.
+- 2026-05-13: Runtime guided test reproduced `ContentFiltered` after project creation success.
+- 2026-05-13: Static evidence found 3.1 `CriarProjeto` sent `activity: "{Topic.Result}"`.
+- 2026-05-13: Candidate 3.3 replaces raw action output echo with static mapped messages and passes local gates.
+
+Root cause:
+- The topic echoed the Power Automate action output directly into a bot `SendActivity`. Even controlled flow text was treated as bot-visible action output and triggered Responsible AI filtering.
+
+Contributing factors:
+- Existing publish-binding tests verified action binding but did not block raw `Topic.Result` echo.
+- The import succeeded, so the failure was only visible at runtime after the user action.
+
+Corrective actions:
+- Code fix: `.planning/comms/solution_3_3_criarprojeto_content_route_safe_20260513/unpacked/botcomponents/pmo_AssistentePMO_V2.topic.CriarProjeto/data`.
+- Regression test: `tests/Test-CriarProjetoContentSafeOutput.ps1`.
+- Aggregate gate: `tests/Test-SolutionZipP24Contracts.ps1` now runs the content-safe output subtest.
+
+Prevent recurrence:
+- Do not send raw Power Automate outputs directly from Copilot topics when the text can contain dynamic or user-controlled content.
+- Map known action outcomes to static bot text; use generic static fallback for unexpected results.
+
+Release decision:
+- Local package readiness: PASS for 3.3.
+- Production readiness: NO-SHIP until owner import/publish and Copilot runtime smoke test prove no `ContentFiltered`.
+
+## ISSUE-002 - One-Shot Project Creation Routed To CriarTarefa
+
+Severity: SEV-0 stop-ship.
+
+Impact:
+- User sent `criar projeto: NomeProjeto=...` and Copilot routed to `CriarTarefa`, asking `Qual o titulo da tarefa?`
+- This can write or collect task data when the user intended to create a project.
+
+Timeline:
+- 2026-05-13: Runtime screenshot showed project one-shot routed to `CriarTarefa`.
+- 2026-05-13: Static evidence found GPT default instruction: `criar tarefa ou projeto` -> `CriarTarefa`.
+- 2026-05-13: Static evidence found LowConfidence `detect_criar_tarefa` also matched `criar projeto`, `novo projeto`, `abrir projeto`, and `registrar projeto`.
+- 2026-05-13: Candidate 3.3 separates project and task routing in both layers.
+
+Root cause:
+- Project-creation phrases were grouped with task-creation phrases and redirected to `CriarTarefa`.
+
+Corrective actions:
+- Code fix: `.planning/comms/solution_3_3_criarprojeto_content_route_safe_20260513/unpacked/botcomponents/pmo_AssistentePMO_V2.gpt.default/data`.
+- Code fix: `.planning/comms/solution_3_3_criarprojeto_content_route_safe_20260513/unpacked/botcomponents/pmo_AssistentePMO_V2.topic.LowConfidence/data`.
+- Regression test: `tests/Test-CopilotRoutingInstructions.ps1`.
+
+Prevent recurrence:
+- Project and task route rules must remain separate in GPT/default instructions, fallback routing, and trigger phrases.
+- Package gate must fail if any fallback task route captures project phrases.
+
+Release decision:
+- Local package readiness: PASS for 3.3.
+- Production readiness: NO-SHIP until runtime confirms one-shot project phrases route to `CriarProjeto`.

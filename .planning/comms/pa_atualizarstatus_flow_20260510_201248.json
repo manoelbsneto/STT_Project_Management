@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-10T20:13:10.9429096-03:00",
+  "status": "CREATED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_AtualizarStatus",
+  "flowName": "18487291-ce63-472e-9ebd-9fe871bf7371",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "requestPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_atualizarstatus_request_62ba113b-ccd6-46fd-9270-d336b08010a6.json",
+  "resultPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_atualizarstatus_result_62ba113b-ccd6-46fd-9270-d336b08010a6.json",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills"
+}

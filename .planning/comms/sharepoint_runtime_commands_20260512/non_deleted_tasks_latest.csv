@@ -1,0 +1,5 @@
+"ID","Title","ProjectID","Status","Prioridade","Responsavel","DataFim","HorasEstimadas","HorasRealizadas","Deleted","DeletedAt","DeletedReason","DeletedByUPN","Created","Modified"
+"1","Preparar proposta","PRJ-2127A0E4","Concluída","Alta","mbenicios@minsait.com","29/06/2026 22:00:00","8","8","False",,,,"06/05/2026 12:10:30","06/05/2026 12:26:21"
+"2","Revisao tecnica","PRJ-2127A0E4","Concluída","Media","mbenicios@minsait.com","28/06/2026 22:00:00","4","4","False",,,,"06/05/2026 12:10:33","06/05/2026 12:10:33"
+"6","Smoke task 2 - in progress","PRJ-CODEX-0511184036","Em Andamento",,,,"0","0","False",,,,"11/05/2026 21:40:42","11/05/2026 21:40:43"
+"7","Smoke task 3 - completed","PRJ-CODEX-0511184036","Concluída",,,,"0","0","False",,,,"11/05/2026 21:40:44","11/05/2026 21:40:45"

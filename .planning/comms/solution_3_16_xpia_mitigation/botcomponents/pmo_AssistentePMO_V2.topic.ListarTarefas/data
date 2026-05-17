@@ -1,0 +1,20 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: SendActivity
+      id: listar_result
+      activity: Consulta concluida. Acesse a lista Tarefas no SharePoint para visualizar os dados do projeto.
+inputType: {}
+outputType: {}

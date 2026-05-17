@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PMO Ghost Cleanup Executive Handoff</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d8dee9;
+      --blue: #2156a3;
+      --blue-soft: #eaf1fb;
+      --green: #16784a;
+      --green-soft: #e8f5ee;
+      --yellow: #a15c00;
+      --yellow-soft: #fff3df;
+      --red: #b42318;
+      --red-soft: #fdeceb;
+      --gray-soft: #eef1f5;
+      --shadow: 0 10px 28px rgba(16, 24, 40, 0.08);
+      --radius: 8px;
+      --font: Inter, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    header {
+      background: #10233f;
+      color: #fff;
+      padding: 28px 32px 24px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+
+    header p {
+      max-width: 1120px;
+      margin: 0;
+      color: #d8e3f3;
+      font-size: 15px;
+    }
+
+    .wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 22px 24px 56px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    input[type="search"] {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    button {
+      height: 42px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 0 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tab {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .tab.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .kpis {
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+    }
+
+    .two {
+      grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+
+    .card h2 {
+      font-size: 20px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .metric {
+      font-size: 30px;
+      font-weight: 750;
+      margin: 6px 0 2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .green { color: var(--green); background: var(--green-soft); }
+    .yellow { color: var(--yellow); background: var(--yellow-soft); }
+    .red { color: var(--red); background: var(--red-soft); }
+    .blue { color: var(--blue); background: var(--blue-soft); }
+    .gray { color: #475467; background: var(--gray-soft); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: #eef3fa;
+      color: #1c2b43;
+      font-weight: 750;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr.hidden {
+      display: none;
+    }
+
+    .table-tools {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+    }
+
+    select {
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 0 10px;
+      color: var(--ink);
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .accordion {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-weight: 750;
+      border-bottom: 1px solid transparent;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion[open] summary {
+      border-bottom-color: var(--line);
+      background: #f8fafc;
+    }
+
+    .accordion-body {
+      padding: 16px;
+    }
+
+    .code {
+      position: relative;
+      background: #101828;
+      color: #f2f4f7;
+      padding: 14px;
+      border-radius: var(--radius);
+      overflow: auto;
+      font-family: Consolas, Menlo, monospace;
+      font-size: 12px;
+      white-space: pre;
+    }
+
+    .copy {
+      height: 30px;
+      font-size: 12px;
+      padding: 0 10px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+    }
+
+    .callout.redline {
+      border-left-color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+
+    .timeline-id {
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .topbar,
+      .two,
+      .three,
+      .kpis {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 22px 20px;
+      }
+
+      .wrap {
+        padding: 18px 14px 44px;
+      }
+
+      th,
+      td {
+        font-size: 12px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      header,
+      .topbar,
+      .tabs,
+      .table-tools,
+      .copy {
+        display: none !important;
+      }
+
+      .section {
+        display: block !important;
+        page-break-after: always;
+      }
+
+      .card,
+      .accordion {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      details:not([open]) .accordion-body {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PMO Ghost Cleanup Executive Handoff</h1>
+    <p>Interactive SEV-0 plan for resolving T-007 FlowNotFound by removing orphan Copilot bot components, republishing the active bot, and validating runtime evidence.</p>
+  </header>
+
+  <main class="wrap">
+    <div class="topbar">
+      <input id="searchBox" type="search" placeholder="Search activities, owners, gates, evidence, commands..." />
+      <button id="expandAll">Expand all</button>
+      <button id="printPage">Print / PDF</button>
+    </div>
+
+    <nav class="tabs" aria-label="Report sections">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="activities">Activities</button>
+      <button class="tab" data-tab="steps">Step-by-Step</button>
+      <button class="tab" data-tab="verification">Verification</button>
+      <button class="tab" data-tab="rollback">Rollback</button>
+      <button class="tab" data-tab="gates">Release Gates</button>
+    </nav>
+
+    <section id="overview" class="section active">
+      <div class="grid kpis">
+        <div class="card">
+          <div class="muted">Current decision</div>
+          <div class="metric" style="color: var(--red)">NO-SHIP</div>
+          <span class="badge red">Release blocked</span>
+        </div>
+        <div class="card">
+          <div class="muted">Environment</div>
+          <div class="metric" style="font-size: 18px">ColOfertasBrasilPro</div>
+          <span class="badge gray">Target tenant</span>
+        </div>
+        <div class="card">
+          <div class="muted">Active bot</div>
+          <div class="metric" style="font-size: 18px">Assistente PMO Clean</div>
+          <span class="badge green">Preserve</span>
+        </div>
+        <div class="card">
+          <div class="muted">Issue</div>
+          <div class="metric" style="font-size: 18px">T-007 FlowNotFound</div>
+          <span class="badge red">SEV-0</span>
+        </div>
+        <div class="card">
+          <div class="muted">Execution model</div>
+          <div class="metric" style="font-size: 18px">Human + Opus + Codex</div>
+          <span class="badge yellow">Controlled cleanup</span>
+        </div>
+      </div>
+
+      <div class="grid two" style="margin-top: 16px">
+        <div class="card">
+          <h2>Executive Problem</h2>
+          <p>T-007 create path returns <strong>FlowNotFound</strong> during Copilot runtime, even though the flow and Dataverse bindings appear to exist.</p>
+          <p>The confirmed risk is duplicate/orphan Copilot components under the deleted schema <code>pmo_AssistentePMO.*</code>, while the production bot uses <code>pmo_AssistentePMO_Clean.*</code>.</p>
+          <div class="callout redline">
+            Release cannot proceed until orphan components are removed or formally risk-accepted, the active bot is republished, and T-007 create/cancel evidence is captured.
+          </div>
+        </div>
+        <div class="card">
+          <h2>Root Cause Snapshot</h2>
+          <table data-table="schemas">
+            <thead>
+              <tr><th>Schema family</th><th>Parent bot exists?</th><th>Runtime role</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>pmo_AssistentePMO.*</code></td><td>No</td><td>Orphan / ghost</td><td><span class="badge red">Delete after approval</span></td></tr>
+              <tr><td><code>pmo_AssistentePMO_Clean.*</code></td><td>Yes</td><td>Active production bot</td><td><span class="badge green">Preserve</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 16px">
+        <h2>Evidence Map</h2>
+        <table data-table="evidence">
+          <thead>
+            <tr><th>Evidence</th><th>Path / Source</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Active bot inventory</td><td><code>.planning/stop_ship/rnd_bot_rows_20260506.txt</code></td><td>Confirms active bot rows and missing original bot row.</td></tr>
+            <tr><td>Flow/action binding evidence</td><td><code>.planning/stop_ship/fetch_t007_criartarefa_workflow_bindings.xml</code></td><td>Shows active and orphan workflow bindings.</td></tr>
+            <tr><td>Ghost discovery script</td><td><code>deploy/Discover-GhostBotComponents.ps1</code></td><td>Read-only candidate discovery before approval.</td></tr>
+            <tr><td>Browser execution checklist</td><td><code>.planning/comms/CODEX_BROWSER_REQUESTS_20260507.md</code></td><td>Opus browser actions and runtime proof list.</td></tr>
+            <tr><td>Current status table</td><td><code>.planning/stop_ship/CURRENT_STATUS_TABLE_20260507.md</code></td><td>Overall open/pending/done status.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="activities" class="section">
+      <div class="card">
+        <h2>Activity Ownership Matrix</h2>
+        <div class="table-tools">
+          <label for="ownerFilter">Owner</label>
+          <select id="ownerFilter" data-filter-table="activityTable" data-filter-col="2">
+            <option value="">All</option>
+            <option>Opus or Human/Admin</option>
+            <option>Codex or Human/Admin</option>
+            <option>Human/Admin</option>
+            <option>Codex</option>
+            <option>Opus</option>
+            <option>Project Owner</option>
+          </select>
+          <label for="destructiveFilter">Destructive</label>
+          <select id="destructiveFilter" data-filter-table="activityTable" data-filter-col="4">
+            <option value="">All</option>
+            <option>No</option>
+            <option>Yes</option>
+            <option>No unless manual cleanup needed</option>
+          </select>
+        </div>
+        <table id="activityTable" data-table="activities">
+          <thead>
+            <tr><th>ID</th><th>Activity</th><th>Primary owner</th><th>Second-layer verifier</th><th>Destructive?</th><th>Status target</th></tr>
+          </thead>
+          <tbody id="activityRows"></tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top: 16px">
+        <h2>Safety Rules</h2>
+        <table data-table="safety">
+          <thead>
+            <tr><th>Rule</th><th>Requirement</th><th>Executive implication</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Delete scope</td><td>Only <code>schemaname LIKE 'pmo_AssistentePMO.%'</code></td><td>Limits deletion to ghost schema.</td></tr>
+            <tr><td>Preserve scope</td><td>Never delete <code>pmo_AssistentePMO_Clean.%</code></td><td>Protects production bot.</td></tr>
+            <tr><td>Destructive owner</td><td>Human/Admin only</td><td>Prevents unattended deletion.</td></tr>
+            <tr><td>Publish method</td><td>Copilot Studio UI publish</td><td>Avoids cached PAC publish failure.</td></tr>
+            <tr><td>Runtime proof</td><td>Chat + flow run + SharePoint item</td><td>Static proof alone is not enough.</td></tr>
+            <tr><td>Rollback</td><td>Export before deletion/publish</td><td>Maintains recovery path.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="steps" class="section">
+      <div class="callout">
+        Use these accordions as the execution runbook. Each activity has a goal, owner, detailed actions, verification, and failure handling.
+      </div>
+      <div id="stepAccordions"></div>
+    </section>
+
+    <section id="verification" class="section">
+      <div class="grid two">
+        <div class="card">
+          <h2>Opus Matching Checklist</h2>
+          <table data-table="matching">
+            <thead>
+              <tr><th>Opus planned action</th><th>Codex matching verification</th><th>Pass condition</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Capture pre-cleanup export</td><td>Check ZIP exists and path is in evidence</td><td>Export available before deletion</td></tr>
+              <tr><td>Review ghost candidate list</td><td>Compare candidate schemanames to allowed pattern</td><td>Only <code>pmo_AssistentePMO.*</code> candidates</td></tr>
+              <tr><td>Delete approved rows</td><td>Compare delete log to approved IDs</td><td>No extra IDs deleted</td></tr>
+              <tr><td>Publish bot in UI</td><td>Rerun Copilot static tests after export</td><td>Publish time after cleanup</td></tr>
+              <tr><td>Test T-007 create</td><td>Validate chat/run/SP timestamps align</td><td>No FlowNotFound and row created</td></tr>
+              <tr><td>Test T-007 cancel</td><td>Validate no run/no row</td><td>Confirm-before-action enforced</td></tr>
+              <tr><td>Export post-cleanup</td><td>Run stop-ship audit</td><td>No ghosts, no ASCII/mojibake defects</td></tr>
+              <tr><td>Attach evidence</td><td>Review evidence completeness</td><td>Every gate has proof link</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h2>Decision Logic</h2>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-id">1</div><div>Backup exists before any destructive action.</div></div>
+            <div class="timeline-item"><div class="timeline-id">2</div><div>Human/Admin approval references exact candidate count and IDs.</div></div>
+            <div class="timeline-item"><div class="timeline-id">3</div><div>Only orphan schema rows are deleted.</div></div>
+            <div class="timeline-item"><div class="timeline-id">4</div><div>Active `_Clean` bot remains intact and is republished from UI.</div></div>
+            <div class="timeline-item"><div class="timeline-id">5</div><div>T-007 create and cancel paths both pass with evidence.</div></div>
+            <div class="timeline-item"><div class="timeline-id">6</div><div>Post-cleanup export and audits prove no ghost components remain.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 16px">
+        <h2>Required Evidence Package</h2>
+        <table data-table="evidencePackage">
+          <thead>
+            <tr><th>Evidence item</th><th>Owner</th><th>Required?</th><th>Acceptance rule</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pre-cleanup ZIP</td><td>Opus/Human</td><td><span class="badge red">Required</span></td><td>Export completed before deletion.</td></tr>
+            <tr><td>Candidate discovery report</td><td>Codex/Human</td><td><span class="badge red">Required</span></td><td>All candidates match ghost schema only.</td></tr>
+            <tr><td>Human/Admin approval note</td><td>Human/Admin</td><td><span class="badge red">Required</span></td><td>Approval references exact candidate count.</td></tr>
+            <tr><td>Delete log</td><td>Human/Admin</td><td><span class="badge red">Required</span></td><td>Deleted IDs match approved IDs.</td></tr>
+            <tr><td>UI publish screenshot</td><td>Opus</td><td><span class="badge red">Required</span></td><td>Publish after cleanup.</td></tr>
+            <tr><td>T-007 create evidence</td><td>Opus</td><td><span class="badge red">Required</span></td><td>Chat, run URL, SharePoint item.</td></tr>
+            <tr><td>T-007 cancel evidence</td><td>Opus</td><td><span class="badge red">Required</span></td><td>Chat, no run/no row proof.</td></tr>
+            <tr><td>Post-cleanup export</td><td>Opus/Human</td><td><span class="badge red">Required</span></td><td>Unpacked and auditable.</td></tr>
+            <tr><td>Regression test output</td><td>Codex</td><td><span class="badge red">Required</span></td><td>All required tests pass.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="rollback" class="section">
+      <div class="grid two">
+        <div class="card">
+          <h2>Rollback Trigger</h2>
+          <p>Use rollback if cleanup causes regression, active bot corruption, or publish failure that cannot be corrected.</p>
+          <table data-table="rollbackTrigger">
+            <thead><tr><th>Trigger</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Unexpected active `_Clean` component deletion</td><td>Import rollback ZIP and republish.</td></tr>
+              <tr><td>Bot cannot open after cleanup</td><td>Import rollback ZIP and validate bot.</td></tr>
+              <tr><td>Publish fails and cannot be recovered</td><td>Rollback and keep NO-SHIP.</td></tr>
+              <tr><td>T-001 through T-006 regress</td><td>Rollback or open a separate stop-ship RCA.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h2>Rollback Command</h2>
+          <div class="code" id="rollbackCode">pac solution import `
+  --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 `
+  --path ".planning\canonical\PMO_v11_Tarefas_PRE_GHOST_CLEANUP_20260509.zip" `
+  --publish-changes `
+  --async false</div>
+          <p><button class="copy" data-copy="rollbackCode">Copy command</button></p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 16px">
+        <h2>Rollback Success Criteria</h2>
+        <table data-table="rollbackCriteria">
+          <thead><tr><th>Criterion</th><th>Expected result</th></tr></thead>
+          <tbody>
+            <tr><td>Solution import</td><td>Successful</td></tr>
+            <tr><td>Bot opens</td><td>Yes</td></tr>
+            <tr><td>Publish</td><td>Successful</td></tr>
+            <tr><td>Existing paths T-001 through T-006</td><td>Still pass or are formally documented</td></tr>
+            <tr><td>T-007</td><td>Re-evaluate after rollback</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="gates" class="section">
+      <div class="card">
+        <h2>Release Gates</h2>
+        <div class="table-tools">
+          <label for="gateOwner">Owner</label>
+          <select id="gateOwner" data-filter-table="gateTable" data-filter-col="1">
+            <option value="">All</option>
+            <option>Opus/Human</option>
+            <option>Codex/Human</option>
+            <option>Human/Admin</option>
+            <option>Opus + Codex</option>
+            <option>Codex</option>
+            <option>Opus</option>
+            <option>Codex + Opus</option>
+          </select>
+        </div>
+        <table id="gateTable" data-table="gates">
+          <thead>
+            <tr><th>Gate</th><th>Owner</th><th>Required evidence</th><th>Status target</th></tr>
+          </thead>
+          <tbody id="gateRows"></tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-top: 16px">
+        <h2>Final Decision Rule</h2>
+        <div class="grid two">
+          <div class="callout redline">
+            If any required gate is not green, the release decision remains <strong>NO-SHIP</strong>.
+          </div>
+          <div class="callout">
+            Only after every required gate is green and evidence is attached can the release decision change to <strong>SHIP</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">
+      Source: `.planning/CODEX_HANDOFF_GHOST_CLEANUP_20260506.md`. Generated as a standalone executive HTML artifact. No external libraries or network calls are required.
+    </p>
+  </main>
+
+  <script>
+    const activities = [
+      ["GC-00", "Pre-cleanup backup/export", "Opus or Human/Admin", "Codex", "No", "Complete"],
+      ["GC-01", "Discover orphan bot rows", "Codex or Human/Admin", "Opus", "No", "Complete"],
+      ["GC-02", "Review deletion candidate list", "Human/Admin", "Opus + Codex", "No", "Complete"],
+      ["GC-03", "Delete orphan botcomponent rows", "Human/Admin", "Opus + Codex", "Yes", "Complete"],
+      ["GC-04", "Verify botcomponent_workflow cleanup", "Codex or Human/Admin", "Opus", "No unless manual cleanup needed", "Complete"],
+      ["GC-05", "Publish active bot from Copilot Studio UI", "Opus", "Codex via export/audit", "No", "Complete"],
+      ["GC-06", "Retest T-007 create path", "Opus", "Codex via evidence review", "No", "Complete"],
+      ["GC-07", "Retest T-007 cancel path", "Opus", "Codex via evidence review", "No", "Complete"],
+      ["GC-08", "Export cleaned solution", "Opus or Human/Admin", "Codex", "No", "Complete"],
+      ["GC-09", "Run post-cleanup audits", "Codex", "Opus reviews result", "No", "Complete"],
+      ["GC-10", "Decide SHIP/NO-SHIP gate", "Project Owner", "Codex + Opus", "No", "Complete"]
+    ];
+
+    const gates = [
+      ["Pre-cleanup rollback export exists", "Opus/Human", "ZIP path + export output", "Green"],
+      ["Orphan pmo_AssistentePMO.* candidate list reviewed", "Codex/Human", "Discovery report + approval", "Green"],
+      ["Orphan components deleted", "Human/Admin", "Delete log", "Green"],
+      ["No _Clean components deleted", "Opus + Codex", "Candidate/deletion comparison", "Green"],
+      ["botcomponent_workflow has no orphan bindings", "Codex/Human", "Fetch output", "Green"],
+      ["Bot published from Copilot Studio UI", "Opus", "Publish screenshot", "Green"],
+      ["T-007 create path passes", "Opus", "Chat screenshot, run URL, SharePoint item", "Green"],
+      ["T-007 cancel path passes", "Opus", "Chat screenshot, no run/no row proof", "Green"],
+      ["Post-cleanup export has no ghosts", "Codex", "Export audit output", "Green"],
+      ["Regression tests pass", "Codex", "Test output", "Green"],
+      ["Evidence committed/attached", "Codex + Opus", "Evidence log update", "Green"]
+    ];
+
+    const steps = [
+      {
+        id: "GC-00",
+        title: "Pre-Cleanup Backup / Export",
+        owner: "Opus or Human/Admin",
+        purpose: "Preserve a rollback point before any destructive Dataverse cleanup.",
+        actions: [
+          "Confirm current Power Platform authentication with pac auth list.",
+          "Export PMO_v11_Tarefas unmanaged solution from ColOfertasBrasilPro.",
+          "Save as .planning/canonical/PMO_v11_Tarefas_PRE_GHOST_CLEANUP_20260509.zip.",
+          "Record ZIP path, timestamp, and command output in the evidence log.",
+          "Stop if the export fails."
+        ],
+        verify: [
+          "ZIP exists at the expected path.",
+          "Command output shows export success.",
+          "Rollback path is recorded before deletion."
+        ],
+        command: "pac solution export `\n  --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 `\n  --name PMO_v11_Tarefas `\n  --managed false `\n  --path \".planning\\canonical\\PMO_v11_Tarefas_PRE_GHOST_CLEANUP_20260509.zip\" `\n  --overwrite"
+      },
+      {
+        id: "GC-01",
+        title: "Discover Orphan Bot Components",
+        owner: "Codex or Human/Admin",
+        purpose: "Produce the full candidate list before deletion.",
+        actions: [
+          "Run deploy/Discover-GhostBotComponents.ps1 against the environment.",
+          "Collect botcomponentid, schemaname, name, componenttype, state, status, and modifiedon.",
+          "Include only schemanames beginning with pmo_AssistentePMO.",
+          "Exclude every schemaname beginning with pmo_AssistentePMO_Clean.",
+          "Save the discovery report."
+        ],
+        verify: [
+          "Candidate list has no _Clean rows.",
+          "Opus compares the UI/table result to the Codex report.",
+          "Candidate count and IDs are recorded."
+        ],
+        command: "powershell -NoProfile -ExecutionPolicy Bypass `\n  -File deploy\\Discover-GhostBotComponents.ps1 `\n  -EnvironmentId e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+      },
+      {
+        id: "GC-02",
+        title: "Human/Admin Approval Review",
+        owner: "Human/Admin",
+        purpose: "Prevent accidental deletion of active production components.",
+        actions: [
+          "Review backup ZIP from GC-00.",
+          "Review candidate report from GC-01.",
+          "Confirm all candidates start with pmo_AssistentePMO.",
+          "Confirm no candidates start with pmo_AssistentePMO_Clean.",
+          "Write an explicit approval note with candidate count and IDs."
+        ],
+        verify: [
+          "Approval references exact candidate count.",
+          "Approval references the rollback ZIP.",
+          "Opus confirms candidate count matches the discovery report."
+        ],
+        command: "Approved ghost cleanup deletion.\nDate/time:\nEnvironment:\nCandidate count:\nApproved by:\nBackup ZIP:\nDiscovery report:"
+      },
+      {
+        id: "GC-03",
+        title: "Delete Orphan botcomponent Rows",
+        owner: "Human/Admin",
+        purpose: "Remove only orphaned legacy bot components that can pollute runtime binding resolution.",
+        actions: [
+          "Use only IDs approved in GC-02.",
+          "Delete one row at a time or in small controlled batches.",
+          "Never delete a row if its schemaname contains _Clean.",
+          "Record every delete result.",
+          "Stop immediately on unexpected dependency or permission errors."
+        ],
+        verify: [
+          "Spot-check before delete: schemaname starts with pmo_AssistentePMO.",
+          "Spot-check after delete: row no longer appears.",
+          "Active bot Assistente PMO Clean still opens."
+        ],
+        command: "DELETE [org-url]/api/data/v9.2/botcomponents(<botcomponentid>)"
+      },
+      {
+        id: "GC-04",
+        title: "Verify botcomponent_workflow Cleanup",
+        owner: "Codex or Human/Admin",
+        purpose: "Confirm relationship rows no longer point from orphan bot components to workflows.",
+        actions: [
+          "Fetch botcomponent_workflow rows joined to botcomponent.",
+          "Filter where joined schemaname starts with pmo_AssistentePMO.",
+          "Expect zero orphan workflow bindings.",
+          "Confirm _Clean workflow bindings still exist.",
+          "Escalate if orphan relationships remain."
+        ],
+        verify: [
+          "Orphan workflow binding query returns zero rows.",
+          "_Clean action PMO_PA_CriarTarefa still has a workflow binding.",
+          "Workflow row points to the intended active workflow."
+        ],
+        command: "<fetch>\n  <entity name=\"botcomponent_workflow\">\n    <all-attributes />\n    <link-entity name=\"botcomponent\" from=\"botcomponentid\" to=\"botcomponentid\" alias=\"bc\">\n      <attribute name=\"schemaname\" />\n      <filter>\n        <condition attribute=\"schemaname\" operator=\"like\" value=\"pmo_AssistentePMO.%\" />\n      </filter>\n    </link-entity>\n  </entity>\n</fetch>"
+      },
+      {
+        id: "GC-05",
+        title: "Publish Active Bot from Copilot Studio UI",
+        owner: "Opus",
+        purpose: "Force a fresh runtime snapshot after cleanup.",
+        actions: [
+          "Open Copilot Studio web UI.",
+          "Select ColOfertasBrasilPro.",
+          "Open Assistente PMO Clean.",
+          "Open CriarTarefa topic.",
+          "Confirm action references active _Clean or intended V3-bound action.",
+          "Make a no-op edit if needed, save, and publish.",
+          "Wait 5 minutes for runtime/cache propagation."
+        ],
+        verify: [
+          "Topic/action binding screenshot captured.",
+          "Publish success screenshot captured.",
+          "Publish timestamp is after cleanup."
+        ],
+        command: "Browser-only task: Copilot Studio UI publish"
+      },
+      {
+        id: "GC-06",
+        title: "Retest T-007 Create Path",
+        owner: "Opus",
+        purpose: "Prove CriarTarefa no longer fails with FlowNotFound and writes to SharePoint.",
+        actions: [
+          "Send the T-007 create prompt in bot test chat.",
+          "Reply sim at confirmation.",
+          "Confirm no FlowNotFound appears.",
+          "Open Power Automate run history and capture green run URL.",
+          "Open SharePoint Projetos and capture created item."
+        ],
+        verify: [
+          "Chat timestamp is after publish.",
+          "Flow run timestamp is after chat confirmation.",
+          "SharePoint item timestamp aligns with run.",
+          "Bot returns success message with ProjectID/code."
+        ],
+        command: "Criar tarefa: Titulo=Teste Codex T007 Retest 20260509, Responsavel=mbenicios@minsait.com, Prazo=30/06/2026, Horas=336, Prioridade=Alta\n\nsim"
+      },
+      {
+        id: "GC-07",
+        title: "Retest T-007 Cancel Path",
+        owner: "Opus",
+        purpose: "Prove confirm-before-action works and cancellation does not create data.",
+        actions: [
+          "Send the T-007 cancel prompt.",
+          "Reply nao at confirmation.",
+          "Capture chat cancellation response.",
+          "Verify no Power Automate run was created for cancel.",
+          "Verify no SharePoint Projetos row was created."
+        ],
+        verify: [
+          "No row exists for Teste Codex Cancel 20260509.",
+          "No run exists after the cancel response.",
+          "Bot returns cancellation message."
+        ],
+        command: "Criar tarefa: Titulo=Teste Codex Cancel 20260509, Responsavel=mbenicios@minsait.com, Prazo=30/06/2026, Horas=100, Prioridade=Baixa\n\nnao"
+      },
+      {
+        id: "GC-08",
+        title: "Post-Cleanup Export and Unpack",
+        owner: "Opus or Human/Admin",
+        purpose: "Preserve the clean state and provide an auditable artifact.",
+        actions: [
+          "Export PMO_v11_Tarefas after cleanup and publish.",
+          "Unpack the exported solution.",
+          "Record ZIP path and unpacked folder path.",
+          "Attach command outputs."
+        ],
+        verify: [
+          "ZIP exists.",
+          "Unpacked folder exists.",
+          "botcomponents folder is available for audit."
+        ],
+        command: "pac solution export `\n  --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 `\n  --name PMO_v11_Tarefas `\n  --managed false `\n  --path \".planning\\canonical\\PMO_v11_Tarefas_POST_GHOST_CLEANUP_20260509.zip\" `\n  --overwrite\n\npac solution unpack `\n  --zipfile \".planning\\canonical\\PMO_v11_Tarefas_POST_GHOST_CLEANUP_20260509.zip\" `\n  --folder \".planning\\canonical\\PMO_v11_Tarefas_POST_GHOST_CLEANUP_20260509\" `\n  --packagetype Unmanaged `\n  --allowDelete"
+      },
+      {
+        id: "GC-09",
+        title: "Post-Cleanup Audits",
+        owner: "Codex",
+        purpose: "Prove the cleaned export is structurally safe.",
+        actions: [
+          "Run Test-PMOFlowStopShipAudit.ps1 against unpacked export.",
+          "Run Test-CriarTarefaFlowDefinition.ps1 against the CriarTarefa flow definition.",
+          "Search botcomponents for pmo_AssistentePMO.* without _Clean.",
+          "Search export for non-ASCII/mojibake.",
+          "Attach test output."
+        ],
+        verify: [
+          "No ghost botcomponents in export.",
+          "No ASCII/mojibake failures.",
+          "Regression tests pass."
+        ],
+        command: "powershell -NoProfile -ExecutionPolicy Bypass `\n  -File tests\\Test-PMOFlowStopShipAudit.ps1 `\n  -SolutionSourcePath \".planning\\canonical\\PMO_v11_Tarefas_POST_GHOST_CLEANUP_20260509\"\n\nrg -n \"[^\\x00-\\x7F]|Ã|�|ð|â|Â\" \".planning\\canonical\\PMO_v11_Tarefas_POST_GHOST_CLEANUP_20260509\""
+      },
+      {
+        id: "GC-10",
+        title: "Final SHIP / NO-SHIP Decision",
+        owner: "Project Owner",
+        purpose: "Make release decision from evidence, not assumptions.",
+        actions: [
+          "Review release gates.",
+          "Confirm every required gate has a proof link.",
+          "Confirm no SEV-0/P0 item remains open.",
+          "Record SHIP or NO-SHIP decision."
+        ],
+        verify: [
+          "All required gates green.",
+          "Evidence package is complete.",
+          "Project Owner decision recorded."
+        ],
+        command: "NO-SHIP until all required gates are green."
+      }
+    ];
+
+    function badge(text, cls) {
+      return `<span class="badge ${cls}">${text}</span>`;
+    }
+
+    function renderActivities() {
+      document.getElementById("activityRows").innerHTML = activities.map(row => {
+        const destructiveClass = row[4] === "Yes" ? "red" : row[4].startsWith("No unless") ? "yellow" : "green";
+        return `<tr>${row.map((cell, idx) => {
+          if (idx === 4) return `<td>${badge(cell, destructiveClass)}</td>`;
+          if (idx === 5) return `<td>${badge(cell, "blue")}</td>`;
+          return `<td>${cell}</td>`;
+        }).join("")}</tr>`;
+      }).join("");
+    }
+
+    function renderGates() {
+      document.getElementById("gateRows").innerHTML = gates.map(row =>
+        `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${badge(row[3], "green")}</td></tr>`
+      ).join("");
+    }
+
+    function renderSteps() {
+      const host = document.getElementById("stepAccordions");
+      host.innerHTML = steps.map((step, index) => {
+        const actionList = step.actions.map(x => `<li>${x}</li>`).join("");
+        const verifyList = step.verify.map(x => `<li>${x}</li>`).join("");
+        const codeId = `code-${step.id}`;
+        return `<details class="accordion" ${index === 0 ? "open" : ""} data-step="${step.id}">
+          <summary><span>${step.id} - ${step.title}</span><span class="badge blue">${step.owner}</span></summary>
+          <div class="accordion-body">
+            <div class="grid two">
+              <div>
+                <h3>Purpose</h3>
+                <p>${step.purpose}</p>
+                <h3>Actions</h3>
+                <ol>${actionList}</ol>
+              </div>
+              <div>
+                <h3>Second-layer verification</h3>
+                <ul>${verifyList}</ul>
+                <h3>Command / Input</h3>
+                <div class="code" id="${codeId}">${escapeHtml(step.command)}</div>
+                <p><button class="copy" data-copy="${codeId}">Copy</button></p>
+              </div>
+            </div>
+          </div>
+        </details>`;
+      }).join("");
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function initTabs() {
+      document.querySelectorAll(".tab").forEach(button => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+          document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
+          button.classList.add("active");
+          document.getElementById(button.dataset.tab).classList.add("active");
+        });
+      });
+    }
+
+    function initSearch() {
+      const input = document.getElementById("searchBox");
+      input.addEventListener("input", () => {
+        const q = input.value.trim().toLowerCase();
+        document.querySelectorAll("tbody tr").forEach(row => {
+          row.classList.toggle("hidden", q && !row.textContent.toLowerCase().includes(q));
+        });
+        document.querySelectorAll(".accordion").forEach(acc => {
+          const match = !q || acc.textContent.toLowerCase().includes(q);
+          acc.style.display = match ? "" : "none";
+          if (q && match) acc.open = true;
+        });
+      });
+    }
+
+    function initFilters() {
+      document.querySelectorAll("select[data-filter-table]").forEach(select => {
+        select.addEventListener("change", () => {
+          const table = document.getElementById(select.dataset.filterTable);
+          const col = Number(select.dataset.filterCol);
+          const value = select.value;
+          table.querySelectorAll("tbody tr").forEach(row => {
+            const text = row.children[col].textContent.trim();
+            row.classList.toggle("hidden", value && text !== value);
+          });
+        });
+      });
+    }
+
+    function initButtons() {
+      document.getElementById("expandAll").addEventListener("click", () => {
+        document.querySelectorAll("details").forEach(d => d.open = true);
+      });
+      document.getElementById("printPage").addEventListener("click", () => window.print());
+      document.addEventListener("click", event => {
+        const button = event.target.closest("[data-copy]");
+        if (!button) return;
+        const node = document.getElementById(button.dataset.copy);
+        navigator.clipboard.writeText(node.textContent).then(() => {
+          const original = button.textContent;
+          button.textContent = "Copied";
+          setTimeout(() => button.textContent = original, 1000);
+        });
+      });
+    }
+
+    renderActivities();
+    renderGates();
+    renderSteps();
+    initTabs();
+    initSearch();
+    initFilters();
+    initButtons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="solution">
+    <attribute name="solutionid" />
+    <attribute name="uniquename" />
+    <attribute name="friendlyname" />
+    <filter>
+      <condition attribute="uniquename" operator="eq" value="PMO_v11_Tarefas" />
+    </filter>
+  </entity>
+</fetch>

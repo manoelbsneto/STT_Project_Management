@@ -1,0 +1,287 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "gstf_sharepoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "includeDeleted": {
+                  "type": "string",
+                  "description": "Incluir registros excluidos? sim/nao"
+                }
+              },
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Initialize_Total": {
+          "runAfter": {
+            "Get_Projetos_Ativos": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varTotal",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_SemUpdate": {
+          "runAfter": {
+            "Initialize_Vermelho": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varSemUpdate",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_Verde": {
+          "runAfter": {
+            "Initialize_Total": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varVerde",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Get_Projetos_Ativos": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "$filter": "@{if(or(equals(toLower(string(triggerBody()?['includeDeleted'])), 'sim'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'true'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'yes')), 'Ativo eq 1', 'Ativo eq 1 and Deleted eq 0')}",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$top": 500
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Apply_to_each_Projeto": {
+          "foreach": "@body('Get_Projetos_Ativos')?['value']",
+          "actions": {
+            "Increment_Total": {
+              "runAfter": {},
+              "type": "IncrementVariable",
+              "inputs": {
+                "name": "varTotal",
+                "value": 1
+              }
+            },
+            "Switch_StatusRAG": {
+              "runAfter": {
+                "Increment_Total": [
+                  "Succeeded"
+                ]
+              },
+              "cases": {
+                "Verde": {
+                  "case": "Verde",
+                  "actions": {
+                    "Increment_Verde": {
+                      "runAfter": {},
+                      "type": "IncrementVariable",
+                      "inputs": {
+                        "name": "varVerde",
+                        "value": 1
+                      }
+                    }
+                  }
+                },
+                "Amarelo": {
+                  "case": "Amarelo",
+                  "actions": {
+                    "Increment_Amarelo": {
+                      "runAfter": {},
+                      "type": "IncrementVariable",
+                      "inputs": {
+                        "name": "varAmarelo",
+                        "value": 1
+                      }
+                    }
+                  }
+                },
+                "Vermelho": {
+                  "case": "Vermelho",
+                  "actions": {
+                    "Increment_Vermelho": {
+                      "runAfter": {},
+                      "type": "IncrementVariable",
+                      "inputs": {
+                        "name": "varVermelho",
+                        "value": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@coalesce(item()?['StatusRAG']?['Value'], item()?['StatusRAG'], '')",
+              "type": "Switch"
+            },
+            "Condition_Sem_Update": {
+              "actions": {
+                "Increment_SemUpdate": {
+                  "runAfter": {},
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "varSemUpdate",
+                    "value": 1
+                  }
+                }
+              },
+              "runAfter": {
+                "Switch_StatusRAG": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {}
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@item()?['UltimaAtualizacao']",
+                        null
+                      ]
+                    }
+                  },
+                  {
+                    "less": [
+                      "@ticks(item()?['UltimaAtualizacao'])",
+                      "@ticks(addDays(utcNow(), -1))"
+                    ]
+                  }
+                ]
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Initialize_SemUpdate": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        },
+        "Response_OK": {
+          "runAfter": {
+            "Apply_to_each_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "message": "@{concat('Portfolio PMO: ', string(variables('varTotal')), ' projetos ativos. Verde: ', string(variables('varVerde')), ' | Amarelo: ', string(variables('varAmarelo')), ' | Vermelho: ', string(variables('varVermelho')), '. Projetos sem update (>24h): ', string(variables('varSemUpdate')), '.')}"
+            }
+          }
+        },
+        "Initialize_Amarelo": {
+          "runAfter": {
+            "Initialize_Verde": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAmarelo",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_Vermelho": {
+          "runAfter": {
+            "Initialize_Amarelo": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varVermelho",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

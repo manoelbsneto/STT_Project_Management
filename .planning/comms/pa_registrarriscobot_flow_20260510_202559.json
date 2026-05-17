@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-10T20:26:21.5888687-03:00",
+  "status": "CREATED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_RegistrarRiscoBot",
+  "flowName": "a4066e88-093e-4543-83f6-c69bda05fd5a",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "requestPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_registrarriscobot_request_7394d441-50d7-4b3b-ba4c-d14e2e5b9b77.json",
+  "resultPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_registrarriscobot_result_7394d441-50d7-4b3b-ba4c-d14e2e5b9b77.json",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills"
+}

@@ -1,0 +1,13 @@
+{
+  "host": {
+    "apiId": "subscriptions/e2d10003-4d8e-e007-9d63-76d5fe89ef56/providers/Microsoft.Web/locations/northeurope/runtimes/europe-002/apis/sharepointonline",
+    "connectionReferenceName": "shared_sharepointonline",
+    "operationId": "GetItems"
+  },
+  "parameters": {
+    "$filter": "NomeProjeto eq 'projeto=Mobile App Corporativo' and Ativo eq 1 and Deleted eq 0",
+    "$top": 1,
+    "table": "Projetos",
+    "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+  }
+}

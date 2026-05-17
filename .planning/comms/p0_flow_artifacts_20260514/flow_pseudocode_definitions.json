@@ -1,0 +1,99 @@
+{
+  "artifactType": "local-pseudocode-not-importable",
+  "date": "2026-05-15",
+  "owner": "GEMINI-PA",
+  "source": ".planning/comms/P0_FLOW_IMPLEMENTATION_CHECKLIST_20260514.md",
+  "releaseDecision": "NO-SHIP",
+  "tenantExecutionAuthorized": false,
+  "globalRules": {
+    "dispatchByRouteKeyAndAction": true,
+    "operationIdIsCorrelationIdNotActionSelector": true,
+    "copilotOutputsAreStaticAsciiOnly": true,
+    "doNotReturnRawSharePointOrPlannerRowsToCopilot": true,
+    "ignoreClientSubmittedPlannerTaskId": true,
+    "requiresOwnerApprovalBeforeTenantAction": true
+  },
+  "plannerConfig": {
+    "groupId": "96c5b0c4-46cc-46cd-8695-50451db74994",
+    "planId": "-1kBj1PLv0qQM-R4PwkqbpcABv_P",
+    "buckets": {
+      "Piloto e Implantacao": "4YAXH7iU9E-6jZE2P1DbG5cAMAzH",
+      "Testes": "7QYPufh54kum7MP4KUzzAZcAL6Ik",
+      "Cancelado": "90TcFTFup0CjiHIdzY4gG5cALWKL",
+      "Concluido": "F2WYUsnXeEue5qlwQuu3GJcAN1Ns",
+      "Em andamento": "ugZSNxsYW0WWCJ5Dtx0-l5cALVXG",
+      "Pendente": "HmzyGOgC4k6uOPm_cwG3zZcAGiAG"
+    }
+  },
+  "flows": [
+    {
+      "flowName": "PMO_PA_Card_ResumoExecutivoPortfolio",
+      "trigger": "CopilotStudio_Intent",
+      "route": "board.status",
+      "cardTemplate": "ResumoExecutivoPortfolio.json",
+      "logic": [
+        "Initialize operationId (guid)",
+        "SP Get items Projetos (Ativo eq 1, Deleted eq 0)",
+        "SP Get items Riscos e Bloqueios (Status ne 'Resolvido')",
+        "SP Get items Decisoes do Board (Status eq 'Pendente')",
+        "Aggregate RAG and highlights",
+        "Post Adaptive Card to board.status"
+      ],
+      "copilotResponse": "Portfolio summary requested. Review the card sent in Teams."
+    },
+    {
+      "flowName": "PMO_PA_Card_AtualizarStatus",
+      "trigger": "CopilotStudio_SingleBox_OR_CardSubmit",
+      "route": "pm.status.updates",
+      "cardTemplate": "AtualizarStatusSingleBoxReviewCard.json",
+      "logic": [
+        "Resolve Project ID",
+        "Branch: Copilot -> Post Review Card",
+        "Branch: Submit -> Create Status Diario, Update Projetos, Create Risco/Bloqueio if any",
+        "Update Card with success confirmation"
+      ],
+      "copilotResponse": "Status update received. Review the card sent in Teams."
+    },
+    {
+      "flowName": "PMO_PA_Card_ListarTarefas",
+      "trigger": "CopilotStudio",
+      "route": "task.card.route",
+      "cardTemplate": "ListarTarefasProjetoCard.json",
+      "logic": [
+        "Resolve Project ID",
+        "SP Get items Tarefas (ProjectID eq ID, Deleted eq 0, Top 10, closed-status mapping from live SharePoint choices)",
+        "Post Adaptive Card to task.card.route"
+      ],
+      "copilotResponse": "Task list request received. Review the card sent in Teams."
+    },
+    {
+      "flowName": "PMO_PA_Card_CriarTarefa",
+      "trigger": "CardSubmit_submitCreateTask",
+      "route": "task.card.route",
+      "cardTemplate": "CriarTarefaCard.json",
+      "logic": [
+        "SP Create item Tarefas",
+        "Planner Path (BLOCKED): Create task in Pendente bucket (HmzyGOgC4k6uOPm_cwG3zZcAGiAG)",
+        "Planner Path (BLOCKED): Update SP Tarefas with PlannerTaskId, PlannerBucketId, PlannerSyncStatus='OK'",
+        "Update Card in Teams"
+      ],
+      "status": "BLOCKED_FOR_TENANT_WRITE"
+    },
+    {
+      "flowName": "PMO_PA_Card_AtualizarTarefa",
+      "trigger": "CardSubmit_submitUpdateTask",
+      "route": "task.card.route",
+      "cardTemplate": "AtualizarTarefaCard.json",
+      "logic": [
+        "SP Get item Tarefas (Fetch PlannerTaskId)",
+        "SP Update item Tarefas",
+        "Planner Path (BLOCKED): Resolve TaskId (GetTask OR ListTasks title match)",
+        "Planner Path (BLOCKED): Update task details and progress",
+        "Planner Path (BLOCKED): Map status to bucket and move task",
+        "Planner Path (BLOCKED): Update SP Tarefas with PlannerSyncStatus='OK'",
+        "Update Card in Teams"
+      ],
+      "status": "BLOCKED_FOR_TENANT_WRITE"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+    "properties":  {
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "runtimeSource":  "embedded",
+                                                                                    "connection":  {
+                                                                                                       "connectionReferenceLogicalName":  "pmo_sharedsharepointonline_6e373"
+                                                                                                   },
+                                                                                    "api":  {
+                                                                                                "name":  "shared_sharepointonline"
+                                                                                            }
+                                                                                }
+                                                },
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "text_2":  {
+                                                                                                                                          "description":  "pm",
+                                                                                                                                          "title":  "Texto 2",
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "x-ms-content-hint":  "TEXT",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      },
+                                                                                                                           "text_1":  {
+                                                                                                                                          "description":  "titulo",
+                                                                                                                                          "title":  "Texto 1",
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "x-ms-content-hint":  "TEXT",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      },
+                                                                                                                           "text_4":  {
+                                                                                                                                          "description":  "prioridade",
+                                                                                                                                          "title":  "Texto 4",
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "x-ms-content-hint":  "TEXT",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      },
+                                                                                                                           "text":  {
+                                                                                                                                        "description":  "nomeProjeto",
+                                                                                                                                        "title":  "Texto",
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "x-ms-content-hint":  "TEXT",
+                                                                                                                                        "x-ms-dynamically-added":  true
+                                                                                                                                    },
+                                                                                                                           "text_3":  {
+                                                                                                                                          "description":  "prazo",
+                                                                                                                                          "title":  "Texto 3",
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "x-ms-content-hint":  "TEXT",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      },
+                                                                                                                           "number":  {
+                                                                                                                                          "description":  "horas",
+                                                                                                                                          "title":  "Numero",
+                                                                                                                                          "type":  "number",
+                                                                                                                                          "x-ms-content-hint":  "NUMBER",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      }
+                                                                                                                       },
+                                                                                                        "required":  [
+                                                                                                                         "text_2",
+                                                                                                                         "text_1",
+                                                                                                                         "text_4",
+                                                                                                                         "text",
+                                                                                                                         "text_3",
+                                                                                                                         "number"
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Compose_ProjectID":  {
+                                                                                    "type":  "Compose",
+                                                                                    "runAfter":  {
+                                                                                                     "Map_Prioridade":  [
+                                                                                                                            "Succeeded"
+                                                                                                                        ]
+                                                                                                 },
+                                                                                    "inputs":  "@concat(\u0027PRJ-\u0027, toUpper(substring(guid(), 0, 8)))"
+                                                                                },
+                                                          "Map_Prioridade":  {
+                                                                                 "type":  "Compose",
+                                                                                 "runAfter":  {
+                                                                                                  "Compose_DataAlvo":  [
+                                                                                                                           "Succeeded"
+                                                                                                                       ]
+                                                                                              },
+                                                                                 "inputs":  "@if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027text_4\u0027], \u0027Media\u0027))), \u0027cr\u0027), \u0027Critica\u0027, if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027text_4\u0027], \u0027Media\u0027))), \u0027al\u0027), \u0027Alta\u0027, if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027text_4\u0027], \u0027Media\u0027))), \u0027ba\u0027), \u0027Baixa\u0027, \u0027Media\u0027)))"
+                                                                             },
+                                                          "Compose_DataAlvo":  {
+                                                                                   "type":  "Compose",
+                                                                                   "runAfter":  {
+                                                                                                    "Compose_DataAlvoRaw":  [
+                                                                                                                                "Succeeded"
+                                                                                                                            ]
+                                                                                                },
+                                                                                   "inputs":  "@if(and(equals(length(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027)), 3), equals(length(first(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027))), 2), equals(length(first(skip(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027), 1))), 2), equals(length(last(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027))), 4), contains(createArray(\u002701\u0027,\u002702\u0027,\u002703\u0027,\u002704\u0027,\u002705\u0027,\u002706\u0027,\u002707\u0027,\u002708\u0027,\u002709\u0027,\u002710\u0027,\u002711\u0027,\u002712\u0027,\u002713\u0027,\u002714\u0027,\u002715\u0027,\u002716\u0027,\u002717\u0027,\u002718\u0027,\u002719\u0027,\u002720\u0027,\u002721\u0027,\u002722\u0027,\u002723\u0027,\u002724\u0027,\u002725\u0027,\u002726\u0027,\u002727\u0027,\u002728\u0027,\u002729\u0027,\u002730\u0027,\u002731\u0027), first(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027))), contains(createArray(\u002701\u0027,\u002702\u0027,\u002703\u0027,\u002704\u0027,\u002705\u0027,\u002706\u0027,\u002707\u0027,\u002708\u0027,\u002709\u0027,\u002710\u0027,\u002711\u0027,\u002712\u0027), first(skip(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027), 1)))), concat(last(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027)), \u0027-\u0027, first(skip(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027), 1)), \u0027-\u0027, first(split(outputs(\u0027Compose_DataAlvoRaw\u0027), \u0027/\u0027))), \u0027INVALID_BR_DATE\u0027)"
+                                                                               },
+                                                          "Initialize_ResponseMessage":  {
+                                                                                             "type":  "InitializeVariable",
+                                                                                             "runAfter":  {
+
+                                                                                                          },
+                                                                                             "inputs":  {
+                                                                                                            "variables":  [
+                                                                                                                              {
+                                                                                                                                  "name":  "responseMessage",
+                                                                                                                                  "type":  "string"
+                                                                                                                              }
+                                                                                                                          ]
+                                                                                                        }
+                                                                                         },
+                                                          "Compose_NomeProjeto":  {
+                                                                                      "type":  "Compose",
+                                                                                      "runAfter":  {
+                                                                                                       "Initialize_ResponseMessage":  [
+                                                                                                                                          "Succeeded"
+                                                                                                                                      ]
+                                                                                                   },
+                                                                                      "inputs":  "@trim(coalesce(triggerBody()?[\u0027text\u0027], triggerBody()?[\u0027text_1\u0027], \u0027Sem nome\u0027))"
+                                                                                  },
+                                                          "Valores_retornados_para_o_Power_Virtual_Agents":  {
+                                                                                                                 "type":  "Response",
+                                                                                                                 "kind":  "VirtualAgent",
+                                                                                                                 "inputs":  {
+                                                                                                                                "statusCode":  200,
+                                                                                                                                "body":  {
+                                                                                                                                             "message":  "@variables(\u0027responseMessage\u0027)"
+                                                                                                                                         },
+                                                                                                                                "schema":  {
+                                                                                                                                               "type":  "object",
+                                                                                                                                               "properties":  {
+                                                                                                                                                                  "message":  {
+                                                                                                                                                                                  "title":  "message",
+                                                                                                                                                                                  "type":  "string",
+                                                                                                                                                                                  "x-ms-content-hint":  "TEXT"
+                                                                                                                                                                              }
+                                                                                                                                                              }
+                                                                                                                                           }
+                                                                                                                            },
+                                                                                                                 "runAfter":  {
+                                                                                                                                  "Condition_DataAlvo_Valido":  [
+                                                                                                                                                                    "Succeeded"
+                                                                                                                                                                ]
+                                                                                                                              }
+                                                                                                             },
+                                                          "Compose_DataAlvoRaw":  {
+                                                                                      "type":  "Compose",
+                                                                                      "runAfter":  {
+                                                                                                       "Compose_NomeProjeto":  [
+                                                                                                                                   "Succeeded"
+                                                                                                                               ]
+                                                                                                   },
+                                                                                      "inputs":  "@trim(coalesce(string(triggerBody()?[\u0027text_3\u0027]), \u0027\u0027))"
+                                                                                  },
+                                                          "Condition_DataAlvo_Valido":  {
+                                                                                            "type":  "If",
+                                                                                            "runAfter":  {
+                                                                                                             "Compose_ProjectID":  [
+                                                                                                                                       "Succeeded"
+                                                                                                                                   ]
+                                                                                                         },
+                                                                                            "expression":  {
+                                                                                                               "not":  {
+                                                                                                                           "equals":  [
+                                                                                                                                          "@outputs(\u0027Compose_DataAlvo\u0027)",
+                                                                                                                                          "INVALID_BR_DATE"
+                                                                                                                                      ]
+                                                                                                                       }
+                                                                                                           },
+                                                                                            "actions":  {
+                                                                                                            "Get_Duplicate_Projects":  {
+                                                                                                                                           "type":  "OpenApiConnection",
+                                                                                                                                           "inputs":  {
+                                                                                                                                                          "host":  {
+                                                                                                                                                                       "connectionName":  "shared_sharepointonline",
+                                                                                                                                                                       "operationId":  "GetItems",
+                                                                                                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                                                                                                                                                                   },
+                                                                                                                                                          "parameters":  {
+                                                                                                                                                                             "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                             "table":  "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+                                                                                                                                                                             "$filter":  "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_NomeProjeto\u0027), \u0027\u0027\u0027\u0027, \u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and DataAlvo ge datetime\u0027@{convertTimeZone(concat(outputs(\u0027Compose_DataAlvo\u0027), \u0027T00:00:00\u0027), \u0027Romance Standard Time\u0027, \u0027UTC\u0027, \u0027yyyy-MM-ddTHH:mm:ssZ\u0027)}\u0027 and DataAlvo lt datetime\u0027@{convertTimeZone(concat(formatDateTime(addDays(outputs(\u0027Compose_DataAlvo\u0027), 1), \u0027yyyy-MM-dd\u0027), \u0027T00:00:00\u0027), \u0027Romance Standard Time\u0027, \u0027UTC\u0027, \u0027yyyy-MM-ddTHH:mm:ssZ\u0027)}\u0027 and Deleted ne 1",
+                                                                                                                                                                             "$top":  1
+                                                                                                                                                                         },
+                                                                                                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                            "Condition_Duplicate_Projeto":  {
+                                                                                                                                                "type":  "If",
+                                                                                                                                                "runAfter":  {
+                                                                                                                                                                 "Get_Duplicate_Projects":  [
+                                                                                                                                                                                                "Succeeded"
+                                                                                                                                                                                            ]
+                                                                                                                                                             },
+                                                                                                                                                "expression":  {
+                                                                                                                                                                   "equals":  [
+                                                                                                                                                                                  "@empty(outputs(\u0027Get_Duplicate_Projects\u0027)?[\u0027body/value\u0027])",
+                                                                                                                                                                                  "@true"
+                                                                                                                                                                              ]
+                                                                                                                                                               },
+                                                                                                                                                "actions":  {
+                                                                                                                                                                "Create_Projeto_SharePoint":  {
+                                                                                                                                                                                                  "type":  "OpenApiConnection",
+                                                                                                                                                                                                  "inputs":  {
+                                                                                                                                                                                                                 "host":  {
+                                                                                                                                                                                                                              "connectionName":  "shared_sharepointonline",
+                                                                                                                                                                                                                              "operationId":  "PostItem",
+                                                                                                                                                                                                                              "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                                                                                                                                                                                                                          },
+                                                                                                                                                                                                                 "parameters":  {
+                                                                                                                                                                                                                                    "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                                                                                    "table":  "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+                                                                                                                                                                                                                                    "item/Prioridade/Value":  "@outputs(\u0027Map_Prioridade\u0027)",
+                                                                                                                                                                                                                                    "item/Title":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                                                                                                                    "item/DataAlvo":  "@outputs(\u0027Compose_DataAlvo\u0027)",
+                                                                                                                                                                                                                                    "item/Percentual":  0,
+                                                                                                                                                                                                                                    "item/Deleted":  false,
+                                                                                                                                                                                                                                    "item/NomeProjeto":  "@outputs(\u0027Compose_NomeProjeto\u0027)",
+                                                                                                                                                                                                                                    "item/ProjectID":  "@outputs(\u0027Compose_ProjectID\u0027)",
+                                                                                                                                                                                                                                    "item/UltimaAtualizacao":  "@utcNow()",
+                                                                                                                                                                                                                                    "item/StatusRAG/Value":  "Verde",
+                                                                                                                                                                                                                                    "item/ResumoExecutivo":  "@concat(\u0027Projeto criado via Copilot Studio. Titulo: \u0027, coalesce(triggerBody()?[\u0027text_1\u0027], \u0027-\u0027), \u0027. Horas estimadas: \u0027, coalesce(string(triggerBody()?[\u0027number\u0027]), \u0027N/A\u0027), \u0027h. Responsavel: \u0027, coalesce(triggerBody()?[\u0027text_2\u0027], \u0027-\u0027), \u0027. Prazo: \u0027, coalesce(triggerBody()?[\u0027text_3\u0027], \u0027-\u0027), \u0027.\u0027)",
+                                                                                                                                                                                                                                    "item/Ativo":  true,
+                                                                                                                                                                                                                                    "item/PM/Claims":  "@concat(\u0027i:0#.f|membership|\u0027, if(contains(coalesce(triggerBody()?[\u0027text_2\u0027], \u0027\u0027), \u0027@\u0027), triggerBody()?[\u0027text_2\u0027], \u0027mbenicios@minsait.com\u0027))"
+                                                                                                                                                                                                                                },
+                                                                                                                                                                                                                 "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                                                                             }
+                                                                                                                                                                                              },
+                                                                                                                                                                "Set_Response_Success":  {
+                                                                                                                                                                                             "type":  "SetVariable",
+                                                                                                                                                                                             "inputs":  {
+                                                                                                                                                                                                            "name":  "responseMessage",
+                                                                                                                                                                                                            "value":  "Projeto criado com sucesso!"
+                                                                                                                                                                                                        },
+                                                                                                                                                                                             "runAfter":  {
+                                                                                                                                                                                                              "Create_Projeto_SharePoint":  [
+                                                                                                                                                                                                                                                "Succeeded"
+                                                                                                                                                                                                                                            ]
+                                                                                                                                                                                                          }
+                                                                                                                                                                                         }
+                                                                                                                                                            },
+                                                                                                                                                "else":  {
+                                                                                                                                                             "actions":  {
+                                                                                                                                                                             "Response_Duplicate":  {
+                                                                                                                                                                                                        "type":  "SetVariable",
+                                                                                                                                                                                                        "inputs":  {
+                                                                                                                                                                                                                       "name":  "responseMessage",
+                                                                                                                                                                                                                       "value":  "Ja existe um projeto com o nome especificado. Nenhum item duplicado foi criado."
+                                                                                                                                                                                                                   }
+                                                                                                                                                                                                    }
+                                                                                                                                                                         }
+                                                                                                                                                         }
+                                                                                                                                            }
+                                                                                                        },
+                                                                                            "else":  {
+                                                                                                         "actions":  {
+                                                                                                                         "Set_Response_InvalidDate":  {
+                                                                                                                                                          "type":  "SetVariable",
+                                                                                                                                                          "inputs":  {
+                                                                                                                                                                         "name":  "responseMessage",
+                                                                                                                                                                         "value":  "Prazo invalido. Use formato brasileiro dd/MM/aaaa, ex: 30/06/2026. Codigo: INVALID_BR_DATE."
+                                                                                                                                                                     }
+                                                                                                                                                      }
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "templateName":  ""
+                   },
+    "schemaVersion":  "1.0.0.0"
+}

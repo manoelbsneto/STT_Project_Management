@@ -1,0 +1,56 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_nome_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "(?:projeto|nome)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:projeto|nome)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^\s*(?:listar\s+tarefas|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas|quais\s+tarefas)\s+(?:do\s+projeto\s+|projeto\s+)?(?<v>.+?)\s*$", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^\s*(?:listar\s+tarefas|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas|quais\s+tarefas)\s+(?:do\s+projeto\s+|projeto\s+)?(?<v>.+?)\s*$", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: ConditionGroup
+      id: ask_missing_nome_projeto
+      conditions:
+        - id: missing_nome_projeto
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_nome_projeto
+              variable: Topic.NomeProjeto
+              prompt: "Qual o nome ou codigo do projeto? (ex: Projeto Alpha ou PRJ-001)"
+              entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_nome_projeto
+      variable: Global.PMO_Listar_NomeProjeto
+      value: =Topic.NomeProjeto
+
+    - kind: BeginDialog
+      id: call_listar_tarefas
+      input: {}
+      dialog: pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas
+      output:
+        binding:
+          result: Topic.tarefas
+
+    - kind: SendActivity
+      id: listar_result
+      activity: |-
+        Tarefas - {Topic.NomeProjeto}
+
+        {Topic.tarefas}

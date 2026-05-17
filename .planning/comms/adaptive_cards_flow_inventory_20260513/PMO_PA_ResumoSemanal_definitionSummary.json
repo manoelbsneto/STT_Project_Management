@@ -1,0 +1,82 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Recurrence"
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Select"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "Select"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Select"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PostCardToConversation"
+                    }
+                ]
+}

@@ -1,0 +1,17 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="or">
+      <condition attribute="workflowid" operator="eq" value="d2645ec7-c84c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="e4c43bb3-c84c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="f9c43bb3-c84c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="81917ec0-c84c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="68917ec0-c84c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="e14ca9b9-c84c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="42d9abd1-8849-f111-bec7-7ced8d955c6c" />
+    </filter>
+  </entity>
+</fetch>

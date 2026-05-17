@@ -1,0 +1,391 @@
+{
+  "name": "a4066e88-093e-4543-83f6-c69bda05fd5a",
+  "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/a4066e88-093e-4543-83f6-c69bda05fd5a",
+  "type": "Microsoft.ProcessSimple/environments/flows",
+  "properties": {
+    "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+    "displayName": "PMO_PA_RegistrarRiscoBot",
+    "userType": "Owner",
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "severidade": {
+                  "type": "string",
+                  "description": "Severidade"
+                },
+                "projectName": {
+                  "type": "string",
+                  "description": "Nome do projeto"
+                },
+                "descricao": {
+                  "type": "string",
+                  "description": "Descricao do risco"
+                }
+              },
+              "required": [
+                "projectName",
+                "descricao",
+                "severidade"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose_RiskID": {
+          "runAfter": {
+            "Map_Severidade": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat('RISK-', toUpper(substring(guid(), 0, 8)))"
+        },
+        "Get_Projeto": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "$top": 1,
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectName'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Condition_Projeto_Encontrado": {
+          "actions": {
+            "Create_Risco_SharePoint": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/DataCriacao": "@utcNow()",
+                  "item/Deleted": false,
+                  "item/StatusRisco/Value": "Aberto",
+                  "item/Severidade/Value": "@outputs('Map_Severidade')",
+                  "item/RiskID": "@outputs('Compose_RiskID')",
+                  "item/Tipo/Value": "Risco",
+                  "item/Title": "@outputs('Compose_RiskID')",
+                  "table": "Riscos e Bloqueios",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']",
+                  "item/Descricao": "@triggerBody()?['descricao']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Create_Risco_SharePoint": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat('Risco ', outputs('Compose_RiskID'), ' registrado para projeto ', outputs('Compose_ProjectName'), '. Severidade: ', outputs('Map_Severidade'), '.')}"
+                }
+              }
+            },
+            "Response_Error_Write": {
+              "runAfter": {
+                "Create_Risco_SharePoint": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao registrar risco no SharePoint. Codigo: SP_WRITE_FAILED."
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_RiskID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "runAfter": {},
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(body('Get_Projeto')?['value'])",
+              0
+            ]
+          },
+          "type": "If"
+        },
+        "Map_Severidade": {
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'cr'), 'Critica', if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'a'), 'Alta', if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'b'), 'Baixa', 'Media')))"
+        },
+        "Compose_ProjectName": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))"
+        }
+      },
+      "outputs": {}
+    },
+    "triggerSchema": {
+      "type": "object",
+      "properties": {
+        "severidade": {
+          "type": "string",
+          "description": "Severidade"
+        },
+        "projectName": {
+          "type": "string",
+          "description": "Nome do projeto"
+        },
+        "descricao": {
+          "type": "string",
+          "description": "Descricao do risco"
+        }
+      },
+      "required": [
+        "projectName",
+        "descricao",
+        "severidade"
+      ]
+    },
+    "state": "Started",
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+        "connectionReferenceLogicalName": "pmo_sharepoint",
+        "source": "Invoker",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+        "displayName": "SharePoint",
+        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+        "brandColor": "",
+        "tier": "Standard",
+        "apiName": "sharepointonline",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      }
+    },
+    "createdTime": "2026-05-10T23:26:15.4260667Z",
+    "lastModifiedTime": "2026-05-10T23:26:14.9469967Z",
+    "flowSuspensionReason": "None",
+    "environment": {
+      "name": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+      "type": "Microsoft.ProcessSimple/environments",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+    },
+    "definitionSummary": {
+      "triggers": [
+        {
+          "type": "Request",
+          "kind": "Skills"
+        }
+      ],
+      "actions": [
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "OpenApiConnection",
+          "swaggerOperationId": "GetItems",
+          "api": {
+            "name": "shared_sharepointonline",
+            "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "type": "/providers/Microsoft.PowerApps/apis",
+            "properties": {
+              "displayName": "SharePoint",
+              "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+              "metadata": {
+                "source": "marketplace",
+                "brandColor": "",
+                "useNewApimVersion": "true",
+                "version": {
+                  "previous": "releases/v1.0.1769\\1.0.1769.4361",
+                  "current": "releases/v1.0.1809\\1.0.1809.4714"
+                }
+              },
+              "tier": "Standard",
+              "isCustomApi": false,
+              "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+            }
+          }
+        },
+        {
+          "type": "If"
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "OpenApiConnection",
+          "swaggerOperationId": "PostItem",
+          "api": {
+            "name": "shared_sharepointonline",
+            "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "type": "/providers/Microsoft.PowerApps/apis",
+            "properties": {
+              "displayName": "SharePoint",
+              "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+              "metadata": {
+                "source": "marketplace",
+                "brandColor": "",
+                "useNewApimVersion": "true",
+                "version": {
+                  "previous": "releases/v1.0.1769\\1.0.1769.4361",
+                  "current": "releases/v1.0.1809\\1.0.1809.4714"
+                }
+              },
+              "tier": "Standard",
+              "isCustomApi": false,
+              "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+            }
+          }
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        }
+      ]
+    },
+    "creator": {
+      "tenantId": "7808e005-1489-4374-954b-d3b08f193920",
+      "objectId": "3882eb28-005d-4948-a668-81263d778f6d",
+      "userId": "3882eb28-005d-4948-a668-81263d778f6d",
+      "userType": "ActiveDirectory"
+    },
+    "installationStatus": "Installed",
+    "provisioningMethod": "FromDefinition",
+    "flowFailureAlertSubscribed": true,
+    "referencedResources": [
+      {
+        "service": "sharepoint",
+        "resource": {
+          "site": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+          "list": "[DYNAMIC_VALUE]"
+        },
+        "referencers": [
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          },
+          {
+            "referenceSourceType": "Triggers",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Triggers",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          }
+        ]
+      },
+      {
+        "service": "sharepoint",
+        "resource": {
+          "site": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+        },
+        "referencers": [
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          }
+        ]
+      }
+    ],
+    "isManaged": false,
+    "machineDescriptionData": {},
+    "flowOpenAiData": {
+      "isConsequential": false,
+      "isConsequentialFlagOverwritten": false
+    }
+  }
+}

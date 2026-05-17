@@ -103,3 +103,16 @@
 - **Depends on:** Phase 4, Phase 5
 - **Agent:** Codex 1 (QA Lead) + Sub-agents
 - **Validation:** >70-80% taxa de atualização diária por 5 dias consecutivos
+
+### Phase 2.4: Correcao de Contrato CriarProjeto/CriarTarefa + Gerar_Multiplos_Projetos
+- Separar semanticamente `CriarProjeto` e `CriarTarefa`.
+- `CriarProjeto` preserva a criacao de projetos na lista `Projetos`, com duplicate guard e `ProjectID` gerado pelo sistema.
+- `CriarTarefa` cria tarefas somente na lista `Tarefas`, apos resolver projeto ativo/nao deletado em `Projetos`.
+- Criar `Gerar_Multiplos_Projetos` para abertura em lote de projetos e tarefas iniciais pareadas por indice.
+- Plano A: Adaptive Card de revisao/confirmacao antes de qualquer escrita.
+- Plano B: texto multilinha e Speech-to-Text achatado quando card nao renderizar, usuario estiver em mobile/voz, ou houver bloco estruturado colado.
+- Limite inicial: ate 10 projetos e 10 tarefas no modo simples por indice.
+- **Requirements:** REQ-14, REQ-15, REQ-16
+- **Depends on:** Phase 4, Phase 6 runtime evidence for current bot, package 2.3 ExcluirTarefa guard.
+- **Validation:** static gates for topic routing, flow target lists, Adaptive Card contract, fallback parser, no Premium/Graph/HTTP, and runtime smoke after owner-approved import/publish.
+- **Gate:** NO-SHIP until local package 2.4 passes static audits and owner completes controlled runtime validation.

@@ -1,0 +1,314 @@
+{
+  "value": [
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Compose_Percentual",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Compose_Percentual",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.8213695Z",
+        "endTime": "2026-05-11T16:22:56.8216463Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Compose_Percentual' is skipped: the 'runAfter' condition for action 'Map_RAG' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "38d123d8-d6f7-4bdd-a7b0-1c1270dd590e",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Compose_ProjectName",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Compose_ProjectName",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.5458098Z",
+        "endTime": "2026-05-11T16:22:56.546641Z",
+        "status": "Succeeded",
+        "code": "OK",
+        "correlation": {
+          "actionTrackingId": "d829d31a-3a8b-466a-826b-266281468d47",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        },
+        "inputsLink": {
+          "uri": "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bc858d6f74a042e2b459c949f9f3ce94/runs/08584230903091779482042930125CU27/actions/Compose_ProjectName/contents/ActionInputs?api-version=1&islandNumber=104&se=2026-05-11T20%3A00%3A00.0000000Z&sp=%2Fruns%2F08584230903091779482042930125CU27%2Factions%2FCompose_ProjectName%2Fcontents%2FActionInputs%2Fread&sv=1.0&sig=m6DJnzzYFhruxFVcAn5ZlI0MqJUiFFkfmDVdi1VI_tM",
+          "contentVersion": "31JVWD9ZGkzxrJVLakc2lQ==",
+          "contentSize": 24,
+          "contentHash": {
+            "algorithm": "md5",
+            "value": "31JVWD9ZGkzxrJVLakc2lQ=="
+          }
+        },
+        "outputsLink": {
+          "uri": "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bc858d6f74a042e2b459c949f9f3ce94/runs/08584230903091779482042930125CU27/actions/Compose_ProjectName/contents/ActionOutputs?api-version=1&islandNumber=104&se=2026-05-11T20%3A00%3A00.0000000Z&sp=%2Fruns%2F08584230903091779482042930125CU27%2Factions%2FCompose_ProjectName%2Fcontents%2FActionOutputs%2Fread&sv=1.0&sig=8c7mRihUJtiB9UeEVgIehPGwyK-naP8ptBxEuhxkqsw",
+          "contentVersion": "31JVWD9ZGkzxrJVLakc2lQ==",
+          "contentSize": 24,
+          "contentHash": {
+            "algorithm": "md5",
+            "value": "31JVWD9ZGkzxrJVLakc2lQ=="
+          }
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Compose_StatusID",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Compose_StatusID",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.8381691Z",
+        "endTime": "2026-05-11T16:22:56.8384325Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Compose_StatusID' is skipped: the 'runAfter' condition for action 'Compose_Percentual' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "b42d87ff-83ae-48fe-bc31-7c29ab70574e",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Condition_Projeto_Encontrado",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Condition_Projeto_Encontrado",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:57.0095031Z",
+        "endTime": "2026-05-11T16:22:57.0195458Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Condition_Projeto_Encontrado' is skipped: the 'runAfter' condition for action 'Compose_StatusID' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "0bd95886-2250-48ff-ae18-a1a4d24c1b07",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Create_Status_Diario",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Create_Status_Diario",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.8713076Z",
+        "endTime": "2026-05-11T16:22:56.8717347Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionDependencyFailed",
+          "message": "The execution of template action 'Create_Status_Diario' is skipped: dependant action 'Condition_Projeto_Encontrado' completed with status 'Skipped' and code 'ActionSkipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "aa1de343-6eff-40bc-a944-fb69751c852c",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Get_Projeto",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Get_Projeto",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.5750686Z",
+        "endTime": "2026-05-11T16:22:56.7732414Z",
+        "status": "Failed",
+        "code": "ResponseSwaggerSchemaValidationFailure",
+        "error": {
+          "code": "ResponseSwaggerSchemaValidationFailure",
+          "message": "The API 'sharepointonline' returned an invalid response for workflow operation 'Get_Projeto' of type 'OpenApiConnection'. Error details: 'The API operation 'GetItems' is missing required property 'body/value/0/Title'.'",
+          "messageTemplate": "The API '{0}' returned an invalid response for workflow operation '{1}' of type '{2}'. Error details: '{3}'"
+        },
+        "correlation": {
+          "actionTrackingId": "3d9c0820-99e4-4997-b7a0-0da4cdee309d",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        },
+        "inputsLink": {
+          "uri": "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bc858d6f74a042e2b459c949f9f3ce94/runs/08584230903091779482042930125CU27/actions/Get_Projeto/contents/ActionInputs?api-version=1&islandNumber=104&se=2026-05-11T20%3A00%3A00.0000000Z&sp=%2Fruns%2F08584230903091779482042930125CU27%2Factions%2FGet_Projeto%2Fcontents%2FActionInputs%2Fread&sv=1.0&sig=B0UdgCT3oE3WHWhET5NDIw6kyonV5rBawzPLtMUti3Y",
+          "contentVersion": "FizlE9K4WL/sOLDZuvra/A==",
+          "contentSize": 444,
+          "contentHash": {
+            "algorithm": "md5",
+            "value": "FizlE9K4WL/sOLDZuvra/A=="
+          }
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Map_RAG",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Map_RAG",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.805862Z",
+        "endTime": "2026-05-11T16:22:56.8061915Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Map_RAG' is skipped: the 'runAfter' condition for action 'Get_Projeto' is not satisfied. Expected status values 'Succeeded' and actual value 'Failed'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "5b532cbb-7905-4127-af3e-44a500096ada",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Response_Error_Create",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Response_Error_Create",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.9030119Z",
+        "endTime": "2026-05-11T16:22:56.9033176Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Response_Error_Create' is skipped: the 'runAfter' condition for action 'Create_Status_Diario' is not satisfied. Expected status values 'Failed, TimedOut' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "c321a3bb-77b5-48a8-a855-7ef8ed4c1a81",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Response_Error_Update",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Response_Error_Update",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.9348674Z",
+        "endTime": "2026-05-11T16:22:56.9351309Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Response_Error_Update' is skipped: the 'runAfter' condition for action 'Update_Projeto' is not satisfied. Expected status values 'Failed, TimedOut' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "f8371e3f-2f75-4593-9bb1-52d674301991",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Response_OK",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Response_OK",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.934896Z",
+        "endTime": "2026-05-11T16:22:56.9352572Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Response_OK' is skipped: the 'runAfter' condition for action 'Update_Projeto' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "f4110ab6-5163-4047-aa23-b881313b32da",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Response_Project_Not_Found",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Response_Project_Not_Found",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.9887994Z",
+        "endTime": "2026-05-11T16:22:56.9891208Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionDependencyFailed",
+          "message": "The execution of template action 'Response_Project_Not_Found' is skipped: dependant action 'Condition_Projeto_Encontrado' completed with status 'Skipped' and code 'ActionSkipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "e34c5191-ed52-4ad2-83fa-b79c437e4ccf",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    },
+    {
+      "runName": "08584230903091779482042930125CU27",
+      "name": "Update_Projeto",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371/runs/08584230903091779482042930125CU27/actions/Update_Projeto",
+      "type": "Microsoft.ProcessSimple/environments/flows/runs/actions",
+      "properties": {
+        "startTime": "2026-05-11T16:22:56.9030106Z",
+        "endTime": "2026-05-11T16:22:56.903326Z",
+        "status": "Skipped",
+        "code": "ActionSkipped",
+        "error": {
+          "code": "ActionConditionFailed",
+          "message": "The execution of template action 'Update_Projeto' is skipped: the 'runAfter' condition for action 'Create_Status_Diario' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+          "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+        },
+        "correlation": {
+          "actionTrackingId": "e685fdd0-45ea-424b-ab53-16622fd927b6",
+          "clientTrackingId": "08584230903091779482042930125CU27",
+          "clientKeywords": [
+            "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+          ]
+        }
+      }
+    }
+  ]
+}

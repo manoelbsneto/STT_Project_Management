@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="Impacto" DisplayName="Impacto" ID="{3a708638-ab55-4528-92f9-11d19c55e10c}" Group="" Required="FALSE" SourceID="{7177464d-2a9a-415c-bb19-a98bc53d6fa6}" StaticName="Impacto" ColName="nvarchar10" RowOrdinal="0" Version="1"><CHOICES><CHOICE>Baixo</CHOICE><CHOICE>Medio</CHOICE><CHOICE>Alto</CHOICE><CHOICE>Critico</CHOICE></CHOICES></Field>

@@ -1,0 +1,62 @@
+﻿[
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "Title":  "Projetos",
+        "Id":  "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+        "ItemCount":  33,
+        "Hidden":  false,
+        "BaseTemplate":  100,
+        "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Projetos",
+        "FieldCount":  111,
+        "ViewCount":  6,
+        "OutputPath":  ".planning\\comms\\sharepoint_schema_xml_20260513\\Projetos"
+    },
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "Title":  "Tarefas",
+        "Id":  "36d78ca1-1f60-4dd3-a4d5-5c94b89969e9",
+        "ItemCount":  12,
+        "Hidden":  false,
+        "BaseTemplate":  100,
+        "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Tarefas",
+        "FieldCount":  97,
+        "ViewCount":  4,
+        "OutputPath":  ".planning\\comms\\sharepoint_schema_xml_20260513\\Tarefas"
+    },
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "Title":  "Status Diario",
+        "Id":  "96984b1e-d983-4a50-bd5a-2f921402acac",
+        "ItemCount":  4,
+        "Hidden":  false,
+        "BaseTemplate":  100,
+        "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Status Diario",
+        "FieldCount":  102,
+        "ViewCount":  2,
+        "OutputPath":  ".planning\\comms\\sharepoint_schema_xml_20260513\\Status_Diario"
+    },
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "Title":  "Riscos e Bloqueios",
+        "Id":  "7c8fde07-7ad4-4220-892a-2fafa33cea48",
+        "ItemCount":  7,
+        "Hidden":  false,
+        "BaseTemplate":  100,
+        "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Riscos e Bloqueios",
+        "FieldCount":  102,
+        "ViewCount":  2,
+        "OutputPath":  ".planning\\comms\\sharepoint_schema_xml_20260513\\Riscos_e_Bloqueios"
+    },
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "Title":  "Decisoes do Board",
+        "Id":  "7177464d-2a9a-415c-bb19-a98bc53d6fa6",
+        "ItemCount":  4,
+        "Hidden":  false,
+        "BaseTemplate":  100,
+        "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Decisoes do Board",
+        "FieldCount":  103,
+        "ViewCount":  2,
+        "OutputPath":  ".planning\\comms\\sharepoint_schema_xml_20260513\\Decisoes_do_Board"
+    }
+]

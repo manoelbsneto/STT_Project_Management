@@ -208,6 +208,9 @@ foreach ($flowResult in $flowResults) {
     foreach ($cr in $liveFlow.Internal.properties.connectionReferences.PSObject.Properties) {
         $crValue = $cr.Value
         $runtimeSource = if ($crValue.source) { [string]$crValue.source } else { "Embedded" }
+        if ($cr.Name -eq "shared_sharepointonline") {
+            $runtimeSource = "Embedded"
+        }
         $solutionConnectionReferences[$cr.Name] = [ordered]@{
             api = [ordered]@{
                 name = $crValue.apiName
@@ -285,7 +288,7 @@ action:
   connectionProperties:
     `$kind: ConnectionProperties
     diagnostics:
-    mode: Invoker
+    mode: Embedded
 
 outputMode: All
 "@ | Set-Content -LiteralPath (Join-Path $actionDir "data") -Encoding UTF8

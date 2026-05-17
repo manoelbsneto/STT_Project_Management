@@ -33,6 +33,19 @@ function Add-DateOnlyField {
     Add-PnPFieldFromXml -List $List -FieldXml $fieldXml
 }
 
+function Add-LogicalDeleteFields {
+    param(
+        [Parameter(Mandatory)]
+        [string]$List
+    )
+
+    Add-PnPFieldFromXml -List $List -FieldXml "<Field Type='Boolean' DisplayName='Deleted' Name='Deleted' StaticName='Deleted'><Default>0</Default></Field>"
+    Add-PnPField -List $List -DisplayName "DeletedAt" -InternalName "DeletedAt" -Type DateTime
+    Add-PnPField -List $List -DisplayName "DeletedReason" -InternalName "DeletedReason" -Type Note
+    Add-PnPField -List $List -DisplayName "DeletedByUPN" -InternalName "DeletedByUPN" -Type Text
+    Set-PnPField -List $List -Identity "Deleted" -Values @{Indexed=$true}
+}
+
 # --- Connection ---
 if (-not $SkipConnection) {
     Write-Host "Connecting to $SiteUrl..." -ForegroundColor Cyan
@@ -68,6 +81,7 @@ Add-PnPField -List "Projetos" -DisplayName "PlannerLastSyncAt"  -InternalName "P
 Add-PnPField -List "Projetos" -DisplayName "PlannerSyncStatus"  -InternalName "PlannerSyncStatus"  -Type Choice   -Choices "OK","Erro","Pendente"
 Add-PnPField -List "Projetos" -DisplayName "ResumoExecutivo"    -InternalName "ResumoExecutivo"    -Type Note
 Add-PnPField -List "Projetos" -DisplayName "DiasSemUpdate"      -InternalName "DiasSemUpdate"      -Type Number
+Add-LogicalDeleteFields -List "Projetos"
 
 # Indexes
 Write-Host "Creating indexes on Projetos..." -ForegroundColor Green
@@ -79,8 +93,8 @@ Set-PnPField -List "Projetos" -Identity "UltimaAtualizacao"  -Values @{Indexed=$
 Set-PnPField -List "Projetos" -Identity "Ativo"              -Values @{Indexed=$true}
 
 # Views
-Add-PnPView -List "Projetos" -Title "Board RAG"    -Fields "ProjectID","NomeProjeto","PM","StatusRAG","Percentual","DataAlvo","UltimaAtualizacao" -Query "<GroupBy Collapse='TRUE'><FieldRef Name='StatusRAG'/></GroupBy><Where><Eq><FieldRef Name='Ativo'/><Value Type='Boolean'>1</Value></Eq></Where>"
-Add-PnPView -List "Projetos" -Title "Gallery"      -Fields "ProjectID","NomeProjeto","PM","StatusRAG","Percentual" -Query "<Where><Eq><FieldRef Name='Ativo'/><Value Type='Boolean'>1</Value></Eq></Where>"
+Add-PnPView -List "Projetos" -Title "Board RAG"    -Fields "ProjectID","NomeProjeto","PM","StatusRAG","Percentual","DataAlvo","UltimaAtualizacao" -Query "<GroupBy Collapse='TRUE'><FieldRef Name='StatusRAG'/></GroupBy><Where><And><Eq><FieldRef Name='Ativo'/><Value Type='Boolean'>1</Value></Eq><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></And></Where>"
+Add-PnPView -List "Projetos" -Title "Gallery"      -Fields "ProjectID","NomeProjeto","PM","StatusRAG","Percentual" -Query "<Where><And><Eq><FieldRef Name='Ativo'/><Value Type='Boolean'>1</Value></Eq><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></And></Where>"
 Add-PnPView -List "Projetos" -Title "Todos"         -Fields "ProjectID","NomeProjeto","PM","Sponsor","StatusRAG","Percentual","DataAlvo","UltimaAtualizacao","Prioridade","Ativo"
 
 Write-Host "Projetos created." -ForegroundColor Green
@@ -101,13 +115,14 @@ Add-DateOnlyField -List "Tarefas" -DisplayName "DataFim" -InternalName "DataFim"
 Add-PnPField -List "Tarefas" -DisplayName "Prioridade"        -InternalName "Prioridade"        -Type Choice   -Choices "Baixa","Media","Alta","Critica"
 Add-PnPField -List "Tarefas" -DisplayName "HorasEstimadas"    -InternalName "HorasEstimadas"    -Type Number
 Add-PnPField -List "Tarefas" -DisplayName "Ativo"             -InternalName "Ativo"             -Type Boolean
+Add-LogicalDeleteFields -List "Tarefas"
 
 Set-PnPField -List "Tarefas" -Identity "ProjectID"  -Values @{Indexed=$true}
 Set-PnPField -List "Tarefas" -Identity "Status"     -Values @{Indexed=$true}
 Set-PnPField -List "Tarefas" -Identity "DataFim"    -Values @{Indexed=$true}
 Set-PnPField -List "Tarefas" -Identity "Prioridade" -Values @{Indexed=$true}
 
-Add-PnPView -List "Tarefas" -Title "Por Projeto" -Fields "Title","ProjectID","Status","Prioridade","Responsavel","DataInicio","DataFim","HorasEstimadas","HorasRealizadas" -Query "<OrderBy><FieldRef Name='DataFim' Ascending='TRUE'/></OrderBy>"
+Add-PnPView -List "Tarefas" -Title "Por Projeto" -Fields "Title","ProjectID","Status","Prioridade","Responsavel","DataInicio","DataFim","HorasEstimadas","HorasRealizadas" -Query "<Where><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></Where><OrderBy><FieldRef Name='DataFim' Ascending='TRUE'/></OrderBy>"
 
 Write-Host "Tarefas created." -ForegroundColor Green
 
@@ -130,13 +145,14 @@ Add-PnPField -List "Status Diario" -DisplayName "Percentual"     -InternalName "
 Add-PnPField -List "Status Diario" -DisplayName "OrigemEntrada"  -InternalName "OrigemEntrada"  -Type Choice   -Required -Choices "AdaptiveCard","CopilotStudio","FormsFallback","ManualPMO","ImportacaoInicial"
 Add-PnPField -List "Status Diario" -DisplayName "ResumoTarefas"  -InternalName "ResumoTarefas"  -Type Note
 Add-PnPField -List "Status Diario" -DisplayName "CardVersion"    -InternalName "CardVersion"    -Type Text
+Add-LogicalDeleteFields -List "Status Diario"
 
 Set-PnPField -List "Status Diario" -Identity "StatusID"      -Values @{Indexed=$true}
 Set-PnPField -List "Status Diario" -Identity "ProjectID"     -Values @{Indexed=$true}
 Set-PnPField -List "Status Diario" -Identity "DataRegistro"  -Values @{Indexed=$true}
 Set-PnPField -List "Status Diario" -Identity "PM"            -Values @{Indexed=$true}
 
-Add-PnPView -List "Status Diario" -Title "Por Projeto" -Fields "StatusID","ProjectID","DataRegistro","PM","RAG","Resumo","Percentual" -Query "<OrderBy><FieldRef Name='DataRegistro' Ascending='FALSE'/></OrderBy>"
+Add-PnPView -List "Status Diario" -Title "Por Projeto" -Fields "StatusID","ProjectID","DataRegistro","PM","RAG","Resumo","Percentual" -Query "<Where><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></Where><OrderBy><FieldRef Name='DataRegistro' Ascending='FALSE'/></OrderBy>"
 
 Write-Host "Status Diario created." -ForegroundColor Green
 
@@ -159,13 +175,14 @@ Add-DateOnlyField -List "Riscos e Bloqueios" -DisplayName "SLA" -InternalName "S
 Add-PnPField -List "Riscos e Bloqueios" -DisplayName "Status"           -InternalName "StatusRisco"      -Type Choice   -Required -Choices "Aberto","Em Mitigacao","Escalado","Resolvido","Aceito"
 Add-PnPField -List "Riscos e Bloqueios" -DisplayName "PlanoMitigacao"   -InternalName "PlanoMitigacao"   -Type Note
 Add-PnPField -List "Riscos e Bloqueios" -DisplayName "EscaladoPara"     -InternalName "EscaladoPara"     -Type User
+Add-LogicalDeleteFields -List "Riscos e Bloqueios"
 
 Set-PnPField -List "Riscos e Bloqueios" -Identity "RiskID"       -Values @{Indexed=$true}
 Set-PnPField -List "Riscos e Bloqueios" -Identity "ProjectID"    -Values @{Indexed=$true}
 Set-PnPField -List "Riscos e Bloqueios" -Identity "Severidade"   -Values @{Indexed=$true}
 Set-PnPField -List "Riscos e Bloqueios" -Identity "StatusRisco"  -Values @{Indexed=$true}
 
-Add-PnPView -List "Riscos e Bloqueios" -Title "Abertos" -Fields "RiskID","ProjectID","Tipo","Severidade","Descricao","Owner","DataCriacao","StatusRisco" -Query "<Where><Eq><FieldRef Name='StatusRisco'/><Value Type='Choice'>Aberto</Value></Eq></Where><OrderBy><FieldRef Name='Severidade' Ascending='FALSE'/></OrderBy>"
+Add-PnPView -List "Riscos e Bloqueios" -Title "Abertos" -Fields "RiskID","ProjectID","Tipo","Severidade","Descricao","Owner","DataCriacao","StatusRisco" -Query "<Where><And><Eq><FieldRef Name='StatusRisco'/><Value Type='Choice'>Aberto</Value></Eq><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></And></Where><OrderBy><FieldRef Name='Severidade' Ascending='FALSE'/></OrderBy>"
 
 Write-Host "Riscos e Bloqueios created." -ForegroundColor Green
 
@@ -189,12 +206,13 @@ Add-PnPField -List "Decisoes do Board" -DisplayName "Justificativa"   -InternalN
 Add-PnPField -List "Decisoes do Board" -DisplayName "ApproverUPN"     -InternalName "ApproverUPN"     -Type Text
 Add-PnPField -List "Decisoes do Board" -DisplayName "CardVersion"     -InternalName "CardVersion"     -Type Text
 Add-PnPField -List "Decisoes do Board" -DisplayName "ResponseSource"  -InternalName "ResponseSource"  -Type Choice   -Choices "AdaptiveCard","CopilotStudio","Manual"
+Add-LogicalDeleteFields -List "Decisoes do Board"
 
 Set-PnPField -List "Decisoes do Board" -Identity "DecisionID"     -Values @{Indexed=$true}
 Set-PnPField -List "Decisoes do Board" -Identity "ProjectID"      -Values @{Indexed=$true}
 Set-PnPField -List "Decisoes do Board" -Identity "StatusDecisao"  -Values @{Indexed=$true}
 
-Add-PnPView -List "Decisoes do Board" -Title "Pendentes" -Fields "DecisionID","ProjectID","Descricao","Solicitante","Aprovador","Prazo","StatusDecisao","Impacto" -Query "<Where><Eq><FieldRef Name='StatusDecisao'/><Value Type='Choice'>Pendente</Value></Eq></Where>"
+Add-PnPView -List "Decisoes do Board" -Title "Pendentes" -Fields "DecisionID","ProjectID","Descricao","Solicitante","Aprovador","Prazo","StatusDecisao","Impacto" -Query "<Where><And><Eq><FieldRef Name='StatusDecisao'/><Value Type='Choice'>Pendente</Value></Eq><Eq><FieldRef Name='Deleted'/><Value Type='Boolean'>0</Value></Eq></And></Where>"
 
 Write-Host "Decisoes do Board created." -ForegroundColor Green
 
@@ -204,11 +222,11 @@ Write-Host "Decisoes do Board created." -ForegroundColor Green
 Write-Host "Inserting pilot data..." -ForegroundColor Yellow
 
 $pilotProjects = @(
-    @{ProjectID="PRJ-001"; NomeProjeto="Mobile App Corporativo"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=65; Prioridade="Alta"; Ativo=$true},
-    @{ProjectID="PRJ-002"; NomeProjeto="Migracao Cloud Azure"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=40; Prioridade="Alta"; Ativo=$true},
-    @{ProjectID="PRJ-003"; NomeProjeto="Portal do Colaborador"; PM=$DefaultPM; StatusRAG="Vermelho"; Percentual=25; Prioridade="Media"; Ativo=$true},
-    @{ProjectID="PRJ-004"; NomeProjeto="Data Lake Analytics"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=80; Prioridade="Media"; Ativo=$true},
-    @{ProjectID="PRJ-005"; NomeProjeto="Automacao RPA Financeiro"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=55; Prioridade="Alta"; Ativo=$true}
+    @{ProjectID="PRJ-001"; NomeProjeto="Mobile App Corporativo"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=65; Prioridade="Alta"; Ativo=$true; Deleted=$false},
+    @{ProjectID="PRJ-002"; NomeProjeto="Migracao Cloud Azure"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=40; Prioridade="Alta"; Ativo=$true; Deleted=$false},
+    @{ProjectID="PRJ-003"; NomeProjeto="Portal do Colaborador"; PM=$DefaultPM; StatusRAG="Vermelho"; Percentual=25; Prioridade="Media"; Ativo=$true; Deleted=$false},
+    @{ProjectID="PRJ-004"; NomeProjeto="Data Lake Analytics"; PM=$DefaultPM; StatusRAG="Verde"; Percentual=80; Prioridade="Media"; Ativo=$true; Deleted=$false},
+    @{ProjectID="PRJ-005"; NomeProjeto="Automacao RPA Financeiro"; PM=$DefaultPM; StatusRAG="Amarelo"; Percentual=55; Prioridade="Alta"; Ativo=$true; Deleted=$false}
 )
 
 foreach ($proj in $pilotProjects) {

@@ -1,0 +1,1 @@
+﻿<Field ID="{de8beacf-5505-47cd-80a6-aa44e7ffe2f4}" ColName="tp_WorkflowInstanceID" RowOrdinal="0" ReadOnly="TRUE" Hidden="TRUE" Type="Guid" Name="WorkflowInstanceID" DisplaceOnUpgrade="TRUE" DisplayName="Id. de instancia de flujo de trabajo" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="WorkflowInstanceID" FromBaseType="TRUE" />

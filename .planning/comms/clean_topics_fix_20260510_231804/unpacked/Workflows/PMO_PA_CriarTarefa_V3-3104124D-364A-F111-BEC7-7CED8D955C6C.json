@@ -1,0 +1,292 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "gstf_sharepoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "b8f61c18-7224-4f8a-9c5f-72fbce5df764"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "nomeProjeto",
+                  "title": "Texto",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "titulo",
+                  "title": "Texto 1",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "description": "responsavel",
+                  "title": "Texto 2",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_3": {
+                  "description": "prazo",
+                  "title": "Texto 3",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "number": {
+                  "description": "horas",
+                  "title": "Número",
+                  "type": "number",
+                  "x-ms-content-hint": "NUMBER",
+                  "x-ms-dynamically-added": true
+                },
+                "text_4": {
+                  "description": "prioridade",
+                  "title": "Texto 4",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3",
+                "number",
+                "text_4"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose_NomeProjeto": {
+          "runAfter": {
+            "Inicializar_variável": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3041ca54-483b-471b-9755-3e7118814243"
+          },
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['text'], triggerBody()?['text_1'], 'Sem nome'))"
+        },
+        "Compose_DataAlvo": {
+          "runAfter": {
+            "Compose_NomeProjeto": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ea1511f0-ce6b-4bd9-9567-8b6de15cd4bd"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()?['text_3']\r\n"
+        },
+        "Map_Prioridade": {
+          "runAfter": {
+            "Compose_DataAlvo": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "596a088a-f478-4c40-ac00-bbe33fbe7b52"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()?['text_4']"
+        },
+        "Compose_ProjectID": {
+          "runAfter": {
+            "Map_Prioridade": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "92f3d1fb-ee0e-4946-bd0a-0fb77c81f991"
+          },
+          "type": "Compose",
+          "inputs": "@concat('PRJ-', toUpper(substring(guid(), 0, 8)))"
+        },
+        "Get_Duplicate_Projects": {
+          "runAfter": {
+            "Compose_ProjectID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c2ee3269-008c-4b00-9d37-8b3ca081adf5"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+              "$filter": "NomeProjeto eq '@{outputs('Compose_NomeProjeto')}' and Deleted ne 1",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Filtro ajustado para: NomeProjeto eq '@{outputs('Compose_NomeProjeto')}' and Deleted ne 1. Removido uso de concat para compatibilidade com OData do SharePoint."
+        },
+        "Check_Project_Exists": {
+          "actions": {
+            "Create_Project": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "624f5467-198c-42ae-a674-d4d43a283321"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+                  "item/Title": "@outputs('Compose_NomeProjeto')",
+                  "item/ProjectID": "@outputs('Compose_ProjectID')",
+                  "item/NomeProjeto": "@outputs('Compose_NomeProjeto')",
+                  "item/DataAlvo": "@outputs('Compose_DataAlvo')",
+                  "item/Ativo": true,
+                  "item/Prioridade/Value": "@outputs('Map_Prioridade')",
+                  "item/Deleted": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Definir_variável": {
+              "runAfter": {
+                "Create_Project": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5622545a-abde-4d4c-9e3f-972533f5734f"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "responseMessage",
+                "value": "Projeto criado com sucesso!"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Duplicate_Projects": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Definir_variável_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "3be08b3f-fc5f-44fc-9e65-155b8d9412d1"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "responseMessage",
+                  "value": "Ja existe um projeto com o nome especificado. Nenhum registro duplicado foi criado."
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@empty(outputs('Get_Duplicate_Projects')?['body/value'])",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fb212019-2413-43c5-9170-fbbf74ff8b52"
+          },
+          "type": "If"
+        },
+        "Inicializar_variável": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d2833a09-12e9-4d87-99ef-7451429f60ef"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "responseMessage",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Valores_retornados_para_o_Power_Virtual_Agents": {
+          "runAfter": {
+            "Check_Project_Exists": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36fe9d96-7935-4008-96a2-9a6096b8c6ee"
+          },
+          "type": "Response",
+          "kind": "VirtualAgent",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "message": "@variables('responseMessage')"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "title": "message",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

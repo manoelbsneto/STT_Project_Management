@@ -1,0 +1,10 @@
+<bot schemaname="pmo_AssistentePMO_Clean">
+  <authenticationmode>2</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>0</iscustomizable>
+  <language>1046</language>
+  <name>Assistente PMO Clean</name>
+  <runtimeprovider>0</runtimeprovider>
+  <template>kickStartTemplate-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

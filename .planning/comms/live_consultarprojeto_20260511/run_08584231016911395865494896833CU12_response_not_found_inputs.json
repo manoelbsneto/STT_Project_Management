@@ -1,0 +1,19 @@
+{
+  "statusCode": "200",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "title": "message",
+        "x-ms-dynamically-added": true,
+        "type": "string"
+      }
+    }
+  },
+  "body": {
+    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+  }
+}

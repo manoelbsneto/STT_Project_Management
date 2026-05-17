@@ -1,0 +1,1 @@
+﻿<Field ID="{ae069f25-3ac2-4256-b9c3-15dbc15da0e0}" ColName="tp_GUID" RowOrdinal="0" ReadOnly="TRUE" Hidden="TRUE" Type="Guid" Name="GUID" DisplayName="GUID" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="GUID" FromBaseType="TRUE" />

@@ -29,9 +29,7 @@ beginDialog:
       - registrar projeto
       - "criar tarefa:"
       - criar tarefa titulo
-      - criar tarefa título
       - criar tarefa responsavel
-      - criar tarefa responsável
       - criar tarefa prazo
       - criar tarefa horas
       - criar tarefa prioridade

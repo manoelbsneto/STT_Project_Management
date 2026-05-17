@@ -1,0 +1,13 @@
+{
+  "$kind": "BotConfiguration",
+  "settings": {
+    "GenerativeActionsEnabled": true
+  },
+  "gPTSettings": {
+    "$kind": "GPTSettings",
+    "defaultSchemaName": "pmo_AssistentePMO_V2.gpt.default"
+  },
+  "recognizer": {
+    "$kind": "GenerativeAIRecognizer"
+  }
+}

@@ -1,0 +1,76 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: SetVariable
+      id: set_fallback_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: normalize_fallback_input
+      variable: Topic.NormalizedInput
+      value: =Lower(Trim(Topic.RawInput))
+
+    - kind: ConditionGroup
+      id: smart_redirect_router
+      conditions:
+        - id: fallback_retry_limit
+          condition: =System.FallbackCount > 2
+          actions:
+            - kind: SendActivity
+              id: fallback_retry_message
+              activity: "Nao consegui concluir o redirecionamento automatico. Reformule o comando usando uma das opcoes: criar tarefa, atualizar status, consultar portfolio, registrar risco ou solicitar decisao."
+
+            - kind: EndDialog
+              id: end_retry_limit
+              clearTopicQueue: true
+
+        - id: detect_criar_tarefa
+          condition: =Or(IsMatch(Topic.NormalizedInput, "criar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "criar\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "nova\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "novo\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "adicionar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "cadastrar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+projeto", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_criar_tarefa
+              dialog: pmo_AssistentePMO_V2.topic.CriarTarefa
+
+        - id: detect_atualizar_status
+          condition: =Or(IsMatch(Topic.NormalizedInput, "atualizar\s+status", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "atualizar\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "status\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "status\s+de\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+status", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "update\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "check\s+in", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_atualizar_status
+              dialog: pmo_AssistentePMO_V2.topic.AtualizarStatus
+
+        - id: detect_consultar_portfolio
+          condition: =Or(IsMatch(Topic.NormalizedInput, "consultar\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "portfolio\s+pmo", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "resumo\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "resumo\s+do\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "dashboard", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "como\s+esta\s+o\s+portfolio", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_consultar_portfolio
+              dialog: pmo_AssistentePMO_V2.topic.ConsultarPortfolio
+
+        - id: detect_registrar_risco
+          condition: =Or(IsMatch(Topic.NormalizedInput, "registrar\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "novo\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+no\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+em\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "cadastrar\s+risco", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_registrar_risco
+              dialog: pmo_AssistentePMO_V2.topic.RegistrarRisco
+
+        - id: detect_solicitar_decisao
+          condition: =Or(IsMatch(Topic.NormalizedInput, "solicitar\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "solicitar\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "pedir\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "pedir\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "preciso\s+de\s+uma\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "decisao\s+para\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "aprovar\s+decisao", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_solicitar_decisao
+              dialog: pmo_AssistentePMO_V2.topic.PedirDecisao
+
+      elseActions:
+        - kind: SendActivity
+          id: fallback_default_message
+          activity: "Nao entendi bem. Voce pode reformular? Posso ajudar com: criar tarefa, atualizar status, consultar portfolio, registrar risco ou solicitar decisao."
+
+        - kind: EndDialog
+          id: end_default_fallback
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+

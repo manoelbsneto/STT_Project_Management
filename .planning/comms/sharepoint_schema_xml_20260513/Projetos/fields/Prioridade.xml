@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="Prioridade" DisplayName="Prioridade" ID="{ae6e7b1a-807e-4100-b00e-87393298d7e5}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="Prioridade" ColName="nvarchar11" RowOrdinal="0" Version="1"><CHOICES><CHOICE>Alta</CHOICE><CHOICE>Media</CHOICE><CHOICE>Baixa</CHOICE></CHOICES></Field>

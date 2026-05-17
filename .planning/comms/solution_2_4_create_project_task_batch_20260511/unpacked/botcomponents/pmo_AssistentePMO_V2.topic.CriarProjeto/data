@@ -1,0 +1,72 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: Question
+      id: ask_nome_projeto
+      variable: Topic.NomeProjeto
+      prompt: Qual o nome do projeto?
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_pm
+      variable: Topic.PM
+      prompt: Qual o email do PM?
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_prazo
+      variable: Topic.Prazo
+      prompt: Qual o prazo do projeto? Use dd/mm/aaaa.
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_prioridade
+      variable: Topic.Prioridade
+      prompt: Qual a prioridade? Baixa, Media, Alta ou Critica.
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: confirm_criar_projeto
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar o projeto {Topic.NomeProjeto}. Confirma?
+      entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo")
+          actions:
+            - kind: InvokeFlowAction
+              id: invoke_criar_projeto
+              input:
+                binding:
+                  number: =0
+                  text: =Topic.NomeProjeto
+                  text_1: =Topic.NomeProjeto
+                  text_2: =Topic.PM
+                  text_3: =Topic.Prazo
+                  text_4: =Topic.Prioridade
+              output:
+                binding:
+                  message: Topic.Result
+              flowId: 3104124d-364a-f111-bec7-7ced8d955c6c
+            - kind: SendActivity
+              id: done
+              activity: "{Topic.Result}"
+      elseActions:
+        - kind: SendActivity
+          id: cancelled
+          activity: Criacao cancelada.
+inputType: {}
+outputType: {}

@@ -1,0 +1,287 @@
+{
+  "name": "3890bac6-0bd0-4101-858b-eeaec6abd4f8",
+  "type": "Microsoft.ProcessSimple/environments/flows",
+  "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/3890bac6-0bd0-4101-858b-eeaec6abd4f8",
+  "properties": {
+    "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+    "displayName": "PMO_PA_AtualizarStatus",
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "risco": {
+                  "type": "string",
+                  "description": "Risco informado"
+                },
+                "percentual": {
+                  "type": "number",
+                  "description": "Percentual concluido"
+                },
+                "proximaAcao": {
+                  "type": "string",
+                  "description": "Proxima acao"
+                },
+                "nomeProjeto": {
+                  "type": "string",
+                  "description": "Nome do projeto"
+                },
+                "resumo": {
+                  "type": "string",
+                  "description": "Resumo do status"
+                },
+                "rag": {
+                  "type": "string",
+                  "description": "Status RAG"
+                },
+                "bloqueio": {
+                  "type": "string",
+                  "description": "Bloqueio informado"
+                }
+              },
+              "required": [
+                "nomeProjeto",
+                "rag",
+                "resumo"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Condition_Projeto_Encontrado": {
+          "type": "If",
+          "expression": {
+            "greater": [
+              "@length(body('Get_Projeto')?['value'])",
+              0
+            ]
+          },
+          "actions": {
+            "Create_Status_Diario": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "item/RAG/Value": "@outputs('Map_RAG')",
+                  "item/Bloqueio": "@coalesce(triggerBody()?['bloqueio'], '')",
+                  "table": "Status Diario",
+                  "item/Deleted": false,
+                  "item/Resumo": "@triggerBody()?['resumo']",
+                  "item/Risco": "@coalesce(triggerBody()?['risco'], '')",
+                  "item/ProximaAcao": "@coalesce(triggerBody()?['proximaAcao'], '')",
+                  "item/OrigemEntrada/Value": "CopilotStudio",
+                  "item/DataRegistro": "@utcNow()",
+                  "item/Title": "@outputs('Compose_StatusID')",
+                  "item/Percentual": "@outputs('Compose_Percentual')",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/StatusID": "@outputs('Compose_StatusID')",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "PostItem",
+                  "connectionName": "shared_sharepointonline"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {}
+            },
+            "Update_Projeto": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "item/NomeProjeto": "@body('Get_Projeto')?['value']?[0]?['NomeProjeto']",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/UltimaAtualizacao": "@utcNow()",
+                  "table": "Projetos",
+                  "item/Title": "@body('Get_Projeto')?['value']?[0]?['Title']",
+                  "item/StatusRAG/Value": "@outputs('Map_RAG')",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']",
+                  "id": "@body('Get_Projeto')?['value']?[0]?['ID']",
+                  "item/Percentual": "@outputs('Compose_Percentual')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "PatchItem",
+                  "connectionName": "shared_sharepointonline"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runAfter": {
+                "Create_Status_Diario": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Response_OK": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat('Status ', outputs('Compose_StatusID'), ' registrado para projeto ', outputs('Compose_ProjectName'), '. RAG: ', outputs('Map_RAG'), '. Percentual: ', string(outputs('Compose_Percentual')), '%.')}"
+                }
+              },
+              "runAfter": {
+                "Update_Projeto": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Response_Error_Create": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao registrar status no SharePoint. Codigo: SP_STATUS_WRITE_FAILED."
+                }
+              },
+              "runAfter": {
+                "Create_Status_Diario": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              }
+            },
+            "Response_Error_Update": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao atualizar projeto no SharePoint. Codigo: SP_PROJECT_UPDATE_FAILED."
+                }
+              },
+              "runAfter": {
+                "Update_Projeto": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  }
+                },
+                "runAfter": {}
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_StatusID": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Map_RAG": {
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['rag'], 'Verde')), 'verm'), 'Vermelho', if(startsWith(toLower(coalesce(triggerBody()?['rag'], 'Verde')), 'a'), 'Amarelo', 'Verde'))",
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Compose_StatusID": {
+          "type": "Compose",
+          "inputs": "@concat('STU-', formatDateTime(utcNow(), 'yyyyMMddHHmmss'))",
+          "runAfter": {
+            "Compose_Percentual": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Compose_Percentual": {
+          "type": "Compose",
+          "inputs": "@if(empty(string(triggerBody()?['percentual'])), 0, int(triggerBody()?['percentual']))",
+          "runAfter": {
+            "Map_RAG": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Get_Projeto": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "$top": 1,
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectName'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetItems",
+              "connectionName": "shared_sharepointonline"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Compose_ProjectName": {
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))",
+          "runAfter": {}
+        }
+      },
+      "outputs": {}
+    },
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+        "connectionReferenceLogicalName": "pmo_sharepoint",
+        "source": "Invoker",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+        "displayName": "SharePoint",
+        "tier": "Standard",
+        "apiName": "sharepointonline",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      }
+    },
+    "flowOpenAiData": {
+      "isConsequential": false,
+      "isConsequentialFlagOverwritten": false
+    }
+  }
+}

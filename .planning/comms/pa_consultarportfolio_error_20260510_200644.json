@@ -1,0 +1,6 @@
+{
+  "timestamp": "2026-05-10T20:08:50.5982237-03:00",
+  "status": "FAILED",
+  "displayName": "PMO_PA_ConsultarPortfolio",
+  "error": "The property 'workflowEntityId' cannot be found on this object. Verify that the property exists."
+}

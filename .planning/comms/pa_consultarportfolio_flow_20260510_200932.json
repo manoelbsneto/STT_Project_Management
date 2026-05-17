@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-10T20:10:48.3853207-03:00",
+  "status": "PATCHED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_ConsultarPortfolio",
+  "flowName": "15dd011a-fc10-4e8a-aaa2-d95d21c399d1",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "requestPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_consultarportfolio_request_15dd011a-fc10-4e8a-aaa2-d95d21c399d1.json",
+  "resultPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_consultarportfolio_result_15dd011a-fc10-4e8a-aaa2-d95d21c399d1.json",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills"
+}

@@ -1,0 +1,292 @@
+﻿{
+    "properties":  {
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "runtimeSource":  "embedded",
+                                                                                    "connection":  {
+                                                                                                       "connectionReferenceLogicalName":  "pmo_sharedsharepointonline_6e373"
+                                                                                                   },
+                                                                                    "api":  {
+                                                                                                "name":  "shared_sharepointonline"
+                                                                                            }
+                                                                                }
+                                                },
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              },
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "text":  {
+                                                                                                                                        "description":  "rawBatchText",
+                                                                                                                                        "title":  "Texto",
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "x-ms-content-hint":  "TEXT",
+                                                                                                                                        "x-ms-dynamically-added":  true
+                                                                                                                                    },
+                                                                                                                           "text_1":  {
+                                                                                                                                          "description":  "confirmacao",
+                                                                                                                                          "title":  "Texto 1",
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "x-ms-content-hint":  "TEXT",
+                                                                                                                                          "x-ms-dynamically-added":  true
+                                                                                                                                      }
+                                                                                                                       },
+                                                                                                        "required":  [
+                                                                                                                         "text",
+                                                                                                                         "text_1"
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Valores_retornados_para_o_Power_Virtual_Agents":  {
+                                                                                                                 "type":  "Response",
+                                                                                                                 "kind":  "VirtualAgent",
+                                                                                                                 "inputs":  {
+                                                                                                                                "statusCode":  200,
+                                                                                                                                "body":  {
+                                                                                                                                             "message":  "@variables(\u0027responseMessage\u0027)"
+                                                                                                                                         },
+                                                                                                                                "schema":  {
+                                                                                                                                               "type":  "object",
+                                                                                                                                               "properties":  {
+                                                                                                                                                                  "message":  {
+                                                                                                                                                                                  "title":  "message",
+                                                                                                                                                                                  "type":  "string",
+                                                                                                                                                                                  "x-ms-content-hint":  "TEXT"
+                                                                                                                                                                              }
+                                                                                                                                                              }
+                                                                                                                                           }
+                                                                                                                            },
+                                                                                                                 "runAfter":  {
+                                                                                                                                  "Condition_Confirmed":  [
+                                                                                                                                                              "Succeeded"
+                                                                                                                                                          ]
+                                                                                                                              }
+                                                                                                             },
+                                                          "Initialize_ResponseMessage":  {
+                                                                                             "type":  "InitializeVariable",
+                                                                                             "runAfter":  {
+
+                                                                                                          },
+                                                                                             "inputs":  {
+                                                                                                            "variables":  [
+                                                                                                                              {
+                                                                                                                                  "name":  "responseMessage",
+                                                                                                                                  "type":  "string"
+                                                                                                                              }
+                                                                                                                          ]
+                                                                                                        }
+                                                                                         },
+                                                          "Compose_AdaptiveCardPreview":  {
+                                                                                              "type":  "Compose",
+                                                                                              "runAfter":  {
+                                                                                                               "Initialize_RowResults":  [
+                                                                                                                                             "Succeeded"
+                                                                                                                                         ]
+                                                                                                           },
+                                                                                              "inputs":  "{\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"TextBlock\",\"text\":\"Revisao de projetos em lote\",\"weight\":\"Bolder\"},{\"type\":\"TextBlock\",\"text\":\"Revise ate 10 projetos e 10 tarefas antes de confirmar.\",\"wrap\":true}],\"actions\":[{\"type\":\"Action.Submit\",\"title\":\"Confirmar criacao\",\"data\":{\"action\":\"confirmCreateBatch\",\"cardVersion\":\"2.4\",\"maxBatchProjects\":10,\"maxBatchTasks\":10}}]}"
+                                                                                          },
+                                                          "Condition_Confirmed":  {
+                                                                                      "type":  "If",
+                                                                                      "runAfter":  {
+                                                                                                       "Compose_ProjectLines":  [
+                                                                                                                                    "Succeeded"
+                                                                                                                                ]
+                                                                                                   },
+                                                                                      "expression":  {
+                                                                                                         "or":  [
+                                                                                                                    {
+                                                                                                                        "equals":  [
+                                                                                                                                       "@toLower(trim(coalesce(triggerBody()?[\u0027text_1\u0027], \u0027\u0027)))",
+                                                                                                                                       "sim"
+                                                                                                                                   ]
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "equals":  [
+                                                                                                                                       "@toLower(trim(coalesce(triggerBody()?[\u0027text_1\u0027], \u0027\u0027)))",
+                                                                                                                                       "confirmo"
+                                                                                                                                   ]
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "equals":  [
+                                                                                                                                       "@toLower(trim(coalesce(triggerBody()?[\u0027text_1\u0027], \u0027\u0027)))",
+                                                                                                                                       "yes"
+                                                                                                                                   ]
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                     },
+                                                                                      "actions":  {
+                                                                                                      "Apply_to_each_Project_Line":  {
+                                                                                                                                         "type":  "Foreach",
+                                                                                                                                         "foreach":  "@outputs(\u0027Compose_ProjectLines\u0027)",
+                                                                                                                                         "actions":  {
+                                                                                                                                                         "Compose_ProjectID":  {
+                                                                                                                                                                                   "type":  "Compose",
+                                                                                                                                                                                   "inputs":  "@concat(\u0027PRJ-\u0027, toUpper(substring(guid(), 0, 8)))"
+                                                                                                                                                                               },
+                                                                                                                                                         "Create_Projeto_Batch_SharePoint":  {
+                                                                                                                                                                                                 "type":  "OpenApiConnection",
+                                                                                                                                                                                                 "inputs":  {
+                                                                                                                                                                                                                "host":  {
+                                                                                                                                                                                                                             "connectionName":  "shared_sharepointonline",
+                                                                                                                                                                                                                             "operationId":  "PostItem",
+                                                                                                                                                                                                                             "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                                                                                                                                                                                                                         },
+                                                                                                                                                                                                                "parameters":  {
+                                                                                                                                                                                                                                   "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                                                                                   "table":  "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+                                                                                                                                                                                                                                   "item/Title":  "@trim(last(split(items(\u0027Apply_to_each_Project_Line\u0027), \u0027:\u0027)))",
+                                                                                                                                                                                                                                   "item/PM/Claims":  "i:0#.f|membership|mbenicios@minsait.com",
+                                                                                                                                                                                                                                   "item/Percentual":  0,
+                                                                                                                                                                                                                                   "item/Deleted":  false,
+                                                                                                                                                                                                                                   "item/NomeProjeto":  "@trim(last(split(items(\u0027Apply_to_each_Project_Line\u0027), \u0027:\u0027)))",
+                                                                                                                                                                                                                                   "item/ProjectID":  "@outputs(\u0027Compose_ProjectID\u0027)",
+                                                                                                                                                                                                                                   "item/Prioridade/Value":  "Alta",
+                                                                                                                                                                                                                                   "item/StatusRAG/Value":  "Verde",
+                                                                                                                                                                                                                                   "item/Ativo":  true
+                                                                                                                                                                                                                               },
+                                                                                                                                                                                                                "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                 "runAfter":  {
+                                                                                                                                                                                                                  "Compose_ProjectID":  [
+                                                                                                                                                                                                                                            "Succeeded"
+                                                                                                                                                                                                                                        ]
+                                                                                                                                                                                                              }
+                                                                                                                                                                                             },
+                                                                                                                                                         "Create_Tarefa_Batch_SharePoint":  {
+                                                                                                                                                                                                "type":  "OpenApiConnection",
+                                                                                                                                                                                                "inputs":  {
+                                                                                                                                                                                                               "host":  {
+                                                                                                                                                                                                                            "connectionName":  "shared_sharepointonline",
+                                                                                                                                                                                                                            "operationId":  "PostItem",
+                                                                                                                                                                                                                            "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                               "parameters":  {
+                                                                                                                                                                                                                                  "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                                                                                                                                                                  "table":  "36d78ca1-1f60-4dd3-a4d5-5c94b89969e9",
+                                                                                                                                                                                                                                  "item/ProjectID":  "@outputs(\u0027Compose_ProjectID\u0027)",
+                                                                                                                                                                                                                                  "item/Deleted":  false,
+                                                                                                                                                                                                                                  "item/Responsavel":  "mbenicios@minsait.com",
+                                                                                                                                                                                                                                  "item/Title":  "Tarefa inicial",
+                                                                                                                                                                                                                                  "item/Status/Value":  "Aberta",
+                                                                                                                                                                                                                                  "item/Prioridade/Value":  "Alta"
+                                                                                                                                                                                                                              },
+                                                                                                                                                                                                               "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                                                                                           },
+                                                                                                                                                                                                "runAfter":  {
+                                                                                                                                                                                                                 "Create_Projeto_Batch_SharePoint":  [
+                                                                                                                                                                                                                                                         "Succeeded"
+                                                                                                                                                                                                                                                     ]
+                                                                                                                                                                                                             }
+                                                                                                                                                                                            },
+                                                                                                                                                         "Append_Row_Result":  {
+                                                                                                                                                                                   "type":  "AppendToArrayVariable",
+                                                                                                                                                                                   "inputs":  {
+                                                                                                                                                                                                  "name":  "rowResults",
+                                                                                                                                                                                                  "value":  {
+                                                                                                                                                                                                                "partialSuccess":  true,
+                                                                                                                                                                                                                "ProjectID":  "@outputs(\u0027Compose_ProjectID\u0027)",
+                                                                                                                                                                                                                "TaskID":  "@body(\u0027Create_Tarefa_Batch_SharePoint\u0027)?[\u0027ID\u0027]"
+                                                                                                                                                                                                            }
+                                                                                                                                                                                              },
+                                                                                                                                                                                   "runAfter":  {
+                                                                                                                                                                                                    "Create_Tarefa_Batch_SharePoint":  [
+                                                                                                                                                                                                                                           "Succeeded"
+                                                                                                                                                                                                                                       ]
+                                                                                                                                                                                                }
+                                                                                                                                                                               }
+                                                                                                                                                     }
+                                                                                                                                     },
+                                                                                                      "Set_Response_BatchSuccess":  {
+                                                                                                                                        "type":  "SetVariable",
+                                                                                                                                        "inputs":  {
+                                                                                                                                                       "name":  "responseMessage",
+                                                                                                                                                       "value":  "@concat(\u0027Gerar_Multiplos_Projetos concluido. partialSuccess=true. Resultados: \u0027, string(variables(\u0027rowResults\u0027)))"
+                                                                                                                                                   },
+                                                                                                                                        "runAfter":  {
+                                                                                                                                                         "Apply_to_each_Project_Line":  [
+                                                                                                                                                                                            "Succeeded"
+                                                                                                                                                                                        ]
+                                                                                                                                                     }
+                                                                                                                                    }
+                                                                                                  },
+                                                                                      "else":  {
+                                                                                                   "actions":  {
+                                                                                                                   "Set_Response_ValidationOnly":  {
+                                                                                                                                                       "type":  "SetVariable",
+                                                                                                                                                       "inputs":  {
+                                                                                                                                                                      "name":  "responseMessage",
+                                                                                                                                                                      "value":  "VALIDATION_ONLY_NO_WRITE. AdaptiveCard preview generated. Confirme para gravar. multiline STT fallback aceito. maxBatchProjects=10 maxBatchTasks=10."
+                                                                                                                                                                  }
+                                                                                                                                                   }
+                                                                                                               }
+                                                                                               }
+                                                                                  },
+                                                          "Compose_ProjectLines":  {
+                                                                                       "type":  "Compose",
+                                                                                       "runAfter":  {
+                                                                                                        "Compose_RawBatchText":  [
+                                                                                                                                     "Succeeded"
+                                                                                                                                 ]
+                                                                                                    },
+                                                                                       "inputs":  "@take(skip(split(replace(outputs(\u0027Compose_RawBatchText\u0027), decodeUriComponent(\u0027%0D\u0027), \u0027\u0027), decodeUriComponent(\u0027%0A\u0027)), 0), 10)"
+                                                                                   },
+                                                          "Initialize_RowResults":  {
+                                                                                        "type":  "InitializeVariable",
+                                                                                        "runAfter":  {
+                                                                                                         "Initialize_ResponseMessage":  [
+                                                                                                                                            "Succeeded"
+                                                                                                                                        ]
+                                                                                                     },
+                                                                                        "inputs":  {
+                                                                                                       "variables":  [
+                                                                                                                         {
+                                                                                                                             "name":  "rowResults",
+                                                                                                                             "type":  "array",
+                                                                                                                             "value":  [
+
+                                                                                                                                       ]
+                                                                                                                         }
+                                                                                                                     ]
+                                                                                                   }
+                                                                                    },
+                                                          "Compose_RawBatchText":  {
+                                                                                       "type":  "Compose",
+                                                                                       "runAfter":  {
+                                                                                                        "Compose_AdaptiveCardPreview":  [
+                                                                                                                                            "Succeeded"
+                                                                                                                                        ]
+                                                                                                    },
+                                                                                       "inputs":  "@coalesce(triggerBody()?[\u0027text\u0027], \u0027\u0027)"
+                                                                                   }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "templateName":  ""
+                   },
+    "schemaVersion":  "1.0.0.0"
+}

@@ -1,0 +1,158 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "rawBatchText",
+                  "title": "Texto",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "confirmacao",
+                  "title": "Texto 1",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "text_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose_InputLines": {
+          "type": "Compose",
+          "runAfter": {
+            "Compose_RawBatchText": [
+              "Succeeded"
+            ]
+          },
+          "inputs": "@take(split(replace(outputs('Compose_RawBatchText'), decodeUriComponent('%0D'), ''), decodeUriComponent('%0A')), 50)"
+        },
+        "Initialize_ResponseMessage": {
+          "type": "InitializeVariable",
+          "runAfter": {},
+          "inputs": {
+            "variables": [
+              {
+                "name": "responseMessage",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Compose_AdaptiveCardPreview": {
+          "type": "Compose",
+          "runAfter": {
+            "Initialize_RowResults": [
+              "Succeeded"
+            ]
+          },
+          "inputs": "{\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"TextBlock\",\"text\":\"Revisao de projetos em lote\",\"weight\":\"Bolder\"},{\"type\":\"TextBlock\",\"text\":\"Modo seguro v2.8: preview/no-write ate o Adaptive Card/parser por linha ser validado.\",\"wrap\":true}],\"actions\":[{\"type\":\"Action.Submit\",\"title\":\"Validar lote\",\"data\":{\"action\":\"previewCreateBatch\",\"cardVersion\":\"2.8\",\"maxBatchProjects\":10,\"maxBatchTasks\":10,\"writeMode\":\"disabled\"}}]}"
+        },
+        "Valores_retornados_para_o_Power_Virtual_Agents": {
+          "type": "Response",
+          "kind": "VirtualAgent",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "message": "@variables('responseMessage')"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "title": "message",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Set_Response_BatchPreviewOnly": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Set_Response_BatchPreviewOnly": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "responseMessage",
+            "value": "@concat('BATCH_PREVIEW_ONLY_NO_WRITE. Modo seguro v2.8: nenhuma gravacao foi executada. Linhas recebidas: ', string(length(outputs('Compose_InputLines'))), '. Proximo passo tecnico: Adaptive Card/parser por linha para Nome_ProjetoN e TarefaN antes de habilitar escrita. maxBatchProjects=10 maxBatchTasks=10.')"
+          },
+          "runAfter": {
+            "Compose_InputLines": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Initialize_RowResults": {
+          "type": "InitializeVariable",
+          "runAfter": {
+            "Initialize_ResponseMessage": [
+              "Succeeded"
+            ]
+          },
+          "inputs": {
+            "variables": [
+              {
+                "name": "rowResults",
+                "type": "array",
+                "value": []
+              }
+            ]
+          }
+        },
+        "Compose_RawBatchText": {
+          "type": "Compose",
+          "runAfter": {
+            "Compose_AdaptiveCardPreview": [
+              "Succeeded"
+            ]
+          },
+          "inputs": "@coalesce(triggerBody()?['text'], '')"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

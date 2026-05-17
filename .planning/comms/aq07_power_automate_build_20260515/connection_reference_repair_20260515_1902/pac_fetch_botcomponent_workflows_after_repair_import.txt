@@ -1,0 +1,23 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponent_workflowid              wf.statuscode bc.name                              wf.workflowid                        iscustomizable wf.statecode wf.name                              bc.schemaname
+59221d70-ca4c-f111-bec6-000d3a2b52ba Activado      PedirDecisao                         feb79d54-c64c-f111-bec7-7ced8d955c6c True           Activado     PMO_PA_PedirDecisaoBot               pmo_AssistentePMO_V2.topic.PedirDecisao
+23068b72-154a-f111-bec7-000d3abc5cc6 Activado      PMO_PA_ListarTarefas                 9544f14b-3748-f111-bec7-6045bdf42cae True           Activado     PMO_PA_ListarTarefas                 pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas
+d3ba56a3-644e-f111-bec6-7ced8d5b8fbc Activado      PMO_PA_CriarTarefa                   0a5d2a41-24c0-4d5e-9f6d-000000000241 True           Activado     PMO_PA_CriarTarefa                   pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa
+060099a9-644e-f111-bec6-7ced8d5b8fbc Activado      PMO_PA_CriarProjeto                  3104124d-364a-f111-bec7-7ced8d955c6c True           Activado     PMO_PA_CriarProjeto                  pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto
+c27233c3-a350-f111-bec7-000d3abc5cc6 Borrador      PM0_PA_Card_ResumoExecutivoPortfolio 8333bd91-a250-f111-bec7-000d3abc5cc6 True           Borrador     PM0_PA_Card_ResumoExecutivoPortfolio pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio
+c37233c3-a350-f111-bec7-000d3abc5cc6 Activado      PM0_PA_Card_AtualizarTarefa          7c6300c2-a250-f111-bec7-000d3abc5cc6 True           Activado     PM0_PA_Card_AtualizarTarefa          pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa
+c57233c3-a350-f111-bec7-000d3abc5cc6 Activado      PM0_PA_Card_ListarTarefas            e0e3c6b0-a250-f111-bec7-000d3abc5cc6 True           Activado     PM0_PA_Card_ListarTarefas            pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas
+6bbc1c76-ca4c-f111-bec6-000d3a2b52ba Activado      ConsultarProjeto                     4a33b53e-c64c-f111-bec7-000d3abc5cc6 True           Activado     PMO_PA_ConsultarProjeto              pmo_AssistentePMO_V2.topic.ConsultarProjeto
+87bc1c76-ca4c-f111-bec6-000d3a2b52ba Activado      ConsultarPortfolio                   39cf292d-c64c-f111-bec7-7ced8d955c6c True           Activado     PMO_PA_ConsultarPortfolio            pmo_AssistentePMO_V2.topic.ConsultarPortfolio
+b4a27f6c-154a-f111-bec7-000d3abc5cc6 Activado      PMO_PA_AtualizarTarefa               98408d55-3748-f111-bec7-000d3abc5cc6 True           Activado     PMO_PA_AtualizarTarefa               pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa
+48b72cbd-a350-f111-bec7-000d3abc5cc6 Activado      PM0_PA_Card_AtualizarStatus          1721e0a3-a250-f111-bec7-000d3abc5cc6 True           Activado     PM0_PA_Card_AtualizarStatus          pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus
+16a3557c-ca4c-f111-bec6-000d3a2b52ba Activado      RegistrarRisco                       ee732d46-c64c-f111-bec7-7ced8d955c6c True           Activado     PMO_PA_RegistrarRiscoBot             pmo_AssistentePMO_V2.topic.RegistrarRisco
+cd7233c3-a350-f111-bec7-000d3abc5cc6 Activado      PM0_PA_OpsFailureHandling            9531fbc7-a250-f111-bec7-000d3abc5cc6 True           Activado     PM0_PA_OpsFailureHandling            pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling
+35a3557c-ca4c-f111-bec6-000d3a2b52ba Activado      RegistrarBloqueio                    3ec37952-c64c-f111-bec7-000d3abc5cc6 True           Activado     PMO_PA_RegistrarBloqueioBot          pmo_AssistentePMO_V2.topic.RegistrarBloqueio
+a56a6ab4-6c4d-f111-bec7-000d3abc5cc6 Activado      ExcluirProjeto                       16fbe313-2edc-406e-ad7f-d08cee0edc43 True           Activado     PMO_PA_ExcluirProjeto                pmo_AssistentePMO_V2.topic.ExcluirProjeto
+4083b1ba-6c4d-f111-bec7-000d3abc5cc6 Activado      ExcluirTarefa                        70b39334-5926-4fb1-bd22-f10bd99f0f6d True           Activado     PMO_PA_ExcluirTarefa                 pmo_AssistentePMO_V2.topic.ExcluirTarefa
+ca7233c3-a350-f111-bec7-000d3abc5cc6 Activado      PM0_PA_Card_CriarTarefa              7f662db7-a250-f111-bec7-000d3abc5cc6 True           Activado     PM0_PA_Card_CriarTarefa              pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa
+a9bc1c76-ca4c-f111-bec6-000d3a2b52ba Activado      AtualizarStatus                      c11a165b-c64c-f111-bec7-7ced8d9559c1 True           Activado     PMO_PA_AtualizarStatus               pmo_AssistentePMO_V2.topic.AtualizarStatus
+

@@ -1,0 +1,40 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Recurrence"
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Foreach"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "ListTasks_V3"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "Query"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PatchItem"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PatchItem"
+                    }
+                ]
+}

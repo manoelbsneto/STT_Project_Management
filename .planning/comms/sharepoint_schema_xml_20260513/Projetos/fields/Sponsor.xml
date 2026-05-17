@@ -1,0 +1,1 @@
+﻿<Field Type="User" Name="Sponsor" DisplayName="Sponsor" ID="{dece95c8-6da3-4374-ab12-56fd355f61b4}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="Sponsor" ColName="int2" RowOrdinal="0" Indexed="TRUE" Version="1" />

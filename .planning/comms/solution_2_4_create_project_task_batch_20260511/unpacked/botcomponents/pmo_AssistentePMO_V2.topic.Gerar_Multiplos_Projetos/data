@@ -1,0 +1,40 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Gerar_Multiplos_Projetos
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - gerar multiplos projetos
+      - criar varios projetos
+      - criar projetos em lote
+      - gerar projetos em batch
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawBatchText
+      value: =System.Activity.Text
+    - kind: SendActivity
+      id: adaptive_card_preview_marker
+      activity: "AdaptiveCard Action.Submit confirmCreateBatch maxBatchProjects=10 maxBatchTasks=10 multiline STT fallback"
+    - kind: Question
+      id: confirm_batch
+      variable: Topic.ConfirmacaoTexto
+      prompt: Confirma gerar os projetos revisados?
+      entity: StringPrebuiltEntity
+    - kind: InvokeFlowAction
+      id: invoke_batch
+      input:
+        binding:
+          text: =Topic.RawBatchText
+          text_1: =Topic.ConfirmacaoTexto
+      output:
+        binding:
+          message: Topic.Result
+      flowId: 0a5d2a42-24c0-4d5e-9f6d-000000000241
+    - kind: SendActivity
+      id: done
+      activity: "{Topic.Result}"
+inputType: {}
+outputType: {}

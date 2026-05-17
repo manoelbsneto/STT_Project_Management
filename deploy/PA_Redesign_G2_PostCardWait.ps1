@@ -348,7 +348,7 @@ $enviarActions = [ordered]@{
         -Parameters @{
             dataset = $SiteUrl
             table = "Projetos"
-            '$filter' = "Ativo eq 1"
+            '$filter' = "Ativo eq 1 and Deleted eq 0"
             '$top' = 100
         }
     Apply_to_each_Projeto = [ordered]@{

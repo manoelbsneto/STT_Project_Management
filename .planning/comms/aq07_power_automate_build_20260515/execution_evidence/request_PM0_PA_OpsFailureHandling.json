@@ -1,0 +1,132 @@
+﻿{
+    "name":  "6e9f75cb-77fb-4cc7-a0bd-07e96fbd1c6f",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/6e9f75cb-77fb-4cc7-a0bd-07e96fbd1c6f",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PM0_PA_OpsFailureHandling",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 },
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "source":  {
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "description":  "Source"
+                                                                                                                                      },
+                                                                                                                           "details":  {
+                                                                                                                                           "type":  "string",
+                                                                                                                                           "description":  "Details"
+                                                                                                                                       },
+                                                                                                                           "code":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "description":  "Code"
+                                                                                                                                    }
+                                                                                                                       },
+                                                                                                        "required":  [
+                                                                                                                         "source",
+                                                                                                                         "code"
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Sanitize_Error":  {
+                                                                                 "type":  "Compose",
+                                                                                 "inputs":  "@substring(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027),0,min(length(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027)),500))",
+                                                                                 "runAfter":  {
+
+                                                                                              }
+                                                                             },
+                                                          "Respond_Success":  {
+                                                                                  "type":  "Response",
+                                                                                  "kind":  "Skills",
+                                                                                  "inputs":  {
+                                                                                                 "statusCode":  200,
+                                                                                                 "headers":  {
+                                                                                                                 "Content-Type":  "application/json"
+                                                                                                             },
+                                                                                                 "body":  {
+                                                                                                              "result":  "Operation failed securely."
+                                                                                                          },
+                                                                                                 "schema":  {
+                                                                                                                "type":  "object",
+                                                                                                                "properties":  {
+                                                                                                                                   "result":  {
+                                                                                                                                                  "title":  "result",
+                                                                                                                                                  "x-ms-dynamically-added":  true,
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                            }
+                                                                                             },
+                                                                                  "runAfter":  {
+                                                                                                   "Sanitize_Error":  [
+                                                                                                                          "Succeeded"
+                                                                                                                      ]
+                                                                                               }
+                                                                              }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "connectionReferences":  {
+                                                    "shared_sharepointonline":  {
+                                                                                    "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                                    "connectionReferenceLogicalName":  "pmo_aq07_sharepoint",
+                                                                                    "source":  "Invoker",
+                                                                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                    "displayName":  "SharePoint",
+                                                                                    "tier":  "Standard",
+                                                                                    "apiName":  "sharepointonline",
+                                                                                    "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                                },
+                                                    "shared_teams":  {
+                                                                         "connectionName":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                                                         "connectionReferenceLogicalName":  "pmo_aq07_teams",
+                                                                         "source":  "Invoker",
+                                                                         "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                                                         "displayName":  "Microsoft Teams",
+                                                                         "tier":  "Standard",
+                                                                         "apiName":  "teams",
+                                                                         "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                     },
+                                                    "shared_planner":  {
+                                                                           "connectionName":  "6b763b98729c4d99a7a8df4033d381af",
+                                                                           "connectionReferenceLogicalName":  "pmo_aq07_planner",
+                                                                           "source":  "Invoker",
+                                                                           "id":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                           "displayName":  "Planner",
+                                                                           "tier":  "Standard",
+                                                                           "apiName":  "planner",
+                                                                           "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                                                                       }
+                                                },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

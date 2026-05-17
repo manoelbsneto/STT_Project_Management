@@ -1,0 +1,22 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="or">
+      <condition attribute="workflowid" operator="eq" value="c11a165b-c64c-f111-bec7-7ced8d9559c1" />
+      <condition attribute="workflowid" operator="eq" value="98408d55-3748-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="f5aab85e-ff46-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="39cf292d-c64c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="4a33b53e-c64c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="3104124d-364a-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="e5381002-0547-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="9544f14b-3748-f111-bec7-6045bdf42cae" />
+      <condition attribute="workflowid" operator="eq" value="feb79d54-c64c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="3ec37952-c64c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflowid" operator="eq" value="b308fe0b-0547-f111-bec7-7ced8d955c6c" />
+      <condition attribute="workflowid" operator="eq" value="ee732d46-c64c-f111-bec7-7ced8d955c6c" />
+    </filter>
+  </entity>
+</fetch>

@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="StatusID" DisplayName="StatusID" ID="{d7ba7751-a6d3-4a55-b6ac-f6eb1e01ce6f}" Group="" Required="TRUE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="StatusID" ColName="nvarchar7" RowOrdinal="0" Version="2" Indexed="TRUE" />

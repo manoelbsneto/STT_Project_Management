@@ -1,0 +1,12 @@
+﻿{
+    "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "Title":  "Tarefas",
+    "Id":  "36d78ca1-1f60-4dd3-a4d5-5c94b89969e9",
+    "ItemCount":  16,
+    "Hidden":  false,
+    "BaseTemplate":  100,
+    "RootFolder":  "/sites/Grp_T_DN_Transformacao_Digital/Lists/Tarefas",
+    "FieldCount":  97,
+    "ViewCount":  4,
+    "OutputPath":  ".planning\\comms\\sharepoint_schema_tarefas_aq02_20260515\\Tarefas"
+}

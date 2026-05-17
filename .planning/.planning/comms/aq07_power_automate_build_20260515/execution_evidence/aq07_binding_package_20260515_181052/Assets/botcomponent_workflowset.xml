@@ -1,0 +1,20 @@
+﻿<botcomponent_workflowset>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio" workflowid.workflowid="8333bd91-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus" workflowid.workflowid="1721e0a3-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas" workflowid.workflowid="e0e3c6b0-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa" workflowid.workflowid="7f662db7-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa" workflowid.workflowid="7c6300c2-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling" workflowid.workflowid="9531fbc7-a250-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+</botcomponent_workflowset>

@@ -1,0 +1,901 @@
+﻿Total pages: 194
+Title: Dell Pro 14 PC14250 Manual do Propriet├írio
+Author: Dell
+Subject: O Manual do propriet├írio ├⌐ um guia para usu├írios finais que inclui recursos e especifica├º├╡es, instru├º├╡es de remo├º├úo e substitui├º├úo de hardware, solu├º├úo de problemas e muito mais.
+
+================================================================================
+SPECIFICATION PAGES (19-36)
+================================================================================
+
+======================================== PAGE 19 ========================================
+Tabela 7. Processador┬á
+Descri├º├úo Op├º├úo onze Op├º├úo doze Op├º├úo treze
+Tipo Intel Core Ultra 5 de 235U Intel Core Ultra 7 de 255U Intel Core Ultra 7 de 265U
+Pot├¬ncia 15 W 15 W 15 W
+Contagem total de n├║cleos 12 12 12
+N├║cleos de desempenho 2 2 2
+N├║cleos eficientes 8 8 8
+Contagem total de threads
+NOTA:  A tecnologia Intel 
+Hyper-Threading s├│ est├í 
+dispon├¡vel em n├║cleos de 
+desempenho.14 14 14
+Velocidade At├⌐ 4,9┬áGHz At├⌐ 5,2┬áGHz At├⌐ 5,3┬áGHz
+Frequ├¬nciaΓÇöN├║cleos de desempenho
+Frequ├¬ncia b├ísica 2,0 GHz 2,0 GHz 2,1 GHz
+Frequ├¬ncia turbo m├íxima 4,9 GHz 5,20 GHz 5,3 GHz
+Frequ├¬nciaΓÇön├║cleos eficientes
+Frequ├¬ncia b├ísica 1,6 GHz 1,7 GHz 1,7 GHz
+Frequ├¬ncia turbo m├íxima 4,1 GHz 4,2 GHz 4,2 GHz
+Cache 12 MB 12 MB 12 MB
+Placa gr├ífica integrada Gr├íficos Intel Gr├íficos Intel Gr├íficos Intel
+Chipset
+A tabela a seguir lista os detalhes do chipset compat├¡vel com o Dell Pro 14 PC14250 .
+Tabela 8. Chipset┬á
+Descri├º├úo Valores
+Chipset Integrado no processador
+Processador ΓùÅProcessador Intel U300E
+ΓùÅIntel Core i3/i5 de13┬¬ gera├º├úo
+ΓùÅIntel Core 3/5/7
+ΓùÅIntel Core Ultra 5/7
+Largura do barramento de DRAM 64 bits
+Flash EPROM 32 MB
+Barramento PCIe Com 4┬¬ gera├º├úo
+Especifica├º├╡es do Dell Pro 14 PC14250 19
+
+======================================== PAGE 20 ========================================
+Sistema operacional
+O Dell Pro 14 PC14250  ├⌐ compat├¡vel os seguintes sistemas operacionais:
+ΓùÅWindows 11 Home
+ΓùÅWindows 11 Professional
+ΓùÅUbuntu 24.04 LTS
+NOTA:  Se voc├¬ fizer o downgrade do computador do Windows 11 para o Windows 10 22H2, o suporte da Dell Technologies 
+seguir├í o plano de Fim do suporte do Microsoft Windows 10.
+Mem├│ria
+A tabela a seguir lista as especifica├º├╡es de mem├│ria compat├¡veis com o Dell Pro 14 PC14250 .
+Tabela 9. Especifica├º├╡es da mem├│ria┬á
+Descri├º├úo Valores
+Slots de mem├│ria Dois slots SODIMM
+Tipo de mem├│ria DDR5
+Velocidade da mem├│ria ΓùÅ5200 MT/s
+ΓùÅ5600┬áMT/s
+Configura├º├úo m├íxima de mem├│ria 64 GB
+Configura├º├úo m├¡nima de mem├│ria 8 GB
+Tamanho da mem├│ria por slot 8 GB, 16 GB e 32 GB
+Configura├º├╡es de mem├│ria suportadas Para computadores enviados com a s├⌐rie Intel Core:
+ΓùÅ8 GB: 1 de 8 GB, DDR5, 5.200 MT/s, single channel
+ΓùÅ16 GB: 2 de 8 GB, DDR5, 5.200 MT/s, dual channel
+ΓùÅ16 GB: 1 de 16 GB, DDR5, 5.200 MT/s, single channel
+ΓùÅ32 GB: 1 de 32 GB, DDR5, 5.200 MT/s, single channel
+ΓùÅ32┬áGB: 2 de 16┬áGB, DDR5, 5200┬áMT/s, dual channel
+ΓùÅ64┬áGB: 2 de 32┬áGB, DDR5, 5200┬áMT/s, dual channel
+Para computadores enviados com a s├⌐rie Intel Core Ultra 
+200U:
+ΓùÅ8 GB: 1 de 8 GB, DDR5, 5600 MT/s, single channel
+ΓùÅ16 GB: 2 de 8 GB, DDR5, 5600 MT/s, dual channel
+ΓùÅ16 GB: 1 de 16 GB, DDR5, 5600 MT/s, single channel
+ΓùÅ32 GB: 1 de 32 GB, DDR5, 5600 MT/s, single channel
+ΓùÅ32┬áGB: 2 de 16┬áGB, DDR5, 5600┬áMT/s, dual channel
+ΓùÅ64┬áGB: 2 de 32┬áGB, DDR5, 5600┬áMT/s, dual channel
+Portas e slots externos
+A tabela a seguir lista as portas e os slots externos do Dell Pro 14 PC14250 .
+Tabela 10. Portas e slots externos┬á
+Descri├º├úo Valores
+Porta de rede Uma porta Ethernet RJ45 (1┬áGbps)
+20 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 21 ========================================
+Tabela 10. Portas e slots externos┬á(continua├º├úo)
+Descri├º├úo Valores
+Portas USB ΓùÅUma porta USB 3.2 de 1┬¬ gera├º├úo (5┬áGbps)
+ΓùÅUma porta USB 3.2 de 1┬¬ gera├º├úo (5┬áGbps) com PowerShare
+ΓùÅUma USB 3.2 de 2┬¬ gera├º├úo (10 Gbps) Type-C com 
+DisplayPort 2.0/Power Delivery 3.1
+ΓùÅUma porta Thunderbolt 4 (40 Gbps) com DisplayPort 2.1/USB 
+Type-C/USB4/Power Delivery 3.1
+NOTA:  Voc├¬ pode conectar uma docking station Dell a 
+esta porta. Para ver mais informa├º├╡es, fa├ºa uma pesquisa 
+na base de conhecimento no site do Suporte Dell .
+Porta de ├íudio Uma porta global para headset
+Porta(s) de v├¡deo Uma porta HDMI 2.1 de sinaliza├º├úo diferencial minimizada por 
+transi├º├úo (TMDS)
+Leitor de cart├úo de m├¡dia N├úo aplic├ível
+Porta do adaptador de energia Uma entrada CC de 4,5┬ámm x 2,9┬ámm
+Slot do cabo de seguran├ºa Um slot do cabo de seguran├ºa (Wedge)
+Leitor de smart card Um slot do leitor de smart card (opcional)
+Slots internos
+A tabela a seguir lista os slots internos do Dell Pro 14 PC14250 .
+Tabela 11. Slots internos┬á
+Descri├º├úo Valores
+M.2 ΓùÅUm slot M.2 2230 para unidade de estado s├│lido
+ΓùÅUm slot M.2 2230 para placa WLAN, Wi-Fi/Bluetooth
+NOTA:  Para saber mais sobre os recursos de diferentes tipos 
+de placas M.2, pesquise no site do Suporte Dell .
+Ethernet
+Tabela 12. Especifica├º├╡es de Ethernet┬á
+Descri├º├úo Op├º├úo um Op├º├úo dois
+Modelo Realtek RTL8111H-CG integrado Conex├úo Ethernet Intel i219-LM
+NOTA:  Aplic├ível somente a 
+computadores enviados com 
+processadores Intel Core Ultra 5 235U 
+e Intel Core Ultra 7 265U.
+Taxa de transfer├¬ncia 10/100/1.000 Mbps 10/100/1.000 Mbps
+Especifica├º├╡es do Dell Pro 14 PC14250 21
+
+======================================== PAGE 22 ========================================
+M├│dulo sem fio
+A tabela a seguir lista as especifica├º├╡es do m├│dulo de rede local sem fio (WLAN) do Dell Pro 14 PC14250 .
+Tabela 13. Especifica├º├╡es do m├│dulo sem fio┬á
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s Op├º├úo quatro
+N├║mero do modelo MediaTek MT7920 Intel AX211 Intel BE202
+NOTA:  Aplic├ível 
+somente a 
+computadores 
+fornecidos com 
+processadores Intel 
+Core Ultra 200U.Intel BE200
+NOTA:  Aplic├ível 
+somente a computadores 
+fornecidos com 
+processadores Intel Core 
+Ultra 200U.
+Taxa de transfer├¬ncia Com 1200┬áMbps At├⌐ 2400┬áMbps At├⌐ 2400┬áMbps At├⌐ 5760┬áMbps
+Bandas de frequ├¬ncia 
+suportadas2,4 GHz/5 GHz 2,4 GHz/5 GHz/6 GHz 2,4 GHz/5 GHz/6 GHz 2,4 GHz/5 GHz/6 GHz
+Padr├╡es sem fio ΓùÅWi-Fi 802.11a/b/g
+ΓùÅWi-Fi 4 (Wi-Fi 
+802.11n)
+ΓùÅWi-Fi 5 (Wi-Fi 
+802.11ac)
+ΓùÅWi-Fi 6 (Wi-Fi 
+802.11ax)ΓùÅWi-Fi 802.11a/b/g
+ΓùÅWi-Fi 4 (Wi-Fi 
+802.11n)
+ΓùÅWi-Fi 5 (Wi-Fi 
+802.11ac)
+ΓùÅWi-Fi 6E (Wi-Fi 
+802.11ax)ΓùÅWi-Fi 802.11a/b/g
+ΓùÅWi-Fi 4 (Wi-Fi 
+802.11n)
+ΓùÅWi-Fi 5 (Wi-Fi 
+802.11ac)
+ΓùÅWi-Fi 6E (Wi-Fi 
+802.11ax)
+ΓùÅWi-Fi 7 (Wi-Fi 
+802.11be)ΓùÅWi-Fi 802.11a/b/g
+ΓùÅWi-Fi 4 (Wi-Fi 802.11n)
+ΓùÅWi-Fi 5 (Wi-Fi 802.11ac)
+ΓùÅWi-Fi 6E (Wi-Fi 802.11ax)
+ΓùÅWi-Fi 7 (Wi-Fi 802.11be)
+Criptografia ΓùÅ64 bits/WEP de 
+128 bits
+ΓùÅAES-CCMP
+ΓùÅTKIPΓùÅ64 bits/WEP de 128 
+bits
+ΓùÅAES-CCMP
+ΓùÅTKIPΓùÅ64 bits/WEP de 128 
+bits
+ΓùÅAES-CCMP
+ΓùÅTKIPΓùÅ64 bits/WEP de 128 bits
+ΓùÅAES-CCMP
+ΓùÅTKIP
+Placa de rede sem fio 
+Bluetooth
+NOTA:  A 
+funcionalidade da 
+placa de rede sem 
+fio Bluetooth pode 
+variar com base no 
+sistema operacional.Bluetooth 5.4 Bluetooth 5.3 Bluetooth 5.4 Bluetooth 5.4
+├üudio
+A tabela a seguir lista as especifica├º├╡es de ├íudio do Dell Pro 14 PC14250 .
+Tabela 14. Especifica├º├╡es de ├íudio┬á
+Descri├º├úo Valores
+Controlador de ├íudio Realtek ALC3204
+Convers├úo est├⌐reo Compat├¡vel com Waves MaxxAudio
+Interface de ├íudio interna Interface de ├íudio de alta defini├º├úo
+22 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 23 ========================================
+Tabela 14. Especifica├º├╡es de ├íudio┬á(continua├º├úo)
+Descri├º├úo Valores
+Interface de ├íudio externa Uma porta global para headset (combina├º├úo de fones de ouvido e 
+microfone)
+N├║mero de alto-falantes Dois
+Amplificador interno de alto-falante Compat├¡vel (codec de ├íudio integrado)
+Controles de volume externo Controles de atalho do teclado
+Sa├¡da do alto-falante:
+M├⌐dia 2 W x 2 = 4 W
+Pico 2,5┬áW x 2 = 5┬áW
+Microfone Microfone de array duplo
+Armazenamento
+Esta se├º├úo lista as op├º├╡es de armazenamento no Dell Pro 14 PC14250 .
+O Dell Pro 14 PC14250  suporta uma das seguintes configura├º├╡es de armazenamento:
+ΓùÅUm armazenamento flash universal (integrado)
+NOTA:  O UFS est├í dispon├¡vel apenas para computadores enviados com processadores Intel Core Series.
+NOTA:  Para computadores enviados com UFS, o armazenamento ├⌐ integrado ├á placa de sistema. A Dell Technologies recomenda 
+que voc├¬ fa├ºa backup de seus dados regularmente para evitar qualquer poss├¡vel perda de dados ap├│s um incidente de servi├ºo. 
+Para obter mais informa├º├╡es, consulte o artigo da base de conhecimento 000130154  no site do Suporte Dell.
+ΓùÅUma unidade de estado s├│lido M.2 2230
+Tabela 15. Especifica├º├╡es de armazenamento┬á
+Tipo de armazenamento Tipo de interface Capacity
+Armazenamento flash universal (integrado) UFS v3.1, at├⌐ HS-Gear 4, 2,9 GB/s 128 GB
+NOTA:  O UFS est├í integrado no 
+processador e n├úo ├⌐ atualiz├ível.
+Unidade de estado s├│lido M.2 2230, TLC NVMe PCIe de 4┬¬ gera├º├úo, com 64 Gbps 256 GB/512 GB/1 TB
+Unidade de estado s├│lido M.2 2230, QLC NVMe PCIe de 4┬¬ gera├º├úo, com 64 Gbps 500 GB, 1 TB, 2 TB
+Unidade de estado s├│lido M.2 2230, com 
+criptografia autom├ítica, Opal 2.0, TLC
+NOTA:  Dispon├¡vel apenas em 
+computadores enviados com 
+processadores Intel Core Ultra s├⌐rie 
+200U.NVMe PCIe de 4┬¬ gera├º├úo, com 64 Gbps 512 GB
+Teclado
+A tabela a seguir lista as especifica├º├╡es do teclado do Dell Pro 14 PC14250 .
+Especifica├º├╡es do Dell Pro 14 PC14250 23
+
+======================================== PAGE 24 ========================================
+Tabela 16. Especifica├º├╡es do teclado┬á
+Descri├º├úo Valores
+Tipo de teclado ΓùÅTeclado retroiluminado com tecla Copilot e leitor de impress├╡es 
+digitais
+ΓùÅTeclado retroiluminado com tecla Copilot
+ΓùÅTeclado n├úo retroiluminado com tecla Copilot e leitor de 
+impress├╡es digitais
+ΓùÅTeclado sem retroilumina├º├úo com tecla Copilot
+Layout do teclado QWERTY
+N├║mero de teclas ΓùÅ├ürabe, chin├¬s (tradicional), ingl├¬s internacional, ingl├¬s dos EUA, 
+hebraico, ucraniano: 79 teclas
+ΓùÅBelga, b├║lgaro, checo e eslovaco (MUI), ingl├¬s do Reino Unido, 
+franc├¬s (europeu), franc├¬s (europeu), alem├úo, h├║ngaro, grego, 
+hebraico, italiano, n├│rdico (MUI), portugu├¬s ib├⌐rico, portugu├¬s 
+do Brasil, russo, espanhol (castelhano), espanhol (Am├⌐rica 
+Latina), su├¡├ºo europeu (MUI), turco: 80 teclas
+ΓùÅJapon├¬s: 83┬áteclas
+Dist├óncia entre teclas Horizontal= 19,05 mm
+Vertical= 18,05 mm
+Atalhos de teclado Algumas teclas do teclado possuem dois s├¡mbolos. Elas podem ser 
+usadas para digitar caracteres alternativos ou para realizar fun├º├╡es 
+secund├írias.
+ΓùÅPara digitar o caractere alternativo, pressione Shift e a tecla 
+desejada.
+ΓùÅPara executar as fun├º├╡es secund├írias, pressione Fn e a tecla 
+desejada.
+NOTA:  Voc├¬ pode definir o comportamento principal das 
+teclas de fun├º├úo (F1ΓÇôF12) mudando o Function Key Behavior 
+no programa de configura├º├úo do BIOS.
+Atalhos de teclado do Dell Pro 14 PC14250
+NOTA:  Os caracteres do teclado podem ser diferentes, dependendo da configura├º├úo de idioma do teclado. As teclas que s├úo usadas 
+para atalhos continuam as mesmas em todas as configura├º├╡es de idiomas.
+Algumas teclas do teclado possuem dois s├¡mbolos. Elas podem ser usadas para digitar caracteres alternativos ou para realizar fun├º├╡es 
+secund├írias. O s├¡mbolo indicado na parte inferior da tecla se refere ao caractere que ├⌐ digitado quando a tecla ├⌐ pressionada. Se voc├¬ 
+pressionar Shift e a tecla, o s├¡mbolo indicado na parte superior da tecla ├⌐ digitado. Por exemplo, se voc├¬ pressionar 2, 2 ser├í digitado; se 
+voc├¬ pressionar Shift  + 2, @ ser├í digitado.
+As teclas F1-F12 na fileira superior do teclado s├úo teclas de fun├º├úo para controle multim├¡dia, como indicado pelo ├¡cone na tecla. Pressione a 
+tecla de fun├º├úo para ativar a tarefa representada pelo ├¡cone. Por exemplo, ao pressionar F1 o ├íudio ├⌐ desativado (consulte a tabela abaixo).
+No entanto, se as teclas de fun├º├úo F1-F12 forem necess├írias para aplicativos de software espec├¡ficos, a funcionalidade multim├¡dia poder├í 
+ser desativada pressionando-se Fn + Esc. O controle multim├¡dia pode ser chamado ao se pressionar Fn e a respectiva tecla de fun├º├úo. 
+Por exemplo, mude o ├íudio pressionando Fn + F1.
+NOTA:  Tamb├⌐m ├⌐ poss├¡vel definir o comportamento principal das teclas de fun├º├úo (F1-F12) mudando o Function Key Behavior  no 
+programa de configura├º├úo do BIOS.
+Tabela 17. Comportamento principal das teclas de fun├º├úo┬á
+Tecla de fun├º├úo Comportamento prim├írio
+F1 Silenciar ou ativar o ├íudio
+F2 Diminuir o volume
+24 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 25 ========================================
+Tabela 17. Comportamento principal das teclas de fun├º├úo┬á(continua├º├úo)
+Tecla de fun├º├úo Comportamento prim├írio
+F3 Aumentar o volume
+F4 Microfone sem ├íudio
+F5 Ilumina├º├úo/luz de fundo do teclado
+F6 Diminui o brilho da tela
+F7 Aumenta o brilho da tela
+F8 Alternar para um monitor externo
+F10 Capturar tela
+F11 P├ígina inicial
+F12 Fim
+A tecla Fn tamb├⌐m ├⌐ usada com as teclas selecionadas do teclado para acionar fun├º├╡es secund├írias.
+Tabela 18. Comportamento secund├írio┬á
+Tecla de fun├º├úo Comportamento secund├írio
+Fn + F1 Comportamento do F1 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F2 Comportamento do F2 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F3 Comportamento do F3 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F4 Comportamento do F4 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F5 Comportamento do F5 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F6 Comportamento do F6 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F7 Comportamento do F6 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F8 Comportamento do F8 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F9 Comportamento do F9 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F10 Comportamento do F10 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F11 Comportamento do F11 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + F12 Comportamento do F12 espec├¡fico do sistema operacional e do 
+aplicativo
+Fn + Ctrl Abrir o menu de aplicativos
+Fn + Esc Alternar entre o comportamento das teclas multim├¡dia e de fun├º├úo
+Fn + PgUp Rolar para cima o documento ou a p├ígina
+Fn + PgDn Rolar para baixo o documento ou a p├ígina
+Fn + Home Mover o cursor para o come├ºo do documento
+Especifica├º├╡es do Dell Pro 14 PC14250 25
+
+======================================== PAGE 26 ========================================
+Tabela 18. Comportamento secund├írio┬á(continua├º├úo)
+Tecla de fun├º├úo Comportamento secund├írio
+Fn + End Mover o cursor para o final do documento
+Copilot Iniciar o Copilot no Windows
+NOTA:  Se o Copilot no Windows estiver indispon├¡vel no 
+computador, a tecla Copilot iniciar├í o Recall. Se o Recall e o 
+Copilot no Windows estiverem indispon├¡veis no computador, a 
+tecla Copilot iniciar├í a pesquisa do Windows. Para obter mais 
+informa├º├╡es sobre o Copilot no Windows e o Recall, pesquise a 
+base de conhecimento no site Suporte Dell .
+C├ómera
+A tabela a seguir lista as especifica├º├╡es da c├ómera do Dell Pro 14 PC14250 .
+Tabela 19. Especifica├º├╡es da c├ómera┬á
+Descri├º├úo Valores
+N├║mero de c├ómeras Dois
+NOTA:  A segunda c├ómera ├⌐ opcional e est├í dispon├¡vel com 
+configura├º├╡es selecionadas.
+Tipo de c├ómera ΓùÅHD RGB (para computadores fornecidos com a s├⌐rie Intel 
+Core)
+ΓùÅFHD RGB
+ΓùÅFHD RGB + infravermelho
+Localiza├º├úo da c├ómera C├ómera frontal
+Tipo de sensor da c├ómera Tecnologia do sensor CMOS
+Resolu├º├úo da c├ómera:
+Imagem est├ítica ΓùÅ0,92┬ámegapixels (HD)
+ΓùÅ2,07 megapixels (FHD)
+V├¡deo ΓùÅ1280 x 720 (HD) a 30 fps
+ΓùÅ1920 x 1080 (FHD) a 30 fps
+Resolu├º├úo da c├ómera com infravermelho:
+Imagem est├ítica 0,23┬ámegapixel
+V├¡deo 640 x 360 a 15┬áfps
+├éngulo de vis├úo diagonal:
+C├ómera ΓùÅ75,0 graus (HD)
+ΓùÅ80,2 graus (FHD)
+C├ómera infravermelha 86,60 graus
+Touchpad
+A tabela a seguir lista as especifica├º├╡es do touchpad do Dell Pro 14 PC14250 .
+26 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 27 ========================================
+Tabela 20. Especifica├º├╡es do touchpad┬á
+Descri├º├úo Valores
+Resolu├º├úo do touchpad: >300 DPI
+Dimens├╡es do touchpad:
+Horizontal 115,00 mm (4,52┬ápol.)
+Vertical 67,00 mm (2,63┬ápol.)
+Gestos do touchpad Para obter mais informa├º├╡es sobre os gestos do touchpad 
+dispon├¡veis no Windows, pesquise o Site de Suporte da Microsoft .
+Adaptador de energia
+A tabela a seguir lista as especifica├º├╡es do adaptador de energia do Dell Pro 14 PC14250 .
+Tabela 21. Especifica├º├╡es do adaptador de energia┬á
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s
+Tipo Adaptador CA de 65 W, 
+conector cil├¡ndrico de 4,5 mm, 
+E4Adaptador CA de 65 W, USB 
+Type-C, PECOSAdaptador CA de 60 W, USB 
+Type-C, 2 pinos (Jap├úo)
+Dimens├╡es do conector:
+Di├ómetro externo 4,5 mm N├úo aplic├ível N├úo aplic├ível
+Di├ómetro interno 2,9 mm N├úo aplic├ível N├úo aplic├ível
+Dimens├╡es do adaptador de energia:
+Altura 29,5 mm 28 mm 22 mm
+Largura 46,0 mm 51 mm 55 mm
+Profundidade 108,0 mm 112 mm 66 mm
+Tens├úo de entrada 100 VCA - 240 VCA 100 VCA - 240 VCA 100 VCA - 240 VCA
+Frequ├¬ncia de entrada 50 Hz - 60 Hz 50 Hz - 60 Hz 50 Hz - 60 Hz
+Corrente de entrada (m├íxima) 1,7 A 1,7 A 1,7 A
+Corrente de sa├¡da (cont├¡nua) 3,34 A ΓùÅ20┬áV/3,25┬áA (cont├¡nua)
+ΓùÅ15┬áV/3┬áA (cont├¡nua)
+ΓùÅ9┬áV/3┬áA (cont├¡nua)
+ΓùÅ5┬áV/3┬áA (cont├¡nua)ΓùÅ20┬áV/3┬áA (cont├¡nua)
+ΓùÅ15┬áV/3┬áA (cont├¡nua)
+ΓùÅ9┬áV/3┬áA (cont├¡nua)
+ΓùÅ5┬áV/3┬áA (cont├¡nua)
+Tens├úo de sa├¡da nominal 19,5┬áVDC ΓùÅ20 VDC
+ΓùÅ15 VDC
+ΓùÅ9 VDC
+ΓùÅ5 VDCΓùÅ20 VDC
+ΓùÅ15 VDC
+ΓùÅ9 VDC
+ΓùÅ5 VDC
+Faixa de temperatura:
+De opera├º├úo 0┬á┬░C a 40┬á┬░C (32┬á┬░F a 104┬á┬░F) 0┬á┬░C a 40┬á┬░C (32┬á┬░F a 104┬á┬░F) 0┬á┬░C a 40┬á┬░C (32┬á┬░F a 104┬á┬░F)
+Especifica├º├╡es do Dell Pro 14 PC14250 27
+
+======================================== PAGE 28 ========================================
+Tabela 21. Especifica├º├╡es do adaptador de energia┬á(continua├º├úo)
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s
+Armazenamento -40┬á┬░C a 70┬á┬░C (-40┬á┬░F a 
+158┬á┬░F)-40┬á┬░C a 70┬á┬░C (-40┬á┬░F a 
+158┬á┬░F)-40┬á┬░C a 70┬á┬░C (-40┬á┬░F a 
+158┬á┬░F)
+CUIDADO:  Os intervalos de temperatura de armazenamento e de opera├º├úo podem ser diferentes entre os 
+componentes. Assim, operar ou armazenar o dispositivo fora desses intervalos pode afetar o desempenho de 
+componentes espec├¡ficos.
+Requisitos do adaptador de energia (para computadores enviados 
+com uma bateria de 3 c├⌐lulas de 45 Wh)
+NOTA:  Se voc├¬ n├úo comprou o adaptador de energia da marca Dell recomendado para seu computador, certifique-se de que ele 
+atenda aos requisitos abaixo.
+A tabela a seguir lista os requisitos do adaptador de energia para o Dell Pro 14 PC14250 .
+Tabela 22. Requisitos do adaptador de energia┬á
+Descri├º├úo Valor
+Alimenta├º├úo necess├íria para que um adaptador de energia atinja o 
+desempenho ideal.65 W
+Energia que carrega o computador com uma velocidade mais lenta.
+NOTA:  Uma mensagem de advert├¬ncia pode aparecer 
+informando sobre o uso de um adaptador de menor pot├¬ncia 
+e velocidade de carregamento mais lenta.Menos de 60┬áW
+Energia m├¡nima necess├íria de um adaptador de energia para operar o 
+computador e carregar a bateria.
+NOTA:  Uma mensagem de advert├¬ncia ├⌐ exibida informando 
+sobre o uso de um adaptador com alimenta├º├úo mais baixa e 
+velocidade de carregamento mais lenta.27┬áW
+Carregamento r├ípido do USB Power Delivery (PD) Compat├¡vel
+Modo ExpressCharge Suporte para ExpressCharge Γäó 1.0 e ExpressCharge Boost
+NOTA:  Certifique-se de que o computador com bateria de 
+45┬áWh esteja conectado a um adaptador de energia de 65┬áW 
+para que esse recurso seja compat├¡vel.
+NOTA:  Tamb├⌐m ├⌐ necess├írio ativar o modo ExpressCharge 
+na tela de configura├º├úo do BIOS. Selecione Energia  > 
+Configura├º├úo da baterias  > ExpressCharge  e, em 
+seguida, pressione Enter .
+Requisitos do adaptador de energia (para computadores enviados 
+com uma bateria de 3 c├⌐lulas de 55 Wh)
+NOTA:  Se voc├¬ n├úo comprou o adaptador de energia da marca Dell recomendado para seu computador, certifique-se de que ele 
+atenda aos requisitos abaixo.
+A tabela a seguir lista os requisitos do adaptador de energia para o Dell Pro 14 PC14250 .
+28 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 29 ========================================
+Tabela 23. Requisitos do adaptador de energia┬á
+Descri├º├úo Valor
+Alimenta├º├úo necess├íria para que um adaptador de energia atinja o 
+desempenho ideal.65 W
+Energia que carrega o computador com uma velocidade mais lenta.
+NOTA:  Uma mensagem de advert├¬ncia pode aparecer 
+informando sobre o uso de um adaptador de menor pot├¬ncia 
+e velocidade de carregamento mais lenta.Menos de 60┬áW
+Energia m├¡nima necess├íria de um adaptador de energia para operar o 
+computador e carregar a bateria.
+NOTA:  Uma mensagem de advert├¬ncia ├⌐ exibida informando 
+sobre o uso de um adaptador com alimenta├º├úo mais baixa e 
+velocidade de carregamento mais lenta.27┬áW
+Carregamento r├ípido do USB Power Delivery (PD) Compat├¡vel
+Modo ExpressCharge H├í suporte para ExpressCharge 1.0 e capacidade para 
+ExpressCharge Boost
+NOTA:  Para o modo ExpressCharge Boost, certifique-se 
+de que o computador com uma bateria de 55 Wh esteja 
+conectado a um adaptador de energia de 90 W para que 
+esse recurso seja compat├¡vel.
+NOTA:  Tamb├⌐m ├⌐ necess├írio ativar o modo ExpressCharge 
+na tela de configura├º├úo do BIOS. Selecione Energia  > 
+Configura├º├úo da baterias  > ExpressCharge  e, em 
+seguida, pressione Enter .
+Bateria
+A tabela a seguir lista as especifica├º├╡es da bateria do Dell Pro 14 PC14250 .
+Tabela 24. Especifica├º├╡es da bateria┬á
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s Op├º├úo quatro
+Tipo de bateria 3 c├⌐lulas, 45 Wh, 
+ExpressCharge 1.0, 
+ExpressCharge Boost3 c├⌐lulas, 45 Wh, 
+ExpressCharge 1.0, 
+ExpressCharge Boost, ciclo 
+de vida longo3 c├⌐lulas, 55 
+Wh, ExpressCharge 
+1.0, compat├¡vel com 
+ExpressCharge Boost3 c├⌐lulas, 55 
+Wh, ExpressCharge 
+1.0, compat├¡vel com 
+ExpressCharge Boost, 
+longo ciclo de vida
+Tens├úo da bateria 11.25 VDC 11.25 VDC 11.70 VDC 11.70 VDC
+Peso da bateria (m├íximo) 0,20┬ákg (0,44┬álb) 0,20┬ákg (0,44┬álb) 0,21┬ákg (0,48┬álb) 0,21┬ákg (0,48┬álb)
+Dimens├╡es da bateria:
+Altura 6,30 mm (0,25┬ápol.) 6,30 mm (0,25┬ápol.) 6,30 mm (0,25┬ápol.) 6,30 mm (0,25┬ápol.)
+Largura 255,05 mm (10,04┬ápol.) 255,05 mm (10,04┬ápol.) 255,05 mm 
+(10,04┬ápol.)255,05 mm 
+(10,04┬ápol.)
+Profundidade 73,00 mm (2,87┬ápol.) 73,00 mm (2,87┬ápol.) 73,00 mm (2,87┬ápol.) 73,00 mm (2,87┬ápol.)
+Faixa de temperatura:
+Especifica├º├╡es do Dell Pro 14 PC14250 29
+
+======================================== PAGE 30 ========================================
+Tabela 24. Especifica├º├╡es da bateria┬á(continua├º├úo)
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s Op├º├úo quatro
+De opera├º├úo ΓùÅCarga: 0┬á┬░C a 45┬á┬░C 
+(32┬á┬░F a 113┬á┬░F)
+ΓùÅDescarga: 0┬á┬░C a 
+70┬á┬░C (32┬á┬░F a 
+158┬á┬░F)ΓùÅCarga: 0┬á┬░C a 45┬á┬░C 
+(32┬á┬░F a 113┬á┬░F)
+ΓùÅDescarga: 0┬á┬░C a 70┬á┬░C 
+(32┬á┬░F a 158┬á┬░F)ΓùÅCarga: 0┬á┬░C a 
+45┬á┬░C (32┬á┬░F a 
+113┬á┬░F)
+ΓùÅDescarga: 0┬á┬░C a 
+70┬á┬░C (32┬á┬░F a 
+158┬á┬░F)ΓùÅCarga: 0┬á┬░C a 
+45┬á┬░C (32┬á┬░F a 
+113┬á┬░F)
+ΓùÅDescarga: 0┬á┬░C a 
+70┬á┬░C (32┬á┬░F a 
+158┬á┬░F)
+Armazenamento -20┬á┬░C a 60┬á┬░C (-4┬á┬░F a 
+140┬á┬░F)-20┬á┬░C a 60┬á┬░C (-4┬á┬░F a 
+140┬á┬░F)-20┬á┬░C a 60┬á┬░C (-4┬á┬░F 
+a 140┬á┬░F)-20┬á┬░C a 60┬á┬░C (-4┬á┬░F 
+a 140┬á┬░F)
+Tempo de opera├º├úo da 
+bateriaVaria conforme 
+as condi├º├╡es de 
+opera├º├úo e pode 
+ser significativamente 
+reduzido sob certas 
+condi├º├╡es de uso intenso 
+de energia.Varia conforme as condi├º├╡es 
+de opera├º├úo e pode ser 
+significativamente reduzido 
+sob certas condi├º├╡es de uso 
+intenso de energia.Varia conforme 
+as condi├º├╡es de 
+opera├º├úo e pode 
+ser significativamente 
+reduzido sob certas 
+condi├º├╡es de uso 
+intenso de energia.Varia conforme 
+as condi├º├╡es de 
+opera├º├úo e pode 
+ser significativamente 
+reduzido sob certas 
+condi├º├╡es de uso 
+intenso de energia.
+Tempo de carga da bateria 
+(aproximado)
+NOTA:  Controle 
+o tempo 
+de carregamento, 
+dura├º├úo, hora de 
+in├¡cio e t├⌐rmino e 
+assim por diante, 
+usando o aplicativo Dell 
+Power Manager. Para 
+obter mais informa├º├╡es 
+sobre o Dell Power 
+Manager, consulte Eu e 
+o Meu Dell  em Suporte 
+DellΓùÅ0┬á┬░C a 15┬á┬░C 
+ΓÇö 4 horas 
+(com o computador 
+desligado)
+ΓùÅ16┬á┬░C a 45┬á┬░C 
+ΓÇö 2 horas 
+(com o computador 
+desligado)
+ΓùÅ46┬á┬░C a 50┬á┬░C 
+ΓÇö 3 horas 
+(com o computador 
+desligado)ΓùÅ0┬á┬░C a 15┬á┬░C ΓÇö 4 horas 
+(com o computador 
+desligado)
+ΓùÅ16┬á┬░C a 45┬á┬░C 
+ΓÇö 2 horas (com o 
+computador desligado)
+ΓùÅ46┬á┬░C a 50┬á┬░C 
+ΓÇö 3 horas (com o 
+computador desligado)ΓùÅ0┬á┬░C a 15┬á┬░C 
+ΓÇö 4 horas (com 
+o computador 
+desligado)
+ΓùÅ16┬á┬░C a 45┬á┬░C 
+ΓÇö 2 horas (com 
+o computador 
+desligado)
+ΓùÅ46┬á┬░C a 50┬á┬░C 
+ΓÇö 3 horas (com 
+o computador 
+desligado)ΓùÅ0┬á┬░C a 15┬á┬░C 
+ΓÇö 4 horas (com 
+o computador 
+desligado)
+ΓùÅ16┬á┬░C a 45┬á┬░C 
+ΓÇö 2 horas (com 
+o computador 
+desligado)
+ΓùÅ46┬á┬░C a 50┬á┬░C 
+ΓÇö 3 horas (com 
+o computador 
+desligado)
+Bateria de c├⌐lula tipo 
+moedaN├úo compat├¡vel N├úo compat├¡vel N├úo compat├¡vel N├úo compat├¡vel
+CUIDADO:  Os intervalos de temperatura de armazenamento e de opera├º├úo podem ser diferentes entre os 
+componentes. Assim, operar ou armazenar o dispositivo fora desses intervalos pode afetar o desempenho de 
+componentes espec├¡ficos.
+CUIDADO:  A Dell recomenda que voc├¬ carregue a bateria regularmente para obter o consumo de energia ideal. Se a 
+carga da bateria estiver completamente esgotada, conecte o adaptador de energia, ligue o computador e, em seguida, 
+reinicie o computador para reduzir o consumo de energia.
+Requisitos de energia (para computadores enviados com bateria de 
+3┬ác├⌐lulas e 45┬áWh)
+NOTA:  As informa├º├╡es nesta se├º├úo s├úo aplic├íveis apenas aos pa├¡ses da Uni├úo Europeia (UE).
+30 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 31 ========================================
+Figura 8. Pictograma dos requisitos de carregamento
+A alimenta├º├úo fornecida pelo carregador deve estar entre um m├¡nimo de 27┬áWatts, exigido pelo equipamento de r├ídio, e um m├íximo de 59 
+Watts para atingir a velocidade m├íxima de carregamento.
+Este computador ├⌐ compat├¡vel com o carregamento r├ípido do USB Power Delivery (PD).
+Requisitos de energia (para computadores enviados com bateria de 
+3┬ác├⌐lulas e 55┬áWh)
+NOTA:  As informa├º├╡es nesta se├º├úo s├úo aplic├íveis apenas aos pa├¡ses da Uni├úo Europeia (UE).
+Figura 9. Pictograma dos requisitos de carregamento
+A alimenta├º├úo fornecida pelo carregador deve estar entre um m├¡nimo de 27┬áWatts, exigido pelo equipamento de r├ídio, e um m├íximo de 72 
+Watts para atingir a velocidade m├íxima de carregamento.
+Este computador ├⌐ compat├¡vel com o carregamento r├ípido do USB Power Delivery (PD).
+Tela
+A tabela a seguir lista as especifica├º├╡es da tela do Dell Pro 14 PC14250 .
+Tabela 25. Especifica├º├╡es da tela┬á
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s Op├º├úo quatro Op├º├úo cinco
+Tipo de tela Painel de 14 polegadas 
+de alta defini├º├úo Plus 
+(FHD+)14 polegadas, Full 
+High Definition Plus 
+(FHD+), luz azul baixaPainel de 14 
+polegadas de alta 
+defini├º├úo Plus 
+(FHD+)Painel de 14 
+polegadas de alta 
+defini├º├úo Plus 
+(FHD+)Full HD Plus 
+(FHD+) de 14 
+polegadas
+Op├º├╡es de toque Sem touchscreen Sem touchscreen Sem touchscreen Touchscreen Touchscreen
+Tecnologia de painel 
+da telaComuta├º├úo no plano 
+(IPS)Comuta├º├úo no plano 
+(IPS)Comuta├º├úo no plano 
+(IPS)Comuta├º├úo no 
+plano (IPS)Comuta├º├úo no 
+plano (IPS)
+Dimens├╡es do painel da tela (├írea ativa):
+Especifica├º├╡es do Dell Pro 14 PC14250 31
+
+======================================== PAGE 32 ========================================
+Tabela 25. Especifica├º├╡es da tela┬á(continua├º├úo)
+Descri├º├úo Op├º├úo um Op├º├úo dois Op├º├úo tr├¬s Op├º├úo quatro Op├º├úo cinco
+Altura 188,50 mm (7,42┬ápol.) 188,50 mm (7,42┬ápol.) 188,50 mm 
+(7,42┬ápol.)188,50 mm 
+(7,42┬ápol.)188,50 mm 
+(7,42┬ápol.)
+Largura 301,59 mm (11,87┬ápol.) 301,59 mm (11,87┬ápol.) 301,59 mm 
+(11,87┬ápol.)301,59 mm 
+(11,87┬ápol.)301,59 mm 
+(11,87┬ápol.)
+Diagonal 355,60 mm 
+(14,00┬ápol.)355,60 mm 
+(14,00┬ápol.)355,60 mm 
+(14,00┬ápol.)355,60 mm 
+(14,00┬ápol.)355,60 mm 
+(14,00┬ápol.)
+Resolu├º├úo nativa do 
+painel da tela1920 x 1200 1920 x 1200 1920 x 1200 1920 x 1200 1920 x 1200
+Lumin├óncia (t├¡pico) 300 nits 400 nits 400 nits 300 nits 400 nits
+Megapixels 2,30 2,30 2,30 2,30 2,3
+Gama de cores 45% NTSC 100% de sRGB 45% NTSC 100% de sRGB 100% sRGB
+Pixels por polegada 
+(PPI)162 162 162 162 162
+Taxa de contraste 
+(t├¡pica)ΓùÅ600:1 (m├¡nima)
+ΓùÅ800:1 (t├¡pico)ΓùÅ800:1 (m├¡nima)
+ΓùÅ1000:1 (t├¡pico)ΓùÅ600:1 (m├¡nima)
+ΓùÅ800:1 (t├¡pico)ΓùÅ600:1 (m├¡nima)
+ΓùÅ800:1 (t├¡pico)ΓùÅ600:1 (m├¡nima)
+ΓùÅ800:1 (t├¡pico)
+Tempo de resposta 
+(m├íximo)35┬ámilissegundos 35┬ámilissegundos 35┬ámilissegundos 35┬ámilissegundos 35┬áms
+Taxa de atualiz. 60 Hz 30 Hz a 60 Hz 60 Hz 60 Hz 60 Hz
+├éngulo de 
+visualiza├º├úo 
+horizontalΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 89 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 89 graus 
+(t├¡pico)
+├éngulo de 
+visualiza├º├úo verticalΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)ΓùÅ+/- 80 graus 
+(m├¡nimo)
+ΓùÅ+/- 85 graus 
+(t├¡pico)
+Dist├óncia entre pixels 0,1571 mm 0,1571 mm 0,1571 mm 0,1571 mm 0,1571 mm
+Consumo de energia 
+(m├íximo)3,68┬áW 2,50┬áW 4,6┬áW 4,40┬áW 5,50┬áW
+Acabamento 
+antirreflexo x 
+brilhanteAntirreflexo Antirreflexo Antirreflexo Antirreflexo Antirreflexo
+Leitor de impress├╡es digitais (opcional)
+A tabela a seguir mostra as especifica├º├╡es do leitor de impress├╡es digitais opcional do Dell Pro 14 PC14250 .
+Tabela 26. Especifica├º├╡es do leitor de impress├╡es digitais┬á
+Descri├º├úo Valores
+Tecnologia de sensor Capacitiva
+Resolu├º├úo do sensor 500┬ádpi
+32 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 33 ========================================
+Tabela 26. Especifica├º├╡es do leitor de impress├╡es digitais┬á(continua├º├úo)
+Descri├º├úo Valores
+Tamanho de pixels do sensor 108 mm x 88 mm
+Sensores
+A tabela a seguir lista os sensores do Dell Pro 14 PC14250 .
+Tabela 27. Sensor┬á
+Suporte do sensor
+Sensor de efeito HALL
+GPU ΓÇö integrada
+A tabela a seguir mostra as especifica├º├╡es da unidade de processamento gr├ífico (GPU) integrada compat├¡vel com o Dell Pro 14 PC14250 .
+Tabela 28. GPU ΓÇö integrada┬á
+Controlador Tamanho da mem├│ria Processador
+Gr├íficos Intel UHD Mem├│ria do sistema compartilhada ΓùÅProcessador Intel U300E
+ΓùÅIntel Core i3-1315U de 13a gera├º├úo
+Gr├íficos Intel Iris Xe Mem├│ria do sistema compartilhada ΓùÅIntel Core i5-1335U de 13a gera├º├úo
+ΓùÅIntel Core i5-1345U de 13a gera├º├úo
+Gr├íficos Intel Mem├│ria do sistema compartilhada ΓùÅIntel Core 3 100U
+ΓùÅIntel Core 5 120U
+ΓùÅIntel Core 5 220U
+ΓùÅIntel Core 7 150U
+ΓùÅIntel Core 7 250U
+ΓùÅIntel Core Ultra 5 225U
+ΓùÅIntel Core Ultra 5 235U
+ΓùÅIntel Core Ultra 7 255U
+ΓùÅIntel Core Ultra 7 265U
+Matriz de suporte para v├írias telas
+A tabela a seguir lista a matriz de suporte para v├írias telas do Dell Pro 14 PC14250 .
+Tabela 29. Matriz de suporte para v├írias telas┬á
+Placa gr├ífica Direct Graphics Controller 
+Direct Output ModeTelas externas compat├¡veis 
+com tela interna do 
+computador ligadaTelas externas compat├¡veis 
+com tela interna do 
+computador desligada
+Gr├íficos Intel UHD Integrados 3 4
+Gr├íficos Intel Iris Xe Integrados 3 4
+Gr├íficos Intel Integrados 3 4
+Especifica├º├╡es do Dell Pro 14 PC14250 33
+
+======================================== PAGE 34 ========================================
+Seguran├ºa de hardware
+A tabela a seguir mostra a seguran├ºa de hardware do Dell Pro 14 PC14250 .
+Tabela 30. Seguran├ºa de hardware┬á
+Seguran├ºa de hardware
+Um slot de trava de seguran├ºa Wedge
+M├│dulo TPM (Trusted Platform Module) 2.0 discreto
+Obturador mec├ónico de privacidade da c├ómera
+Certifica├º├úo FIPS (Federal Information Processing Standards) 140-2 para Trusted Platform Module (TPM)
+Smart card de contato e ControlVault 3 Plus
+ControlVault 3 Plus com certifica├º├úo FIPS 140-3 n├¡vel 3
+Certifica├º├úo do Trusted Computing Group (TCG) para TPM
+Detec├º├úo de invas├úo do chassi
+BIOS - Limpeza do TPM e/ou bloqueio de inicializa├º├úo do sistema ap├│s detec├º├úo de invas├úo do chassi
+Leitor de smart card
+Leitor de smart card contactado
+A tabela a seguir mostra as especifica├º├╡es do leitor de smart card com contato do Dell Pro 14 PC14250 .
+NOTA:  O leitor de smart card s├│ est├í dispon├¡vel em configura├º├╡es selecionadas que s├úo fornecidas com um dos seguintes 
+processadores:
+ΓùÅIntel Core Ultra 5 235U
+ΓùÅIntel Core Ultra 7 255U
+ΓùÅIntel Core Ultra 7 265U
+Tabela 31. Especifica├º├╡es do leitor de smart card por contato┬á
+Padr├╡es Descri├º├úo Leitor de smart card Dell ControlVault 3 
+Plus
+Suporte de cart├úo ISO 7816 -3 Classe A Leitor capaz de ler smart card com 
+alimenta├º├úo de 5 VSim
+Suporte de cart├úo ISO 7816 -3 Classe B Leitor capaz de ler smart card com 
+alimenta├º├úo de 3 VSim
+Suporte de cart├úo ISO 7816 -3 Classe C Leitor capaz de ler smart card com 
+alimenta├º├úo de 1,8 VSim
+Em conformidade com ISO 7816-1 Especifica├º├╡es do leitor Sim
+Em conformidade com ISO 7816 -2 Especifica├º├úo das caracter├¡sticas f├¡sicas 
+de dispositivo para smart card (tamanho, 
+localiza├º├úo dos pontos de conex├úo, entre 
+outros)Sim
+T=0 suporte Os cart├╡es suportam transmiss├úo em n├¡vel 
+de caractereSim
+T=1 suporte Os cart├╡es suportam transmiss├úo em n├¡vel 
+de blocoSim
+34 Especifica├º├╡es do Dell Pro 14 PC14250
+
+======================================== PAGE 35 ========================================
+Tabela 31. Especifica├º├╡es do leitor de smart card por contato┬á(continua├º├úo)
+Padr├╡es Descri├º├úo Leitor de smart card Dell ControlVault 3 
+Plus
+Em conformidade com EMVCo Em conformidade com os padr├╡es de smart 
+card EMVCo (para padr├╡es de pagamento 
+eletr├┤nico) publicados no www.emvco.comSim
+Certificado pela EMVCo Certificado formalmente com base nas 
+normas para smart card da EMVCoSim
+Interface do sistema operacional PC/SC Especifica├º├úo para computador pessoal 
+ou smart card para integrar leitores de 
+hardware em ambientes de computador 
+pessoalSim
+Conformidade com driver CCID Suporte de driver comum para o dispositivo 
+de interface para cart├úo de circuito 
+integrado para drivers em n├¡vel de SOSim
+Certificado para Windows Dispositivo certificado pelo Microsoft 
+Windows Hardware Certification Kit 
+(WHCK).Sim
+Em conformidade com a FIPS 201 (PIV/
+HSPD-12) via GSADispositivo em conformidade com os 
+requisitos da FIPS 201/PIV/HSPD-12Sim
+Ambiente de opera├º├úo e armazenamento
+Esta tabela lista as especifica├º├╡es de opera├º├úo e armazenamento do Dell Pro 14 PC14250 .
+N├¡vel de poluentes transportados:  G1, conforme definido pela norma ISA-S71.04-1985
+Tabela 32. Caracter├¡sticas ambientais do computador ┬á
+Descri├º├úo Opera├º├úo Armazenamento
+Faixa de temperatura 0┬á┬░C a 40┬á┬░C (32┬á┬░F a 104┬á┬░F) -40┬á┬░C a 65┬á┬░C (-40┬á┬░F a 149┬á┬░F)
+Umidade relativa (m├íxima) 90% (sem condensa├º├úo) 95% (sem condensa├º├úo)
+Vibra├º├úo (m├íxima)*0.66 GRMS N├úo aplic├ível
+Choque (m├íximo) 140 GΓÇá N├úo aplic├ível
+Faixa de altitude -15,2 m a 3048 m (-49,87 ft a 10.000 ft) -15,2 m a 10.668┬ám (-49,87┬áp├⌐s a 
+35.000┬áp├⌐s)
+CUIDADO:  Os intervalos de temperatura de armazenamento e de opera├º├úo podem ser diferentes entre os 
+componentes. Assim, operar ou armazenar o dispositivo fora desses intervalos pode afetar o desempenho de 
+componentes espec├¡ficos.
+* Medida usando um espectro de vibra├º├úo aleat├│rio que simula o ambiente do usu├írio.
+ΓÇá Medida usando um pulso de meio seno de 2 ms.
+Dell Optimizer
+O Dell Optimizer ├⌐ um aplicativo projetado para melhorar o desempenho e a produtividade do computador, otimizando as configura├º├╡es de 
+energia, bateria, tela e detec├º├úo de presen├ºa. Ele tamb├⌐m fornece acesso a aplicativos adquiridos com seu novo computador.
+Para obter mais informa├º├╡es, consulte o Guia do usu├írio do Dell Optimizer  no site Suporte Dell .
+Especifica├º├╡es do Dell Pro 14 PC14250 35
+
+======================================== PAGE 36 ========================================
+Pol├¡tica de suporte Dell
+Para obter informa├º├╡es sobre a pol├¡tica de Suporte Dell, pesquise no site do Suporte Dell .
+Tela Dell com baixa emiss├úo de luz azul
+ATEN├ç├âO:  A exposi├º├úo prolongada ├á luz azul da tela pode levar a efeitos a longo prazo, por exemplo: vista cansada, 
+fadiga ocular ou danos aos olhos.
+A luz azul ├⌐ uma cor no espectro da luz que tem um pequeno comprimento de onda e alta energia. A exposi├º├úo permanente ├á luz azul, 
+principalmente de fontes digitais, pode prejudicar o padr├úo de sono e causar efeitos a longo prazo, como vista cansada, fadiga ocular ou 
+danos aos olhos.
+A tela deste computador foi projetada para minimizar a emiss├úo de luz azul e est├í em conformidade com o requisito da T├£V Rheinland 
+para telas com baixa emiss├úo de luz azul.
+O modo de baixa emiss├úo de luz azul ├⌐ ativado de f├íbrica, portanto, nenhuma outra configura├º├úo ├⌐ necess├íria.
+Para reduzir o risco de esfor├ºo ocular, tamb├⌐m ├⌐ recomend├ível que voc├¬:
+ΓùÅColoque a tela a uma dist├óncia confort├ível, entre 50┬áe 70┬ácm (20 e 28 polegadas) dos olhos.
+ΓùÅPisque frequentemente para umedecer seus olhos, umede├ºa os olhos com ├ígua ou aplique col├¡rios adequados.
+ΓùÅFa├ºa intervalos de 20┬áminutos a cada 2┬áhoras.
+ΓùÅAfastar o olhar da tela e olhar para um objeto a 609,60┬ácm (20 p├⌐s) de dist├óncia por pelo menos 20 segundos durante os intervalos.
+36 Especifica├º├╡es do Dell Pro 14 PC14250

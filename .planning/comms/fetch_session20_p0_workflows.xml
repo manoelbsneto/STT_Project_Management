@@ -1,0 +1,18 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <attribute name="type" />
+    <filter type="or">
+      <condition attribute="name" operator="eq" value="PMO_PA_ConsultarPortfolio" />
+      <condition attribute="name" operator="eq" value="PMO_PA_ConsultarProjeto" />
+      <condition attribute="name" operator="eq" value="PMO_PA_RegistrarRiscoBot" />
+      <condition attribute="name" operator="eq" value="PMO_PA_RegistrarBloqueioBot" />
+      <condition attribute="name" operator="eq" value="PMO_PA_PedirDecisaoBot" />
+      <condition attribute="name" operator="eq" value="PMO_PA_AtualizarStatus" />
+    </filter>
+  </entity>
+</fetch>

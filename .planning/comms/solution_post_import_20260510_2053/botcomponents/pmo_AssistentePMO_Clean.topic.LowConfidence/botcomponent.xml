@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.topic.LowConfidence">
+  <componenttype>9</componenttype>
+  <description>Fallback quando a intencao nao for reconhecida.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>LowConfidence</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

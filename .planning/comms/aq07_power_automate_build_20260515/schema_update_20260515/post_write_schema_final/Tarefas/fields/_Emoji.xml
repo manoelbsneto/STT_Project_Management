@@ -1,0 +1,1 @@
+﻿<Field ID="{d8a77d76-536b-45d2-8b9b-e4e9b00cf3dc}" Name="_Emoji" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Text" DisplayName="Emoji" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_Emoji" FromBaseType="TRUE" ColName="nvarchar5" />

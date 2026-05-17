@@ -1,0 +1,144 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Executive Portfolio",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Reference: ${generatedAt}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Active projects:", "value": "${totalActiveProjects}" },
+        { "title": "Green:", "value": "${greenCount}" },
+        { "title": "Yellow:", "value": "${yellowCount}" },
+        { "title": "Red:", "value": "${redCount}" },
+        { "title": "No recent update:", "value": "${withoutRecentUpdateCount}" },
+        { "title": "Blocked:", "value": "${blockedCount}" },
+        { "title": "Pending decisions:", "value": "${pendingDecisionCount}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Projects requiring attention",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${attentionProjectsSummary}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Projects without recent update",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${projectsWithoutUpdateSummary}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Top blockers",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${topBlockersSummary}",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Operation:", "value": "${operationId}" },
+        { "title": "Card version:", "value": "1.0" }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "View red projects",
+      "data": {
+        "action": "viewRedProjects",
+        "routeKey": "board.status",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "filter": "red"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "View no-update projects",
+      "data": {
+        "action": "viewWithoutUpdate",
+        "routeKey": "board.status",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "filter": "noRecentUpdate"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Request PM update",
+      "data": {
+        "action": "requestPmUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "pmUpn": "${pmUpn}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Open project detail",
+      "data": {
+        "action": "viewProjectDetails",
+        "routeKey": "board.status",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Refresh portfolio",
+      "data": {
+        "action": "refreshPortfolio",
+        "routeKey": "board.status",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard"
+      }
+    }
+  ]
+}

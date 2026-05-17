@@ -1,0 +1,27 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Greeting
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - ola
+      - ola
+      - oi
+      - bom dia
+      - help
+      - ajuda
+
+  actions:
+    - kind: SendActivity
+      id: greeting_menu
+      activity: |-
+        Ola, eu sou o Assistente PMO.
+
+        Posso ajudar com:
+        - atualizar status de projeto
+        - consultar portfolio
+        - consultar detalhes de projeto
+        - registrar risco ou bloqueio
+        - solicitar decisao do board

@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="PlannerGroupId" DisplayName="PlannerGroupId" ID="{07fdfd58-32e2-4e17-aaf6-ef79e35af591}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="PlannerGroupId" ColName="nvarchar12" RowOrdinal="0" />

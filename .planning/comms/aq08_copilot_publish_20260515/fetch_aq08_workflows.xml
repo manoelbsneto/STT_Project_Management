@@ -1,0 +1,22 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="uniquename" />
+    <attribute name="category" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+      <condition attribute="name" operator="like" value="%PM0_PA_Card_%" />
+      <condition attribute="name" operator="eq" value="PM0_PA_OpsFailureHandling" />
+      <condition attribute="workflowid" operator="eq" value="b4df90ec-a721-44cf-adbd-a5ced1d7f9f7" />
+      <condition attribute="workflowid" operator="eq" value="b7678a81-df01-4070-b6db-3c0dbcc7f924" />
+      <condition attribute="workflowid" operator="eq" value="c9e44878-77ed-4b17-9b6f-0bab008a0587" />
+      <condition attribute="workflowid" operator="eq" value="76146280-a6c2-4068-8a3f-3310e3e9210f" />
+      <condition attribute="workflowid" operator="eq" value="36142fd3-9f83-4d4f-81e2-748ded919a92" />
+      <condition attribute="workflowid" operator="eq" value="2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441" />
+    </filter>
+    <order attribute="name" />
+  </entity>
+</fetch>

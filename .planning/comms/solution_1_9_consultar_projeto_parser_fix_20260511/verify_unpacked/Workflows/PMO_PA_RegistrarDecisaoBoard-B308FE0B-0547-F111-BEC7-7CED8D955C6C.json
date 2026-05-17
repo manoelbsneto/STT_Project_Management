@@ -1,0 +1,163 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_teams": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_sharedteams_1ef7e"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Decisao_Created": {
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "evaluatedRecurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Decisoes do Board"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetOnNewItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Decisao_Detalhes": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "table": "Decisoes do Board",
+              "id": "@triggerBody()?['ID']",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Post_Decision_Card_Wait_Response": {
+          "runAfter": {
+            "Get_Decisao_Detalhes": [
+              "Succeeded"
+            ]
+          },
+          "limit": {
+            "timeout": "P28D"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "body/body/recipient/groupId": "96c5b0c4-46cc-46cd-8695-50451db74994",
+              "body/body/recipient/channelId": "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+              "poster": "Flow bot",
+              "body/body/updateMessage": "Resposta registrada no Hub PMO.",
+              "body/body/messageBody": "@replace(replace(replace(replace(replace(replace('{\"$schema\":\"http://adaptivecards.io/schemas/adaptive-card.json\",\"type\":\"AdaptiveCard\",\"version\":\"1.4\",\"body\":[{\"type\":\"ColumnSet\",\"columns\":[{\"type\":\"Column\",\"width\":\"auto\",\"items\":[{\"type\":\"Image\",\"url\":\"https://img.icons8.com/fluency/48/approval.png\",\"size\":\"Small\"}]},{\"type\":\"Column\",\"width\":\"stretch\",\"items\":[{\"type\":\"TextBlock\",\"text\":\"Decisao Pendente\",\"weight\":\"Bolder\",\"size\":\"Medium\"},{\"type\":\"TextBlock\",\"text\":\"Uma decisao requer sua aprovacao\",\"isSubtle\":true,\"spacing\":\"None\"}]}]},{\"type\":\"FactSet\",\"facts\":[{\"title\":\"Decision ID:\",\"value\":\"${DecisionID}\"},{\"title\":\"Projeto:\",\"value\":\"${ProjectName}\"},{\"title\":\"Solicitante:\",\"value\":\"${Solicitante}\"},{\"title\":\"Prazo:\",\"value\":\"${Prazo}\"},{\"title\":\"Impacto:\",\"value\":\"${Impacto}\"}]},{\"type\":\"TextBlock\",\"text\":\"**Descricao:**\",\"wrap\":true},{\"type\":\"TextBlock\",\"text\":\"${Descricao}\",\"wrap\":true},{\"type\":\"Input.Text\",\"id\":\"justificativa\",\"label\":\"Justificativa (obrigatoria para rejeicao/adiamento)\",\"isMultiline\":true,\"placeholder\":\"Adicione sua justificativa...\"}],\"actions\":[{\"type\":\"Action.Submit\",\"title\":\"Aprovar\",\"style\":\"positive\",\"data\":{\"action\":\"approveDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Aprovada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"Rejeitar\",\"style\":\"destructive\",\"data\":{\"action\":\"rejectDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Rejeitada\",\"cardVersion\":\"1.0\"}},{\"type\":\"Action.Submit\",\"title\":\"Adiar\",\"data\":{\"action\":\"deferDecision\",\"decisionId\":\"${DecisionID}\",\"resposta\":\"Adiada\",\"cardVersion\":\"1.0\"}}]}', '${DecisionID}', coalesce(body('Get_Decisao_Detalhes')?['DecisionID'], triggerBody()?['DecisionID'], '-')), '${ProjectName}', coalesce(body('Get_Decisao_Detalhes')?['ProjectID'], triggerBody()?['ProjectID'], '-')), '${Solicitante}', coalesce(body('Get_Decisao_Detalhes')?['Solicitante']?['DisplayName'], body('Get_Decisao_Detalhes')?['Solicitante']?['Email'], '-')), '${Prazo}', coalesce(string(body('Get_Decisao_Detalhes')?['Prazo']), '-')), '${Impacto}', coalesce(body('Get_Decisao_Detalhes')?['Impacto']?['Value'], body('Get_Decisao_Detalhes')?['Impacto'], '-')), '${Descricao}', coalesce(body('Get_Decisao_Detalhes')?['Descricao'], '-'))",
+              "location": "Channel"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+              "connectionName": "shared_teams",
+              "operationId": "PostCardAndWaitForResponse"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Normalize_Decision_Status": {
+          "runAfter": {
+            "Post_Decision_Card_Wait_Response": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@coalesce(body('Post_Decision_Card_Wait_Response')?['data']?['resposta'], body('Post_Decision_Card_Wait_Response')?['resposta'], 'Adiada')"
+        },
+        "Normalize_Justificativa": {
+          "runAfter": {
+            "Normalize_Decision_Status": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@coalesce(body('Post_Decision_Card_Wait_Response')?['data']?['justificativa'], body('Post_Decision_Card_Wait_Response')?['justificativa'], '')"
+        },
+        "Update_Decisao_Board": {
+          "runAfter": {
+            "Normalize_Justificativa": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "item/CardVersion": "1.0",
+              "item/DecisionID": "@body('Get_Decisao_Detalhes')?['DecisionID']",
+              "item/Title": "@body('Get_Decisao_Detalhes')?['Title']",
+              "table": "Decisoes do Board",
+              "id": "@body('Get_Decisao_Detalhes')?['ID']",
+              "item/ResponseSource/Value": "AdaptiveCard",
+              "item/DataResposta": "@utcNow()",
+              "item/ApproverUPN": "@coalesce(body('Get_Decisao_Detalhes')?['Aprovador']?['Email'], '')",
+              "item/ProjectID": "@body('Get_Decisao_Detalhes')?['ProjectID']",
+              "item/Justificativa": "@outputs('Normalize_Justificativa')",
+              "item/Resposta": "@outputs('Normalize_Decision_Status')",
+              "item/StatusDecisao/Value": "@outputs('Normalize_Decision_Status')",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "item/Descricao": "@body('Get_Decisao_Detalhes')?['Descricao']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "PatchItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

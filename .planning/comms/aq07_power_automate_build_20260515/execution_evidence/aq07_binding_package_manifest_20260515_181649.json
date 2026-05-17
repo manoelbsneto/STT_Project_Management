@@ -1,0 +1,67 @@
+{
+    "timestamp":  "2026-05-15T18:21:20.6838118-03:00",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "botId":  "0c4a9729-d55d-483c-8ec3-db9369583155",
+    "botSchema":  "pmo_AssistentePMO_V2",
+    "solutionUniqueName":  "PMO_AQ07_CopilotBinding",
+    "packageRoot":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\aq07_binding_package_20260515_181649",
+    "packageZip":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\PMO_AQ07_CopilotBinding_20260515_181649.zip",
+    "flowEvidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\aq07_flow_solutionaware_20260515_181649.json",
+    "flows":  [
+                  {
+                      "DisplayName":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+                      "FlowName":  "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+                      "Enabled":  false,
+                      "State":  "Stopped",
+                      "WorkflowEntityId":  "8333bd91-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  },
+                  {
+                      "DisplayName":  "PM0_PA_Card_AtualizarStatus",
+                      "FlowName":  "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  },
+                  {
+                      "DisplayName":  "PM0_PA_Card_ListarTarefas",
+                      "FlowName":  "c9e44878-77ed-4b17-9b6f-0bab008a0587",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  },
+                  {
+                      "DisplayName":  "PM0_PA_Card_CriarTarefa",
+                      "FlowName":  "76146280-a6c2-4068-8a3f-3310e3e9210f",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "7f662db7-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  },
+                  {
+                      "DisplayName":  "PM0_PA_Card_AtualizarTarefa",
+                      "FlowName":  "36142fd3-9f83-4d4f-81e2-748ded919a92",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  },
+                  {
+                      "DisplayName":  "PM0_PA_OpsFailureHandling",
+                      "FlowName":  "2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441",
+                      "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling",
+                      "Enabled":  true,
+                      "State":  "Started",
+                      "WorkflowEntityId":  "9531fbc7-a250-f111-bec7-000d3abc5cc6",
+                      "SolutionAwareOutput":  "Code Description Internal                                                                                              \r\n---- ----------- --------                                                                                              \r\n 403 Forbidden   @{StatusCode=403; StatusDescription=Forbidden; Headers=Strict-Transport-Security: max-age=31536000;..."
+                  }
+              ],
+    "importLog":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\pac_import_aq07_binding_20260515_181649.txt"
+}

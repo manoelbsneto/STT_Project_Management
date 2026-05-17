@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26041.172" SolutionPackageVersion="9.2" languagecode="1046" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26041.172" OrganizationSchemaType="Standard">
+  <SolutionManifest>
+    <UniqueName>PMO_AQ07_CopilotBinding</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="PMO AQ07 Copilot Binding" languagecode="1046" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>DefaultPublishercolofertasbrasilpro</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Default publisher for colofertasbrasilpro" languagecode="1046" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>pmo</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{8333bd91-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{1721e0a3-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{7f662db7-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{7c6300c2-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{9531fbc7-a250-f111-bec7-000d3abc5cc6}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>

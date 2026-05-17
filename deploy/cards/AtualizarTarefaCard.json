@@ -1,0 +1,140 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Update Task",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Project: ${projectName}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Project ID:", "value": "${projectId}" },
+        { "title": "Task ID:", "value": "${taskId}" },
+        { "title": "Planner sync:", "value": "${plannerSyncStatus}" },
+        { "title": "Operation:", "value": "${operationId}" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "taskTitle",
+      "label": "Task title",
+      "isRequired": true,
+      "errorMessage": "Enter a task title.",
+      "value": "${taskTitle}"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "taskStatus",
+      "label": "Status",
+      "isRequired": true,
+      "errorMessage": "Select a status.",
+      "choices": [
+        { "title": "Pendente", "value": "Pendente" },
+        { "title": "Em Andamento", "value": "Em Andamento" },
+        { "title": "Testes", "value": "Testes" },
+        { "title": "Piloto e Implantacao", "value": "Piloto e Implantacao" },
+        { "title": "Concluido", "value": "Concluido" },
+        { "title": "Cancelado", "value": "Cancelado" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "responsibleUpn",
+      "label": "Responsible UPN",
+      "isRequired": true,
+      "errorMessage": "Enter a valid responsible UPN.",
+      "value": "${responsibleUpn}"
+    },
+    {
+      "type": "Input.Date",
+      "id": "dueDate",
+      "label": "Due date",
+      "value": "${dueDate}"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "priority",
+      "label": "Priority",
+      "choices": [
+        { "title": "Low", "value": "Baixa" },
+        { "title": "Normal", "value": "Normal" },
+        { "title": "High", "value": "Alta" },
+        { "title": "Critical", "value": "Critica" }
+      ]
+    },
+    {
+      "type": "Input.Number",
+      "id": "actualHours",
+      "label": "Actual hours",
+      "min": 0,
+      "placeholder": "0"
+    },
+    {
+      "type": "Input.Text",
+      "id": "updateNotes",
+      "label": "Update notes",
+      "isMultiline": true,
+      "placeholder": "Add update notes."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Update task",
+      "style": "positive",
+      "data": {
+        "action": "submitUpdateTask",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Cancel",
+      "data": {
+        "action": "cancelTaskEdit",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Alert PMO ops",
+      "data": {
+        "action": "requestTaskUpdate",
+        "routeKey": "pmo.ops",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.action.PMO_PA_RegistrarDecisaoBoard">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>PMO_PA_RegistrarDecisaoBoard</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

@@ -1,0 +1,112 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Status Update",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Project: ${projectName}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Project ID:", "value": "${projectId}" },
+        { "title": "PM:", "value": "${pmDisplay}" },
+        { "title": "Operation:", "value": "${operationId}" }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "statusRAG",
+      "label": "Status RAG",
+      "isRequired": true,
+      "errorMessage": "Select a status.",
+      "choices": [
+        { "title": "Verde - On track", "value": "Verde" },
+        { "title": "Amarelo - Attention", "value": "Amarelo" },
+        { "title": "Vermelho - Critical", "value": "Vermelho" }
+      ]
+    },
+    {
+      "type": "Input.Number",
+      "id": "percentual",
+      "label": "Percent complete",
+      "min": 0,
+      "max": 100,
+      "placeholder": "0-100"
+    },
+    {
+      "type": "Input.Text",
+      "id": "resumo",
+      "label": "Status summary",
+      "isRequired": true,
+      "isMultiline": true,
+      "errorMessage": "Enter the status summary.",
+      "placeholder": "Describe the current progress."
+    },
+    {
+      "type": "Input.Text",
+      "id": "risco",
+      "label": "Risks",
+      "isMultiline": true,
+      "placeholder": "Describe current risks."
+    },
+    {
+      "type": "Input.Text",
+      "id": "bloqueio",
+      "label": "Blockers",
+      "isMultiline": true,
+      "placeholder": "Describe current blockers."
+    },
+    {
+      "type": "Input.Text",
+      "id": "proximaAcao",
+      "label": "Next action",
+      "isMultiline": true,
+      "placeholder": "Describe the next action."
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit status",
+      "style": "positive",
+      "data": {
+        "action": "submitStatusUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Cancel",
+      "data": {
+        "action": "cancelStatusUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "capturedAt": "2026-05-12T15:36:15",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "activeProjectCount": 15,
+  "activeTaskCount": 4,
+  "activeProjects": [
+    {
+      "ID": 5,
+      "ProjectID": "PRJ-005",
+      "NomeProjeto": "Automação RPA Financeiro",
+      "Title": null,
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Amarelo",
+      "Percentual": 55.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-02T15:01:54Z",
+      "Modified": "2026-05-08T23:26:33Z"
+    },
+    {
+      "ID": 4,
+      "ProjectID": "PRJ-004",
+      "NomeProjeto": "Data Lake Analytics",
+      "Title": null,
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Media",
+      "StatusRAG": "Verde",
+      "Percentual": 80.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-02T15:01:53Z",
+      "Modified": "2026-05-08T23:26:04Z"
+    },
+    {
+      "ID": 2,
+      "ProjectID": "PRJ-002",
+      "NomeProjeto": "Migração Cloud Azure",
+      "Title": null,
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Amarelo",
+      "Percentual": 40.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-02T15:01:49Z",
+      "Modified": "2026-05-08T23:26:22Z"
+    },
+    {
+      "ID": 1,
+      "ProjectID": "PRJ-001",
+      "NomeProjeto": "Mobile App Corporativo",
+      "Title": null,
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Verde",
+      "Percentual": 65.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-02T15:01:47Z",
+      "Modified": "2026-05-08T23:25:48Z"
+    },
+    {
+      "ID": 3,
+      "ProjectID": "PRJ-003",
+      "NomeProjeto": "Portal do Colaborador",
+      "Title": null,
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Media",
+      "StatusRAG": "Vermelho",
+      "Percentual": 25.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-02T15:01:51Z",
+      "Modified": "2026-05-08T23:26:47Z"
+    },
+    {
+      "ID": 24,
+      "ProjectID": "PRJ-6604C20A",
+      "NomeProjeto": "Projeto Smoke Delete Parcial 2.3",
+      "Title": "Projeto Smoke Delete Parcial 2.3",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Verde",
+      "Percentual": 0.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-12T00:48:45Z",
+      "Modified": "2026-05-12T11:05:49Z"
+    },
+    {
+      "ID": 19,
+      "ProjectID": "PRJ-FFF50D08",
+      "NomeProjeto": "Projeto Smoke v112 Final",
+      "Title": "Projeto Smoke v112 Final",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Verde",
+      "Percentual": 0.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T16:52:39Z",
+      "Modified": "2026-05-11T16:52:39Z"
+    },
+    {
+      "ID": 20,
+      "ProjectID": "PRJ-E9F77C04",
+      "NomeProjeto": "Projeto Smoke v112 Final",
+      "Title": "Projeto Smoke v112 Final",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Verde",
+      "Percentual": 0.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T16:54:48Z",
+      "Modified": "2026-05-11T23:56:05Z"
+    },
+    {
+      "ID": 21,
+      "ProjectID": "PRJ-2CA883CF",
+      "NomeProjeto": "Projeto Smoke v113 Cancel",
+      "Title": "Projeto Smoke v113 Cancel",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Verde",
+      "Percentual": 0.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T18:26:13Z",
+      "Modified": "2026-05-11T18:26:13Z"
+    },
+    {
+      "ID": 23,
+      "ProjectID": "PRJ-3D73DF3B",
+      "NomeProjeto": "projeto=Projeto Smoke v113 Cancel",
+      "Title": "projeto=Projeto Smoke v113 Cancel",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Baixa",
+      "StatusRAG": "Verde",
+      "Percentual": 0.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-12T00:20:14Z",
+      "Modified": "2026-05-12T00:20:14Z"
+    },
+    {
+      "ID": 15,
+      "ProjectID": "PRJ-6141FC2B",
+      "NomeProjeto": "Teste ColdStart Fix",
+      "Title": "Teste ColdStart Fix",
+      "PM": null,
+      "Prioridade": "Media",
+      "StatusRAG": null,
+      "Percentual": null,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-10T21:30:19Z",
+      "Modified": "2026-05-10T21:30:19Z"
+    },
+    {
+      "ID": 14,
+      "ProjectID": "PRJ-4C7D8465",
+      "NomeProjeto": "Teste Fix Codex",
+      "Title": "Teste Fix Codex",
+      "PM": null,
+      "Prioridade": "Media",
+      "StatusRAG": null,
+      "Percentual": null,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-10T20:50:52Z",
+      "Modified": "2026-05-10T20:50:52Z"
+    },
+    {
+      "ID": 18,
+      "ProjectID": "PRJ-5E7C4110",
+      "NomeProjeto": "Teste Smoke Final V5",
+      "Title": "Teste Smoke Final V5",
+      "PM": {
+        "Email": "mbenicios@minsait.com",
+        "TypeId": "{c956ab54-16bd-4c18-89d2-996f57282a6f}",
+        "LookupId": 11,
+        "LookupValue": "Benicio De Souza Filho, Manoel"
+      },
+      "Prioridade": "Alta",
+      "StatusRAG": "Amarelo",
+      "Percentual": 35.0,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T04:16:55Z",
+      "Modified": "2026-05-11T16:40:52Z"
+    },
+    {
+      "ID": 16,
+      "ProjectID": "PRJ-045ACC71",
+      "NomeProjeto": "Teste Smoke Session20B",
+      "Title": "Teste Smoke Session20B",
+      "PM": null,
+      "Prioridade": "Media",
+      "StatusRAG": null,
+      "Percentual": null,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T02:00:08Z",
+      "Modified": "2026-05-11T02:00:08Z"
+    },
+    {
+      "ID": 17,
+      "ProjectID": "PRJ-4521EE9C",
+      "NomeProjeto": "Teste Smoke Session20C",
+      "Title": "Teste Smoke Session20C",
+      "PM": null,
+      "Prioridade": "Alta",
+      "StatusRAG": null,
+      "Percentual": null,
+      "Ativo": true,
+      "Deleted": false,
+      "Created": "2026-05-11T02:12:29Z",
+      "Modified": "2026-05-11T02:12:29Z"
+    }
+  ],
+  "activeTasks": [
+    {
+      "ID": 1,
+      "Title": "Preparar proposta",
+      "ProjectID": "PRJ-2127A0E4",
+      "Status": "Concluída",
+      "Prioridade": "Alta",
+      "Responsavel": "mbenicios@minsait.com",
+      "DataFim": "2026-06-29T22:00:00Z",
+      "HorasEstimadas": 8.0,
+      "HorasRealizadas": 8.0,
+      "Deleted": false,
+      "DeletedAt": null,
+      "DeletedReason": null,
+      "DeletedByUPN": null,
+      "Created": "2026-05-06T12:10:30Z",
+      "Modified": "2026-05-06T12:26:21Z"
+    },
+    {
+      "ID": 2,
+      "Title": "Revisao tecnica",
+      "ProjectID": "PRJ-2127A0E4",
+      "Status": "Concluída",
+      "Prioridade": "Media",
+      "Responsavel": "mbenicios@minsait.com",
+      "DataFim": "2026-06-28T22:00:00Z",
+      "HorasEstimadas": 4.0,
+      "HorasRealizadas": 4.0,
+      "Deleted": false,
+      "DeletedAt": null,
+      "DeletedReason": null,
+      "DeletedByUPN": null,
+      "Created": "2026-05-06T12:10:33Z",
+      "Modified": "2026-05-06T12:10:33Z"
+    },
+    {
+      "ID": 6,
+      "Title": "Smoke task 2 - in progress",
+      "ProjectID": "PRJ-CODEX-0511184036",
+      "Status": "Em Andamento",
+      "Prioridade": null,
+      "Responsavel": null,
+      "DataFim": null,
+      "HorasEstimadas": 0.0,
+      "HorasRealizadas": 0.0,
+      "Deleted": false,
+      "DeletedAt": null,
+      "DeletedReason": null,
+      "DeletedByUPN": null,
+      "Created": "2026-05-11T21:40:42Z",
+      "Modified": "2026-05-11T21:40:43Z"
+    },
+    {
+      "ID": 7,
+      "Title": "Smoke task 3 - completed",
+      "ProjectID": "PRJ-CODEX-0511184036",
+      "Status": "Concluída",
+      "Prioridade": null,
+      "Responsavel": null,
+      "DataFim": null,
+      "HorasEstimadas": 0.0,
+      "HorasRealizadas": 0.0,
+      "Deleted": false,
+      "DeletedAt": null,
+      "DeletedReason": null,
+      "DeletedByUPN": null,
+      "Created": "2026-05-11T21:40:44Z",
+      "Modified": "2026-05-11T21:40:45Z"
+    }
+  ]
+}

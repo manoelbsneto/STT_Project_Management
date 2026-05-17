@@ -1,0 +1,71 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "PMO Pending Project Features",
+      "weight": "Bolder",
+      "size": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Release remains NO-SHIP until these features, validations, or decisions are closed.",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "P0",
+          "value": "BLK-AT-001, REQ-14, REQ-15, REQ-16"
+        },
+        {
+          "title": "P1",
+          "value": "GAP-AS-001, GAP-PD-001"
+        },
+        {
+          "title": "P2",
+          "value": "GAP-CARD-001, GAP-PLN-001, GAP-C1"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "P0 Features",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "BLK-AT-001 - AtualizarTarefa skip semantics - ETA 2h\\nREQ-14 - CriarProjeto contract validation - ETA 25m\\nREQ-15 - CriarTarefa contract validation - ETA 25m\\nREQ-16 - Gerar_Multiplos_Projetos validation - ETA 40m",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "P1 And P2 Features",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "GAP-AS-001 - AtualizarStatus multiline extraction - ETA 2h fix or 30m decision\\nGAP-PD-001 - PedirDecisao invalid UPN retest - ETA 15m\\nGAP-CARD-001 - Adaptive Cards regression set - ETA about 3h\\nGAP-PLN-001 - Planner sync proof - ETA 45m\\nGAP-C1 - Ghost component cleanup or risk acceptance - ETA 30m",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Acknowledge",
+      "data": {
+        "action": "ackPendingFeatures",
+        "cardVersion": "2026-05-13",
+        "source": "Codex"
+      }
+    }
+  ]
+}

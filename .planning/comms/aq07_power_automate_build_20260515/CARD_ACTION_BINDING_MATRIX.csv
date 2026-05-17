@@ -1,0 +1,7 @@
+flowKey,routeKey,action,operationIdUsage,cardTemplate,expectedInputs,serverSideLookup,tenantWriteDuringBuild,tenantWriteDuringRuntime,acceptance
+FI-01,board.status,view,correlation-only,ResumoExecutivoPortfolio.json,None,yes,no,no,READY
+FI-02,pm.status.updates,update,correlation-only,AtualizarStatusCard.json,status,yes,no,yes,READY
+FI-03,task.card.route,list,correlation-only,ListarTarefasProjetoCard.json,None,yes,no,no,READY
+FI-04,task.card.route,create,correlation-only,CriarTarefaCard.json,title;projectId;plannerBucketName,yes,no,yes,READY
+FI-05,task.card.route,update,correlation-only,AtualizarTarefaCard.json,taskId;projectId;taskStatus,yes,no,yes,READY
+FI-06,pmo.ops,view,correlation-only,None,None,yes,no,no,READY

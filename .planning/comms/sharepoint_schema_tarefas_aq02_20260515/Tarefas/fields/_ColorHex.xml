@@ -1,0 +1,1 @@
+﻿<Field ID="{3bdab9ac-9e5d-44d4-bde9-13b37e170618}" Name="_ColorHex" DisplaceOnUpgrade="TRUE" Hidden="TRUE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Text" DisplayName="Color" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ColorHex" FromBaseType="TRUE" ColName="nvarchar3" />

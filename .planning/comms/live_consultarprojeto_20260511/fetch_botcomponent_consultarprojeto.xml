@@ -1,0 +1,17 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <attribute name="data" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="like" value="%ConsultarProjeto%" />
+      <condition attribute="name" operator="like" value="%ConsultarProjeto%" />
+    </filter>
+    <order attribute="modifiedon" descending="true" />
+  </entity>
+</fetch>

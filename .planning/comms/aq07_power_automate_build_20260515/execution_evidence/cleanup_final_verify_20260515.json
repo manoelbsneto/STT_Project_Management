@@ -1,0 +1,28 @@
+﻿{
+    "taskId":  "AQ-07-PARTIAL-FLOW-CLEANUP-FINAL-VERIFY",
+    "timestampUtc":  "2026-05-15T16:38:38.0502797Z",
+    "remainingAq07Targets":  [
+                                 {
+                                     "DisplayName":  "PM0_PA_Card_ListarTarefas",
+                                     "FlowName":  "e6a3abe2-59d9-4d13-88c5-3f9f035e905e",
+                                     "Enabled":  true,
+                                     "CreatedTime":  "2026-05-15T15:57:42.8433268Z",
+                                     "LastModifiedTime":  "2026-05-15T16:01:17.7991673Z"
+                                 },
+                                 {
+                                     "DisplayName":  "PM0_PA_Card_AtualizarStatus",
+                                     "FlowName":  "6f079fca-3be1-4ce1-9fa1-92da3f32824c",
+                                     "Enabled":  true,
+                                     "CreatedTime":  "2026-05-15T15:57:35.0468861Z",
+                                     "LastModifiedTime":  "2026-05-15T16:01:06.3844465Z"
+                                 },
+                                 {
+                                     "DisplayName":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+                                     "FlowName":  "fb6c06a8-ade5-4d45-800a-b5f8519b4e7e",
+                                     "Enabled":  true,
+                                     "CreatedTime":  "2026-05-15T15:57:27.3659777Z",
+                                     "LastModifiedTime":  "2026-05-15T16:00:59.4768976Z"
+                                 }
+                             ],
+    "releaseDecision":  "NO-SHIP"
+}

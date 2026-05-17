@@ -1,0 +1,27 @@
+[
+  {
+    "File": "PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+    "InputName": "projectName",
+    "Inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto='), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto:'), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))))"
+  },
+  {
+    "File": "PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+    "InputName": "projectName",
+    "Inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto='), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto:'), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))))"
+  },
+  {
+    "File": "PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+    "InputName": "nomeProjeto",
+    "Inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto='), trim(substring(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto:'), trim(substring(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))))"
+  },
+  {
+    "File": "PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+    "InputName": "nomeProjeto",
+    "Inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto='), trim(substring(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto:'), trim(substring(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))))"
+  },
+  {
+    "File": "PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+    "InputName": "projectName",
+    "Inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto='), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 'projeto:'), trim(substring(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], '')), 8, sub(length(trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))), 8))), trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))))"
+  }
+]

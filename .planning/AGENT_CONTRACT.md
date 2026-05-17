@@ -14,6 +14,105 @@
 
 ## 2. Communication Protocol
 
+### 2.0A. Active P0 Agentic Delivery Protocol
+
+For the Adaptive Cards + Planner P0 delivery, the mandatory point of coordination is:
+
+```text
+.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md
+```
+
+This file supersedes ad hoc progress reporting for the P0 delivery. Every active agent must write updates:
+
+1. when starting work;
+2. before editing files;
+3. after editing files;
+4. every 5 minutes while actively working;
+5. immediately when blocked;
+6. immediately when handing off work;
+7. at completion.
+
+Failure to update the check-in board means downstream agents must treat that task as at risk until status is re-confirmed.
+
+Active P0 roster:
+
+| Agent ID | Role | Write Scope |
+|---|---|---|
+| `CODEX-LEAD` | Integration owner and gatekeeper | Final integration, gates, task assignment |
+| `GEMINI-PA` | Power Automate principal deploy engineer | Flow design/definitions only |
+| `CODEX-DOCS` | Governance/docs sub-agent | `.planning`, `PRD`, `docs` documentation only |
+| `CODEX-CARDS` | Adaptive Cards sub-agent | `deploy/cards/*.json`, card visual standards |
+| `CODEX-QA` | QA/evidence sub-agent | `tests/*`, evidence docs, read-only readiness reports |
+
+Mandatory file-scope rule:
+
+No two agents may edit the same file, same Copilot topic, same flow definition, same solution package, or same Adaptive Card JSON at the same time.
+
+Mandatory access protocol:
+
+```text
+.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md
+.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md
+```
+
+All agents must use the project master docs/runbooks for tenant, SharePoint, Power Automate, Teams, Planner, Copilot Studio, and remote access. Do not use Microsoft 365 CLI / `m365` for discovery or Planner lookup in this project. The master docs are the access authority:
+
+- `.planning/TENANT_COMMAND_RUNBOOK.md`
+- `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`
+- `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`
+- `.planning/CURRENT_BASELINE.md`
+- `.planning/GOLDEN_RULES.md`
+- `docs/MANUAL_OPERACIONAL_PMO.md` when PMO runtime behavior is involved
+
+Before any access-related command, the agent must post the exact planned route/command in the P0 check-in board and wait for the required owner approval gate.
+
+Mandatory SEV-0 quality gate rule:
+
+CI may be ignored only when explicitly owner-excluded. Every other quality gate is mandatory before any ship/import/publish/runtime-readiness decision. If any non-CI gate is missing, failed, stale, unverified, or not tied to the current artifact, the release decision is `NO-SHIP`.
+
+### 2.0B. Mandatory Task I/O Contract
+
+For the Adaptive Cards + Planner P0 delivery, every task assigned to any agent must follow:
+
+```text
+.planning/comms/AGENT_TASK_IO_CONTRACT_PROTOCOL_20260515.md
+```
+
+Each task must explicitly define:
+
+- `TASK_ID`
+- `INPUTS`
+- `OUTPUTS`
+- `WRITE_SCOPE`
+- `DELIVERY_FORMAT`
+- `VALIDATION_REQUIRED`
+- `QUALITY_GATES_REQUIRED`
+- `EVIDENCE_REQUIRED`
+- `ACCEPTANCE_CRITERIA`
+- `REJECTION_CRITERIA`
+- `HANDOFF_STATUS_ALLOWED`
+- `FINAL_RESPONSE_REQUIRED`
+
+If any of these are missing, the agent must stop and report:
+
+```text
+BLOCKED_FOR_INPUT_CONTRACT
+```
+
+If applicable quality gates or evidence requirements are missing, the agent must stop and report:
+
+```text
+BLOCKED_FOR_GATE_CONTRACT
+```
+
+If the output uses the wrong format, lacks required files, lacks validation, or contains ambiguous placeholders such as `TBD`, `same as above`, or `same context`, the task status is:
+
+```text
+BLOCKED_REWORK_REQUIRED
+```
+
+Blocked output cannot be used to request owner approval for tenant write, import, publish, runtime, or release gates.
+
 ### 2.0. Mandatory Power Platform Environment
 Todas as fases que envolvem Power Platform, Power Automate ou Copilot Studio devem usar sempre o ambiente `ColOfertasBrasilPro`.
 

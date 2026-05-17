@@ -1,0 +1,167 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           },
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        }
+                   },
+    "triggers":  {
+                     "manual":  {
+                                    "type":  "Request",
+                                    "kind":  "Skills",
+                                    "inputs":  {
+                                                   "schema":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+                                                                                     "action":  {
+                                                                                                    "type":  "string",
+                                                                                                    "description":  "Action"
+                                                                                                },
+                                                                                     "spItemId":  {
+                                                                                                      "type":  "string",
+                                                                                                      "description":  "SharePoint item ID"
+                                                                                                  },
+                                                                                     "taskId":  {
+                                                                                                    "type":  "string",
+                                                                                                    "description":  "SharePoint item ID from card"
+                                                                                                },
+                                                                                     "status":  {
+                                                                                                    "type":  "string",
+                                                                                                    "description":  "Status"
+                                                                                                },
+                                                                                     "taskStatus":  {
+                                                                                                        "type":  "string",
+                                                                                                        "description":  "Status from card"
+                                                                                                    },
+                                                                                     "comments":  {
+                                                                                                      "type":  "string",
+                                                                                                      "description":  "Comments"
+                                                                                                  }
+                                                                                 },
+                                                                  "required":  [
+                                                                                   "action"
+                                                                               ]
+                                                              }
+                                               }
+                                }
+                 },
+    "actions":  {
+                    "Update_Planner_Task":  {
+                                                "type":  "OpenApiConnection",
+                                                "inputs":  {
+                                                               "parameters":  {
+                                                                                  "id":  "@body(\u0027Get_SharePoint_Item\u0027)?[\u0027PlannerTaskId\u0027]",
+                                                                                  "body/percentComplete":  "@outputs(\u0027Determine_Bucket_and_Percent\u0027)?[\u0027percentComplete\u0027]"
+                                                                              },
+                                                               "host":  {
+                                                                            "apiId":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                            "connectionName":  "shared_planner",
+                                                                            "operationId":  "UpdateTask_V2"
+                                                                        },
+                                                               "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                           },
+                                                "runAfter":  {
+                                                                 "Determine_Bucket_and_Percent":  [
+                                                                                                      "Succeeded"
+                                                                                                  ]
+                                                             }
+                                            },
+                    "Determine_Bucket_and_Percent":  {
+                                                         "type":  "Compose",
+                                                         "inputs":  "@if(equals(coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027]), \u0027Em Andamento\u0027), json(\u0027{\"bucketId\":\"ugZSNxsYW0WWCJ5Dtx0-l5cALVXG\",\"percentComplete\":50}\u0027), if(equals(coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027]), \u0027Testes\u0027), json(\u0027{\"bucketId\":\"7QYPufh54kum7MP4KUzzAZcAL6Ik\",\"percentComplete\":50}\u0027), if(equals(coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027]), \u0027Piloto e Implantacao\u0027), json(\u0027{\"bucketId\":\"4YAXH7iU9E-6jZE2P1DbG5cAMAzH\",\"percentComplete\":50}\u0027), if(equals(coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027]), \u0027Concluido\u0027), json(\u0027{\"bucketId\":\"F2WYUsnXeEue5qlwQuu3GJcAN1Ns\",\"percentComplete\":100}\u0027), if(equals(coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027]), \u0027Cancelado\u0027), json(\u0027{\"bucketId\":\"90TcFTFup0CjiHIdzY4gG5cALWKL\",\"percentComplete\":100}\u0027), json(\u0027{\"bucketId\":\"HmzyGOgC4k6uOPm_cwG3zZcAGiAG\",\"percentComplete\":0}\u0027))))))",
+                                                         "runAfter":  {
+                                                                          "Get_SharePoint_Item":  [
+                                                                                                      "Succeeded"
+                                                                                                  ]
+                                                                      }
+                                                     },
+                    "Update_SharePoint_Item":  {
+                                                   "type":  "OpenApiConnection",
+                                                   "inputs":  {
+                                                                  "parameters":  {
+                                                                                     "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                                                                                     "item/Status/Value":  "@coalesce(triggerBody()?[\u0027status\u0027],triggerBody()?[\u0027taskStatus\u0027])",
+                                                                                     "item/Title":  "@body(\u0027Get_SharePoint_Item\u0027)?[\u0027Title\u0027]",
+                                                                                     "id":  "@coalesce(triggerBody()?[\u0027spItemId\u0027],triggerBody()?[\u0027taskId\u0027])",
+                                                                                     "item/PlannerSyncStatus/Value":  "OK",
+                                                                                     "table":  "Tarefas",
+                                                                                     "item/ProjectID":  "@body(\u0027Get_SharePoint_Item\u0027)?[\u0027ProjectID\u0027]",
+                                                                                     "item/PlannerBucketId":  "@outputs(\u0027Determine_Bucket_and_Percent\u0027)?[\u0027bucketId\u0027]",
+                                                                                     "item/PlannerLastSyncAt":  "@utcNow()",
+                                                                                     "item/PlannerSyncError":  ""
+                                                                                 },
+                                                                  "host":  {
+                                                                               "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                               "connectionName":  "shared_sharepointonline",
+                                                                               "operationId":  "PatchItem"
+                                                                           },
+                                                                  "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                              },
+                                                   "runAfter":  {
+                                                                    "Update_Planner_Task":  [
+                                                                                                "Succeeded"
+                                                                                            ]
+                                                                }
+                                               },
+                    "Respond_Success":  {
+                                            "type":  "Response",
+                                            "kind":  "Skills",
+                                            "inputs":  {
+                                                           "statusCode":  200,
+                                                           "headers":  {
+                                                                           "Content-Type":  "application/json"
+                                                                       },
+                                                           "body":  {
+                                                                        "result":  "Task updated successfully."
+                                                                    },
+                                                           "schema":  {
+                                                                          "type":  "object",
+                                                                          "properties":  {
+                                                                                             "result":  {
+                                                                                                            "title":  "result",
+                                                                                                            "x-ms-dynamically-added":  true,
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                      }
+                                                       },
+                                            "runAfter":  {
+                                                             "Update_SharePoint_Item":  [
+                                                                                            "Succeeded"
+                                                                                        ]
+                                                         }
+                                        },
+                    "Get_SharePoint_Item":  {
+                                                "type":  "OpenApiConnection",
+                                                "inputs":  {
+                                                               "parameters":  {
+                                                                                  "table":  "Tarefas",
+                                                                                  "id":  "@coalesce(triggerBody()?[\u0027spItemId\u0027],triggerBody()?[\u0027taskId\u0027])",
+                                                                                  "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                              },
+                                                               "host":  {
+                                                                            "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                            "connectionName":  "shared_sharepointonline",
+                                                                            "operationId":  "GetItem"
+                                                                        },
+                                                               "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                           },
+                                                "runAfter":  {
+
+                                                             }
+                                            }
+                },
+    "outputs":  {
+
+                }
+}

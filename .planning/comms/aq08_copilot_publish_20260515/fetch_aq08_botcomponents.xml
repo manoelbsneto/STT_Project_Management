@@ -1,0 +1,24 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="and">
+      <condition attribute="schemaname" operator="like" value="pmo_AssistentePMO_V2.%" />
+      <filter type="or">
+        <condition attribute="schemaname" operator="like" value="%ResumoExecutivo%" />
+        <condition attribute="schemaname" operator="like" value="%AtualizarStatus%" />
+        <condition attribute="schemaname" operator="like" value="%ListarTarefas%" />
+        <condition attribute="schemaname" operator="like" value="%CriarTarefa%" />
+        <condition attribute="schemaname" operator="like" value="%AtualizarTarefa%" />
+        <condition attribute="schemaname" operator="like" value="%OpsFailure%" />
+        <condition attribute="schemaname" operator="like" value="%ConsultarPortfolio%" />
+      </filter>
+    </filter>
+    <order attribute="schemaname" />
+  </entity>
+</fetch>

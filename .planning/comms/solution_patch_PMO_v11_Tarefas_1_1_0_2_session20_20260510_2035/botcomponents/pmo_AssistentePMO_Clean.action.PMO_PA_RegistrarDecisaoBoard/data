@@ -1,0 +1,17 @@
+kind: TaskDialog
+outputs:
+  - propertyName: success
+
+  - propertyName: message
+
+  - propertyName: errorcode
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: b308fe0b-0547-f111-bec7-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

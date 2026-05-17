@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="RAG" DisplayName="RAG" ID="{8230a839-9007-434c-908c-a8c19ad26895}" Group="" Required="TRUE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="RAG" ColName="nvarchar9" RowOrdinal="0" Version="2"><CHOICES><CHOICE>Verde</CHOICE><CHOICE>Amarelo</CHOICE><CHOICE>Vermelho</CHOICE></CHOICES></Field>

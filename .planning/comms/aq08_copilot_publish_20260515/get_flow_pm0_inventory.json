@@ -1,0 +1,56 @@
+[
+  {
+    "DisplayName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+    "FlowName": "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+    "Enabled": true,
+    "CreatedTime": "2026-05-15T18:51:40.7740564Z",
+    "LastModifiedTime": "2026-05-15T19:06:23.6535485Z",
+    "WorkflowEntityId": null,
+    "State": "Started"
+  },
+  {
+    "DisplayName": "PM0_PA_Card_AtualizarStatus",
+    "FlowName": "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+    "Enabled": true,
+    "CreatedTime": "2026-05-15T18:51:47.558246Z",
+    "LastModifiedTime": "2026-05-15T19:06:29.9315332Z",
+    "WorkflowEntityId": null,
+    "State": "Started"
+  },
+  {
+    "DisplayName": "PM0_PA_Card_ListarTarefas",
+    "FlowName": "c9e44878-77ed-4b17-9b6f-0bab008a0587",
+    "Enabled": true,
+    "CreatedTime": "2026-05-15T18:51:54.6529039Z",
+    "LastModifiedTime": "2026-05-15T19:06:36.1498011Z",
+    "WorkflowEntityId": null,
+    "State": "Started"
+  },
+  {
+    "DisplayName": "PM0_PA_Card_CriarTarefa",
+    "FlowName": "76146280-a6c2-4068-8a3f-3310e3e9210f",
+    "Enabled": true,
+    "CreatedTime": "2026-05-15T18:52:01.7066283Z",
+    "LastModifiedTime": "2026-05-15T19:06:42.6400852Z",
+    "WorkflowEntityId": null,
+    "State": "Started"
+  },
+  {
+    "DisplayName": "PM0_PA_Card_AtualizarTarefa",
+    "FlowName": "36142fd3-9f83-4d4f-81e2-748ded919a92",
+    "Enabled": true,
+    "CreatedTime": "2026-05-15T18:59:52.3204044Z",
+    "LastModifiedTime": "2026-05-15T19:06:48.9738349Z",
+    "WorkflowEntityId": null,
+    "State": "Started"
+  },
+  {
+    "DisplayName": null,
+    "FlowName": null,
+    "Enabled": false,
+    "CreatedTime": null,
+    "LastModifiedTime": null,
+    "WorkflowEntityId": null,
+    "State": null
+  }
+]

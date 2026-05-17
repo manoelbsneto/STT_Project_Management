@@ -1,0 +1,10 @@
+﻿<botcomponent schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio">
+  <componenttype>9</componenttype>
+  <iscustomizable>1</iscustomizable>
+  <name>PM0_PA_Card_ResumoExecutivoPortfolio</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

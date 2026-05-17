@@ -1,0 +1,56 @@
+﻿[
+    {
+        "DisplayName":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "FlowName":  "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "8333bd91-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    },
+    {
+        "DisplayName":  "PM0_PA_Card_AtualizarStatus",
+        "FlowName":  "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    },
+    {
+        "DisplayName":  "PM0_PA_Card_ListarTarefas",
+        "FlowName":  "c9e44878-77ed-4b17-9b6f-0bab008a0587",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    },
+    {
+        "DisplayName":  "PM0_PA_Card_CriarTarefa",
+        "FlowName":  "76146280-a6c2-4068-8a3f-3310e3e9210f",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "7f662db7-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    },
+    {
+        "DisplayName":  "PM0_PA_Card_AtualizarTarefa",
+        "FlowName":  "36142fd3-9f83-4d4f-81e2-748ded919a92",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    },
+    {
+        "DisplayName":  "PM0_PA_OpsFailureHandling",
+        "FlowName":  "2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441",
+        "Schema":  "pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling",
+        "Enabled":  true,
+        "State":  "Started",
+        "WorkflowEntityId":  "9531fbc7-a250-f111-bec7-000d3abc5cc6",
+        "SolutionAwareOutput":  "Code Description Internal                                    \r\n---- ----------- --------                                    \r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+    }
+]

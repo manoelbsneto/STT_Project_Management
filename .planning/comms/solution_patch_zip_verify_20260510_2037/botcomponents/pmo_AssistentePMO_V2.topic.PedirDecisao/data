@@ -1,0 +1,159 @@
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: PedirDecisao
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - solicitar decisao
+      - pedir decisao
+      - registrar decisao
+      - nova decisao
+      - preciso de uma decisao
+      - decisao para projeto
+      - solicitar aprovacao
+      - pedir aprovacao
+      - "solicitar decisao:"
+      - decisao projeto
+      - decisao descricao
+      - decisao impacto
+      - decisao prazo
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "decisao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "decisao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_due_date
+      variable: Topic.Prazo
+      value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva a decisao necessaria.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_impact
+      conditions:
+        - id: missing_impact
+          condition: =IsBlank(Topic.Impacto)
+          actions:
+            - kind: Question
+              id: ask_impact
+              variable: Topic.Impacto
+              prompt: "Qual o impacto? Escolha: Baixo, Medio, Alto ou Critico."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_pedir_decisao
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar esta solicitacao de decisao.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Impacto: {Topic.Impacto}
+        Prazo: {Topic.Prazo}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Decisao_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Decisao_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Decisao_Impacto
+              value: =Topic.Impacto
+
+            - kind: SetVariable
+              id: set_global_due_date
+              variable: Global.PMO_Decisao_Prazo
+              value: =Topic.Prazo
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_pedir_decisao
+              input:
+                binding:
+                  text: =Global.PMO_Decisao_ProjectID
+                  text_1: =Global.PMO_Decisao_Descricao
+                  text_2: =Global.PMO_Decisao_Impacto
+                  text_3: =Global.PMO_Decisao_Prazo
+
+              output:
+                binding:
+                  message: Topic.PedirDecisaoResult
+
+              flowId: feb79d54-c64c-f111-bec7-7ced8d955c6c
+
+            - kind: SendActivity
+              id: pedir_decisao_done
+              activity: "{Topic.PedirDecisaoResult}"
+
+            - kind: EndDialog
+              id: end_pedir_decisao
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: pedir_decisao_cancelled
+          activity: Ok, solicitacao de decisao cancelada.
+
+        - kind: EndDialog
+          id: end_pedir_decisao_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+

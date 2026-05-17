@@ -1,0 +1,145 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Request",
+                         "kind":  "Skills"
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems",
+                        "api":  {
+                                    "name":  "shared_sharepointonline",
+                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                    "type":  "/providers/Microsoft.PowerApps/apis",
+                                    "properties":  {
+                                                       "displayName":  "SharePoint",
+                                                       "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                       "metadata":  {
+                                                                        "source":  "marketplace",
+                                                                        "brandColor":  "",
+                                                                        "useNewApimVersion":  "true",
+                                                                        "version":  {
+                                                                                        "previous":  "releases/v1.0.1809\\1.0.1809.4714",
+                                                                                        "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                    }
+                                                                    },
+                                                       "tier":  "Standard",
+                                                       "isCustomApi":  false,
+                                                       "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                   }
+                                }
+                    },
+                    {
+                        "type":  "If"
+                    },
+                    {
+                        "type":  "OpenApiConnectionWebhook",
+                        "swaggerOperationId":  "PostCardAndWaitForResponse",
+                        "api":  {
+                                    "name":  "shared_teams",
+                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_teams",
+                                    "type":  "/providers/Microsoft.PowerApps/apis",
+                                    "properties":  {
+                                                       "displayName":  "Microsoft Teams",
+                                                       "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.0028/1.0.1811.4721/teams/icon.png",
+                                                       "metadata":  {
+                                                                        "source":  "marketplace",
+                                                                        "brandColor":  "",
+                                                                        "useNewApimVersion":  "true",
+                                                                        "version":  {
+                                                                                        "previous":  "releases/v1.0.1800\\1.0.1800.4665",
+                                                                                        "current":  "releases/v1.0.0028\\1.0.1811.4721"
+                                                                                    }
+                                                                    },
+                                                       "tier":  "Standard",
+                                                       "isCustomApi":  false,
+                                                       "description":  "Microsoft Teams enables you to get all your content, tools and conversations in the team workspace with Microsoft 365."
+                                                   }
+                                }
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PostItem",
+                        "api":  {
+                                    "name":  "shared_sharepointonline",
+                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                    "type":  "/providers/Microsoft.PowerApps/apis",
+                                    "properties":  {
+                                                       "displayName":  "SharePoint",
+                                                       "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                       "metadata":  {
+                                                                        "source":  "marketplace",
+                                                                        "brandColor":  "",
+                                                                        "useNewApimVersion":  "true",
+                                                                        "version":  {
+                                                                                        "previous":  "releases/v1.0.1809\\1.0.1809.4714",
+                                                                                        "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                    }
+                                                                    },
+                                                       "tier":  "Standard",
+                                                       "isCustomApi":  false,
+                                                       "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                   }
+                                }
+                    },
+                    {
+                        "type":  "Foreach"
+                    },
+                    {
+                        "type":  "Response",
+                        "kind":  "Skills"
+                    },
+                    {
+                        "type":  "Response",
+                        "kind":  "Skills"
+                    },
+                    {
+                        "type":  "Terminate"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PatchItem",
+                        "api":  {
+                                    "name":  "shared_sharepointonline",
+                                    "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                    "type":  "/providers/Microsoft.PowerApps/apis",
+                                    "properties":  {
+                                                       "displayName":  "SharePoint",
+                                                       "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+                                                       "metadata":  {
+                                                                        "source":  "marketplace",
+                                                                        "brandColor":  "",
+                                                                        "useNewApimVersion":  "true",
+                                                                        "version":  {
+                                                                                        "previous":  "releases/v1.0.1809\\1.0.1809.4714",
+                                                                                        "current":  "releases/v1.0.1769\\1.0.1769.4361"
+                                                                                    }
+                                                                    },
+                                                       "tier":  "Standard",
+                                                       "isCustomApi":  false,
+                                                       "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                   }
+                                }
+                    }
+                ]
+}

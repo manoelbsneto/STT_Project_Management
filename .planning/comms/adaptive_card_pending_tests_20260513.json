@@ -1,0 +1,78 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "PMO Pending Test Queue",
+      "weight": "Bolder",
+      "size": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Status",
+          "value": "NO-SHIP"
+        },
+        {
+          "title": "Environment",
+          "value": "ColOfertasBrasilPro"
+        },
+        {
+          "title": "Bot",
+          "value": "Assistente PMO V2"
+        },
+        {
+          "title": "Generated",
+          "value": "2026-05-13"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "P0 - Do First",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "1. ACT-003 - Patch AtualizarTarefa skip semantics - ETA 2h\\n2. ACT-003-T - Add local regression - ETA 45m\\n3. CMD-13A - Runtime retest skip path - ETA 20m",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Runtime Smoke Queue",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "4. CMD-12-H - Verify deleted task hidden - ETA 10m\\n5. SP-AUDIT - Verify soft-delete audit fields - ETA 15m\\n6. CMD-09 - Invalid UPN validation - ETA 15m\\n7. CMD-08 - Valid decision request - ETA 15m\\n8. CMD-15 - Portfolio read recheck - ETA 10m\\n9. CMD-10 - Multiline status extraction decision/fix - ETA 30m decision or 2h fix",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Adaptive Card And Planner Evidence",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "CARD-01..08 - Current-cycle card evidence - ETA about 3h total\\nPLN-01 - Planner Standard sync proof - ETA 45m once PlannerGroupId and PlannerPlanId are known",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open Status Report",
+      "url": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+    }
+  ]
+}

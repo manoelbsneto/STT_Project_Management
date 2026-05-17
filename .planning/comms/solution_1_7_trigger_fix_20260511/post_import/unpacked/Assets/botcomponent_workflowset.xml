@@ -1,0 +1,38 @@
+<botcomponent_workflowset>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa" workflowid.workflowid="98408d55-3748-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PMO_PA_CheckInOnDemand" workflowid.workflowid="f5aab85e-ff46-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PMO_PA_EscalarRiscoCritico" workflowid.workflowid="e5381002-0547-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas" workflowid.workflowid="9544f14b-3748-f111-bec7-6045bdf42cae">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.action.PMO_PA_RegistrarDecisaoBoard" workflowid.workflowid="b308fe0b-0547-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.AtualizarStatus" workflowid.workflowid="c11a165b-c64c-f111-bec7-7ced8d9559c1">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.ConsultarPortfolio" workflowid.workflowid="39cf292d-c64c-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.ConsultarProjeto" workflowid.workflowid="4a33b53e-c64c-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.CriarTarefa" workflowid.workflowid="3104124d-364a-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.PedirDecisao" workflowid.workflowid="feb79d54-c64c-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.RegistrarBloqueio" workflowid.workflowid="3ec37952-c64c-f111-bec7-000d3abc5cc6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+  <botcomponent_workflow botcomponentid.schemaname="pmo_AssistentePMO_V2.topic.RegistrarRisco" workflowid.workflowid="ee732d46-c64c-f111-bec7-7ced8d955c6c">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_workflow>
+</botcomponent_workflowset>

@@ -1,0 +1,162 @@
+# RegistrarRisco topic
+# Purpose: collect, confirm, and call the PMO_PA_RegistrarRiscoBot flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic RegistrarRisco.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarRisco
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - registrar risco
+      - novo risco
+      - abrir risco
+      - cadastrar risco
+      - risco no projeto
+      - risco em projeto
+      - risco do projeto
+      - "registrar risco:"
+      - registrar risco projeto
+      - registrar risco descricao
+      - registrar risco severidade
+      - registrar risco impacto
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_severity
+      variable: Topic.Severidade
+      value: =If(IsMatch(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva o risco.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_severity
+      conditions:
+        - id: missing_severity
+          condition: =IsBlank(Topic.Severidade)
+          actions:
+            - kind: Question
+              id: ask_severity
+              variable: Topic.Severidade
+              prompt: "Qual a severidade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_registrar_risco
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este risco.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Severidade: {Topic.Severidade}
+        Impacto: {Topic.Impacto}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Risco_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Risco_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_severity
+              variable: Global.PMO_Risco_Severidade
+              value: =Topic.Severidade
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Risco_Impacto
+              value: =Topic.Impacto
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_registrar_risco
+              input:
+                binding:
+                  projectName: =Global.PMO_Risco_ProjectID
+                  descricao: =Global.PMO_Risco_Descricao
+                  severidade: =Global.PMO_Risco_Severidade
+                  impacto: =Global.PMO_Risco_Impacto
+
+              output:
+                binding:
+                  message: Topic.RegistrarRiscoResult
+
+              flowId: ee732d46-c64c-f111-bec7-7ced8d955c6c
+
+            - kind: SendActivity
+              id: registrar_risco_done
+              activity: "{Topic.RegistrarRiscoResult}"
+
+            - kind: EndDialog
+              id: end_registrar_risco
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: registrar_risco_cancelled
+          activity: Ok, registro de risco cancelado.
+
+        - kind: EndDialog
+          id: end_registrar_risco_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}

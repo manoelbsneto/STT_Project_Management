@@ -1,0 +1,32 @@
+﻿{
+    "capturedAt":  "2026-05-14T18:12:45",
+    "siteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "mode":  "read-only",
+    "scannedLists":  [
+                         {
+                             "List":  "Projetos",
+                             "ItemCount":  34
+                         },
+                         {
+                             "List":  "Tarefas",
+                             "ItemCount":  16
+                         },
+                         {
+                             "List":  "Status Diario",
+                             "ItemCount":  5
+                         },
+                         {
+                             "List":  "Decisoes do Board",
+                             "ItemCount":  5
+                         },
+                         {
+                             "List":  "Riscos e Bloqueios",
+                             "ItemCount":  7
+                         }
+                     ],
+    "patternCount":  33,
+    "hitCount":  0,
+    "hits":  [
+
+             ]
+}

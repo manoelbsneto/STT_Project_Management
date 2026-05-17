@@ -1,0 +1,81 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "undefined",
+    "parameters":  {
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           },
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        }
+                   },
+    "triggers":  {
+                     "manual":  {
+                                    "type":  "Request",
+                                    "kind":  "Button",
+                                    "inputs":  {
+                                                   "schema":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+
+                                                                                 },
+                                                                  "required":  [
+
+                                                                               ]
+                                                              }
+                                               }
+                                }
+                 },
+    "actions":  {
+                    "Listar_buckets":  {
+                                           "runAfter":  {
+
+                                                        },
+                                           "type":  "OpenApiConnection",
+                                           "inputs":  {
+                                                          "parameters":  {
+                                                                             "groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994",
+                                                                             "id":  "-1kBj1PLv0qQM-R4PwkqbpcABv_P"
+                                                                         },
+                                                          "host":  {
+                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                       "connectionName":  "shared_planner",
+                                                                       "operationId":  "ListBuckets_V3"
+                                                                   },
+                                                          "authentication":  {
+                                                                                 "value":  "@json(decodeBase64(triggerOutputs().headers[\u0027X-MS-APIM-Tokens\u0027]))[\u0027$ConnectionKey\u0027]",
+                                                                                 "type":  "Raw"
+                                                                             }
+                                                      }
+                                       },
+                    "Listar_tarefas":  {
+                                           "runAfter":  {
+                                                            "Listar_buckets":  [
+                                                                                   "Succeeded"
+                                                                               ]
+                                                        },
+                                           "type":  "OpenApiConnection",
+                                           "inputs":  {
+                                                          "parameters":  {
+                                                                             "groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994",
+                                                                             "id":  "-1kBj1PLv0qQM-R4PwkqbpcABv_P"
+                                                                         },
+                                                          "host":  {
+                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                       "connectionName":  "shared_planner",
+                                                                       "operationId":  "ListTasks_V3"
+                                                                   },
+                                                          "authentication":  {
+                                                                                 "value":  "@json(decodeBase64(triggerOutputs().headers[\u0027X-MS-APIM-Tokens\u0027]))[\u0027$ConnectionKey\u0027]",
+                                                                                 "type":  "Raw"
+                                                                             }
+                                                      }
+                                       }
+                }
+}

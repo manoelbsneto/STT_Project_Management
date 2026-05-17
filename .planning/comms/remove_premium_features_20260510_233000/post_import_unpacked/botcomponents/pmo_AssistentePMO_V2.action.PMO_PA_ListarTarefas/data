@@ -1,0 +1,20 @@
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Listar_ProjectID
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Lista formatada de tarefas retornada pelo fluxo PMO_PA_ListarTarefas.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 9544f14b-3748-f111-bec7-6045bdf42cae
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

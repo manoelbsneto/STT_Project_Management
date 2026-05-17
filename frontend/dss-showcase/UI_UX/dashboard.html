@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PortalShift Intelligence — Executive Analytics Dashboard for real-time deployment monitoring and brand compliance tracking.">
+  <title>PortalShift Intelligence | Executive Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* === DASHBOARD-SPECIFIC LAYOUT === */
+    .dash-shell { display: flex; min-height: 100vh; }
+    .dash-sidebar {
+      width: 64px; background: var(--indra-deep-navy);
+      border-right: 1px solid var(--indra-border); display: flex;
+      flex-direction: column; align-items: center; padding: 16px 0; gap: 28px;
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+    }
+    .dash-sidebar .logo-mark {
+      width: 36px; height: 36px; background: var(--indra-cyan);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; color: var(--indra-deep-navy);
+      margin-bottom: 16px;
+    }
+    .dash-sidebar .nav-icon {
+      width: 40px; height: 40px; display: flex; align-items: center;
+      justify-content: center; color: var(--indra-muted-teal);
+      cursor: pointer; transition: all 0.2s; position: relative;
+    }
+    .dash-sidebar .nav-icon:hover, .dash-sidebar .nav-icon.active {
+      color: var(--indra-cyan);
+    }
+    .dash-sidebar .nav-icon.active::before {
+      content: ''; position: absolute; left: -12px; top: 8px;
+      width: 3px; height: 24px; background: var(--indra-cyan);
+    }
+    .dash-sidebar svg { width: 22px; height: 22px; }
+    .dash-main { margin-left: 64px; flex: 1; padding: 0; }
+
+    /* Top bar */
+    .dash-topbar {
+      height: 56px; background: var(--indra-deep-navy);
+      border-bottom: 1px solid var(--indra-border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; position: sticky; top: 0; z-index: 50;
+    }
+    .dash-topbar h1 { font-size: 16px; font-weight: 600; color: var(--indra-white); letter-spacing: -0.01em; }
+    .dash-topbar .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .dash-topbar .topbar-right .notif-badge {
+      position: relative; color: var(--indra-muted-teal); cursor: pointer;
+    }
+    .dash-topbar .topbar-right .notif-badge .dot {
+      position: absolute; top: -2px; right: -2px; width: 8px; height: 8px;
+      background: var(--indra-error); border-radius: 50%;
+    }
+    .dash-topbar .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--indra-card-surface); border: 2px solid var(--indra-cyan);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: var(--indra-cyan);
+    }
+    .dash-content { padding: 24px 32px; }
+
+    /* KPI Row */
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 28px; }
+    .kpi-card {
+      background: rgba(0, 62, 80, 0.4); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 20px 24px; position: relative;
+      overflow: hidden; transition: transform 0.2s, border-color 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); border-color: rgba(0,176,189,0.3); }
+    .kpi-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--indra-cyan);
+    }
+    .kpi-card .kpi-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--indra-muted-teal); margin-bottom: 8px;
+    }
+    .kpi-card .kpi-value {
+      font-size: 28px; font-weight: 600; color: var(--indra-white);
+      line-height: 1.1; font-feature-settings: 'tnum';
+    }
+    .kpi-card .kpi-change {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 500; margin-top: 8px; padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .kpi-card .kpi-change.up { color: var(--indra-success); background: rgba(39,174,96,0.12); }
+    .kpi-card .kpi-change.down { color: var(--indra-error); background: rgba(233,30,99,0.12); }
+
+    /* Main Grid */
+    .dash-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; margin-bottom: 28px; }
+    .panel {
+      background: var(--indra-card-surface); border: 1px solid var(--indra-border);
+      border-radius: 8px; padding: 24px; position: relative;
+    }
+    .panel-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+    .panel-title { font-size: 16px; font-weight: 600; color: var(--indra-white); }
+    .panel-subtitle { font-size: 12px; color: var(--indra-muted-teal); }
+
+    /* Chart Canvas */
+    .chart-wrap { position: relative; width: 100%; height: 260px; }
+    .chart-wrap canvas { width: 100%; height: 100%; }
+
+    /* Activity Feed */
+    .activity-list { list-style: none; padding: 0; margin: 0; }
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid rgba(179,193,218,0.08);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0;
+    }
+    .activity-dot.success { background: var(--indra-success); }
+    .activity-dot.warning { background: var(--indra-warning); }
+    .activity-dot.error { background: var(--indra-error); }
+    .activity-dot.info { background: var(--indra-cyan); }
+    .activity-text { font-size: 13px; color: var(--indra-light-teal); line-height: 1.5; }
+    .activity-text strong { color: var(--indra-white); font-weight: 500; }
+    .activity-time { font-size: 11px; color: var(--indra-muted-teal); margin-top: 2px; }
+
+    /* Service Status Grid */
+    .status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .status-card {
+      background: var(--indra-card-surface); border: 1px solid var(--indra-border);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .status-card .svc-name {
+      font-size: 14px; font-weight: 500; color: var(--indra-white); margin-bottom: 8px;
+    }
+    .status-card .svc-desc {
+      font-size: 12px; color: var(--indra-muted-teal); margin-bottom: 12px; line-height: 1.4;
+    }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.04em; padding: 4px 10px; border-radius: 9999px;
+    }
+    .status-badge.operational { color: var(--indra-success); background: rgba(39,174,96,0.12); }
+    .status-badge.degraded { color: var(--indra-warning); background: rgba(255,152,0,0.12); }
+    .status-badge.down { color: var(--indra-error); background: rgba(233,30,99,0.12); }
+    .status-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+    }
+    .svc-uptime { font-size: 11px; color: var(--indra-muted-teal); margin-top: 10px; }
+    .svc-uptime span { color: var(--indra-white); font-weight: 500; }
+
+    /* Nav links */
+    .dash-nav-links { display: flex; gap: 8px; margin-bottom: 28px; }
+    .dash-nav-links a {
+      font-size: 13px; color: var(--indra-muted-teal); text-decoration: none;
+      padding: 6px 14px; border-radius: 0; border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .dash-nav-links a:hover { color: var(--indra-cyan); border-color: var(--indra-border); }
+    .dash-nav-links a.active { color: var(--indra-cyan); border-color: var(--indra-cyan); background: rgba(0,176,189,0.08); }
+
+    @media (max-width: 1024px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .dash-grid { grid-template-columns: 1fr; }
+      .status-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .dash-sidebar { display: none; }
+      .dash-main { margin-left: 0; }
+      .kpi-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dash-shell">
+    <!-- Sidebar -->
+    <nav class="dash-sidebar" aria-label="Main navigation">
+      <div class="logo-mark" aria-label="PortalShift">PS</div>
+      <div class="nav-icon active" title="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      <a class="nav-icon" href="tables.html" title="Deployment Registry">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </a>
+      <a class="nav-icon" href="modals.html" title="Components">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/></svg>
+      </a>
+      <a class="nav-icon" href="index.html" title="Design System">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </a>
+    </nav>
+
+    <div class="dash-main">
+      <!-- Top Bar -->
+      <header class="dash-topbar">
+        <h1>PortalShift Intelligence</h1>
+        <div class="topbar-right">
+          <div class="dash-nav-links">
+            <a href="dashboard.html" class="active">Overview</a>
+            <a href="tables.html">Registry</a>
+            <a href="modals.html">Components</a>
+          </div>
+          <div class="notif-badge" title="3 unread notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="dot"></span>
+          </div>
+          <div class="avatar" title="Ricardo Mendes">RM</div>
+        </div>
+      </header>
+
+      <main class="dash-content">
+        <!-- KPI Cards -->
+        <section class="kpi-row" aria-label="Key metrics">
+          <div class="kpi-card">
+            <div class="kpi-label">Total Deployments</div>
+            <div class="kpi-value" data-count="847">0</div>
+            <div class="kpi-change up">▲ 12.4% vs last month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Brand Compliance</div>
+            <div class="kpi-value" data-count="99" data-suffix="%">0</div>
+            <div class="kpi-change up">▲ 3.1% vs last quarter</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg Response Time</div>
+            <div class="kpi-value" data-count="301" data-suffix="ms">0</div>
+            <div class="kpi-change down">▼ 8.7% improvement</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Active Users</div>
+            <div class="kpi-value" data-count="12450">0</div>
+            <div class="kpi-change up">▲ 22.6% vs last month</div>
+          </div>
+        </section>
+
+        <!-- Main 2-Column Grid -->
+        <section class="dash-grid">
+          <!-- Chart Panel -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">Deployment Trend</div>
+                <div class="panel-subtitle">Monthly deployments — Jan 2025 to Apr 2026</div>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="trendChart" aria-label="Line chart showing deployment trend from January 2025 to April 2026"></canvas>
+            </div>
+          </div>
+
+          <!-- Activity Feed -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Recent Activity</div>
+              <div class="panel-subtitle">Last 24 hours</div>
+            </div>
+            <ul class="activity-list">
+              <li class="activity-item">
+                <span class="activity-dot success"></span>
+                <div>
+                  <div class="activity-text"><strong>v4.2.1</strong> deployed to <strong>EU-West Production</strong> by Ana Torres</div>
+                  <div class="activity-time">14 minutes ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-dot info"></span>
+                <div>
+                  <div class="activity-text">Brand audit completed — <strong>PortalShift Login</strong> scored 99.2% compliance</div>
+                  <div class="activity-time">1 hour ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-dot warning"></span>
+                <div>
+                  <div class="activity-text"><strong>API Gateway</strong> latency increased to 420ms in <strong>US-East</strong></div>
+                  <div class="activity-time">3 hours ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-dot success"></span>
+                <div>
+                  <div class="activity-text"><strong>DSS v3.0</strong> design tokens pushed to 14 downstream projects</div>
+                  <div class="activity-time">5 hours ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <span class="activity-dot error"></span>
+                <div>
+                  <div class="activity-text">Build <strong>#8847</strong> failed — WCAG contrast check on <strong>Minsait Portal</strong></div>
+                  <div class="activity-time">8 hours ago</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Service Status -->
+        <section>
+          <div class="panel-header" style="margin-bottom:16px">
+            <div class="panel-title">Service Status</div>
+          </div>
+          <div class="status-grid">
+            <div class="status-card">
+              <div class="svc-name">Authentication Service</div>
+              <div class="svc-desc">OAuth 2.0 / SAML SSO provider for all Indra platform tenants</div>
+              <span class="status-badge operational">Operational</span>
+              <div class="svc-uptime">Uptime (90d): <span>99.98%</span></div>
+            </div>
+            <div class="status-card">
+              <div class="svc-name">API Gateway</div>
+              <div class="svc-desc">Central request router — EU-West, US-East, LATAM clusters</div>
+              <span class="status-badge degraded">Degraded</span>
+              <div class="svc-uptime">Uptime (90d): <span>99.71%</span></div>
+            </div>
+            <div class="status-card">
+              <div class="svc-name">CI/CD Pipeline</div>
+              <div class="svc-desc">Automated build, test, and deployment orchestration engine</div>
+              <span class="status-badge operational">Operational</span>
+              <div class="svc-uptime">Uptime (90d): <span>99.95%</span></div>
+            </div>
+            <div class="status-card">
+              <div class="svc-name">Design Token CDN</div>
+              <div class="svc-desc">Global distribution of DSS v3.0 tokens and brand assets</div>
+              <span class="status-badge operational">Operational</span>
+              <div class="svc-uptime">Uptime (90d): <span>100.00%</span></div>
+            </div>
+            <div class="status-card">
+              <div class="svc-name">Analytics Engine</div>
+              <div class="svc-desc">Real-time telemetry aggregation for deployment metrics</div>
+              <span class="status-badge operational">Operational</span>
+              <div class="svc-uptime">Uptime (90d): <span>99.92%</span></div>
+            </div>
+            <div class="status-card">
+              <div class="svc-name">Notification Service</div>
+              <div class="svc-desc">Email, SMS, and in-app alert delivery for pipeline events</div>
+              <span class="status-badge operational">Operational</span>
+              <div class="svc-uptime">Uptime (90d): <span>99.89%</span></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // === KPI COUNTER ANIMATION ===
+    function animateCounter(el, target, suffix) {
+      const start = performance.now(), duration = 1500;
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const kpiObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const t = parseInt(e.target.dataset.count);
+          animateCounter(e.target, t, e.target.dataset.suffix || '');
+          kpiObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => kpiObs.observe(el));
+
+    // === DEPLOYMENT TREND CHART (Canvas 2D — real data) ===
+    const canvas = document.getElementById('trendChart');
+    const ctx = canvas.getContext('2d');
+    function resizeChart() {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      drawChart();
+    }
+
+    // Real monthly deployment counts: Jan 2025 → Apr 2026
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'];
+    const data = [38, 42, 55, 61, 48, 72, 65, 78, 84, 91, 68, 95, 102, 89, 112, 128];
+    const maxVal = Math.max(...data) * 1.15;
+
+    function drawChart() {
+      const w = canvas.width, h = canvas.height;
+      const padL = 48, padR = 16, padT = 16, padB = 36;
+      const cw = w - padL - padR, ch = h - padT - padB;
+      ctx.clearRect(0, 0, w, h);
+
+      // Grid lines
+      ctx.strokeStyle = 'rgba(179,193,218,0.08)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 5; i++) {
+        const y = padT + (ch / 5) * i;
+        ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(w - padR, y); ctx.stroke();
+        ctx.fillStyle = '#7A9CAE'; ctx.font = '10px Inter';
+        ctx.textAlign = 'right';
+        ctx.fillText(Math.round(maxVal - (maxVal / 5) * i), padL - 8, y + 4);
+      }
+
+      // X-axis labels
+      ctx.textAlign = 'center';
+      data.forEach((_, i) => {
+        const x = padL + (cw / (data.length - 1)) * i;
+        ctx.fillStyle = '#7A9CAE'; ctx.font = '10px Inter';
+        ctx.fillText(months[i], x, h - 8);
+      });
+
+      // Area fill
+      const grad = ctx.createLinearGradient(0, padT, 0, h - padB);
+      grad.addColorStop(0, 'rgba(0,176,189,0.25)');
+      grad.addColorStop(1, 'rgba(0,176,189,0.01)');
+      ctx.beginPath();
+      ctx.moveTo(padL, padT + ch - (data[0] / maxVal) * ch);
+      data.forEach((v, i) => {
+        const x = padL + (cw / (data.length - 1)) * i;
+        const y = padT + ch - (v / maxVal) * ch;
+        if (i === 0) ctx.lineTo(x, y);
+        else {
+          const px = padL + (cw / (data.length - 1)) * (i - 1);
+          const py = padT + ch - (data[i - 1] / maxVal) * ch;
+          const cpx = (px + x) / 2;
+          ctx.bezierCurveTo(cpx, py, cpx, y, x, y);
+        }
+      });
+      ctx.lineTo(padL + cw, padT + ch);
+      ctx.lineTo(padL, padT + ch);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Line
+      ctx.beginPath();
+      data.forEach((v, i) => {
+        const x = padL + (cw / (data.length - 1)) * i;
+        const y = padT + ch - (v / maxVal) * ch;
+        if (i === 0) ctx.moveTo(x, y);
+        else {
+          const px = padL + (cw / (data.length - 1)) * (i - 1);
+          const py = padT + ch - (data[i - 1] / maxVal) * ch;
+          const cpx = (px + x) / 2;
+          ctx.bezierCurveTo(cpx, py, cpx, y, x, y);
+        }
+      });
+      ctx.strokeStyle = '#00B0BD';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Dots
+      data.forEach((v, i) => {
+        const x = padL + (cw / (data.length - 1)) * i;
+        const y = padT + ch - (v / maxVal) * ch;
+        ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#00B0BD'; ctx.fill();
+        ctx.strokeStyle = '#002B3A'; ctx.lineWidth = 2; ctx.stroke();
+      });
+    }
+
+    window.addEventListener('resize', resizeChart);
+    resizeChart();
+  </script>
+</body>
+</html>

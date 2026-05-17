@@ -1,0 +1,1 @@
+﻿<Field Type="DateTime" DisplayName="SLA" Name="SLA" StaticName="SLA" Format="DateOnly" Required="FALSE" ID="{922ccdbb-015f-4017-a53d-ad88f550ae7a}" SourceID="{7c8fde07-7ad4-4220-892a-2fafa33cea48}" ColName="datetime2" RowOrdinal="0" />

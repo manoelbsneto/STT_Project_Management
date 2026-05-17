@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.topic.SeHouverErro">
+  <componenttype>9</componenttype>
+  <description>Tratamento de erro do agente.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>SeHouverErro</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

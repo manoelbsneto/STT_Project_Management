@@ -1,0 +1,6 @@
+﻿"InternalName","Title","TypeAsString","Required","Hidden","ReadOnlyField","DefaultValue","Choices","Indexed"
+"PlannerTaskId","Planner Task ID","Text","False","False","False",,"","True"
+"PlannerBucketId","Planner Bucket ID","Text","False","False","False",,"","True"
+"PlannerSyncStatus","Planner Sync Status","Choice","False","False","False","Pendente","","True"
+"PlannerLastSyncAt","Planner Last Sync At","DateTime","False","False","False",,"","False"
+"PlannerSyncError","Planner Sync Error","Note","False","False","False",,"","False"

@@ -1,0 +1,136 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Review Status Update",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Review parsed fields before writing to SharePoint.",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Project:", "value": "${projectName}" },
+        { "title": "Project ID:", "value": "${projectId}" },
+        { "title": "Status:", "value": "${statusRAG}" },
+        { "title": "Percent:", "value": "${percentual}%" },
+        { "title": "Operation:", "value": "${operationId}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Summary",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${resumo}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Risk",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${risco}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Blocker",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${bloqueio}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Next action",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${proximaAcao}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${validationMessage}",
+      "color": "Attention",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Confirm update",
+      "style": "positive",
+      "data": {
+        "action": "confirmStatusUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "statusRAG": "${statusRAG}",
+        "percentual": "${percentual}",
+        "resumo": "${resumo}",
+        "risco": "${risco}",
+        "bloqueio": "${bloqueio}",
+        "proximaAcao": "${proximaAcao}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Edit structured form",
+      "data": {
+        "action": "submitStatusUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Cancel",
+      "data": {
+        "action": "cancelStatusUpdate",
+        "routeKey": "pm.status.updates",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+      - "criar tarefa:"
+      - abrir tarefa
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_title
+      variable: Topic.Title
+      value: =If(IsMatch(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_responsavel
+      variable: Topic.Responsavel
+      value: =If(IsMatch(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_datafim
+      variable: Topic.DataFim
+      value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_horas
+      variable: Topic.HorasEstimadas
+      value: =If(IsMatch(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
+
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_title
+      conditions:
+        - id: missing_title
+          condition: =IsBlank(Topic.Title)
+          actions:
+            - kind: Question
+              id: ask_title
+              variable: Topic.Title
+              prompt: Qual o titulo da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_responsavel
+      conditions:
+        - id: missing_responsavel
+          condition: =IsBlank(Topic.Responsavel)
+          actions:
+            - kind: Question
+              id: ask_responsavel
+              variable: Topic.Responsavel
+              prompt: Quem e o responsavel pela tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_datafim
+      conditions:
+        - id: missing_datafim
+          condition: =IsBlank(Topic.DataFim)
+          actions:
+            - kind: Question
+              id: ask_datafim
+              variable: Topic.DataFim
+              prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_horas
+      conditions:
+        - id: missing_horas
+          condition: =IsBlank(Topic.HorasEstimadas)
+          actions:
+            - kind: Question
+              id: ask_horas
+              variable: Topic.HorasEstimadas
+              prompt: Quantas horas estimadas para essa tarefa?
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_criar
+      variable: Topic.Confirmar
+      prompt: |-
+        Vou criar a tarefa '{Topic.Title}'.
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Horas: {Topic.HorasEstimadas}h
+        Prioridade: {Topic.Prioridade}
+        O codigo do projeto sera gerado automaticamente.
+
+        Confirma?
+      entity: BooleanPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Topic.Confirmar = true
+          actions:
+            - kind: SetVariable
+              id: set_global_title
+              variable: Global.PMO_Criar_Title
+              value: =Topic.Title
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Criar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Criar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_horas
+              variable: Global.PMO_Criar_HorasEstimadas
+              value: =Int(Topic.HorasEstimadas)
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Criar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: SendActivity
+              id: criar_done
+              activity: Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
+
+      elseActions:
+        - kind: SendActivity
+          id: criar_cancelled
+          activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
+
+inputType: {}
+outputType: {}

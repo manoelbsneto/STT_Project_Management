@@ -1,0 +1,76 @@
+﻿{
+    "timestampUtc":  "2026-05-15T19:01:08.6629185Z",
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "route":  "ProcessSimple direct flow create/update",
+    "pacSolutionImportUsed":  false,
+    "runtimeTestsPerformed":  false,
+    "existingTargets":  [
+                            {
+                                "DisplayName":  "PM0_PA_Card_AtualizarTarefa",
+                                "FlowName":  "36142fd3-9f83-4d4f-81e2-748ded919a92",
+                                "Enabled":  true,
+                                "CreatedTime":  "2026-05-15T18:59:52.1120512Z",
+                                "LastModifiedTime":  "2026-05-15T18:59:52.7608857Z"
+                            },
+                            {
+                                "DisplayName":  "PM0_PA_Card_CriarTarefa",
+                                "FlowName":  "76146280-a6c2-4068-8a3f-3310e3e9210f",
+                                "Enabled":  true,
+                                "CreatedTime":  "2026-05-15T18:52:01.5005191Z",
+                                "LastModifiedTime":  "2026-05-15T18:59:46.1612054Z"
+                            },
+                            {
+                                "DisplayName":  "PM0_PA_Card_ListarTarefas",
+                                "FlowName":  "c9e44878-77ed-4b17-9b6f-0bab008a0587",
+                                "Enabled":  true,
+                                "CreatedTime":  "2026-05-15T18:51:54.4520841Z",
+                                "LastModifiedTime":  "2026-05-15T18:59:39.9794811Z"
+                            },
+                            {
+                                "DisplayName":  "PM0_PA_Card_AtualizarStatus",
+                                "FlowName":  "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+                                "Enabled":  true,
+                                "CreatedTime":  "2026-05-15T18:51:47.3393878Z",
+                                "LastModifiedTime":  "2026-05-15T18:59:33.9796568Z"
+                            },
+                            {
+                                "DisplayName":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+                                "FlowName":  "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+                                "Enabled":  true,
+                                "CreatedTime":  "2026-05-15T18:51:40.549511Z",
+                                "LastModifiedTime":  "2026-05-15T18:59:27.5506453Z"
+                            }
+                        ],
+    "bucketMap":  {
+                      "Piloto e Implantacao":  {
+                                                   "percentComplete":  50,
+                                                   "status":  "Piloto e Implantacao",
+                                                   "bucketId":  "4YAXH7iU9E-6jZE2P1DbG5cAMAzH"
+                                               },
+                      "Testes":  {
+                                     "percentComplete":  50,
+                                     "status":  "Testes",
+                                     "bucketId":  "7QYPufh54kum7MP4KUzzAZcAL6Ik"
+                                 },
+                      "Cancelado":  {
+                                        "percentComplete":  100,
+                                        "status":  "Cancelado",
+                                        "bucketId":  "90TcFTFup0CjiHIdzY4gG5cALWKL"
+                                    },
+                      "Concluido":  {
+                                        "percentComplete":  100,
+                                        "status":  "Concluido",
+                                        "bucketId":  "F2WYUsnXeEue5qlwQuu3GJcAN1Ns"
+                                    },
+                      "Em Andamento":  {
+                                           "percentComplete":  50,
+                                           "status":  "Em Andamento",
+                                           "bucketId":  "ugZSNxsYW0WWCJ5Dtx0-l5cALVXG"
+                                       },
+                      "Pendente":  {
+                                       "percentComplete":  0,
+                                       "status":  "Pendente",
+                                       "bucketId":  "HmzyGOgC4k6uOPm_cwG3zZcAGiAG"
+                                   }
+                  }
+}

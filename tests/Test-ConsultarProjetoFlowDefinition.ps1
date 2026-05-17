@@ -10,6 +10,7 @@ $checks = [System.Collections.Generic.List[object]]::new()
 
 Add-PMOCommonFlowChecks $checks $text "PMO_PA_ConsultarProjeto"
 Add-PMOCheck $checks "Has nomeProjeto input" ($text -match '"nomeProjeto"') "ConsultarProjeto requires nomeProjeto."
+Add-PMOCheck $checks "Normalizes prefixed project argument" (($text.Contains("nomeProjeto")) -and ($text.Contains("startsWith(toLower(trim(coalesce")) -and ($text.Contains("projeto=")) -and ($text.Contains("projeto:"))) "Must strip command-style projeto= / projeto: prefixes before SharePoint lookup."
 Add-PMOCheck $checks "Looks up project with guard" (($text -match "Get_Projeto") -and ($text -match "Condition_Projeto_Encontrado") -and ($text -match "PROJECT_NOT_FOUND")) "Must guard empty project lookup."
 Add-PMOCheck $checks "Reads Riscos e Bloqueios" ($text -match '"table"\s*:\s*"Riscos e Bloqueios"') "Must count open risks."
 Add-PMOCheck $checks "Filters open risks" ($text -match "StatusRisco eq .*Aberto") "Must only count open risks."

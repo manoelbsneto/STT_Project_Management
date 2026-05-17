@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="PlannerTaskId" DisplayName="Planner Task ID" ID="{2519e9ee-47eb-41ee-b24e-fb31c724278b}" Group="" Required="FALSE" SourceID="{36d78ca1-1f60-4dd3-a4d5-5c94b89969e9}" StaticName="PlannerTaskId" ColName="nvarchar13" RowOrdinal="0" Indexed="TRUE" Version="1" />

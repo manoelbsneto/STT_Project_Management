@@ -1,0 +1,36 @@
+# Validation
+
+- local validation steps performed: manual JSON parse checks, file existence validation, ASCII verification, route key checks, Planner input specificity checks, SharePoint required fields checks, SharePoint Status choice schema verification.
+- JSON parse result for PACKAGE_MANIFEST.json: Valid JSON.
+- ASCII check result for app-facing Copilot responses: PASSED (all static responses are pure ASCII).
+- CSV headers match the required contract: PASSED.
+- Deprecated route-key values replaced: PASSED.
+- Approved route keys (board.status, pm.status.updates, task.card.route, pmo.ops) are used: PASSED.
+- FI-03 SharePoint internal field explicitly defined as ProjectID: PASSED.
+- FI-04 CreateTask_V3 exact inputs and create behavior: PASS by owner Power Automate evidence; Planner progress model is 0/50/100.
+- FI-04 mapped status output tied to selected bucket used for SharePoint Status: PASSED.
+- FI-04/FI-05 canonical Status values are present in live SharePoint `Tarefas.Status`: PASSED after AQ-07-STATUS-SCHEMA-ALIGNMENT.
+- FI-04 Create SharePoint Item includes Title, ProjectID, Status: PASSED.
+- FI-04 Create SharePoint Item includes all 5 Planner sync fields: PASSED.
+- FI-05 UpdateTask progress mapping: PASSED FOR SAVE using `UpdateTask_V2` with `body/percentComplete` and Planner-supported progress values 0/50/100. Bucket movement is not claimed; SharePoint stores selected Status and mapped PlannerBucketId.
+- No ambiguous Planner placeholders remain: PASSED.
+- Explicit blocker tokens remaining: None.
+- Tenant actions performed: SharePoint schema choice update for `Tarefas.Status`; AQ-07 Power Automate ProcessSimple flow saves for six flows; no SharePoint item writes, Copilot publish, Teams production posts, PAC solution import, `m365`, or Graph direct calls.
+- checklist of files created/edited: 
+  - AQ07_DELIVERY_DECISION.md
+  - PACKAGE_MANIFEST.json
+  - CONNECTION_REFERENCES.md
+  - FIELD_MAPPING.md
+  - CARD_ACTION_BINDING_MATRIX.csv
+  - AQ07_ACCEPTANCE_MATRIX.md
+  - VALIDATION.md
+  - QUALITY_GATES.md
+  - flows/FI-01_PM0_PA_Card_ResumoExecutivoPortfolio.md
+  - flows/FI-02_PM0_PA_Card_AtualizarStatus.md
+  - flows/FI-03_PM0_PA_Card_ListarTarefas.md
+  - flows/FI-04_PM0_PA_Card_CriarTarefa.md
+  - flows/FI-05_PM0_PA_Card_AtualizarTarefa.md
+  - flows/FI-06_PM0_PA_OpsFailureHandling.md
+  - schema_update_20260515/Update-TarefasStatusChoices.ps1
+- known gaps: AQ-08 Copilot action binding/publish and AQ-09 runtime smoke evidence are still required.
+- final status: PROGRAMMATIC_SAVE_COMPLETE_READY_FOR_AQ08. Release remains NO-SHIP until AQ-08 publish evidence, AQ-09 runtime smoke, and AQ-10 final decision are complete.

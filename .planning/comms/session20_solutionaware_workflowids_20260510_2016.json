@@ -1,0 +1,50 @@
+[
+  {
+    "DisplayName": "PMO_PA_ConsultarPortfolio",
+    "FlowName": "15dd011a-fc10-4e8a-aaa2-d95d21c399d1",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  },
+  {
+    "DisplayName": "PMO_PA_ConsultarProjeto",
+    "FlowName": "54477fc9-4475-4622-82b1-79e63408697d",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  },
+  {
+    "DisplayName": "PMO_PA_RegistrarRiscoBot",
+    "FlowName": "367d7db3-ed36-478c-bbc7-151e880b2606",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  },
+  {
+    "DisplayName": "PMO_PA_RegistrarBloqueioBot",
+    "FlowName": "7cc187d3-9e67-4880-b358-57c3ab71b5d5",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  },
+  {
+    "DisplayName": "PMO_PA_PedirDecisaoBot",
+    "FlowName": "259a4a9f-80c1-4ff6-9580-9c0c7e112246",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  },
+  {
+    "DisplayName": "PMO_PA_AtualizarStatus",
+    "FlowName": "18487291-ce63-472e-9ebd-9fe871bf7371",
+    "Enabled": true,
+    "State": "Started",
+    "WorkflowEntityId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "SolutionAwareOutput": "Code Description Internal\r\n---- ----------- --------\r\n                 @{statuses=; flowsToMigrate=System.Object[]}"
+  }
+]

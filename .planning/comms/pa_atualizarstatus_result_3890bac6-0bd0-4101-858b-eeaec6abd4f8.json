@@ -1,0 +1,537 @@
+{
+  "name": "5b559af0-7ef2-477a-a626-7921891d6441",
+  "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/5b559af0-7ef2-477a-a626-7921891d6441",
+  "type": "Microsoft.ProcessSimple/environments/flows",
+  "properties": {
+    "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+    "displayName": "PMO_PA_AtualizarStatus",
+    "userType": "Owner",
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "risco": {
+                  "type": "string",
+                  "description": "Risco informado"
+                },
+                "percentual": {
+                  "type": "number",
+                  "description": "Percentual concluido"
+                },
+                "proximaAcao": {
+                  "type": "string",
+                  "description": "Proxima acao"
+                },
+                "nomeProjeto": {
+                  "type": "string",
+                  "description": "Nome do projeto"
+                },
+                "resumo": {
+                  "type": "string",
+                  "description": "Resumo do status"
+                },
+                "rag": {
+                  "type": "string",
+                  "description": "Status RAG"
+                },
+                "bloqueio": {
+                  "type": "string",
+                  "description": "Bloqueio informado"
+                }
+              },
+              "required": [
+                "nomeProjeto",
+                "rag",
+                "resumo"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Condition_Projeto_Encontrado": {
+          "actions": {
+            "Create_Status_Diario": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "item/RAG/Value": "@outputs('Map_RAG')",
+                  "item/Bloqueio": "@coalesce(triggerBody()?['bloqueio'], '')",
+                  "table": "Status Diario",
+                  "item/Deleted": false,
+                  "item/Resumo": "@triggerBody()?['resumo']",
+                  "item/Risco": "@coalesce(triggerBody()?['risco'], '')",
+                  "item/ProximaAcao": "@coalesce(triggerBody()?['proximaAcao'], '')",
+                  "item/OrigemEntrada/Value": "CopilotStudio",
+                  "item/DataRegistro": "@utcNow()",
+                  "item/Title": "@outputs('Compose_StatusID')",
+                  "item/Percentual": "@outputs('Compose_Percentual')",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/StatusID": "@outputs('Compose_StatusID')",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Update_Projeto": {
+              "runAfter": {
+                "Create_Status_Diario": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "item/NomeProjeto": "@body('Get_Projeto')?['value']?[0]?['NomeProjeto']",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/UltimaAtualizacao": "@utcNow()",
+                  "table": "Projetos",
+                  "item/Title": "@body('Get_Projeto')?['value']?[0]?['Title']",
+                  "item/StatusRAG/Value": "@outputs('Map_RAG')",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']",
+                  "id": "@body('Get_Projeto')?['value']?[0]?['ID']",
+                  "item/Percentual": "@outputs('Compose_Percentual')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PatchItem"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Update_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat('Status ', outputs('Compose_StatusID'), ' registrado para projeto ', outputs('Compose_ProjectName'), '. RAG: ', outputs('Map_RAG'), '. Percentual: ', string(outputs('Compose_Percentual')), '%.')}"
+                }
+              }
+            },
+            "Response_Error_Create": {
+              "runAfter": {
+                "Create_Status_Diario": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao registrar status no SharePoint. Codigo: SP_STATUS_WRITE_FAILED."
+                }
+              }
+            },
+            "Response_Error_Update": {
+              "runAfter": {
+                "Update_Projeto": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao atualizar projeto no SharePoint. Codigo: SP_PROJECT_UPDATE_FAILED."
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_StatusID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "runAfter": {},
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(body('Get_Projeto')?['value'])",
+              0
+            ]
+          },
+          "type": "If"
+        },
+        "Map_RAG": {
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['rag'], 'Verde')), 'verm'), 'Vermelho', if(startsWith(toLower(coalesce(triggerBody()?['rag'], 'Verde')), 'a'), 'Amarelo', 'Verde'))"
+        },
+        "Compose_StatusID": {
+          "runAfter": {
+            "Compose_Percentual": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat('STU-', formatDateTime(utcNow(), 'yyyyMMddHHmmss'))"
+        },
+        "Compose_Percentual": {
+          "runAfter": {
+            "Map_RAG": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(empty(string(triggerBody()?['percentual'])), 0, int(triggerBody()?['percentual']))"
+        },
+        "Get_Projeto": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "$top": 1,
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectName'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Compose_ProjectName": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))"
+        }
+      },
+      "outputs": {}
+    },
+    "triggerSchema": {
+      "type": "object",
+      "properties": {
+        "risco": {
+          "type": "string",
+          "description": "Risco informado"
+        },
+        "percentual": {
+          "type": "number",
+          "description": "Percentual concluido"
+        },
+        "proximaAcao": {
+          "type": "string",
+          "description": "Proxima acao"
+        },
+        "nomeProjeto": {
+          "type": "string",
+          "description": "Nome do projeto"
+        },
+        "resumo": {
+          "type": "string",
+          "description": "Resumo do status"
+        },
+        "rag": {
+          "type": "string",
+          "description": "Status RAG"
+        },
+        "bloqueio": {
+          "type": "string",
+          "description": "Bloqueio informado"
+        }
+      },
+      "required": [
+        "nomeProjeto",
+        "rag",
+        "resumo"
+      ]
+    },
+    "state": "Started",
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+        "connectionReferenceLogicalName": "pmo_sharepoint",
+        "source": "Invoker",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+        "displayName": "SharePoint",
+        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+        "brandColor": "",
+        "tier": "Standard",
+        "apiName": "sharepointonline",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      }
+    },
+    "createdTime": "2026-05-10T23:32:01.6465578Z",
+    "lastModifiedTime": "2026-05-10T23:32:01.1813267Z",
+    "flowSuspensionReason": "None",
+    "environment": {
+      "name": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+      "type": "Microsoft.ProcessSimple/environments",
+      "id": "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+    },
+    "definitionSummary": {
+      "triggers": [
+        {
+          "type": "Request",
+          "kind": "Skills"
+        }
+      ],
+      "actions": [
+        {
+          "type": "If"
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "OpenApiConnection",
+          "swaggerOperationId": "GetItems",
+          "api": {
+            "name": "shared_sharepointonline",
+            "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "type": "/providers/Microsoft.PowerApps/apis",
+            "properties": {
+              "displayName": "SharePoint",
+              "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+              "metadata": {
+                "source": "marketplace",
+                "brandColor": "",
+                "useNewApimVersion": "true",
+                "version": {
+                  "previous": "releases/v1.0.1769\\1.0.1769.4361",
+                  "current": "releases/v1.0.1809\\1.0.1809.4714"
+                }
+              },
+              "tier": "Standard",
+              "isCustomApi": false,
+              "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+            }
+          }
+        },
+        {
+          "type": "Compose"
+        },
+        {
+          "type": "OpenApiConnection",
+          "swaggerOperationId": "PostItem",
+          "api": {
+            "name": "shared_sharepointonline",
+            "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "type": "/providers/Microsoft.PowerApps/apis",
+            "properties": {
+              "displayName": "SharePoint",
+              "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+              "metadata": {
+                "source": "marketplace",
+                "brandColor": "",
+                "useNewApimVersion": "true",
+                "version": {
+                  "previous": "releases/v1.0.1769\\1.0.1769.4361",
+                  "current": "releases/v1.0.1809\\1.0.1809.4714"
+                }
+              },
+              "tier": "Standard",
+              "isCustomApi": false,
+              "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+            }
+          }
+        },
+        {
+          "type": "OpenApiConnection",
+          "swaggerOperationId": "PatchItem",
+          "api": {
+            "name": "shared_sharepointonline",
+            "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "type": "/providers/Microsoft.PowerApps/apis",
+            "properties": {
+              "displayName": "SharePoint",
+              "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+              "metadata": {
+                "source": "marketplace",
+                "brandColor": "",
+                "useNewApimVersion": "true",
+                "version": {
+                  "previous": "releases/v1.0.1769\\1.0.1769.4361",
+                  "current": "releases/v1.0.1809\\1.0.1809.4714"
+                }
+              },
+              "tier": "Standard",
+              "isCustomApi": false,
+              "description": "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+            }
+          }
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        },
+        {
+          "type": "Response",
+          "kind": "Skills"
+        }
+      ]
+    },
+    "creator": {
+      "tenantId": "7808e005-1489-4374-954b-d3b08f193920",
+      "objectId": "3882eb28-005d-4948-a668-81263d778f6d",
+      "userId": "3882eb28-005d-4948-a668-81263d778f6d",
+      "userType": "ActiveDirectory"
+    },
+    "installationStatus": "Installed",
+    "provisioningMethod": "FromDefinition",
+    "flowFailureAlertSubscribed": true,
+    "referencedResources": [
+      {
+        "service": "sharepoint",
+        "resource": {
+          "site": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+          "list": "[DYNAMIC_VALUE]"
+        },
+        "referencers": [
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          },
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+          },
+          {
+            "referenceSourceType": "Triggers",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Triggers",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          },
+          {
+            "referenceSourceType": "Triggers",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+          }
+        ]
+      },
+      {
+        "service": "sharepoint",
+        "resource": {
+          "site": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+        },
+        "referencers": [
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/GetItems"
+          },
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PostItem"
+          }
+        ]
+      },
+      {
+        "service": "sharepoint",
+        "resource": {
+          "site": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+          "fileId": "@body('Get_Projeto')?['value']?[0]?['ID']"
+        },
+        "referencers": [
+          {
+            "referenceSourceType": "Actions",
+            "operationId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline/apiOperations/PatchItem"
+          }
+        ]
+      }
+    ],
+    "isManaged": false,
+    "machineDescriptionData": {},
+    "flowOpenAiData": {
+      "isConsequential": false,
+      "isConsequentialFlagOverwritten": false
+    }
+  }
+}

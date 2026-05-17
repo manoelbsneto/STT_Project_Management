@@ -1,0 +1,134 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           },
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        }
+                   },
+    "triggers":  {
+                     "manual":  {
+                                    "type":  "Request",
+                                    "kind":  "Skills",
+                                    "inputs":  {
+                                                   "schema":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+                                                                                     "action":  {
+                                                                                                    "type":  "string",
+                                                                                                    "description":  "Action"
+                                                                                                },
+                                                                                     "projectId":  {
+                                                                                                       "type":  "string",
+                                                                                                       "description":  "Project ID"
+                                                                                                   }
+                                                                                 },
+                                                                  "required":  [
+                                                                                   "projectId",
+                                                                                   "action"
+                                                                               ]
+                                                              }
+                                               }
+                                }
+                 },
+    "actions":  {
+                    "List_Planner_Tasks":  {
+                                               "type":  "OpenApiConnection",
+                                               "inputs":  {
+                                                              "parameters":  {
+                                                                                 "id":  "-1kBj1PLv0qQM-R4PwkqbpcABv_P",
+                                                                                 "groupId":  "96c5b0c4-46cc-46cd-8695-50451db74994"
+                                                                             },
+                                                              "host":  {
+                                                                           "apiId":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                                                                           "connectionName":  "shared_planner",
+                                                                           "operationId":  "ListTasks_V3"
+                                                                       },
+                                                              "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                          },
+                                               "runAfter":  {
+                                                                "Get_Tarefas":  [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                            }
+                                           },
+                    "Respond_Success":  {
+                                            "type":  "Response",
+                                            "kind":  "Skills",
+                                            "inputs":  {
+                                                           "statusCode":  200,
+                                                           "headers":  {
+                                                                           "Content-Type":  "application/json"
+                                                                       },
+                                                           "body":  {
+                                                                        "result":  "Tasks retrieved successfully."
+                                                                    },
+                                                           "schema":  {
+                                                                          "type":  "object",
+                                                                          "properties":  {
+                                                                                             "result":  {
+                                                                                                            "title":  "result",
+                                                                                                            "x-ms-dynamically-added":  true,
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                      }
+                                                       },
+                                            "runAfter":  {
+                                                             "Normalize_Tasks":  [
+                                                                                     "Succeeded"
+                                                                                 ]
+                                                         }
+                                        },
+                    "Normalize_Tasks":  {
+                                            "type":  "Select",
+                                            "inputs":  {
+                                                           "from":  "@body(\u0027Get_Tarefas\u0027)?[\u0027value\u0027]",
+                                                           "select":  {
+                                                                          "plannerBucketId":  "@item()?[\u0027PlannerBucketId\u0027]",
+                                                                          "plannerTaskId":  "@item()?[\u0027PlannerTaskId\u0027]",
+                                                                          "title":  "@item()?[\u0027Title\u0027]",
+                                                                          "projectId":  "@item()?[\u0027ProjectID\u0027]",
+                                                                          "status":  "@coalesce(item()?[\u0027Status\u0027]?[\u0027Value\u0027], item()?[\u0027Status\u0027])"
+                                                                      }
+                                                       },
+                                            "runAfter":  {
+                                                             "List_Planner_Tasks":  [
+                                                                                        "Succeeded"
+                                                                                    ]
+                                                         }
+                                        },
+                    "Get_Tarefas":  {
+                                        "type":  "OpenApiConnection",
+                                        "inputs":  {
+                                                       "parameters":  {
+                                                                          "$filter":  "ProjectID eq \u0027@{replace(triggerBody()?[\u0027projectId\u0027],\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027",
+                                                                          "table":  "Tarefas",
+                                                                          "$top":  100,
+                                                                          "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                      },
+                                                       "host":  {
+                                                                    "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                    "connectionName":  "shared_sharepointonline",
+                                                                    "operationId":  "GetItems"
+                                                                },
+                                                       "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                   },
+                                        "runAfter":  {
+
+                                                     }
+                                    }
+                },
+    "outputs":  {
+
+                }
+}

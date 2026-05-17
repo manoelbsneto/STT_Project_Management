@@ -1,0 +1,169 @@
+﻿{
+    "name":  "89050663-1163-b36c-659b-6fcaa0edfee0",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/89050663-1163-b36c-659b-6fcaa0edfee0",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PMO_PA_CriarTarefa_V3",
+                       "state":  "Started",
+                       "sharingType":  "CommonDataService",
+                       "connectionReferences":  {
+
+                                                },
+                       "createdTime":  "2026-05-07T17:00:55Z",
+                       "lastModifiedTime":  "2026-05-11T16:03:47Z",
+                       "flowSuspensionReason":  "None",
+                       "templateName":  "",
+                       "environment":  {
+                                           "name":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+                                           "type":  "Microsoft.ProcessSimple/environments",
+                                           "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+                                       },
+                       "definitionSummary":  {
+                                                 "triggers":  [
+                                                                  {
+                                                                      "type":  "Request",
+                                                                      "kind":  "Skills",
+                                                                      "metadata":  {
+                                                                                       "operationMetadataId":  "b8f61c18-7224-4f8a-9c5f-72fbce5df764"
+                                                                                   }
+                                                                  }
+                                                              ],
+                                                 "actions":  [
+                                                                 {
+                                                                     "type":  "Compose",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "3041ca54-483b-471b-9755-3e7118814243"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "ea1511f0-ce6b-4bd9-9567-8b6de15cd4bd"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "596a088a-f478-4c40-ac00-bbe33fbe7b52"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "Compose",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "92f3d1fb-ee0e-4946-bd0a-0fb77c81f991"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "GetItems",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "c2ee3269-008c-4b00-9d37-8b3ca081adf5"
+                                                                                  },
+                                                                     "api":  {
+                                                                                 "name":  "shared_sharepointonline",
+                                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                 "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                 "properties":  {
+                                                                                                    "displayName":  "SharePoint",
+                                                                                                    "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+                                                                                                    "metadata":  {
+                                                                                                                     "source":  "marketplace",
+                                                                                                                     "brandColor":  "",
+                                                                                                                     "useNewApimVersion":  "true",
+                                                                                                                     "version":  {
+                                                                                                                                     "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                     "current":  "releases/v1.0.1809\\1.0.1809.4714"
+                                                                                                                                 }
+                                                                                                                 },
+                                                                                                    "tier":  "Standard",
+                                                                                                    "isCustomApi":  false,
+                                                                                                    "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                                                                }
+                                                                             }
+                                                                 },
+                                                                 {
+                                                                     "type":  "If",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "fb212019-2413-43c5-9170-fbbf74ff8b52"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "InitializeVariable",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "d2833a09-12e9-4d87-99ef-7451429f60ef"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "Response",
+                                                                     "kind":  "VirtualAgent",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "36fe9d96-7935-4008-96a2-9a6096b8c6ee"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "OpenApiConnection",
+                                                                     "swaggerOperationId":  "PostItem",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "624f5467-198c-42ae-a674-d4d43a283321"
+                                                                                  },
+                                                                     "api":  {
+                                                                                 "name":  "shared_sharepointonline",
+                                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                 "type":  "/providers/Microsoft.PowerApps/apis",
+                                                                                 "properties":  {
+                                                                                                    "displayName":  "SharePoint",
+                                                                                                    "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+                                                                                                    "metadata":  {
+                                                                                                                     "source":  "marketplace",
+                                                                                                                     "brandColor":  "",
+                                                                                                                     "useNewApimVersion":  "true",
+                                                                                                                     "version":  {
+                                                                                                                                     "previous":  "releases/v1.0.1769\\1.0.1769.4361",
+                                                                                                                                     "current":  "releases/v1.0.1809\\1.0.1809.4714"
+                                                                                                                                 }
+                                                                                                                 },
+                                                                                                    "tier":  "Standard",
+                                                                                                    "isCustomApi":  false,
+                                                                                                    "description":  "SharePoint helps organizations share and collaborate with colleagues, partners, and customers. You can connect to SharePoint Online or to an on-premises SharePoint 2016 or 2019 farm using the On-Premises Data Gateway to manage documents and list items."
+                                                                                                }
+                                                                             }
+                                                                 },
+                                                                 {
+                                                                     "type":  "SetVariable",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "5622545a-abde-4d4c-9e3f-972533f5734f"
+                                                                                  }
+                                                                 },
+                                                                 {
+                                                                     "type":  "SetVariable",
+                                                                     "metadata":  {
+                                                                                      "operationMetadataId":  "3be08b3f-fc5f-44fc-9e65-155b8d9412d1"
+                                                                                  }
+                                                                 }
+                                                             ]
+                                             },
+                       "owningUser":  {
+                                          "id":  "1f9b0044-42e2-f011-8544-6045bd91772f",
+                                          "azureActiveDirectoryObjectId":  "3882eb28-005d-4948-a668-81263d778f6d"
+                                      },
+                       "flowFailureAlertSubscribed":  false,
+                       "workflowEntityId":  "3104124d-364a-f111-bec7-7ced8d955c6c",
+                       "workflowUniqueId":  "28316464-c198-4124-97fc-91a9a4cdf72c",
+                       "isManaged":  false,
+                       "componentState":  "Published",
+                       "isCustomizable":  {
+                                              "value":  true,
+                                              "canBeChanged":  true,
+                                              "managedPropertyLogicalName":  "iscustomizableanddeletable"
+                                          },
+                       "resourceId":  "89050663-1163-b36c-659b-6fcaa0edfee0",
+                       "machineDescriptionData":  {
+
+                                                  },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

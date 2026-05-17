@@ -1,0 +1,10 @@
+<botcomponent schemaname="pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Work IQ Copilot (Preview)</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_Clean</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

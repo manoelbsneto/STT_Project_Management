@@ -1,0 +1,1 @@
+﻿<Field Type="DateTime" Name="PlannerLastSyncAt" DisplayName="PlannerLastSyncAt" ID="{3ab20e2b-7c6a-45d8-8046-4eaaa962ffd2}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="PlannerLastSyncAt" ColName="datetime3" RowOrdinal="0" />

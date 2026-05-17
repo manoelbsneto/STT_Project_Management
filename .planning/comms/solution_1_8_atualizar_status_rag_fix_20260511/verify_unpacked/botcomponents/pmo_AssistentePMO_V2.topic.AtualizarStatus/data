@@ -1,0 +1,197 @@
+# AtualizarStatus topic
+# Purpose: parse long STT text, confirm, and call the PMO_PA_AtualizarStatus flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic AtualizarStatus.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarStatus
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - atualizar status
+      - update status
+      - checkin
+      - check in
+      - status do projeto
+      - reportar status
+      - enviar status
+      - fazer checkin
+      - "atualizar status:"
+      - atualizar status projeto
+      - atualizar status resumo
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.Projeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_rag
+      variable: Topic.RAG
+      value: =If(IsMatch(Topic.RawInput, "rag\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "rag\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "status\s*=\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "status\s*=\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_summary
+      variable: Topic.Resumo
+      value: =If(IsMatch(Topic.RawInput, "resumo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "resumo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_percent
+      variable: Topic.Percentual
+      value: =If(IsMatch(Topic.RawInput, "percentual\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "percentual\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), If(IsMatch(Topic.RawInput, "percent\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "percent\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank()))
+
+    - kind: SetVariable
+      id: parse_risk
+      variable: Topic.Risco
+      value: =If(IsMatch(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_block
+      variable: Topic.Bloqueio
+      value: =If(IsMatch(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_next_action
+      variable: Topic.ProximaAcao
+      value: =If(IsMatch(Topic.RawInput, "proxima\s+acao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "proxima\s+acao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "proximo\s+passo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "proximo\s+passo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.Projeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.Projeto
+              prompt: Qual projeto voce quer atualizar?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_rag
+      conditions:
+        - id: missing_rag
+          condition: =IsBlank(Topic.RAG)
+          actions:
+            - kind: Question
+              id: ask_rag
+              variable: Topic.RAG
+              prompt: "Qual o status RAG? Escolha: Verde, Amarelo ou Vermelho."
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_summary
+      conditions:
+        - id: missing_summary
+          condition: =IsBlank(Topic.Resumo)
+          actions:
+            - kind: Question
+              id: ask_summary
+              variable: Topic.Resumo
+              prompt: Qual o resumo do status?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_atualizar_status
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este status.
+        Projeto: {Topic.Projeto}
+        RAG: {Topic.RAG}
+        Resumo: {Topic.Resumo}
+        Percentual: {Topic.Percentual}
+        Risco: {Topic.Risco}
+        Bloqueio: {Topic.Bloqueio}
+        Proxima acao: {Topic.ProximaAcao}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Status_Projeto
+              value: =Topic.Projeto
+
+            - kind: SetVariable
+              id: set_global_rag
+              variable: Global.PMO_Status_RAG
+              value: =Topic.RAG
+
+            - kind: SetVariable
+              id: set_global_summary
+              variable: Global.PMO_Status_Resumo
+              value: =Topic.Resumo
+
+            - kind: SetVariable
+              id: set_global_percent
+              variable: Global.PMO_Status_Percentual
+              value: =Topic.Percentual
+
+            - kind: SetVariable
+              id: set_global_risk
+              variable: Global.PMO_Status_Risco
+              value: =Topic.Risco
+
+            - kind: SetVariable
+              id: set_global_block
+              variable: Global.PMO_Status_Bloqueio
+              value: =Topic.Bloqueio
+
+            - kind: SetVariable
+              id: set_global_next_action
+              variable: Global.PMO_Status_ProximaAcao
+              value: =Topic.ProximaAcao
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_atualizar_status
+              input:
+                binding:
+                  nomeProjeto: =Global.PMO_Status_Projeto
+                  rag: =Global.PMO_Status_RAG
+                  resumo: =Global.PMO_Status_Resumo
+                  percentual: =Global.PMO_Status_Percentual
+                  risco: =Global.PMO_Status_Risco
+                  bloqueio: =Global.PMO_Status_Bloqueio
+                  proximaAcao: =Global.PMO_Status_ProximaAcao
+
+              output:
+                binding:
+                  message: Topic.AtualizarStatusResult
+
+              flowId: c11a165b-c64c-f111-bec7-7ced8d9559c1
+
+            - kind: SendActivity
+              id: atualizar_status_done
+              activity: "{Topic.AtualizarStatusResult}"
+
+            - kind: EndDialog
+              id: end_atualizar_status
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: atualizar_status_cancelled
+          activity: Ok, atualizacao de status cancelada.
+
+        - kind: EndDialog
+          id: end_atualizar_status_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}

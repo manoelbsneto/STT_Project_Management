@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="Tipo" DisplayName="Tipo" ID="{5ba9db10-2296-4c0a-a631-bd10db6dc26f}" Group="" Required="TRUE" SourceID="{7c8fde07-7ad4-4220-892a-2fafa33cea48}" StaticName="Tipo" ColName="nvarchar9" RowOrdinal="0" Version="2"><CHOICES><CHOICE>Risco</CHOICE><CHOICE>Bloqueio</CHOICE></CHOICES></Field>

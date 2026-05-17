@@ -1,0 +1,13 @@
+﻿{
+    "shared_planner":  {
+                           "connectionName":  "6b763b98729c4d99a7a8df4033d381af",
+                           "source":  "Invoker",
+                           "id":  "/providers/Microsoft.PowerApps/apis/shared_planner",
+                           "displayName":  "Planner",
+                           "iconUri":  "https://static.powerapps.com/resource/ppcr/releases/v1.0.1808/1.0.1808.4692/planner/icon.png",
+                           "brandColor":  "",
+                           "tier":  "Standard",
+                           "apiName":  "planner",
+                           "isProcessSimpleApiReferenceConversionAlreadyDone":  false
+                       }
+}

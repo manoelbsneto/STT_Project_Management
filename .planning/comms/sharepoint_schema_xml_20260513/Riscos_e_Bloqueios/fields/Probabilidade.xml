@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="Probabilidade" DisplayName="Probabilidade" ID="{297bd29e-519b-48dd-a2d9-79eb863952b1}" Group="" Required="FALSE" SourceID="{7c8fde07-7ad4-4220-892a-2fafa33cea48}" StaticName="Probabilidade" ColName="nvarchar12" RowOrdinal="0" Version="1"><CHOICES><CHOICE>Baixa</CHOICE><CHOICE>Media</CHOICE><CHOICE>Alta</CHOICE></CHOICES></Field>

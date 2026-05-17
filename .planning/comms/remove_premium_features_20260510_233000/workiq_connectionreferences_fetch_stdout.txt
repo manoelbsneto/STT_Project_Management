@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode connectorid                                                   connectionreferencedisplayname                                                                              statuscode connectionreferenceid                connectionreferencelogicalname
+Activa    /providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd Activa     69818553-a667-4c16-b7ec-4698fe2af1c5 pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shareda36
+Activa    /providers/Microsoft.PowerApps/apis/shared_a365memcp          pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714              Activa     79a8e76b-7707-4cd4-948c-c82560e8d882 pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365memcp.shareda365memcped1
+Activa    /providers/Microsoft.PowerApps/apis/shared_a365copilotchatmcp pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd Activa     fbb77fdb-2d5c-45cd-a908-b6f93c758bd8 pmo_AssistentePMO_Clean.shared_a365copilotchatmcp.shared-a365copilotch-d537869b-626c-44ad-9a71-72d0c94e57fd
+Activa    /providers/Microsoft.PowerApps/apis/shared_a365memcp          pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714              Activa     3e8967dc-209f-4b06-8a45-64afa0b85f66 pmo_AssistentePMO_Clean.shared_a365memcp.shared-a365memcp-ed1136ed-9b76-4d64-b7fa-16bab035d714
+

@@ -1,0 +1,1 @@
+﻿<Field Type="Boolean" DisplayName="Deleted" Name="Deleted" StaticName="Deleted" ID="{a0121d73-6df5-43aa-a498-96ddfb57cf77}" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" ColName="bit2" RowOrdinal="0" Indexed="TRUE" Version="1"><Default>0</Default></Field>

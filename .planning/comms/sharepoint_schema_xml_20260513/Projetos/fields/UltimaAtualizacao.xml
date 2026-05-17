@@ -1,0 +1,1 @@
+﻿<Field Type="DateTime" Name="UltimaAtualizacao" DisplayName="UltimaAtualizacao" ID="{b088522e-a2aa-4fbf-97b9-6a10216114e9}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="UltimaAtualizacao" ColName="datetime2" RowOrdinal="0" Indexed="TRUE" Version="1" />

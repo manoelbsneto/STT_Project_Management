@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="PlannerSyncStatus" DisplayName="PlannerSyncStatus" ID="{bd1d1565-ce8d-490c-8575-0184fbda7a1e}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="PlannerSyncStatus" ColName="nvarchar16" RowOrdinal="0" Version="1"><CHOICES><CHOICE>OK</CHOICE><CHOICE>Erro</CHOICE><CHOICE>Pendente</CHOICE></CHOICES></Field>

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-10T20:26:47.0866005-03:00",
+  "status": "CREATED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_RegistrarBloqueioBot",
+  "flowName": "8e422ecc-5b5c-4acd-8953-6f57ce1ed3fd",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "requestPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_registrarbloqueiobot_request_aee885f8-5947-41a6-a04b-1d46bd7e7746.json",
+  "resultPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_registrarbloqueiobot_result_aee885f8-5947-41a6-a04b-1d46bd7e7746.json",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills"
+}

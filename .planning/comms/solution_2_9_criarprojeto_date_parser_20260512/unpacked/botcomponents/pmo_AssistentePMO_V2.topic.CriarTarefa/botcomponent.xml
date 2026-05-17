@@ -1,0 +1,1 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.topic.CriarTarefa"><componenttype>9</componenttype><description>Cria tarefa na lista Tarefas vinculada a projeto ativo.</description><iscustomizable>1</iscustomizable><name>CriarTarefa</name><parentbotid><schemaname>pmo_AssistentePMO_V2</schemaname></parentbotid><statecode>0</statecode><statuscode>1</statuscode></botcomponent>

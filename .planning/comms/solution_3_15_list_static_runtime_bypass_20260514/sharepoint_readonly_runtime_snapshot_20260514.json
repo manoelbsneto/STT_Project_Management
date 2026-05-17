@@ -1,0 +1,37 @@
+﻿{
+    "capturedAt":  "2026-05-14T15:49:31",
+    "siteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "project":  {
+                    "ID":  33,
+                    "Title":  "QA Robust 20260513 F",
+                    "ProjectID":  "PRJ-274E5ACC",
+                    "Ativo":  true,
+                    "Deleted":  false
+                },
+    "tasks":  [
+                  {
+                      "ID":  14,
+                      "Title":  "QA Skip Opcional 20260513 1935",
+                      "ProjectID":  "PRJ-274E5ACC",
+                      "Status":  "Em Andamento",
+                      "Prioridade":  "Media",
+                      "Responsavel":  null,
+                      "DataFim":  "2026-05-19",
+                      "HorasRealizadas":  128,
+                      "HorasEstimadas":  19,
+                      "Deleted":  false
+                  },
+                  {
+                      "ID":  15,
+                      "Title":  "QA Final Skip 20260513 2105",
+                      "ProjectID":  "PRJ-274E5ACC",
+                      "Status":  "Em Andamento",
+                      "Prioridade":  "Media",
+                      "Responsavel":  null,
+                      "DataFim":  "2026-05-20",
+                      "HorasRealizadas":  2,
+                      "HorasEstimadas":  8,
+                      "Deleted":  false
+                  }
+              ]
+}

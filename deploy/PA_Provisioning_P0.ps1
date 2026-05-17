@@ -263,7 +263,7 @@ $flowDefinitions["PMO_PA_EnviarCheckInDiario"] = New-FlowDefinition `
         }
     } `
     -Actions @{
-        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1" -Top 100
+        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1 and Deleted eq 0" -Top 100
         Apply_to_each_Projeto = [ordered]@{
             type = "Foreach"
             foreach = "@body('Get_Projetos_Ativos')?['value']"
@@ -306,7 +306,7 @@ $flowDefinitions["PMO_PA_ProcessarRespostaCheckIn"] = New-FlowDefinition `
         }
         Get_Projeto = New-SharePointGetItems `
             -ListName "Projetos" `
-            -Filter "ProjectID eq '@{outputs('Normalize_ProjectID')}'" `
+            -Filter "ProjectID eq '@{outputs('Normalize_ProjectID')}' and Deleted eq 0" `
             -Top 1 `
             -RunAfter @{ Normalize_ProjectID = @("Succeeded") }
         Notify_Channel = New-TeamsPostMessage `
@@ -322,7 +322,7 @@ $flowDefinitions["PMO_PA_AlertaProjetoVermelho"] = New-FlowDefinition `
         }
     } `
     -Actions @{
-        Get_Projetos_Vermelhos = New-SharePointGetItems -ListName "Projetos" -Filter "StatusRAG eq 'Vermelho' and Ativo eq 1" -Top 50
+        Get_Projetos_Vermelhos = New-SharePointGetItems -ListName "Projetos" -Filter "StatusRAG eq 'Vermelho' and Ativo eq 1 and Deleted eq 0" -Top 50
         Apply_to_each_Vermelho = [ordered]@{
             type = "Foreach"
             foreach = "@body('Get_Projetos_Vermelhos')?['value']"
@@ -354,7 +354,7 @@ $flowDefinitions["PMO_PA_CheckInOnDemand"] = New-FlowDefinition `
     -Actions @{
         Get_Projeto = New-SharePointGetItems `
             -ListName "Projetos" `
-            -Filter "ProjectID eq '@{triggerBody()?['ProjectID']}'" `
+            -Filter "ProjectID eq '@{triggerBody()?['ProjectID']}' and Deleted eq 0" `
             -Top 1
         Post_CheckIn_Message_Channel = New-TeamsPostMessage `
             -Html "<p><b>PMO Check-in On Demand</b></p><p>Check-in imediato solicitado. Use o Adaptive Card oficial em deploy/cards/CheckInDiario.json.</p>" `
@@ -388,7 +388,7 @@ $flowDefinitions["PMO_PA_AlertaSemAtualizacao"] = New-FlowDefinition `
         }
     } `
     -Actions @{
-        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1" -Top 100
+        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1 and Deleted eq 0" -Top 100
         Filter_Sem_Update = [ordered]@{
             type = "Query"
             inputs = [ordered]@{

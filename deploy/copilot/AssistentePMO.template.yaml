@@ -518,6 +518,10 @@ components:
             - como esta o portfolio
             - como esta o portfolio
             - resumo dos projetos
+            - listar projetos ativos
+            - projetos ativos
+            - listar portfolio
+            - quais projetos ativos
             - dashboard
             - portfolio pmo
         actions:

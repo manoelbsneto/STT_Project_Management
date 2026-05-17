@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-05-10T20:06:03.8539413-03:00",
+  "status": "BUILD_ONLY",
+  "displayName": "PMO_PA_RegistrarRiscoBot",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$authentication": {
+        "defaultValue": {},
+        "type": "SecureObject"
+      },
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      }
+    },
+    "triggers": {
+      "Copilot_Request": {
+        "type": "Request",
+        "kind": "Skills",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "descricao": {
+                "type": "string",
+                "description": "Descricao do risco"
+              },
+              "severidade": {
+                "type": "string",
+                "description": "Severidade"
+              },
+              "projectName": {
+                "type": "string",
+                "description": "Nome do projeto"
+              }
+            },
+            "required": [
+              "projectName",
+              "descricao",
+              "severidade"
+            ]
+          }
+        }
+      }
+    },
+    "actions": {
+      "Condition_Projeto_Encontrado": {
+        "type": "If",
+        "expression": {
+          "greater": [
+            "@length(body('Get_Projeto')?['value'])",
+            0
+          ]
+        },
+        "actions": {
+          "Create_Risco_SharePoint": {
+            "type": "OpenApiConnection",
+            "inputs": {
+              "parameters": {
+                "item/Tipo/Value": "Risco",
+                "table": "Riscos e Bloqueios",
+                "item/DataCriacao": "@utcNow()",
+                "item/RiskID": "@outputs('Compose_RiskID')",
+                "item/Severidade/Value": "@outputs('Map_Severidade')",
+                "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']",
+                "item/Descricao": "@triggerBody()?['descricao']",
+                "item/Title": "@outputs('Compose_RiskID')",
+                "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                "item/Deleted": false,
+                "item/StatusRisco/Value": "Aberto"
+              },
+              "host": {
+                "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                "operationId": "PostItem",
+                "connectionName": "shared_sharepointonline"
+              },
+              "authentication": "@parameters('$authentication')"
+            },
+            "runAfter": {}
+          },
+          "Response_OK": {
+            "type": "Response",
+            "kind": "Skills",
+            "inputs": {
+              "statusCode": 200,
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "result": "@{concat('Risco ', outputs('Compose_RiskID'), ' registrado para projeto ', outputs('Compose_ProjectName'), '. Severidade: ', outputs('Map_Severidade'), '.')}"
+              }
+            },
+            "runAfter": {
+              "Create_Risco_SharePoint": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Response_Error_Write": {
+            "type": "Response",
+            "kind": "Skills",
+            "inputs": {
+              "statusCode": 500,
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "result": "Erro ao registrar risco no SharePoint. Codigo: SP_WRITE_FAILED."
+              }
+            },
+            "runAfter": {
+              "Create_Risco_SharePoint": [
+                "Failed",
+                "TimedOut"
+              ]
+            }
+          }
+        },
+        "else": {
+          "actions": {
+            "Response_Project_Not_Found": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                }
+              },
+              "runAfter": {}
+            }
+          }
+        },
+        "runAfter": {
+          "Compose_RiskID": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Map_Severidade": {
+        "type": "Compose",
+        "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'cr'), 'Critica', if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'a'), 'Alta', if(startsWith(toLower(coalesce(triggerBody()?['severidade'], 'Media')), 'b'), 'Baixa', 'Media')))",
+        "runAfter": {
+          "Get_Projeto": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Compose_RiskID": {
+        "type": "Compose",
+        "inputs": "@concat('RISK-', toUpper(substring(guid(), 0, 8)))",
+        "runAfter": {
+          "Map_Severidade": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Get_Projeto": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "table": "Projetos",
+            "$top": 1,
+            "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+            "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectName'),'''','''''')}' and Ativo eq 1 and Deleted eq 0"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "operationId": "GetItems",
+            "connectionName": "shared_sharepointonline"
+          },
+          "authentication": "@parameters('$authentication')"
+        },
+        "runAfter": {
+          "Compose_ProjectName": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Compose_ProjectName": {
+        "type": "Compose",
+        "inputs": "@trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))",
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "triggerType": "Request/Skills",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true
+}

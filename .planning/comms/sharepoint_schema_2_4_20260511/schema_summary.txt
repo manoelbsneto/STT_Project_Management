@@ -1,0 +1,100 @@
+﻿LIST: Projetos ID=0271c9e8-c184-4b91-99f9-5b71f9b08826 Items=24
+
+Title                                   InternalName              TypeAsString Required ReadOnlyField
+-----                                   ------------              ------------ -------- -------------
+Título                                  Title                     Text             True         False
+Etiqueta de color                       _ColorTag                 Text            False          True
+Id. de activo de cumplimiento normativo ComplianceAssetId         Text            False          True
+ProjectID                               ProjectID                 Text             True         False
+Nome                                    NomeProjeto               Text             True         False
+PM                                      PM                        User             True         False
+Sponsor                                 Sponsor                   User            False         False
+StatusRAG                               StatusRAG                 Choice           True         False
+Percentual                              Percentual                Number          False         False
+DataAlvo                                DataAlvo                  DateTime        False         False
+UltimaAtualizacao                       UltimaAtualizacao         DateTime        False         False
+Ativo                                   Ativo                     Boolean         False         False
+Unidade                                 Unidade                   Choice          False         False
+Prioridade                              Prioridade                Choice          False         False
+PlannerGroupId                          PlannerGroupId            Text            False         False
+PlannerPlanId                           PlannerPlanId             Text            False         False
+LinkPlanner                             LinkPlanner               URL             False         False
+TarefasTotal                            TarefasTotal              Number          False         False
+TarefasAbertas                          TarefasAbertas            Number          False         False
+TarefasConcluidas                       TarefasConcluidas         Number          False         False
+TarefasAtrasadas                        TarefasAtrasadas          Number          False         False
+PlannerLastSyncAt                       PlannerLastSyncAt         DateTime        False         False
+PlannerSyncStatus                       PlannerSyncStatus         Choice          False         False
+ResumoExecutivo                         ResumoExecutivo           Note            False         False
+DiasSemUpdate                           DiasSemUpdate             Number          False         False
+Deleted                                 Deleted                   Boolean         False         False
+DeletedAt                               DeletedAt                 DateTime        False         False
+DeletedReason                           DeletedReason             Text            False         False
+DeletedByUPN                            DeletedByUPN              Text            False         False
+ID                                      ID                        Counter         False          True
+Tipo de contenido                       ContentType               Computed        False         False
+Modificado                              Modified                  DateTime        False          True
+Creado                                  Created                   DateTime        False          True
+Creado por                              Author                    User            False          True
+Modificado por                          Editor                    User            False          True
+Versión                                 _UIVersionString          Text            False          True
+Datos adjuntos                          Attachments               Attachments     False         False
+Editar                                  Edit                      Computed        False          True
+Título                                  LinkTitleNoMenu           Computed        False          True
+Título                                  LinkTitle                 Computed        False          True
+Tipo                                    DocIcon                   Computed        False          True
+Número secundario de elemento           ItemChildCount            Lookup          False          True
+Recuento secundario de carpetas         FolderChildCount          Lookup          False          True
+Configuración de la etiqueta            _ComplianceFlags          Lookup          False          True
+Etiqueta de retención                   _ComplianceTag            Lookup          False          True
+Etiqueta de retención aplicada          _ComplianceTagWrittenTime Lookup          False          True
+Usuario que ha aplicado la etiqueta:    _ComplianceTagUserId      Lookup          False          True
+El elemento es un registro              _IsRecord                 Computed        False          True
+Aplicación creada por                   AppAuthor                 Lookup          False          True
+Aplicación modificada por               AppEditor                 Lookup          False          True
+
+
+
+LIST: Tarefas ID=36d78ca1-1f60-4dd3-a4d5-5c94b89969e9 Items=7
+
+Title                                   InternalName              TypeAsString Required ReadOnlyField
+-----                                   ------------              ------------ -------- -------------
+Título                                  Title                     Text             True         False
+Etiqueta de color                       _ColorTag                 Text            False          True
+Id. de activo de cumplimiento normativo ComplianceAssetId         Text            False          True
+ProjectID                               ProjectID                 Text             True         False
+Responsavel                             Responsavel               Text            False         False
+DataInicio                              DataInicio                DateTime        False         False
+DataFim                                 DataFim                   DateTime        False         False
+HorasEstimadas                          HorasEstimadas            Number          False         False
+HorasRealizadas                         HorasRealizadas           Number          False         False
+Status                                  Status                    Choice           True         False
+Prioridade                              Prioridade                Choice          False         False
+Deleted                                 Deleted                   Boolean         False         False
+DeletedAt                               DeletedAt                 DateTime        False         False
+DeletedReason                           DeletedReason             Text            False         False
+DeletedByUPN                            DeletedByUPN              Text            False         False
+ID                                      ID                        Counter         False          True
+Tipo de contenido                       ContentType               Computed        False         False
+Modificado                              Modified                  DateTime        False          True
+Creado                                  Created                   DateTime        False          True
+Creado por                              Author                    User            False          True
+Modificado por                          Editor                    User            False          True
+Versión                                 _UIVersionString          Text            False          True
+Datos adjuntos                          Attachments               Attachments     False         False
+Editar                                  Edit                      Computed        False          True
+Título                                  LinkTitleNoMenu           Computed        False          True
+Título                                  LinkTitle                 Computed        False          True
+Tipo                                    DocIcon                   Computed        False          True
+Número secundario de elemento           ItemChildCount            Lookup          False          True
+Recuento secundario de carpetas         FolderChildCount          Lookup          False          True
+Configuración de la etiqueta            _ComplianceFlags          Lookup          False          True
+Etiqueta de retención                   _ComplianceTag            Lookup          False          True
+Etiqueta de retención aplicada          _ComplianceTagWrittenTime Lookup          False          True
+Usuario que ha aplicado la etiqueta:    _ComplianceTagUserId      Lookup          False          True
+El elemento es un registro              _IsRecord                 Computed        False          True
+Aplicación creada por                   AppAuthor                 Lookup          False          True
+Aplicación modificada por               AppEditor                 Lookup          False          True
+
+
+

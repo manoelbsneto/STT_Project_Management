@@ -1,0 +1,135 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Project Tasks",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Project: ${projectName}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Project ID:", "value": "${projectId}" },
+        { "title": "Open tasks:", "value": "${openTaskCount}" },
+        { "title": "Overdue:", "value": "${overdueTaskCount}" },
+        { "title": "Planner sync:", "value": "${plannerSyncStatus}" },
+        { "title": "Operation:", "value": "${operationId}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Task list",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${taskRowsSummary}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Selected task",
+      "weight": "Bolder",
+      "spacing": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "taskId",
+      "label": "Task",
+      "isRequired": true,
+      "errorMessage": "Select a task.",
+      "choices": [
+        { "title": "${task1Title}", "value": "${task1Id}" },
+        { "title": "${task2Title}", "value": "${task2Id}" },
+        { "title": "${task3Title}", "value": "${task3Id}" }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Create task",
+      "data": {
+        "action": "createTaskFromProject",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Edit task",
+      "data": {
+        "action": "editTask",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Mark in progress",
+      "data": {
+        "action": "markTaskInProgress",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Mark done",
+      "style": "positive",
+      "data": {
+        "action": "markTaskDone",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Request update",
+      "data": {
+        "action": "requestTaskUpdate",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}",
+        "taskId": "${taskId}"
+      }
+    }
+  ]
+}

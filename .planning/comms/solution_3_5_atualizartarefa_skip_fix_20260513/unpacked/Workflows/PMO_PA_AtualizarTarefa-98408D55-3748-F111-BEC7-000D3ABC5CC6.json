@@ -1,0 +1,361 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "number",
+                  "title": "TaskID",
+                  "x-ms-dynamically-added": true,
+                  "description": "ID da tarefa a atualizar",
+                  "x-ms-content-hint": "NUMBER"
+                },
+                "text": {
+                  "type": "string",
+                  "title": "Status",
+                  "x-ms-dynamically-added": true,
+                  "description": "Novo status: Pendente, Em Andamento, Concluida, Cancelada",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "number_1": {
+                  "type": "number",
+                  "title": "HorasRealizadas",
+                  "x-ms-dynamically-added": true,
+                  "description": "Horas realizadas",
+                  "x-ms-content-hint": "NUMBER"
+                },
+                "text_1": {
+                  "type": "string",
+                  "title": "Responsavel",
+                  "x-ms-dynamically-added": true,
+                  "description": "Email do novo responsavel",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "type": "string",
+                  "title": "DataFim",
+                  "x-ms-dynamically-added": true,
+                  "description": "Nova data de fim (YYYY-MM-DD)",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_3": {
+                  "type": "string",
+                  "title": "Prioridade",
+                  "x-ms-dynamically-added": true,
+                  "description": "Nova prioridade: Baixa, Media, Alta, Critica",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "number_2": {
+                  "type": "number",
+                  "title": "HorasEstimadas",
+                  "x-ms-dynamically-added": true,
+                  "description": "Horas estimadas atualizadas",
+                  "x-ms-content-hint": "NUMBER"
+                }
+              },
+              "required": [
+                "number"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Tarefa_Atual": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "id": "@triggerBody()?['number']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Tarefa": {
+          "runAfter": {
+            "Get_Tarefa_Atual": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "id": "@triggerBody()?['number']",
+              "item/Title": "@body('Get_Tarefa_Atual')?['Title']",
+              "item/ProjectID": "@body('Get_Tarefa_Atual')?['ProjectID']",
+              "item/Status/Value": "@if(empty(triggerBody()?['text']), coalesce(body('Get_Tarefa_Atual')?['Status']?['Value'], body('Get_Tarefa_Atual')?['Status'], 'Pendente'), if(startsWith(toLower(triggerBody()?['text']), 'conclu'), 'Concluida', if(startsWith(toLower(triggerBody()?['text']), 'cancel'), 'Cancelada', if(startsWith(toLower(triggerBody()?['text']), 'em'), 'Em Andamento', 'Pendente'))))",
+              "item/HorasRealizadas": "@if(or(equals(triggerBody()?['number_1'], null), equals(triggerBody()?['number_1'], 0)), coalesce(body('Get_Tarefa_Atual')?['HorasRealizadas'], 0), triggerBody()?['number_1'])",
+              "item/Responsavel": "@if(or(empty(triggerBody()?['text_1']), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_1'], '')))), 3))), coalesce(body('Get_Tarefa_Atual')?['Responsavel'], ''), triggerBody()?['text_1'])",
+              "item/DataFim": "@if(or(empty(triggerBody()?['text_2']), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_2'], '')))), 3))), body('Get_Tarefa_Atual')?['DataFim'], triggerBody()?['text_2'])",
+              "item/Prioridade/Value": "@if(or(empty(triggerBody()?['text_3']), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_3'], '')))), 3))), coalesce(body('Get_Tarefa_Atual')?['Prioridade']?['Value'], body('Get_Tarefa_Atual')?['Prioridade'], 'Media'), if(startsWith(toLower(triggerBody()?['text_3']), 'cr'), 'Critica', if(startsWith(toLower(triggerBody()?['text_3']), 'al'), 'Alta', if(startsWith(toLower(triggerBody()?['text_3']), 'ba'), 'Baixa', 'Media'))))",
+              "item/HorasEstimadas": "@if(equals(triggerBody()?['number_2'], null), coalesce(body('Get_Tarefa_Atual')?['HorasEstimadas'], 0), triggerBody()?['number_2'])"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "PatchItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_All_Tarefas_Projeto": {
+          "runAfter": {
+            "Update_Tarefa": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "$filter": "ProjectID eq '@{replace(body('Get_Tarefa_Atual')?['ProjectID'],'''','''''')}' and Deleted eq 0",
+              "$top": 500
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_Nao_Canceladas": {
+          "runAfter": {
+            "Get_All_Tarefas_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+            "where": "@not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Cancelada'))"
+          }
+        },
+        "Filter_Concluidas": {
+          "runAfter": {
+            "Filter_Nao_Canceladas": [
+              "Succeeded"
+            ]
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Filter_Nao_Canceladas')",
+            "where": "@equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')"
+          }
+        },
+        "Filter_Abertas": {
+          "runAfter": {
+            "Get_All_Tarefas_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+            "where": "@or(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Pendente'), equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Em Andamento'))"
+          }
+        },
+        "Filter_Atrasadas": {
+          "runAfter": {
+            "Get_All_Tarefas_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+            "where": "@and(not(empty(item()?['DataFim'])), less(formatDateTime(item()?['DataFim'], 'yyyy-MM-dd'), formatDateTime(utcNow(), 'yyyy-MM-dd')), not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')), not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Cancelada')))"
+          }
+        },
+        "Calc_Percentual": {
+          "runAfter": {
+            "Filter_Concluidas": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(equals(length(body('Filter_Nao_Canceladas')), 0), 0, div(mul(length(body('Filter_Concluidas')), 100), length(body('Filter_Nao_Canceladas'))))"
+        },
+        "Get_Projeto_Item": {
+          "runAfter": {
+            "Get_All_Tarefas_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "ProjectID eq '@{replace(body('Get_Tarefa_Atual')?['ProjectID'],'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_Projeto_Encontrado": {
+          "runAfter": {
+            "Get_Projeto_Item": [
+              "Succeeded"
+            ]
+          },
+          "type": "If",
+          "expression": {
+            "greater": [
+              "@length(body('Get_Projeto_Item')?['value'])",
+              0
+            ]
+          },
+          "actions": {},
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 409,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "result": "Tarefa atualizada, mas o ProjectID vinculado nao foi encontrado em Projetos. Contadores do projeto nao foram atualizados.",
+                    "taskId": "@{triggerBody()?['number']}",
+                    "projectId": "@{body('Get_Tarefa_Atual')?['ProjectID']}"
+                  }
+                },
+                "runAfter": {}
+              },
+              "Terminate_Project_Not_Found": {
+                "runAfter": {
+                  "Response_Project_Not_Found": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Failed",
+                  "runError": {
+                    "code": "PROJECT_NOT_FOUND",
+                    "message": "ProjectID from Tarefas was not found in Projetos."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Update_Projeto_Counters": {
+          "runAfter": {
+            "Calc_Percentual": [
+              "Succeeded"
+            ],
+            "Filter_Abertas": [
+              "Succeeded"
+            ],
+            "Filter_Atrasadas": [
+              "Succeeded"
+            ],
+            "Condition_Projeto_Encontrado": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "id": "@body('Get_Projeto_Item')?['value']?[0]?['ID']",
+              "item/Title": "@body('Get_Projeto_Item')?['value']?[0]?['Title']",
+              "item/ProjectID": "@body('Get_Projeto_Item')?['value']?[0]?['ProjectID']",
+              "item/NomeProjeto": "@body('Get_Projeto_Item')?['value']?[0]?['NomeProjeto']",
+              "item/PM/Claims": "@coalesce(body('Get_Projeto_Item')?['value']?[0]?['PM']?['Claims'], concat('i:0#.f|membership|', coalesce(body('Get_Projeto_Item')?['value']?[0]?['PM']?['Email'], 'mbenicios@minsait.com')))",
+              "item/StatusRAG/Value": "@coalesce(body('Get_Projeto_Item')?['value']?[0]?['StatusRAG']?['Value'], body('Get_Projeto_Item')?['value']?[0]?['StatusRAG'], 'Verde')",
+              "item/Percentual": "@outputs('Calc_Percentual')",
+              "item/TarefasTotal": "@length(body('Get_All_Tarefas_Projeto')?['value'])",
+              "item/TarefasConcluidas": "@length(body('Filter_Concluidas'))",
+              "item/TarefasAbertas": "@length(body('Filter_Abertas'))",
+              "item/TarefasAtrasadas": "@length(body('Filter_Atrasadas'))"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "PatchItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Respond_Success": {
+          "runAfter": {
+            "Update_Projeto_Counters": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "result": " Tarefa atualizada com sucesso!\n\n **ID:** @{triggerBody()?['number']}\n **Titulo:** @{body('Get_Tarefa_Atual')?['Title']}\n **Projeto:** @{body('Get_Tarefa_Atual')?['ProjectID']}\n **Status:** @{if(empty(triggerBody()?['text']), coalesce(body('Get_Tarefa_Atual')?['Status']?['Value'], body('Get_Tarefa_Atual')?['Status']), triggerBody()?['text'])}\n\n **Projeto atualizado:**\n   Percentual: @{outputs('Calc_Percentual')}%\n   Total: @{length(body('Get_All_Tarefas_Projeto')?['value'])} |  Concluidas: @{length(body('Filter_Concluidas'))} |  Abertas: @{length(body('Filter_Abertas'))} |  Atrasadas: @{length(body('Filter_Atrasadas'))}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "title": "Result",
+                  "x-ms-dynamically-added": true,
+                  "x-ms-content-hint": "TEXT"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

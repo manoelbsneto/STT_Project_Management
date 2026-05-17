@@ -1,0 +1,42 @@
+# ConsultarPortfolio topic
+# Purpose: call the PMO_PA_ConsultarPortfolio flow and return portfolio counts.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarPortfolio.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarPortfolio
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - consultar portfolio
+      - ver portfolio
+      - portfolio pmo
+      - resumo do portfolio
+      - resumo portfolio
+      - como esta o portfolio
+      - dashboard
+      - visao geral
+
+  actions:
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_consultar_portfolio
+      output:
+        binding:
+          message: Topic.ConsultarPortfolioResult
+
+      flowId: REPLACE_WITH_ACTUAL_FLOW_ID
+
+    - kind: SendActivity
+      id: consultar_portfolio_done
+      activity: "{Topic.ConsultarPortfolioResult}"
+
+    - kind: EndDialog
+      id: end_consultar_portfolio
+      clearTopicQueue: true
+
+inputType: {}
+outputType: {}

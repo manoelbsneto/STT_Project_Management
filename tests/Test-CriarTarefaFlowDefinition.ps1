@@ -10,6 +10,7 @@ $ErrorActionPreference = "Stop"
 
 $resolvedPath = (Resolve-Path -LiteralPath $Path).Path
 $text = Get-Content -LiteralPath $resolvedPath -Raw
+$text = $text -replace "\\u0027", "'"
 
 $checks = [System.Collections.Generic.List[object]]::new()
 function Add-Check {
@@ -34,13 +35,14 @@ Add-Check "Flow normalizes priority without accented literals" ($text -match "Ma
 Add-Check "Flow does not use padLeft" ($text -notmatch "padLeft") "Tenant regression: padLeft is not supported here."
 Add-Check "Flow checks duplicate project before create" ($text -match "Get_Duplicate_Projects" -and $text -match "Condition_Duplicate_Projeto") "Repeated same NomeProjeto/DataAlvo requests should return the existing project."
 Add-Check "Duplicate check excludes logically deleted records" ($text -match "Deleted ne 1") "Deleted=Yes records must not block recreation of a real PROD project."
+Add-Check "Duplicate date range uses SharePoint site timezone" (($text -match "convertTimeZone") -and ($text -match "Romance Standard Time") -and ($text -match "'UTC'")) "SharePoint DateOnly values are stored from the site timezone and must not use UTC midnight directly."
 Add-Check "Flow has duplicate response branch" ($text -match "Response_Duplicate" -and $text -match "Nenhum item duplicado foi criado") "Duplicate branch must not create another SharePoint item."
 Add-Check "New project records set Deleted false" (($text -match '"Deleted"\s*=\s*\$false') -or ($text -match '"item/Deleted"\s*:\s*false')) "New SharePoint Projetos items must be visible by default."
 Add-Check "Flow writes required person and choice fields" ((($text -match '"PM/Claims"') -or ($text -match '"item/PM/Claims"')) -and (($text -match '"StatusRAG/Value"') -or ($text -match '"item/StatusRAG/Value"')) -and (($text -match '"Prioridade/Value"') -or ($text -match '"item/Prioridade/Value"'))) "Person and choice fields must use connector schema-safe names."
 Add-Check "Flow writes Projetos item" (($text -match "Create_Projeto_SharePoint") -and ($text -match "PostItem")) "V3 flow must create a real Projetos SharePoint item."
 
 if (-not $AllowRuntimeRawAuthentication) {
-    Add-Check "Workflow package uses parameter authentication" ($text -match [regex]::Escape('"authentication": "@parameters(''$authentication'')"')) "Solution package should use supported connection parameter authentication."
+    Add-Check "Workflow package uses parameter authentication" ($text -match '"authentication"\s*:\s*"@parameters\(''\$authentication''\)"') "Solution package should use supported connection parameter authentication."
     Add-Check "Workflow package has no raw APIM token auth" ($text -notmatch "X-MS-APIM-Tokens|ConnectionKey") "Source package must not use raw APIM token auth."
 }
 

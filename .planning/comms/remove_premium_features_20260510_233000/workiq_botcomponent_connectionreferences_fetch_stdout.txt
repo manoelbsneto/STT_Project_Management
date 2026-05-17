@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: 'botcomponent_connectionreference' entity doesn't contain attribute with Name = 'botcomponentidname' and NameMapping = 'Logical' (look up attribute by name is case-sensitive).orgIndex: 17, id: b5764946-3c9e-ef11-8a6b-000d3a4a45e3, logicalName: botcomponent_connectionreference
+

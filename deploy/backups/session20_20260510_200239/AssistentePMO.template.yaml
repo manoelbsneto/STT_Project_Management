@@ -1,0 +1,1054 @@
+kind: BotDefinition
+entity:
+  accessControlPolicy: GroupMembership
+  authenticationMode: Integrated
+  authenticationTrigger: Always
+  configuration:
+    channels:
+      - channelId: MsTeams
+    settings:
+      GenerativeActionsEnabled: false
+    aISettings:
+      useModelKnowledge: false
+      isFileAnalysisEnabled: false
+      isSemanticSearchEnabled: false
+      contentModeration: High
+
+  template: kickStartTemplate-1.0.0
+
+components:
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_CheckInOnDemand
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_CheckInOnDemand.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_CheckInOnDemand
+    dialog:
+      kind: TaskDialog
+      outputs:
+        - propertyName: success
+        - propertyName: message
+        - propertyName: errorcode
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: f5aab85e-ff46-f111-bec7-7ced8d955c6c
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: Greeting
+    description: Menu inicial do Assistente PMO.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.Greeting
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: Greeting
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - ola
+            - ola
+            - oi
+            - bom dia
+            - help
+            - ajuda
+        actions:
+          - kind: SendActivity
+            id: greeting_menu
+            activity: |-
+              Ola, eu sou o Assistente PMO.
+
+              Posso ajudar com:
+              - atualizar status de projeto
+              - consultar portfolio
+              - consultar detalhes de projeto
+              - registrar risco ou bloqueio
+              - solicitar decisao do board
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_CriarTarefa
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_CriarTarefa.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_CriarTarefa
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: nomeProjeto
+          value: =Global.PMO_Criar_Title
+
+        - kind: ManualTaskInput
+          propertyName: titulo
+          value: =Global.PMO_Criar_Title
+
+        - kind: ManualTaskInput
+          propertyName: responsavel
+          value: =Global.PMO_Criar_Responsavel
+
+        - kind: ManualTaskInput
+          propertyName: prazo
+          value: =Global.PMO_Criar_DataFim
+
+        - kind: ManualTaskInput
+          propertyName: horas
+          value: =Global.PMO_Criar_HorasEstimadas
+
+        - kind: ManualTaskInput
+          propertyName: prioridade
+          value: =Global.PMO_Criar_Prioridade
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa com o codigo gerado.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 3104124d-364a-f111-bec7-7ced8d955c6c
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_ConsultarPortfolio
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_ConsultarPortfolio. Opus deve substituir o flowId placeholder apos criacao no browser.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_ConsultarPortfolio
+    dialog:
+      kind: TaskDialog
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Resumo do portfolio retornado pelo fluxo.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 00000000-0000-0000-0000-000000000000
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_ConsultarProjeto
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_ConsultarProjeto. Opus deve substituir o flowId placeholder apos criacao no browser.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_ConsultarProjeto
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: nomeProjeto
+          value: =Global.PMO_ConsultarProjeto_NomeProjeto
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Detalhe do projeto retornado pelo fluxo.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 00000000-0000-0000-0000-000000000000
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_RegistrarRiscoBot
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_RegistrarRiscoBot. Opus deve substituir o flowId placeholder apos criacao no browser.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_RegistrarRiscoBot
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: projectName
+          value: =Global.PMO_Risco_ProjectName
+
+        - kind: ManualTaskInput
+          propertyName: descricao
+          value: =Global.PMO_Risco_Descricao
+
+        - kind: ManualTaskInput
+          propertyName: severidade
+          value: =Global.PMO_Risco_Severidade
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Confirmacao de risco retornada pelo fluxo.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 00000000-0000-0000-0000-000000000000
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_RegistrarBloqueioBot
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_RegistrarBloqueioBot. Opus deve substituir o flowId placeholder apos criacao no browser.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_RegistrarBloqueioBot
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: projectName
+          value: =Global.PMO_Bloqueio_ProjectName
+
+        - kind: ManualTaskInput
+          propertyName: descricao
+          value: =Global.PMO_Bloqueio_Descricao
+
+        - kind: ManualTaskInput
+          propertyName: impacto
+          value: =Global.PMO_Bloqueio_Impacto
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Confirmacao de bloqueio retornada pelo fluxo.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 00000000-0000-0000-0000-000000000000
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PMO_PA_PedirDecisaoBot
+    description: Acao vinculada ao fluxo Power Automate PMO_PA_PedirDecisaoBot. Opus deve substituir o flowId placeholder apos criacao no browser.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.action.PMO_PA_PedirDecisaoBot
+    dialog:
+      kind: TaskDialog
+      inputs:
+        - kind: ManualTaskInput
+          propertyName: projectName
+          value: =Global.PMO_Decisao_ProjectName
+
+        - kind: ManualTaskInput
+          propertyName: descricao
+          value: =Global.PMO_Decisao_Descricao
+
+        - kind: ManualTaskInput
+          propertyName: impacto
+          value: =Global.PMO_Decisao_Impacto
+
+        - kind: ManualTaskInput
+          propertyName: prazo
+          value: =Global.PMO_Decisao_Prazo
+
+        - kind: ManualTaskInput
+          propertyName: aprovador
+          value: =Global.PMO_Decisao_Aprovador
+
+      outputs:
+        - propertyName: result
+          name: Resultado
+          description: Confirmacao de decisao retornada pelo fluxo.
+
+      action:
+        kind: InvokeFlowTaskAction
+        flowId: 00000000-0000-0000-0000-000000000000
+        connectionProperties:
+          $kind: ConnectionProperties
+          diagnostics:
+          mode: Invoker
+
+      outputMode: All
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: LowConfidence
+    description: Fallback quando a intencao nao for reconhecida.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.LowConfidence
+    dialog:
+      beginDialog:
+        kind: OnUnknownIntent
+        id: main
+        actions:
+          - kind: SendActivity
+            id: low_confidence_msg
+            activity: "Nao entendi bem. Voce pode reformular? Posso ajudar com: criar tarefa/projeto, atualizar tarefa, atualizar status, consultar portfolio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio, solicitar decisao."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: AtualizarStatus
+    description: Coleta status RAG e confirma antes de acionar o fluxo on-demand.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.AtualizarStatus
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: AtualizarStatus
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - atualizar projeto
+            - status do projeto
+            - status de projeto
+            - update projeto
+            - atualizar status
+        actions:
+          - kind: SetVariable
+            id: set_status_raw_input
+            variable: Topic.RawInput
+            value: =System.Activity.Text
+
+          - kind: SetVariable
+            id: parse_status_project
+            variable: Topic.ProjectName
+            value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_status_rag
+            variable: Topic.StatusRAG
+            value: =If(IsMatch(Topic.RawInput, "(verde|amarelo|vermelho)", MatchOptions.IgnoreCase), Lower(Match(Topic.RawInput, "(verde|amarelo|vermelho)", MatchOptions.IgnoreCase).FullMatch), Blank())
+
+          - kind: SetVariable
+            id: parse_status_resumo
+            variable: Topic.Resumo
+            value: =If(IsMatch(Topic.RawInput, "resumo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "resumo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_status_risco
+            variable: Topic.Risco
+            value: =If(IsMatch(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_status_next
+            variable: Topic.ProximaAcao
+            value: =If(IsMatch(Topic.RawInput, "(proxima acao|acao)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(proxima acao|acao)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_status_percent
+            variable: Topic.Percentual
+            value: =If(IsMatch(Topic.RawInput, "(percentual|progresso)\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "(percentual|progresso)\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
+
+          - kind: ConditionGroup
+            id: ask_missing_status_project
+            conditions:
+              - id: missing_status_project
+                condition: =IsBlank(Topic.ProjectName)
+                actions:
+                  - kind: Question
+                    id: ask_project
+                    variable: Topic.ProjectName
+                    prompt: "Qual projeto voce quer atualizar?"
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_status_rag
+            conditions:
+              - id: missing_status_rag
+                condition: =IsBlank(Topic.StatusRAG)
+                actions:
+                  - kind: Question
+                    id: ask_rag
+                    variable: Topic.StatusRAG
+                    prompt: "Qual e o novo status RAG? Responda Verde, Amarelo ou Vermelho."
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_status_resumo
+            conditions:
+              - id: missing_status_resumo
+                condition: =IsBlank(Topic.Resumo)
+                actions:
+                  - kind: Question
+                    id: ask_resumo
+                    variable: Topic.Resumo
+                    prompt: "Qual e o resumo do status?"
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_status_risco
+            conditions:
+              - id: missing_status_risco
+                condition: =IsBlank(Topic.Risco)
+                actions:
+                  - kind: Question
+                    id: ask_risco
+                    variable: Topic.Risco
+                    prompt: "Ha algum risco relevante? Se nao houver, responda nao."
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_status_next
+            conditions:
+              - id: missing_status_next
+                condition: =IsBlank(Topic.ProximaAcao)
+                actions:
+                  - kind: Question
+                    id: ask_next
+                    variable: Topic.ProximaAcao
+                    prompt: "Qual e a proxima acao? Se nao houver, responda nao."
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_status_percent
+            conditions:
+              - id: missing_status_percent
+                condition: =IsBlank(Topic.Percentual)
+                actions:
+                  - kind: Question
+                    id: ask_percent
+                    variable: Topic.Percentual
+                    prompt: "Qual e o percentual concluido? Responda de 0 a 100."
+                    entity: NumberPrebuiltEntity
+
+          - kind: Question
+            id: confirm_update
+            variable: Topic.Confirmar
+            prompt: "Vou registrar: {Topic.ProjectName} como {Topic.StatusRAG}, resumo: {Topic.Resumo}. Confirma?"
+            entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_update_branch
+            conditions:
+              - id: confirmed
+                condition: =Or(Lower(Topic.Confirmar) = "sim", Lower(Topic.Confirmar) = "s", Lower(Topic.Confirmar) = "yes", Lower(Topic.Confirmar) = "confirmo")
+                actions:
+                  - kind: SetVariable
+                    id: set_status_project_global
+                    variable: Global.PMO_Status_ProjectName
+                    value: =Topic.ProjectName
+
+                  - kind: BeginDialog
+                    id: call_checkin_ondemand
+                    dialog: template-content.action.PMO_PA_CheckInOnDemand
+
+                  - kind: SendActivity
+                    id: update_done
+                    activity: "Status do {Topic.ProjectName} enviado para processamento. RAG: {Topic.StatusRAG}. Percentual: {Topic.Percentual}."
+            elseActions:
+              - kind: SendActivity
+                id: update_denied
+                activity: "Ok, vamos refazer. Qual projeto?"
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: ConsultarPortfolio
+    description: Resumo do portfolio PMO.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.ConsultarPortfolio
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: ConsultarPortfolio
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - como esta o portfolio
+            - como esta o portfolio
+            - resumo dos projetos
+            - dashboard
+            - portfolio pmo
+        actions:
+          - kind: BeginDialog
+            id: call_consultar_portfolio
+            input: {}
+            dialog: template-content.action.PMO_PA_ConsultarPortfolio
+            output:
+              binding:
+                result: Topic.Resultado
+
+          - kind: SendActivity
+            id: portfolio_result
+            activity: "{Topic.Resultado}"
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: ConsultarProjeto
+    description: Consulta guiada de detalhes de um projeto.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.ConsultarProjeto
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: ConsultarProjeto
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - como esta o projeto
+            - como esta o projeto
+            - status de projeto
+            - detalhes projeto
+            - consultar projeto
+        actions:
+          - kind: Question
+            id: ask_project_detail
+            variable: Topic.ProjectName
+            prompt: "Qual projeto voce quer consultar?"
+            entity: StringPrebuiltEntity
+
+          - kind: SetVariable
+            id: set_consultar_projeto_global
+            variable: Global.PMO_ConsultarProjeto_NomeProjeto
+            value: =Topic.ProjectName
+
+          - kind: BeginDialog
+            id: call_consultar_projeto
+            input: {}
+            dialog: template-content.action.PMO_PA_ConsultarProjeto
+            output:
+              binding:
+                result: Topic.Resultado
+
+          - kind: SendActivity
+            id: project_result
+            activity: "{Topic.Resultado}"
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: RegistrarRisco
+    description: Coleta risco e confirma antes de qualquer gravacao.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.RegistrarRisco
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: RegistrarRisco
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - registrar risco
+            - novo risco
+            - risco no projeto
+            - risco em projeto
+        actions:
+          - kind: Question
+            id: ask_risk_project
+            variable: Topic.ProjectName
+            prompt: "Qual projeto tem o risco?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_risk_desc
+            variable: Topic.Descricao
+            prompt: "Descreva o risco."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_risk_severity
+            variable: Topic.Severidade
+            prompt: "Qual e a severidade? Baixa, Media, Alta ou Critica."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_risk
+            variable: Topic.Confirmar
+            prompt: "Risco: {Topic.Descricao} | Severidade: {Topic.Severidade} | Projeto: {Topic.ProjectName}. Confirma?"
+            entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_risk_branch
+            conditions:
+              - id: risk_confirmed
+                condition: =Or(Lower(Topic.Confirmar) = "sim", Lower(Topic.Confirmar) = "s", Lower(Topic.Confirmar) = "yes", Lower(Topic.Confirmar) = "confirmo")
+                actions:
+                  - kind: SetVariable
+                    id: set_risk_project_global
+                    variable: Global.PMO_Risco_ProjectName
+                    value: =Topic.ProjectName
+
+                  - kind: SetVariable
+                    id: set_risk_desc_global
+                    variable: Global.PMO_Risco_Descricao
+                    value: =Topic.Descricao
+
+                  - kind: SetVariable
+                    id: set_risk_severity_global
+                    variable: Global.PMO_Risco_Severidade
+                    value: =Topic.Severidade
+
+                  - kind: BeginDialog
+                    id: call_registrar_risco
+                    input: {}
+                    dialog: template-content.action.PMO_PA_RegistrarRiscoBot
+                    output:
+                      binding:
+                        result: Topic.Resultado
+
+                  - kind: SendActivity
+                    id: risk_result
+                    activity: "{Topic.Resultado}"
+            elseActions:
+              - kind: SendActivity
+                id: risk_cancelled_msg
+                activity: "Ok, nao registrei o risco."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: RegistrarBloqueio
+    description: Coleta bloqueio e confirma antes de qualquer gravacao.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.RegistrarBloqueio
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: RegistrarBloqueio
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - registrar bloqueio
+            - projeto bloqueado
+            - bloqueio em projeto
+            - novo bloqueio
+        actions:
+          - kind: Question
+            id: ask_block_project
+            variable: Topic.ProjectName
+            prompt: "Qual projeto esta bloqueado?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_block_desc
+            variable: Topic.Descricao
+            prompt: "Descreva o bloqueio."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_block_impact
+            variable: Topic.Impacto
+            prompt: "Qual e o impacto? Baixo, Medio, Alto ou Critico."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_block
+            variable: Topic.Confirmar
+            prompt: "Bloqueio: {Topic.Descricao} | Impacto: {Topic.Impacto} | Projeto: {Topic.ProjectName}. Confirma?"
+            entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_block_branch
+            conditions:
+              - id: block_confirmed
+                condition: =Or(Lower(Topic.Confirmar) = "sim", Lower(Topic.Confirmar) = "s", Lower(Topic.Confirmar) = "yes", Lower(Topic.Confirmar) = "confirmo")
+                actions:
+                  - kind: SetVariable
+                    id: set_block_project_global
+                    variable: Global.PMO_Bloqueio_ProjectName
+                    value: =Topic.ProjectName
+
+                  - kind: SetVariable
+                    id: set_block_desc_global
+                    variable: Global.PMO_Bloqueio_Descricao
+                    value: =Topic.Descricao
+
+                  - kind: SetVariable
+                    id: set_block_impact_global
+                    variable: Global.PMO_Bloqueio_Impacto
+                    value: =Topic.Impacto
+
+                  - kind: BeginDialog
+                    id: call_registrar_bloqueio
+                    input: {}
+                    dialog: template-content.action.PMO_PA_RegistrarBloqueioBot
+                    output:
+                      binding:
+                        result: Topic.Resultado
+
+                  - kind: SendActivity
+                    id: block_result
+                    activity: "{Topic.Resultado}"
+            elseActions:
+              - kind: SendActivity
+                id: block_cancelled_msg
+                activity: "Ok, nao registrei o bloqueio."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: PedirDecisao
+    description: Coleta solicitacao de decisao e confirma antes de qualquer gravacao.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.PedirDecisao
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: PedirDecisao
+          includeInOnSelectIntent: false
+          triggerQueries:
+            - preciso de uma decisao
+            - preciso de uma decisao
+            - solicitar aprovacao
+            - solicitar aprovacao
+            - decisao para projeto
+            - decisao para projeto
+        actions:
+          - kind: Question
+            id: ask_decision_project
+            variable: Topic.ProjectName
+            prompt: "Qual projeto precisa de decisao?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_desc
+            variable: Topic.Descricao
+            prompt: "Descreva a decisao necessaria."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_impact
+            variable: Topic.Impacto
+            prompt: "Qual e o impacto? Baixo, Medio, Alto ou Critico."
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_due
+            variable: Topic.Prazo
+            prompt: "Qual e o prazo da decisao?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: ask_decision_approver
+            variable: Topic.Aprovador
+            prompt: "Quem e o aprovador?"
+            entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_decision
+            variable: Topic.Confirmar
+            prompt: "Solicitacao: {Topic.Descricao} | Impacto: {Topic.Impacto} | Prazo: {Topic.Prazo} | Projeto: {Topic.ProjectName} | Aprovador: {Topic.Aprovador}. Confirma?"
+            entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_decision_branch
+            conditions:
+              - id: decision_confirmed
+                condition: =Or(Lower(Topic.Confirmar) = "sim", Lower(Topic.Confirmar) = "s", Lower(Topic.Confirmar) = "yes", Lower(Topic.Confirmar) = "confirmo")
+                actions:
+                  - kind: SetVariable
+                    id: set_decision_project_global
+                    variable: Global.PMO_Decisao_ProjectName
+                    value: =Topic.ProjectName
+
+                  - kind: SetVariable
+                    id: set_decision_desc_global
+                    variable: Global.PMO_Decisao_Descricao
+                    value: =Topic.Descricao
+
+                  - kind: SetVariable
+                    id: set_decision_impact_global
+                    variable: Global.PMO_Decisao_Impacto
+                    value: =Topic.Impacto
+
+                  - kind: SetVariable
+                    id: set_decision_due_global
+                    variable: Global.PMO_Decisao_Prazo
+                    value: =Topic.Prazo
+
+                  - kind: SetVariable
+                    id: set_decision_approver_global
+                    variable: Global.PMO_Decisao_Aprovador
+                    value: =Topic.Aprovador
+
+                  - kind: BeginDialog
+                    id: call_pedir_decisao
+                    input: {}
+                    dialog: template-content.action.PMO_PA_PedirDecisaoBot
+                    output:
+                      binding:
+                        result: Topic.Resultado
+
+                  - kind: SendActivity
+                    id: decision_result
+                    activity: "{Topic.Resultado}"
+            elseActions:
+              - kind: SendActivity
+                id: decision_cancelled_msg
+                activity: "Ok, nao registrei a solicitacao de decisao."
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: CriarTarefa
+    description: Coleta dados de novo projeto/tarefa, confirma e aciona o fluxo CriarTarefa.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.CriarTarefa
+    dialog:
+      beginDialog:
+        kind: OnRecognizedIntent
+        id: main
+        intent:
+          displayName: CriarTarefa
+          includeInOnSelectIntent: true
+          triggerQueries:
+            - criar tarefa
+            - nova tarefa
+            - adicionar tarefa
+            - cadastrar tarefa
+            - criar projeto
+            - novo projeto
+            - abrir projeto
+            - registrar projeto
+            - "criar tarefa:"
+            - abrir tarefa
+        actions:
+          - kind: SetVariable
+            id: set_raw_input
+            variable: Topic.RawInput
+            value: =System.Activity.Text
+
+          - kind: SetVariable
+            id: parse_title
+            variable: Topic.Title
+            value: =If(IsMatch(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_responsavel
+            variable: Topic.Responsavel
+            value: =If(IsMatch(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_datafim
+            variable: Topic.DataFim
+            value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: SetVariable
+            id: parse_horas
+            variable: Topic.HorasEstimadas
+            value: =If(IsMatch(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
+
+          - kind: SetVariable
+            id: parse_prioridade
+            variable: Topic.Prioridade
+            value: =If(IsMatch(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+          - kind: ConditionGroup
+            id: ask_missing_title
+            conditions:
+              - id: missing_title
+                condition: =IsBlank(Topic.Title)
+                actions:
+                  - kind: Question
+                    id: ask_title
+                    variable: Topic.Title
+                    prompt: Qual o titulo da tarefa?
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_responsavel
+            conditions:
+              - id: missing_responsavel
+                condition: =IsBlank(Topic.Responsavel)
+                actions:
+                  - kind: Question
+                    id: ask_responsavel
+                    variable: Topic.Responsavel
+                    prompt: Quem e o responsavel pela tarefa?
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_datafim
+            conditions:
+              - id: missing_datafim
+                condition: =IsBlank(Topic.DataFim)
+                actions:
+                  - kind: Question
+                    id: ask_datafim
+                    variable: Topic.DataFim
+                    prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+                    entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_horas
+            conditions:
+              - id: missing_horas
+                condition: =IsBlank(Topic.HorasEstimadas)
+                actions:
+                  - kind: Question
+                    id: ask_horas
+                    variable: Topic.HorasEstimadas
+                    prompt: Quantas horas estimadas para essa tarefa?
+                    entity: NumberPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: ask_missing_prioridade
+            conditions:
+              - id: missing_prioridade
+                condition: =IsBlank(Topic.Prioridade)
+                actions:
+                  - kind: Question
+                    id: ask_prioridade
+                    variable: Topic.Prioridade
+                    prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+                    entity: StringPrebuiltEntity
+
+          - kind: Question
+            id: confirm_criar
+            variable: Topic.Confirmar
+            prompt: |-
+              Vou criar a tarefa '{Topic.Title}'.
+              Responsavel: {Topic.Responsavel}
+              Prazo: {Topic.DataFim}
+              Horas: {Topic.HorasEstimadas}h
+              Prioridade: {Topic.Prioridade}
+              O codigo do projeto sera gerado automaticamente.
+
+              Confirma?
+            entity: StringPrebuiltEntity
+
+          - kind: ConditionGroup
+            id: confirm_branch
+            conditions:
+              - id: confirmed
+                condition: =Or(Lower(Topic.Confirmar) = "sim", Lower(Topic.Confirmar) = "s", Lower(Topic.Confirmar) = "yes", Lower(Topic.Confirmar) = "confirmo")
+                actions:
+                  - kind: SetVariable
+                    id: set_global_title
+                    variable: Global.PMO_Criar_Title
+                    value: =Topic.Title
+
+                  - kind: SetVariable
+                    id: set_global_responsavel
+                    variable: Global.PMO_Criar_Responsavel
+                    value: =Topic.Responsavel
+
+                  - kind: SetVariable
+                    id: set_global_datafim
+                    variable: Global.PMO_Criar_DataFim
+                    value: =Topic.DataFim
+
+                  - kind: SetVariable
+                    id: set_global_horas
+                    variable: Global.PMO_Criar_HorasEstimadas
+                    value: =Topic.HorasEstimadas
+
+                  - kind: SetVariable
+                    id: set_global_prioridade
+                    variable: Global.PMO_Criar_Prioridade
+                    value: =Topic.Prioridade
+
+                  - kind: BeginDialog
+                    id: call_criar_tarefa
+                    dialog: pmo_AssistentePMO_Clean.action.PMO_PA_CriarTarefa
+
+                  - kind: SendActivity
+                    id: criar_done
+                    activity: Solicitacao enviada para criacao. O codigo do projeto sera gerado automaticamente.
+
+            elseActions:
+              - kind: SendActivity
+                id: criar_cancelled
+                activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
+
+  - kind: DialogComponent
+    managedProperties:
+      isCustomizable: true
+
+    displayName: SeHouverErro
+    description: Tratamento de erro do agente.
+    shareContext: {}
+    state: Active
+    status: Active
+    schemaName: template-content.topic.SeHouverErro
+    dialog:
+      startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+      beginDialog:
+        kind: OnError
+        id: main
+        actions:
+          - kind: SendActivity
+            id: error_msg
+            activity: "Ocorreu um erro no Assistente PMO. Codigo: {System.Error.Code}."

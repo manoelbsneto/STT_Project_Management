@@ -1,0 +1,17 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+workflowid                           name                         statecode statuscode
+9544f14b-3748-f111-bec7-6045bdf42cae PMO_PA_ListarTarefas         Activado  Activado
+e5381002-0547-f111-bec7-000d3abc5cc6 PMO_PA_EscalarRiscoCritico   Activado  Activado
+39cf292d-c64c-f111-bec7-7ced8d955c6c PMO_PA_ConsultarPortfolio    Activado  Activado
+3104124d-364a-f111-bec7-7ced8d955c6c PMO_PA_CriarTarefa_V3        Activado  Activado
+ee732d46-c64c-f111-bec7-7ced8d955c6c PMO_PA_RegistrarRiscoBot     Activado  Activado
+3ec37952-c64c-f111-bec7-000d3abc5cc6 PMO_PA_RegistrarBloqueioBot  Activado  Activado
+feb79d54-c64c-f111-bec7-7ced8d955c6c PMO_PA_PedirDecisaoBot       Activado  Activado
+b308fe0b-0547-f111-bec7-7ced8d955c6c PMO_PA_RegistrarDecisaoBoard Activado  Activado
+f5aab85e-ff46-f111-bec7-7ced8d955c6c PMO_PA_CheckInOnDemand       Activado  Activado
+c11a165b-c64c-f111-bec7-7ced8d9559c1 PMO_PA_AtualizarStatus       Activado  Activado
+98408d55-3748-f111-bec7-000d3abc5cc6 PMO_PA_AtualizarTarefa       Activado  Activado
+4a33b53e-c64c-f111-bec7-000d3abc5cc6 PMO_PA_ConsultarProjeto      Activado  Activado
+

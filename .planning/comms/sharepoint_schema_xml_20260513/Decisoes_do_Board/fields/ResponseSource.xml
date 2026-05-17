@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="ResponseSource" DisplayName="ResponseSource" ID="{8617cbe7-5ddb-4d7d-bc2d-3dcef72049d9}" Group="" Required="FALSE" SourceID="{7177464d-2a9a-415c-bb19-a98bc53d6fa6}" StaticName="ResponseSource" ColName="nvarchar13" RowOrdinal="0" Version="1"><CHOICES><CHOICE>AdaptiveCard</CHOICE><CHOICE>CopilotStudio</CHOICE><CHOICE>Manual</CHOICE></CHOICES></Field>

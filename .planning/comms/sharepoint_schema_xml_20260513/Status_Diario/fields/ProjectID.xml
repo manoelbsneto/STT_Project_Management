@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="ProjectID" DisplayName="ProjectID" ID="{7643e48d-acbd-4c6d-a30d-c2dd62032adc}" Group="" Required="TRUE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="ProjectID" ColName="nvarchar8" RowOrdinal="0" Version="2" Indexed="TRUE" />

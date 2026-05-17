@@ -1,0 +1,17 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent_connectionreference">
+    <attribute name="botcomponent_connectionreferenceid" />
+    <attribute name="botcomponentid" />
+    <attribute name="connectionreferenceid" />
+    <filter type="or">
+      <condition attribute="botcomponentid" operator="eq" value="23b9e2c9-c27b-4b36-abb2-66ca3b4b141c" />
+      <condition attribute="botcomponentid" operator="eq" value="4056148e-1c3b-4e1d-9b2f-f45175857eee" />
+      <condition attribute="botcomponentid" operator="eq" value="b699c70a-8aa4-4441-b659-059efe08bcd0" />
+      <condition attribute="botcomponentid" operator="eq" value="9280311c-9590-49cc-9e2c-46c84a037fe6" />
+      <condition attribute="connectionreferenceid" operator="eq" value="69818553-a667-4c16-b7ec-4698fe2af1c5" />
+      <condition attribute="connectionreferenceid" operator="eq" value="79a8e76b-7707-4cd4-948c-c82560e8d882" />
+      <condition attribute="connectionreferenceid" operator="eq" value="fbb77fdb-2d5c-45cd-a908-b6f93c758bd8" />
+      <condition attribute="connectionreferenceid" operator="eq" value="3e8967dc-209f-4b06-8a45-64afa0b85f66" />
+    </filter>
+  </entity>
+</fetch>

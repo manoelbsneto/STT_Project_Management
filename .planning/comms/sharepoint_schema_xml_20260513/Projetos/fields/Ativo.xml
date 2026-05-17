@@ -1,0 +1,1 @@
+﻿<Field Type="Boolean" Name="Ativo" DisplayName="Ativo" ID="{85dede24-b400-483d-8554-fc180355abd8}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="Ativo" ColName="bit1" RowOrdinal="0" Indexed="TRUE" Version="1" />

@@ -1,0 +1,1 @@
+﻿<Field Type="Choice" Name="StatusRAG" DisplayName="StatusRAG" ID="{553b18aa-6e4a-4914-9ce6-07a63f104d93}" Group="" Required="TRUE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="StatusRAG" ColName="nvarchar9" RowOrdinal="0" Version="3" Indexed="TRUE"><CHOICES><CHOICE>Verde</CHOICE><CHOICE>Amarelo</CHOICE><CHOICE>Vermelho</CHOICE></CHOICES></Field>

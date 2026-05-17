@@ -1,0 +1,215 @@
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - criar uma tarefa
+      - quero criar tarefa
+      - quero criar uma tarefa
+      - preciso criar tarefa
+      - preciso criar uma tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - abrir tarefa
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+      - "criar tarefa:"
+      - criar tarefa titulo
+      - criar tarefa título
+      - criar tarefa responsavel
+      - criar tarefa responsável
+      - criar tarefa prazo
+      - criar tarefa horas
+      - criar tarefa prioridade
+      - criar tarefa com prazo
+      - criar tarefa com prioridade
+      - criar tarefa titulo responsavel prazo horas prioridade
+      - criar tarefa titulo teste validacao pmo responsavel manoel benicio prazo horas prioridade alta
+      - "criar tarefa: titulo=Teste Validacao PMO, responsavel=Manoel Benicio, prazo=31/05/2026, horas=8, prioridade=Alta"
+      - "criar tarefa: Teste Validacao PMO, responsavel=Manoel Benicio, prazo=31/05/2026, horas=8, prioridade=Alta"
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_title
+      variable: Topic.Title
+      value: =If(IsMatch(Topic.RawInput, "criar\s+(?:tarefa|projeto)\s*:\s*(?:t.tulo\s*=\s*)?(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "criar\s+(?:tarefa|projeto)\s*:\s*(?:t.tulo\s*=\s*)?(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:t.tulo|titualo|title)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:t.tulo|titualo|title)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: clean_title
+      variable: Topic.Title
+      value: =If(IsBlank(Topic.Title), Blank(), Trim(Substitute(Substitute(Topic.Title, ":", ""), ",", "")))
+
+    - kind: SetVariable
+      id: parse_responsavel
+      variable: Topic.Responsavel
+      value: =If(IsMatch(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_datafim
+      variable: Topic.DataFim
+      value: =If(IsMatch(Topic.RawInput, "(?:prazo|datafim|data\s*fim)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:prazo|datafim|data\s*fim)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_horas
+      variable: Topic.HorasEstimadas
+      value: =If(IsMatch(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "horas\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank())
+
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_title
+      conditions:
+        - id: missing_title
+          condition: =IsBlank(Topic.Title)
+          actions:
+            - kind: Question
+              id: ask_title
+              variable: Topic.Title
+              prompt: Qual o titulo da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_responsavel
+      conditions:
+        - id: missing_responsavel
+          condition: =IsBlank(Topic.Responsavel)
+          actions:
+            - kind: Question
+              id: ask_responsavel
+              variable: Topic.Responsavel
+              prompt: Quem e o responsavel pela tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_datafim
+      conditions:
+        - id: missing_datafim
+          condition: =IsBlank(Topic.DataFim)
+          actions:
+            - kind: Question
+              id: ask_datafim
+              variable: Topic.DataFim
+              prompt: "Qual o prazo da tarefa? (formato: dd/mm/aaaa)"
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_horas
+      conditions:
+        - id: missing_horas
+          condition: =IsBlank(Topic.HorasEstimadas)
+          actions:
+            - kind: Question
+              id: ask_horas
+              variable: Topic.HorasEstimadas
+              prompt: Quantas horas estimadas para essa tarefa?
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: "Qual a prioridade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_criar
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar a tarefa '{Topic.Title}'.
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Horas: {Topic.HorasEstimadas}h
+        Prioridade: {Topic.Prioridade}
+        O codigo do projeto sera gerado automaticamente.
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_title
+              variable: Global.PMO_Criar_Title
+              value: =Topic.Title
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Criar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Criar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_horas
+              variable: Global.PMO_Criar_HorasEstimadas
+              value: =Int(Topic.HorasEstimadas)
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Criar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_V0Bzee
+              input:
+                binding:
+                  number: =Topic.HorasEstimadas
+                  text: =Global.PMO_Criar_Title
+                  text_1: =Global.PMO_Criar_Title
+                  text_2: =Global.PMO_Criar_Responsavel
+                  text_3: =Global.PMO_Criar_DataFim
+                  text_4: =Global.PMO_Criar_Prioridade
+
+              output:
+                binding:
+                  message: Topic.CriarTarefaResult
+
+              flowId: 3104124d-364a-f111-bec7-7ced8d955c6c
+
+            - kind: SendActivity
+              id: criar_done
+              activity: "{Topic.CriarTarefaResult}"
+
+            - kind: EndDialog
+              id: end_criar_tarefa
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: criar_cancelled
+          activity: Ok, criacao cancelada. Se quiser tentar novamente, diga "criar tarefa".
+
+        - kind: EndDialog
+          id: end_criar_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}

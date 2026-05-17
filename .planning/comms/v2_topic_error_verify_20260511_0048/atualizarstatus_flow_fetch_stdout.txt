@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode type       workflowid                           name                   statuscode category
+Activado  Definición c11a165b-c64c-f111-bec7-7ced8d9559c1 PMO_PA_AtualizarStatus Activado   Flujo moderno
+

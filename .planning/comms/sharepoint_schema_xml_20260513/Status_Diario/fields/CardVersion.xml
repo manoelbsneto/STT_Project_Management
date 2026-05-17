@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="CardVersion" DisplayName="CardVersion" ID="{9c127f96-4ae2-4d80-b922-dcd5258c9827}" Group="" Required="FALSE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="CardVersion" ColName="nvarchar11" RowOrdinal="0" />

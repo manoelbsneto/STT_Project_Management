@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       statecode schemaname                                         modifiedon       name                      statuscode componenttype
+23b9e2c9-c27b-4b36-abb2-66ca3b4b141c Inactivo  pmo_AssistentePMO_Clean.topic.WorkIQCopilotPreview 10/05/2026 23:33 Work IQ Copilot (Preview) Inactivo   Tema (V2)
+4056148e-1c3b-4e1d-9b2f-f45175857eee Inactivo  pmo_AssistentePMO_Clean.topic.WorkIQUserPreview    10/05/2026 23:32 Work IQ User (Preview)    Inactivo   Tema (V2)
+b699c70a-8aa4-4441-b659-059efe08bcd0 Activo    pmo_AssistentePMO_V2.action.WorkIQCopilotPreview   10/05/2026 23:33 Work IQ Copilot (Preview) Activo     Tema (V2)
+9280311c-9590-49cc-9e2c-46c84a037fe6 Activo    pmo_AssistentePMO_V2.action.WorkIQUserPreview      10/05/2026 23:33 Work IQ User (Preview)    Activo     Tema (V2)
+

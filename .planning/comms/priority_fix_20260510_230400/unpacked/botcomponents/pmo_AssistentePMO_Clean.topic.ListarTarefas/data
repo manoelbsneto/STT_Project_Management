@@ -1,0 +1,40 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: Question
+      id: ask_projectid
+      variable: Topic.ProjectID
+      prompt: "Qual o codigo do projeto? (ex: PRJ-001)"
+      entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_projectid
+      variable: Global.PMO_Listar_ProjectID
+      value: =Topic.ProjectID
+
+    - kind: BeginDialog
+      id: call_listar_tarefas
+      input: {}
+      dialog: pmo_AssistentePMO_Clean.action.PMO_PA_ListarTarefas
+      output:
+        binding:
+          result: Topic.tarefas
+
+    - kind: SendActivity
+      id: listar_result
+      activity: |-
+        Tarefas - {Topic.ProjectID}
+
+        {Topic.tarefas}

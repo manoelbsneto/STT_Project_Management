@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.topic.ExcluirTarefa">
+  <componenttype>9</componenttype>
+  <description>Remove uma tarefa especifica por exclusao logica com confirmacao.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>ExcluirTarefa</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

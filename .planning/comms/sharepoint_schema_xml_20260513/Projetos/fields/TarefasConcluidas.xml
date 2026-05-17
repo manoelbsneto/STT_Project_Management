@@ -1,0 +1,1 @@
+﻿<Field Type="Number" Name="TarefasConcluidas" DisplayName="TarefasConcluidas" ID="{8f1e07bb-3337-4284-8e54-d6fcb4075451}" Group="" Required="FALSE" SourceID="{0271c9e8-c184-4b91-99f9-5b71f9b08826}" StaticName="TarefasConcluidas" ColName="float4" RowOrdinal="0" />

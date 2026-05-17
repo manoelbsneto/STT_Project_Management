@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-10T20:12:44.2231644-03:00",
+  "status": "CREATED",
+  "environmentName": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environmentDisplayName": "ColOfertasBrasilPro",
+  "siteUrl": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+  "displayName": "PMO_PA_PedirDecisaoBot",
+  "flowName": "259a4a9f-80c1-4ff6-9580-9c0c7e112246",
+  "workflowEntityId": null,
+  "enabled": true,
+  "state": "Started",
+  "requestPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_pedirdecisaobot_request_ffc1f369-58e8-4402-91ce-9444e429ec30.json",
+  "resultPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\pa_pedirdecisaobot_result_ffc1f369-58e8-4402-91ce-9444e429ec30.json",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true,
+  "triggerType": "Request/Skills"
+}

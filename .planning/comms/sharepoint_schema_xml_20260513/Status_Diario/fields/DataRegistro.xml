@@ -1,0 +1,1 @@
+﻿<Field Type="DateTime" Name="DataRegistro" DisplayName="DataRegistro" ID="{d97b0429-f768-439f-a796-b8bb21327674}" Group="" Required="TRUE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="DataRegistro" ColName="datetime1" RowOrdinal="0" Version="2" Indexed="TRUE" />

@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="DeletedReason" DisplayName="DeletedReason" ID="{fa2ef5e4-c467-4b58-832c-096419b56a1b}" Group="" Required="FALSE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="DeletedReason" ColName="nvarchar12" RowOrdinal="0" />

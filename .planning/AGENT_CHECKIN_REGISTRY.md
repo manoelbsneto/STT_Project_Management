@@ -2,9 +2,12 @@
 # =====================================================
 # POLLING INTERVAL: Every 60 seconds
 # BOTH Opus 4.6 AND Codex 5.5 MUST read this file before starting ANY task.
+# EVERY new agent/chat MUST also read .planning/GOLDEN_RULES.md, .planning/CURRENT_BASELINE.md, and .planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md before code, deploy, import, publish, tenant write, runtime-readiness, or release decision.
+# PMO behavior work also MUST read docs/MANUAL_OPERACIONAL_PMO.md before starting.
+# NO import, publish, deploy, commit, delete, portal/runtime modification, or production write is allowed without explicit written owner approval in the current thread.
 # A task can only start when ALL its dependencies show status = DONE.
 # =====================================================
-# CODEX 5.5 may use up to 4 SUBAGENTS for parallel execution.
+# CODEX 5.5 may use up to 3 SUBAGENTS for parallel execution unless the project owner explicitly approves more in writing.
 # OPUS 4.6 handles ONLY browser-mandatory tasks (Copilot Studio UI, bot chat).
 # =====================================================
 
@@ -17,12 +20,21 @@
 
 ## How to Use This File
 
+0. **New chat/agent bootstrap:** Read `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, this registry, and `docs/MANUAL_OPERACIONAL_PMO.md` when PMO behavior is in scope. Treat ship diligence as SEV-0 and keep NO-SHIP until current evidence proves the exact artifact is safe. CI may be ignored only when explicitly owner-excluded; every other quality gate is mandatory. Do not import, publish, deploy, commit, delete, modify portal/runtime, or write to production without explicit written owner approval in the current thread.
 1. **Before starting work:** Read this file. Find your next assigned task.
 2. **Check dependencies:** If `Depends On` column lists task IDs, ALL must be `DONE`.
 3. **Claim task:** Change status from `READY` to `IN_PROGRESS | <Agent> | <timestamp>`.
 4. **Complete task:** Change status to `DONE | <Agent> | <timestamp> | <evidence_path>`.
 5. **If blocked:** Change status to `BLOCKED | <Agent> | <timestamp> | <reason>`.
 6. **Re-read every 60s** while waiting for dependencies.
+
+## SEV-0 Stop-Ship Diligence
+
+- Default release state is NO-SHIP until current runtime and static evidence prove otherwise.
+- CI may be ignored only when explicitly owner-excluded. Every other quality gate is mandatory before any ship/import/publish/runtime-readiness decision.
+- Stop shipment for missing or stale evidence, failed or skipped tests, stale flow/topic bindings, ghost components, placeholders, confirm-only write paths, non-ASCII app-facing artifacts where ASCII is required, data-loss risk, or permission drift.
+- For Microsoft product behavior, use official Microsoft docs plus tenant/runtime evidence. Do not rely on blogs, old examples, or memory for current behavior.
+- Record official doc links, command output, run URLs, screenshots, exports, hashes, or blocker notes in the relevant evidence path before marking work DONE.
 
 ---
 
@@ -108,3 +120,7 @@
 | 2026-05-10T10:55:10-03:00 | Codex 5.5 | COMPLETED | CLN-04 | Verified 11 Deleted=Yes records are hidden by `Deleted ne 1`; post-cleanup discovery returned 0 candidates. Evidence: `.planning/cleanup/deleted_records_hidden_validation_20260510_105425.md`. |
 | 2026-05-10T10:56:05-03:00 | Codex 5.5 | CLAIMED | W1-01 | Started CriarTarefa V3 flow rebuild/verification with Deleted=false support. |
 | 2026-05-10T10:59:30-03:00 | Codex 5.5 | BLOCKED | W1-01 | Definition and tests passed, but ProcessSimple PATCH to `PMO_PA_CriarTarefa_V3` returned HTTP 500 on four attempts. Browser/UI rebuild required. Evidence: `.planning/comms/W1_01_CRIARTAREFA_PROCESS_SIMPLE_BLOCKER_20260510.md`. |
+| 2026-05-10T13:25:00-03:00 | Opus 4.6 | COMPLETED | W1-01 | Flow rebuilt via browser Classic Designer. All Compose actions, duplicate check, condition, and Create Project verified. Test 1 passed (project created). |
+| 2026-05-10T16:08:00-03:00 | Opus 4.6 | COMPLETED | W1-01b | ActionSchemaInvalid fix applied: replaced dual Respond actions with variable pattern (Inicializar variável → Set per branch → single Respond). Flow saved successfully. |
+| 2026-05-10T16:11:00-03:00 | Opus 4.6 | COMPLETED | W1-02 | Test 1 (post-fix): Compose NomeProjeto = "Projeto Teste Validacao V3" (NOT "Sem nome"). Se sim branch → Create Project. PASS. |
+| 2026-05-10T16:16:00-03:00 | Opus 4.6 | COMPLETED | W1-03 | Test 2 (duplicate): Same data → Check Project Exists = false → Se não branch. Create Project SKIPPED. Duplicate message returned. PASS. |

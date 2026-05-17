@@ -1,0 +1,191 @@
+﻿{
+    "value":  [
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Compose_ProjectName",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Compose_ProjectName",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:14.6168533Z",
+                                         "endTime":  "2026-05-11T13:13:14.617485Z",
+                                         "status":  "Succeeded",
+                                         "code":  "OK",
+                                         "correlation":  {
+                                                             "actionTrackingId":  "129bda7c-2e2f-4be5-8738-b6b59adbdc29",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         },
+                                         "inputsLink":  {
+                                                            "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Compose_ProjectName/contents/ActionInputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FCompose_ProjectName%2Fcontents%2FActionInputs%2Fread\u0026sv=1.0\u0026sig=u_jJMSB4jGvp4_z5IhEG6Ue-VWONaMV1_du4xpru26g",
+                                                            "contentVersion":  "fpjDqeeByzsF3Z5yzKwr3Q==",
+                                                            "contentSize":  32,
+                                                            "contentHash":  {
+                                                                                "algorithm":  "md5",
+                                                                                "value":  "fpjDqeeByzsF3Z5yzKwr3Q=="
+                                                                            }
+                                                        },
+                                         "outputsLink":  {
+                                                             "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Compose_ProjectName/contents/ActionOutputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FCompose_ProjectName%2Fcontents%2FActionOutputs%2Fread\u0026sv=1.0\u0026sig=Z8BvuqihBGPpx87Z-YxHlwRGAbij-qiEucajOPB0VOw",
+                                                             "contentVersion":  "fpjDqeeByzsF3Z5yzKwr3Q==",
+                                                             "contentSize":  32,
+                                                             "contentHash":  {
+                                                                                 "algorithm":  "md5",
+                                                                                 "value":  "fpjDqeeByzsF3Z5yzKwr3Q=="
+                                                                             }
+                                                         }
+                                     }
+                  },
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Condition_Projeto_Encontrado",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Condition_Projeto_Encontrado",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:15.0036251Z",
+                                         "endTime":  "2026-05-11T13:13:15.1284924Z",
+                                         "status":  "Succeeded",
+                                         "code":  "NotSpecified",
+                                         "correlation":  {
+                                                             "actionTrackingId":  "9518e8b1-10c5-4471-84c2-ad932e3a02ea",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         },
+                                         "inputsLink":  {
+                                                            "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Condition_Projeto_Encontrado/contents/ActionInputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FCondition_Projeto_Encontrado%2Fcontents%2FActionInputs%2Fread\u0026sv=1.0\u0026sig=YCo_yyCNe76YPfvviSPHSSM4TGwkqci4N8RLSWLeCdg",
+                                                            "contentVersion":  "HFyNS1ecalFQRZE8iMiZQw==",
+                                                            "contentSize":  26,
+                                                            "contentHash":  {
+                                                                                "algorithm":  "md5",
+                                                                                "value":  "HFyNS1ecalFQRZE8iMiZQw=="
+                                                                            }
+                                                        }
+                                     }
+                  },
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Get_Projeto",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Get_Projeto",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:14.6181508Z",
+                                         "endTime":  "2026-05-11T13:13:14.8867449Z",
+                                         "status":  "Succeeded",
+                                         "code":  "OK",
+                                         "correlation":  {
+                                                             "actionTrackingId":  "65dbed28-5d9c-4ce2-be66-01f6f201a96a",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         },
+                                         "inputsLink":  {
+                                                            "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Get_Projeto/contents/ActionInputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FGet_Projeto%2Fcontents%2FActionInputs%2Fread\u0026sv=1.0\u0026sig=dSnK0TYPVfnwCM2MMAWT7mUCTmah33F_ejfilXAXUk8",
+                                                            "contentVersion":  "mHEmjRFKV8DuA1mi5snopA==",
+                                                            "contentSize":  452,
+                                                            "contentHash":  {
+                                                                                "algorithm":  "md5",
+                                                                                "value":  "mHEmjRFKV8DuA1mi5snopA=="
+                                                                            }
+                                                        },
+                                         "outputsLink":  {
+                                                             "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Get_Projeto/contents/ActionOutputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FGet_Projeto%2Fcontents%2FActionOutputs%2Fread\u0026sv=1.0\u0026sig=Y6_N0lCsou6ke-VxsEg5kjyv9bfp1s1tv0c9WJfN84o",
+                                                             "contentVersion":  "Gd3VoGkY5ipQQKlgYcDypA==",
+                                                             "contentSize":  2372,
+                                                             "contentHash":  {
+                                                                                 "algorithm":  "md5",
+                                                                                 "value":  "Gd3VoGkY5ipQQKlgYcDypA=="
+                                                                             }
+                                                         }
+                                     }
+                  },
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Get_Riscos_Abertos",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Get_Riscos_Abertos",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:15.0051905Z",
+                                         "endTime":  "2026-05-11T13:13:15.0056416Z",
+                                         "status":  "Skipped",
+                                         "code":  "ActionSkipped",
+                                         "error":  {
+                                                       "code":  "ActionBranchingConditionNotSatisfied",
+                                                       "message":  "The execution of template action \u0027Get_Riscos_Abertos\u0027 skipped: the branching condition for this action is not satisfied.",
+                                                       "messageTemplate":  "The execution of template action \u0027{0}\u0027 skipped: the branching condition for this action is not satisfied."
+                                                   },
+                                         "correlation":  {
+                                                             "actionTrackingId":  "11e8e728-5ec9-489c-adc9-268be94dee0a",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         }
+                                     }
+                  },
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Response_OK",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Response_OK",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:15.0065625Z",
+                                         "endTime":  "2026-05-11T13:13:15.006896Z",
+                                         "status":  "Skipped",
+                                         "code":  "ActionSkipped",
+                                         "error":  {
+                                                       "code":  "ActionConditionFailed",
+                                                       "message":  "The execution of template action \u0027Response_OK\u0027 is skipped: the \u0027runAfter\u0027 condition for action \u0027Get_Riscos_Abertos\u0027 is not satisfied. Expected status values \u0027Succeeded\u0027 and actual value \u0027Skipped\u0027.",
+                                                       "messageTemplate":  "The execution of template action \u0027{0}\u0027 is skipped: the \u0027runAfter\u0027 condition for action \u0027{1}\u0027 is not satisfied. Expected status values \u0027{2}\u0027 and actual value \u0027{3}\u0027."
+                                                   },
+                                         "correlation":  {
+                                                             "actionTrackingId":  "e0d1fca5-151e-4836-b2b8-db98fba3e209",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         }
+                                     }
+                  },
+                  {
+                      "runName":  "08584231016911395865494896833CU12",
+                      "name":  "Response_Project_Not_Found",
+                      "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d/runs/08584231016911395865494896833CU12/actions/Response_Project_Not_Found",
+                      "type":  "Microsoft.ProcessSimple/environments/flows/runs/actions",
+                      "properties":  {
+                                         "startTime":  "2026-05-11T13:13:15.0075696Z",
+                                         "endTime":  "2026-05-11T13:13:15.0915845Z",
+                                         "status":  "Succeeded",
+                                         "code":  "OK",
+                                         "correlation":  {
+                                                             "actionTrackingId":  "dee36220-b219-43fd-8615-8e21d63b82f3",
+                                                             "clientTrackingId":  "08584231016911395865494896833CU12",
+                                                             "clientKeywords":  [
+                                                                                    "BotSchemaName:pmo_AssistentePMO_V2,ChannelId:pva-studio,CdsBotId:df148bf8-0a3e-495b-80c4-841dcb61d9a4,lcat:M365_COPILOT_USER,lc:,u:"
+                                                                                ]
+                                                         },
+                                         "inputsLink":  {
+                                                            "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Response_Project_Not_Found/contents/ActionInputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FResponse_Project_Not_Found%2Fcontents%2FActionInputs%2Fread\u0026sv=1.0\u0026sig=QJD7fqrktawDtwB9BB6zbeKywaITBe6T_UThs7R64wk",
+                                                            "contentVersion":  "OUl2rrxY4KvyCWSmryVAiA==",
+                                                            "contentSize":  256,
+                                                            "contentHash":  {
+                                                                                "algorithm":  "md5",
+                                                                                "value":  "OUl2rrxY4KvyCWSmryVAiA=="
+                                                                            }
+                                                        },
+                                         "outputsLink":  {
+                                                             "uri":  "https://e2d100034d8ee0079d6376d5fe89ef.56.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/000a4945d59d4784840559baddadbc22/runs/08584231016911395865494896833CU12/actions/Response_Project_Not_Found/contents/ActionOutputs?api-version=1\u0026islandNumber=104\u0026se=2026-05-11T17%3A00%3A00.0000000Z\u0026sp=%2Fruns%2F08584231016911395865494896833CU12%2Factions%2FResponse_Project_Not_Found%2Fcontents%2FActionOutputs%2Fread\u0026sv=1.0\u0026sig=OaeEboCcPEDpUinemV11VmhAHx1bcUHvJ9UmB80cnzc",
+                                                             "contentVersion":  "OUl2rrxY4KvyCWSmryVAiA==",
+                                                             "contentSize":  256,
+                                                             "contentHash":  {
+                                                                                 "algorithm":  "md5",
+                                                                                 "value":  "OUl2rrxY4KvyCWSmryVAiA=="
+                                                                             }
+                                                         }
+                                     }
+                  }
+              ]
+}

@@ -1,0 +1,221 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Copilot_Request": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descricao": {
+                  "type": "string",
+                  "description": "Descricao do bloqueio"
+                },
+                "projectName": {
+                  "type": "string",
+                  "description": "Nome do projeto"
+                },
+                "impacto": {
+                  "type": "string",
+                  "description": "Impacto"
+                }
+              },
+              "required": [
+                "projectName",
+                "descricao",
+                "impacto"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Map_Severidade": {
+          "runAfter": {
+            "Map_Impacto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(equals(outputs('Map_Impacto'), 'Critico'), 'Critica', if(equals(outputs('Map_Impacto'), 'Alto'), 'Alta', if(equals(outputs('Map_Impacto'), 'Baixo'), 'Baixa', 'Media')))"
+        },
+        "Map_Impacto": {
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?['impacto'], 'Medio')), 'cr'), 'Critico', if(startsWith(toLower(coalesce(triggerBody()?['impacto'], 'Medio')), 'a'), 'Alto', if(startsWith(toLower(coalesce(triggerBody()?['impacto'], 'Medio')), 'm'), 'Medio', if(startsWith(toLower(coalesce(triggerBody()?['impacto'], 'Medio')), 'b'), 'Baixo', 'Medio'))))"
+        },
+        "Compose_RiskID": {
+          "runAfter": {
+            "Map_Severidade": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat('BLOCK-', toUpper(substring(guid(), 0, 8)))"
+        },
+        "Compose_ProjectName": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['projectName'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))"
+        },
+        "Get_Projeto": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectName'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Condition_Projeto_Encontrado": {
+          "actions": {
+            "Create_Bloqueio_SharePoint": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "table": "Riscos e Bloqueios",
+                  "item/Severidade/Value": "@outputs('Map_Severidade')",
+                  "item/DataCriacao": "@utcNow()",
+                  "item/RiskID": "@outputs('Compose_RiskID')",
+                  "item/Impacto/Value": "@outputs('Map_Impacto')",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/StatusRisco/Value": "Aberto",
+                  "item/Descricao": "@triggerBody()?['descricao']",
+                  "item/Deleted": false,
+                  "item/Tipo/Value": "Bloqueio",
+                  "item/Title": "@outputs('Compose_RiskID')",
+                  "item/ProjectID": "@body('Get_Projeto')?['value']?[0]?['ProjectID']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem"
+                },
+                "authentication": {
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                  "type": "Raw"
+                }
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Create_Bloqueio_SharePoint": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "@{concat('Bloqueio ', outputs('Compose_RiskID'), ' registrado para projeto ', outputs('Compose_ProjectName'), '. Impacto: ', outputs('Map_Impacto'), '.')}"
+                }
+              }
+            },
+            "Response_Error_Write": {
+              "runAfter": {
+                "Create_Bloqueio_SharePoint": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "Erro ao registrar bloqueio no SharePoint. Codigo: SP_WRITE_FAILED."
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_RiskID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "runAfter": {},
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "result": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(body('Get_Projeto')?['value'])",
+              0
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

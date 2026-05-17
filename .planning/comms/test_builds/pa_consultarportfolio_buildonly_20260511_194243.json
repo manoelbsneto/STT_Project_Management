@@ -1,0 +1,342 @@
+﻿{
+    "timestamp":  "2026-05-11T19:42:43.7519620-03:00",
+    "status":  "BUILD_ONLY",
+    "displayName":  "PMO_PA_ConsultarPortfolio",
+    "definition":  {
+                       "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                       "contentVersion":  "1.0.0.0",
+                       "parameters":  {
+                                          "$authentication":  {
+                                                                  "defaultValue":  {
+
+                                                                                   },
+                                                                  "type":  "SecureObject"
+                                                              },
+                                          "$connections":  {
+                                                               "defaultValue":  {
+
+                                                                                },
+                                                               "type":  "Object"
+                                                           }
+                                      },
+                       "triggers":  {
+                                        "Copilot_Request":  {
+                                                                "type":  "Request",
+                                                                "kind":  "Skills",
+                                                                "inputs":  {
+                                                                               "schema":  {
+                                                                                              "type":  "object",
+                                                                                              "properties":  {
+                                                                                                                 "includeDeleted":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "description":  "Incluir registros excluidos? sim/nao"
+                                                                                                                                    }
+                                                                                                             },
+                                                                                              "required":  [
+
+                                                                                                           ]
+                                                                                          }
+                                                                           }
+                                                            }
+                                    },
+                       "actions":  {
+                                       "Response_OK":  {
+                                                           "type":  "Response",
+                                                           "kind":  "Skills",
+                                                           "inputs":  {
+                                                                          "statusCode":  200,
+                                                                          "headers":  {
+                                                                                          "Content-Type":  "application/json"
+                                                                                      },
+                                                                          "body":  {
+                                                                                       "message":  "@{concat(\u0027Portfolio PMO: \u0027, string(variables(\u0027varTotal\u0027)), \u0027 projetos ativos. Verde: \u0027, string(variables(\u0027varVerde\u0027)), \u0027 | Amarelo: \u0027, string(variables(\u0027varAmarelo\u0027)), \u0027 | Vermelho: \u0027, string(variables(\u0027varVermelho\u0027)), \u0027. Projetos sem update (\u003e24h): \u0027, string(variables(\u0027varSemUpdate\u0027)), \u0027. Projetos: \u0027, outputs(\u0027Compose_Projetos_Nomes\u0027), \u0027.\u0027)}"
+                                                                                   },
+                                                                          "schema":  {
+                                                                                         "type":  "object",
+                                                                                         "properties":  {
+                                                                                                            "message":  {
+                                                                                                                            "title":  "message",
+                                                                                                                            "x-ms-dynamically-added":  true,
+                                                                                                                            "type":  "string"
+                                                                                                                        }
+                                                                                                        }
+                                                                                     }
+                                                                      },
+                                                           "runAfter":  {
+                                                                            "Compose_Projetos_Nomes":  [
+                                                                                                           "Succeeded"
+                                                                                                       ]
+                                                                        }
+                                                       },
+                                       "Compose_Projetos_Nomes":  {
+                                                                      "type":  "Compose",
+                                                                      "inputs":  "@if(equals(length(body(\u0027Select_Projetos_Nomes\u0027)), 0), \u0027nenhum\u0027, join(body(\u0027Select_Projetos_Nomes\u0027), \u0027, \u0027))",
+                                                                      "runAfter":  {
+                                                                                       "Select_Projetos_Nomes":  [
+                                                                                                                     "Succeeded"
+                                                                                                                 ]
+                                                                                   }
+                                                                  },
+                                       "Initialize_Vermelho":  {
+                                                                   "type":  "InitializeVariable",
+                                                                   "inputs":  {
+                                                                                  "variables":  [
+                                                                                                    {
+                                                                                                        "name":  "varVermelho",
+                                                                                                        "type":  "integer",
+                                                                                                        "value":  0
+                                                                                                    }
+                                                                                                ]
+                                                                              },
+                                                                   "runAfter":  {
+                                                                                    "Initialize_Amarelo":  [
+                                                                                                               "Succeeded"
+                                                                                                           ]
+                                                                                }
+                                                               },
+                                       "Initialize_SemUpdate":  {
+                                                                    "type":  "InitializeVariable",
+                                                                    "inputs":  {
+                                                                                   "variables":  [
+                                                                                                     {
+                                                                                                         "name":  "varSemUpdate",
+                                                                                                         "type":  "integer",
+                                                                                                         "value":  0
+                                                                                                     }
+                                                                                                 ]
+                                                                               },
+                                                                    "runAfter":  {
+                                                                                     "Initialize_Vermelho":  [
+                                                                                                                 "Succeeded"
+                                                                                                             ]
+                                                                                 }
+                                                                },
+                                       "Initialize_Total":  {
+                                                                "type":  "InitializeVariable",
+                                                                "inputs":  {
+                                                                               "variables":  [
+                                                                                                 {
+                                                                                                     "name":  "varTotal",
+                                                                                                     "type":  "integer",
+                                                                                                     "value":  0
+                                                                                                 }
+                                                                                             ]
+                                                                           },
+                                                                "runAfter":  {
+                                                                                 "Get_Projetos_Ativos":  [
+                                                                                                             "Succeeded"
+                                                                                                         ]
+                                                                             }
+                                                            },
+                                       "Select_Projetos_Nomes":  {
+                                                                     "type":  "Select",
+                                                                     "inputs":  {
+                                                                                    "from":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                                    "select":  "@coalesce(item()?[\u0027NomeProjeto\u0027], item()?[\u0027Title\u0027], item()?[\u0027ProjectID\u0027], \u0027-\u0027)"
+                                                                                },
+                                                                     "runAfter":  {
+                                                                                      "Apply_to_each_Projeto":  [
+                                                                                                                    "Succeeded"
+                                                                                                                ]
+                                                                                  }
+                                                                 },
+                                       "Initialize_Verde":  {
+                                                                "type":  "InitializeVariable",
+                                                                "inputs":  {
+                                                                               "variables":  [
+                                                                                                 {
+                                                                                                     "name":  "varVerde",
+                                                                                                     "type":  "integer",
+                                                                                                     "value":  0
+                                                                                                 }
+                                                                                             ]
+                                                                           },
+                                                                "runAfter":  {
+                                                                                 "Initialize_Total":  [
+                                                                                                          "Succeeded"
+                                                                                                      ]
+                                                                             }
+                                                            },
+                                       "Apply_to_each_Projeto":  {
+                                                                     "type":  "Foreach",
+                                                                     "foreach":  "@body(\u0027Get_Projetos_Ativos\u0027)?[\u0027value\u0027]",
+                                                                     "actions":  {
+                                                                                     "Increment_Total":  {
+                                                                                                             "type":  "IncrementVariable",
+                                                                                                             "inputs":  {
+                                                                                                                            "name":  "varTotal",
+                                                                                                                            "value":  1
+                                                                                                                        },
+                                                                                                             "runAfter":  {
+
+                                                                                                                          }
+                                                                                                         },
+                                                                                     "Switch_StatusRAG":  {
+                                                                                                              "type":  "Switch",
+                                                                                                              "expression":  "@coalesce(item()?[\u0027StatusRAG\u0027]?[\u0027Value\u0027], item()?[\u0027StatusRAG\u0027], \u0027\u0027)",
+                                                                                                              "cases":  {
+                                                                                                                            "Verde":  {
+                                                                                                                                          "case":  "Verde",
+                                                                                                                                          "actions":  {
+                                                                                                                                                          "Increment_Verde":  {
+                                                                                                                                                                                  "type":  "IncrementVariable",
+                                                                                                                                                                                  "inputs":  {
+                                                                                                                                                                                                 "name":  "varVerde",
+                                                                                                                                                                                                 "value":  1
+                                                                                                                                                                                             },
+                                                                                                                                                                                  "runAfter":  {
+
+                                                                                                                                                                                               }
+                                                                                                                                                                              }
+                                                                                                                                                      }
+                                                                                                                                      },
+                                                                                                                            "Amarelo":  {
+                                                                                                                                            "case":  "Amarelo",
+                                                                                                                                            "actions":  {
+                                                                                                                                                            "Increment_Amarelo":  {
+                                                                                                                                                                                      "type":  "IncrementVariable",
+                                                                                                                                                                                      "inputs":  {
+                                                                                                                                                                                                     "name":  "varAmarelo",
+                                                                                                                                                                                                     "value":  1
+                                                                                                                                                                                                 },
+                                                                                                                                                                                      "runAfter":  {
+
+                                                                                                                                                                                                   }
+                                                                                                                                                                                  }
+                                                                                                                                                        }
+                                                                                                                                        },
+                                                                                                                            "Vermelho":  {
+                                                                                                                                             "case":  "Vermelho",
+                                                                                                                                             "actions":  {
+                                                                                                                                                             "Increment_Vermelho":  {
+                                                                                                                                                                                        "type":  "IncrementVariable",
+                                                                                                                                                                                        "inputs":  {
+                                                                                                                                                                                                       "name":  "varVermelho",
+                                                                                                                                                                                                       "value":  1
+                                                                                                                                                                                                   },
+                                                                                                                                                                                        "runAfter":  {
+
+                                                                                                                                                                                                     }
+                                                                                                                                                                                    }
+                                                                                                                                                         }
+                                                                                                                                         }
+                                                                                                                        },
+                                                                                                              "default":  {
+                                                                                                                              "actions":  {
+
+                                                                                                                                          }
+                                                                                                                          },
+                                                                                                              "runAfter":  {
+                                                                                                                               "Increment_Total":  [
+                                                                                                                                                       "Succeeded"
+                                                                                                                                                   ]
+                                                                                                                           }
+                                                                                                          },
+                                                                                     "Condition_Sem_Update":  {
+                                                                                                                  "type":  "If",
+                                                                                                                  "expression":  {
+                                                                                                                                     "and":  [
+                                                                                                                                                 {
+                                                                                                                                                     "not":  {
+                                                                                                                                                                 "equals":  [
+                                                                                                                                                                                "@item()?[\u0027UltimaAtualizacao\u0027]",
+                                                                                                                                                                                null
+                                                                                                                                                                            ]
+                                                                                                                                                             }
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "less":  [
+                                                                                                                                                                  "@ticks(item()?[\u0027UltimaAtualizacao\u0027])",
+                                                                                                                                                                  "@ticks(addDays(utcNow(), -1))"
+                                                                                                                                                              ]
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                                 },
+                                                                                                                  "actions":  {
+                                                                                                                                  "Increment_SemUpdate":  {
+                                                                                                                                                              "type":  "IncrementVariable",
+                                                                                                                                                              "inputs":  {
+                                                                                                                                                                             "name":  "varSemUpdate",
+                                                                                                                                                                             "value":  1
+                                                                                                                                                                         },
+                                                                                                                                                              "runAfter":  {
+
+                                                                                                                                                                           }
+                                                                                                                                                          }
+                                                                                                                              },
+                                                                                                                  "else":  {
+                                                                                                                               "actions":  {
+
+                                                                                                                                           }
+                                                                                                                           },
+                                                                                                                  "runAfter":  {
+                                                                                                                                   "Switch_StatusRAG":  [
+                                                                                                                                                            "Succeeded"
+                                                                                                                                                        ]
+                                                                                                                               }
+                                                                                                              }
+                                                                                 },
+                                                                     "runAfter":  {
+                                                                                      "Initialize_SemUpdate":  [
+                                                                                                                   "Succeeded"
+                                                                                                               ]
+                                                                                  }
+                                                                 },
+                                       "Get_Projetos_Ativos":  {
+                                                                   "type":  "OpenApiConnection",
+                                                                   "inputs":  {
+                                                                                  "parameters":  {
+                                                                                                     "$filter":  "@{if(or(equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027sim\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027true\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027yes\u0027)), \u0027Ativo eq 1\u0027, \u0027Ativo eq 1 and Deleted eq 0\u0027)}",
+                                                                                                     "table":  "Projetos",
+                                                                                                     "$top":  500,
+                                                                                                     "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                 },
+                                                                                  "host":  {
+                                                                                               "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                               "operationId":  "GetItems",
+                                                                                               "connectionName":  "shared_sharepointonline"
+                                                                                           },
+                                                                                  "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                              },
+                                                                   "runAfter":  {
+
+                                                                                }
+                                                               },
+                                       "Initialize_Amarelo":  {
+                                                                  "type":  "InitializeVariable",
+                                                                  "inputs":  {
+                                                                                 "variables":  [
+                                                                                                   {
+                                                                                                       "name":  "varAmarelo",
+                                                                                                       "type":  "integer",
+                                                                                                       "value":  0
+                                                                                                   }
+                                                                                               ]
+                                                                             },
+                                                                  "runAfter":  {
+                                                                                   "Initialize_Verde":  [
+                                                                                                            "Succeeded"
+                                                                                                        ]
+                                                                               }
+                                                              }
+                                   },
+                       "outputs":  {
+
+                                   }
+                   },
+    "triggerType":  "Request/Skills",
+    "connectors":  [
+                       "shared_sharepointonline"
+                   ],
+    "connectionReferences":  {
+                                 "shared_sharepointonline":  {
+                                                                 "connectionName":  "44f187cde7f54f208cf22bac4e533816",
+                                                                 "connectionReferenceLogicalName":  "pmo_sharepoint",
+                                                                 "source":  "Embedded",
+                                                                 "id":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                 "displayName":  "SharePoint",
+                                                                 "tier":  "Standard"
+                                                             }
+                             },
+    "standardOnly":  true
+}

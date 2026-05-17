@@ -1,0 +1,13 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       statecode schemaname                                         modifiedon       name                   statuscode componenttype
+d14610d2-a79c-4926-9122-fa367af3f26e Activo    pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa 14/05/2026 15:02 PMO_PA_AtualizarTarefa Activo     Tema (V2)
+74c5fdcc-c121-452e-85af-24d3f260b3c7 Activo    pmo_AssistentePMO_V2.topic.ConsultarPortfolio      14/05/2026 15:03 ConsultarPortfolio     Activo     Tema (V2)
+ec4416d0-0744-4e8c-b937-aae4ad9c605b Activo    pmo_AssistentePMO_V2.topic.AtualizarStatus         14/05/2026 15:02 AtualizarStatus        Activo     Tema (V2)
+b624ab2c-8817-45ae-9399-c0b78d9f3eca Activo    pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa     14/05/2026 15:03 PMO_PA_CriarTarefa     Activo     Tema (V2)
+6750ff2f-822b-45ab-83ec-058704c7808a Activo    pmo_AssistentePMO_V2.topic.AtualizarTarefa         14/05/2026 15:02 AtualizarTarefa        Activo     Tema (V2)
+d58258b4-b17f-4bb9-9e1f-161287a041c4 Activo    pmo_AssistentePMO_V2.topic.ListarTarefas           14/05/2026 15:03 ListarTarefas          Activo     Tema (V2)
+bcbecd76-3158-40ac-b225-5ae7c3874ed1 Activo    pmo_AssistentePMO_V2.topic.CriarTarefa             14/05/2026 15:03 CriarTarefa            Activo     Tema (V2)
+a8872890-f061-48fc-8cf6-250c88b3d1bf Activo    pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas   14/05/2026 15:03 PMO_PA_ListarTarefas   Activo     Tema (V2)
+

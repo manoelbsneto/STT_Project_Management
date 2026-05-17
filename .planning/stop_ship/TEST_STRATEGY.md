@@ -1,8 +1,22 @@
 # TEST STRATEGY
 
-Status: Active May 7 stop-ship strategy.
+Status: Active May 11 stop-ship strategy for `Assistente PMO V2`.
 
-Goal: every GAP has automated evidence, browser/runtime evidence, or a documented blocker. Static tests are necessary but not sufficient for Copilot runtime registration.
+Goal: every GAP has automated evidence, browser/runtime evidence, or a documented blocker. Static tests are necessary but not sufficient for Copilot runtime registration. The active release target is `Assistente PMO V2`; the older `Assistente PMO Clean` bot is not the test target.
+
+## Session 20 Current Runtime State
+
+| Area | Current result | Evidence / next evidence |
+|---|---|---|
+| Latest local package | READY FOR IMPORT | `Solution/PMO_v11_Tarefas_1_8_ATUALIZAR_STATUS_RAG_FIX.zip`, SHA256 `58276EF084576971035D83B74CF243570FAAD0BD6B036E4DB7ACEF6EDBB17CAF`, version `1.8`. |
+| Package validation | PASS LOCAL | Verification unpack confirms `AtualizarStatus` uses `rag\s*[:=]` first and `status\s*=` second; no old `status\s*[:=]` parser in that topic. |
+| CriarTarefa | PASS RUNTIME | `Teste Smoke Final V5` created in SharePoint `Projetos` with `Prioridade=Alta`, `Deleted=False`. |
+| ConsultarProjeto | PASS RUNTIME | Returned real SharePoint data for `Teste Smoke Final V5`. |
+| ConsultarPortfolio | PASS RUNTIME | Returned real SharePoint aggregate counts. |
+| AtualizarStatus | FIX PREPARED | Runtime write succeeded before 1.8, but RAG parser captured `projeto=...`; 1.8 package fixes parser and requires retest after import. |
+| RegistrarRisco | PENDING RUNTIME | Needs bot transcript, flow run, and `Riscos e Bloqueios` row. |
+| RegistrarBloqueio | PENDING RUNTIME | Needs bot transcript, flow run, and `Riscos e Bloqueios` row. |
+| PedirDecisao | PENDING RUNTIME | Needs bot transcript, flow run, and `Decisoes do Board` row. |
 
 ## Test Layers
 
@@ -13,6 +27,19 @@ Goal: every GAP has automated evidence, browser/runtime evidence, or a documente
 | Static artifact quality | Manual and ghost-discovery safeguards. | `Test-OperationsManualArtifact.ps1`, `Test-CopilotGhostBotInventory.ps1` | Ensures required artifacts exist and no destructive ghost deletion path is scripted. |
 | Live programmatic inventory | Dataverse/PAC/SharePoint/ProcessSimple evidence where supported. | FetchXML, ProcessSimple, SharePoint scripts | Supports release evidence but cannot replace browser chat proof. |
 | Browser/runtime proof | Copilot Studio tool registration, publish, test chat, screenshots, Power Automate UI flow runs. | Opus browser work | Mandatory for final ship decision. |
+
+## Mandatory V2 Runtime Smoke Matrix
+
+| Order | Topic | Test command | Expected proof |
+|---|---|---|---|
+| 1 | Cold start | New test session, then first real command | Greeting/warmup appears; first real command does not fall to generic fallback. |
+| 2 | ConsultarPortfolio | `consultar portfolio` | Real SharePoint aggregate counts. |
+| 3 | ConsultarProjeto | `consultar projeto: projeto=Teste Smoke Final V5` | Real project fields and open risk count. |
+| 4 | AtualizarStatus | `atualizar status: projeto=Teste Smoke Final V5, rag=Amarelo, resumo=Smoke test de atualizacao de status fix RAG, percentual=35, risco=Nenhum, bloqueio=Nenhum, proxima acao=Validar RAG` | Confirmation shows `RAG: Amarelo`; `Status Diario` row created; `Projetos` row updated to `Amarelo` and `35`. |
+| 5 | RegistrarRisco | `registrar risco: projeto=Teste Smoke Final V5, descricao=Risco smoke test 1, severidade=Alta, impacto=Alto` | `Riscos e Bloqueios` row with `Tipo=Risco`, `StatusRisco=Aberto`, `Deleted=false`. |
+| 6 | RegistrarBloqueio | `registrar bloqueio: projeto=Teste Smoke Final V5, descricao=Bloqueio smoke test 1, impacto=Alto` | `Riscos e Bloqueios` row with `Tipo=Bloqueio`, `StatusRisco=Aberto`, `Deleted=false`. |
+| 7 | PedirDecisao | `solicitar decisao: projeto=Teste Smoke Final V5, descricao=Decidir prioridade do smoke test, impacto=Alto, prazo=31/05/2026, aprovador=mbenicios@minsait.com` | `Decisoes do Board` row with `StatusDecisao=Pendente`, `Impacto=Alto`, `Deleted=false`. |
+| 8 | CriarTarefa regression | `criar tarefa: titulo=Teste Smoke Final V6, responsavel=Manoel Benicio, prazo=2026/05/31, horas=1, prioridade=Alta` | `Projetos` row with `Prioridade=Alta`, `Ativo=true`, `Deleted=false`. |
 
 ## Current Tests
 
@@ -68,3 +95,28 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-PMOFlowStopShipAu
 ## Release Rule
 
 SHIP is not allowed while any required runtime/browser evidence is missing or while the live export audit still fails. Current verdict remains NO-SHIP.
+
+## 2026-05-13 Strategy Addendum - Candidate 3.3
+
+Active local candidate:
+- `Solution/PMO_v11_Tarefas_3_3_CRIARPROJETO_CONTENT_ROUTE_SAFE_FIX.zip`
+- Scope: `CriarProjeto` content-safe output and project/task routing separation.
+
+Required automated layers:
+- Package integrity and aggregate contracts: `tests/Test-SolutionZipP24Contracts.ps1`.
+- P0 read contract regression: `tests/Test-SolutionZipP0Contracts.ps1`.
+- Full source stop-ship audit: `tests/Test-PMOFlowStopShipAudit.ps1`.
+- Content-filter regression: `tests/Test-CriarProjetoContentSafeOutput.ps1`.
+- Routing regression: `tests/Test-CopilotRoutingInstructions.ps1`.
+- Write-path regressions: `tests/Test-CriarProjetoFlowDefinition.ps1`, `tests/Test-CriarTarefaCreatesTarefas.ps1`.
+- Delete safety regression: `tests/Test-ExcluirSoftDeleteCapability.ps1`.
+
+Coverage goal:
+- Block raw bot-visible action output echo for `CriarProjeto`.
+- Block fallback/default routing that sends project creation to `CriarTarefa`.
+- Preserve prior P0/P24 contracts for project lookup, task creation, list tasks, batch preview, soft delete, and standard-only connectors.
+
+Runtime tests still required after import/publish:
+- Guided `novo projeto` creates a project and returns a safe static success message without `ContentFiltered`.
+- One-shot project command routes to `CriarProjeto`, not `CriarTarefa`.
+- Read-only SharePoint check confirms the created project row.

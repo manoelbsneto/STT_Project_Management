@@ -1,0 +1,57 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - listar tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project_input
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "(?:listar\s+tarefas\s+do\s+projeto|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas\s+do\s+projeto)\s*[:=]?\s*(?<v>.+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:listar\s+tarefas\s+do\s+projeto|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas\s+do\s+projeto)\s*[:=]?\s*(?<v>.+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project_input
+      conditions:
+        - id: missing_project_input
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_projectid
+              variable: Topic.ProjectID
+              prompt: Qual projeto voce quer consultar? Informe o nome do projeto ou o codigo ProjectID.
+              entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_projectid
+      variable: Global.PMO_Listar_ProjectID
+      value: =Topic.ProjectID
+
+    - kind: BeginDialog
+      id: call_listar_tarefas
+      input: {}
+      dialog: pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas
+      output:
+        binding:
+          result: Topic.tarefas
+
+    - kind: SendActivity
+      id: listar_result
+      activity: |-
+        Tarefas - {Topic.ProjectID}
+
+        {Topic.tarefas}

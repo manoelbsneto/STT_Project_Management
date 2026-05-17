@@ -1,0 +1,1 @@
+﻿<Field ID="{f1e020bc-ba26-443f-bf2f-b68715017bbc}" ColName="tp_WorkflowVersion" RowOrdinal="0" Hidden="TRUE" ReadOnly="TRUE" Type="Integer" Name="WorkflowVersion" DisplaceOnUpgrade="TRUE" DisplayName="Versión del flujo de trabajo" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="WorkflowVersion" FromBaseType="TRUE" />

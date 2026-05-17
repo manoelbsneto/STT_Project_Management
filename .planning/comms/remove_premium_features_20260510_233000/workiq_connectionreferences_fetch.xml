@@ -1,0 +1,14 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="connectionreference">
+    <attribute name="connectionreferenceid" />
+    <attribute name="connectionreferencelogicalname" />
+    <attribute name="connectionreferencedisplayname" />
+    <attribute name="connectorid" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="or">
+      <condition attribute="connectionreferencelogicalname" operator="like" value="%shared_a365%" />
+      <condition attribute="connectorid" operator="like" value="%shared_a365%" />
+    </filter>
+  </entity>
+</fetch>

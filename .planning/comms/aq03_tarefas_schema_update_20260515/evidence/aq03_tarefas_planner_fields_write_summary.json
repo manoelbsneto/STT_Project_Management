@@ -1,0 +1,104 @@
+﻿{
+    "timestamp":  "2026-05-15T10:07:05.5961749-03:00",
+    "siteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "listName":  "Tarefas",
+    "accessType":  "SharePoint schema write via legacy PnP",
+    "fieldsRequested":  5,
+    "createdCount":  5,
+    "skippedExistingCount":  0,
+    "tenantWriteConfirmed":  true,
+    "results":  [
+                    {
+                        "InternalName":  "PlannerTaskId",
+                        "DisplayName":  "Planner Task ID",
+                        "Type":  "Text",
+                        "Action":  "Created",
+                        "FieldId":  "2519e9ee-47eb-41ee-b24e-fb31c724278b"
+                    },
+                    {
+                        "InternalName":  "PlannerBucketId",
+                        "DisplayName":  "Planner Bucket ID",
+                        "Type":  "Text",
+                        "Action":  "Created",
+                        "FieldId":  "7df05384-0015-4376-8ce4-e03b263dccf9"
+                    },
+                    {
+                        "InternalName":  "PlannerSyncStatus",
+                        "DisplayName":  "Planner Sync Status",
+                        "Type":  "Choice",
+                        "Action":  "Created",
+                        "FieldId":  "feb9d7aa-a7cf-4d5d-b820-a949c1e75e3a"
+                    },
+                    {
+                        "InternalName":  "PlannerLastSyncAt",
+                        "DisplayName":  "Planner Last Sync At",
+                        "Type":  "DateTime",
+                        "Action":  "Created",
+                        "FieldId":  "d9c9cd26-b3a4-4f6d-974a-3f3abf80606c"
+                    },
+                    {
+                        "InternalName":  "PlannerSyncError",
+                        "DisplayName":  "Planner Sync Error",
+                        "Type":  "Note",
+                        "Action":  "Created",
+                        "FieldId":  "20a9e899-503b-44a9-b462-98b59a2044ae"
+                    }
+                ],
+    "verification":  [
+                         {
+                             "InternalName":  "PlannerTaskId",
+                             "Title":  "Planner Task ID",
+                             "TypeAsString":  "Text",
+                             "Required":  false,
+                             "Hidden":  false,
+                             "ReadOnlyField":  false,
+                             "DefaultValue":  null,
+                             "Choices":  "",
+                             "Indexed":  true
+                         },
+                         {
+                             "InternalName":  "PlannerBucketId",
+                             "Title":  "Planner Bucket ID",
+                             "TypeAsString":  "Text",
+                             "Required":  false,
+                             "Hidden":  false,
+                             "ReadOnlyField":  false,
+                             "DefaultValue":  null,
+                             "Choices":  "",
+                             "Indexed":  true
+                         },
+                         {
+                             "InternalName":  "PlannerSyncStatus",
+                             "Title":  "Planner Sync Status",
+                             "TypeAsString":  "Choice",
+                             "Required":  false,
+                             "Hidden":  false,
+                             "ReadOnlyField":  false,
+                             "DefaultValue":  "Pendente",
+                             "Choices":  "",
+                             "Indexed":  true
+                         },
+                         {
+                             "InternalName":  "PlannerLastSyncAt",
+                             "Title":  "Planner Last Sync At",
+                             "TypeAsString":  "DateTime",
+                             "Required":  false,
+                             "Hidden":  false,
+                             "ReadOnlyField":  false,
+                             "DefaultValue":  null,
+                             "Choices":  "",
+                             "Indexed":  false
+                         },
+                         {
+                             "InternalName":  "PlannerSyncError",
+                             "Title":  "Planner Sync Error",
+                             "TypeAsString":  "Note",
+                             "Required":  false,
+                             "Hidden":  false,
+                             "ReadOnlyField":  false,
+                             "DefaultValue":  null,
+                             "Choices":  "",
+                             "Indexed":  false
+                         }
+                     ]
+}

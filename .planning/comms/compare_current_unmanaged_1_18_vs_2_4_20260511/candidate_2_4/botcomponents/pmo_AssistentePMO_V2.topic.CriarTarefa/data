@@ -1,0 +1,92 @@
+﻿kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - criar uma tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - "criar tarefa:"
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: SetVariable
+      id: parse_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_titulo
+      variable: Topic.Titulo
+      value: =If(IsMatch(Topic.RawInput, "(?:titulo|tarefa)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:titulo|tarefa)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: Question
+      id: ask_nome_projeto
+      variable: Topic.NomeProjeto
+      prompt: Qual o nome ou codigo do projeto?
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_titulo
+      variable: Topic.Titulo
+      prompt: Qual o titulo da tarefa?
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_responsavel
+      variable: Topic.Responsavel
+      prompt: Quem e o responsavel pela tarefa?
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_prazo
+      variable: Topic.Prazo
+      prompt: Qual o prazo da tarefa? Use dd/mm/aaaa.
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: ask_horas
+      variable: Topic.Horas
+      prompt: Quantas horas estimadas?
+      entity: NumberPrebuiltEntity
+    - kind: Question
+      id: ask_prioridade
+      variable: Topic.Prioridade
+      prompt: Qual a prioridade? Baixa, Media, Alta ou Critica.
+      entity: StringPrebuiltEntity
+    - kind: Question
+      id: confirm_criar_tarefa
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar a tarefa {Topic.Titulo} no projeto {Topic.NomeProjeto}. Confirma?
+      entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo")
+          actions:
+            - kind: InvokeFlowAction
+              id: invoke_criar_tarefa
+              input:
+                binding:
+                  number: =Topic.Horas
+                  text: =Topic.NomeProjeto
+                  text_1: =Topic.Titulo
+                  text_2: =Topic.Responsavel
+                  text_3: =Topic.Prazo
+                  text_4: =Topic.Prioridade
+              output:
+                binding:
+                  message: Topic.Result
+              flowId: 0a5d2a41-24c0-4d5e-9f6d-000000000241
+            - kind: SendActivity
+              id: done
+              activity: "{Topic.Result}"
+      elseActions:
+        - kind: SendActivity
+          id: cancelled
+          activity: Criacao cancelada.
+inputType: {}
+outputType: {}

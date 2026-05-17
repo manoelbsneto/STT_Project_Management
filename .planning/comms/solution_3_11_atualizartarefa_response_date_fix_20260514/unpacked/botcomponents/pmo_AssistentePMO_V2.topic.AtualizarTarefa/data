@@ -1,0 +1,117 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarTarefa
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - atualizar tarefa
+      - concluir tarefa
+      - mudar status tarefa
+      - tarefa concluida
+      - completar tarefa
+
+  actions:
+    - kind: Question
+      id: ask_taskid
+      variable: Topic.TaskID
+      prompt: Qual o ID da tarefa que deseja atualizar? (numero)
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: ask_status
+      variable: Topic.Status
+      prompt: "Qual o novo status? Escolha: Pendente, Em Andamento, Concluida ou Cancelada."
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_horas_realizadas
+      variable: Topic.HorasRealizadas
+      prompt: Quantas horas realizadas? (responda 0 para pular)
+      entity: NumberPrebuiltEntity
+
+    - kind: Question
+      id: ask_responsavel
+      variable: Topic.Responsavel
+      prompt: Novo responsavel? (responda "nao" para manter o atual)
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_datafim
+      variable: Topic.DataFim
+      prompt: Novo prazo? (responda "nao" para manter o atual)
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: ask_prioridade
+      variable: Topic.Prioridade
+      prompt: "Nova prioridade? Escolha: Baixa, Media, Alta, Critica ou responda \"nao\" para manter."
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_atualizar
+      variable: Topic.Confirmar
+      prompt: |-
+        Vou atualizar a tarefa #{Topic.TaskID}:
+        Status: {Topic.Status}
+        Horas realizadas: {Topic.HorasRealizadas}
+        Responsavel: {Topic.Responsavel}
+        Prazo: {Topic.DataFim}
+        Prioridade: {Topic.Prioridade}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.Confirmar)) = "sim", Lower(Trim(Topic.Confirmar)) = "s", Lower(Trim(Topic.Confirmar)) = "yes", Lower(Trim(Topic.Confirmar)) = "y", Lower(Trim(Topic.Confirmar)) = "confirmo", Lower(Trim(Topic.Confirmar)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_taskid
+              variable: Global.PMO_Atualizar_TaskID
+              value: =Topic.TaskID
+
+            - kind: SetVariable
+              id: set_global_status
+              variable: Global.PMO_Atualizar_Status
+              value: =Topic.Status
+
+            - kind: SetVariable
+              id: set_global_horas_realizadas
+              variable: Global.PMO_Atualizar_HorasRealizadas
+              value: =Topic.HorasRealizadas
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Atualizar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Atualizar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Atualizar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: BeginDialog
+              id: call_atualizar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa
+              output:
+                binding:
+                  result: Topic.message
+
+            - kind: SendActivity
+              id: atualizar_done
+              activity: "{Topic.message}"
+
+      elseActions:
+        - kind: SendActivity
+          id: atualizar_cancelled
+          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga "atualizar tarefa".

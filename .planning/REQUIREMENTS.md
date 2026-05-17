@@ -17,6 +17,11 @@
 - [x] REQ-10: Consulta por Voz/Texto — "como está o portfólio?" retorna dados formatados
 - [x] REQ-11: Sync Planner Standard — contagem automática de tarefas via conector Planner Standard
 
+### P0 — Phase 2.4 Contract Correction
+- [ ] REQ-14: CriarProjeto — criar somente item em `Projetos`, com Adaptive Card como Plano A, texto/STT como Plano B, `ProjectID` gerado pelo sistema, duplicate guard e Confirm-Before-Action.
+- [ ] REQ-15: CriarTarefa — criar somente item em `Tarefas`, vinculado a `ProjectID` existente/ativo/nao deletado em `Projetos`, sem qualquer escrita em `Projetos`.
+- [ ] REQ-16: Gerar_Multiplos_Projetos — criar projetos em lote e tarefas iniciais por indice, com Adaptive Card de revisao/confirmacao como Plano A, parser multilinha/STT como Plano B, limite inicial de 10 projetos e 10 tarefas, e resultado por linha.
+
 ### P2 — Enhancement
 - [x] REQ-12: Resumo Semanal — report expandido toda segunda 8h
 - [x] REQ-13: Marcos e Entregas — tracking de atrasos em dias

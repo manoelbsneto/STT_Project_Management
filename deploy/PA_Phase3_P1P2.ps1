@@ -547,7 +547,7 @@ function New-PortfolioSummaryActions {
     )
 
     $actions = [ordered]@{
-        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1" -Top 200
+        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1 and Deleted eq 0" -Top 200
         Filter_Verdes = [ordered]@{
             type = "Query"
             inputs = [ordered]@{
@@ -635,7 +635,7 @@ function New-PortfolioSummaryActions {
     }
 
     if ($IncludeWeeklyStatus) {
-        $actions.Get_Status_Semana = New-SharePointGetItems -ListName "Status Diario" -Filter "DataRegistro ge '@{addDays(utcNow(),-7)}'" -Top 500 -RunAfter @{ Count_Sem_Update = @("Succeeded") }
+        $actions.Get_Status_Semana = New-SharePointGetItems -ListName "Status Diario" -Filter "DataRegistro ge '@{addDays(utcNow(),-7)}' and Deleted eq 0" -Top 500 -RunAfter @{ Count_Sem_Update = @("Succeeded") }
         $actions.Filter_Projetos_Atrasados = [ordered]@{
             type = "Query"
             inputs = [ordered]@{
@@ -700,7 +700,7 @@ $flowDefinitions["PMO_PA_ResumoDiarioBoard"] = New-WorkflowDefinition `
             type = "Recurrence"
         }
     }) `
-    -Actions (New-PortfolioSummaryActions -PostCardExpression $dailyCardExpression -DecisionActionName "Compose_Decisoes_Pendentes" -DecisionFilter "StatusDecisao eq 'Pendente'")
+    -Actions (New-PortfolioSummaryActions -PostCardExpression $dailyCardExpression -DecisionActionName "Compose_Decisoes_Pendentes" -DecisionFilter "StatusDecisao eq 'Pendente' and Deleted eq 0")
 
 $flowDefinitions["PMO_PA_RegistrarDecisaoBoard"] = New-WorkflowDefinition `
     -Triggers ([ordered]@{ When_Decisao_Created = New-SharePointCreatedTrigger -ListName "Decisoes do Board" }) `
@@ -747,7 +747,7 @@ $flowDefinitions["PMO_PA_SyncPlannerStats_Standard"] = New-WorkflowDefinition `
         }
     }) `
     -Actions ([ordered]@{
-        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1" -Top 200
+        Get_Projetos_Ativos = New-SharePointGetItems -ListName "Projetos" -Filter "Ativo eq 1 and Deleted eq 0" -Top 200
         Filter_Projetos_Com_Planner = [ordered]@{
             type = "Query"
             inputs = [ordered]@{

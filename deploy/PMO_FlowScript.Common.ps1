@@ -225,6 +225,36 @@ function New-PMOSharePointPostItem {
         -RunAfter $RunAfter
 }
 
+function New-PMOSharePointPatchItem {
+    param(
+        [Parameter(Mandatory)]
+        [string]$SiteUrl,
+        [Parameter(Mandatory)]
+        [string]$ListName,
+        [Parameter(Mandatory)]
+        [object]$Id,
+        [Parameter(Mandatory)]
+        [hashtable]$ItemFields,
+        [hashtable]$RunAfter = @{}
+    )
+
+    $parameters = @{
+        dataset = $SiteUrl
+        table = $ListName
+        id = $Id
+    }
+    foreach ($key in $ItemFields.Keys) {
+        $parameters["item/$key"] = $ItemFields[$key]
+    }
+
+    New-PMOOpenApiAction `
+        -ApiId "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" `
+        -OperationId "PatchItem" `
+        -ConnectionName "shared_sharepointonline" `
+        -Parameters $parameters `
+        -RunAfter $RunAfter
+}
+
 function New-PMOResponse {
     param(
         [Parameter(Mandatory)]
@@ -239,7 +269,17 @@ function New-PMOResponse {
         inputs = [ordered]@{
             statusCode = $StatusCode
             headers = [ordered]@{ "Content-Type" = "application/json" }
-            body = [ordered]@{ result = $Result }
+            body = [ordered]@{ message = $Result }
+            schema = [ordered]@{
+                type = "object"
+                properties = [ordered]@{
+                    message = [ordered]@{
+                        title = "message"
+                        "x-ms-dynamically-added" = $true
+                        type = "string"
+                    }
+                }
+            }
         }
         runAfter = $RunAfter
     }
@@ -357,6 +397,8 @@ function Set-PMOProcessSimpleFlow {
         [object]$Definition,
         [Parameter(Mandatory)]
         [string]$SharePointConnectionName,
+        [ValidateSet("Embedded", "Invoker")]
+        [string]$SharePointRuntimeSource = "Embedded",
         [Parameter(Mandatory)]
         [string]$EvidenceRoot,
         [Parameter(Mandatory)]
@@ -389,7 +431,7 @@ function Set-PMOProcessSimpleFlow {
                 shared_sharepointonline = [ordered]@{
                     connectionName = $SharePointConnectionName
                     connectionReferenceLogicalName = "pmo_sharepoint"
-                    source = "Invoker"
+                    source = $SharePointRuntimeSource
                     id = "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
                     displayName = "SharePoint"
                     tier = "Standard"
@@ -424,13 +466,18 @@ function Set-PMOProcessSimpleFlow {
         $f
     }
 
+    $workflowEntityId = $null
+    if ($flow.Internal.properties -and ($flow.Internal.properties.PSObject.Properties.Name -contains "workflowEntityId")) {
+        $workflowEntityId = $flow.Internal.properties.workflowEntityId
+    }
+
     [ordered]@{
         displayName = $DisplayName
         status = $status
         flowName = $createdName
         enabled = $flow.Enabled
         state = $flow.Internal.properties.state
-        workflowEntityId = $flow.Internal.properties.workflowEntityId
+        workflowEntityId = $workflowEntityId
         requestPath = $requestPath
         resultPath = $resultPath
     }

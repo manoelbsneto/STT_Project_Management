@@ -1,0 +1,30 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Gerar_Multiplos_Projetos
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - gerar multiplos projetos
+      - criar varios projetos
+      - criar projetos em lote
+      - gerar projetos em batch
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawBatchText
+      value: =System.Activity.Text
+    - kind: SendActivity
+      id: adaptive_card_preview_marker
+      activity: "AdaptiveCard Action.Submit previewCreateBatch cardVersion=2.8 writeMode=disabled maxBatchProjects=10 maxBatchTasks=10 multiline STT fallback"
+    - kind: Question
+      id: confirm_batch
+      variable: Topic.ConfirmacaoTexto
+      prompt: Confirma gerar os projetos revisados?
+      entity: StringPrebuiltEntity
+    - kind: SendActivity
+      id: done
+      activity: "BATCH_PREVIEW_ONLY_NO_WRITE. Modo seguro v2.8: nenhuma gravacao foi executada. Proximo passo tecnico: Adaptive Card/parser por linha para Nome_ProjetoN e TarefaN antes de habilitar escrita. maxBatchProjects=10 maxBatchTasks=10."
+inputType: {}
+outputType: {}

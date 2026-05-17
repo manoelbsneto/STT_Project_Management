@@ -1,0 +1,167 @@
+﻿{
+    "name":  "2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441",
+    "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/flows/2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441",
+    "type":  "Microsoft.ProcessSimple/environments/flows",
+    "properties":  {
+                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+                       "displayName":  "PM0_PA_OpsFailureHandling",
+                       "userType":  "Owner",
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 },
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "source":  {
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "description":  "Source"
+                                                                                                                                      },
+                                                                                                                           "details":  {
+                                                                                                                                           "type":  "string",
+                                                                                                                                           "description":  "Details"
+                                                                                                                                       },
+                                                                                                                           "code":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "description":  "Code"
+                                                                                                                                    }
+                                                                                                                       },
+                                                                                                        "required":  [
+                                                                                                                         "source",
+                                                                                                                         "code"
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Sanitize_Error":  {
+                                                                                 "runAfter":  {
+
+                                                                                              },
+                                                                                 "type":  "Compose",
+                                                                                 "inputs":  "@substring(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027),0,min(length(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027)),500))"
+                                                                             },
+                                                          "Respond_Success":  {
+                                                                                  "runAfter":  {
+                                                                                                   "Sanitize_Error":  [
+                                                                                                                          "Succeeded"
+                                                                                                                      ]
+                                                                                               },
+                                                                                  "type":  "Response",
+                                                                                  "kind":  "Skills",
+                                                                                  "inputs":  {
+                                                                                                 "statusCode":  200,
+                                                                                                 "headers":  {
+                                                                                                                 "Content-Type":  "application/json"
+                                                                                                             },
+                                                                                                 "body":  {
+                                                                                                              "result":  "Operation failed securely."
+                                                                                                          },
+                                                                                                 "schema":  {
+                                                                                                                "type":  "object",
+                                                                                                                "properties":  {
+                                                                                                                                   "result":  {
+                                                                                                                                                  "title":  "result",
+                                                                                                                                                  "x-ms-dynamically-added":  true,
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                            }
+                                                                                             }
+                                                                              }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "triggerSchema":  {
+                                             "type":  "object",
+                                             "properties":  {
+                                                                "source":  {
+                                                                               "type":  "string",
+                                                                               "description":  "Source"
+                                                                           },
+                                                                "details":  {
+                                                                                "type":  "string",
+                                                                                "description":  "Details"
+                                                                            },
+                                                                "code":  {
+                                                                             "type":  "string",
+                                                                             "description":  "Code"
+                                                                         }
+                                                            },
+                                             "required":  [
+                                                              "source",
+                                                              "code"
+                                                          ]
+                                         },
+                       "state":  "Started",
+                       "connectionReferences":  {
+
+                                                },
+                       "createdTime":  "2026-05-15T19:06:55.2398614Z",
+                       "lastModifiedTime":  "2026-05-15T19:06:55.0607576Z",
+                       "flowSuspensionReason":  "None",
+                       "environment":  {
+                                           "name":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+                                           "type":  "Microsoft.ProcessSimple/environments",
+                                           "id":  "/providers/Microsoft.ProcessSimple/environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56"
+                                       },
+                       "definitionSummary":  {
+                                                 "triggers":  [
+                                                                  {
+                                                                      "type":  "Request",
+                                                                      "kind":  "Skills"
+                                                                  }
+                                                              ],
+                                                 "actions":  [
+                                                                 {
+                                                                     "type":  "Compose"
+                                                                 },
+                                                                 {
+                                                                     "type":  "Response",
+                                                                     "kind":  "Skills"
+                                                                 }
+                                                             ]
+                                             },
+                       "creator":  {
+                                       "tenantId":  "7808e005-1489-4374-954b-d3b08f193920",
+                                       "objectId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userId":  "3882eb28-005d-4948-a668-81263d778f6d",
+                                       "userType":  "ActiveDirectory"
+                                   },
+                       "installationStatus":  "Installed",
+                       "provisioningMethod":  "FromDefinition",
+                       "flowFailureAlertSubscribed":  true,
+                       "referencedResources":  [
+
+                                               ],
+                       "isManaged":  false,
+                       "machineDescriptionData":  {
+
+                                                  },
+                       "flowOpenAiData":  {
+                                              "isConsequential":  false,
+                                              "isConsequentialFlagOverwritten":  false
+                                          }
+                   }
+}

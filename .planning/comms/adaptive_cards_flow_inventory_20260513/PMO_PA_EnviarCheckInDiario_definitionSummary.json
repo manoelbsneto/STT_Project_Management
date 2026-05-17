@@ -1,0 +1,57 @@
+﻿{
+    "triggers":  [
+                     {
+                         "type":  "Recurrence"
+                     }
+                 ],
+    "actions":  [
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "GetItems"
+                    },
+                    {
+                        "type":  "Foreach"
+                    },
+                    {
+                        "type":  "OpenApiConnectionWebhook",
+                        "swaggerOperationId":  "PostCardAndWaitForResponse"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "Compose"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PostItem"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PatchItem"
+                    },
+                    {
+                        "type":  "If"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "PostCardToConversation"
+                    },
+                    {
+                        "type":  "OpenApiConnection",
+                        "swaggerOperationId":  "SendEmailV2"
+                    }
+                ]
+}

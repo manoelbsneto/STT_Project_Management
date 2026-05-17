@@ -1,0 +1,180 @@
+﻿{
+    "timestamp":  "2026-05-11T10:19:29.6273524-03:00",
+    "status":  "BUILD_ONLY",
+    "displayName":  "PMO_PA_ConsultarProjeto",
+    "definition":  {
+                       "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                       "contentVersion":  "1.0.0.0",
+                       "parameters":  {
+                                          "$authentication":  {
+                                                                  "defaultValue":  {
+
+                                                                                   },
+                                                                  "type":  "SecureObject"
+                                                              },
+                                          "$connections":  {
+                                                               "defaultValue":  {
+
+                                                                                },
+                                                               "type":  "Object"
+                                                           }
+                                      },
+                       "triggers":  {
+                                        "Copilot_Request":  {
+                                                                "type":  "Request",
+                                                                "kind":  "Skills",
+                                                                "inputs":  {
+                                                                               "schema":  {
+                                                                                              "type":  "object",
+                                                                                              "properties":  {
+                                                                                                                 "includeDeleted":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "description":  "Incluir registros excluidos? sim/nao"
+                                                                                                                                    },
+                                                                                                                 "nomeProjeto":  {
+                                                                                                                                     "type":  "string",
+                                                                                                                                     "description":  "Nome do projeto"
+                                                                                                                                 }
+                                                                                                             },
+                                                                                              "required":  [
+                                                                                                               "nomeProjeto"
+                                                                                                           ]
+                                                                                          }
+                                                                           }
+                                                            }
+                                    },
+                       "actions":  {
+                                       "Compose_ProjectName":  {
+                                                                   "type":  "Compose",
+                                                                   "inputs":  "@if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto=\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto:\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), trim(coalesce(triggerBody()?[\u0027nomeProjeto\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))))",
+                                                                   "runAfter":  {
+
+                                                                                }
+                                                               },
+                                       "Condition_Projeto_Encontrado":  {
+                                                                            "type":  "If",
+                                                                            "expression":  {
+                                                                                               "greater":  [
+                                                                                                               "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+                                                                                                               0
+                                                                                                           ]
+                                                                                           },
+                                                                            "actions":  {
+                                                                                            "Get_Riscos_Abertos":  {
+                                                                                                                       "type":  "OpenApiConnection",
+                                                                                                                       "inputs":  {
+                                                                                                                                      "parameters":  {
+                                                                                                                                                         "$filter":  "@{if(or(equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027sim\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027true\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027yes\u0027)), concat(\u0027ProjectID eq \u0027\u0027\u0027, replace(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027],\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and StatusRisco eq \u0027\u0027Aberto\u0027\u0027\u0027), concat(\u0027ProjectID eq \u0027\u0027\u0027, replace(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027],\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and StatusRisco eq \u0027\u0027Aberto\u0027\u0027 and Deleted eq 0\u0027))}",
+                                                                                                                                                         "table":  "Riscos e Bloqueios",
+                                                                                                                                                         "$top":  100,
+                                                                                                                                                         "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                                                                                     },
+                                                                                                                                      "host":  {
+                                                                                                                                                   "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                                                                                   "operationId":  "GetItems",
+                                                                                                                                                   "connectionName":  "shared_sharepointonline"
+                                                                                                                                               },
+                                                                                                                                      "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                                                                                  },
+                                                                                                                       "runAfter":  {
+
+                                                                                                                                    }
+                                                                                                                   },
+                                                                                            "Response_OK":  {
+                                                                                                                "type":  "Response",
+                                                                                                                "kind":  "Skills",
+                                                                                                                "inputs":  {
+                                                                                                                               "statusCode":  200,
+                                                                                                                               "headers":  {
+                                                                                                                                               "Content-Type":  "application/json"
+                                                                                                                                           },
+                                                                                                                               "body":  {
+                                                                                                                                            "message":  "@{concat(\u0027Projeto \u0027, coalesce(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027NomeProjeto\u0027], \u0027-\u0027), \u0027: RAG \u0027, coalesce(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027StatusRAG\u0027]?[\u0027Value\u0027], body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027StatusRAG\u0027], \u0027-\u0027), \u0027, Percentual \u0027, coalesce(string(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027Percentual\u0027]), \u00270\u0027), \u0027%, Data alvo \u0027, coalesce(string(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027DataAlvo\u0027]), \u0027-\u0027), \u0027, PM \u0027, coalesce(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027PM\u0027]?[\u0027Email\u0027], body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027PM\u0027]?[\u0027DisplayName\u0027], \u0027-\u0027), \u0027, Ultima atualizacao \u0027, coalesce(string(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027UltimaAtualizacao\u0027]), \u0027-\u0027), \u0027, Riscos abertos \u0027, string(length(body(\u0027Get_Riscos_Abertos\u0027)?[\u0027value\u0027])), \u0027.\u0027)}"
+                                                                                                                                        },
+                                                                                                                               "schema":  {
+                                                                                                                                              "type":  "object",
+                                                                                                                                              "properties":  {
+                                                                                                                                                                 "message":  {
+                                                                                                                                                                                 "title":  "message",
+                                                                                                                                                                                 "x-ms-dynamically-added":  true,
+                                                                                                                                                                                 "type":  "string"
+                                                                                                                                                                             }
+                                                                                                                                                             }
+                                                                                                                                          }
+                                                                                                                           },
+                                                                                                                "runAfter":  {
+                                                                                                                                 "Get_Riscos_Abertos":  [
+                                                                                                                                                            "Succeeded"
+                                                                                                                                                        ]
+                                                                                                                             }
+                                                                                                            }
+                                                                                        },
+                                                                            "else":  {
+                                                                                         "actions":  {
+                                                                                                         "Response_Project_Not_Found":  {
+                                                                                                                                            "type":  "Response",
+                                                                                                                                            "kind":  "Skills",
+                                                                                                                                            "inputs":  {
+                                                                                                                                                           "statusCode":  200,
+                                                                                                                                                           "headers":  {
+                                                                                                                                                                           "Content-Type":  "application/json"
+                                                                                                                                                                       },
+                                                                                                                                                           "body":  {
+                                                                                                                                                                        "message":  "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                                                                                                                                                                    },
+                                                                                                                                                           "schema":  {
+                                                                                                                                                                          "type":  "object",
+                                                                                                                                                                          "properties":  {
+                                                                                                                                                                                             "message":  {
+                                                                                                                                                                                                             "title":  "message",
+                                                                                                                                                                                                             "x-ms-dynamically-added":  true,
+                                                                                                                                                                                                             "type":  "string"
+                                                                                                                                                                                                         }
+                                                                                                                                                                                         }
+                                                                                                                                                                      }
+                                                                                                                                                       },
+                                                                                                                                            "runAfter":  {
+
+                                                                                                                                                         }
+                                                                                                                                        }
+                                                                                                     }
+                                                                                     },
+                                                                            "runAfter":  {
+                                                                                             "Get_Projeto":  [
+                                                                                                                 "Succeeded"
+                                                                                                             ]
+                                                                                         }
+                                                                        },
+                                       "Get_Projeto":  {
+                                                           "type":  "OpenApiConnection",
+                                                           "inputs":  {
+                                                                          "parameters":  {
+                                                                                             "$filter":  "@{if(or(equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027sim\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027true\u0027), equals(toLower(string(triggerBody()?[\u0027includeDeleted\u0027])), \u0027yes\u0027)), concat(\u0027NomeProjeto eq \u0027\u0027\u0027, replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and Ativo eq 1\u0027), concat(\u0027NomeProjeto eq \u0027\u0027\u0027, replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027), \u0027\u0027\u0027 and Ativo eq 1 and Deleted eq 0\u0027))}",
+                                                                                             "table":  "Projetos",
+                                                                                             "$top":  1,
+                                                                                             "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                                         },
+                                                                          "host":  {
+                                                                                       "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                                       "operationId":  "GetItems",
+                                                                                       "connectionName":  "shared_sharepointonline"
+                                                                                   },
+                                                                          "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                                      },
+                                                           "runAfter":  {
+                                                                            "Compose_ProjectName":  [
+                                                                                                        "Succeeded"
+                                                                                                    ]
+                                                                        }
+                                                       }
+                                   },
+                       "outputs":  {
+
+                                   }
+                   },
+    "triggerType":  "Request/Skills",
+    "connectors":  [
+                       "shared_sharepointonline"
+                   ],
+    "standardOnly":  true
+}

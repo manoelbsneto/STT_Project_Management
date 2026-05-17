@@ -1,0 +1,108 @@
+﻿{
+    "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "$authentication":  {
+                                               "defaultValue":  {
+
+                                                                },
+                                               "type":  "SecureObject"
+                                           },
+                       "$connections":  {
+                                            "defaultValue":  {
+
+                                                             },
+                                            "type":  "Object"
+                                        }
+                   },
+    "triggers":  {
+                     "manual":  {
+                                    "type":  "Request",
+                                    "kind":  "Skills",
+                                    "inputs":  {
+                                                   "schema":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+
+                                                                                 },
+                                                                  "required":  [
+
+                                                                               ]
+                                                              }
+                                               }
+                                }
+                 },
+    "actions":  {
+                    "Get_Projetos":  {
+                                         "type":  "OpenApiConnection",
+                                         "inputs":  {
+                                                        "parameters":  {
+                                                                           "table":  "Projetos",
+                                                                           "$top":  100,
+                                                                           "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                       },
+                                                        "host":  {
+                                                                     "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                     "connectionName":  "shared_sharepointonline",
+                                                                     "operationId":  "GetItems"
+                                                                 },
+                                                        "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                    },
+                                         "runAfter":  {
+
+                                                      }
+                                     },
+                    "Respond_Success":  {
+                                            "type":  "Response",
+                                            "kind":  "Skills",
+                                            "inputs":  {
+                                                           "statusCode":  200,
+                                                           "headers":  {
+                                                                           "Content-Type":  "application/json"
+                                                                       },
+                                                           "body":  {
+                                                                        "result":  "Executive portfolio retrieved successfully."
+                                                                    },
+                                                           "schema":  {
+                                                                          "type":  "object",
+                                                                          "properties":  {
+                                                                                             "result":  {
+                                                                                                            "title":  "result",
+                                                                                                            "x-ms-dynamically-added":  true,
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                      }
+                                                       },
+                                            "runAfter":  {
+                                                             "Get_Tarefas":  [
+                                                                                 "Succeeded"
+                                                                             ]
+                                                         }
+                                        },
+                    "Get_Tarefas":  {
+                                        "type":  "OpenApiConnection",
+                                        "inputs":  {
+                                                       "parameters":  {
+                                                                          "table":  "Tarefas",
+                                                                          "$top":  100,
+                                                                          "dataset":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                                                      },
+                                                       "host":  {
+                                                                    "apiId":  "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                                                                    "connectionName":  "shared_sharepointonline",
+                                                                    "operationId":  "GetItems"
+                                                                },
+                                                       "authentication":  "@parameters(\u0027$authentication\u0027)"
+                                                   },
+                                        "runAfter":  {
+                                                         "Get_Projetos":  [
+                                                                              "Succeeded"
+                                                                          ]
+                                                     }
+                                    }
+                },
+    "outputs":  {
+
+                }
+}

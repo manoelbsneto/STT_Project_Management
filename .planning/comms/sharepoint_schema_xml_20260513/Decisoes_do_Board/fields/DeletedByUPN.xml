@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="DeletedByUPN" DisplayName="DeletedByUPN" ID="{0179ee88-8507-4a47-befb-bb591e4a031d}" Group="" Required="FALSE" SourceID="{7177464d-2a9a-415c-bb19-a98bc53d6fa6}" StaticName="DeletedByUPN" ColName="nvarchar15" RowOrdinal="0" />

@@ -1,0 +1,5 @@
+Connected as mbenicios@minsait.com
+Looking for environment 'e2d10003-4d8e-e007-9d63-76d5fe89ef56'
+Validating connection...
+Connected to... ColOfertasBrasilPro
+Selected org 'ColOfertasBrasilPro' 'https://colofertasbrasilpro.crm4.dynamics.com/' for current authentication profile.

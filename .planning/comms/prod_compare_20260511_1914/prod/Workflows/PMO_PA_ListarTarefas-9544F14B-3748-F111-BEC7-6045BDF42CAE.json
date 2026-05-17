@@ -1,0 +1,188 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "title": "ProjectID",
+                  "x-ms-dynamically-added": true,
+                  "description": "Codigo do projeto (ex: PRJ-001)",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Tarefas_Projeto": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "$filter": "ProjectID eq '@{replace(triggerBody()?['text'],'''','''''')}' and Deleted eq 0",
+              "$top": 100,
+              "$orderby": "DataFim asc"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Check_Tarefas_Exist": {
+          "actions": {
+            "Respond_Empty": {
+              "runAfter": {},
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "body": {
+                  "result": "Nenhuma tarefa encontrada para o projeto **@{triggerBody()?['text']}**.\n\nUse o comando \"criar tarefa\" para adicionar tarefas a este projeto."
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "title": "Result",
+                      "x-ms-dynamically-added": true,
+                      "x-ms-content-hint": "TEXT"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Tarefas_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Count_Total": {
+                "runAfter": {},
+                "type": "Compose",
+                "inputs": "@length(body('Get_Tarefas_Projeto')?['value'])"
+              },
+              "Filter_Concluidas": {
+                "runAfter": {},
+                "type": "Query",
+                "inputs": {
+                  "from": "@body('Get_Tarefas_Projeto')?['value']",
+                  "where": "@equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')"
+                }
+              },
+              "Count_Concluidas": {
+                "runAfter": {
+                  "Filter_Concluidas": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Compose",
+                "inputs": "@length(body('Filter_Concluidas'))"
+              },
+              "Select_Tarefas": {
+                "runAfter": {},
+                "type": "Select",
+                "inputs": {
+                  "from": "@body('Get_Tarefas_Projeto')?['value']",
+                  "select": "@concat('**', item()?['Title'], '** (ID: ', string(item()?['ID']), ')', '\n  Status: ', coalesce(item()?['Status']?['Value'], item()?['Status'], '-'), ' | Prioridade: ', coalesce(item()?['Prioridade']?['Value'], item()?['Prioridade'], '-'), '\n  Responsavel: ', coalesce(item()?['Responsavel'], '-'), '\n  Inicio: ', coalesce(string(item()?['DataInicio']), '-'), ' -> Fim: ', coalesce(string(item()?['DataFim']), '-'), '\n  Horas: ', coalesce(string(item()?['HorasEstimadas']), '0'), ' est. / ', coalesce(string(item()?['HorasRealizadas']), '0'), ' real.')"
+                }
+              },
+              "Compose_Lista": {
+                "runAfter": {
+                  "Select_Tarefas": [
+                    "Succeeded"
+                  ],
+                  "Count_Total": [
+                    "Succeeded"
+                  ],
+                  "Count_Concluidas": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Compose",
+                "inputs": "@concat('Breakdown do Projeto ', triggerBody()?['text'], ' - ', string(outputs('Count_Total')), ' tarefa(s), ', string(outputs('Count_Concluidas')), ' concluida(s)\n\n', join(body('Select_Tarefas'), '\n---\n'))"
+              },
+              "Respond_Lista": {
+                "runAfter": {
+                  "Compose_Lista": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "result": "@{outputs('Compose_Lista')}"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "string",
+                        "title": "Result",
+                        "x-ms-dynamically-added": true,
+                        "x-ms-content-hint": "TEXT"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@length(body('Get_Tarefas_Projeto')?['value'])",
+              0
+            ]
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

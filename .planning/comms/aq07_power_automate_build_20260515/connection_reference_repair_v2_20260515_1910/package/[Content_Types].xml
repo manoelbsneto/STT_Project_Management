@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="xml" ContentType="application/octet-stream" /><Default Extension="json" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data" ContentType="application/octet-stream" />
+<Override PartName="/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/data" ContentType="application/octet-stream" />
+</Types>

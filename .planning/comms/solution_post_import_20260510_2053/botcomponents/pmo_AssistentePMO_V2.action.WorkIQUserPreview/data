@@ -1,0 +1,12 @@
+kind: TaskDialog
+modelDisplayName: Work IQ User (Preview)
+action:
+  kind: InvokeExternalAgentTaskAction
+  connectionReference: pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365memcp.shareda365memcped1
+  connectionProperties:
+    name: pmo_AssistentePMO_V2.connectionreference.pmo_AssistentePMO_Clean.shared_a365memcp.shareda365memcped1
+    mode: Invoker
+
+  operationDetails:
+    kind: ModelContextProtocolMetadata
+    operationId: mcp_MeServer

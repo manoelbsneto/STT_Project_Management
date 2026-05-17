@@ -1,0 +1,64 @@
+﻿{
+    "taskId":  "AQ-07-POWER-AUTOMATE-BUILD-SAVE-IMPORT",
+    "status":  "PROGRAMMATIC_SAVE_COMPLETE_READY_FOR_AQ08",
+    "buildOnly":  false,
+    "environmentName":  "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "environmentUrl":  "https://colofertasbrasilpro.crm4.dynamics.com/",
+    "flows":  [
+                  {
+                      "displayName":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+                      "mode":  "PATCH",
+                      "flowName":  "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_Card_ResumoExecutivoPortfolio.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_Card_ResumoExecutivoPortfolio.json"
+                  },
+                  {
+                      "displayName":  "PM0_PA_Card_AtualizarStatus",
+                      "mode":  "PATCH",
+                      "flowName":  "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_Card_AtualizarStatus.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_Card_AtualizarStatus.json"
+                  },
+                  {
+                      "displayName":  "PM0_PA_Card_ListarTarefas",
+                      "mode":  "PATCH",
+                      "flowName":  "c9e44878-77ed-4b17-9b6f-0bab008a0587",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_Card_ListarTarefas.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_Card_ListarTarefas.json"
+                  },
+                  {
+                      "displayName":  "PM0_PA_Card_CriarTarefa",
+                      "mode":  "PATCH",
+                      "flowName":  "76146280-a6c2-4068-8a3f-3310e3e9210f",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_Card_CriarTarefa.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_Card_CriarTarefa.json"
+                  },
+                  {
+                      "displayName":  "PM0_PA_Card_AtualizarTarefa",
+                      "mode":  "PATCH",
+                      "flowName":  "36142fd3-9f83-4d4f-81e2-748ded919a92",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_Card_AtualizarTarefa.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_Card_AtualizarTarefa.json"
+                  },
+                  {
+                      "displayName":  "PM0_PA_OpsFailureHandling",
+                      "mode":  "POST",
+                      "flowName":  "6e9f75cb-77fb-4cc7-a0bd-07e96fbd1c6f",
+                      "requestPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\request_PM0_PA_OpsFailureHandling.json",
+                      "responsePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\response_PM0_PA_OpsFailureHandling.json"
+                  }
+              ],
+    "connectionReferences":  {
+                                 "SharePoint":  "44f187cde7f54f208cf22bac4e533816",
+                                 "Teams":  "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+                                 "Planner":  "6b763b98729c4d99a7a8df4033d381af"
+                             },
+    "forbiddenActionsConfirmedNotPerformed":  {
+                                                  "pacSolutionImport":  true,
+                                                  "m365Cli":  true,
+                                                  "copilotPublish":  true,
+                                                  "runtimeSmokeTests":  true,
+                                                  "teamsProductionPosts":  true
+                                              },
+    "releaseDecision":  "NO-SHIP"
+}

@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponent_connectionreferenceid   botcomponentid                       connectionreferenceid
+7ca27f6c-154a-f111-bec7-000d3abc5cc6 b699c70a-8aa4-4441-b659-059efe08bcd0 69818553-a667-4c16-b7ec-4698fe2af1c5
+54aecf01-3449-f111-bec7-7ced8d955c6c 4056148e-1c3b-4e1d-9b2f-f45175857eee 3e8967dc-209f-4b06-8a45-64afa0b85f66
+52068b72-154a-f111-bec7-000d3abc5cc6 9280311c-9590-49cc-9e2c-46c84a037fe6 79a8e76b-7707-4cd4-948c-c82560e8d882
+52aecf01-3449-f111-bec7-7ced8d955c6c 23b9e2c9-c27b-4b36-abb2-66ca3b4b141c fbb77fdb-2d5c-45cd-a908-b6f93c758bd8
+

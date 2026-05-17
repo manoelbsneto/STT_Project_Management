@@ -75,3 +75,57 @@ The Copilot Studio `AdaptiveDialog` YAML schema used in the `data` file of bot c
 
 ### Fix
 Simply wait ~30 seconds and retry. The deploy script should catch this and auto-retry (current script throws immediately). Consider adding retry logic with exponential backoff.
+
+---
+
+## LL-04: Bot-Visible SharePoint Output Can Trigger Copilot Studio Responsible AI Filters
+
+**Date:** 2026-05-13
+**Phase:** 2.9/3.0 Runtime Hardening
+**Severity:** 🔴 Critical
+**Observed in:** `ListarTarefas`
+
+### Problem
+`ListarTarefas` returned the correct SharePoint data, but Copilot Studio blocked the next step with `ContentFiltered` / `openAIIndirectAttack`. The runtime evidence showed the list output first, followed by:
+
+`Ocorreu um erro no Assistente PMO. Codigo: ContentFiltered.`
+
+### Root Cause
+Copilot Studio Responsible AI evaluates both user input and agent output. In this case, the flow was returning a Markdown-heavy message composed from SharePoint fields that can contain user-controlled text, including task title, project name, and responsible. Even when SharePoint data is legitimate, echoing untrusted text directly into the bot-visible response can be interpreted as prompt-injection-like content.
+
+Microsoft reference: https://learn.microsoft.com/en-us/microsoft-copilot-studio/troubleshoot-agent-response-filtered-by-responsible-ai
+
+### Fix Pattern
+1. Keep the SharePoint query and schema unchanged.
+2. Sanitize every user-controlled SharePoint field before returning it to Copilot Studio.
+3. Return plain text, not Markdown-formatted reports:
+   - Do not use `**bold**`
+   - Do not use `---` section dividers
+   - Do not use fenced code blocks
+   - Avoid raw multi-line free text from SharePoint fields
+4. Preserve the action contract as a single `result` string so existing Copilot Studio bindings do not break.
+5. Use only Power Automate Workflow Definition Language expressions in flows. Do not mix Power Fx syntax into cloud flow JSON.
+
+### Gate Added
+The local package gate must include `tests/Test-ListarTarefasContentSafeContract.ps1` and the stop-ship audit checks for:
+
+- plain text response
+- sanitized task title, responsible, and project display name
+- stable `result` response schema
+- no Markdown-heavy response markers
+
+### Runtime Validation Pattern
+Use a create-list-delete loop with read-only SharePoint verification:
+
+1. Create task with Brazilian date format `dd/MM/yyyy`.
+2. List tasks for the project and confirm no `ContentFiltered` after the response.
+3. Delete only the returned task ID.
+4. List again and confirm the active task list is empty.
+5. Confirm through read-only SharePoint that the deleted record remains for audit with `Deleted=true`, `DeletedAt`, `DeletedReason`, and `DeletedByUPN`.
+
+### Prevention Rules
+1. Never return raw SharePoint text fields directly to Copilot Studio.
+2. Treat every SharePoint field as untrusted bot-visible content unless sanitized.
+3. Never solve `ContentFiltered` by weakening security controls; change the output shape instead.
+4. Keep plan A as Adaptive Cards for rich UX, but keep the plain text parser/flow path as a robust fallback.
+5. The user performs all imports and publishes manually. Codex may prepare packages and run local gates only.

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMO Executive Viewer — Indra Corporate Standard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navbar (UI_UX Standard) -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 2L2 8l12 6 12-6-12-6z" stroke="#00B0BD" stroke-width="1.5" fill="none"/>
+        <path d="M2 20l12 6 12-6" stroke="#00B0BD" stroke-width="1.5" fill="none"/>
+        <path d="M2 14l12 6 12-6" stroke="#00B0BD" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span class="nav-title" id="dashSuperTitle">PortalShift Intelligence</span>
+    </div>
+    <div class="nav-links" id="sectionNav">
+      <!-- Dynamic Section Links -->
+    </div>
+    <span class="nav-tag" id="dashGateHeader">NO-SHIP</span>
+  </nav>
+
+  <main>
+    <!-- Initial Landing View (Hero) -->
+    <section class="hero-banner view-section active" id="heroView">
+      <canvas id="particleCanvas"></canvas>
+      <div class="hero-content" data-animate>
+        <p class="hero-eyebrow">AWAITING DATA SOURCE</p>
+        <h1 class="hero-headline text-hero">PMO 360<br><span class="text-cyan">Status Report</span></h1>
+        <p class="hero-subtitle text-body-lg">Use the "Upload .md" action or click below to load the PMO demonstration dataset built on the official Indra corporate palette.</p>
+        <div class="hero-actions">
+          <button class="btn btn-cyan" id="btnDemo">Load Demo Data</button>
+          
+          <label class="btn btn-primary" for="fileInputHero">
+            Upload .md
+          </label>
+          <input type="file" id="fileInputHero" accept=".md,.markdown,.txt" class="hidden">
+        </div>
+      </div>
+    </section>
+
+    <!-- Active Dashboard View -->
+    <div class="view-section" id="view-overview">
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-eyebrow" id="dashDate">--</p>
+            <h2 class="section-title" id="dashTitle">PMO 360 Status Report</h2>
+            <p class="section-desc" id="dashEnv">--</p>
+          </div>
+
+          <div class="card-grid--kpi" id="kpiGrid">
+            <!-- KPIs will render here -->
+          </div>
+
+          <div id="dynamicViews">
+            <!-- Tables and blocks will render here -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Drilldown Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Details</h3>
+      <button class="drawer-close" id="btnCloseDrawer">&times;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>

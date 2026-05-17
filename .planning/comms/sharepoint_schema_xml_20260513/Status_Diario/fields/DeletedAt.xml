@@ -1,0 +1,1 @@
+﻿<Field Type="DateTime" Name="DeletedAt" DisplayName="DeletedAt" ID="{9b505f61-dec4-49fc-a077-0221598b36f5}" Group="" Required="FALSE" SourceID="{96984b1e-d983-4a50-bd5a-2f921402acac}" StaticName="DeletedAt" ColName="datetime2" RowOrdinal="0" />

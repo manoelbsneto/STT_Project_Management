@@ -1,0 +1,148 @@
+{
+  "timestamp": "2026-05-10T20:06:03.7685581-03:00",
+  "status": "BUILD_ONLY",
+  "displayName": "PMO_PA_ConsultarProjeto",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$authentication": {
+        "defaultValue": {},
+        "type": "SecureObject"
+      },
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      }
+    },
+    "triggers": {
+      "Copilot_Request": {
+        "type": "Request",
+        "kind": "Skills",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "includeDeleted": {
+                "type": "string",
+                "description": "Incluir registros excluidos? sim/nao"
+              },
+              "nomeProjeto": {
+                "type": "string",
+                "description": "Nome do projeto"
+              }
+            },
+            "required": [
+              "nomeProjeto"
+            ]
+          }
+        }
+      }
+    },
+    "actions": {
+      "Compose_ProjectName": {
+        "type": "Compose",
+        "inputs": "@trim(coalesce(triggerBody()?['nomeProjeto'], triggerBody()?['projectName'], triggerBody()?['nomeProjeto'], ''))",
+        "runAfter": {}
+      },
+      "Condition_Projeto_Encontrado": {
+        "type": "If",
+        "expression": {
+          "greater": [
+            "@length(body('Get_Projeto')?['value'])",
+            0
+          ]
+        },
+        "actions": {
+          "Get_Riscos_Abertos": {
+            "type": "OpenApiConnection",
+            "inputs": {
+              "parameters": {
+                "$filter": "@{if(or(equals(toLower(string(triggerBody()?['includeDeleted'])), 'sim'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'true'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'yes')), concat('ProjectID eq ''', replace(body('Get_Projeto')?['value']?[0]?['ProjectID'],'''',''''''), ''' and StatusRisco eq ''Aberto'''), concat('ProjectID eq ''', replace(body('Get_Projeto')?['value']?[0]?['ProjectID'],'''',''''''), ''' and StatusRisco eq ''Aberto'' and Deleted eq 0'))}",
+                "table": "Riscos e Bloqueios",
+                "$top": 100,
+                "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+              },
+              "host": {
+                "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                "operationId": "GetItems",
+                "connectionName": "shared_sharepointonline"
+              },
+              "authentication": "@parameters('$authentication')"
+            },
+            "runAfter": {}
+          },
+          "Response_OK": {
+            "type": "Response",
+            "kind": "Skills",
+            "inputs": {
+              "statusCode": 200,
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "result": "@{concat('Projeto ', coalesce(body('Get_Projeto')?['value']?[0]?['NomeProjeto'], '-'), ': RAG ', coalesce(body('Get_Projeto')?['value']?[0]?['StatusRAG']?['Value'], body('Get_Projeto')?['value']?[0]?['StatusRAG'], '-'), ', Percentual ', coalesce(string(body('Get_Projeto')?['value']?[0]?['Percentual']), '0'), '%, Data alvo ', coalesce(string(body('Get_Projeto')?['value']?[0]?['DataAlvo']), '-'), ', PM ', coalesce(body('Get_Projeto')?['value']?[0]?['PM']?['Email'], body('Get_Projeto')?['value']?[0]?['PM']?['DisplayName'], '-'), ', Ultima atualizacao ', coalesce(string(body('Get_Projeto')?['value']?[0]?['UltimaAtualizacao']), '-'), ', Riscos abertos ', string(length(body('Get_Riscos_Abertos')?['value'])), '.')}"
+              }
+            },
+            "runAfter": {
+              "Get_Riscos_Abertos": [
+                "Succeeded"
+              ]
+            }
+          }
+        },
+        "else": {
+          "actions": {
+            "Response_Project_Not_Found": {
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "result": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                }
+              },
+              "runAfter": {}
+            }
+          }
+        },
+        "runAfter": {
+          "Get_Projeto": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Get_Projeto": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "$filter": "@{if(or(equals(toLower(string(triggerBody()?['includeDeleted'])), 'sim'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'true'), equals(toLower(string(triggerBody()?['includeDeleted'])), 'yes')), concat('NomeProjeto eq ''', replace(outputs('Compose_ProjectName'),'''',''''''), ''' and Ativo eq 1'), concat('NomeProjeto eq ''', replace(outputs('Compose_ProjectName'),'''',''''''), ''' and Ativo eq 1 and Deleted eq 0'))}",
+            "table": "Projetos",
+            "$top": 1,
+            "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+            "operationId": "GetItems",
+            "connectionName": "shared_sharepointonline"
+          },
+          "authentication": "@parameters('$authentication')"
+        },
+        "runAfter": {
+          "Compose_ProjectName": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "triggerType": "Request/Skills",
+  "connectors": [
+    "shared_sharepointonline"
+  ],
+  "standardOnly": true
+}

@@ -80,6 +80,8 @@ function Add-PMOCommonFlowChecks {
     Add-PMOCheck $Checks "Flow display name is $DisplayName" ($Text -match [regex]::Escape($DisplayName)) "Expected display name in build output."
     Add-PMOCheck $Checks "Flow uses Skills trigger" ($Text -match '"kind"\s*:\s*"Skills"') "All bot flows must use Run a flow from Copilot / Skills trigger."
     Add-PMOCheck $Checks "Flow uses SharePoint Standard connector" ($Text -match "shared_sharepointonline") "Only SharePoint Standard connector expected."
+    Add-PMOCheck $Checks "SharePoint connection runs embedded" ($Text -match '"source"\s*:\s*"Embedded"' -and $Text -notmatch '"source"\s*:\s*"Invoker"') "Copilot write/read flows must use the bound environment SharePoint connection, not per-user invoker consent."
+    Add-PMOCheck $Checks "Flow has no raw APIM token auth" ($Text -notmatch "X-MS-APIM-Tokens|ConnectionKey") "Copilot flows must use connection reference authentication instead of invoker token headers."
     Add-PMOCheck $Checks "Flow has no padLeft" ($Text -notmatch "padLeft") "padLeft is unsupported in this tenant."
     Add-PMOCheck $Checks "Flow text is ASCII-only" ($Text -notmatch "[^\x00-\x7F]") "Operational flow text must be ASCII-only."
     Add-PMOCheck $Checks "Flow has no mojibake" ($Text -notmatch "$([char]0x00F0)|$([char]0x00C3)|$([char]0x00E2)|$([char]0x00C2)|$([char]0xFFFD)") "No corrupt UTF-8 sequences."

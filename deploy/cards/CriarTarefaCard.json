@@ -1,0 +1,126 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Create Task",
+          "weight": "Bolder",
+          "size": "Medium",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Project: ${projectName}",
+          "isSubtle": true,
+          "spacing": "None",
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Project ID:", "value": "${projectId}" },
+        { "title": "Planner mapping:", "value": "${plannerMappingStatus}" },
+        { "title": "Operation:", "value": "${operationId}" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "taskTitle",
+      "label": "Task title",
+      "isRequired": true,
+      "errorMessage": "Enter a task title.",
+      "placeholder": "Enter task title."
+    },
+    {
+      "type": "Input.Text",
+      "id": "taskDescription",
+      "label": "Description",
+      "isMultiline": true,
+      "placeholder": "Describe the task."
+    },
+    {
+      "type": "Input.Text",
+      "id": "responsibleUpn",
+      "label": "Responsible UPN",
+      "isRequired": true,
+      "errorMessage": "Enter a valid responsible UPN.",
+      "placeholder": "name@domain.com"
+    },
+    {
+      "type": "Input.Date",
+      "id": "dueDate",
+      "label": "Due date",
+      "isRequired": true,
+      "errorMessage": "Select a due date."
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "priority",
+      "label": "Priority",
+      "choices": [
+        { "title": "Low", "value": "Baixa" },
+        { "title": "Normal", "value": "Normal" },
+        { "title": "High", "value": "Alta" },
+        { "title": "Critical", "value": "Critica" }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "plannerBucketName",
+      "label": "Planner bucket",
+      "isRequired": true,
+      "errorMessage": "Select a Planner bucket.",
+      "value": "Pendente",
+      "choices": [
+        { "title": "Pendente", "value": "Pendente" },
+        { "title": "Em Andamento", "value": "Em Andamento" },
+        { "title": "Testes", "value": "Testes" },
+        { "title": "Piloto e Implantacao", "value": "Piloto e Implantacao" },
+        { "title": "Concluido", "value": "Concluido" },
+        { "title": "Cancelado", "value": "Cancelado" }
+      ]
+    },
+    {
+      "type": "Input.Number",
+      "id": "estimatedHours",
+      "label": "Estimated hours",
+      "min": 0,
+      "placeholder": "0"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Create task",
+      "style": "positive",
+      "data": {
+        "action": "submitCreateTask",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Cancel",
+      "data": {
+        "action": "cancelTaskEdit",
+        "routeKey": "task.card.route",
+        "operationId": "${operationId}",
+        "cardVersion": "1.0",
+        "source": "AdaptiveCard",
+        "projectId": "${projectId}"
+      }
+    }
+  ]
+}

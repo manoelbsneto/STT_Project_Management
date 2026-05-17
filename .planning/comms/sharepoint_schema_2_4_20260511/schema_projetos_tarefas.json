@@ -1,0 +1,1022 @@
+﻿[
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "ListName":  "Projetos",
+        "ListId":  "0271c9e8-c184-4b91-99f9-5b71f9b08826",
+        "ItemCount":  24,
+        "BaseTemplate":  100,
+        "Fields":  [
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "Title",
+                           "TypeAsString":  "Text",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de color",
+                           "InternalName":  "_ColorTag",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Id. de activo de cumplimiento normativo",
+                           "InternalName":  "ComplianceAssetId",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "ProjectID",
+                           "InternalName":  "ProjectID",
+                           "TypeAsString":  "Text",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Nome",
+                           "InternalName":  "NomeProjeto",
+                           "TypeAsString":  "Text",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "PM",
+                           "InternalName":  "PM",
+                           "TypeAsString":  "User",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Sponsor",
+                           "InternalName":  "Sponsor",
+                           "TypeAsString":  "User",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "StatusRAG",
+                           "InternalName":  "StatusRAG",
+                           "TypeAsString":  "Choice",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "Verde",
+                                           "Amarelo",
+                                           "Vermelho"
+                                       ],
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Percentual",
+                           "InternalName":  "Percentual",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DataAlvo",
+                           "InternalName":  "DataAlvo",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "UltimaAtualizacao",
+                           "InternalName":  "UltimaAtualizacao",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Ativo",
+                           "InternalName":  "Ativo",
+                           "TypeAsString":  "Boolean",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Unidade",
+                           "InternalName":  "Unidade",
+                           "TypeAsString":  "Choice",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "TI",
+                                           "Digital",
+                                           "Dados",
+                                           "Infra",
+                                           "Seguranca"
+                                       ],
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Prioridade",
+                           "InternalName":  "Prioridade",
+                           "TypeAsString":  "Choice",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "Alta",
+                                           "Media",
+                                           "Baixa"
+                                       ],
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "PlannerGroupId",
+                           "InternalName":  "PlannerGroupId",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "PlannerPlanId",
+                           "InternalName":  "PlannerPlanId",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "LinkPlanner",
+                           "InternalName":  "LinkPlanner",
+                           "TypeAsString":  "URL",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "TarefasTotal",
+                           "InternalName":  "TarefasTotal",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "TarefasAbertas",
+                           "InternalName":  "TarefasAbertas",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "TarefasConcluidas",
+                           "InternalName":  "TarefasConcluidas",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "TarefasAtrasadas",
+                           "InternalName":  "TarefasAtrasadas",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "PlannerLastSyncAt",
+                           "InternalName":  "PlannerLastSyncAt",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "PlannerSyncStatus",
+                           "InternalName":  "PlannerSyncStatus",
+                           "TypeAsString":  "Choice",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "OK",
+                                           "Erro",
+                                           "Pendente"
+                                       ],
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "ResumoExecutivo",
+                           "InternalName":  "ResumoExecutivo",
+                           "TypeAsString":  "Note",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DiasSemUpdate",
+                           "InternalName":  "DiasSemUpdate",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Deleted",
+                           "InternalName":  "Deleted",
+                           "TypeAsString":  "Boolean",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  "0"
+                       },
+                       {
+                           "Title":  "DeletedAt",
+                           "InternalName":  "DeletedAt",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DeletedReason",
+                           "InternalName":  "DeletedReason",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DeletedByUPN",
+                           "InternalName":  "DeletedByUPN",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "ID",
+                           "InternalName":  "ID",
+                           "TypeAsString":  "Counter",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Tipo de contenido",
+                           "InternalName":  "ContentType",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Modificado",
+                           "InternalName":  "Modified",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Creado",
+                           "InternalName":  "Created",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Creado por",
+                           "InternalName":  "Author",
+                           "TypeAsString":  "User",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Modificado por",
+                           "InternalName":  "Editor",
+                           "TypeAsString":  "User",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Versión",
+                           "InternalName":  "_UIVersionString",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Datos adjuntos",
+                           "InternalName":  "Attachments",
+                           "TypeAsString":  "Attachments",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Editar",
+                           "InternalName":  "Edit",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "LinkTitleNoMenu",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "LinkTitle",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Tipo",
+                           "InternalName":  "DocIcon",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Número secundario de elemento",
+                           "InternalName":  "ItemChildCount",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Recuento secundario de carpetas",
+                           "InternalName":  "FolderChildCount",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Configuración de la etiqueta",
+                           "InternalName":  "_ComplianceFlags",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de retención",
+                           "InternalName":  "_ComplianceTag",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de retención aplicada",
+                           "InternalName":  "_ComplianceTagWrittenTime",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Usuario que ha aplicado la etiqueta:",
+                           "InternalName":  "_ComplianceTagUserId",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "El elemento es un registro",
+                           "InternalName":  "_IsRecord",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Aplicación creada por",
+                           "InternalName":  "AppAuthor",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Aplicación modificada por",
+                           "InternalName":  "AppEditor",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       }
+                   ],
+        "Sample":  [
+                       {
+                           "ID":  1,
+                           "Title":  null,
+                           "ProjectID":  "PRJ-001",
+                           "NomeProjeto":  "Mobile App Corporativo",
+                           "Deleted":  false,
+                           "Ativo":  true,
+                           "Prioridade":  "Alta",
+                           "Created":  "\/Date(1777734107000)\/",
+                           "Modified":  "\/Date(1778282748000)\/"
+                       },
+                       {
+                           "ID":  2,
+                           "Title":  null,
+                           "ProjectID":  "PRJ-002",
+                           "NomeProjeto":  "Migração Cloud Azure",
+                           "Deleted":  false,
+                           "Ativo":  true,
+                           "Prioridade":  "Alta",
+                           "Created":  "\/Date(1777734109000)\/",
+                           "Modified":  "\/Date(1778282782000)\/"
+                       },
+                       {
+                           "ID":  3,
+                           "Title":  null,
+                           "ProjectID":  "PRJ-003",
+                           "NomeProjeto":  "Portal do Colaborador",
+                           "Deleted":  false,
+                           "Ativo":  true,
+                           "Prioridade":  "Media",
+                           "Created":  "\/Date(1777734111000)\/",
+                           "Modified":  "\/Date(1778282807000)\/"
+                       },
+                       {
+                           "ID":  4,
+                           "Title":  null,
+                           "ProjectID":  "PRJ-004",
+                           "NomeProjeto":  "Data Lake Analytics",
+                           "Deleted":  false,
+                           "Ativo":  true,
+                           "Prioridade":  "Media",
+                           "Created":  "\/Date(1777734113000)\/",
+                           "Modified":  "\/Date(1778282764000)\/"
+                       },
+                       {
+                           "ID":  5,
+                           "Title":  null,
+                           "ProjectID":  "PRJ-005",
+                           "NomeProjeto":  "Automação RPA Financeiro",
+                           "Deleted":  false,
+                           "Ativo":  true,
+                           "Prioridade":  "Alta",
+                           "Created":  "\/Date(1777734114000)\/",
+                           "Modified":  "\/Date(1778282793000)\/"
+                       }
+                   ]
+    },
+    {
+        "SiteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "ListName":  "Tarefas",
+        "ListId":  "36d78ca1-1f60-4dd3-a4d5-5c94b89969e9",
+        "ItemCount":  7,
+        "BaseTemplate":  100,
+        "Fields":  [
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "Title",
+                           "TypeAsString":  "Text",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de color",
+                           "InternalName":  "_ColorTag",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Id. de activo de cumplimiento normativo",
+                           "InternalName":  "ComplianceAssetId",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "ProjectID",
+                           "InternalName":  "ProjectID",
+                           "TypeAsString":  "Text",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Responsavel",
+                           "InternalName":  "Responsavel",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DataInicio",
+                           "InternalName":  "DataInicio",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DataFim",
+                           "InternalName":  "DataFim",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "HorasEstimadas",
+                           "InternalName":  "HorasEstimadas",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  "0"
+                       },
+                       {
+                           "Title":  "HorasRealizadas",
+                           "InternalName":  "HorasRealizadas",
+                           "TypeAsString":  "Number",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  "0"
+                       },
+                       {
+                           "Title":  "Status",
+                           "InternalName":  "Status",
+                           "TypeAsString":  "Choice",
+                           "Required":  true,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "Pendente",
+                                           "Em Andamento",
+                                           "ConcluÃ­da",
+                                           "Cancelada"
+                                       ],
+                           "DefaultValue":  "Pendente"
+                       },
+                       {
+                           "Title":  "Prioridade",
+                           "InternalName":  "Prioridade",
+                           "TypeAsString":  "Choice",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  [
+                                           "Baixa",
+                                           "MÃ©dia",
+                                           "Alta",
+                                           "CrÃ­tica"
+                                       ],
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Deleted",
+                           "InternalName":  "Deleted",
+                           "TypeAsString":  "Boolean",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  "0"
+                       },
+                       {
+                           "Title":  "DeletedAt",
+                           "InternalName":  "DeletedAt",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DeletedReason",
+                           "InternalName":  "DeletedReason",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "DeletedByUPN",
+                           "InternalName":  "DeletedByUPN",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "ID",
+                           "InternalName":  "ID",
+                           "TypeAsString":  "Counter",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Tipo de contenido",
+                           "InternalName":  "ContentType",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Modificado",
+                           "InternalName":  "Modified",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Creado",
+                           "InternalName":  "Created",
+                           "TypeAsString":  "DateTime",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Creado por",
+                           "InternalName":  "Author",
+                           "TypeAsString":  "User",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Modificado por",
+                           "InternalName":  "Editor",
+                           "TypeAsString":  "User",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Versión",
+                           "InternalName":  "_UIVersionString",
+                           "TypeAsString":  "Text",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Datos adjuntos",
+                           "InternalName":  "Attachments",
+                           "TypeAsString":  "Attachments",
+                           "Required":  false,
+                           "ReadOnlyField":  false,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Editar",
+                           "InternalName":  "Edit",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "LinkTitleNoMenu",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Título",
+                           "InternalName":  "LinkTitle",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Tipo",
+                           "InternalName":  "DocIcon",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Número secundario de elemento",
+                           "InternalName":  "ItemChildCount",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Recuento secundario de carpetas",
+                           "InternalName":  "FolderChildCount",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Configuración de la etiqueta",
+                           "InternalName":  "_ComplianceFlags",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de retención",
+                           "InternalName":  "_ComplianceTag",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Etiqueta de retención aplicada",
+                           "InternalName":  "_ComplianceTagWrittenTime",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Usuario que ha aplicado la etiqueta:",
+                           "InternalName":  "_ComplianceTagUserId",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "El elemento es un registro",
+                           "InternalName":  "_IsRecord",
+                           "TypeAsString":  "Computed",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Aplicación creada por",
+                           "InternalName":  "AppAuthor",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       },
+                       {
+                           "Title":  "Aplicación modificada por",
+                           "InternalName":  "AppEditor",
+                           "TypeAsString":  "Lookup",
+                           "Required":  false,
+                           "ReadOnlyField":  true,
+                           "Hidden":  false,
+                           "Choices":  null,
+                           "DefaultValue":  null
+                       }
+                   ],
+        "Sample":  [
+                       {
+                           "ID":  1,
+                           "Title":  "Preparar proposta",
+                           "ProjectID":  "PRJ-2127A0E4",
+                           "Deleted":  false,
+                           "Status":  "Concluída",
+                           "Prioridade":  "Alta",
+                           "Responsavel":  "mbenicios@minsait.com",
+                           "Created":  "\/Date(1778069430000)\/",
+                           "Modified":  "\/Date(1778070381000)\/"
+                       },
+                       {
+                           "ID":  2,
+                           "Title":  "Revisao tecnica",
+                           "ProjectID":  "PRJ-2127A0E4",
+                           "Deleted":  false,
+                           "Status":  "Concluída",
+                           "Prioridade":  "Media",
+                           "Responsavel":  "mbenicios@minsait.com",
+                           "Created":  "\/Date(1778069433000)\/",
+                           "Modified":  "\/Date(1778069433000)\/"
+                       },
+                       {
+                           "ID":  3,
+                           "Title":  "Teste Projeto Inexistente",
+                           "ProjectID":  "PRJ-NO-MATCH",
+                           "Deleted":  true,
+                           "Status":  "Pendente",
+                           "Prioridade":  "Alta",
+                           "Responsavel":  "mbenicios@minsait.com",
+                           "Created":  "\/Date(1778070749000)\/",
+                           "Modified":  "\/Date(1778072387000)\/"
+                       },
+                       {
+                           "ID":  4,
+                           "Title":  "Smoke excluir tarefa Codex 20260511",
+                           "ProjectID":  "PRJ-E9F77C04",
+                           "Deleted":  true,
+                           "Status":  "Pendente",
+                           "Prioridade":  "Media",
+                           "Responsavel":  null,
+                           "Created":  "\/Date(1778535484000)\/",
+                           "Modified":  "\/Date(1778543764000)\/"
+                       },
+                       {
+                           "ID":  5,
+                           "Title":  "Smoke task 1 - pending",
+                           "ProjectID":  "PRJ-CODEX-0511184036",
+                           "Deleted":  true,
+                           "Status":  "Pendente",
+                           "Prioridade":  "Media",
+                           "Responsavel":  null,
+                           "Created":  "\/Date(1778535641000)\/",
+                           "Modified":  "\/Date(1778536596000)\/"
+                       }
+                   ]
+    }
+]

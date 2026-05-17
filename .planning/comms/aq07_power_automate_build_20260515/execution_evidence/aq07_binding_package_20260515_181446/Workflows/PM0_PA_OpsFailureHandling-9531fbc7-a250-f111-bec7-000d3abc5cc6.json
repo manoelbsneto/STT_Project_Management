@@ -1,0 +1,96 @@
+{
+    "properties":  {
+                       "connectionReferences":  {
+
+                                                },
+                       "definition":  {
+                                          "$schema":  "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                                          "contentVersion":  "1.0.0.0",
+                                          "parameters":  {
+                                                             "$authentication":  {
+                                                                                     "defaultValue":  {
+
+                                                                                                      },
+                                                                                     "type":  "SecureObject"
+                                                                                 },
+                                                             "$connections":  {
+                                                                                  "defaultValue":  {
+
+                                                                                                   },
+                                                                                  "type":  "Object"
+                                                                              }
+                                                         },
+                                          "triggers":  {
+                                                           "manual":  {
+                                                                          "type":  "Request",
+                                                                          "kind":  "Skills",
+                                                                          "inputs":  {
+                                                                                         "schema":  {
+                                                                                                        "type":  "object",
+                                                                                                        "properties":  {
+                                                                                                                           "source":  {
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "description":  "Source"
+                                                                                                                                      },
+                                                                                                                           "details":  {
+                                                                                                                                           "type":  "string",
+                                                                                                                                           "description":  "Details"
+                                                                                                                                       },
+                                                                                                                           "code":  {
+                                                                                                                                        "type":  "string",
+                                                                                                                                        "description":  "Code"
+                                                                                                                                    }
+                                                                                                                       },
+                                                                                                        "required":  [
+                                                                                                                         "source",
+                                                                                                                         "code"
+                                                                                                                     ]
+                                                                                                    }
+                                                                                     }
+                                                                      }
+                                                       },
+                                          "actions":  {
+                                                          "Sanitize_Error":  {
+                                                                                 "runAfter":  {
+
+                                                                                              },
+                                                                                 "type":  "Compose",
+                                                                                 "inputs":  "@substring(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027),0,min(length(coalesce(triggerBody()?[\u0027details\u0027],\u0027\u0027)),500))"
+                                                                             },
+                                                          "Respond_Success":  {
+                                                                                  "runAfter":  {
+                                                                                                   "Sanitize_Error":  [
+                                                                                                                          "Succeeded"
+                                                                                                                      ]
+                                                                                               },
+                                                                                  "type":  "Response",
+                                                                                  "kind":  "Skills",
+                                                                                  "inputs":  {
+                                                                                                 "statusCode":  200,
+                                                                                                 "headers":  {
+                                                                                                                 "Content-Type":  "application/json"
+                                                                                                             },
+                                                                                                 "body":  {
+                                                                                                              "result":  "Operation failed securely."
+                                                                                                          },
+                                                                                                 "schema":  {
+                                                                                                                "type":  "object",
+                                                                                                                "properties":  {
+                                                                                                                                   "result":  {
+                                                                                                                                                  "title":  "result",
+                                                                                                                                                  "x-ms-dynamically-added":  true,
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                            }
+                                                                                             }
+                                                                              }
+                                                      },
+                                          "outputs":  {
+
+                                                      }
+                                      },
+                       "templateName":  null
+                   },
+    "schemaVersion":  "1.0.0.0"
+}

@@ -1,0 +1,13 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="category" />
+    <attribute name="type" />
+    <filter>
+      <condition attribute="workflowid" operator="eq" value="c11a165b-c64c-f111-bec7-7ced8d9559c1" />
+    </filter>
+  </entity>
+</fetch>

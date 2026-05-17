@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PMO Architecture Revision — Macro Plan Dashboard</title>
+<link rel="stylesheet" href="planner_dashboard.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="container">
+
+<header>
+<h1>Adaptive Cards + Planner Architecture Revision</h1>
+<p>Macro Plan Dashboard — PMO Intelligent Hub v3.16+</p>
+<div class="status-bar">
+  <span class="status-pill pill-stop">NO-SHIP v3.15</span>
+  <span class="status-pill pill-warn">Planning Only</span>
+  <span class="status-pill pill-info">2026-05-14</span>
+</div>
+</header>
+
+<!-- EXECUTIVE ANSWER -->
+<div class="section">
+<div class="section-title"><span class="icon icon-arch">&#9670;</span> Executive Summary</div>
+<div class="arch-compare">
+  <div class="arch-box as-is">
+    <h3>&#10007; Before (AS-IS)</h3>
+    <ol>
+      <li>User asks Copilot</li>
+      <li>Copilot identifies topic</li>
+      <li>Copilot calls Power Automate action</li>
+      <li>Flow queries/writes SharePoint</li>
+      <li>Flow returns result/context to Copilot</li>
+      <li>Copilot displays response</li>
+      <li><strong>RAI/XPIA layer may block after success</strong></li>
+    </ol>
+    <ul style="margin-top:.8rem;color:#f43f5e;font-size:.78rem">
+      <li>Copilot remains in operational data path</li>
+      <li>Internal connector context evaluated by RAI</li>
+      <li>Successful operations look failed to users</li>
+      <li>No Application Insights diagnostics</li>
+    </ul>
+  </div>
+  <div class="arch-box to-be">
+    <h3>&#10003; After (TO-BE)</h3>
+    <ol>
+      <li>User asks Copilot or uses Teams</li>
+      <li>Copilot routes only, or Teams card starts directly</li>
+      <li>Power Automate controls business process</li>
+      <li>Adaptive Card displays/collects structured data</li>
+      <li>Flow writes SharePoint and Planner</li>
+      <li>Copilot receives only static acknowledgement</li>
+    </ol>
+    <ul style="margin-top:.8rem;color:#10b981;font-size:.78rem">
+      <li>Lower XPIA exposure</li>
+      <li>Better UX for PMs and directors</li>
+      <li>Stronger audit and confirmation model</li>
+      <li>Planner becomes operational task destination</li>
+      <li>Speech-to-text preserved with review-before-write</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- WHAT WE KEEP -->
+<div class="section">
+<div class="section-title"><span class="icon icon-keep">&#10003;</span> What We Keep</div>
+<table>
+<thead><tr><th>Area</th><th>Keep?</th><th>Rationale</th></tr></thead>
+<tbody>
+<tr><td>SharePoint PMO lists</td><td><span class="badge badge-yes">Yes</span></td><td>They remain the PMO system of record.</td></tr>
+<tr><td>ProjectID / TaskID / DecisionID model</td><td><span class="badge badge-yes">Yes</span></td><td>Required for audit, traceability, and Planner mapping.</td></tr>
+<tr><td>Logical delete model</td><td><span class="badge badge-yes">Yes</span></td><td>Correct for governance and audit.</td></tr>
+<tr><td>Power Automate validation logic</td><td><span class="badge badge-partial">Mostly</span></td><td>Reused/refactored inside card controller flows.</td></tr>
+<tr><td>Copilot topics and trigger phrases</td><td><span class="badge badge-partial">Partial</span></td><td>Reused as routers, but not as data renderers.</td></tr>
+<tr><td>Adaptive Card governance templates</td><td><span class="badge badge-yes">Yes</span></td><td>Check-in, decision, alerts, summaries are reusable.</td></tr>
+<tr><td>Planner Standard connector decision</td><td><span class="badge badge-yes">Yes</span></td><td>Already aligned with PRD and project constraints.</td></tr>
+<tr><td>Current QA evidence and RCA</td><td><span class="badge badge-yes">Yes</span></td><td>Becomes justification for architecture change.</td></tr>
+<tr><td>Speech-to-text feature</td><td><span class="badge badge-yes">Yes</span></td><td>Preserved, routed through review card before write.</td></tr>
+<tr><td>Executive query experience via Copilot</td><td><span class="badge badge-yes">Yes</span></td><td>Preserved for short, curated summaries.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- WHAT WE CHANGE -->
+<div class="section">
+<div class="section-title"><span class="icon icon-change">&#9888;</span> What We Change</div>
+<table>
+<thead><tr><th>Area</th><th>Change Description</th></tr></thead>
+<tbody>
+<tr><td><strong>ListarTarefas</strong></td><td>Stop rendering task details in Copilot. Send task list as Teams Adaptive Card.</td></tr>
+<tr><td><strong>CriarTarefa</strong></td><td>Stop returning dynamic IDs/ProjectID in chat. Create through card flow, show result in Teams card.</td></tr>
+<tr><td><strong>AtualizarTarefa</strong></td><td>Move update interaction to cards; Copilot only initiates or confirms route.</td></tr>
+<tr><td><strong>AtualizarStatus</strong></td><td>Keep Copilot/Teams/STT entry, but always use review card before write when free-form.</td></tr>
+<tr><td><strong>Executive queries</strong></td><td>Copilot returns small aggregated summaries; details go to Adaptive Cards or SharePoint tabs.</td></tr>
+<tr><td><strong>Flow outputs to Copilot</strong></td><td>Replace operational payloads with static acknowledgements or tiny status codes.</td></tr>
+<tr><td><strong>Planner integration</strong></td><td>Add create/update/sync mapping from SharePoint to Planner.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- WHAT WE RETIRE -->
+<div class="section">
+<div class="section-title"><span class="icon icon-retire">&#10005;</span> What We Retire</div>
+<table>
+<thead><tr><th>Item</th><th>Reason</th></tr></thead>
+<tbody>
+<tr><td>Long Flow outputs to Copilot</td><td>XPIA / content-filter risk.</td></tr>
+<tr><td>Raw SharePoint/Planner JSON in bot variables</td><td>XPIA / content-filter risk.</td></tr>
+<tr><td>Copilot-generated task list rendering</td><td>Primary source of current post-action block risk.</td></tr>
+<tr><td>Returning SharePoint IDs as dynamic chat text</td><td>Increases structured payload surface.</td></tr>
+<tr><td>Copilot summarizing connector responses directly</td><td>Reintroduces the same failure pattern.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- EFFORT ESTIMATES -->
+<div class="section">
+<div class="section-title"><span class="icon icon-wave">&#9201;</span> Estimated Total Effort</div>
+<div class="effort-grid">
+  <div class="effort-card">
+    <div class="days">1-2d</div>
+    <div class="label">Minimal RAI Unblock</div>
+    <div class="desc">Remove risky Copilot output paths without full Planner/card architecture.</div>
+  </div>
+  <div class="effort-card">
+    <div class="days">3-5d</div>
+    <div class="label">Recommended P0</div>
+    <div class="desc">ListarTarefas + CriarTarefa + AtualizarTarefa with card-first and Planner mapping.</div>
+  </div>
+  <div class="effort-card">
+    <div class="days">7-12d</div>
+    <div class="label">Full TO-BE Revision</div>
+    <div class="desc">Task management, status/STT, executive summaries, Planner sync, governance cards, QA.</div>
+  </div>
+  <div class="effort-card">
+    <div class="days">+1-2d</div>
+    <div class="label">Production Hardening</div>
+    <div class="desc">Evidence, screenshots, run history, rollback, owner validation.</div>
+  </div>
+</div>
+</div>
+
+<!-- WAVE TIMELINE -->
+<div class="section">
+<div class="section-title"><span class="icon icon-wave">&#9776;</span> Wave Timeline</div>
+<div class="timeline">
+  <div class="wave-card w0">
+    <div class="wave-num">Wave 0</div>
+    <div class="wave-title">Governance &amp; Change Request</div>
+    <div class="wave-est">0.5 - 1 day</div>
+    <div class="wave-desc">AS-IS/TO-BE documentation, CR, ADR, PRD/contract updates, RCA cross-reference.</div>
+  </div>
+  <div class="wave-card w1">
+    <div class="wave-num">Wave 1</div>
+    <div class="wave-title">Planner/Teams Readiness</div>
+    <div class="wave-est">0.5 - 1 day</div>
+    <div class="wave-desc">Team/channel routing, Planner Plan IDs, Bucket IDs, permission check.</div>
+  </div>
+  <div class="wave-card w2">
+    <div class="wave-num">Wave 2 — P0 Proof</div>
+    <div class="wave-title">ListarTarefas Card-First</div>
+    <div class="wave-est">1 - 1.5 days</div>
+    <div class="wave-desc">Known failing command sends Teams card and no longer triggers ContentFiltered.</div>
+  </div>
+  <div class="wave-card w3">
+    <div class="wave-num">Wave 3</div>
+    <div class="wave-title">CriarTarefa + Planner Create</div>
+    <div class="wave-est">1.5 - 2.5 days</div>
+    <div class="wave-desc">Card-driven create, SharePoint write, Planner task create, sync fields.</div>
+  </div>
+  <div class="wave-card w4">
+    <div class="wave-num">Wave 4</div>
+    <div class="wave-title">AtualizarTarefa + Planner Update</div>
+    <div class="wave-est">1 - 2 days</div>
+    <div class="wave-desc">Card-driven update of SharePoint and Planner.</div>
+  </div>
+  <div class="wave-card w5">
+    <div class="wave-num">Wave 5</div>
+    <div class="wave-title">AtualizarStatus + STT Review</div>
+    <div class="wave-est">1.5 - 2.5 days</div>
+    <div class="wave-desc">Voice/text input becomes reviewed card before write.</div>
+  </div>
+  <div class="wave-card w6">
+    <div class="wave-num">Wave 6</div>
+    <div class="wave-title">Executive Portfolio Summaries</div>
+    <div class="wave-est">1 - 2 days</div>
+    <div class="wave-desc">Director asks Copilot; short summary in chat, detail in card/tab.</div>
+  </div>
+  <div class="wave-card w7">
+    <div class="wave-num">Wave 7</div>
+    <div class="wave-title">Regression &amp; QA Evidence</div>
+    <div class="wave-est">1 - 2 days</div>
+    <div class="wave-desc">Full evidence pack, rollback plan, go/no-go decision.</div>
+  </div>
+</div>
+</div>
+
+<!-- KEY DEPENDENCIES -->
+<div class="section">
+<div class="section-title"><span class="icon icon-dep">&#9741;</span> Key Dependencies</div>
+<table>
+<thead><tr><th>Dependency</th><th>Owner</th><th>Needed By</th></tr></thead>
+<tbody>
+<tr><td>Teams card destination strategy</td><td>Owner / PMO</td><td>Wave 1</td></tr>
+<tr><td>Planner Plan ID and Bucket ID mapping</td><td>Owner / PMO</td><td>Wave 2</td></tr>
+<tr><td>Permission confirmation for Planner connector</td><td>Owner / PMO</td><td>Wave 2</td></tr>
+<tr><td>Owner approval for tenant changes/import/publish</td><td>Owner</td><td>Any wave</td></tr>
+<tr><td>Runtime validation screenshots</td><td>Owner + Codex</td><td>Waves 2-7</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- RISKS -->
+<div class="section">
+<div class="section-title"><span class="icon icon-risk">&#9888;</span> Risk &amp; Mitigation</div>
+<table>
+<thead><tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr></thead>
+<tbody>
+<tr><td>Teams card routing blocked by permissions</td><td><span class="badge badge-no">P0 delayed</span></td><td>Validate channel/direct chat routing before building all cards.</td></tr>
+<tr><td>Planner mapping incomplete</td><td><span class="badge badge-partial">Partial sync</span></td><td>Keep SharePoint as source of record; mark Planner sync as pending.</td></tr>
+<tr><td>XPIA still triggers after ListarTarefas card proof</td><td><span class="badge badge-no">Critical</span></td><td>Stop rollout and isolate whether action call itself triggers.</td></tr>
+<tr><td>Speech-to-text transcription is ambiguous</td><td><span class="badge badge-partial">Bad data</span></td><td>Always use review card before write.</td></tr>
+<tr><td>Director wants long detail in Copilot chat</td><td><span class="badge badge-partial">RAI risk</span></td><td>Chat gives summary; details go to Teams card or SharePoint tab.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="section">
+<div class="section-title"><span class="icon icon-rec">&#10148;</span> Recommended Implementation Sequence</div>
+<div class="rec-box">
+  <ol>
+    <li>Document and approve the architecture change.</li>
+    <li>Validate Planner/Teams routing.</li>
+    <li>Convert <strong>ListarTarefas</strong> first.</li>
+    <li>Prove the known failing command no longer triggers <code>ContentFiltered</code>.</li>
+    <li>Convert create/update task flows.</li>
+    <li>Add STT review-card flow.</li>
+    <li>Add executive summary cards and curated Copilot responses.</li>
+  </ol>
+  <div class="rec-path">
+    Do Wave 0 and Wave 1 first &#8594; Build Wave 2 as the proof &#8594; Only after the known XPIA repro is solved, continue with create/update and STT.
+  </div>
+</div>
+</div>
+
+<footer>
+  PMO Intelligent Hub &mdash; Architecture Revision Macro Plan &mdash; 2026-05-14 &mdash; Research &amp; Planning Only &mdash; No System Changes
+</footer>
+
+</div>
+</body>
+</html>

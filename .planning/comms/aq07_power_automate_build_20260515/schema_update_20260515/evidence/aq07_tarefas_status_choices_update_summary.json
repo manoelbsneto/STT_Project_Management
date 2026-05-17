@@ -1,0 +1,41 @@
+﻿{
+    "timestamp":  "2026-05-15T14:15:53.4041557-03:00",
+    "taskId":  "AQ-07-STATUS-SCHEMA-ALIGNMENT",
+    "siteUrl":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+    "listName":  "Tarefas",
+    "fieldInternalName":  "Status",
+    "accessType":  "SharePoint schema write via legacy PnP",
+    "tenantWriteConfirmed":  true,
+    "removedChoices":  [
+
+                       ],
+    "beforeChoices":  [
+                          null
+                      ],
+    "requiredChoices":  [
+                            "Pendente",
+                            "Em Andamento",
+                            "ConcluÃ­da",
+                            "Cancelada",
+                            "Testes",
+                            "Piloto e Implantacao",
+                            "Concluido",
+                            "Cancelado"
+                        ],
+    "addedChoices":  [
+                         "Pendente",
+                         "Em Andamento",
+                         "ConcluÃ­da",
+                         "Cancelada",
+                         "Testes",
+                         "Piloto e Implantacao",
+                         "Concluido",
+                         "Cancelado"
+                     ],
+    "afterChoices":  [
+                         null
+                     ],
+    "defaultValue":  "Pendente",
+    "indexed":  true,
+    "itemWritesPerformed":  0
+}

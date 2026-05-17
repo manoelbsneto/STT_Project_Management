@@ -1,0 +1,162 @@
+# RegistrarBloqueio topic
+# Purpose: collect, confirm, and call the PMO_PA_RegistrarBloqueioBot flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic RegistrarBloqueio.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarBloqueio
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - registrar bloqueio
+      - novo bloqueio
+      - abrir bloqueio
+      - cadastrar bloqueio
+      - bloqueio no projeto
+      - bloqueio em projeto
+      - bloqueio do projeto
+      - "registrar bloqueio:"
+      - registrar bloqueio projeto
+      - registrar bloqueio descricao
+      - registrar bloqueio severidade
+      - registrar bloqueio impacto
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_severity
+      variable: Topic.Severidade
+      value: =If(IsMatch(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva o bloqueio.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_severity
+      conditions:
+        - id: missing_severity
+          condition: =IsBlank(Topic.Severidade)
+          actions:
+            - kind: Question
+              id: ask_severity
+              variable: Topic.Severidade
+              prompt: "Qual a severidade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_registrar_bloqueio
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este bloqueio.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Severidade: {Topic.Severidade}
+        Impacto: {Topic.Impacto}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Bloqueio_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Bloqueio_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_severity
+              variable: Global.PMO_Bloqueio_Severidade
+              value: =Topic.Severidade
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Bloqueio_Impacto
+              value: =Topic.Impacto
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_registrar_bloqueio
+              input:
+                binding:
+                  text: =Global.PMO_Bloqueio_ProjectID
+                  text_1: =Global.PMO_Bloqueio_Descricao
+                  text_2: =Global.PMO_Bloqueio_Severidade
+                  text_3: =Global.PMO_Bloqueio_Impacto
+
+              output:
+                binding:
+                  message: Topic.RegistrarBloqueioResult
+
+              flowId: REPLACE_WITH_ACTUAL_FLOW_ID
+
+            - kind: SendActivity
+              id: registrar_bloqueio_done
+              activity: "{Topic.RegistrarBloqueioResult}"
+
+            - kind: EndDialog
+              id: end_registrar_bloqueio
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: registrar_bloqueio_cancelled
+          activity: Ok, registro de bloqueio cancelado.
+
+        - kind: EndDialog
+          id: end_registrar_bloqueio_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}

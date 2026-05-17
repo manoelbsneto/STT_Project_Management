@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.topic.PedirDecisao">
+  <componenttype>9</componenttype>
+  <description>Coleta solicitacao de decisao e confirma antes de qualquer gravacao.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PedirDecisao</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

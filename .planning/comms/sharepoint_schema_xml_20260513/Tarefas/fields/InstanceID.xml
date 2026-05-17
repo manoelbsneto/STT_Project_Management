@@ -1,0 +1,1 @@
+﻿<Field ID="{50a54da4-1528-4e67-954a-e2d24f1e9efb}" Name="InstanceID" DisplayName="Id. de instancia" ColName="tp_InstanceID" RowOrdinal="0" ReadOnly="TRUE" Hidden="TRUE" Type="Integer" Min="0" Max="99991231" Filterable="TRUE" Sortable="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="InstanceID" FromBaseType="TRUE" />

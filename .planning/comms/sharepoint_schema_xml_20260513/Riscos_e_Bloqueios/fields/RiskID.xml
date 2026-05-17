@@ -1,0 +1,1 @@
+﻿<Field Type="Text" Name="RiskID" DisplayName="RiskID" ID="{350484cc-7206-43c5-85d0-e3fe54940457}" Group="" Required="TRUE" SourceID="{7c8fde07-7ad4-4220-892a-2fafa33cea48}" StaticName="RiskID" ColName="nvarchar7" RowOrdinal="0" Version="2" Indexed="TRUE" />

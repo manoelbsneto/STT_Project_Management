@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-05-15T19:02:03.7814524-03:00",
+  "sourcePackageRoot": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\aq07_binding_package_20260515_181649",
+  "repairedPackageRoot": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\connection_reference_repair_20260515_1902\\package",
+  "repairedZip": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\connection_reference_repair_20260515_1902\\PMO_AQ07_CopilotBinding_connection_reference_repair_20260515_1902.zip",
+  "targetWorkflow": "PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6.json",
+  "oldConnectionReferenceLogicalName": "cat_DataverseIndexerSharePoint",
+  "newConnectionReferenceLogicalName": "pmo_cat_DataverseIndexerSharePoint"
+}

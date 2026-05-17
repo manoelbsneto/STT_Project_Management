@@ -180,13 +180,25 @@ O flow `PMO_PA_SyncPlannerStats_Standard` deverá executar em recorrência contr
 - 1 SharePoint List opcional: Marcos e Entregas.
 - SharePoint site “PMO-Hub” com views Board, Gallery, Calendar e List.
 
+**Adendo 2.4 - Abertura operacional de projetos e tarefas:**
+
+- A lista `Projetos` permanece a fonte oficial de cadastro/status executivo dos projetos.
+- A lista `Tarefas` passa a ser componente operacional obrigatorio para tarefas gerenciadas pelo Assistente PMO quando o usuario solicitar criacao/listagem/atualizacao/exclusao de tarefas via bot.
+- O comando/topico `CriarProjeto` deve criar somente registros na lista `Projetos`.
+- O comando/topico `CriarTarefa` deve criar somente registros na lista `Tarefas`, sempre vinculado a um `ProjectID` existente, ativo e nao deletado na lista `Projetos`.
+- O comando/topico `Gerar_Multiplos_Projetos` deve criar projetos em lote e, opcionalmente, tarefas iniciais pareadas por indice. Exemplo: `Nome_Projeto1` recebe `Tarefa1`, `Nome_Projeto2` recebe `Tarefa2`.
+- `ProjectID` deve ser sempre definido pelo sistema. Entradas como `ProjectID: sistema define automaticamente` devem ser aceitas como instrucao e nao como valor literal.
+- Campos de sistema do SharePoint, como `Created`, podem ser lidos do texto para auditoria/contexto, mas nao devem ser sobrescritos pelo flow.
+
 **Interface e Entrada:**
 
 - Copilot Studio Agent PMO publicado no Microsoft Teams.
 - 3 Adaptive Cards: Check-in Diário, Alerta Projeto Crítico, Decisão do Board.
+- Adendo 2.4: Adaptive Cards passam a ser o Plano A para revisao, validacao e confirmacao de `CriarProjeto`, `CriarTarefa` e `Gerar_Multiplos_Projetos`.
 - Microsoft Forms como fallback operacional.
 - Entrada por texto e voz usando dictation do sistema operacional ou teclado mobile.
 - Entrada por microfone no ecossistema Copilot/M365 apenas quando disponível no tenant e sem exigir integração premium.
+- Adendo 2.4: texto multilinha e Speech-to-Text achatado devem ser suportados como Plano B para os mesmos comandos, principalmente quando o card nao renderizar, o usuario estiver em mobile/voz, ou o usuario colar um bloco estruturado.
 
 **Automação (Power Automate — Standard Only):**
 
@@ -202,12 +214,27 @@ O flow `PMO_PA_SyncPlannerStats_Standard` deverá executar em recorrência contr
   9. `PMO_PA_EscalarRiscoCritico` — When created (Riscos, Severidade=Crítica) → Alerta.
   10. `PMO_PA_ResumoSemanal` — Recurrence segunda-feira 8h → Card expandido.
 
+Adendo 2.4:
+
+- `PMO_PA_CriarProjeto` deve preservar o contrato de criacao de projeto em `Projetos`.
+- `PMO_PA_CriarTarefa` deve criar item em `Tarefas`, apos resolver `NomeProjeto` ou `ProjectID` contra `Projetos`.
+- `PMO_PA_Gerar_Multiplos_Projetos` deve orquestrar lote limitado, validar antes de gravar, exigir confirmacao, criar projetos e tarefas iniciais, e retornar resultado por linha.
+- Todos os flows 2.4 devem usar conectores standard, preferencialmente SharePoint Connector `Get items`, `Create item` e `Update item`, sem HTTP premium/custom connector.
+
 **Copilot Studio Agent:**
 
 - 8 topics: AtualizarStatus, ConsultarPortfolio, ConsultarProjeto, RegistrarRisco, RegistrarBloqueio, PedirDecisao, LowConfidence, Greeting.
 - Entidades customizadas: ProjectName, StatusRAG, RiskSeverity, ImpactLevel.
 - Pattern obrigatório: Confirm-Before-Action em todos os topics de escrita.
 - Publicação: Microsoft Teams channel.
+
+Adendo 2.4:
+
+- Topics adicionais/renomeados: `CriarProjeto`, `CriarTarefa`, `Gerar_Multiplos_Projetos`.
+- `CriarProjeto` nao deve conter trigger phrases de tarefa.
+- `CriarTarefa` nao deve conter trigger phrases de projeto e nunca deve gravar em `Projetos`.
+- `Gerar_Multiplos_Projetos` deve aceitar frases como `gerar multiplos projetos`, `criar varios projetos`, `criar projetos em lote` e `gerar projetos em batch`.
+- Qualquer escrita deve ser bloqueada sem confirmacao explicita via Adaptive Card ou confirmacao textual equivalente.
 
 **Visibilidade:**
 
@@ -380,6 +407,9 @@ A segurança por projeto/PM foi validada como requisito aceito pela área solici
 | REQ-11 | Sync Planner Standard | Como PMO, quero que tarefas abertas, concluídas e atrasadas do Planner Basic apareçam automaticamente no status do projeto sem Graph direto/Premium. | P1 MVP | Flow roda em recorrência controlada; usa conector Planner Standard `List tasks`; calcula total, abertas, concluídas, atrasadas e sem prazo; atualiza colunas na lista Projetos; registra erro/status de sync quando falhar. |
 | REQ-12 | Resumo Semanal | Como Board, quero report semanal expandido toda segunda às 8h. | P2 | Inclui tendência semanal, entregas da semana, entregas atrasadas e decisões tomadas vs pendentes. |
 | REQ-13 | Marcos e Entregas | Como PMO, quero rastrear entregas planejadas vs realizadas para medir atrasos em dias. | P2 | Lista Marcos com DataPlanejada e DataReal; coluna AtrasoDias; view filtrada por projeto. |
+| REQ-14 | CriarProjeto | Como PMO, quero cadastrar um novo projeto pelo bot/card sem confundir projeto com tarefa. | P0 2.4 | Adaptive Card como Plano A; texto/STT como Plano B; cria somente em `Projetos`; gera `ProjectID`; exige confirmacao; duplicate guard impede criacao duplicada ativa; retorna SP ID e ProjectID. |
+| REQ-15 | CriarTarefa | Como PM, quero criar uma tarefa em um projeto existente para que ela possa ser listada, atualizada e removida logicamente. | P0 2.4 | Resolve `NomeProjeto` ou `ProjectID` em `Projetos`; cria somente em `Tarefas`; nunca grava em `Projetos`; retorna ID da tarefa; bloqueia projeto inexistente/inativo/deletado; exige confirmacao. |
+| REQ-16 | Gerar_Multiplos_Projetos | Como PMO, quero criar varios projetos e tarefas iniciais em lote com revisao visual antes da gravacao. | P0 2.4 | Adaptive Card de revisao/confirmacao e o caminho principal; parser multilinha/STT e fallback; suporta ate 10 projetos e 10 tarefas no primeiro corte; pareamento por indice; resultado por linha; sucesso parcial explicito; sem gravacao em modo validacao. |
 
 ---
 

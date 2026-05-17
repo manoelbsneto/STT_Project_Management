@@ -1,0 +1,1 @@
+﻿<Field ID="{ca4addac-796f-4b23-b093-d2a3f65c0774}" ColName="tp_ItemOrder" RowOrdinal="0" Name="Order" DisplayName="Orden" Type="Number" Hidden="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Order" FromBaseType="TRUE" />
