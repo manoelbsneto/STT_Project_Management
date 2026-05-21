@@ -1,0 +1,36 @@
+{
+  "flowName": "PMO_PA_RegistrarRiscoBot",
+  "workflowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+  "task": "D.12",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "windowStart": "2026-04-20T23:01:33.3277388Z",
+  "windowEnd": "2026-05-20T23:02:55.9684345Z",
+  "totalRuns": 2,
+  "succeeded": 2,
+  "failed": 0,
+  "cancelled": 0,
+  "statusCounts": {
+    "Succeeded": 2
+  },
+  "runs": [
+    {
+      "runName": "08584229199768768826640187923CU05",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T15:41:48.6027822Z",
+      "endTime": "2026-05-13T15:41:49.5220915Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230888686317889195534022CU30",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T16:46:56.8484694Z",
+      "endTime": "2026-05-11T16:46:58.0192873Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    }
+  ],
+  "retrievalError": null
+}

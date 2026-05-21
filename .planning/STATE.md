@@ -1,13 +1,24 @@
 # PMO Intelligent Hub — State
 
+## Current Milestone
+**M2 — Hybrid Card-First Revision** (active since 2026-05-20)
+
 ## Current Phase
-Phase 6 — Piloto Controlado + QA
+M2 Phase 1 — Discovery (READY FOR DISPATCH)
+
+See: `.planning/milestones/M2_card_first_revision_v2/STATE.md` for detailed M2 progress.
 
 ## Next Phase
-Phase 7 — Rollout + Governança
+M2 Phase 2 — Architecture Specification (auto-advance after Phase 1 PASS)
 
-## Active Agent
-Pending — QA Wave 2 browser/manual validation (D1–D2, E1–E4)
+## Active Agents
+8 parallel tracks dispatching for Phase 1:
+- Codex 5.5 (lead) — Track A Dataverse + integration owner
+- Codex sub-1 — Track B SharePoint
+- Codex sub-2 — Track D Flow Definitions
+- Codex sub-3 — Tracks G, H Test data + Risks
+- Opus 4.7 #2 — Tracks E, F Routing + Topic YAMLs
+- Gemini Flash 3.5 — Track C Cards Catalog
 
 ## Active Power Platform Environment
 ColOfertasBrasilPro — `e2d10003-4d8e-e007-9d63-76d5fe89ef56`

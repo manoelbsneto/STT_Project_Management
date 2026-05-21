@@ -84,6 +84,20 @@
 | EXP-01 | 6 | — | Export final cleaned solution via pac solution export | Codex 5.5 | W5-03, RPT-05B | WAITING | — | — | — | — | 10min |
 | EXP-02 | 6 | — | Run post-cleanup static audits on exported solution | Codex 5.5 | EXP-01 | WAITING | — | — | — | — | 20min |
 | GATE-01 | 6 | — | Final SHIP/NO-SHIP gate decision | Human/Admin | EXP-02 | WAITING | — | — | — | — | 10min |
+| **P0-01** | P0 | Replan | Save/Import P0 Flow package (v3.15) | Gemini-PA | NONE | **READY** | — | — | — | — | 30min |
+| **P0-02** | P0 | Replan | Update Copilot topics and Publish | Opus 4.6 | P0-01 | **WAITING** | — | — | — | — | 20min |
+| **P0-03** | P0 | Replan | Execute AQ-09 Runtime Smoke Tests | Codex 5.5 | P0-02 | **WAITING** | — | — | — | — | 2h |
+| **P0-04** | P0 | Replan | Final release decision (AQ-10) | Human/Admin | P0-03 | **WAITING** | — | — | — | — | 30min |
+| **P0-W2-1** | P0-W2 | AQ-08 | Capture pre-publish rollback evidence and procedure | CODEX-PA | ADR_AQ08 | **DONE** | CODEX-PA | 2026-05-20T16:35:00-03:00 | 2026-05-20T16:40:00-03:00 | `.planning/comms/rollback_evidence_pre_3_15_20260520/` | 20min |
+| **P0-W2-2** | P0-W2 | AQ-08 | Build post-remediation reverify script and expected routing config | CODEX-PA | ADR_AQ08 | **DONE** | CODEX-PA | 2026-05-20T16:35:00-03:00 | 2026-05-20T16:39:00-03:00 | `tests/Test-Aq08PostRemediationReverify.ps1`; `.planning/comms/aq08_topic_routing_verification_20260520/expected_pm0_routing_post_remediation.json` | 25min |
+| **P0-W2-3** | P0-W2 | Governance | Sync START_HERE, master checklist, risk register, and registry | CODEX-PA | P0-W2-1, P0-W2-2 | **DONE** | CODEX-PA | 2026-05-20T16:40:00-03:00 | 2026-05-20T16:46:00-03:00 | `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md` | 20min |
+| **P0-W2-4** | P0-W2 | AQ-08 | Manually redirect five in-scope Copilot topics to `PM0_PA_Card_*` | Owner | P0-W2-2 | **READY_OWNER_UI** | Owner | — | — | ADR section 2.1; `.planning/comms/CODEX_P0_CLOSEOUT_HANDOFF_20260520.md`; CODEX-PA pre-flight evidence: `.planning/comms/aq08_topic_routing_verification_20260520/preflight_p0_w2_4/` | 20min |
+| **P0-W2-5** | P0-W2 | AQ-08 | Re-run AQ-08 post-remediation verifier after Owner edits | CODEX-PA | P0-W2-4 | **WAITING** | CODEX-PA | — | — | `.planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/` | 10min |
+| **P0-W2-6** | P0-W2 | Publish | Owner import/publish 3.15 after verifier PASS | Owner | P0-W2-5 | **WAITING** | CODEX-PA | — | — | `.planning/comms/aq08_topic_routing_verification_20260520/post_publish_verify/`; Owner PAC/Copilot publish evidence | 30min |
+| **P0-W2-7** | P0-W2 | AQ-09 | Owner runs AQ-09 smoke runbook | Owner | P0-W2-6 | **WAITING** | — | — | — | `.planning/comms/aq09_smoke_runbook_20260520/` | 2h |
+| **P0-W2-8** | P0-W2 | XPIA | Validate AQ-09 evidence and render SHIP/NO-SHIP recommendation | CODEX-PA / Opus 4.7 | P0-W2-7 | **WAITING** | — | — | — | `.planning/comms/xpia_01_verify_20260520/` | 30min |
+| P0-W2-7-PREP | P0-W2 | AQ-09 | Pre-stage AQ-09 evidence skeleton and validate the validator | CODEX-QA | P0-W2-2 | BLOCKED | CODEX-QA | 2026-05-21T00:00:23-03:00 | 2026-05-21T00:04:28-03:00 | `.planning/comms/aq09_smoke_runbook_20260520/PREP_REPORT.md` | 45min |
+| P0-W2-7-PREP-FIX | P0-W2 | AQ-09 | Implement Validator V2 per VALIDATOR_CONTRACT_AQ09.md and rerun self-tests | CODEX-QA | P0-W2-7-PREP | DONE | CODEX-QA | 2026-05-21T01:11:56-03:00 | 2026-05-21T01:21:23-03:00 | `.planning/comms/aq09_smoke_runbook_20260520/PREP_REPORT_V2.md` | 60min |
 
 ---
 
@@ -124,3 +138,13 @@
 | 2026-05-10T16:08:00-03:00 | Opus 4.6 | COMPLETED | W1-01b | ActionSchemaInvalid fix applied: replaced dual Respond actions with variable pattern (Inicializar variável → Set per branch → single Respond). Flow saved successfully. |
 | 2026-05-10T16:11:00-03:00 | Opus 4.6 | COMPLETED | W1-02 | Test 1 (post-fix): Compose NomeProjeto = "Projeto Teste Validacao V3" (NOT "Sem nome"). Se sim branch → Create Project. PASS. |
 | 2026-05-10T16:16:00-03:00 | Opus 4.6 | COMPLETED | W1-03 | Test 2 (duplicate): Same data → Check Project Exists = false → Se não branch. Create Project SKIPPED. Duplicate message returned. PASS. |
+| 2026-05-20T16:35:00-03:00 | CODEX-PA | CLAIMED | P0-W2-1/P0-W2-2/P0-W2-3 | Claimed Wave 2 hardening tasks after reading ADR and closeout handoff. |
+| 2026-05-20T16:40:00-03:00 | CODEX-PA | COMPLETED | P0-W2-1 | Captured pre-publish read-only PAC evidence and rollback procedure under `.planning/comms/rollback_evidence_pre_3_15_20260520/`. |
+| 2026-05-20T16:39:00-03:00 | CODEX-PA | COMPLETED | P0-W2-2 | Built `tests/Test-Aq08PostRemediationReverify.ps1`; pre-remediation smoke returned expected `BLOCK` / exit code 1. |
+| 2026-05-20T16:46:00-03:00 | CODEX-PA | COMPLETED | P0-W2-3 | Synced governance docs and wrote `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`. |
+| 2026-05-21T00:00:23-03:00 | CODEX-QA | CLAIMED | P0-W2-7-PREP | Started local-only AQ-09 evidence skeleton staging and validator self-test prep. |
+| 2026-05-21T00:04:28-03:00 | CODEX-QA | BLOCKED | P0-W2-7-PREP | Evidence stubs staged and validator self-tests captured, but real stub template includes literal marker strings scanned by the validator, causing false XPIA hits. Report: `.planning/comms/aq09_smoke_runbook_20260520/PREP_REPORT.md`. |
+| 2026-05-21T01:11:56-03:00 | CODEX-QA | CLAIMED | P0-W2-7-PREP-FIX | Claimed Validator V2 remediation after reading `VALIDATOR_CONTRACT_AQ09.md` SHA256 `513524DE37BB499BCDC140235F35687233450A0D22B5A15EBF02DDB7A312126E`. |
+| 2026-05-21T01:21:23-03:00 | CODEX-QA | COMPLETED | P0-W2-7-PREP-FIX | Implemented Validator V2, rewrote AQ-09 template/stubs, captured negative/positive/XPIA self-tests under `_validator_self_test/v2/`, and wrote `.planning/comms/aq09_smoke_runbook_20260520/PREP_REPORT_V2.md` for Opus 4.7 sign-off. |
+| 2026-05-21T01:30:06-03:00 | CODEX-PA | CLAIMED | P0-W2-4/P0-W2-5/P0-W2-6 | Track B claimed under existing rows. Step 1 pre-flight only for P0-W2-4; P0-W2-5 waits for Owner topic-redirect-saved signal; P0-W2-6 waits for Step 2 PASS and Owner publish-complete signal. Planned read-only commands for Step 1: `pac env who`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <preflight topic/workflow FetchXML>`; `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Aq08PostRemediationReverify.ps1 -EvidenceDir .planning\comms\aq08_topic_routing_verification_20260520\preflight_p0_w2_4`. No tenant writes, UI, import, publish, or commit. |
+| 2026-05-21T01:35:11-03:00 | CODEX-PA | BLOCKED | P0-W2-4 | Step 1 pre-flight control returned unexpected `PASS` / exit `0` instead of expected pre-owner-edit `BLOCK` / exit `1`. Live read-only evidence shows all five in-scope topics already reference expected `PM0_PA_Card_*` actions. Evidence: `.planning/comms/aq08_topic_routing_verification_20260520/preflight_p0_w2_4/`. Step 2 not started. |

@@ -1,0 +1,12 @@
+{
+  "name": "pmo-cockpit",
+  "version": "1.0.0",
+  "description": "PMO Cockpit — real-time M2 monitoring",
+  "main": "cockpit-server.js",
+  "scripts": {
+    "start": "node cockpit-server.js",
+    "test": "node --test tests/test_cockpit_parsers.js tests/test_server_endpoints.js tests/test_server_path_traversal.js",
+    "open": "node cockpit-server.js & start http://localhost:7777"
+  },
+  "engines": { "node": ">=18.0.0" }
+}

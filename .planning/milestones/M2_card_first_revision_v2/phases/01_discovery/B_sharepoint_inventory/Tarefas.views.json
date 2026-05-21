@@ -1,0 +1,50 @@
+﻿[
+    {
+        "Title":  "Todos los elementos",
+        "ViewQuery":  "\u003cOrderBy\u003e\u003cFieldRef Name=\"ID\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "LinkTitle",
+                           "PlannerTaskId",
+                           "PlannerBucketId",
+                           "PlannerSyncStatus",
+                           "PlannerLastSyncAt",
+                           "PlannerSyncError"
+                       ]
+    },
+    {
+        "Title":  "Por Projeto",
+        "ViewQuery":  "\u003cGroupBy Collapse=\"TRUE\"\u003e\u003cFieldRef Name=\"ProjectID\" /\u003e\u003c/GroupBy\u003e\u003cOrderBy\u003e\u003cFieldRef Name=\"DataFim\" Ascending=\"TRUE\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "Title",
+                           "Responsavel",
+                           "DataFim",
+                           "Status",
+                           "Prioridade"
+                       ]
+    },
+    {
+        "Title":  "Kanban",
+        "ViewQuery":  "\u003cGroupBy Collapse=\"TRUE\"\u003e\u003cFieldRef Name=\"Status\" /\u003e\u003c/GroupBy\u003e\u003cOrderBy\u003e\u003cFieldRef Name=\"Prioridade\" Ascending=\"FALSE\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "Title",
+                           "Responsavel",
+                           "DataFim"
+                       ]
+    },
+    {
+        "Title":  "Breakdown Completo",
+        "ViewQuery":  "\u003cGroupBy Collapse=\"TRUE\"\u003e\u003cFieldRef Name=\"ProjectID\" /\u003e\u003c/GroupBy\u003e\u003cOrderBy\u003e\u003cFieldRef Name=\"DataFim\" Ascending=\"TRUE\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "ID",
+                           "Title",
+                           "ProjectID",
+                           "Responsavel",
+                           "DataInicio",
+                           "DataFim",
+                           "HorasEstimadas",
+                           "HorasRealizadas",
+                           "Status",
+                           "Prioridade"
+                       ]
+    }
+]

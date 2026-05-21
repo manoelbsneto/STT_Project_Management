@@ -1,0 +1,264 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "title": "Projeto",
+                  "description": "Nome do projeto ou ProjectID",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "type": "string",
+                  "title": "Motivo",
+                  "description": "Motivo da remocao logica",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "type": "string",
+                  "title": "DeletedByUPN",
+                  "description": "UPN do usuario solicitante",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "text_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose_ProjectInput": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['text'], ''))"
+        },
+        "Get_Projeto_By_ProjectID": {
+          "runAfter": {
+            "Compose_ProjectInput": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "ProjectID eq '@{replace(outputs('Compose_ProjectInput'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "$top": 2
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Projeto_By_Name": {
+          "runAfter": {
+            "Get_Projeto_By_ProjectID": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq '@{replace(outputs('Compose_ProjectInput'),'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+              "$top": 2
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_TargetRows": {
+          "runAfter": {
+            "Get_Projeto_By_Name": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(greater(length(body('Get_Projeto_By_ProjectID')?['value']), 0), body('Get_Projeto_By_ProjectID')?['value'], body('Get_Projeto_By_Name')?['value'])"
+        },
+        "Condition_Target_Found": {
+          "runAfter": {
+            "Compose_TargetRows": [
+              "Succeeded"
+            ]
+          },
+          "type": "If",
+          "expression": {
+            "greater": [
+              "@length(outputs('Compose_TargetRows'))",
+              0
+            ]
+          },
+          "actions": {
+            "Condition_Target_Unique": {
+              "runAfter": {},
+              "type": "If",
+              "expression": {
+                "equals": [
+                  "@length(outputs('Compose_TargetRows'))",
+                  1
+                ]
+              },
+              "actions": {
+                "Update_Projeto_Soft_Delete": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                      "table": "Projetos",
+                      "id": "@outputs('Compose_TargetRows')?[0]?['ID']",
+                      "item/Title": "@coalesce(outputs('Compose_TargetRows')?[0]?['Title'], outputs('Compose_TargetRows')?[0]?['NomeProjeto'])",
+                      "item/ProjectID": "@outputs('Compose_TargetRows')?[0]?['ProjectID']",
+                      "item/NomeProjeto": "@outputs('Compose_TargetRows')?[0]?['NomeProjeto']",
+                      "item/PM/Claims": "@coalesce(outputs('Compose_TargetRows')?[0]?['PM']?['Claims'], concat('i:0#.f|membership|', coalesce(outputs('Compose_TargetRows')?[0]?['PM']?['Email'], 'mbenicios@minsait.com')))",
+                      "item/StatusRAG/Value": "@coalesce(outputs('Compose_TargetRows')?[0]?['StatusRAG']?['Value'], outputs('Compose_TargetRows')?[0]?['StatusRAG'], 'Verde')",
+                      "item/Percentual": "@coalesce(outputs('Compose_TargetRows')?[0]?['Percentual'], 0)",
+                      "item/Ativo": false,
+                      "item/Deleted": true,
+                      "item/DeletedAt": "@utcNow()",
+                      "item/DeletedReason": "@triggerBody()?['text_1']",
+                      "item/DeletedByUPN": "@coalesce(triggerBody()?['text_2'], 'mbenicios@minsait.com')"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "PatchItem"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_OK": {
+                  "runAfter": {
+                    "Update_Projeto_Soft_Delete": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Response",
+                  "kind": "Skills",
+                  "inputs": {
+                    "statusCode": 200,
+                    "headers": {
+                      "Content-Type": "application/json"
+                    },
+                    "body": {
+                      "message": "@{concat('Projeto removido do portfolio ativo. ProjectID: ', outputs('Compose_TargetRows')?[0]?['ProjectID'], '. Nome: ', outputs('Compose_TargetRows')?[0]?['NomeProjeto'], '. Motivo: ', triggerBody()?['text_1'], '.')}"
+                    },
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "title": "message"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Response_Error_Update": {
+                  "runAfter": {
+                    "Update_Projeto_Soft_Delete": [
+                      "Failed",
+                      "TimedOut"
+                    ]
+                  },
+                  "type": "Response",
+                  "kind": "Skills",
+                  "inputs": {
+                    "statusCode": 500,
+                    "headers": {
+                      "Content-Type": "application/json"
+                    },
+                    "body": {
+                      "message": "Erro ao remover projeto no SharePoint. Codigo: SP_PROJECT_SOFT_DELETE_FAILED."
+                    }
+                  }
+                }
+              },
+              "else": {
+                "actions": {
+                  "Response_Ambiguous": {
+                    "type": "Response",
+                    "kind": "Skills",
+                    "inputs": {
+                      "statusCode": 409,
+                      "headers": {
+                        "Content-Type": "application/json"
+                      },
+                      "body": {
+                        "message": "Mais de um projeto ativo foi encontrado. Informe o ProjectID para remover com seguranca. Codigo: PROJECT_AMBIGUOUS."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 404,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto ativo nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

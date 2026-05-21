@@ -1,0 +1,82 @@
+{
+  "flowName": "PMO_PA_ExcluirTarefa",
+  "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+  "task": "D.8",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "number": {
+        "type": "number",
+        "title": "TaskItemID",
+        "description": "ID numerico do item na lista Tarefas",
+        "x-ms-content-hint": "NUMBER",
+        "x-ms-dynamically-added": true
+      },
+      "text": {
+        "type": "string",
+        "title": "Motivo",
+        "description": "Motivo da remocao logica da tarefa",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_1": {
+        "type": "string",
+        "title": "DeletedByUPN",
+        "description": "UPN do usuario solicitante",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_2": {
+        "type": "string",
+        "title": "NomeProjeto",
+        "description": "Nome ou ProjectID do projeto que contem a tarefa",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "number",
+      "text",
+      "text_2"
+    ]
+  },
+  "required": [
+    "number",
+    "text",
+    "text_2"
+  ],
+  "properties": {
+    "number": {
+      "type": "number",
+      "title": "TaskItemID",
+      "description": "ID numerico do item na lista Tarefas",
+      "x-ms-content-hint": "NUMBER",
+      "x-ms-dynamically-added": true
+    },
+    "text": {
+      "type": "string",
+      "title": "Motivo",
+      "description": "Motivo da remocao logica da tarefa",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "text_1": {
+      "type": "string",
+      "title": "DeletedByUPN",
+      "description": "UPN do usuario solicitante",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "text_2": {
+      "type": "string",
+      "title": "NomeProjeto",
+      "description": "Nome ou ProjectID do projeto que contem a tarefa",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    }
+  }
+}

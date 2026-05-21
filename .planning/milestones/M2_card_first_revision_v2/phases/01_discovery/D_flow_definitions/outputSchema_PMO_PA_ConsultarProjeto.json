@@ -1,0 +1,36 @@
+[
+  {
+    "flowName": "PMO_PA_ConsultarProjeto",
+    "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+    "responseActionName": "Response_OK",
+    "responseActionPath": "Condition_Projeto_Encontrado/Response_OK",
+    "statusCode": 200,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "flowName": "PMO_PA_ConsultarProjeto",
+    "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+    "responseActionName": "Response_Project_Not_Found",
+    "responseActionPath": "Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+    "statusCode": 200,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  }
+]

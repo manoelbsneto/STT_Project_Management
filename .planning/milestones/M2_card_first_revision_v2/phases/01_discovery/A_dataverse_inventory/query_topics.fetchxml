@@ -1,0 +1,22 @@
+<fetch>
+  <entity name='botcomponent'>
+    <attribute name='botcomponentid' />
+    <attribute name='schemaname' />
+    <attribute name='name' />
+    <attribute name='componenttype' />
+    <attribute name='statecode' />
+    <attribute name='statuscode' />
+    <attribute name='modifiedon' />
+    <attribute name='data' />
+    <filter>
+      <condition attribute='componenttype' operator='eq' value='9' />
+    </filter>
+    <link-entity name='bot' from='botid' to='parentbotid' alias='bot'>
+      <attribute name='name' />
+      <attribute name='schemaname' />
+      <filter>
+        <condition attribute='schemaname' operator='eq' value='pmo_AssistentePMO_V2' />
+      </filter>
+    </link-entity>
+  </entity>
+</fetch>

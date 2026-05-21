@@ -1,0 +1,486 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "number",
+                  "title": "TaskItemID",
+                  "description": "ID numerico do item na lista Tarefas",
+                  "x-ms-content-hint": "NUMBER",
+                  "x-ms-dynamically-added": true
+                },
+                "text": {
+                  "type": "string",
+                  "title": "Motivo",
+                  "description": "Motivo da remocao logica da tarefa",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "type": "string",
+                  "title": "DeletedByUPN",
+                  "description": "UPN do usuario solicitante",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "type": "string",
+                  "title": "NomeProjeto",
+                  "description": "Nome ou ProjectID do projeto que contem a tarefa",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "number",
+                "text",
+                "text_2"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Tarefa_Atual": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "id": "@triggerBody()?['number']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_Tarefa_Ativa": {
+          "runAfter": {
+            "Get_Projeto_Solicitado": [
+              "Succeeded"
+            ]
+          },
+          "type": "If",
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@coalesce(body('Get_Tarefa_Atual')?['Deleted'], false)",
+                    true
+                  ]
+                }
+              },
+              {
+                "greater": [
+                  "@length(body('Get_Projeto_Solicitado')?['value'])",
+                  0
+                ]
+              },
+              {
+                "equals": [
+                  "@body('Get_Tarefa_Atual')?['ProjectID']",
+                  "@body('Get_Projeto_Solicitado')?['value']?[0]?['ProjectID']"
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Update_Tarefa_Soft_Delete": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "Tarefas",
+                  "id": "@triggerBody()?['number']",
+                  "item/Title": "@body('Get_Tarefa_Atual')?['Title']",
+                  "item/ProjectID": "@body('Get_Tarefa_Atual')?['ProjectID']",
+                  "item/Status/Value": "@coalesce(body('Get_Tarefa_Atual')?['Status']?['Value'], body('Get_Tarefa_Atual')?['Status'], 'Pendente')",
+                  "item/Responsavel": "@coalesce(body('Get_Tarefa_Atual')?['Responsavel'], '')",
+                  "item/DataFim": "@body('Get_Tarefa_Atual')?['DataFim']",
+                  "item/Prioridade/Value": "@coalesce(body('Get_Tarefa_Atual')?['Prioridade']?['Value'], body('Get_Tarefa_Atual')?['Prioridade'], 'Media')",
+                  "item/HorasEstimadas": "@coalesce(body('Get_Tarefa_Atual')?['HorasEstimadas'], 0)",
+                  "item/HorasRealizadas": "@coalesce(body('Get_Tarefa_Atual')?['HorasRealizadas'], 0)",
+                  "item/Deleted": true,
+                  "item/DeletedAt": "@utcNow()",
+                  "item/DeletedReason": "@triggerBody()?['text']",
+                  "item/DeletedByUPN": "@coalesce(triggerBody()?['text_1'], 'mbenicios@minsait.com')"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PatchItem"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_All_Tarefas_Projeto": {
+              "runAfter": {
+                "Update_Tarefa_Soft_Delete": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "Tarefas",
+                  "$filter": "ProjectID eq '@{replace(body('Get_Tarefa_Atual')?['ProjectID'],'''','''''')}' and Deleted eq 0",
+                  "$top": 500
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "GetItems"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Filter_Nao_Canceladas": {
+              "runAfter": {
+                "Get_All_Tarefas_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+                "where": "@not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Cancelada'))"
+              }
+            },
+            "Filter_Concluidas": {
+              "runAfter": {
+                "Filter_Nao_Canceladas": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Filter_Nao_Canceladas')",
+                "where": "@equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')"
+              }
+            },
+            "Filter_Abertas": {
+              "runAfter": {
+                "Get_All_Tarefas_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+                "where": "@or(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Pendente'), equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Em Andamento'))"
+              }
+            },
+            "Filter_Atrasadas": {
+              "runAfter": {
+                "Get_All_Tarefas_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Get_All_Tarefas_Projeto')?['value']",
+                "where": "@and(not(empty(item()?['DataFim'])), less(formatDateTime(item()?['DataFim'], 'yyyy-MM-dd'), formatDateTime(utcNow(), 'yyyy-MM-dd')), not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')), not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Cancelada')))"
+              }
+            },
+            "Calc_Percentual": {
+              "runAfter": {
+                "Filter_Nao_Canceladas": [
+                  "Succeeded"
+                ],
+                "Filter_Concluidas": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Compose",
+              "inputs": "@if(equals(length(body('Filter_Nao_Canceladas')), 0), 0, div(mul(length(body('Filter_Concluidas')), 100), length(body('Filter_Nao_Canceladas'))))"
+            },
+            "Get_Projeto_Item": {
+              "runAfter": {
+                "Get_All_Tarefas_Projeto": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "Projetos",
+                  "$filter": "ProjectID eq '@{replace(body('Get_Tarefa_Atual')?['ProjectID'],'''','''''')}' and Ativo eq 1 and Deleted eq 0",
+                  "$top": 1
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "GetItems"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition_Projeto_Encontrado": {
+              "runAfter": {
+                "Get_Projeto_Item": [
+                  "Succeeded"
+                ]
+              },
+              "type": "If",
+              "expression": {
+                "greater": [
+                  "@length(body('Get_Projeto_Item')?['value'])",
+                  0
+                ]
+              },
+              "actions": {},
+              "else": {
+                "actions": {
+                  "Response_Project_Not_Found": {
+                    "type": "Response",
+                    "kind": "Skills",
+                    "inputs": {
+                      "statusCode": 200,
+                      "headers": {
+                        "Content-Type": "application/json"
+                      },
+                      "body": {
+                        "message": "Tarefa removida, mas o ProjectID vinculado nao foi encontrado em Projetos. Contadores do projeto nao foram atualizados. Codigo: PROJECT_NOT_FOUND."
+                      },
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string",
+                            "title": "message"
+                          }
+                        }
+                      }
+                    },
+                    "runAfter": {}
+                  }
+                }
+              }
+            },
+            "Update_Projeto_Counters": {
+              "runAfter": {
+                "Calc_Percentual": [
+                  "Succeeded"
+                ],
+                "Get_All_Tarefas_Projeto": [
+                  "Succeeded"
+                ],
+                "Get_Projeto_Item": [
+                  "Succeeded"
+                ],
+                "Filter_Concluidas": [
+                  "Succeeded"
+                ],
+                "Filter_Abertas": [
+                  "Succeeded"
+                ],
+                "Filter_Atrasadas": [
+                  "Succeeded"
+                ],
+                "Condition_Projeto_Encontrado": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "table": "Projetos",
+                  "id": "@body('Get_Projeto_Item')?['value']?[0]?['ID']",
+                  "item/Title": "@coalesce(body('Get_Projeto_Item')?['value']?[0]?['Title'], body('Get_Projeto_Item')?['value']?[0]?['NomeProjeto'])",
+                  "item/ProjectID": "@body('Get_Projeto_Item')?['value']?[0]?['ProjectID']",
+                  "item/NomeProjeto": "@body('Get_Projeto_Item')?['value']?[0]?['NomeProjeto']",
+                  "item/PM/Claims": "@coalesce(body('Get_Projeto_Item')?['value']?[0]?['PM']?['Claims'], concat('i:0#.f|membership|', coalesce(body('Get_Projeto_Item')?['value']?[0]?['PM']?['Email'], 'mbenicios@minsait.com')))",
+                  "item/StatusRAG/Value": "@coalesce(body('Get_Projeto_Item')?['value']?[0]?['StatusRAG']?['Value'], body('Get_Projeto_Item')?['value']?[0]?['StatusRAG'], 'Verde')",
+                  "item/Percentual": "@outputs('Calc_Percentual')",
+                  "item/TarefasTotal": "@length(body('Get_All_Tarefas_Projeto')?['value'])",
+                  "item/TarefasConcluidas": "@length(body('Filter_Concluidas'))",
+                  "item/TarefasAbertas": "@length(body('Filter_Abertas'))",
+                  "item/TarefasAtrasadas": "@length(body('Filter_Atrasadas'))",
+                  "item/Deleted": false
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PatchItem"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Update_Projeto_Counters": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat('Tarefa removida do projeto ativo. Projeto: ', body('Get_Projeto_Solicitado')?['value']?[0]?['NomeProjeto'], '. ID: ', string(triggerBody()?['number']), '. Titulo: ', body('Get_Tarefa_Atual')?['Title'], '. ProjectID: ', body('Get_Tarefa_Atual')?['ProjectID'], '. Motivo: ', triggerBody()?['text'], '.')}"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "title": "message"
+                    }
+                  }
+                }
+              }
+            },
+            "Response_Error_Update": {
+              "runAfter": {
+                "Update_Tarefa_Soft_Delete": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao remover tarefa no SharePoint. Codigo: SP_TASK_SOFT_DELETE_FAILED."
+                }
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Response_Task_Project_Mismatch": {
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Tarefa nao esta ativa no projeto informado. Use listar tarefas do projeto e informe um ID retornado. Codigo: TASK_PROJECT_MISMATCH_OR_INACTIVE."
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "title": "message"
+                      }
+                    }
+                  }
+                },
+                "runAfter": {}
+              }
+            }
+          }
+        },
+        "Response_Task_Not_Found": {
+          "runAfter": {
+            "Get_Tarefa_Atual": [
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "message": "Tarefa nao encontrada. Confirme o ID exibido em listar tarefas. Codigo: TASK_NOT_FOUND."
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "title": "message"
+                }
+              }
+            }
+          }
+        },
+        "Compose_ProjectName": {
+          "runAfter": {
+            "Get_Tarefa_Atual": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?['text_2'], ''))"
+        },
+        "Get_Projeto_Solicitado": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "@{concat('(NomeProjeto eq ''', replace(outputs('Compose_ProjectName'),'''',''''''), ''' or ProjectID eq ''', replace(outputs('Compose_ProjectName'),'''',''''''), ''') and Ativo eq 1 and Deleted eq 0')}",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

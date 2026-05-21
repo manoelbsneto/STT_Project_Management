@@ -1,0 +1,12 @@
+AtualizarTarefa response display regression failed: Final response is field-level display, not static-only; Display 
+uses mantido placeholder; Display uses Power Fx If expression; Display checks blank values; Display normalizes 
+lower/trim text; Display recognizes ascii skip tokens; Display recognizes accented nao skip token
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-AtualizarTarefaResponseDisplay.ps1:115 caractere:9
++         throw "AtualizarTarefa response display regression failed: $( ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (AtualizarTarefa... nao skip token:String) [], RuntimeException
+    + FullyQualifiedErrorId : AtualizarTarefa response display regression failed: Final response is field-level displa 
+   y, not static-only; Display uses mantido placeholder; Display uses Power Fx If expression; Display checks blank va  
+  lues; Display normalizes lower/trim text; Display recognizes ascii skip tokens; Display recognizes accented nao sk   
+ ip token
+ 

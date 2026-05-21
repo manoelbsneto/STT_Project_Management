@@ -1,0 +1,160 @@
+{
+  "flowName": "PMO_PA_ConsultarPortfolio",
+  "workflowId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+  "flowType": "legacy",
+  "windowStartUtc": "2026-04-20T23:03:25.5987542Z",
+  "capturedAtUtc": "2026-05-20T23:03:25.5986221Z",
+  "totalRuns": 13,
+  "succeeded": 13,
+  "failed": 0,
+  "canceled": 0,
+  "timedOut": 0,
+  "statusCounts": {
+    "Succeeded": 13
+  },
+  "runs": [
+    {
+      "flowRunName": "08584227044220185912391249164CU26",
+      "status": "Succeeded",
+      "startTime": "2026-05-16T03:34:23.4619996Z",
+      "endTime": "2026-05-16T03:34:35.2103394Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584228211453946099380896607CU17",
+      "status": "Succeeded",
+      "startTime": "2026-05-14T19:09:00.0856049Z",
+      "endTime": "2026-05-14T19:09:11.0128062Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229405146157195494599099CU05",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T09:59:30.8646552Z",
+      "endTime": "2026-05-13T09:59:37.5814709Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229407093997739121291148CU21",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T09:56:16.0808208Z",
+      "endTime": "2026-05-13T09:56:25.2964447Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229957665606009574827650cU14",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T18:38:38.9197018Z",
+      "endTime": "2026-05-12T18:39:02.9174664Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230488725878558575066742CU24",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T03:53:32.8937048Z",
+      "endTime": "2026-05-12T03:53:39.3689533Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230619453653527452641375CU20",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T00:15:40.1147378Z",
+      "endTime": "2026-05-12T00:15:45.6705891Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230636328364247681675603CU11",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T23:47:32.6440583Z",
+      "endTime": "2026-05-11T23:47:37.1815665Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230667829158518137123742CU26",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T22:55:02.5644329Z",
+      "endTime": "2026-05-11T22:55:06.9814120Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230668273568642334759361CU27",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T22:54:18.1243477Z",
+      "endTime": "2026-05-11T22:54:23.5315798Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230710221224869380886270CU24",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T21:44:23.3570648Z",
+      "endTime": "2026-05-11T21:44:28.5047360Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584231054283761417892814883CU11",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T12:10:57.1109733Z",
+      "endTime": "2026-05-11T12:11:01.5751080Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584231336184026526988198979CU24",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T04:21:07.0838648Z",
+      "endTime": "2026-05-11T04:21:11.2093608Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    }
+  ]
+}

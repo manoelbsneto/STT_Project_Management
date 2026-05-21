@@ -1,0 +1,17 @@
+{
+  "flowName": "PMO_PA_CriarProjeto",
+  "workflowId": "3104124d-364a-f111-bec7-7ced8d955c6c",
+  "responseActionName": "Valores_retornados_para_o_Power_Virtual_Agents",
+  "responseActionPath": "Valores_retornados_para_o_Power_Virtual_Agents",
+  "statusCode": 200,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "title": "message",
+        "type": "string",
+        "x-ms-content-hint": "TEXT"
+      }
+    }
+  }
+}

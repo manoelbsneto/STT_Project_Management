@@ -1,0 +1,22 @@
+﻿[
+    {
+        "Title":  "Todos los elementos",
+        "ViewQuery":  "\u003cOrderBy\u003e\u003cFieldRef Name=\"ID\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "LinkTitle"
+                       ]
+    },
+    {
+        "Title":  "Por Projeto",
+        "ViewQuery":  "\u003cOrderBy\u003e\u003cFieldRef Name=\"DataRegistro\" Ascending=\"FALSE\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "StatusID",
+                           "ProjectID",
+                           "DataRegistro",
+                           "PM",
+                           "RAG",
+                           "Resumo",
+                           "Percentual"
+                       ]
+    }
+]

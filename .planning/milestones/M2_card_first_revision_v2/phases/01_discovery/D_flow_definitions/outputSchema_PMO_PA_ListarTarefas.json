@@ -1,0 +1,71 @@
+{
+  "flowName": "PMO_PA_ListarTarefas",
+  "workflowId": "9544f14b-3748-f111-bec7-6045bdf42cae",
+  "task": "D.9",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "responseCount": 3,
+  "primarySchema": {
+    "type": "object",
+    "properties": {
+      "result": {
+        "type": "string",
+        "title": "Result",
+        "x-ms-dynamically-added": true,
+        "x-ms-content-hint": "TEXT"
+      }
+    }
+  },
+  "responses": [
+    {
+      "name": "Respond_Empty",
+      "path": "Condition_Projeto_Encontrado/Check_Tarefas_Exist/Respond_Empty",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "title": "Result",
+            "x-ms-dynamically-added": true,
+            "x-ms-content-hint": "TEXT"
+          }
+        }
+      },
+      "bodyShape": "result"
+    },
+    {
+      "name": "Respond_Lista",
+      "path": "Condition_Projeto_Encontrado/Check_Tarefas_Exist/else/Respond_Lista",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "title": "Result",
+            "x-ms-dynamically-added": true,
+            "x-ms-content-hint": "TEXT"
+          }
+        }
+      },
+      "bodyShape": "result"
+    },
+    {
+      "name": "Response_Project_Not_Found",
+      "path": "Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "title": "Result",
+            "x-ms-dynamically-added": true,
+            "x-ms-content-hint": "TEXT"
+          }
+        }
+      },
+      "bodyShape": "result"
+    }
+  ]
+}

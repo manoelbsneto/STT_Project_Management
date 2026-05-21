@@ -1,0 +1,118 @@
+{
+  "flowName": "PMO_PA_ExcluirTarefa",
+  "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+  "task": "D.8",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "windowStart": "2026-04-20T23:01:33.3277388Z",
+  "windowEnd": "2026-05-20T23:02:21.2033847Z",
+  "totalRuns": 11,
+  "succeeded": 10,
+  "failed": 1,
+  "cancelled": 0,
+  "statusCounts": {
+    "Failed": 1,
+    "Succeeded": 10
+  },
+  "runs": [
+    {
+      "runName": "08584229017760940274981532667CU07",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T20:45:09.3873237Z",
+      "endTime": "2026-05-13T20:45:11.1826233Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584229358704558828418254988CU22",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T11:16:55.0248589Z",
+      "endTime": "2026-05-13T11:16:58.109216Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584229931518642991825694015CU10",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T19:22:13.6174262Z",
+      "endTime": "2026-05-12T19:22:15.8162686Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230229378635228542027847CU20",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T11:05:47.6179433Z",
+      "endTime": "2026-05-12T11:05:49.8601961Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230238942372181873201724CU25",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T10:49:51.245612Z",
+      "endTime": "2026-05-12T10:49:53.8339593Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230453523379090511750068CU21",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T04:52:13.14302Z",
+      "endTime": "2026-05-12T04:52:15.6503399Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230602379998801509496471CU26",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T00:44:07.480893Z",
+      "endTime": "2026-05-12T00:44:08.6706952Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_Task_Project_Mismatch",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230619040296888149178537CU05",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T00:16:21.4513444Z",
+      "endTime": "2026-05-12T00:16:22.1659947Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_Already_Deleted",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230631222569145129688995CU09",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T23:56:03.2237881Z",
+      "endTime": "2026-05-11T23:56:04.9373205Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230634740315604060532954CU03",
+      "status": "Failed",
+      "startTime": "2026-05-11T23:50:11.4491749Z",
+      "endTime": "2026-05-11T23:50:12.2971232Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_Task_Not_Found",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230702910730882931804510cU14",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T21:56:34.4072077Z",
+      "endTime": "2026-05-11T21:56:36.3085467Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    }
+  ],
+  "retrievalError": null
+}

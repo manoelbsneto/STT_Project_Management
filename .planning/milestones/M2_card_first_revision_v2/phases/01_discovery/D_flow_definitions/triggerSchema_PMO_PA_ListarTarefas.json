@@ -1,0 +1,60 @@
+{
+  "flowName": "PMO_PA_ListarTarefas",
+  "workflowId": "9544f14b-3748-f111-bec7-6045bdf42cae",
+  "task": "D.9",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "title": "ProjectID",
+        "x-ms-dynamically-added": true,
+        "description": "Codigo do projeto (ex: PRJ-001)",
+        "x-ms-content-hint": "TEXT"
+      },
+      "NomeProjeto": {
+        "type": "string",
+        "title": "NomeProjeto",
+        "x-ms-dynamically-added": true,
+        "description": "Nome ou codigo do projeto (ex: Projeto Alpha ou PRJ-001)",
+        "x-ms-content-hint": "TEXT"
+      },
+      "ProjectID": {
+        "type": "string",
+        "title": "ProjectID",
+        "x-ms-dynamically-added": true,
+        "description": "Codigo do projeto (ex: PRJ-001)",
+        "x-ms-content-hint": "TEXT"
+      }
+    },
+    "required": []
+  },
+  "required": null,
+  "properties": {
+    "text": {
+      "type": "string",
+      "title": "ProjectID",
+      "x-ms-dynamically-added": true,
+      "description": "Codigo do projeto (ex: PRJ-001)",
+      "x-ms-content-hint": "TEXT"
+    },
+    "NomeProjeto": {
+      "type": "string",
+      "title": "NomeProjeto",
+      "x-ms-dynamically-added": true,
+      "description": "Nome ou codigo do projeto (ex: Projeto Alpha ou PRJ-001)",
+      "x-ms-content-hint": "TEXT"
+    },
+    "ProjectID": {
+      "type": "string",
+      "title": "ProjectID",
+      "x-ms-dynamically-added": true,
+      "description": "Codigo do projeto (ex: PRJ-001)",
+      "x-ms-content-hint": "TEXT"
+    }
+  }
+}

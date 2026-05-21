@@ -1,0 +1,15 @@
+{
+  "flowName": "PM0_PA_OpsFailureHandling",
+  "workflowId": "9531fbc7-a250-f111-bec7-000d3abc5cc6",
+  "powerAppsFlowName": "2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441",
+  "windowStart": "2026-04-20T20:03:52.0650949-03:00",
+  "windowEnd": "2026-05-20T20:03:52.0650949-03:00",
+  "totalRuns": 0,
+  "succeeded": 0,
+  "failed": 0,
+  "cancelled": 0,
+  "running": 0,
+  "otherStatusCounts": {},
+  "retrievalError": null,
+  "sampleRuns": []
+}

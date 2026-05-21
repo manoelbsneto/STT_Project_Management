@@ -1,0 +1,82 @@
+{
+  "input": "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_15_LIST_STATIC_RUNTIME_BYPASS.zip",
+  "topicPath": "C:\\Users\\dataops-lab\\AppData\\Local\\Temp\\pmo_at_display_22d5ca4cf2884378b913bb6fd02a9fe3\\botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa\\data",
+  "passed": false,
+  "failedCheckCount": 7,
+  "checks": [
+    {
+      "name": "AtualizarTarefa topic exists",
+      "passed": true,
+      "evidence": "C:\\Users\\dataops-lab\\AppData\\Local\\Temp\\pmo_at_display_22d5ca4cf2884378b913bb6fd02a9fe3\\botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa\\data"
+    },
+    {
+      "name": "Final response activity found",
+      "passed": true,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Final response is field-level display, not static-only",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Responsavel does not echo raw variable directly",
+      "passed": true,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Prazo does not echo raw variable directly",
+      "passed": true,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Prioridade does not echo raw variable directly",
+      "passed": true,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Horas realizadas does not echo raw variable directly",
+      "passed": true,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display uses mantido placeholder",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display uses Power Fx If expression",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display checks blank values",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display normalizes lower/trim text",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display recognizes ascii skip tokens",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    },
+    {
+      "name": "Display recognizes accented nao skip token",
+      "passed": false,
+      "evidence": "- kind: SendActivity\n              id: atualizar_done\n              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+    }
+  ]
+}
+Exception: D:\VMs\Projetos\STT_Project_Management\tests\Test-AtualizarTarefaResponseDisplay.ps1:115
+Line |
+ 115 |          throw "AtualizarTarefa response display regression failed: $( …
+     |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | AtualizarTarefa response display regression failed: Final response is field-level display, not static-only;
+     | Display uses mantido placeholder; Display uses Power Fx If expression; Display checks blank values; Display
+     | normalizes lower/trim text; Display recognizes ascii skip tokens; Display recognizes accented nao skip token
+
+

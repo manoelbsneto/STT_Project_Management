@@ -46,7 +46,23 @@ Eliminar a fricção de status reporting para projetos de tecnologia, oferecendo
 ## Framework
 GSD (Get Shit Done) v1.39.1 — Spec-Driven Development
 
+## Active Milestone
+**M2 — Hybrid Card-First Revision** (started 2026-05-20)
+- Owner: Manoel Benicio
+- Architect: Opus 4.7
+- Roadmap: `.planning/milestones/M2_card_first_revision_v2/ROADMAP.md`
+- Requirements: `.planning/milestones/M2_card_first_revision_v2/REQUIREMENTS.md`
+- State tracker: `.planning/milestones/M2_card_first_revision_v2/STATE.md`
+
+## Milestones History
+- **M1 — PMO Hub MVP Chat-First** (2026-04-28 → 2026-05-20)
+  - Status: completed dev/test, NOT shipped to production
+  - Last package: `Solution/PMO_v11_Tarefas_3_15_LIST_STATIC_RUNTIME_BYPASS.zip`
+  - All evidence preserved in `.planning/comms/*_2026{0507..0520}/`
+  - Superseded by M2 due to architecture decision to adopt hybrid card-first pattern
+- **M2 — Hybrid Card-First Revision** (active, target ship 22-25/05/2026 as `3.16`)
+
 ## Handoff Protocol
 - Every Codex final response after execution must include a ready-to-send OPUS handoff prompt link when control is expected to return to OPUS-ARCH.
-- Current OPUS handoff prompt: `.planning/comms/OPUS_HANDOFF_TENANT_RUNBOOK.md`
+- Current OPUS handoff prompt: `.planning/milestones/M2_card_first_revision_v2/STATE.md`
 - Handoff prompts must preserve gate status, evidence logs, next phase, next owner, and any mandatory tenant access constraints.

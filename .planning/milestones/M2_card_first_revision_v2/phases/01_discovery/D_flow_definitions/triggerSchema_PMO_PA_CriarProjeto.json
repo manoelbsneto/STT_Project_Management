@@ -1,0 +1,63 @@
+{
+  "flowName": "PMO_PA_CriarProjeto",
+  "workflowId": "3104124d-364a-f111-bec7-7ced8d955c6c",
+  "triggerName": "manual",
+  "type": "Request",
+  "kind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "text_2": {
+        "description": "pm",
+        "title": "Texto 2",
+        "type": "string",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_1": {
+        "description": "titulo",
+        "title": "Texto 1",
+        "type": "string",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_4": {
+        "description": "prioridade",
+        "title": "Texto 4",
+        "type": "string",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text": {
+        "description": "nomeProjeto",
+        "title": "Texto",
+        "type": "string",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_3": {
+        "description": "prazo",
+        "title": "Texto 3",
+        "type": "string",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "number": {
+        "description": "horas",
+        "title": "Numero",
+        "type": "number",
+        "x-ms-content-hint": "NUMBER",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "text_2",
+      "text_1",
+      "text_4",
+      "text",
+      "text_3",
+      "number"
+    ]
+  },
+  "metadata": null
+}

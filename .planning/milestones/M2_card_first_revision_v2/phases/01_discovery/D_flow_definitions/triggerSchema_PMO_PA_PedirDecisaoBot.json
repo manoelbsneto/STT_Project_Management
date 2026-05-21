@@ -1,0 +1,114 @@
+{
+  "flowName": "PMO_PA_PedirDecisaoBot",
+  "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+  "task": "D.10",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "aprovador": {
+        "type": "string",
+        "description": "UPN do aprovador",
+        "title": "aprovador",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "solicitante": {
+        "type": "string",
+        "description": "UPN do solicitante",
+        "title": "solicitante",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "descricao": {
+        "type": "string",
+        "description": "Descricao da decisao",
+        "title": "descricao",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "projectName": {
+        "type": "string",
+        "description": "Nome do projeto",
+        "title": "projectName",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "impacto": {
+        "type": "string",
+        "description": "Impacto",
+        "title": "impacto",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "prazo": {
+        "type": "string",
+        "description": "Prazo",
+        "title": "prazo",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "projectName",
+      "descricao",
+      "impacto",
+      "prazo",
+      "aprovador"
+    ]
+  },
+  "required": [
+    "projectName",
+    "descricao",
+    "impacto",
+    "prazo",
+    "aprovador"
+  ],
+  "properties": {
+    "aprovador": {
+      "type": "string",
+      "description": "UPN do aprovador",
+      "title": "aprovador",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "solicitante": {
+      "type": "string",
+      "description": "UPN do solicitante",
+      "title": "solicitante",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "descricao": {
+      "type": "string",
+      "description": "Descricao da decisao",
+      "title": "descricao",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Nome do projeto",
+      "title": "projectName",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "impacto": {
+      "type": "string",
+      "description": "Impacto",
+      "title": "impacto",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "prazo": {
+      "type": "string",
+      "description": "Prazo",
+      "title": "prazo",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    }
+  }
+}

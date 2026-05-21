@@ -1,0 +1,49 @@
+{
+  "milestone": "M2",
+  "milestone_name": "Hybrid Card-First Revision",
+  "mode": "yolo",
+  "granularity": "standard",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "quality",
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "nyquist_validation": true,
+    "auto_advance": true,
+    "research_before_questions": false,
+    "_auto_chain_active": true,
+    "manual_gates_only_at": [7, 9]
+  },
+  "agents": {
+    "architect_lead": "Opus 4.7",
+    "architect_support": "Opus 4.7 #2",
+    "integration_lead": "Codex 5.5",
+    "integration_subs": 3,
+    "design_lead": "Gemini Flash 3.5",
+    "design_subs": 2,
+    "owner": "Manoel Benicio"
+  },
+  "constraints": {
+    "tenant_writes_owner_only": true,
+    "copilot_chat_owner_only": true,
+    "premium_connectors_forbidden": true,
+    "graph_direct_forbidden": true,
+    "m365_cli_forbidden": true,
+    "language_ui": "pt-BR",
+    "language_specs": "mixed"
+  },
+  "release": {
+    "target_version": "3.16",
+    "tenant": "ColOfertasBrasilPro",
+    "tenant_env_id": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "rollback_target": "Solution/PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip",
+    "rollback_target_sha256": "37A3E7C85392D9E049CD26E01CF1D31F4B78A00DF35E0B7FAE23A252F29CB691"
+  },
+  "predecessor": {
+    "milestone": "M1",
+    "preserved_in": ".planning/ (root level)",
+    "evidence_packs": ".planning/comms/*_2026{0507..0520}/"
+  }
+}

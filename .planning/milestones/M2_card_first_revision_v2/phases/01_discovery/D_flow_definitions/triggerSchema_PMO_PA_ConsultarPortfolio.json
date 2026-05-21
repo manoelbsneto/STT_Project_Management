@@ -1,0 +1,23 @@
+{
+  "flowName": "PMO_PA_ConsultarPortfolio",
+  "workflowId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+  "triggerName": "manual",
+  "type": "Request",
+  "kind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "includeDeleted": {
+        "type": "string",
+        "description": "Incluir registros excluidos? sim/nao",
+        "title": "includeDeleted",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": []
+  },
+  "metadata": {
+    "operationMetadataId": "b738e4a8-d399-4a07-b11b-4ca8f3750f56"
+  }
+}

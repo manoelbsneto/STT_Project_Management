@@ -1,0 +1,15 @@
+<fetch>
+  <entity name='workflow'>
+    <attribute name='workflowid' />
+    <attribute name='name' />
+    <attribute name='statecode' />
+    <attribute name='statuscode' />
+    <attribute name='category' />
+    <attribute name='type' />
+    <attribute name='modifiedon' />
+    <filter type='or'>
+      <condition attribute='name' operator='like' value='PMO_PA_%' />
+      <condition attribute='name' operator='like' value='PM0_PA_%' />
+    </filter>
+  </entity>
+</fetch>

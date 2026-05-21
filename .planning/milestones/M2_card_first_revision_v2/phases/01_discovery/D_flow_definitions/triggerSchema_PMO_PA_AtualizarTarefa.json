@@ -1,0 +1,65 @@
+{
+  "flowName": "PMO_PA_AtualizarTarefa",
+  "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6",
+  "triggerName": "manual",
+  "type": "Request",
+  "kind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "number": {
+        "type": "number",
+        "title": "TaskID",
+        "x-ms-dynamically-added": true,
+        "description": "ID da tarefa a atualizar",
+        "x-ms-content-hint": "NUMBER"
+      },
+      "text": {
+        "type": "string",
+        "title": "Status",
+        "x-ms-dynamically-added": true,
+        "description": "Novo status: Pendente, Em Andamento, Concluida, Cancelada",
+        "x-ms-content-hint": "TEXT"
+      },
+      "number_1": {
+        "type": "number",
+        "title": "HorasRealizadas",
+        "x-ms-dynamically-added": true,
+        "description": "Horas realizadas",
+        "x-ms-content-hint": "NUMBER"
+      },
+      "text_1": {
+        "type": "string",
+        "title": "Responsavel",
+        "x-ms-dynamically-added": true,
+        "description": "Email do novo responsavel",
+        "x-ms-content-hint": "TEXT"
+      },
+      "text_2": {
+        "type": "string",
+        "title": "DataFim",
+        "x-ms-dynamically-added": true,
+        "description": "Nova data de fim (YYYY-MM-DD)",
+        "x-ms-content-hint": "TEXT"
+      },
+      "text_3": {
+        "type": "string",
+        "title": "Prioridade",
+        "x-ms-dynamically-added": true,
+        "description": "Nova prioridade: Baixa, Media, Alta, Critica",
+        "x-ms-content-hint": "TEXT"
+      },
+      "number_2": {
+        "type": "number",
+        "title": "HorasEstimadas",
+        "x-ms-dynamically-added": true,
+        "description": "Horas estimadas atualizadas",
+        "x-ms-content-hint": "NUMBER"
+      }
+    },
+    "required": [
+      "number"
+    ]
+  },
+  "metadata": null
+}

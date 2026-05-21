@@ -1,0 +1,66 @@
+{
+  "flowName": "PMO_PA_ExcluirProjeto",
+  "workflowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+  "task": "D.7",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "title": "Projeto",
+        "description": "Nome do projeto ou ProjectID",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_1": {
+        "type": "string",
+        "title": "Motivo",
+        "description": "Motivo da remocao logica",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "text_2": {
+        "type": "string",
+        "title": "DeletedByUPN",
+        "description": "UPN do usuario solicitante",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "text",
+      "text_1"
+    ]
+  },
+  "required": [
+    "text",
+    "text_1"
+  ],
+  "properties": {
+    "text": {
+      "type": "string",
+      "title": "Projeto",
+      "description": "Nome do projeto ou ProjectID",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "text_1": {
+      "type": "string",
+      "title": "Motivo",
+      "description": "Motivo da remocao logica",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "text_2": {
+      "type": "string",
+      "title": "DeletedByUPN",
+      "description": "UPN do usuario solicitante",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    }
+  }
+}

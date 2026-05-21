@@ -1,0 +1,32 @@
+{
+  "flowName": "PMO_PA_ConsultarProjeto",
+  "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+  "triggerName": "manual",
+  "type": "Request",
+  "kind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "includeDeleted": {
+        "type": "string",
+        "description": "Incluir registros excluidos? sim/nao",
+        "title": "includeDeleted",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "nomeProjeto": {
+        "type": "string",
+        "description": "Nome do projeto",
+        "title": "nomeProjeto",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "nomeProjeto"
+    ]
+  },
+  "metadata": {
+    "operationMetadataId": "6895392a-c2a7-4eb9-97b8-216fcf7e4e33"
+  }
+}

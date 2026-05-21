@@ -1,0 +1,17 @@
+{
+  "flowName": "PMO_PA_ConsultarPortfolio",
+  "workflowId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+  "responseActionName": "Response_OK",
+  "responseActionPath": "Response_OK",
+  "statusCode": 200,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "title": "message",
+        "x-ms-dynamically-added": true,
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+AQ-09 smoke evidence failed: A1_CMD-12-H, A2_CMD-15, A3_CMD-11-P0, A4_CMD-13A, A5_CMD-10
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-Aq09SmokeEvidence.ps1:134 caractere:5
++     throw "AQ-09 smoke evidence failed: $($inScopeFailures.id -join ' ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (AQ-09 smoke evi...-13A, A5_CMD-10:String) [], RuntimeException
+    + FullyQualifiedErrorId : AQ-09 smoke evidence failed: A1_CMD-12-H, A2_CMD-15, A3_CMD-11-P0, A4_CMD-13A, A5_CMD-10
+ 

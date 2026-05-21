@@ -1,0 +1,15 @@
+{
+  "flowName": "PM0_PA_Card_AtualizarStatus",
+  "workflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+  "powerAppsFlowName": "b7678a81-df01-4070-b6db-3c0dbcc7f924",
+  "windowStart": "2026-04-20T20:03:52.0650949-03:00",
+  "windowEnd": "2026-05-20T20:03:52.0650949-03:00",
+  "totalRuns": 0,
+  "succeeded": 0,
+  "failed": 0,
+  "cancelled": 0,
+  "running": 0,
+  "otherStatusCounts": {},
+  "retrievalError": null,
+  "sampleRuns": []
+}

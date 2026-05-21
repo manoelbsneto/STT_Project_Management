@@ -1,0 +1,39 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent_workflow">
+    <attribute name="botcomponent_workflowid" />
+    <attribute name="botcomponentid" />
+    <attribute name="workflowid" />
+    <attribute name="iscustomizable" />
+    <link-entity name="botcomponent" from="botcomponentid" to="botcomponentid" alias="bc" link-type="inner">
+      <attribute name="schemaname" />
+      <attribute name="name" />
+      <attribute name="componenttype" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+      <filter type="and">
+        <condition attribute="schemaname" operator="in">
+          <value>pmo_AssistentePMO_V2.topic.AtualizarStatus</value>
+          <value>pmo_AssistentePMO_V2.topic.AtualizarTarefa</value>
+          <value>pmo_AssistentePMO_V2.topic.ConsultarPortfolio</value>
+          <value>pmo_AssistentePMO_V2.topic.CriarTarefa</value>
+          <value>pmo_AssistentePMO_V2.topic.ListarTarefas</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas</value>
+          <value>pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling</value>
+        </condition>
+      </filter>
+    </link-entity>
+    <link-entity name="workflow" from="workflowid" to="workflowid" alias="wf" link-type="inner">
+      <attribute name="workflowid" />
+      <attribute name="name" />
+      <attribute name="uniquename" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+      <attribute name="category" />
+      <attribute name="modifiedon" />
+    </link-entity>
+  </entity>
+</fetch>

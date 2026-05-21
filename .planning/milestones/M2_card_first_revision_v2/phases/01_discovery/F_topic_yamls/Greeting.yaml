@@ -1,0 +1,10 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: conversation_start_message
+      activity: Ola. Sou o Assistente PMO. Envie seu comando de PMO quando quiser.
+inputType: {}
+outputType: {}

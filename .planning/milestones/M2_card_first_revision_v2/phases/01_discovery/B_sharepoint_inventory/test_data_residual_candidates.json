@@ -1,0 +1,599 @@
+﻿{
+    "Riscos e Bloqueios":  [
+                               {
+                                   "Id":  1,
+                                   "Title":  "QA Wave 2 - risco critico",
+                                   "Modified":  "2026-05-04T14:08:29.0000000Z",
+                                   "Created":  "2026-05-04T14:08:29.0000000Z",
+                                   "ProjectID":  "PRJ-QA1",
+                                   "TaskID":  "",
+                                   "StatusID":  "",
+                                   "RiskID":  "QA-RISK1",
+                                   "DecisionID":  "",
+                                   "Reasons":  [
+                                                   "Title contains QA"
+                                               ],
+                                   "OwnerConfirmedCandidate":  false
+                               },
+                               {
+                                   "Id":  4,
+                                   "Title":  "RISK-6851D4E6",
+                                   "Modified":  "2026-05-11T16:46:58.0000000Z",
+                                   "Created":  "2026-05-11T16:46:58.0000000Z",
+                                   "ProjectID":  "PRJ-5E7C4110",
+                                   "TaskID":  "",
+                                   "StatusID":  "",
+                                   "RiskID":  "RISK-6851D4E6",
+                                   "DecisionID":  "",
+                                   "Reasons":  [
+                                                   "Modified date between 2026-05-10 and 2026-05-13"
+                                               ],
+                                   "OwnerConfirmedCandidate":  false
+                               },
+                               {
+                                   "Id":  5,
+                                   "Title":  "BLOCK-F8577225",
+                                   "Modified":  "2026-05-11T16:48:44.0000000Z",
+                                   "Created":  "2026-05-11T16:48:44.0000000Z",
+                                   "ProjectID":  "PRJ-5E7C4110",
+                                   "TaskID":  "",
+                                   "StatusID":  "",
+                                   "RiskID":  "BLOCK-F8577225",
+                                   "DecisionID":  "",
+                                   "Reasons":  [
+                                                   "Modified date between 2026-05-10 and 2026-05-13"
+                                               ],
+                                   "OwnerConfirmedCandidate":  false
+                               },
+                               {
+                                   "Id":  6,
+                                   "Title":  "RISK-16E1AE89",
+                                   "Modified":  "2026-05-13T15:41:49.0000000Z",
+                                   "Created":  "2026-05-13T15:41:49.0000000Z",
+                                   "ProjectID":  "PRJ-274E5ACC",
+                                   "TaskID":  "",
+                                   "StatusID":  "",
+                                   "RiskID":  "RISK-16E1AE89",
+                                   "DecisionID":  "",
+                                   "Reasons":  [
+                                                   "ProjectID matches PRJ-274E5ACC",
+                                                   "Modified date between 2026-05-10 and 2026-05-13"
+                                               ],
+                                   "OwnerConfirmedCandidate":  true
+                               },
+                               {
+                                   "Id":  7,
+                                   "Title":  "BLOCK-ED57742E",
+                                   "Modified":  "2026-05-13T16:50:32.0000000Z",
+                                   "Created":  "2026-05-13T16:50:32.0000000Z",
+                                   "ProjectID":  "PRJ-274E5ACC",
+                                   "TaskID":  "",
+                                   "StatusID":  "",
+                                   "RiskID":  "BLOCK-ED57742E",
+                                   "DecisionID":  "",
+                                   "Reasons":  [
+                                                   "ProjectID matches PRJ-274E5ACC",
+                                                   "Modified date between 2026-05-10 and 2026-05-13"
+                                               ],
+                                   "OwnerConfirmedCandidate":  true
+                               }
+                           ],
+    "Status Diario":  [
+                          {
+                              "Id":  2,
+                              "Title":  "STU-20260511042312",
+                              "Modified":  "2026-05-11T04:23:13.0000000Z",
+                              "Created":  "2026-05-11T04:23:13.0000000Z",
+                              "ProjectID":  "PRJ-5E7C4110",
+                              "TaskID":  "",
+                              "StatusID":  "STU-20260511042312",
+                              "RiskID":  "",
+                              "DecisionID":  "",
+                              "Reasons":  [
+                                              "Modified date between 2026-05-10 and 2026-05-13"
+                                          ],
+                              "OwnerConfirmedCandidate":  false
+                          },
+                          {
+                              "Id":  3,
+                              "Title":  "STU-20260511164052",
+                              "Modified":  "2026-05-11T16:40:52.0000000Z",
+                              "Created":  "2026-05-11T16:40:52.0000000Z",
+                              "ProjectID":  "PRJ-5E7C4110",
+                              "TaskID":  "",
+                              "StatusID":  "STU-20260511164052",
+                              "RiskID":  "",
+                              "DecisionID":  "",
+                              "Reasons":  [
+                                              "Modified date between 2026-05-10 and 2026-05-13"
+                                          ],
+                              "OwnerConfirmedCandidate":  false
+                          },
+                          {
+                              "Id":  4,
+                              "Title":  "STU-20260513170804",
+                              "Modified":  "2026-05-13T17:08:05.0000000Z",
+                              "Created":  "2026-05-13T17:08:05.0000000Z",
+                              "ProjectID":  "PRJ-274E5ACC",
+                              "TaskID":  "",
+                              "StatusID":  "STU-20260513170804",
+                              "RiskID":  "",
+                              "DecisionID":  "",
+                              "Reasons":  [
+                                              "ProjectID matches PRJ-274E5ACC",
+                                              "Modified date between 2026-05-10 and 2026-05-13"
+                                          ],
+                              "OwnerConfirmedCandidate":  true
+                          },
+                          {
+                              "Id":  5,
+                              "Title":  "STU-20260514191000",
+                              "Modified":  "2026-05-14T19:10:02.0000000Z",
+                              "Created":  "2026-05-14T19:10:02.0000000Z",
+                              "ProjectID":  "PRJ-274E5ACC",
+                              "TaskID":  "",
+                              "StatusID":  "STU-20260514191000",
+                              "RiskID":  "",
+                              "DecisionID":  "",
+                              "Reasons":  [
+                                              "ProjectID matches PRJ-274E5ACC"
+                                          ],
+                              "OwnerConfirmedCandidate":  true
+                          }
+                      ],
+    "Projetos":  [
+                     {
+                         "Id":  14,
+                         "Title":  "Teste Fix Codex",
+                         "Modified":  "2026-05-10T20:50:52.0000000Z",
+                         "Created":  "2026-05-10T20:50:52.0000000Z",
+                         "ProjectID":  "PRJ-4C7D8465",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  15,
+                         "Title":  "Teste ColdStart Fix",
+                         "Modified":  "2026-05-10T21:30:19.0000000Z",
+                         "Created":  "2026-05-10T21:30:19.0000000Z",
+                         "ProjectID":  "PRJ-6141FC2B",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  16,
+                         "Title":  "Teste Smoke Session20B",
+                         "Modified":  "2026-05-11T02:00:08.0000000Z",
+                         "Created":  "2026-05-11T02:00:08.0000000Z",
+                         "ProjectID":  "PRJ-045ACC71",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  17,
+                         "Title":  "Teste Smoke Session20C",
+                         "Modified":  "2026-05-11T02:12:29.0000000Z",
+                         "Created":  "2026-05-11T02:12:29.0000000Z",
+                         "ProjectID":  "PRJ-4521EE9C",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  18,
+                         "Title":  "Teste Smoke Final V5",
+                         "Modified":  "2026-05-11T16:40:52.0000000Z",
+                         "Created":  "2026-05-11T04:16:55.0000000Z",
+                         "ProjectID":  "PRJ-5E7C4110",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  19,
+                         "Title":  "Projeto Smoke v112 Final",
+                         "Modified":  "2026-05-11T16:52:39.0000000Z",
+                         "Created":  "2026-05-11T16:52:39.0000000Z",
+                         "ProjectID":  "PRJ-FFF50D08",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  20,
+                         "Title":  "Projeto Smoke v112 Final",
+                         "Modified":  "2026-05-11T23:56:05.0000000Z",
+                         "Created":  "2026-05-11T16:54:48.0000000Z",
+                         "ProjectID":  "PRJ-E9F77C04",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  21,
+                         "Title":  "Projeto Smoke v113 Cancel",
+                         "Modified":  "2026-05-11T18:26:13.0000000Z",
+                         "Created":  "2026-05-11T18:26:13.0000000Z",
+                         "ProjectID":  "PRJ-2CA883CF",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  23,
+                         "Title":  "projeto=Projeto Smoke v113 Cancel",
+                         "Modified":  "2026-05-12T00:20:14.0000000Z",
+                         "Created":  "2026-05-12T00:20:14.0000000Z",
+                         "ProjectID":  "PRJ-3D73DF3B",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  24,
+                         "Title":  "Projeto Smoke Delete Parcial 2.3",
+                         "Modified":  "2026-05-12T19:22:15.0000000Z",
+                         "Created":  "2026-05-12T00:48:45.0000000Z",
+                         "ProjectID":  "PRJ-6604C20A",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  25,
+                         "Title":  "Teste Data BR Projeto 2.8",
+                         "Modified":  "2026-05-12T23:46:20.0000000Z",
+                         "Created":  "2026-05-12T23:46:20.0000000Z",
+                         "ProjectID":  "PRJ-C2D37835",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  26,
+                         "Title":  "Teste Data ISO Projeto 2.8",
+                         "Modified":  "2026-05-12T23:49:43.0000000Z",
+                         "Created":  "2026-05-12T23:49:43.0000000Z",
+                         "ProjectID":  "PRJ-9CF9F7A5",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  27,
+                         "Title":  "Teste Data BR Projeto 2.9",
+                         "Modified":  "2026-05-13T11:16:58.0000000Z",
+                         "Created":  "2026-05-13T09:50:47.0000000Z",
+                         "ProjectID":  "PRJ-D1828086",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  28,
+                         "Title":  "Teste Parser Tail 2.9",
+                         "Modified":  "2026-05-13T09:55:54.0000000Z",
+                         "Created":  "2026-05-13T09:55:54.0000000Z",
+                         "ProjectID":  "PRJ-0A64C204",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  29,
+                         "Title":  "Teste Parser Tail 2.9",
+                         "Modified":  "2026-05-13T10:01:17.0000000Z",
+                         "Created":  "2026-05-13T10:01:17.0000000Z",
+                         "ProjectID":  "PRJ-67B13D57",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  30,
+                         "Title":  "Teste Data BR Projeto 3.0",
+                         "Modified":  "2026-05-13T11:19:45.0000000Z",
+                         "Created":  "2026-05-13T11:19:45.0000000Z",
+                         "ProjectID":  "PRJ-A7B03E50",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains Teste",
+                                         "Title contains test",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  31,
+                         "Title":  "QA Robust 20260513",
+                         "Modified":  "2026-05-13T13:37:08.0000000Z",
+                         "Created":  "2026-05-13T13:37:08.0000000Z",
+                         "ProjectID":  "PRJ-6D2F713C",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains QA",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  32,
+                         "Title":  "QA Robust 20260513 E",
+                         "Modified":  "2026-05-13T14:46:14.0000000Z",
+                         "Created":  "2026-05-13T14:46:14.0000000Z",
+                         "ProjectID":  "PRJ-CCCBAA11",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains QA",
+                                         "Modified date between 2026-05-10 and 2026-05-13"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     },
+                     {
+                         "Id":  33,
+                         "Title":  "QA Robust 20260513 F",
+                         "Modified":  "2026-05-14T19:10:01.0000000Z",
+                         "Created":  "2026-05-13T14:46:52.0000000Z",
+                         "ProjectID":  "PRJ-274E5ACC",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains QA",
+                                         "ProjectID matches PRJ-274E5ACC"
+                                     ],
+                         "OwnerConfirmedCandidate":  true
+                     },
+                     {
+                         "Id":  34,
+                         "Title":  "QA Projeto Runtime 315 20260514",
+                         "Modified":  "2026-05-14T19:10:33.0000000Z",
+                         "Created":  "2026-05-14T19:10:33.0000000Z",
+                         "ProjectID":  "PRJ-5FFC861A",
+                         "TaskID":  "",
+                         "StatusID":  "",
+                         "RiskID":  "",
+                         "DecisionID":  "",
+                         "Reasons":  [
+                                         "Title contains QA"
+                                     ],
+                         "OwnerConfirmedCandidate":  false
+                     }
+                 ],
+    "Tarefas":  [
+                    {
+                        "Id":  6,
+                        "Title":  "Smoke task 2 - in progress",
+                        "Modified":  "2026-05-11T21:40:43.0000000Z",
+                        "Created":  "2026-05-11T21:40:42.0000000Z",
+                        "ProjectID":  "PRJ-CODEX-0511184036",
+                        "TaskID":  "",
+                        "StatusID":  "",
+                        "RiskID":  "",
+                        "DecisionID":  "",
+                        "Reasons":  [
+                                        "Modified date between 2026-05-10 and 2026-05-13"
+                                    ],
+                        "OwnerConfirmedCandidate":  false
+                    },
+                    {
+                        "Id":  7,
+                        "Title":  "Smoke task 3 - completed",
+                        "Modified":  "2026-05-11T21:40:45.0000000Z",
+                        "Created":  "2026-05-11T21:40:44.0000000Z",
+                        "ProjectID":  "PRJ-CODEX-0511184036",
+                        "TaskID":  "",
+                        "StatusID":  "",
+                        "RiskID":  "",
+                        "DecisionID":  "",
+                        "Reasons":  [
+                                        "Modified date between 2026-05-10 and 2026-05-13"
+                                    ],
+                        "OwnerConfirmedCandidate":  false
+                    },
+                    {
+                        "Id":  14,
+                        "Title":  "QA Skip Opcional 20260513 1935",
+                        "Modified":  "2026-05-14T19:05:22.0000000Z",
+                        "Created":  "2026-05-13T22:36:34.0000000Z",
+                        "ProjectID":  "PRJ-274E5ACC",
+                        "TaskID":  "",
+                        "StatusID":  "",
+                        "RiskID":  "",
+                        "DecisionID":  "",
+                        "Reasons":  [
+                                        "Title contains QA",
+                                        "ProjectID matches PRJ-274E5ACC"
+                                    ],
+                        "OwnerConfirmedCandidate":  true
+                    },
+                    {
+                        "Id":  15,
+                        "Title":  "QA Final Skip 20260513 2105",
+                        "Modified":  "2026-05-14T19:04:50.0000000Z",
+                        "Created":  "2026-05-14T00:07:30.0000000Z",
+                        "ProjectID":  "PRJ-274E5ACC",
+                        "TaskID":  "",
+                        "StatusID":  "",
+                        "RiskID":  "",
+                        "DecisionID":  "",
+                        "Reasons":  [
+                                        "Title contains QA",
+                                        "ProjectID matches PRJ-274E5ACC"
+                                    ],
+                        "OwnerConfirmedCandidate":  true
+                    },
+                    {
+                        "Id":  16,
+                        "Title":  "QA CriarTarefa Runtime 315 20260514",
+                        "Modified":  "2026-05-14T19:11:37.0000000Z",
+                        "Created":  "2026-05-14T19:11:37.0000000Z",
+                        "ProjectID":  "PRJ-274E5ACC",
+                        "TaskID":  "",
+                        "StatusID":  "",
+                        "RiskID":  "",
+                        "DecisionID":  "",
+                        "Reasons":  [
+                                        "Title contains QA",
+                                        "ProjectID matches PRJ-274E5ACC"
+                                    ],
+                        "OwnerConfirmedCandidate":  true
+                    }
+                ],
+    "Decisoes do Board":  [
+                              {
+                                  "Id":  3,
+                                  "Title":  "DEC-C930FF9A",
+                                  "Modified":  "2026-05-11T16:50:21.0000000Z",
+                                  "Created":  "2026-05-11T16:50:21.0000000Z",
+                                  "ProjectID":  "PRJ-5E7C4110",
+                                  "TaskID":  "",
+                                  "StatusID":  "",
+                                  "RiskID":  "",
+                                  "DecisionID":  "DEC-C930FF9A",
+                                  "Reasons":  [
+                                                  "Modified date between 2026-05-10 and 2026-05-13"
+                                              ],
+                                  "OwnerConfirmedCandidate":  false
+                              },
+                              {
+                                  "Id":  4,
+                                  "Title":  "DEC-313AA4D0",
+                                  "Modified":  "2026-05-13T16:44:42.0000000Z",
+                                  "Created":  "2026-05-13T16:44:42.0000000Z",
+                                  "ProjectID":  "PRJ-274E5ACC",
+                                  "TaskID":  "",
+                                  "StatusID":  "",
+                                  "RiskID":  "",
+                                  "DecisionID":  "DEC-313AA4D0",
+                                  "Reasons":  [
+                                                  "ProjectID matches PRJ-274E5ACC",
+                                                  "Modified date between 2026-05-10 and 2026-05-13"
+                                              ],
+                                  "OwnerConfirmedCandidate":  true
+                              },
+                              {
+                                  "Id":  5,
+                                  "Title":  "DEC-888E19B6",
+                                  "Modified":  "2026-05-14T19:08:33.0000000Z",
+                                  "Created":  "2026-05-14T19:08:33.0000000Z",
+                                  "ProjectID":  "PRJ-274E5ACC",
+                                  "TaskID":  "",
+                                  "StatusID":  "",
+                                  "RiskID":  "",
+                                  "DecisionID":  "DEC-888E19B6",
+                                  "Reasons":  [
+                                                  "ProjectID matches PRJ-274E5ACC"
+                                              ],
+                                  "OwnerConfirmedCandidate":  true
+                              }
+                          ]
+}

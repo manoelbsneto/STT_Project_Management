@@ -1,0 +1,62 @@
+# ConsultarProjeto topic
+# Purpose: collect a project key and call the PMO_PA_ConsultarProjeto flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarProjeto.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - consultar projeto
+      - ver projeto
+      - detalhes do projeto
+      - status do projeto
+      - como esta o projeto
+      - "consultar projeto:"
+      - projeto status
+      - projeto detalhes
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "consultar\s+projeto\s*:\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "consultar\s+projeto\s*:\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, ",\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, ",\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "consultar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "consultar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))))
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.NomeProjeto
+              prompt: Qual projeto voce quer consultar?
+              entity: StringPrebuiltEntity
+    - kind: SetVariable
+      id: set_global_project
+      variable: Global.PMO_ConsultarProjeto_NomeProjeto
+      value: =Topic.NomeProjeto
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_consultar_projeto
+      input:
+        binding:
+          nomeProjeto: =Global.PMO_ConsultarProjeto_NomeProjeto
+      output:
+        binding:
+          message: Topic.ConsultarProjetoResult
+      flowId: 4a33b53e-c64c-f111-bec7-000d3abc5cc6
+    - kind: SendActivity
+      id: consultar_projeto_done
+      activity: "{Topic.ConsultarProjetoResult}"
+    - kind: EndDialog
+      id: end_consultar_projeto
+      clearTopicQueue: true
+inputType: {}
+outputType: {}

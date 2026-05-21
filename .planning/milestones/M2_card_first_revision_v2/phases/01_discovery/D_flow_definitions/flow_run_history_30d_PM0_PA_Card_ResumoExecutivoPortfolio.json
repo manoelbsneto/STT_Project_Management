@@ -1,0 +1,30 @@
+{
+  "flowName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+  "workflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+  "powerAppsFlowName": "b4df90ec-a721-44cf-adbd-a5ced1d7f9f7",
+  "windowStart": "2026-04-20T20:03:52.0650949-03:00",
+  "windowEnd": "2026-05-20T20:03:52.0650949-03:00",
+  "totalRuns": 2,
+  "succeeded": 2,
+  "failed": 0,
+  "cancelled": 0,
+  "running": 0,
+  "otherStatusCounts": {
+    "Succeeded": 2
+  },
+  "retrievalError": null,
+  "sampleRuns": [
+    {
+      "name": null,
+      "status": "Succeeded",
+      "startTime": "2026-05-16T03:35:01.6342103Z",
+      "endTime": null
+    },
+    {
+      "name": null,
+      "status": "Succeeded",
+      "startTime": "2026-05-16T01:32:27.1512624Z",
+      "endTime": null
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="uniquename" />
+    <attribute name="category" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+      <condition attribute="name" operator="like" value="PMO_PA_%" />
+      <condition attribute="name" operator="like" value="PM0_PA_%" />
+    </filter>
+    <order attribute="name" />
+  </entity>
+</fetch>

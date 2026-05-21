@@ -1,0 +1,36 @@
+{
+  "flowName": "PMO_PA_RegistrarBloqueioBot",
+  "workflowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+  "task": "D.11",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "windowStart": "2026-04-20T23:01:33.3277388Z",
+  "windowEnd": "2026-05-20T23:02:47.1174505Z",
+  "totalRuns": 2,
+  "succeeded": 2,
+  "failed": 0,
+  "cancelled": 0,
+  "statusCounts": {
+    "Succeeded": 2
+  },
+  "runs": [
+    {
+      "runName": "08584229158544468543500181288CU16",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T16:50:31.0347788Z",
+      "endTime": "2026-05-13T16:50:32.0547853Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230887621436300361202341CU30",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T16:48:43.3375615Z",
+      "endTime": "2026-05-11T16:48:44.1605646Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    }
+  ],
+  "retrievalError": null
+}

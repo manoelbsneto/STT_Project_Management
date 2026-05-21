@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "description": "Action"
+    },
+    "spItemId": {
+      "type": "string",
+      "description": "SharePoint item ID"
+    },
+    "taskId": {
+      "type": "string",
+      "description": "SharePoint item ID from card"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status"
+    },
+    "taskStatus": {
+      "type": "string",
+      "description": "Status from card"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Comments"
+    }
+  },
+  "required": [
+    "action"
+  ]
+}

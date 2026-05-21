@@ -1,0 +1,32 @@
+﻿{
+    "Riscos e Bloqueios":  {
+                               "total":  7,
+                               "active":  5,
+                               "deleted":  2,
+                               "last_write":  "2026-05-13T16:50:32.0000000Z"
+                           },
+    "Status Diario":  {
+                          "total":  5,
+                          "active":  4,
+                          "deleted":  1,
+                          "last_write":  "2026-05-14T19:10:02.0000000Z"
+                      },
+    "Projetos":  {
+                     "total":  34,
+                     "active":  25,
+                     "deleted":  9,
+                     "last_write":  "2026-05-14T19:10:33.0000000Z"
+                 },
+    "Tarefas":  {
+                    "total":  16,
+                    "active":  7,
+                    "deleted":  9,
+                    "last_write":  "2026-05-14T19:11:37.0000000Z"
+                },
+    "Decisoes do Board":  {
+                              "total":  5,
+                              "active":  3,
+                              "deleted":  2,
+                              "last_write":  "2026-05-14T19:08:33.0000000Z"
+                          }
+}

@@ -1,0 +1,17 @@
+{
+  "flowName": "PMO_PA_CriarTarefa",
+  "workflowId": "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+  "responseActionName": "Valores_retornados_para_o_Power_Virtual_Agents",
+  "responseActionPath": "Valores_retornados_para_o_Power_Virtual_Agents",
+  "statusCode": 200,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "title": "message",
+        "type": "string",
+        "x-ms-content-hint": "TEXT"
+      }
+    }
+  }
+}

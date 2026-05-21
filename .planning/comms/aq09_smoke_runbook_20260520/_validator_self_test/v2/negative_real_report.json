@@ -1,0 +1,272 @@
+﻿{
+    "evidenceDir":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence",
+    "decision":  "FAIL_AQ09_INCOMPLETE",
+    "inScopeFailureCount":  5,
+    "generatedAt":  "2026-05-21 01:19:45 -03:00",
+    "results":  [
+                    {
+                        "id":  "A1_CMD-12-H",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_TRANSCRIPT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A1_CMD-12-H.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A1_CMD-12-H.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A2_CMD-15",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_TRANSCRIPT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A2_CMD-15.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A2_CMD-15.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A3_CMD-11-P0",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_TRANSCRIPT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A3_CMD-11-P0.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A3_CMD-11-P0.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A4_CMD-13A",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_TRANSCRIPT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A4_CMD-13A.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A4_CMD-13A.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A5_CMD-10",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_TRANSCRIPT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A5_CMD-10.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A5_CMD-10.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B1_ConsultarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B1_ConsultarProjeto.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B1_ConsultarProjeto.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B2_CriarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B2_CriarProjeto.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B2_CriarProjeto.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B3_ExcluirProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B3_ExcluirProjeto.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B3_ExcluirProjeto.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B4_ExcluirTarefa",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B4_ExcluirTarefa.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B4_ExcluirTarefa.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B5_PedirDecisao",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B5_PedirDecisao_InvalidUPN.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B5_PedirDecisao_InvalidUPN.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B6_RegistrarBloqueio",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B6_RegistrarBloqueio.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B6_RegistrarBloqueio.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B7_RegistrarRisco",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_INCOMPLETE",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B7_RegistrarRisco.md"
+                                          ],
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B7_RegistrarRisco.md",
+                        "missingFields":  [
+                                              "transcript"
+                                          ],
+                        "warnings":  [
+
+                                     ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    }
+                ]
+}

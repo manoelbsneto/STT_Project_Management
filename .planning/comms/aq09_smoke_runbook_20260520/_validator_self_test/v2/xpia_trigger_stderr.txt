@@ -1,0 +1,8 @@
+AQ-09 smoke evidence validation failed: FAIL_XPIA_01_RECURS_OR_UNKNOWN; in-scope failures: A1_CMD-12-H
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-Aq09SmokeEvidence.ps1:358 caractere:5
++     throw "AQ-09 smoke evidence validation failed: $decision; in-scop ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (AQ-09 smoke evi...es: A1_CMD-12-H:String) [], RuntimeException
+    + FullyQualifiedErrorId : AQ-09 smoke evidence validation failed: FAIL_XPIA_01_RECURS_OR_UNKNOWN; in-scope failure 
+   s: A1_CMD-12-H
+ 

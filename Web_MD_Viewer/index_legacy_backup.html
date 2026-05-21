@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Indra Intelligence MD Viewer — Premium C-Level executive viewer for Markdown specs (architectures, schemas, diagrams) with legacy status-log dashboard.">
+  <title>MD Viewer | Indra Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="viewer.css">
+
+  <!-- Premium Markdown rendering stack (CDN; viewer.js falls back to a minimal renderer if offline) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/lib/core.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/lib/languages/json.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/lib/languages/yaml.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/lib/languages/javascript.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/lib/languages/typescript.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
+    <nav class="app-sidebar" id="appSidebar" aria-label="Main navigation">
+      <!-- Header: Projeto Atual -->
+      <div class="sidebar-project">
+        <div class="sidebar-project-label">Projeto Atual</div>
+        <div class="sidebar-project-name" id="sidebarProjectName" title="Sem documento carregado">Sem documento</div>
+        <div class="sidebar-project-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="sidebar-project-bar-fill" id="sidebarProjectBar"></div>
+        </div>
+      </div>
+
+      <!-- Navegação principal -->
+      <div class="sidebar-nav" role="menu">
+        <div class="nav-item active" id="navDashboard" data-view="Dashboard" role="menuitem" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span class="nav-item-label">Dashboard</span>
+        </div>
+
+        <div class="nav-item" id="navUpload" data-view="Upload" role="menuitem" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span class="nav-item-label">Upload Center</span>
+        </div>
+
+        <div class="nav-item" id="navDocument" data-view="Document" role="menuitem" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="8" y1="13" x2="16" y2="13"/>
+            <line x1="8" y1="17" x2="13" y2="17"/>
+          </svg>
+          <span class="nav-item-label">Executive Document</span>
+        </div>
+
+        <div class="nav-item" id="navTable" data-view="Table" role="menuitem" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3h18v18H3z"/>
+            <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+          </svg>
+          <span class="nav-item-label">Status Registry</span>
+        </div>
+
+        <div class="nav-item" id="navTimeline" data-view="Timeline" role="menuitem" tabindex="0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span class="nav-item-label">Activity Timeline</span>
+        </div>
+      </div>
+
+      <!-- Footer: marca / usuário -->
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-avatar" aria-hidden="true">I</div>
+        <div class="sidebar-footer-info">
+          <div class="sidebar-footer-name">INDRA INTELLIGENCE</div>
+          <div class="sidebar-footer-sub">Executive MD Viewer</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <div class="app-main">
+      <!-- TOP BAR -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+          <h1 class="topbar-title">MD Viewer</h1>
+          <span class="topbar-env-badge" id="modeBadge">EXECUTIVE</span>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search-wrap">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input type="search" id="globalSearch" class="topbar-search" placeholder="Search logs, projects…" aria-label="Global search">
+          </div>
+          <button class="topbar-icon-btn" id="themeToggle" title="Toggle theme">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+          <div class="topbar-notif" title="Notifications">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/>
+            </svg>
+            <span class="notif-dot" id="notifDot"></span>
+          </div>
+          <div class="topbar-avatar" title="Ricardo Mendes">RM</div>
+        </div>
+      </header>
+
+      <!-- ═══════════════ VIEW: DASHBOARD ═══════════════ -->
+      <main class="app-content" id="viewDashboard">
+        <!-- KPI Row -->
+        <section class="kpi-row" aria-label="Key metrics">
+          <div class="kpi-card" data-accent="var(--indra-cyan)">
+            <div class="kpi-icon-wrap cyan">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+              </svg>
+            </div>
+            <div class="kpi-body">
+              <div class="kpi-label">Files Processed</div>
+              <div class="kpi-value" id="kpiFiles" data-count="0">0</div>
+            </div>
+            <div class="kpi-trend up"><span>—</span></div>
+          </div>
+
+          <div class="kpi-card" data-accent="var(--indra-success)">
+            <div class="kpi-icon-wrap success">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="kpi-body">
+              <div class="kpi-label">Items OK</div>
+              <div class="kpi-value" id="kpiOk" data-count="0">0</div>
+            </div>
+            <div class="kpi-trend up"><span>—</span></div>
+          </div>
+
+          <div class="kpi-card" data-accent="var(--indra-warning)">
+            <div class="kpi-icon-wrap warning">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="kpi-body">
+              <div class="kpi-label">Warnings</div>
+              <div class="kpi-value" id="kpiWarning" data-count="0">0</div>
+            </div>
+            <div class="kpi-trend neutral"><span>—</span></div>
+          </div>
+
+          <div class="kpi-card" data-accent="var(--indra-error)">
+            <div class="kpi-icon-wrap error">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+            </div>
+            <div class="kpi-body">
+              <div class="kpi-label">Errors</div>
+              <div class="kpi-value" id="kpiError" data-count="0">0</div>
+            </div>
+            <div class="kpi-trend down"><span>—</span></div>
+          </div>
+        </section>
+
+        <!-- Chart + Activity Grid (matches PortalShift layout) -->
+        <section class="dash-grid-chart">
+          <!-- Chart Panel -->
+          <div class="panel chart-panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                  Status Trend
+                </div>
+                <div class="panel-subtitle">Distribution by file — updates in real-time</div>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="statusChart" aria-label="Bar chart showing status distribution per file"></canvas>
+            </div>
+          </div>
+
+          <!-- Activity Feed Panel -->
+          <div class="panel activity-panel">
+            <div class="panel-header">
+              <div class="panel-title">Recent Activity</div>
+              <div class="panel-subtitle">Last 24 hours</div>
+            </div>
+            <ul class="activity-list" id="activityFeed">
+              <li class="activity-empty">No activity yet — upload a file to begin</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Upload + Progress Panel -->
+        <section class="dash-grid-2col">
+          <!-- Upload Zone -->
+          <div class="panel upload-panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload Status Files
+              </div>
+              <div class="panel-subtitle">Drag & drop or click — .md, .txt, .docx</div>
+            </div>
+            <div class="drop-zone" id="dropZone">
+              <div class="drop-zone-inner">
+                <div class="drop-icon">
+                  <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="12" y="8" width="40" height="48" rx="4" stroke="rgba(0,176,189,0.4)"/>
+                    <path d="M32 24v16M24 32h16" stroke="var(--indra-cyan)" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <p class="drop-text">Drop files here or <label for="fileInput" class="drop-browse">browse</label></p>
+                <p class="drop-hint">Supported: Markdown (.md), Text (.txt), Word (.docx)</p>
+                <input type="file" id="fileInput" multiple accept=".md,.txt,.docx,.doc" hidden>
+              </div>
+            </div>
+            <!-- File Queue -->
+            <div class="file-queue" id="fileQueue"></div>
+            <button class="btn btn-cyan btn-process" id="btnProcess" disabled>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+              Process All Files
+            </button>
+          </div>
+
+          <!-- Progress & Stats -->
+          <div class="panel stats-panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Processing Status
+              </div>
+            </div>
+            <!-- Progress Ring -->
+            <div class="progress-ring-wrap">
+              <svg class="progress-ring" viewBox="0 0 140 140">
+                <circle class="progress-ring-bg" cx="70" cy="70" r="58" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+                <circle class="progress-ring-fill" id="progressRing" cx="70" cy="70" r="58" fill="none"
+                  stroke="url(#progressGrad)" stroke-width="8" stroke-linecap="round"
+                  stroke-dasharray="364.42" stroke-dashoffset="364.42"
+                  transform="rotate(-90 70 70)"/>
+                <defs>
+                  <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00B0BD"/>
+                    <stop offset="100%" stop-color="#3F96AE"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="progress-ring-text">
+                <span class="progress-pct" id="progressPct">0%</span>
+                <span class="progress-label">complete</span>
+              </div>
+            </div>
+            <!-- Status Breakdown -->
+            <div class="status-breakdown" id="statusBreakdown">
+              <div class="breakdown-item">
+                <span class="breakdown-dot" style="background:var(--indra-success)"></span>
+                <span class="breakdown-label">Parsed OK</span>
+                <span class="breakdown-value" id="breakOk">0</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-dot" style="background:var(--indra-warning)"></span>
+                <span class="breakdown-label">Warnings</span>
+                <span class="breakdown-value" id="breakWarn">0</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-dot" style="background:var(--indra-error)"></span>
+                <span class="breakdown-label">Errors</span>
+                <span class="breakdown-value" id="breakErr">0</span>
+              </div>
+              <div class="breakdown-item">
+                <span class="breakdown-dot" style="background:var(--indra-light)"></span>
+                <span class="breakdown-label">Pending</span>
+                <span class="breakdown-value" id="breakPend">0</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Status Table (inline preview) -->
+        <section class="panel table-panel" id="tableSection" style="display:none">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                Parsed Status Log
+              </div>
+              <div class="panel-subtitle" id="tableSubtitle">0 entries from 0 files</div>
+            </div>
+            <div class="table-controls">
+              <div class="search-wrap-sm">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="search" id="tableSearch" class="search-input-sm" placeholder="Filter entries…">
+              </div>
+              <select class="filter-select-sm" id="tableStatusFilter">
+                <option value="all">All Status</option>
+                <option value="ok">✓ Pass / OK</option>
+                <option value="error">✕ Error / Failed</option>
+                <option value="warning">⚠ Warning</option>
+                <option value="pending">◷ Pending</option>
+                <option value="blocked">⊘ Blocked</option>
+                <option value="partial">◑ Partial</option>
+                <option value="accepted">◇ Accepted</option>
+                <option value="info">ℹ Info</option>
+              </select>
+              <button class="btn-icon-sm" id="btnExportCSV" title="Export CSV">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table" id="statusTable">
+              <thead>
+                <tr>
+                  <th data-sort="id" class="sortable">#</th>
+                  <th data-sort="source" class="sortable">Source File</th>
+                  <th data-sort="project" class="sortable">Project / Item</th>
+                  <th data-sort="status" class="sortable">Status</th>
+                  <th data-sort="category" class="sortable">Category</th>
+                  <th data-sort="timestamp" class="sortable">Timestamp</th>
+                  <th data-sort="details">Details</th>
+                </tr>
+              </thead>
+              <tbody id="statusTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <div class="table-info" id="tableInfo">Showing 0 entries</div>
+            <div class="table-pagination" id="tablePagination"></div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ═══════════════ VIEW: UPLOAD (fullscreen) ═══════════════ -->
+      <main class="app-content view-hidden" id="viewUpload">
+        <div class="view-header">
+          <h2>File Upload Center</h2>
+          <p>Upload status logs, meeting notes, or executive Markdown specs for intelligent rendering</p>
+        </div>
+        <div class="upload-full-zone" id="dropZoneFull">
+          <div class="upload-full-inner">
+            <div class="upload-full-icon">
+              <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
+                <rect x="16" y="8" width="48" height="64" rx="6" stroke="rgba(0,176,189,0.3)" stroke-width="1.5"/>
+                <path d="M40 28v24M28 40h24" stroke="var(--indra-cyan)" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Drag & Drop Files</h3>
+            <p>or <label for="fileInputFull" class="drop-browse">browse your computer</label></p>
+            <p class="drop-hint">Accepts .md, .txt, .docx — Max 10MB per file</p>
+            <input type="file" id="fileInputFull" multiple accept=".md,.txt,.docx,.doc" hidden>
+          </div>
+        </div>
+      </main>
+
+      <!-- ═══════════════ VIEW: EXECUTIVE DOCUMENT ═══════════════ -->
+      <main class="app-content view-hidden" id="viewDocument">
+        <!-- Multi-doc tab strip -->
+        <div class="doc-tabs" id="docTabs" role="tablist" aria-label="Open documents"></div>
+
+        <!-- Empty state when no exec docs are loaded -->
+        <div class="doc-empty" id="docEmpty">
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5">
+            <rect x="14" y="6" width="36" height="52" rx="3"/>
+            <line x1="22" y1="20" x2="42" y2="20"/>
+            <line x1="22" y1="28" x2="42" y2="28"/>
+            <line x1="22" y1="36" x2="36" y2="36"/>
+          </svg>
+          <h2>Nenhum documento executivo carregado</h2>
+          <p>
+            Solte um arquivo <code>.md</code> aqui (ou via <strong>Upload</strong>) para ler especificações funcionais,
+            arquiteturas, schemas e diagramas em modo C-Level.
+          </p>
+          <div class="doc-empty-drop" id="docEmptyDrop">
+            <span>Soltar arquivo .md aqui</span>
+            <input type="file" id="fileInputDoc" multiple accept=".md,.txt,.markdown" hidden>
+            <label for="fileInputDoc" class="drop-browse">ou selecionar arquivo</label>
+          </div>
+        </div>
+
+        <!-- Real document container -->
+        <div class="doc-shell" id="docShell" hidden>
+          <!-- Hero -->
+          <header class="exec-hero" id="execHero"></header>
+
+          <!-- KPI strip -->
+          <section class="exec-kpis" id="execKpis"></section>
+
+          <!-- Two-column: TOC + content -->
+          <div class="doc-layout">
+            <aside class="exec-toc" id="execToc" aria-label="Sumário"></aside>
+            <article class="exec-content" id="execContent"></article>
+          </div>
+
+          <!-- Footer / source -->
+          <footer class="exec-footer" id="execFooter"></footer>
+        </div>
+      </main>
+
+      <!-- ═══════════════ VIEW: TABLE (fullscreen) ═══════════════ -->
+      <main class="app-content view-hidden" id="viewTable">
+        <div class="view-header">
+          <h2>Status Registry</h2>
+          <p>Complete parsed log — sortable, filterable, exportable</p>
+        </div>
+        <div class="panel" style="margin-top:24px">
+          <div class="panel-header">
+            <div class="panel-title">Full Status Table</div>
+            <div class="table-controls">
+              <div class="search-wrap-sm">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="search" id="tableSearchFull" class="search-input-sm" placeholder="Filter…">
+              </div>
+              <select class="filter-select-sm" id="tableStatusFilterFull">
+                <option value="all">All Status</option>
+                <option value="ok">✓ Pass / OK</option>
+                <option value="error">✕ Error / Failed</option>
+                <option value="warning">⚠ Warning</option>
+                <option value="pending">◷ Pending</option>
+                <option value="blocked">⊘ Blocked</option>
+                <option value="partial">◑ Partial</option>
+                <option value="accepted">◇ Accepted</option>
+                <option value="info">ℹ Info</option>
+              </select>
+              <button class="btn-icon-sm" id="btnExportCSVFull" title="Export CSV">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table" id="statusTableFull">
+              <thead>
+                <tr>
+                  <th data-sort="id" class="sortable">#</th>
+                  <th data-sort="source" class="sortable">Source File</th>
+                  <th data-sort="project" class="sortable">Project / Item</th>
+                  <th data-sort="status" class="sortable">Status</th>
+                  <th data-sort="category" class="sortable">Category</th>
+                  <th data-sort="timestamp" class="sortable">Timestamp</th>
+                  <th data-sort="details">Details</th>
+                </tr>
+              </thead>
+              <tbody id="statusTableBodyFull"></tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <div class="table-info" id="tableInfoFull">Showing 0 entries</div>
+            <div class="table-pagination" id="tablePaginationFull"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ═══════════════ VIEW: TIMELINE ═══════════════ -->
+      <main class="app-content view-hidden" id="viewTimeline">
+        <div class="view-header">
+          <h2>Activity Timeline</h2>
+          <p>Chronological view of all processing events</p>
+        </div>
+        <div class="timeline-container" id="timelineContainer">
+          <div class="timeline-empty">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <p>No events yet — upload and process files to populate the timeline</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

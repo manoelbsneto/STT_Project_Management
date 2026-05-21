@@ -1,0 +1,182 @@
+[
+  {
+    "key": "D.13",
+    "flowName": "PM0_PA_Card_AtualizarStatus",
+    "workflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 19:10",
+    "powerAppsLastModifiedTimeUtc": "2026-05-15T22:10:31Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "c0f943d3de1e3f06ed6d3806b5e55c7bf7e6aa24931e3ad56ce56fc856b729f0",
+    "aq07ComparableHash": "c0f943d3de1e3f06ed6d3806b5e55c7bf7e6aa24931e3ad56ce56fc856b729f0",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [
+      "routeKey"
+    ],
+    "connectionsUsed": [
+      "shared_teams"
+    ],
+    "teamsPostAction": true,
+    "sharePointWriteActions": false,
+    "sharePointReadActions": false,
+    "plannerWriteActions": false,
+    "plannerReadActions": false,
+    "staticReturnString": true,
+    "actionNames": [
+      "Post_Status_Card",
+      "Respond_Success"
+    ]
+  },
+  {
+    "key": "D.14",
+    "flowName": "PM0_PA_Card_AtualizarTarefa",
+    "workflowId": "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 19:10",
+    "powerAppsLastModifiedTimeUtc": "2026-05-15T22:10:41Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "f2d10781acf310f6fc6d013ad0e5127cc90acfd5cc8ad1d2284e35608a332f3c",
+    "aq07ComparableHash": "f2d10781acf310f6fc6d013ad0e5127cc90acfd5cc8ad1d2284e35608a332f3c",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [
+      "action"
+    ],
+    "connectionsUsed": [
+      "shared_sharepointonline",
+      "shared_planner"
+    ],
+    "teamsPostAction": false,
+    "sharePointWriteActions": true,
+    "sharePointReadActions": true,
+    "plannerWriteActions": true,
+    "plannerReadActions": false,
+    "staticReturnString": true,
+    "actionNames": [
+      "Update_Planner_Task",
+      "Determine_Bucket_and_Percent",
+      "Update_SharePoint_Item",
+      "Respond_Success",
+      "Get_SharePoint_Item"
+    ]
+  },
+  {
+    "key": "D.15",
+    "flowName": "PM0_PA_Card_CriarTarefa",
+    "workflowId": "7f662db7-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 19:10",
+    "powerAppsLastModifiedTimeUtc": "2026-05-15T22:10:37Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "0f373da0fe8f61f317a5261a4c9130ccf0ada065e98d20bb6eef20a97b40ff6f",
+    "aq07ComparableHash": "0f373da0fe8f61f317a5261a4c9130ccf0ada065e98d20bb6eef20a97b40ff6f",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [
+      "projectId",
+      "action"
+    ],
+    "connectionsUsed": [
+      "shared_sharepointonline",
+      "shared_planner"
+    ],
+    "teamsPostAction": false,
+    "sharePointWriteActions": true,
+    "sharePointReadActions": false,
+    "plannerWriteActions": true,
+    "plannerReadActions": false,
+    "staticReturnString": true,
+    "actionNames": [
+      "Create_Planner_Task",
+      "Determine_Bucket_and_Status",
+      "Create_SharePoint_Item",
+      "Respond_Success"
+    ]
+  },
+  {
+    "key": "D.16",
+    "flowName": "PM0_PA_Card_ListarTarefas",
+    "workflowId": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 19:10",
+    "powerAppsLastModifiedTimeUtc": "2026-05-15T22:10:34Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "d72f96351cbd0347a92b4517f9207b9f4b683fc31cf8312feb40f426e5e02130",
+    "aq07ComparableHash": "d72f96351cbd0347a92b4517f9207b9f4b683fc31cf8312feb40f426e5e02130",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [
+      "projectId",
+      "action"
+    ],
+    "connectionsUsed": [
+      "shared_sharepointonline",
+      "shared_planner"
+    ],
+    "teamsPostAction": false,
+    "sharePointWriteActions": false,
+    "sharePointReadActions": true,
+    "plannerWriteActions": false,
+    "plannerReadActions": true,
+    "staticReturnString": true,
+    "actionNames": [
+      "List_Planner_Tasks",
+      "Respond_Success",
+      "Normalize_Tasks",
+      "Get_Tarefas"
+    ]
+  },
+  {
+    "key": "D.17",
+    "flowName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+    "workflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 22:31",
+    "powerAppsLastModifiedTimeUtc": "2026-05-16T01:31:39Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "983dcd6838d1f0eda81c80894d3bbeb213c7457ebb5358e856f3198a4b095179",
+    "aq07ComparableHash": "983dcd6838d1f0eda81c80894d3bbeb213c7457ebb5358e856f3198a4b095179",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [],
+    "connectionsUsed": [
+      "shared_sharepointonline"
+    ],
+    "teamsPostAction": false,
+    "sharePointWriteActions": false,
+    "sharePointReadActions": true,
+    "plannerWriteActions": false,
+    "plannerReadActions": false,
+    "staticReturnString": true,
+    "actionNames": [
+      "Get_Projetos",
+      "Respond_Success",
+      "Get_Tarefas"
+    ]
+  },
+  {
+    "key": "D.18",
+    "flowName": "PM0_PA_OpsFailureHandling",
+    "workflowId": "9531fbc7-a250-f111-bec7-000d3abc5cc6",
+    "dataverseModifiedOn": "15/05/2026 19:10",
+    "powerAppsLastModifiedTimeUtc": "2026-05-15T22:10:44Z",
+    "enabled": true,
+    "currentMatchesAQ07ActionGraph": true,
+    "currentComparableHash": "e18081dbeb628f6bb1a0499f39e997ce85fc5b08ef891d38f8c9c36f8c61a475",
+    "aq07ComparableHash": "e18081dbeb628f6bb1a0499f39e997ce85fc5b08ef891d38f8c9c36f8c61a475",
+    "triggerEntryMode": "single Skills trigger; no explicit preview/submit entry property",
+    "triggerRequired": [
+      "source",
+      "code"
+    ],
+    "connectionsUsed": [
+      null
+    ],
+    "teamsPostAction": false,
+    "sharePointWriteActions": false,
+    "sharePointReadActions": false,
+    "plannerWriteActions": false,
+    "plannerReadActions": false,
+    "staticReturnString": true,
+    "actionNames": [
+      "Sanitize_Error",
+      "Respond_Success"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "description": "Source"
+    },
+    "details": {
+      "type": "string",
+      "description": "Details"
+    },
+    "code": {
+      "type": "string",
+      "description": "Code"
+    }
+  },
+  "required": [
+    "source",
+    "code"
+  ]
+}

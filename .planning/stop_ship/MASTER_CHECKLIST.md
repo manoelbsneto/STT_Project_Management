@@ -1,8 +1,36 @@
 # MASTER CHECKLIST
 
-Status: NO-SHIP — V2 runtime validation still incomplete; 1.8 RAG parser fix prepared and pending import/retest
-Active plan: `.planning/CODEX_DEPLOYMENT_PLAN_20260507.md`
-Last update: 2026-05-11 01:30 BRT (Session 20 / V2)
+Status: NO-SHIP — 3.15 AQ-08 hybrid migration requires five manual topic remediations plus post-remediation verifier PASS before publish
+Active plan: `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md`
+Last update: 2026-05-20 16:40 BRT (P0 Wave 2 / CODEX-PA)
+
+## 2026-05-20 AQ-08 Hybrid Migration Gates
+
+| Gate | Status | Evidence / next evidence |
+|---|---|---|
+| ADR accepted for hybrid card-first scope | DONE | `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md` |
+| `AtualizarStatus` routes to `PM0_PA_Card_AtualizarStatus` | BLOCKED_OWNER_UI | Owner must replace direct legacy call, then run `tests/Test-Aq08PostRemediationReverify.ps1`. |
+| `AtualizarTarefa` routes to `PM0_PA_Card_AtualizarTarefa` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa`, then run verifier. |
+| `ConsultarPortfolio` routes to `PM0_PA_Card_ResumoExecutivoPortfolio` | BLOCKED_OWNER_UI | Owner must replace direct legacy call, then run verifier. |
+| `CriarTarefa` routes to `PM0_PA_Card_CriarTarefa` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa`, then run verifier. |
+| `ListarTarefas` routes to `PM0_PA_Card_ListarTarefas` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas`, then run verifier. |
+| AQ-08 post-remediation verifier | READY | `tests/Test-Aq08PostRemediationReverify.ps1`; expected current pre-remediation result is `BLOCK`. Required pre-publish result is `PASS`. |
+| Pre-publish rollback evidence | DONE | `.planning/comms/rollback_evidence_pre_3_15_20260520/` |
+| AQ-09 smoke and XPIA harness | READY | `.planning/comms/aq09_smoke_runbook_20260520/`; `.planning/comms/xpia_01_verify_20260520/` |
+
+## 2026-05-20 Accepted Legacy Debt
+
+These topics intentionally remain on legacy `PMO_PA_*` actions for the 3.15 release. They are backlog items, not AQ-08 publish blockers.
+
+| Topic | Severity | Release Decision |
+|---|---|---|
+| `ConsultarProjeto` | P3 | Accepted legacy debt; migrate in future full card-first replan. |
+| `CriarProjeto` | P3 | Accepted legacy debt; migrate in future full card-first replan. |
+| `ExcluirProjeto` | P3 | Accepted legacy debt; migrate in future full card-first replan. |
+| `ExcluirTarefa` | P2 | Accepted legacy debt; migrate in future full card-first replan due task-write impact. |
+| `PedirDecisao` | P2 | Accepted legacy debt; migrate in future full card-first replan due decision-write impact. |
+| `RegistrarBloqueio` | P2 | Accepted legacy debt; migrate in future full card-first replan due risk/blocker-write impact. |
+| `RegistrarRisco` | P2 | Accepted legacy debt; migrate in future full card-first replan due risk/blocker-write impact. |
 
 ## Release Gates
 

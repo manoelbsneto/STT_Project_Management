@@ -1,0 +1,149 @@
+{
+  "flowName": "PMO_PA_CriarTarefa",
+  "workflowId": "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+  "flowType": "legacy",
+  "windowStartUtc": "2026-04-20T23:03:55.2380802Z",
+  "capturedAtUtc": "2026-05-20T23:03:55.2379462Z",
+  "totalRuns": 12,
+  "succeeded": 12,
+  "failed": 0,
+  "canceled": 0,
+  "timedOut": 0,
+  "statusCounts": {
+    "Succeeded": 12
+  },
+  "runs": [
+    {
+      "flowRunName": "08584228209889218840492271447CU03",
+      "status": "Succeeded",
+      "startTime": "2026-05-14T19:11:36.5585952Z",
+      "endTime": "2026-05-14T19:11:37.3719057Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584228896363426456247966909CU01",
+      "status": "Succeeded",
+      "startTime": "2026-05-14T00:07:29.1372543Z",
+      "endTime": "2026-05-14T00:07:30.3782050Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584228950922649104834067926CU20",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T22:36:33.2178106Z",
+      "endTime": "2026-05-13T22:36:34.0722016Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229063632993632768184292CU29",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T19:28:42.1807129Z",
+      "endTime": "2026-05-13T19:28:43.2091840Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229357608621825588627364CU18",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T11:18:44.6191591Z",
+      "endTime": "2026-05-13T11:18:45.6746667Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229363479602064069012960CU25",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T11:08:57.5202801Z",
+      "endTime": "2026-05-13T11:08:58.7301696Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229951160039946129885701CU15",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T18:49:29.4771514Z",
+      "endTime": "2026-05-12T18:49:30.3619190Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584229952746123143245501350CU02",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T18:46:50.8694662Z",
+      "endTime": "2026-05-12T18:46:51.6235874Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230237685129433817333346CU07",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T10:51:56.9673575Z",
+      "endTime": "2026-05-12T10:51:57.8142499Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230246278165355038063216CU12",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T10:37:37.6636695Z",
+      "endTime": "2026-05-12T10:37:38.7277356Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230255648879389873946743CU20",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T10:22:00.5923200Z",
+      "endTime": "2026-05-12T10:22:01.6356313Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    },
+    {
+      "flowRunName": "08584230482047628757867639907CU23",
+      "status": "Succeeded",
+      "startTime": "2026-05-12T04:04:40.7175597Z",
+      "endTime": "2026-05-12T04:04:42.0644384Z",
+      "triggerName": "manual",
+      "triggerStatus": "Succeeded",
+      "responseName": "Valores_retornados_para_o_Power_Virtual_Agents",
+      "responseStatus": "Succeeded",
+      "responseCode": "OK"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿[
+    {
+        "Title":  "Todos los elementos",
+        "ViewQuery":  "\u003cOrderBy\u003e\u003cFieldRef Name=\"ID\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "LinkTitle"
+                       ]
+    },
+    {
+        "Title":  "Pendentes",
+        "ViewQuery":  "\u003cWhere\u003e\u003cEq\u003e\u003cFieldRef Name=\"StatusDecisao\" /\u003e\u003cValue Type=\"Choice\"\u003ePendente\u003c/Value\u003e\u003c/Eq\u003e\u003c/Where\u003e",
+        "ViewFields":  [
+                           "DecisionID",
+                           "ProjectID",
+                           "Descricao",
+                           "Solicitante",
+                           "Aprovador",
+                           "Prazo",
+                           "StatusDecisao",
+                           "Impacto"
+                       ]
+    }
+]

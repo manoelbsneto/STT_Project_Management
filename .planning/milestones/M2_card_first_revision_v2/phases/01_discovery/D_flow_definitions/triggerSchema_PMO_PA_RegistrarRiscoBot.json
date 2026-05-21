@@ -1,0 +1,82 @@
+{
+  "flowName": "PMO_PA_RegistrarRiscoBot",
+  "workflowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+  "task": "D.12",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "severidade": {
+        "type": "string",
+        "description": "Severidade",
+        "title": "severidade",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "projectName": {
+        "type": "string",
+        "description": "Nome do projeto",
+        "title": "projectName",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "descricao": {
+        "type": "string",
+        "description": "Descricao do risco",
+        "title": "descricao",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "impacto": {
+        "type": "string",
+        "description": "Impacto",
+        "title": "impacto",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "projectName",
+      "descricao",
+      "severidade"
+    ]
+  },
+  "required": [
+    "projectName",
+    "descricao",
+    "severidade"
+  ],
+  "properties": {
+    "severidade": {
+      "type": "string",
+      "description": "Severidade",
+      "title": "severidade",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Nome do projeto",
+      "title": "projectName",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "descricao": {
+      "type": "string",
+      "description": "Descricao do risco",
+      "title": "descricao",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "impacto": {
+      "type": "string",
+      "description": "Impacto",
+      "title": "impacto",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    }
+  }
+}

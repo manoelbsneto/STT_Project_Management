@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-05-20T20:39:27-03:00",
+  "agent": "CODEX-1-SUB-C",
+  "tenant": "ColOfertasBrasilPro",
+  "scope": "M2 Phase 1 Track H.1 connector quota analysis",
+  "sources": [
+    {
+      "name": "Power Platform requests limits and allocations",
+      "url": "https://learn.microsoft.com/en-us/power-platform/admin/api-request-limits-allocations",
+      "used_for": "Power Platform and Power Automate request allocations"
+    },
+    {
+      "name": "SharePoint connector reference",
+      "url": "https://learn.microsoft.com/en-us/connectors/sharepointonline/",
+      "used_for": "SharePoint connector class and throttling limits"
+    },
+    {
+      "name": "Teams connector reference",
+      "url": "https://learn.microsoft.com/en-us/connectors/teams/",
+      "used_for": "Teams connector class and throttling limits"
+    },
+    {
+      "name": "Planner connector reference",
+      "url": "https://learn.microsoft.com/en-gb/connectors/planner/",
+      "used_for": "Planner connector class and throttling limits"
+    },
+    {
+      "name": "Power Virtual Agents connector reference",
+      "url": "https://learn.microsoft.com/nb-no/connectors/powervirtualagents/",
+      "used_for": "PVA connector throttling limits"
+    },
+    {
+      "name": "SharePoint Online list threshold guidance",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/sharepoint/lists-and-libraries/items-exceeds-list-view-threshold",
+      "used_for": "SharePoint list view threshold"
+    }
+  ],
+  "limits": [
+    {
+      "connector": "SharePoint Standard",
+      "service_class": "Standard",
+      "standard_limit": "600 API calls per connection per 60 seconds; 1000 MB transferred per connection per 60 seconds; SharePoint Online list view threshold 5000 items",
+      "m2_usage_estimate": {
+        "calls_per_operation": "2-6 for writes/read summaries depending on Get items/Create item/Update item branches",
+        "expected_calls_per_day": 300,
+        "basis": "12 PMO operations, expected pilot production volume around 50 user operations/day, with SharePoint used by all legacy PMO_PA flows and most PM0 targets"
+      },
+      "risk": "Low",
+      "mitigation": "Keep list queries indexed and filtered by ProjectID/Deleted; avoid broad unfiltered Get items once lists approach 5000 items."
+    },
+    {
+      "connector": "Microsoft Teams Standard",
+      "service_class": "Standard",
+      "standard_limit": "100 API calls per connection per 60 seconds; Flow bot / adaptive-card non-GET operations 25 requests per connection per 300 seconds",
+      "m2_usage_estimate": {
+        "calls_per_operation": "1-3 Teams posts/updates for confirm, result, and channel broadcast",
+        "expected_calls_per_day": 150,
+        "basis": "Hybrid card-first routes are mostly DM plus selected channel broadcasts"
+      },
+      "risk": "Low",
+      "mitigation": "Keep card sends sequential per flow and avoid retry storms; channel broadcasts only on ADR-defined operations."
+    },
+    {
+      "connector": "Planner Standard",
+      "service_class": "Standard",
+      "standard_limit": "100 API calls per connection per 60 seconds; trigger poll frequency 1 per 360 seconds; basic plans only",
+      "m2_usage_estimate": {
+        "calls_per_operation": "1-3 for create/update/list task paths",
+        "expected_calls_per_day": 90,
+        "basis": "Planner is used by CriarTarefa, AtualizarTarefa, and ListarTarefas PM0 targets"
+      },
+      "risk": "Low",
+      "mitigation": "Use existing locked plan/bucket IDs; maintain sequential Planner update branches and persist PlannerSyncStatus/PlannerSyncError in SharePoint."
+    },
+    {
+      "connector": "Power Virtual Agents / Copilot Studio Standard",
+      "service_class": "Standard",
+      "standard_limit": "PVA connector API calls per connection 100 per 60 seconds; Copilot Studio flow calls count as Power Platform requests",
+      "m2_usage_estimate": {
+        "calls_per_operation": "1 action/flow call from topic after confirmation or read request",
+        "expected_calls_per_day": 50,
+        "basis": "12 user-facing topics invoke one action each in the M2 target state"
+      },
+      "risk": "Low",
+      "mitigation": "Preserve one final action call per topic; avoid multi-action topic fanout."
+    },
+    {
+      "connector": "Power Automate / Power Platform requests",
+      "service_class": "Standard seeded Office 365 context",
+      "standard_limit": "Office 365 / Microsoft 365 seeded users: 6000 Power Platform requests per user per 24 hours official; transition period shows 10000 per cloud flow; five-minute ceiling 100000 requests",
+      "m2_usage_estimate": {
+        "calls_per_operation": "10-30 Power Automate actions depending on branch and card/result handling",
+        "expected_requests_per_day": 1500,
+        "basis": "50 operations/day at 30 actions worst-case during pilot"
+      },
+      "risk": "Low",
+      "mitigation": "Monitor Power Platform request reports after publish; if volume grows, split high-use flows or consider Process licensing before strict enforcement."
+    }
+  ],
+  "overall_assessment": {
+    "risk": "Low",
+    "reason": "Expected pilot volume is far below documented connector-per-minute and Power Platform per-day limits. The main operational risk is not quota exhaustion; it is retry amplification if card posts or SharePoint/Planner writes fail."
+  }
+}

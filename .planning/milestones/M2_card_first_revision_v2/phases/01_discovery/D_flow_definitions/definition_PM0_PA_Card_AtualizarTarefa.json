@@ -1,0 +1,168 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    },
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Skills",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "Action"
+            },
+            "spItemId": {
+              "type": "string",
+              "description": "SharePoint item ID"
+            },
+            "taskId": {
+              "type": "string",
+              "description": "SharePoint item ID from card"
+            },
+            "status": {
+              "type": "string",
+              "description": "Status"
+            },
+            "taskStatus": {
+              "type": "string",
+              "description": "Status from card"
+            },
+            "comments": {
+              "type": "string",
+              "description": "Comments"
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    }
+  },
+  "actions": {
+    "Update_Planner_Task": {
+      "runAfter": {
+        "Determine_Bucket_and_Percent": [
+          "Succeeded"
+        ]
+      },
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "id": "@body('Get_SharePoint_Item')?['PlannerTaskId']",
+          "body/percentComplete": "@outputs('Determine_Bucket_and_Percent')?['percentComplete']"
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_planner",
+          "connectionName": "shared_planner",
+          "operationId": "UpdateTask_V2"
+        },
+        "authentication": {
+          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+          "type": "Raw"
+        }
+      }
+    },
+    "Determine_Bucket_and_Percent": {
+      "runAfter": {
+        "Get_SharePoint_Item": [
+          "Succeeded"
+        ]
+      },
+      "type": "Compose",
+      "inputs": "@if(equals(coalesce(triggerBody()?['status'],triggerBody()?['taskStatus']), 'Em Andamento'), json('{\"bucketId\":\"ugZSNxsYW0WWCJ5Dtx0-l5cALVXG\",\"percentComplete\":50}'), if(equals(coalesce(triggerBody()?['status'],triggerBody()?['taskStatus']), 'Testes'), json('{\"bucketId\":\"7QYPufh54kum7MP4KUzzAZcAL6Ik\",\"percentComplete\":50}'), if(equals(coalesce(triggerBody()?['status'],triggerBody()?['taskStatus']), 'Piloto e Implantacao'), json('{\"bucketId\":\"4YAXH7iU9E-6jZE2P1DbG5cAMAzH\",\"percentComplete\":50}'), if(equals(coalesce(triggerBody()?['status'],triggerBody()?['taskStatus']), 'Concluido'), json('{\"bucketId\":\"F2WYUsnXeEue5qlwQuu3GJcAN1Ns\",\"percentComplete\":100}'), if(equals(coalesce(triggerBody()?['status'],triggerBody()?['taskStatus']), 'Cancelado'), json('{\"bucketId\":\"90TcFTFup0CjiHIdzY4gG5cALWKL\",\"percentComplete\":100}'), json('{\"bucketId\":\"HmzyGOgC4k6uOPm_cwG3zZcAGiAG\",\"percentComplete\":0}'))))))"
+    },
+    "Update_SharePoint_Item": {
+      "runAfter": {
+        "Update_Planner_Task": [
+          "Succeeded"
+        ]
+      },
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+          "item/Status/Value": "@coalesce(triggerBody()?['status'],triggerBody()?['taskStatus'])",
+          "item/Title": "@body('Get_SharePoint_Item')?['Title']",
+          "id": "@coalesce(triggerBody()?['spItemId'],triggerBody()?['taskId'])",
+          "item/PlannerSyncStatus/Value": "OK",
+          "table": "Tarefas",
+          "item/ProjectID": "@body('Get_SharePoint_Item')?['ProjectID']",
+          "item/PlannerBucketId": "@outputs('Determine_Bucket_and_Percent')?['bucketId']",
+          "item/PlannerLastSyncAt": "@utcNow()",
+          "item/PlannerSyncError": ""
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+          "connectionName": "shared_sharepointonline",
+          "operationId": "PatchItem"
+        },
+        "authentication": {
+          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+          "type": "Raw"
+        }
+      }
+    },
+    "Respond_Success": {
+      "runAfter": {
+        "Update_SharePoint_Item": [
+          "Succeeded"
+        ]
+      },
+      "type": "Response",
+      "kind": "Skills",
+      "inputs": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "result": "Task updated successfully."
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "title": "result",
+              "x-ms-dynamically-added": true,
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Get_SharePoint_Item": {
+      "runAfter": {},
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "table": "Tarefas",
+          "id": "@coalesce(triggerBody()?['spItemId'],triggerBody()?['taskId'])",
+          "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+          "connectionName": "shared_sharepointonline",
+          "operationId": "GetItem"
+        },
+        "authentication": {
+          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+          "type": "Raw"
+        }
+      }
+    }
+  },
+  "outputs": {}
+}

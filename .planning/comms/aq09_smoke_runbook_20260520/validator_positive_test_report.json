@@ -1,0 +1,188 @@
+﻿{
+    "evidenceDir":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\_validator_self_test\\evidence",
+    "decision":  "FAIL_XPIA_01_RECURS_OR_UNKNOWN",
+    "inScopeFailureCount":  4,
+    "generatedAt":  "2026-05-21 00:02:52 -03:00",
+    "results":  [
+                    {
+                        "id":  "A1_CMD-12-H",
+                        "scope":  "InScope",
+                        "status":  "PASS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\_validator_self_test\\evidence\\A1_CMD-12-H.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A2_CMD-15",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_EVIDENCE",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A3_CMD-11-P0",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_EVIDENCE",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A4_CMD-13A",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_EVIDENCE",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "A5_CMD-10",
+                        "scope":  "InScope",
+                        "status":  "FAIL_MISSING_EVIDENCE",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B1_ConsultarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B2_CriarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B3_ExcluirProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B4_ExcluirTarefa",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B5_PedirDecisao",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B6_RegistrarBloqueio",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    },
+                    {
+                        "id":  "B7_RegistrarRisco",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_NOT_RUN",
+                        "hasEvidence":  false,
+                        "evidenceFiles":  [
+
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  false,
+                                        "openAIIndirectAttack":  false,
+                                        "responsibleAi":  false,
+                                        "etapaBloqueada":  false
+                                    }
+                    }
+                ]
+}

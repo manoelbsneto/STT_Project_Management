@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "description": "Action"
+    },
+    "projectId": {
+      "type": "string",
+      "description": "Project ID"
+    }
+  },
+  "required": [
+    "projectId",
+    "action"
+  ]
+}

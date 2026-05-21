@@ -1,0 +1,27 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent_workflow">
+    <attribute name="botcomponent_workflowid" />
+    <attribute name="botcomponentid" />
+    <attribute name="workflowid" />
+    <attribute name="iscustomizable" />
+    <link-entity name="botcomponent" from="botcomponentid" to="botcomponentid" alias="bc" link-type="inner">
+      <attribute name="schemaname" />
+      <attribute name="name" />
+      <attribute name="componenttype" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+      <filter type="and">
+        <condition attribute="schemaname" operator="like" value="pmo_AssistentePMO_V2.%" />
+      </filter>
+    </link-entity>
+    <link-entity name="workflow" from="workflowid" to="workflowid" alias="wf" link-type="inner">
+      <attribute name="workflowid" />
+      <attribute name="name" />
+      <attribute name="uniquename" />
+      <attribute name="statecode" />
+      <attribute name="statuscode" />
+      <attribute name="category" />
+      <attribute name="modifiedon" />
+    </link-entity>
+  </entity>
+</fetch>

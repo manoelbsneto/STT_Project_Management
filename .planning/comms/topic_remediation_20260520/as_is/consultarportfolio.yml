@@ -1,0 +1,41 @@
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarPortfolio
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - consultar portfolio
+      - ver portfolio
+      - portfolio pmo
+      - resumo do portfolio
+      - resumo portfolio
+      - como esta o portfolio
+      - listar projetos ativos
+      - projetos ativos
+      - listar portfolio
+      - quais projetos ativos
+      - dashboard
+      - visao geral
+
+  actions:
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_consultar_portfolio
+      output:
+        binding:
+          message: Topic.ConsultarPortfolioResult
+
+      flowId: 39cf292d-c64c-f111-bec7-7ced8d955c6c
+
+    - kind: SendActivity
+      id: consultar_portfolio_done
+      activity: "{Topic.ConsultarPortfolioResult}"
+
+    - kind: EndDialog
+      id: end_consultar_portfolio
+      clearTopicQueue: true
+
+inputType: {}
+outputType: {}

@@ -1,0 +1,70 @@
+[
+  {
+    "flowName": "PMO_PA_AtualizarStatus",
+    "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "responseActionName": "Response_OK",
+    "responseActionPath": "Condition_Projeto_Encontrado/Response_OK",
+    "statusCode": 200,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "flowName": "PMO_PA_AtualizarStatus",
+    "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "responseActionName": "Response_Error_Create",
+    "responseActionPath": "Condition_Projeto_Encontrado/Response_Error_Create",
+    "statusCode": 500,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "flowName": "PMO_PA_AtualizarStatus",
+    "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "responseActionName": "Response_Error_Update",
+    "responseActionPath": "Condition_Projeto_Encontrado/Response_Error_Update",
+    "statusCode": 500,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "flowName": "PMO_PA_AtualizarStatus",
+    "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "responseActionName": "Response_Project_Not_Found",
+    "responseActionPath": "Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+    "statusCode": 200,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "message",
+          "x-ms-dynamically-added": true,
+          "type": "string"
+        }
+      }
+    }
+  }
+]

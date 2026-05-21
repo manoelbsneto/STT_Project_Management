@@ -1,0 +1,23 @@
+﻿[
+    {
+        "Title":  "Todos los elementos",
+        "ViewQuery":  "\u003cOrderBy\u003e\u003cFieldRef Name=\"ID\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "LinkTitle"
+                       ]
+    },
+    {
+        "Title":  "Abertos",
+        "ViewQuery":  "\u003cWhere\u003e\u003cEq\u003e\u003cFieldRef Name=\"StatusRisco\" /\u003e\u003cValue Type=\"Choice\"\u003eAberto\u003c/Value\u003e\u003c/Eq\u003e\u003c/Where\u003e\u003cOrderBy\u003e\u003cFieldRef Name=\"Severidade\" Ascending=\"FALSE\" /\u003e\u003c/OrderBy\u003e",
+        "ViewFields":  [
+                           "RiskID",
+                           "ProjectID",
+                           "Tipo",
+                           "Severidade",
+                           "Descricao",
+                           "Owner",
+                           "DataCriacao",
+                           "StatusRisco"
+                       ]
+    }
+]

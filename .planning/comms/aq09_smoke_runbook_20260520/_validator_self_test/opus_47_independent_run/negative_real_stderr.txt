@@ -1,0 +1,9 @@
+AQ-09 smoke evidence validation failed: FAIL_AQ09_INCOMPLETE; in-scope failures: A1_CMD-12-H, A2_CMD-15, A3_CMD-11-P0, 
+A4_CMD-13A, A5_CMD-10
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-Aq09SmokeEvidence.ps1:358 caractere:5
++     throw "AQ-09 smoke evidence validation failed: $decision; in-scop ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (AQ-09 smoke evi...-13A, A5_CMD-10:String) [], RuntimeException
+    + FullyQualifiedErrorId : AQ-09 smoke evidence validation failed: FAIL_AQ09_INCOMPLETE; in-scope failures: A1_CMD-12-H 
+   , A2_CMD-15, A3_CMD-11-P0, A4_CMD-13A, A5_CMD-10
+ 

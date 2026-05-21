@@ -1,0 +1,131 @@
+{
+  "agent": "OPUS-2",
+  "track": "E.1",
+  "task_id": "E.1",
+  "validation_timestamp": "2026-05-20T20:18:30-03:00",
+  "tenant": {
+    "environment": "ColOfertasBrasilPro",
+    "environment_id": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "org_id": "e0b9c35e-79a2-ef11-8a66-000d3a24857a",
+    "org_url": "https://colofertasbrasilpro.crm4.dynamics.com/",
+    "tenant_id": "7808e005-1489-4374-954b-d3b08f193920"
+  },
+  "method": "Read-only triangulation: (1) PAC `pac env who` confirmed connected as owner; (2) PAC `pac connection list` enumerated connector refs; (3) Live PM0 flow definitions extracted by Track D batch 3 (CODEX-2-SUB-B) inspected for hard-coded channel/group IDs in active flows; (4) `.planning/STATE.md` decision #11 cross-referenced. No Teams Standard connector test calls were issued from this CLI session; the PowerShell tools available do not expose a Teams API test client without the m365 CLI / Graph SDK (both prohibited). Channel ID resolution accuracy therefore relies on owner-attested evidence (Session 15 in STATE.md) plus indirect activation evidence from PAC-confirmed activated flows that hard-code the IDs.",
+  "constraints": [
+    "Read-only operations only.",
+    "No tenant writes.",
+    "No m365 CLI usage (per project policy).",
+    "No direct Microsoft Graph calls (per project policy).",
+    "Teams Standard connector test calls were attempted indirectly via PAC + flow definition inspection, not via direct connector invocation."
+  ],
+  "ids_under_test": [
+    {
+      "type": "Group",
+      "id": "96c5b0c4-46cc-46cd-8695-50451db74994",
+      "expected_name": "Projetos_Tranformação_Digital",
+      "expected_use": [
+        "ADR-M2-001: anchor group for board.status (channel 19:4c8fe...) and pmo.ops (channel 19:4c8fe... for now) and pm.status.updates (channel 19:10900a...)",
+        "REQ-M2-10: Planner Plan -1kBj1PLv0qQM-R4PwkqbpcABv_P is hosted in this group"
+      ],
+      "validation_status": "VALIDATED_INDIRECTLY",
+      "evidence": [
+        "PAC `shared_teams` connection refs (2 of them) Connected as mbenicios@minsait.com in ColOfertasBrasilPro",
+        "PAC `shared_planner` connection ref `6b763b98729c4d99a7a8df4033d381af` Connected — Plan -1kBj1PLv0qQM-R4PwkqbpcABv_P (AQ-04) is in this group",
+        "Live PM0_PA_Card_CriarTarefa (workflow 7f662db7-a250-f111-bec7-000d3abc5cc6, state Activado) hard-codes `body/groupId: 96c5b0c4-46cc-46cd-8695-50451db74994` in the Planner CreateTask_V3 action; activation requires the connector to accept this ID",
+        "Live PM0_PA_Card_ListarTarefas hard-codes `groupId: 96c5b0c4-46cc-46cd-8695-50451db74994` in Planner ListTasks_V3 action; activated and matches AQ-07 hash",
+        "Live PM0_PA_Card_AtualizarStatus hard-codes `body/recipient/groupId: 96c5b0c4-46cc-46cd-8695-50451db74994` in Teams PostCardToConversation action; activated and matches AQ-07 hash",
+        ".planning/STATE.md Decision #11 (locked 2026-05-04) records owner-attested Teams browser deep-link confirming this group is accessible to the owner"
+      ],
+      "owner_action_required_for_full_proof": false,
+      "notes": "Spelling note: schema name uses 'Tranformação' (missing one 's'). All evidence files use the misspelled form consistently; this is the actual literal name in tenant. M2 ADRs and PROJECT.md use both forms — needs normalization in M2 Phase 8 docs."
+    },
+    {
+      "type": "Channel",
+      "id": "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+      "expected_name": "Projetos_Tranformação_Digital",
+      "expected_group_id": "96c5b0c4-46cc-46cd-8695-50451db74994",
+      "expected_use": [
+        "ADR-M2-001: target for board.status route key + pmo.ops route key (REQ-M2-08)"
+      ],
+      "validation_status": "VALIDATED_INDIRECTLY",
+      "evidence": [
+        "Hard-coded in active PM0_PA_Card_AtualizarStatus (definition_PM0_PA_Card_AtualizarStatus.json line 50): `body/recipient/channelId: 19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2` with `location: Channel` and matching groupId. Workflow state Activado, currentMatchesAQ07ActionGraph: true. Power Automate would refuse to enable a flow whose channelId fails design-time resolution against the Teams connector",
+        ".planning/STATE.md Decision #11 records owner-attested Teams browser deep link with this channel ID — confirmed working in browser per Session 15 (2026-05-04)"
+      ],
+      "owner_action_required_for_full_proof": false,
+      "limitations": "0 runs in last 30 days for this flow — no runtime success/failure evidence. Validation is design-time only. To prove runtime resolution, owner must trigger PM0_PA_Card_AtualizarStatus once with a routeKey and observe a successful Teams card post (deferred to M2 Phase 7 Smoke E2E)."
+    },
+    {
+      "type": "Channel",
+      "id": "19:10900a91b53344c68d9c2a4299aa42d7@thread.tacv2",
+      "expected_name": "QA_Projetos",
+      "expected_group_id": "96c5b0c4-46cc-46cd-8695-50451db74994",
+      "expected_use": [
+        "ADR-M2-001: target for pm.status.updates route key (REQ-M2-08)"
+      ],
+      "validation_status": "REQUIRES_OWNER_ACTION",
+      "evidence": [
+        "Listed in PROJECT.md Out of Scope section as one of 2 approved channels",
+        "Listed in ADR-M2-001 routing matrix",
+        "NOT referenced in any of the 6 active PM0 flow definitions (Track D batch 3 grep): 0 hits. None of the legacy 12 PMO_PA_* flows reference it either (per Track D batches 1+2)"
+      ],
+      "owner_action_required_for_full_proof": true,
+      "owner_action_description": "Owner needs to (a) open Teams browser/desktop, navigate to the QA_Projetos channel, copy its deep link, and confirm channel ID literal matches `19:10900a91b53344c68d9c2a4299aa42d7@thread.tacv2`; OR (b) wait for M2 Phase 4 first PM0 flow to bind this ID — design-time activation will then validate it.",
+      "limitations": "No CLI tooling currently available to validate this ID without Graph or m365 CLI."
+    },
+    {
+      "type": "User",
+      "id": "mbenicios@minsait.com",
+      "expected_role": "Owner",
+      "expected_use": [
+        "ADR-M2-001: target for task.card.route DM (every operation confirmation + private result)"
+      ],
+      "validation_status": "VALIDATED_DIRECTLY",
+      "evidence": [
+        "PAC `pac env who` returned: `Connected as mbenicios@minsait.com` to `ColOfertasBrasilPro` (e2d10003-4d8e-e007-9d63-76d5fe89ef56)",
+        "PAC `pac connection list` shows 30+ connection refs all owned by mbenicios@minsait.com (Office365 Users, Teams, Planner, SharePoint, OneDrive)",
+        "Owner is the same identity as the OWNER agent in M2 governance (Manoel Benicio per CHECKIN_BOARD.md)"
+      ],
+      "owner_action_required_for_full_proof": false
+    }
+  ],
+  "connector_inventory_relevant_to_routing": [
+    {
+      "api_id": "/providers/Microsoft.PowerApps/apis/shared_teams",
+      "connections_found": 2,
+      "connection_ids": [
+        "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+        "shared-teams-9bb5e0a3-a654-4d5c-900e-16a06f2992e5"
+      ],
+      "all_connected": true,
+      "owner_upn": "mbenicios@minsait.com"
+    },
+    {
+      "api_id": "/providers/Microsoft.PowerApps/apis/shared_office365users",
+      "connections_found": 1,
+      "connection_ids": [
+        "shared-office365user-6842f08c-b4e4-4ffc-938a-ce1c25edecd3"
+      ],
+      "all_connected": true,
+      "owner_upn": "mbenicios@minsait.com",
+      "note": "Required for DM resolution if/when ADR-M2-001 task.card.route uses Office365Users to find a user before Teams DM"
+    },
+    {
+      "api_id": "/providers/Microsoft.PowerApps/apis/shared_planner",
+      "connections_found": 1,
+      "connection_ids": [
+        "6b763b98729c4d99a7a8df4033d381af"
+      ],
+      "all_connected": true,
+      "owner_upn": "mbenicios@minsait.com",
+      "note": "Indirect proof that group 96c5b0c4-... is accessible — Planner Plan ID -1kBj1PLv0qQM-R4PwkqbpcABv_P lives there and is reachable per AQ-04 + active PM0 flows"
+    }
+  ],
+  "summary_per_id": {
+    "Group_96c5b0c4-46cc-46cd-8695-50451db74994": "VALIDATED_INDIRECTLY",
+    "Channel_19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2": "VALIDATED_INDIRECTLY",
+    "Channel_19:10900a91b53344c68d9c2a4299aa42d7@thread.tacv2": "REQUIRES_OWNER_ACTION",
+    "User_mbenicios@minsait.com": "VALIDATED_DIRECTLY"
+  },
+  "phase_2_readiness_signal": "GREEN with one yellow flag: the QA_Projetos channel ID needs owner attestation before M2 Phase 4 hard-codes it in PM0 flows. This is a 30-second action and does not block Phase 2 architecture spec authoring."
+}

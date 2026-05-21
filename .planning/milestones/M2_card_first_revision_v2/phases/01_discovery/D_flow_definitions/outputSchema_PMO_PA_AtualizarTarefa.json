@@ -1,0 +1,37 @@
+[
+  {
+    "flowName": "PMO_PA_AtualizarTarefa",
+    "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6",
+    "responseActionName": "Response_Project_Not_Found",
+    "responseActionPath": "Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+    "statusCode": 409,
+    "schema": {
+      "properties": {
+        "result": {
+          "type": "string",
+          "title": "Result",
+          "x-ms-dynamically-added": true,
+          "x-ms-content-hint": "TEXT"
+        }
+      }
+    }
+  },
+  {
+    "flowName": "PMO_PA_AtualizarTarefa",
+    "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6",
+    "responseActionName": "Respond_Success",
+    "responseActionPath": "Respond_Success",
+    "statusCode": 200,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "title": "Result",
+          "x-ms-dynamically-added": true,
+          "x-ms-content-hint": "TEXT"
+        }
+      }
+    }
+  }
+]

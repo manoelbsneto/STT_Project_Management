@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "result": {
+      "title": "result",
+      "x-ms-dynamically-added": true,
+      "type": "string"
+    }
+  }
+}

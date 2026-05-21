@@ -1,0 +1,55 @@
+{
+  "flowName": "PMO_PA_PedirDecisaoBot",
+  "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+  "task": "D.10",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "windowStart": "2026-04-20T23:01:33.3277388Z",
+  "windowEnd": "2026-05-20T23:02:39.0354337Z",
+  "totalRuns": 4,
+  "succeeded": 3,
+  "failed": 1,
+  "cancelled": 0,
+  "statusCounts": {
+    "Failed": 1,
+    "Succeeded": 3
+  },
+  "runs": [
+    {
+      "runName": "08584228211728141088791130414CU08",
+      "status": "Succeeded",
+      "startTime": "2026-05-14T19:08:32.6708278Z",
+      "endTime": "2026-05-14T19:08:33.7304491Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584229162042932621914121592CU22",
+      "status": "Succeeded",
+      "startTime": "2026-05-13T16:44:41.1868048Z",
+      "endTime": "2026-05-13T16:44:42.5894618Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584229198731757329443978049CU10",
+      "status": "Failed",
+      "startTime": "2026-05-13T15:43:32.3044622Z",
+      "endTime": "2026-05-13T15:43:33.2652351Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_Error_Write",
+      "responseStatus": "Succeeded"
+    },
+    {
+      "runName": "08584230886654292765960930131CU16",
+      "status": "Succeeded",
+      "startTime": "2026-05-11T16:50:20.0523288Z",
+      "endTime": "2026-05-11T16:50:21.1498177Z",
+      "triggerStatus": "Succeeded",
+      "responseName": "Response_OK",
+      "responseStatus": "Succeeded"
+    }
+  ],
+  "retrievalError": null
+}

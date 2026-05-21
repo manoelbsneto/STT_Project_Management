@@ -1,0 +1,68 @@
+{
+  "flowName": "PMO_PA_RegistrarBloqueioBot",
+  "workflowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+  "task": "D.11",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "triggerName": "manual",
+  "triggerType": "Request",
+  "triggerKind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "descricao": {
+        "type": "string",
+        "description": "Descricao do bloqueio",
+        "title": "descricao",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "projectName": {
+        "type": "string",
+        "description": "Nome do projeto",
+        "title": "projectName",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "impacto": {
+        "type": "string",
+        "description": "Impacto",
+        "title": "impacto",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "projectName",
+      "descricao",
+      "impacto"
+    ]
+  },
+  "required": [
+    "projectName",
+    "descricao",
+    "impacto"
+  ],
+  "properties": {
+    "descricao": {
+      "type": "string",
+      "description": "Descricao do bloqueio",
+      "title": "descricao",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "projectName": {
+      "type": "string",
+      "description": "Nome do projeto",
+      "title": "projectName",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    },
+    "impacto": {
+      "type": "string",
+      "description": "Impacto",
+      "title": "impacto",
+      "x-ms-content-hint": "TEXT",
+      "x-ms-dynamically-added": true
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "flowName": "PMO_PA_PedirDecisaoBot",
+  "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+  "task": "D.10",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "responseCount": 3,
+  "primarySchema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "title": "message",
+        "x-ms-dynamically-added": true,
+        "type": "string"
+      }
+    }
+  },
+  "responses": [
+    {
+      "name": "Response_OK",
+      "path": "Condition_Projeto_Encontrado/Response_OK",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "message",
+            "x-ms-dynamically-added": true,
+            "type": "string"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Error_Write",
+      "path": "Condition_Projeto_Encontrado/Response_Error_Write",
+      "statusCode": 500,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "message",
+            "x-ms-dynamically-added": true,
+            "type": "string"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Project_Not_Found",
+      "path": "Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "message",
+            "x-ms-dynamically-added": true,
+            "type": "string"
+          }
+        }
+      },
+      "bodyShape": "message"
+    }
+  ]
+}

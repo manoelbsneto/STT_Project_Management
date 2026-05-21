@@ -1,0 +1,151 @@
+{
+  "track": "C.1",
+  "scope": "deploy/cards/",
+  "scanned_at": "2026-05-20T18:30:00Z",
+  "cards": [
+    {
+      "file_path": "deploy/cards/AlertaCritico.json",
+      "file_size_bytes": 1457,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "AlertaCritico",
+      "usage_status": "orphan",
+      "visual_quality": "complete",
+      "actions_present": ["Action.OpenUrl:Abrir no SharePoint"],
+      "data_fields": [],
+      "notes": "Alert for critical projects"
+    },
+    {
+      "file_path": "deploy/cards/AtualizarStatusCard.json",
+      "file_size_bytes": 2811,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "AtualizarStatus",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:submitStatusUpdate", "Action.Submit:cancelStatusUpdate"],
+      "data_fields": ["Input.ChoiceSet:statusRAG", "Input.Number:percentual", "Input.Text:resumo", "Input.Text:risco", "Input.Text:bloqueio", "Input.Text:proximaAcao"],
+      "notes": "Status update input form"
+    },
+    {
+      "file_path": "deploy/cards/AtualizarStatusSingleBoxReviewCard.json",
+      "file_size_bytes": 3230,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "AtualizarStatusReview",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:confirmStatusUpdate", "Action.Submit:submitStatusUpdate", "Action.Submit:cancelStatusUpdate"],
+      "data_fields": [],
+      "notes": "Confirmation card for status update"
+    },
+    {
+      "file_path": "deploy/cards/AtualizarTarefaCard.json",
+      "file_size_bytes": 3679,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "AtualizarTarefa",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:submitUpdateTask", "Action.Submit:cancelTaskEdit", "Action.Submit:requestTaskUpdate"],
+      "data_fields": ["Input.Text:taskTitle", "Input.ChoiceSet:taskStatus", "Input.Text:responsibleUpn", "Input.Date:dueDate", "Input.ChoiceSet:priority", "Input.Number:actualHours", "Input.Text:updateNotes"],
+      "notes": "Update task form"
+    },
+    {
+      "file_path": "deploy/cards/CheckInDiario.json",
+      "file_size_bytes": 2339,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "CheckInDiario",
+      "usage_status": "orphan",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:submitCheckIn"],
+      "data_fields": ["Input.ChoiceSet:statusRAG", "Input.Text:resumo", "Input.Number:percentual", "Input.Text:risco", "Input.Text:bloqueio", "Input.Text:proximaAcao"],
+      "notes": "Daily check-in form"
+    },
+    {
+      "file_path": "deploy/cards/CriarTarefaCard.json",
+      "file_size_bytes": 3342,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "CriarTarefa",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:submitCreateTask", "Action.Submit:cancelTaskEdit"],
+      "data_fields": ["Input.Text:taskTitle", "Input.Text:taskDescription", "Input.Text:responsibleUpn", "Input.Date:dueDate", "Input.ChoiceSet:priority", "Input.ChoiceSet:plannerBucketName", "Input.Number:estimatedHours"],
+      "notes": "Create task form"
+    },
+    {
+      "file_path": "deploy/cards/DecisaoBoard.json",
+      "file_size_bytes": 2090,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "PedirDecisao",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:approveDecision", "Action.Submit:rejectDecision", "Action.Submit:deferDecision"],
+      "data_fields": ["Input.Text:justificativa"],
+      "notes": "Approver board decision card"
+    },
+    {
+      "file_path": "deploy/cards/EscalacaoRisco.json",
+      "file_size_bytes": 1721,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "EscalarRisco",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.OpenUrl:Abrir no SharePoint"],
+      "data_fields": [],
+      "notes": "Risk escalation notification"
+    },
+    {
+      "file_path": "deploy/cards/ListarTarefasProjetoCard.json",
+      "file_size_bytes": 3463,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "ListarTarefas",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:createTaskFromProject", "Action.Submit:editTask", "Action.Submit:markTaskInProgress", "Action.Submit:markTaskDone", "Action.Submit:requestTaskUpdate"],
+      "data_fields": ["Input.ChoiceSet:taskId"],
+      "notes": "List tasks and operations"
+    },
+    {
+      "file_path": "deploy/cards/ResumoDiarioBoard.json",
+      "file_size_bytes": 2764,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "ResumoDiario",
+      "usage_status": "orphan",
+      "visual_quality": "complete",
+      "actions_present": ["Action.OpenUrl:Abrir hub PMO"],
+      "data_fields": [],
+      "notes": "Daily portfolio summary"
+    },
+    {
+      "file_path": "deploy/cards/ResumoExecutivoPortfolio.json",
+      "file_size_bytes": 3676,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "ResumoExecutivoPortfolio",
+      "usage_status": "in_use",
+      "visual_quality": "complete",
+      "actions_present": ["Action.Submit:viewRedProjects", "Action.Submit:viewWithoutUpdate", "Action.Submit:requestPmUpdate", "Action.Submit:viewProjectDetails", "Action.Submit:refreshPortfolio"],
+      "data_fields": [],
+      "notes": "Executive portfolio overview"
+    },
+    {
+      "file_path": "deploy/cards/ResumoSemanal.json",
+      "file_size_bytes": 2055,
+      "card_version": "1.4",
+      "schema_valid": true,
+      "inferred_operation": "ResumoSemanal",
+      "usage_status": "orphan",
+      "visual_quality": "complete",
+      "actions_present": ["Action.OpenUrl:Abrir hub PMO"],
+      "data_fields": [],
+      "notes": "Weekly portfolio summary"
+    }
+  ]
+}

@@ -1,0 +1,641 @@
+﻿[
+    {
+        "InternalName":  "Title",
+        "Title":  "Título",
+        "TypeAsString":  "Text",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_ColorTag",
+        "Title":  "Etiqueta de color",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ComplianceAssetId",
+        "Title":  "Id. de activo de cumplimiento normativo",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "DecisionID",
+        "Title":  "DecisionID",
+        "TypeAsString":  "Text",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  true
+    },
+    {
+        "InternalName":  "ProjectID",
+        "Title":  "ProjectID",
+        "TypeAsString":  "Text",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  true
+    },
+    {
+        "InternalName":  "Descricao",
+        "Title":  "Descricao",
+        "TypeAsString":  "Note",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Solicitante",
+        "Title":  "Solicitante",
+        "TypeAsString":  "User",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  "{89714468-0542-4442-85fa-6405d2939c45}",
+        "LookupField":  "",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Aprovador",
+        "Title":  "Aprovador",
+        "TypeAsString":  "User",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  "{89714468-0542-4442-85fa-6405d2939c45}",
+        "LookupField":  "",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Prazo",
+        "Title":  "Prazo",
+        "TypeAsString":  "DateTime",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "StatusDecisao",
+        "Title":  "Status",
+        "TypeAsString":  "Choice",
+        "Required":  true,
+        "DefaultValue":  null,
+        "Choices":  [
+                        "Pendente",
+                        "Aprovada",
+                        "Rejeitada",
+                        "Adiada",
+                        "Cancelada"
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  true
+    },
+    {
+        "InternalName":  "Resposta",
+        "Title":  "Resposta",
+        "TypeAsString":  "Note",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "DataResposta",
+        "Title":  "DataResposta",
+        "TypeAsString":  "DateTime",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Impacto",
+        "Title":  "Impacto",
+        "TypeAsString":  "Choice",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+                        "Baixo",
+                        "Medio",
+                        "Alto",
+                        "Critico"
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Justificativa",
+        "Title":  "Justificativa",
+        "TypeAsString":  "Note",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ApproverUPN",
+        "Title":  "ApproverUPN",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "CardVersion",
+        "Title":  "CardVersion",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ResponseSource",
+        "Title":  "ResponseSource",
+        "TypeAsString":  "Choice",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+                        "AdaptiveCard",
+                        "CopilotStudio",
+                        "Manual"
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Deleted",
+        "Title":  "Deleted",
+        "TypeAsString":  "Boolean",
+        "Required":  false,
+        "DefaultValue":  "0",
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  true
+    },
+    {
+        "InternalName":  "DeletedAt",
+        "Title":  "DeletedAt",
+        "TypeAsString":  "DateTime",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "DeletedReason",
+        "Title":  "DeletedReason",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "DeletedByUPN",
+        "Title":  "DeletedByUPN",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ID",
+        "Title":  "ID",
+        "TypeAsString":  "Counter",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ContentType",
+        "Title":  "Tipo de contenido",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Modified",
+        "Title":  "Modificado",
+        "TypeAsString":  "DateTime",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Created",
+        "Title":  "Creado",
+        "TypeAsString":  "DateTime",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Author",
+        "Title":  "Creado por",
+        "TypeAsString":  "User",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "{89714468-0542-4442-85fa-6405d2939c45}",
+        "LookupField":  "",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Editor",
+        "Title":  "Modificado por",
+        "TypeAsString":  "User",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "{89714468-0542-4442-85fa-6405d2939c45}",
+        "LookupField":  "",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_UIVersionString",
+        "Title":  "Versión",
+        "TypeAsString":  "Text",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Attachments",
+        "Title":  "Datos adjuntos",
+        "TypeAsString":  "Attachments",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  false,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "Edit",
+        "Title":  "Editar",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "LinkTitleNoMenu",
+        "Title":  "Título",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "LinkTitle",
+        "Title":  "Título",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "DocIcon",
+        "Title":  "Tipo",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "ItemChildCount",
+        "Title":  "Número secundario de elemento",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "ItemChildCount",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "FolderChildCount",
+        "Title":  "Recuento secundario de carpetas",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "FolderChildCount",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_ComplianceFlags",
+        "Title":  "Configuración de la etiqueta",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "ComplianceFlags",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_ComplianceTag",
+        "Title":  "Etiqueta de retención",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "ComplianceTag",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_ComplianceTagWrittenTime",
+        "Title":  "Etiqueta de retención aplicada",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "ComplianceTagWrittenTime",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_ComplianceTagUserId",
+        "Title":  "Usuario que ha aplicado la etiqueta:",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "",
+        "LookupField":  "ComplianceTagUserId",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "_IsRecord",
+        "Title":  "El elemento es un registro",
+        "TypeAsString":  "Computed",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  null,
+        "LookupField":  null,
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "AppAuthor",
+        "Title":  "Aplicación creada por",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "AppPrincipals",
+        "LookupField":  "Title",
+        "Formula":  null,
+        "Indexed":  false
+    },
+    {
+        "InternalName":  "AppEditor",
+        "Title":  "Aplicación modificada por",
+        "TypeAsString":  "Lookup",
+        "Required":  false,
+        "DefaultValue":  null,
+        "Choices":  [
+
+                    ],
+        "ReadOnly":  true,
+        "LookupList":  "AppPrincipals",
+        "LookupField":  "Title",
+        "Formula":  null,
+        "Indexed":  false
+    }
+]

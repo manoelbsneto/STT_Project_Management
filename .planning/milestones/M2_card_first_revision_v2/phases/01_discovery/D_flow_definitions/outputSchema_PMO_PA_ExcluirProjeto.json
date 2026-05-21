@@ -1,0 +1,78 @@
+{
+  "flowName": "PMO_PA_ExcluirProjeto",
+  "workflowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+  "task": "D.7",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "responseCount": 4,
+  "primarySchema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string",
+        "title": "message"
+      }
+    }
+  },
+  "responses": [
+    {
+      "name": "Response_OK",
+      "path": "Condition_Target_Found/Condition_Target_Unique/Response_OK",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Error_Update",
+      "path": "Condition_Target_Found/Condition_Target_Unique/Response_Error_Update",
+      "statusCode": 500,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Ambiguous",
+      "path": "Condition_Target_Found/Condition_Target_Unique/else/Response_Ambiguous",
+      "statusCode": 409,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Project_Not_Found",
+      "path": "Condition_Target_Found/else/Response_Project_Not_Found",
+      "statusCode": 404,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    }
+  ]
+}

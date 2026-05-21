@@ -1,0 +1,6 @@
+{
+  "port": 7777,
+  "host": "127.0.0.1",
+  "polling_default_ms": 5000,
+  "activity_log_default_limit": 50
+}

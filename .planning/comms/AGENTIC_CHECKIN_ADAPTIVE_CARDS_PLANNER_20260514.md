@@ -117,6 +117,79 @@ Every update must use this format:
 
 ## 7. Check-In Log
 
+### 2026-05-20 16:35 BRT — CODEX-PA — IN_PROGRESS
+- **Task ID:** P0-W2-1, P0-W2-2, P0-W2-3
+- **Current action:** Claimed Wave 2 pre-publish hardening tasks and starting read-only rollback evidence capture plus local script/doc updates.
+- **Progress since last check-in:** Read `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md` and `.planning/comms/CODEX_P0_CLOSEOUT_HANDOFF_20260520.md`. Scope is unchanged: no tenant writes, no imports, no publishes, no Power Automate saves, no Copilot Studio UI edits, no SharePoint writes, no Planner writes, no chat tests.
+- **Access route planned:** Windows PowerShell 5.1 via `powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "<pac read-only command>"`; read-only commands only: `pac env who`, `pac solution list`, `pac copilot list`, and `pac org fetch` for `botcomponent_workflow`.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned `.planning/comms/rollback_evidence_pre_3_15_20260520/*`; `tests/Test-Aq08PostRemediationReverify.ps1`; `.planning/comms/aq08_topic_routing_verification_20260520/expected_pm0_routing_post_remediation.json`; `.planning/START_HERE_CURRENT_STATUS.md`; `.planning/stop_ship/MASTER_CHECKLIST.md`; `.planning/stop_ship/RISK_REGISTER.md`; `.planning/AGENT_CHECKIN_REGISTRY.md`; `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** `pac copilot list` may be unsupported or require auth; if so, evidence will capture the exact output and no fallback write path will be invented.
+- **Next 5 minutes:** Create rollback evidence folder and run read-only PAC snapshots.
+- **Handoff / dependency:** Owner manual remediation of five P0 topics continues independently.
+
+### 2026-05-20 15:11 BRT — CODEX-PA — IN_PROGRESS
+- **Task ID:** P0 Release Closeout: AQ-08-PRE, BLK-AT-001-DISPLAY, AQ-09-SMOKE, XPIA-01-VERIFY
+- **Current action:** Claimed the four assigned read-only/discovery/documentation tasks and preparing local evidence folders.
+- **Progress since last check-in:** Read all mandatory dispatch references: `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CONTRACT.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/START_HERE_CURRENT_STATUS.md`, `.planning/comms/AQ07_FINAL_BINDING_ACTIVE_VERIFICATION_20260515.md`, `.planning/comms/AQ08_PREP_VERIFICATION_CHECKLIST_20260515.md`, `.planning/stop_ship/RCA_COPILOT_STUDIO_OPENAIINDIRECTATTACK_3_15_20260514.md`, `.planning/stop_ship/STUDY_XPIA_MITIGATION_v3_16_20260514.md`, and `docs/MANUAL_OPERACIONAL_PMO.md`. Also read `.planning/AGENT_CHECKIN_REGISTRY.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, and `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`.
+- **Access route planned:** Read-only PAC CLI only in `ColOfertasBrasilPro`: `pac env who`; `pac org fetch --xmlFile <FetchXML>` for botcomponent topic inventory, botcomponent_workflow inventory, and PMO_PA_/PM0_PA_ workflow inventory. Output will be saved under `.planning/comms/aq08_topic_routing_verification_20260520/`. No tenant write commands will be run.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned local docs/tests under `.planning/comms/*_20260520/` and `tests/Test-AtualizarTarefaResponseDisplay.ps1`, `tests/Test-Aq09SmokeEvidence.ps1`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** Any STALE topic binding found in AQ-08 will stop the publish path. Any PAC authentication/elevation prompt will be documented and execution will stop for owner action.
+- **Next 5 minutes:** Create evidence folders, capture PAC read-only inventories, and inspect the 3.15 unpacked solution/topic YAML for BLK-AT-001.
+- **Handoff / dependency:** None yet. Release remains NO-SHIP until all gates are evidenced.
+
+### 2026-05-20 15:19 BRT — CODEX-PA — BLOCKED
+- **Task ID:** AQ-08-PRE
+- **Current action:** Stopping after read-only topic routing verification found genuine STALE topic bindings.
+- **Progress since last check-in:** Captured `pac env who`, live `botcomponent` topic data, live `botcomponent_workflow` rows, and live `PMO_PA_`/`PM0_PA_` workflow inventory. The new `PM0_PA_*` action components are active, but published topics still reference legacy `PMO_PA_*` actions or direct legacy workflow IDs.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/aq08_topic_routing_verification_20260520/fetch_botcomponent_topics_inventory.xml`; `.planning/comms/aq08_topic_routing_verification_20260520/fetch_botcomponent_workflow_inventory.xml`; `.planning/comms/aq08_topic_routing_verification_20260520/fetch_workflow_inventory.xml`; `.planning/comms/aq08_topic_routing_verification_20260520/pac_env_who.txt`; `.planning/comms/aq08_topic_routing_verification_20260520/botcomponent_topics_inventory.txt`; `.planning/comms/aq08_topic_routing_verification_20260520/botcomponent_workflow_inventory.txt`; `.planning/comms/aq08_topic_routing_verification_20260520/workflow_inventory.txt`; `.planning/comms/aq08_topic_routing_verification_20260520/AQ08_TOPIC_ROUTING_VERIFICATION.md`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** Hard blocker for AQ-08-PUBLISH. Examples: `AtualizarTarefa` still calls `pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa`; `ListarTarefas` still calls `pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas`; `CriarTarefa` still calls `pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa`; several topics use direct legacy `flowId` values for `PMO_PA_*`.
+- **Next 5 minutes:** Await Owner/Opus decision on manual Copilot Studio rebinding. Per coordination rule 2, CODEX-PA will not continue Tasks 2-4 until this blocker is acknowledged or scope is explicitly changed.
+- **Handoff / dependency:** Owner must fix/accept STALE bindings before AQ-08-PUBLISH. Release remains NO-SHIP.
+
+### 2026-05-20 16:12 BRT — CODEX-PA — IN_PROGRESS
+- **Task ID:** P0 Release Closeout: TASK 2, TASK 3, TASK 4, final handoff
+- **Current action:** Resuming closeout after Opus 4.7 architectural reinterpretation of TASK 1.
+- **Progress since last check-in:** Owner provided Opus verdict: only five P0 topics are in-scope for card-first PM0 migration (`AtualizarStatus`, `AtualizarTarefa`, `ConsultarPortfolio`, `CriarTarefa`, `ListarTarefas`); seven legacy topics are accepted out-of-scope debt for this release.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned local deliverables under `.planning/comms/blk_at_001_display_patch_20260520/`, `.planning/comms/aq09_smoke_runbook_20260520/`, `.planning/comms/xpia_01_verify_20260520/`, `.planning/comms/CODEX_P0_CLOSEOUT_HANDOFF_20260520.md`, and tests under `tests/`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** No tenant writes authorized or planned. Need verify whether current 3.15 `AtualizarTarefa` source still contains the raw skip-token display block or whether the patch spec must target a restored/detailed confirmation block.
+- **Next 5 minutes:** Inspect current 3.15 `AtualizarTarefa` topic/flow source and existing regression tests, then write the TASK 2 spec/test.
+- **Handoff / dependency:** Owner manual remediation of five P0 topics remains required before AQ-08-PUBLISH.
+
+### 2026-05-20 16:19 BRT — CODEX-PA — IN_PROGRESS
+- **Task ID:** TASK 2 — BLK-AT-001-DISPLAY
+- **Current action:** Completed the display patch spec and regression test; moving to AQ-09 smoke runbook.
+- **Progress since last check-in:** Inspected current 3.15 `AtualizarTarefa` topic and workflow. Current 3.15 final response is static, not raw field echo. Created a display contract that replaces the static `atualizar_done` block with field-level display expressions that render skip tokens as `(mantido)`. Ran the new regression against the 3.15 ZIP and confirmed intended failure.
+- **Files being edited:** None.
+- **Files changed:** `tests/Test-AtualizarTarefaResponseDisplay.ps1`; `.planning/comms/blk_at_001_display_patch_20260520/BLK_AT_001_DISPLAY_PATCH_SPEC.md`; `.planning/comms/blk_at_001_display_patch_20260520/Test-AtualizarTarefaResponseDisplay_current_3_15_FAIL_expected.txt`; `.planning/comms/blk_at_001_display_patch_20260520/Test-AtualizarTarefaResponseDisplay_current_3_15_exit.txt`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** The requested raw echo block is not present in current 3.15; spec targets the current static `atualizar_done` block and documents the difference.
+- **Next 5 minutes:** Build AQ-09 smoke runbook with Section A P0 in-scope and Section B accepted legacy debt.
+- **Handoff / dependency:** Owner applies the display patch manually if field-level confirmation is desired.
+
+### 2026-05-20 16:28 BRT — CODEX-PA — IN_PROGRESS
+- **Task ID:** TASK 3 — AQ-09-SMOKE; TASK 4 — XPIA-01-VERIFY
+- **Current action:** Completed AQ-09 runbook/evidence template and XPIA harness/validator; preparing final handoff.
+- **Progress since last check-in:** Built smoke runbook with Section A in-scope P0 ship gate and Section B accepted legacy debt evidence. Built XPIA harness and `tests/Test-Aq09SmokeEvidence.ps1`; parser checks pass for both new test scripts. Did not execute Copilot chat tests or tenant writes.
+- **Files being edited:** `.planning/comms/CODEX_P0_CLOSEOUT_HANDOFF_20260520.md`
+- **Files changed:** `.planning/comms/aq09_smoke_runbook_20260520/AQ09_SMOKE_RUNBOOK.md`; `.planning/comms/aq09_smoke_runbook_20260520/EVIDENCE_TEMPLATE.md`; `.planning/comms/xpia_01_verify_20260520/XPIA_01_VERIFY_HARNESS.md`; `tests/Test-Aq09SmokeEvidence.ps1`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** Section A still depends on Owner manual remediation and post-remediation AQ-08 read-only verification. No Owner runtime evidence exists yet.
+- **Next 5 minutes:** Write consolidated handoff with legacy debt register, updated PASS/BLOCK matrix, and pre-publish re-validation checklist.
+- **Handoff / dependency:** Owner/Opus can use the runbook after five P0 topic bindings are manually remediated and re-verified.
+
+### 2026-05-20 16:34 BRT — CODEX-PA — READY_FOR_REVIEW
+- **Task ID:** P0 Release Closeout TASK 1-4
+- **Current action:** Completed all requested closeout deliverables under the Opus 4.7 scope reinterpretation.
+- **Progress since last check-in:** Added final handoff with legacy debt register, updated PASS/BLOCK matrix, and post-remediation re-validation checklist. Updated AQ-08 report from hard block to conditional block under the five-topic P0 scope rule.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/aq08_topic_routing_verification_20260520/AQ08_TOPIC_ROUTING_VERIFICATION.md`; `.planning/comms/blk_at_001_display_patch_20260520/BLK_AT_001_DISPLAY_PATCH_SPEC.md`; `tests/Test-AtualizarTarefaResponseDisplay.ps1`; `.planning/comms/aq09_smoke_runbook_20260520/AQ09_SMOKE_RUNBOOK.md`; `.planning/comms/aq09_smoke_runbook_20260520/EVIDENCE_TEMPLATE.md`; `.planning/comms/xpia_01_verify_20260520/XPIA_01_VERIFY_HARNESS.md`; `tests/Test-Aq09SmokeEvidence.ps1`; `.planning/comms/CODEX_P0_CLOSEOUT_HANDOFF_20260520.md`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Validation:** `tests/Test-AtualizarTarefaResponseDisplay.ps1` ran against current 3.15 and failed intentionally; evidence saved. PowerShell parser checks passed for both new test scripts. XPIA validator was not run because Owner evidence does not exist yet.
+- **Risks / blockers:** AQ-08-PUBLISH remains blocked until Owner manually remediates five in-scope P0 topics and CODEX-PA re-runs read-only verification. No runtime smoke evidence exists yet.
+- **Next 5 minutes:** None.
+- **Handoff / dependency:** Owner manual topic remediation -> CODEX-PA read-only re-verification -> Owner import/publish -> Owner AQ-09 smoke -> evidence validator -> release decision.
+
 ### 2026-05-15 11:05 BRT — GEMINI-PA — IN_PROGRESS
 - **Task ID:** AQ-07 Corrective Build Preparation
 - **Current action:** Starting corrective AQ-07 task to generate PORTAL_BUILD_RUNBOOK artifacts.
@@ -1518,6 +1591,16 @@ Every update must use this format:
 - **Forbidden paths excluded:** No Copilot publish, no runtime smoke, no SharePoint write, no Planner write, no Teams post, no solution import, no Microsoft 365 CLI, no direct Graph, no HTTP Premium, no app credentials/registrations/service principals, no final SHIP.
 - **Next 5 minutes:** Run read-only verification and update AQ-07 result.
 
+### 2026-05-20 16:40 BRT — OPUS2-PARALLEL — CLAIMED
+- **Task ID:** OPUS2-TASK-A (XPIA-01 Fallback ADR), OPUS2-TASK-B (Post-Publish Monitoring Runbook), OPUS2-TASK-C (Rollback Decision Tree)
+- **Current action:** Claimed three parallel architectural tasks dispatched by lead Opus 4.7. Documentation only; no tenant writes, no Power Automate saves, no Copilot Studio UI edits, no SharePoint writes, no Planner writes, no chat tests.
+- **Progress since last check-in:** Read all 7 mandatory references: ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md, CODEX_P0_CLOSEOUT_HANDOFF_20260520.md, AQ09_SMOKE_RUNBOOK.md, XPIA_01_VERIFY_HARNESS.md, RCA_COPILOT_STUDIO_OPENAIINDIRECTATTACK_3_15_20260514.md, STUDY_XPIA_MITIGATION_v3_16_20260514.md, DEEP_RESEARCH_OPENAIINDIRECTATTACK_CONTENTFILTERED_20260514.md. Verified rollback evidence under `.planning/comms/rollback_evidence_pre_3_15_20260520/` (active solution `PMO_v11_Tarefas` v3.15; bot `Assistente PMO V2` / `df148bf8-0a3e-495b-80c4-841dcb61d9a4`). Confirmed scope: 5 in-scope P0 (ListarTarefas, ConsultarPortfolio, CriarTarefa, AtualizarTarefa, AtualizarStatus); 7 legacy debt topics; XPIA-01 stop-ship blocker pattern is Copilot Studio dual-pass RAI / XPIA detector scanning hidden action outputs.
+- **Files being edited:** `.planning/architecture/ADR_XPIA01_FALLBACK_STRATEGY_20260520.md`, `.planning/architecture/POST_PUBLISH_MONITORING_RUNBOOK_3_15_20260520.md`, `.planning/architecture/ROLLBACK_DECISION_TREE_3_15_20260520.md`, `.planning/comms/OPUS2_PARALLEL_TRACK_HANDOFF_20260520.md`
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`
+- **Risks / blockers:** None for documentation. Hard time budget 1h30. Will not edit lead Opus's ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md or any CODEX deliverable.
+- **Next 10 minutes:** Author TASK A — XPIA-01 Fallback ADR with Strategies α/β/γ, decision matrix, path tree, implementation checklists.
+- **Handoff / dependency:** Final consolidated handoff at `.planning/comms/OPUS2_PARALLEL_TRACK_HANDOFF_20260520.md`.
+
 ### 2026-05-15 22:40 BRT — CODEX-LEAD — AQ07_FINAL_ACTIVE_VERIFIED
 - **Task ID:** AQ-07-REWORK-SOLUTION-AWARE-COPILOT-BINDABLE-FLOWS
 - **Current action:** Closing AQ-07 solution-aware binding remediation and handing off to AQ-08 readiness.
@@ -1527,3 +1610,23 @@ Every update must use this format:
 - **Forbidden paths excluded:** No Copilot publish, no AQ-09 runtime smoke, no SharePoint schema write, no Planner write, no Teams post, no solution import after the owner manual fix, no Microsoft 365 CLI, no direct Graph, no HTTP Premium, no app credentials/registrations/service principals, no final SHIP.
 - **Risks / blockers:** AQ-07 binding/activation blocker is resolved. AQ-08 must still verify that Copilot topics/actions route to new `PM0_*` action components and not stale `PMO_PA_*` bindings before any publish. Release remains NO-SHIP.
 - **Next 5 minutes:** Prepare AQ-08 publish-readiness handoff and request explicit owner approval before any Copilot publish or AQ-09 runtime smoke.
+
+### 2026-05-20 16:40 BRT — CODEX-PA — P0_W2_HARDENING_IN_PROGRESS
+- **Task ID:** P0-W2-1 / P0-W2-2 / P0-W2-3
+- **Current action:** Closing Wave 2 pre-publish hardening while Owner manually remediates the five in-scope AQ-08 topic routes in Copilot Studio UI.
+- **Progress since last check-in:** Read mandatory ADR and closeout handoff. Captured read-only pre-publish PAC evidence (`pac env who`, solution list, Copilot list, and `botcomponent_workflow` snapshot). Built `tests/Test-Aq08PostRemediationReverify.ps1` and ADR-derived expected routing config, then smoke-ran it against current pre-remediation state; it correctly returned `BLOCK` / exit code 1.
+- **Files being edited:** `.planning/comms/rollback_evidence_pre_3_15_20260520/ROLLBACK_PROCEDURE.md`; `.planning/START_HERE_CURRENT_STATUS.md`; `.planning/stop_ship/MASTER_CHECKLIST.md`; `.planning/stop_ship/RISK_REGISTER.md`; `.planning/AGENT_CHECKIN_REGISTRY.md`; `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`.
+- **Files changed:** `.planning/comms/rollback_evidence_pre_3_15_20260520/*`; `.planning/comms/aq08_topic_routing_verification_20260520/expected_pm0_routing_post_remediation.json`; `.planning/comms/aq08_topic_routing_verification_20260520/test_reverify_pre_remediation_BLOCK_expected.txt`; `.planning/comms/aq08_topic_routing_verification_20260520/test_reverify_pre_remediation_exit.txt`; `tests/Test-Aq08PostRemediationReverify.ps1`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Validation:** `Test-Aq08PostRemediationReverify.ps1` pre-remediation run produced expected `BLOCK` for the five in-scope topics, proving it will catch missing manual routing edits.
+- **Risks / blockers:** Release remains NO-SHIP until Owner completes the five manual Copilot topic changes and the post-remediation reverify script returns PASS / exit code 0.
+- **Next 5 minutes:** Finish rollback procedure, governance doc sync, parser validation, and Wave 2 handoff note.
+
+### 2026-05-20 16:45 BRT — CODEX-PA — P0_W2_HARDENING_DONE
+- **Task ID:** P0-W2-1 / P0-W2-2 / P0-W2-3
+- **Current action:** Wave 2 hardening deliverables completed; handing control back to Owner for five manual Copilot Studio topic remediations.
+- **Progress since last check-in:** Wrote rollback procedure, synchronized START_HERE / MASTER_CHECKLIST / RISK_REGISTER / AGENT_CHECKIN_REGISTRY, and created final handoff `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`.
+- **Validation:** PowerShell parser check passed for `tests/Test-Aq08PostRemediationReverify.ps1`, `tests/Test-Aq09SmokeEvidence.ps1`, and `tests/Test-AtualizarTarefaResponseDisplay.ps1`. Pre-remediation verifier evidence remains expected `BLOCK` / exit code 1.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`; `.planning/comms/rollback_evidence_pre_3_15_20260520/ROLLBACK_PROCEDURE.md`; `.planning/START_HERE_CURRENT_STATUS.md`; `.planning/stop_ship/MASTER_CHECKLIST.md`; `.planning/stop_ship/RISK_REGISTER.md`; `.planning/AGENT_CHECKIN_REGISTRY.md`; plus W2 verifier/config/evidence files already listed in the prior check-in.
+- **Risks / blockers:** `NO-SHIP` remains active. Owner must remediate the five in-scope topics and then run the post-remediation verifier to get `PASS` before any 3.15 import/publish.
+- **Next 5 minutes:** Await Owner topic-remediation completion; then run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Aq08PostRemediationReverify.ps1`.

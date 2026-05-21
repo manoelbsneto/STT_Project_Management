@@ -1,0 +1,1872 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       statecode schemaname                                          modifiedon       bot.botid                            bot.name          name                     bot.schemaname       statuscode componenttype data
+9cfcaa27-fbc0-45a9-ac14-54e26630fa29 Activo    pmo_AssistentePMO_V2.topic.SeHouverErro             14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 SeHouverErro             pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    - kind: SendActivity
+      id: error_msg
+      activity: "Ocorreu um erro no Assistente PMO. Codigo: {System.Error.Code}."
+
+inputType: {}
+outputType: {}
+
+ad026f7b-5577-42bf-a246-363b05d71082 Activo    pmo_AssistentePMO_V2.topic.RegistrarBloqueio        14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 RegistrarBloqueio        pmo_AssistentePMO_V2 Activo     Tema (V2)     # RegistrarBloqueio topic
+# Purpose: collect, confirm, and call the PMO_PA_RegistrarBloqueioBot flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic RegistrarBloqueio.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarBloqueio
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - registrar bloqueio
+      - novo bloqueio
+      - abrir bloqueio
+      - cadastrar bloqueio
+      - bloqueio no projeto
+      - bloqueio em projeto
+      - bloqueio do projeto
+      - "registrar bloqueio:"
+      - registrar bloqueio projeto
+      - registrar bloqueio descricao
+      - registrar bloqueio impacto
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "bloqueio\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva o bloqueio.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_impact
+      conditions:
+        - id: missing_impact
+          condition: =IsBlank(Topic.Impacto)
+          actions:
+            - kind: Question
+              id: ask_impact
+              variable: Topic.Impacto
+              prompt: "Qual o impacto? Escolha: Baixo, Medio, Alto ou Critico."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_registrar_bloqueio
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este bloqueio.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Impacto: {Topic.Impacto}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Bloqueio_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Bloqueio_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Bloqueio_Impacto
+              value: =Topic.Impacto
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_registrar_bloqueio
+              input:
+                binding:
+                  projectName: =Global.PMO_Bloqueio_ProjectID
+                  descricao: =Global.PMO_Bloqueio_Descricao
+                  impacto: =Global.PMO_Bloqueio_Impacto
+
+              output:
+                binding:
+                  message: Topic.RegistrarBloqueioResult
+
+              flowId: 3ec37952-c64c-f111-bec7-000d3abc5cc6
+
+            - kind: SendActivity
+              id: registrar_bloqueio_done
+              activity: "{Topic.RegistrarBloqueioResult}"
+
+            - kind: EndDialog
+              id: end_registrar_bloqueio
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: registrar_bloqueio_cancelled
+          activity: Ok, registro de bloqueio cancelado.
+
+        - kind: EndDialog
+          id: end_registrar_bloqueio_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+defb245c-9b94-45d5-b336-fbcb7428bdd0 Activo    pmo_AssistentePMO_V2.topic.Greeting                 14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 Greeting                 pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SendActivity
+      id: conversation_start_message
+      activity: Ola. Sou o Assistente PMO. Envie seu comando de PMO quando quiser.
+
+inputType: {}
+outputType: {}
+
+ec4416d0-0744-4e8c-b937-aae4ad9c605b Activo    pmo_AssistentePMO_V2.topic.AtualizarStatus          14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 AtualizarStatus          pmo_AssistentePMO_V2 Activo     Tema (V2)     # AtualizarStatus topic
+# Purpose: parse long STT text, confirm, and call the PMO_PA_AtualizarStatus flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic AtualizarStatus.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarStatus
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - atualizar status
+      - update status
+      - checkin
+      - check in
+      - status do projeto
+      - reportar status
+      - enviar status
+      - fazer checkin
+      - "atualizar status:"
+      - atualizar status projeto
+      - atualizar status resumo
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.Projeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_rag
+      variable: Topic.RAG
+      value: =If(IsMatch(Topic.RawInput, "rag\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "rag\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "status\s*=\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "status\s*=\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_summary
+      variable: Topic.Resumo
+      value: =If(IsMatch(Topic.RawInput, "resumo(?:\s+executivo)?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:riscos?|bloqueios?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "resumo(?:\s+executivo)?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:riscos?|bloqueios?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_percent
+      variable: Topic.Percentual
+      value: =If(IsMatch(Topic.RawInput, "percentual\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "percentual\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), If(IsMatch(Topic.RawInput, "percent\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.RawInput, "percent\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank()))
+
+    - kind: SetVariable
+      id: parse_risk
+      variable: Topic.Risco
+      value: =If(IsMatch(Topic.RawInput, "riscos?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|bloqueios?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "riscos?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|bloqueios?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_block
+      variable: Topic.Bloqueio
+      value: =If(IsMatch(Topic.RawInput, "bloqueios?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|riscos?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "bloqueios?\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|riscos?|pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_next_action
+      variable: Topic.ProximaAcao
+      value: =If(IsMatch(Topic.RawInput, "pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|riscos?|bloqueios?|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "pr[o\u00f3]xim[ao]\s+(?:a[c\u00e7][a\u00e3]o|passo)\s*[:=]\s*(?<v>[\s\S]*?)(?=\r?\n\s*(?:resumo(?:\s+executivo)?|riscos?|bloqueios?|percentual|rag|status|projeto|project)\s*[:=]|$)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.Projeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.Projeto
+              prompt: Qual projeto voce quer atualizar?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_rag
+      conditions:
+        - id: missing_rag
+          condition: =IsBlank(Topic.RAG)
+          actions:
+            - kind: Question
+              id: ask_rag
+              variable: Topic.RAG
+              prompt: "Qual o status RAG? Escolha: Verde, Amarelo ou Vermelho."
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_summary
+      conditions:
+        - id: missing_summary
+          condition: =IsBlank(Topic.Resumo)
+          actions:
+            - kind: Question
+              id: ask_summary
+              variable: Topic.Resumo
+              prompt: Qual o resumo do status?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_atualizar_status
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este status.
+        Projeto: {Topic.Projeto}
+        RAG: {Topic.RAG}
+        Resumo: {Topic.Resumo}
+        Percentual: {Topic.Percentual}
+        Risco: {Topic.Risco}
+        Bloqueio: {Topic.Bloqueio}
+        Proxima acao: {Topic.ProximaAcao}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Status_Projeto
+              value: =Topic.Projeto
+
+            - kind: SetVariable
+              id: set_global_rag
+              variable: Global.PMO_Status_RAG
+              value: =Topic.RAG
+
+            - kind: SetVariable
+              id: set_global_summary
+              variable: Global.PMO_Status_Resumo
+              value: =Topic.Resumo
+
+            - kind: SetVariable
+              id: set_global_percent
+              variable: Global.PMO_Status_Percentual
+              value: =Topic.Percentual
+
+            - kind: SetVariable
+              id: set_global_risk
+              variable: Global.PMO_Status_Risco
+              value: =Topic.Risco
+
+            - kind: SetVariable
+              id: set_global_block
+              variable: Global.PMO_Status_Bloqueio
+              value: =Topic.Bloqueio
+
+            - kind: SetVariable
+              id: set_global_next_action
+              variable: Global.PMO_Status_ProximaAcao
+              value: =Topic.ProximaAcao
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_atualizar_status
+              input:
+                binding:
+                  nomeProjeto: =Global.PMO_Status_Projeto
+                  rag: =Global.PMO_Status_RAG
+                  resumo: =Global.PMO_Status_Resumo
+                  percentual: =Global.PMO_Status_Percentual
+                  risco: =Global.PMO_Status_Risco
+                  bloqueio: =Global.PMO_Status_Bloqueio
+                  proximaAcao: =Global.PMO_Status_ProximaAcao
+
+              output:
+                binding:
+                  message: Topic.AtualizarStatusResult
+
+              flowId: c11a165b-c64c-f111-bec7-7ced8d9559c1
+
+            - kind: SendActivity
+              id: atualizar_status_done
+              activity: "{Topic.AtualizarStatusResult}"
+
+            - kind: EndDialog
+              id: end_atualizar_status
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: atualizar_status_cancelled
+          activity: Ok, atualizacao de status cancelada.
+
+        - kind: EndDialog
+          id: end_atualizar_status_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+5e548a07-02ba-4bd6-97d0-0184af1d5e8b Activo    pmo_AssistentePMO_V2.topic.PedirDecisao             14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 PedirDecisao             pmo_AssistentePMO_V2 Activo     Tema (V2)     # PedirDecisao topic
+# Purpose: collect, confirm, and call the PMO_PA_PedirDecisaoBot flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic PedirDecisao.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: PedirDecisao
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - solicitar decisao
+      - pedir decisao
+      - registrar decisao
+      - nova decisao
+      - preciso de uma decisao
+      - decisao para projeto
+      - solicitar aprovacao
+      - pedir aprovacao
+      - "solicitar decisao:"
+      - decisao projeto
+      - decisao descricao
+      - decisao impacto
+      - decisao prazo
+      - decisao aprovador
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "decisao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "decisao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_due_date
+      variable: Topic.Prazo
+      value: =If(IsMatch(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_approver
+      variable: Topic.Aprovador
+      value: =If(IsMatch(Topic.RawInput, "aprovador\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "aprovador\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "approver\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "approver\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva a decisao necessaria.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_impact
+      conditions:
+        - id: missing_impact
+          condition: =IsBlank(Topic.Impacto)
+          actions:
+            - kind: Question
+              id: ask_impact
+              variable: Topic.Impacto
+              prompt: "Qual o impacto? Escolha: Baixo, Medio, Alto ou Critico."
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_due_date
+      conditions:
+        - id: missing_due_date
+          condition: =IsBlank(Topic.Prazo)
+          actions:
+            - kind: Question
+              id: ask_due_date
+              variable: Topic.Prazo
+              prompt: Qual o prazo da decisao? Use dd/mm/aaaa.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_approver
+      conditions:
+        - id: missing_approver
+          condition: =IsBlank(Topic.Aprovador)
+          actions:
+            - kind: Question
+              id: ask_approver
+              variable: Topic.Aprovador
+              prompt: Qual o UPN do aprovador?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: validate_approver_upn
+      conditions:
+        - id: invalid_approver_upn
+          condition: =Not(IsMatch(Trim(Topic.Aprovador), "^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"))
+          actions:
+            - kind: SendActivity
+              id: invalid_approver_message
+              activity: UPN do aprovador invalido. Informe um email corporativo valido, por exemplo nome@empresa.com.
+
+            - kind: EndDialog
+              id: end_invalid_approver
+              clearTopicQueue: true
+
+    - kind: Question
+      id: confirm_pedir_decisao
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar esta solicitacao de decisao.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Impacto: {Topic.Impacto}
+        Prazo: {Topic.Prazo}
+        Aprovador: {Topic.Aprovador}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Decisao_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Decisao_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Decisao_Impacto
+              value: =Topic.Impacto
+
+            - kind: SetVariable
+              id: set_global_due_date
+              variable: Global.PMO_Decisao_Prazo
+              value: =Topic.Prazo
+
+            - kind: SetVariable
+              id: set_global_approver
+              variable: Global.PMO_Decisao_Aprovador
+              value: =Topic.Aprovador
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_pedir_decisao
+              input:
+                binding:
+                  projectName: =Global.PMO_Decisao_ProjectID
+                  descricao: =Global.PMO_Decisao_Descricao
+                  impacto: =Global.PMO_Decisao_Impacto
+                  prazo: =Global.PMO_Decisao_Prazo
+                  aprovador: =Global.PMO_Decisao_Aprovador
+
+              output:
+                binding:
+                  message: Topic.PedirDecisaoResult
+
+              flowId: feb79d54-c64c-f111-bec7-7ced8d955c6c
+
+            - kind: SendActivity
+              id: pedir_decisao_done
+              activity: "{Topic.PedirDecisaoResult}"
+
+            - kind: EndDialog
+              id: end_pedir_decisao
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: pedir_decisao_cancelled
+          activity: Ok, solicitacao de decisao cancelada.
+
+        - kind: EndDialog
+          id: end_pedir_decisao_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+74c5fdcc-c121-452e-85af-24d3f260b3c7 Activo    pmo_AssistentePMO_V2.topic.ConsultarPortfolio       14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 ConsultarPortfolio       pmo_AssistentePMO_V2 Activo     Tema (V2)     # ConsultarPortfolio topic
+# Purpose: call the PMO_PA_ConsultarPortfolio flow and return portfolio counts.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarPortfolio.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarPortfolio
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - consultar portfolio
+      - ver portfolio
+      - portfolio pmo
+      - resumo do portfolio
+      - resumo portfolio
+      - como esta o portfolio
+      - listar projetos ativos
+      - projetos ativos
+      - listar portfolio
+      - quais projetos ativos
+      - dashboard
+      - visao geral
+
+  actions:
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_consultar_portfolio
+      output:
+        binding:
+          message: Topic.ConsultarPortfolioResult
+
+      flowId: 39cf292d-c64c-f111-bec7-7ced8d955c6c
+
+    - kind: SendActivity
+      id: consultar_portfolio_done
+      activity: "{Topic.ConsultarPortfolioResult}"
+
+    - kind: EndDialog
+      id: end_consultar_portfolio
+      clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+9d31a989-2799-4ace-964a-418344958b5e Activo    pmo_AssistentePMO_V2.topic.RegistrarRisco           14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 RegistrarRisco           pmo_AssistentePMO_V2 Activo     Tema (V2)     # RegistrarRisco topic
+# Purpose: collect, confirm, and call the PMO_PA_RegistrarRiscoBot flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic RegistrarRisco.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: RegistrarRisco
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - registrar risco
+      - novo risco
+      - abrir risco
+      - cadastrar risco
+      - risco no projeto
+      - risco em projeto
+      - risco do projeto
+      - "registrar risco:"
+      - registrar risco projeto
+      - registrar risco descricao
+      - registrar risco severidade
+      - registrar risco impacto
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.ProjectID
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "project\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_description
+      variable: Topic.Descricao
+      value: =If(IsMatch(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "descricao\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "risco\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_severity
+      variable: Topic.Severidade
+      value: =If(IsMatch(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "severidade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_impact
+      variable: Topic.Impacto
+      value: =If(IsMatch(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "impacto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.ProjectID)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.ProjectID
+              prompt: Qual o ProjectID ou nome do projeto?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_description
+      conditions:
+        - id: missing_description
+          condition: =IsBlank(Topic.Descricao)
+          actions:
+            - kind: Question
+              id: ask_description
+              variable: Topic.Descricao
+              prompt: Descreva o risco.
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_severity
+      conditions:
+        - id: missing_severity
+          condition: =IsBlank(Topic.Severidade)
+          actions:
+            - kind: Question
+              id: ask_severity
+              variable: Topic.Severidade
+              prompt: "Qual a severidade? Escolha: Baixa, Media, Alta ou Critica."
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_registrar_risco
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou registrar este risco.
+        Projeto: {Topic.ProjectID}
+        Descricao: {Topic.Descricao}
+        Severidade: {Topic.Severidade}
+        Impacto: {Topic.Impacto}
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode criar", Lower(Trim(Topic.ConfirmacaoTexto)) = "pode", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_project
+              variable: Global.PMO_Risco_ProjectID
+              value: =Topic.ProjectID
+
+            - kind: SetVariable
+              id: set_global_description
+              variable: Global.PMO_Risco_Descricao
+              value: =Topic.Descricao
+
+            - kind: SetVariable
+              id: set_global_severity
+              variable: Global.PMO_Risco_Severidade
+              value: =Topic.Severidade
+
+            - kind: SetVariable
+              id: set_global_impact
+              variable: Global.PMO_Risco_Impacto
+              value: =Topic.Impacto
+
+            - kind: InvokeFlowAction
+              id: invokeFlowAction_registrar_risco
+              input:
+                binding:
+                  projectName: =Global.PMO_Risco_ProjectID
+                  descricao: =Global.PMO_Risco_Descricao
+                  severidade: =Global.PMO_Risco_Severidade
+                  impacto: =Global.PMO_Risco_Impacto
+
+              output:
+                binding:
+                  message: Topic.RegistrarRiscoResult
+
+              flowId: ee732d46-c64c-f111-bec7-7ced8d955c6c
+
+            - kind: SendActivity
+              id: registrar_risco_done
+              activity: "{Topic.RegistrarRiscoResult}"
+
+            - kind: EndDialog
+              id: end_registrar_risco
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: registrar_risco_cancelled
+          activity: Ok, registro de risco cancelado.
+
+        - kind: EndDialog
+          id: end_registrar_risco_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+b67b708d-d7ed-47e5-898c-86a8c7ead5b0 Activo    pmo_AssistentePMO_V2.topic.LowConfidence            14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 LowConfidence            pmo_AssistentePMO_V2 Activo     Tema (V2)     # Fallback_SmartRedirect.yaml
+# Purpose:
+#   Smart fallback for Assistente PMO V2. Microsoft documents that the Fallback
+#   system topic triggers On Unknown Intent when the agent cannot match the user
+#   message to a topic. This topic checks the documented System.Activity.Text
+#   value and uses Copilot Studio's documented topic redirection behavior for
+#   known PMO command patterns. The YAML node shape follows the exported/code
+#   editor pattern used by this repo and must be validated by Topic checker.
+#
+# Deploy in Copilot Studio:
+#   1. Open Assistente PMO V2 > Topics > System > Fallback / LowConfidence.
+#   2. Open Code editor and replace the fallback topic YAML with this file.
+#   3. Confirm the dialog schema names below match your bot package:
+#      - pmo_AssistentePMO_V2.topic.CriarProjeto
+#      - pmo_AssistentePMO_V2.topic.CriarTarefa
+#      - pmo_AssistentePMO_V2.topic.AtualizarStatus
+#      - pmo_AssistentePMO_V2.topic.ConsultarPortfolio
+#      - pmo_AssistentePMO_V2.topic.RegistrarRisco
+#      - pmo_AssistentePMO_V2.topic.PedirDecisao
+#      - pmo_AssistentePMO_V2.topic.RegistrarBloqueio
+#      - pmo_AssistentePMO_V2.topic.ConsultarProjeto
+#      - pmo_AssistentePMO_V2.topic.AtualizarTarefa
+#      - pmo_AssistentePMO_V2.topic.ListarTarefas
+#      If your unpacked solution uses another prefix, replace only the prefix
+#      `pmo_AssistentePMO_V2.topic` with that actual schema prefix.
+#   4. Save, run Topic checker, publish, then test from a new conversation.
+#
+# Loop/interference safeguards:
+#   - Trigger is OnUnknownIntent only, so recognized topics keep normal priority.
+#   - System.FallbackCount is documented for On Unknown Intent and blocks
+#     repeated redirects after two fallback turns.
+#   - Unknown text still receives a generic fallback response.
+
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  actions:
+    - kind: SetVariable
+      id: set_fallback_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: normalize_fallback_input
+      variable: Topic.NormalizedInput
+      value: =Lower(Trim(Topic.RawInput))
+
+    - kind: ConditionGroup
+      id: smart_redirect_router
+      conditions:
+        - id: fallback_retry_limit
+          condition: =System.FallbackCount > 2
+          actions:
+            - kind: SendActivity
+              id: fallback_retry_message
+              activity: "Nao consegui concluir o redirecionamento automatico. Reformule o comando usando uma das opcoes: criar projeto, criar tarefa, atualizar tarefa, atualizar status, consultar portfolio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio ou solicitar decisao."
+
+            - kind: EndDialog
+              id: end_retry_limit
+              clearTopicQueue: true
+
+        - id: detect_criar_projeto
+          condition: =Or(IsMatch(Topic.NormalizedInput, "criar\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "novo\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+projeto", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_criar_projeto
+              dialog: pmo_AssistentePMO_V2.topic.CriarProjeto
+
+        - id: detect_criar_tarefa
+          condition: =Or(IsMatch(Topic.NormalizedInput, "criar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "nova\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "adicionar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "cadastrar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+tarefa", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_criar_tarefa
+              dialog: pmo_AssistentePMO_V2.topic.CriarTarefa
+
+        - id: detect_atualizar_status
+          condition: =Or(IsMatch(Topic.NormalizedInput, "atualizar\s+status", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "atualizar\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "status\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "status\s+de\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+status", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "update\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "check\s+in", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_atualizar_status
+              dialog: pmo_AssistentePMO_V2.topic.AtualizarStatus
+
+        - id: detect_atualizar_tarefa
+          condition: =Or(IsMatch(Topic.NormalizedInput, "atualizar\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "concluir\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "mudar\s+status\s+tarefa", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "tarefa\s+concluida", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "completar\s+tarefa", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_atualizar_tarefa
+              dialog: pmo_AssistentePMO_V2.topic.AtualizarTarefa
+
+        - id: detect_consultar_portfolio
+          condition: =Or(IsMatch(Topic.NormalizedInput, "consultar\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "portfolio\s+pmo", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "resumo\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "resumo\s+do\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "dashboard", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "como\s+esta\s+o\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "listar\s+projetos\s+ativos", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "projetos\s+ativos", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "listar\s+portfolio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "quais\s+projetos\s+ativos", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_consultar_portfolio
+              dialog: pmo_AssistentePMO_V2.topic.ConsultarPortfolio
+
+        - id: detect_consultar_projeto
+          condition: =Or(IsMatch(Topic.NormalizedInput, "consultar\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "ver\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "detalhes\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "como\s+esta\s+o\s+projeto", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_consultar_projeto
+              dialog: pmo_AssistentePMO_V2.topic.ConsultarProjeto
+
+        - id: detect_listar_tarefas
+          condition: =Or(IsMatch(Topic.NormalizedInput, "listar\s+tarefas", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "tarefas\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "breakdown\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "ver\s+tarefas", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "quais\s+tarefas", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_listar_tarefas
+              dialog: pmo_AssistentePMO_V2.topic.ListarTarefas
+
+        - id: detect_registrar_risco
+          condition: =Or(IsMatch(Topic.NormalizedInput, "registrar\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "novo\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+no\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+em\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "risco\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+risco", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "cadastrar\s+risco", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_registrar_risco
+              dialog: pmo_AssistentePMO_V2.topic.RegistrarRisco
+
+        - id: detect_registrar_bloqueio
+          condition: =Or(IsMatch(Topic.NormalizedInput, "registrar\s+bloqueio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "novo\s+bloqueio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "bloqueio\s+no\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "bloqueio\s+em\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "bloqueio\s+do\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "abrir\s+bloqueio", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "cadastrar\s+bloqueio", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_registrar_bloqueio
+              dialog: pmo_AssistentePMO_V2.topic.RegistrarBloqueio
+
+        - id: detect_solicitar_decisao
+          condition: =Or(IsMatch(Topic.NormalizedInput, "solicitar\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "solicitar\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "pedir\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "pedir\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "registrar\s+aprovacao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "preciso\s+de\s+uma\s+decisao", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "decisao\s+para\s+projeto", MatchOptions.IgnoreCase), IsMatch(Topic.NormalizedInput, "aprovar\s+decisao", MatchOptions.IgnoreCase))
+          actions:
+            - kind: BeginDialog
+              id: redirect_solicitar_decisao
+              dialog: pmo_AssistentePMO_V2.topic.PedirDecisao
+
+      elseActions:
+        - kind: SendActivity
+          id: fallback_default_message
+          activity: "Nao entendi bem. Voce pode reformular? Posso ajudar com: criar projeto, criar tarefa, atualizar tarefa, atualizar status, consultar portfolio, consultar projeto, listar tarefas, registrar risco, registrar bloqueio ou solicitar decisao."
+
+        - kind: EndDialog
+          id: end_default_fallback
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+bcbecd76-3158-40ac-b225-5ae7c3874ed1 Activo    pmo_AssistentePMO_V2.topic.CriarTarefa              14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 CriarTarefa              pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar tarefa
+      - criar uma tarefa
+      - nova tarefa
+      - adicionar tarefa
+      - cadastrar tarefa
+      - "criar tarefa:"
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: SetVariable
+      id: parse_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_titulo
+      variable: Topic.Titulo
+      value: =If(IsMatch(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "t.tulo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*tarefa\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*tarefa\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+    - kind: SetVariable
+      id: parse_responsavel
+      variable: Topic.Responsavel
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*respons.vel\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_prazo
+      variable: Topic.Prazo
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*prazo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_horas
+      variable: Topic.Horas
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*horas\s*[:=]\s*(?<v>\d+(?:[\.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*horas\s*[:=]\s*(?<v>\d+(?:[\.,]\d+)?)", MatchOptions.IgnoreCase).v), ",", ".")), Blank())
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: ConditionGroup
+      id: ask_missing_nome_projeto
+      conditions:
+        - id: missing_nome_projeto
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_nome_projeto
+              variable: Topic.NomeProjeto
+              prompt: Qual o nome ou codigo do projeto?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_titulo
+      conditions:
+        - id: missing_titulo
+          condition: =IsBlank(Topic.Titulo)
+          actions:
+            - kind: Question
+              id: ask_titulo
+              variable: Topic.Titulo
+              prompt: Qual o titulo da tarefa?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_responsavel
+      conditions:
+        - id: missing_responsavel
+          condition: =IsBlank(Topic.Responsavel)
+          actions:
+            - kind: Question
+              id: ask_responsavel
+              variable: Topic.Responsavel
+              prompt: Quem e o responsavel pela tarefa?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prazo
+      conditions:
+        - id: missing_prazo
+          condition: =IsBlank(Topic.Prazo)
+          actions:
+            - kind: Question
+              id: ask_prazo
+              variable: Topic.Prazo
+              prompt: Qual o prazo da tarefa? Use dd/MM/aaaa.
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_horas
+      conditions:
+        - id: missing_horas
+          condition: =IsBlank(Topic.Horas)
+          actions:
+            - kind: Question
+              id: ask_horas
+              variable: Topic.Horas
+              prompt: Quantas horas estimadas?
+              entity: NumberPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: Qual a prioridade? Baixa, Media, Alta ou Critica.
+              entity: StringPrebuiltEntity
+    - kind: Question
+      id: confirm_criar_tarefa
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar a tarefa {Topic.Titulo} no projeto {Topic.NomeProjeto}. Confirma?
+      entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo")
+          actions:
+            - kind: SetVariable
+              id: set_global_nome_projeto
+              variable: Global.PMO_Criar_NomeProjeto
+              value: =Topic.NomeProjeto
+            - kind: SetVariable
+              id: set_global_titulo
+              variable: Global.PMO_Criar_Titulo
+              value: =Topic.Titulo
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Criar_Responsavel
+              value: =Topic.Responsavel
+            - kind: SetVariable
+              id: set_global_prazo
+              variable: Global.PMO_Criar_Prazo
+              value: =Topic.Prazo
+            - kind: SetVariable
+              id: set_global_horas
+              variable: Global.PMO_Criar_Horas
+              value: =Topic.Horas
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Criar_Prioridade
+              value: =Topic.Prioridade
+            - kind: BeginDialog
+              id: call_criar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa
+              output:
+                binding:
+                  message: Topic.Result
+            - kind: SendActivity
+              id: done
+              activity: "{Topic.Result}"
+      elseActions:
+        - kind: SendActivity
+          id: cancelled
+          activity: Criacao cancelada.
+inputType: {}
+outputType: {}
+
+d58258b4-b17f-4bb9-9e1f-161287a041c4 Activo    pmo_AssistentePMO_V2.topic.ListarTarefas            14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 ListarTarefas            pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ListarTarefas
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - listar tarefas
+      - tarefas do projeto
+      - breakdown do projeto
+      - ver tarefas
+      - quais tarefas
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_nome_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "(?:projeto|nome)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:projeto|nome)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^\s*(?:listar\s+tarefas|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas|quais\s+tarefas)\s+(?:do\s+projeto\s+|projeto\s+)?(?<v>.+?)\s*$", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^\s*(?:listar\s+tarefas|tarefas\s+do\s+projeto|breakdown\s+do\s+projeto|ver\s+tarefas|quais\s+tarefas)\s+(?:do\s+projeto\s+|projeto\s+)?(?<v>.+?)\s*$", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: ConditionGroup
+      id: ask_missing_nome_projeto
+      conditions:
+        - id: missing_nome_projeto
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_nome_projeto
+              variable: Topic.NomeProjeto
+              prompt: "Qual o nome ou codigo do projeto? (ex: Projeto Alpha ou PRJ-001)"
+              entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_nome_projeto
+      variable: Global.PMO_Listar_NomeProjeto
+      value: =Topic.NomeProjeto
+
+    - kind: BeginDialog
+      id: call_listar_tarefas
+      input: {}
+      dialog: pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas
+      output:
+        binding:
+          result: Topic.tarefas
+
+    - kind: SendActivity
+      id: listar_result
+      activity: Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA.
+
+bbf7389c-31ba-4265-9451-f9a4f8933f77 Activo    pmo_AssistentePMO_V2.topic.CriarProjeto             14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 CriarProjeto             pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: SetVariable
+      id: parse_nome_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "criar\s+projeto\s*:\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "criar\s+projeto\s*:\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "criar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "criar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))))
+    - kind: SetVariable
+      id: parse_pm
+      variable: Topic.PM
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*pm\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*pm\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_prazo
+      variable: Topic.Prazo
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*(?:prazo|data\s*alvo|dataalvo)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*(?:prazo|data\s*alvo|dataalvo)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: ConditionGroup
+      id: ask_missing_nome_projeto
+      conditions:
+        - id: missing_nome_projeto
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_nome_projeto
+              variable: Topic.NomeProjeto
+              prompt: Qual o nome do projeto?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_pm
+      conditions:
+        - id: missing_pm
+          condition: =IsBlank(Topic.PM)
+          actions:
+            - kind: Question
+              id: ask_pm
+              variable: Topic.PM
+              prompt: Qual o email do PM?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prazo
+      conditions:
+        - id: missing_prazo
+          condition: =IsBlank(Topic.Prazo)
+          actions:
+            - kind: Question
+              id: ask_prazo
+              variable: Topic.Prazo
+              prompt: Qual o prazo do projeto? Use dd/MM/aaaa.
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: Qual a prioridade? Baixa, Media, Alta ou Critica.
+              entity: StringPrebuiltEntity
+    - kind: Question
+      id: confirm_criar_projeto
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar o projeto {Topic.NomeProjeto}. Confirma?
+      entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo")
+          actions:
+            - kind: SetVariable
+              id: set_global_projeto_nome
+              variable: Global.PMO_Projeto_NomeProjeto
+              value: =Topic.NomeProjeto
+            - kind: SetVariable
+              id: set_global_projeto_pm
+              variable: Global.PMO_Projeto_PM
+              value: =Topic.PM
+            - kind: SetVariable
+              id: set_global_projeto_prazo
+              variable: Global.PMO_Projeto_Prazo
+              value: =Topic.Prazo
+            - kind: SetVariable
+              id: set_global_projeto_prioridade
+              variable: Global.PMO_Projeto_Prioridade
+              value: =Topic.Prioridade
+            - kind: BeginDialog
+              id: call_criar_projeto
+              input: {}
+              dialog: pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto
+              output:
+                binding:
+                  message: Topic.Result
+            - kind: ConditionGroup
+              id: send_safe_result
+              conditions:
+                - id: result_created
+                  condition: =Topic.Result = "Projeto criado com sucesso!"
+                  actions:
+                    - kind: SendActivity
+                      id: created
+                      activity: Projeto criado com sucesso.
+
+                - id: result_duplicate
+                  condition: =Topic.Result = "Ja existe um projeto com o nome especificado. Nenhum item duplicado foi criado."
+                  actions:
+                    - kind: SendActivity
+                      id: duplicate
+                      activity: Ja existe um projeto com esse nome. Nenhum item duplicado foi criado.
+
+                - id: result_invalid_date
+                  condition: =StartsWith(Topic.Result, "Prazo invalido.")
+                  actions:
+                    - kind: SendActivity
+                      id: invalid_date
+                      activity: Prazo invalido. Use dd/MM/aaaa.
+
+              elseActions:
+                - kind: SendActivity
+                  id: result_generic
+                  activity: Operacao concluida. Verifique o resultado no SharePoint.
+      elseActions:
+        - kind: SendActivity
+          id: cancelled
+          activity: Criacao cancelada.
+inputType: {}
+outputType: {}
+
+3efd3b4d-529b-46ec-b0a9-b6ecc54b8d7d Activo    pmo_AssistentePMO_V2.topic.ConsultarProjeto         14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 ConsultarProjeto         pmo_AssistentePMO_V2 Activo     Tema (V2)     # ConsultarProjeto topic
+# Purpose: collect a project key and call the PMO_PA_ConsultarProjeto flow.
+# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarProjeto.
+# After creating the flow in Power Automate Classic Designer, replace flowId.
+
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ConsultarProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - consultar projeto
+      - ver projeto
+      - detalhes do projeto
+      - status do projeto
+      - como esta o projeto
+      - "consultar projeto:"
+      - projeto status
+      - projeto detalhes
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "consultar\s+projeto\s*:\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "consultar\s+projeto\s*:\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, ",\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, ",\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "consultar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "consultar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))))
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.NomeProjeto
+              prompt: Qual projeto voce quer consultar?
+              entity: StringPrebuiltEntity
+
+    - kind: SetVariable
+      id: set_global_project
+      variable: Global.PMO_ConsultarProjeto_NomeProjeto
+      value: =Topic.NomeProjeto
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_consultar_projeto
+      input:
+        binding:
+          nomeProjeto: =Global.PMO_ConsultarProjeto_NomeProjeto
+
+      output:
+        binding:
+          message: Topic.ConsultarProjetoResult
+
+      flowId: 4a33b53e-c64c-f111-bec7-000d3abc5cc6
+
+    - kind: SendActivity
+      id: consultar_projeto_done
+      activity: "{Topic.ConsultarProjetoResult}"
+
+    - kind: EndDialog
+      id: end_consultar_projeto
+      clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+53ff7b57-b742-4882-a0ff-3ab2226f5697 Activo    pmo_AssistentePMO_V2.topic.ExcluirProjeto           14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 ExcluirProjeto           pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ExcluirProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - excluir projeto
+      - remover projeto
+      - desativar projeto
+      - arquivar projeto
+      - cancelar projeto
+      - excluir projeto:
+      - remover projeto:
+      - desativar projeto:
+      - arquivar projeto:
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.Projeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_reason
+      variable: Topic.Motivo
+      value: =If(IsMatch(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.Projeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.Projeto
+              prompt: Qual projeto voce quer remover do portfolio ativo?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_reason
+      conditions:
+        - id: missing_reason
+          condition: =IsBlank(Topic.Motivo)
+          actions:
+            - kind: Question
+              id: ask_reason
+              variable: Topic.Motivo
+              prompt: Qual o motivo da remocao?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_delete_project
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou remover este projeto do portfolio ativo.
+        Projeto: {Topic.Projeto}
+        Motivo: {Topic.Motivo}
+
+        O registro sera mantido no SharePoint para auditoria.
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: InvokeFlowAction
+              id: call_excluir_projeto
+              input:
+                binding:
+                  text: =Topic.Projeto
+                  text_1: =Topic.Motivo
+                  text_2: ="mbenicios@minsait.com"
+
+              flowId: 16fbe313-2edc-406e-ad7f-d08cee0edc43
+
+            - kind: SendActivity
+              id: excluir_project_done
+              activity: Projeto removido do portfolio ativo. O registro foi mantido no SharePoint para auditoria.
+
+            - kind: EndDialog
+              id: end_excluir_project
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: excluir_project_cancelled
+          activity: Ok, remocao cancelada. Nenhum registro foi alterado.
+
+        - kind: EndDialog
+          id: end_excluir_project_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+f50f3254-0304-48dd-b1c2-2271029c29df Activo    pmo_AssistentePMO_V2.topic.ExcluirTarefa            14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 ExcluirTarefa            pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ExcluirTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - excluir tarefa
+      - remover tarefa
+      - apagar tarefa
+      - cancelar tarefa
+      - arquivar tarefa
+      - excluir linha
+      - remover linha
+      - excluir tarefa:
+      - remover tarefa:
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+
+    - kind: SetVariable
+      id: parse_project_name
+      variable: Topic.ProjectName
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "projeto\s+(?<v>.+?)\s+(?:tarefa|id|linha|motivo)\b", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s+(?<v>.+?)\s+(?:tarefa|id|linha|motivo)\b", MatchOptions.IgnoreCase).v), Blank()))
+    - kind: SetVariable
+      id: parse_task_id
+      variable: Topic.TaskID
+      value: =If(IsMatch(Topic.RawInput, "(?:tarefa|id|linha)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase), Value(Match(Topic.RawInput, "(?:tarefa|id|linha)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_reason
+      variable: Topic.Motivo
+      value: =If(IsMatch(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "motivo\s+(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s+(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^\s*(?:excluir|remover|apagar|cancelar|arquivar)\s+(?:tarefa|linha)\s+(?:tarefa\s*|id\s*|linha\s*)?[:=]?\s*#?\d+\s+(?<v>.+?)\s*$", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^\s*(?:excluir|remover|apagar|cancelar|arquivar)\s+(?:tarefa|linha)\s+(?:tarefa\s*|id\s*|linha\s*)?[:=]?\s*#?\d+\s+(?<v>.+?)\s*$", MatchOptions.IgnoreCase).v), Blank())))
+
+    - kind: ConditionGroup
+      id: ask_missing_project_name
+      conditions:
+        - id: missing_project_name
+          condition: =IsBlank(Topic.ProjectName)
+          actions:
+            - kind: Question
+              id: ask_project_name
+              variable: Topic.ProjectName
+              prompt: Qual projeto contem a tarefa que voce quer remover?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_task_id
+      conditions:
+        - id: missing_task_id
+          condition: =IsBlank(Topic.TaskID)
+          actions:
+            - kind: Question
+              id: ask_task_id
+              variable: Topic.TaskID
+              prompt: Qual e o ID da tarefa que voce quer remover? Use o ID exibido em listar tarefas.
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_reason
+      conditions:
+        - id: missing_reason
+          condition: =IsBlank(Topic.Motivo)
+          actions:
+            - kind: Question
+              id: ask_reason
+              variable: Topic.Motivo
+              prompt: Qual o motivo da remocao da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_delete_task
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou remover a tarefa #{Topic.TaskID} do projeto {Topic.ProjectName}.
+        Motivo: {Topic.Motivo}
+
+        O registro sera mantido no SharePoint para auditoria.
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: InvokeFlowAction
+              id: call_excluir_tarefa
+              input:
+                binding:
+                  number: =Topic.TaskID
+                  text: =Topic.Motivo
+                  text_1: ="mbenicios@minsait.com"
+                  text_2: =Topic.ProjectName
+
+              output:
+                binding:
+                  message: Topic.ExcluirTarefaMensagem
+
+              flowId: 70b39334-5926-4fb1-bd22-f10bd99f0f6d
+
+            - kind: SendActivity
+              id: excluir_task_done
+              activity: "{Topic.ExcluirTarefaMensagem}"
+
+            - kind: EndDialog
+              id: end_excluir_task
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: excluir_task_cancelled
+          activity: Ok, remocao cancelada. Nenhum registro foi alterado.
+
+        - kind: EndDialog
+          id: end_excluir_task_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+
+
+383be534-67e8-4a78-bd47-797fbbb02811 Activo    pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos 14/05/2026 15:03 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 Gerar_Multiplos_Projetos pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Gerar_Multiplos_Projetos
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - gerar multiplos projetos
+      - criar varios projetos
+      - criar projetos em lote
+      - gerar projetos em batch
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawBatchText
+      value: =System.Activity.Text
+    - kind: SendActivity
+      id: adaptive_card_preview_marker
+      activity: "AdaptiveCard Action.Submit previewCreateBatch cardVersion=3.0 writeMode=disabled maxBatchProjects=10 maxBatchTasks=10 multiline STT fallback"
+    - kind: Question
+      id: confirm_batch
+      variable: Topic.ConfirmacaoTexto
+      prompt: Confirma gerar os projetos revisados?
+      entity: StringPrebuiltEntity
+    - kind: SendActivity
+      id: done
+      activity: "BATCH_PREVIEW_ONLY_NO_WRITE. Modo seguro v3.0: nenhuma gravacao foi executada. Proximo passo tecnico: Adaptive Card/parser por linha para Nome_ProjetoN e TarefaN antes de habilitar escrita. maxBatchProjects=10 maxBatchTasks=10."
+inputType: {}
+outputType: {}
+6750ff2f-822b-45ab-83ec-058704c7808a Activo    pmo_AssistentePMO_V2.topic.AtualizarTarefa          14/05/2026 15:02 df148bf8-0a3e-495b-80c4-841dcb61d9a4 Assistente PMO V2 AtualizarTarefa          pmo_AssistentePMO_V2 Activo     Tema (V2)     kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: AtualizarTarefa
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - atualizar tarefa
+      - concluir tarefa
+      - mudar status tarefa
+      - tarefa concluida
+      - completar tarefa
+
+  actions:
+    - kind: SetVariable
+      id: capture_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: set_working_input_initial
+      variable: Topic.WorkingInput
+      value: =Topic.RawInput
+
+    - kind: SetVariable
+      id: parse_taskid_initial
+      variable: Topic.TaskID
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:tarefa|task|id)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:tarefa|task|id)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?(?<v>\d+)(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?(?<v>\d+)(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: ConditionGroup
+      id: ask_missing_update_payload
+      conditions:
+        - id: needs_payload
+          condition: =IsBlank(Topic.TaskID)
+          actions:
+            - kind: Question
+              id: ask_update_payload
+              variable: Topic.UpdatePayload
+              prompt: |-
+                Informe os dados da tarefa em uma mensagem unica, em linhas ou separados por virgula:
+                tarefa, status, horas, responsavel, prazo, prioridade, confirmar
+              entity: StringPrebuiltEntity
+
+            - kind: SetVariable
+              id: set_working_input_payload
+              variable: Topic.WorkingInput
+              value: =Topic.UpdatePayload
+
+            - kind: SetVariable
+              id: parse_taskid_payload
+              variable: Topic.TaskID
+              value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:tarefa|task|id)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:tarefa|task|id)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?(?<v>\d+)(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?(?<v>\d+)(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_status
+      variable: Topic.Status
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*status\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*status\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_horas_realizadas
+      variable: Topic.HorasRealizadas
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*horas(?:\s+realizadas)?\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*horas(?:\s+realizadas)?\s*[:=]\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>\d+(?:[.,]\d+)?)", MatchOptions.IgnoreCase).v, ",", ".")), Blank()))
+
+    - kind: SetVariable
+      id: parse_responsavel
+      variable: Topic.Responsavel
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*responsavel\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*responsavel\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_datafim
+      variable: Topic.DataFim
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:prazo|datafim|fim)\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:prazo|datafim|fim)\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase).v), Blank()))
+
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*prioridade\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*prioridade\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\s*(?:,|;|\r?\n)|\s*$)", MatchOptions.IgnoreCase).v), Blank())))
+
+    - kind: SetVariable
+      id: parse_confirmar
+      variable: Topic.Confirmar
+      value: =If(IsMatch(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:confirmar|confirma)\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "(?:^|,|;|\r?\n)\s*(?:confirmar|confirma)\s*[:=]\s*(?<v>[^,;\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?:baixa|media|alta|critica|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?:baixa|media|alta|critica|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:baixa|media|alta|critica|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:baixa|media|alta|critica|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?:\d{1,2}/\d{1,2}/\d{4}|\d{4}-\d{1,2}-\d{1,2}|n|no|nao)\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, "^\s*(?:atualizar\s+tarefa\s*[:=]?\s*)?#?\d+\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*\d+(?:[.,]\d+)?\s*(?:,|;|\r?\n)\s*[^,;\r\n]+\s*(?:,|;|\r?\n)\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\s*$)", MatchOptions.IgnoreCase).v), Blank())))))
+
+    - kind: ConditionGroup
+      id: ask_missing_taskid
+      conditions:
+        - id: needs_taskid
+          condition: =IsBlank(Topic.TaskID)
+          actions:
+            - kind: Question
+              id: ask_taskid
+              variable: Topic.TaskID
+              prompt: Qual o ID da tarefa que deseja atualizar? (numero)
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_status
+      conditions:
+        - id: needs_status
+          condition: =IsBlank(Topic.Status)
+          actions:
+            - kind: Question
+              id: ask_status
+              variable: Topic.Status
+              prompt: "Qual o novo status? Escolha: Pendente, Em Andamento, Concluida ou Cancelada."
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_horas_realizadas
+      conditions:
+        - id: needs_horas_realizadas
+          condition: =IsBlank(Topic.HorasRealizadas)
+          actions:
+            - kind: Question
+              id: ask_horas_realizadas
+              variable: Topic.HorasRealizadas
+              prompt: Quantas horas realizadas? (responda 0 para pular)
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_responsavel
+      conditions:
+        - id: needs_responsavel
+          condition: =IsBlank(Topic.Responsavel)
+          actions:
+            - kind: Question
+              id: ask_responsavel
+              variable: Topic.Responsavel
+              prompt: Novo responsavel? (responda "nao" para manter o atual)
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_datafim
+      conditions:
+        - id: needs_datafim
+          condition: =IsBlank(Topic.DataFim)
+          actions:
+            - kind: Question
+              id: ask_datafim
+              variable: Topic.DataFim
+              prompt: Novo prazo? (responda "nao" para manter o atual)
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: needs_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: "Nova prioridade? Escolha: Baixa, Media, Alta, Critica ou responda \"nao\" para manter."
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_confirmar
+      conditions:
+        - id: needs_confirmar
+          condition: =IsBlank(Topic.Confirmar)
+          actions:
+            - kind: Question
+              id: confirm_atualizar
+              variable: Topic.Confirmar
+              prompt: Confirma a atualizacao da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.Confirmar)) = "sim", Lower(Trim(Topic.Confirmar)) = "s", Lower(Trim(Topic.Confirmar)) = "yes", Lower(Trim(Topic.Confirmar)) = "y", Lower(Trim(Topic.Confirmar)) = "confirmo", Lower(Trim(Topic.Confirmar)) = "ok")
+          actions:
+            - kind: SetVariable
+              id: set_global_taskid
+              variable: Global.PMO_Atualizar_TaskID
+              value: =Topic.TaskID
+
+            - kind: SetVariable
+              id: set_global_status
+              variable: Global.PMO_Atualizar_Status
+              value: =Topic.Status
+
+            - kind: SetVariable
+              id: set_global_horas_realizadas
+              variable: Global.PMO_Atualizar_HorasRealizadas
+              value: =Topic.HorasRealizadas
+
+            - kind: SetVariable
+              id: set_global_responsavel
+              variable: Global.PMO_Atualizar_Responsavel
+              value: =Topic.Responsavel
+
+            - kind: SetVariable
+              id: set_global_datafim
+              variable: Global.PMO_Atualizar_DataFim
+              value: =Topic.DataFim
+
+            - kind: SetVariable
+              id: set_global_prioridade
+              variable: Global.PMO_Atualizar_Prioridade
+              value: =Topic.Prioridade
+
+            - kind: BeginDialog
+              id: call_atualizar_tarefa
+              input: {}
+              dialog: pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa
+              output:
+                binding:
+                  result: Topic.message
+
+            - kind: SendActivity
+              id: atualizar_done
+              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos.
+
+      elseActions:
+        - kind: SendActivity
+          id: atualizar_cancelled
+          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga "atualizar tarefa".
+
+

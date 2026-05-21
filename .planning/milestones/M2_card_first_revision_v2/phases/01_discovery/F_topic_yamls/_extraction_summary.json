@@ -1,0 +1,146 @@
+﻿[
+    {
+        "name":  "Gerar_Multiplos_Projetos",
+        "kind":  "system",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  1170,
+        "bytes_on_disk":  1170,
+        "line_count":  30,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\Gerar_Multiplos_Projetos.yaml"
+    },
+    {
+        "name":  "Greeting",
+        "kind":  "system",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  266,
+        "bytes_on_disk":  266,
+        "line_count":  10,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\Greeting.yaml"
+    },
+    {
+        "name":  "LowConfidence",
+        "kind":  "system",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  10615,
+        "bytes_on_disk":  10615,
+        "line_count":  126,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\LowConfidence.yaml"
+    },
+    {
+        "name":  "SeHouverErro",
+        "kind":  "system",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  298,
+        "bytes_on_disk":  298,
+        "line_count":  11,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\SeHouverErro.yaml"
+    },
+    {
+        "name":  "AtualizarStatus",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  9090,
+        "bytes_on_disk":  9090,
+        "line_count":  168,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\AtualizarStatus.yaml"
+    },
+    {
+        "name":  "AtualizarTarefa",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  15255,
+        "bytes_on_disk":  15255,
+        "line_count":  192,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\AtualizarTarefa.yaml"
+    },
+    {
+        "name":  "ConsultarPortfolio",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  1260,
+        "bytes_on_disk":  1260,
+        "line_count":  40,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\ConsultarPortfolio.yaml"
+    },
+    {
+        "name":  "ConsultarProjeto",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  2798,
+        "bytes_on_disk":  2798,
+        "line_count":  62,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\ConsultarProjeto.yaml"
+    },
+    {
+        "name":  "CriarProjeto",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  6752,
+        "bytes_on_disk":  6752,
+        "line_count":  143,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\CriarProjeto.yaml"
+    },
+    {
+        "name":  "CriarTarefa",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  6889,
+        "bytes_on_disk":  6889,
+        "line_count":  161,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\CriarTarefa.yaml"
+    },
+    {
+        "name":  "ExcluirProjeto",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  3580,
+        "bytes_on_disk":  3580,
+        "line_count":  92,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\ExcluirProjeto.yaml"
+    },
+    {
+        "name":  "ExcluirTarefa",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  5152,
+        "bytes_on_disk":  5152,
+        "line_count":  110,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\ExcluirTarefa.yaml"
+    },
+    {
+        "name":  "ListarTarefas",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  2095,
+        "bytes_on_disk":  2095,
+        "line_count":  47,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\ListarTarefas.yaml"
+    },
+    {
+        "name":  "PedirDecisao",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:03",
+        "yaml_size_bytes_in_inventory":  8254,
+        "bytes_on_disk":  8254,
+        "line_count":  185,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\PedirDecisao.yaml"
+    },
+    {
+        "name":  "RegistrarBloqueio",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  5685,
+        "bytes_on_disk":  5685,
+        "line_count":  128,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\RegistrarBloqueio.yaml"
+    },
+    {
+        "name":  "RegistrarRisco",
+        "kind":  "user-facing",
+        "modifiedon":  "14/05/2026 15:02",
+        "yaml_size_bytes_in_inventory":  6195,
+        "bytes_on_disk":  6195,
+        "line_count":  139,
+        "out_path":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\milestones\\M2_card_first_revision_v2\\phases\\01_discovery\\F_topic_yamls\\RegistrarRisco.yaml"
+    }
+]

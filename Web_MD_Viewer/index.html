@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PMO Cockpit · Indra Intelligence · Real-time M2 mission control">
+  <meta name="color-scheme" content="dark light">
+  <title>PMO Cockpit · Indra Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cockpit.css">
+</head>
+<body>
+  <!-- Polling Indicator -->
+  <div class="cockpit-polling-indicator" id="pollingIndicator"></div>
+
+  <!-- Snapshot Mode Banner (visible when viewing an uploaded JSON file) -->
+  <div class="snapshot-banner" id="snapshotBanner" role="status" aria-live="polite" hidden>
+    <span class="snapshot-banner-label">Viewing snapshot</span>
+    <strong class="snapshot-banner-file" id="snapshotBannerFile">—</strong>
+    <span class="snapshot-banner-time" id="snapshotBannerTime"></span>
+    <button class="btn btn-xs btn-cyan" id="btnReturnToLive" aria-label="Return to live polling">Return to Live</button>
+  </div>
+
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <nav class="app-sidebar" id="appSidebar" aria-label="Main navigation">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 2L2 8l12 6 12-6-12-6z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M2 20l12 6 12-6" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+            <path d="M2 14l12 6 12-6" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-name">INDRA</div>
+          <div class="sidebar-brand-sub">Intelligence Cockpit</div>
+        </div>
+      </div>
+
+      <div class="sidebar-project">
+        <div class="sidebar-project-label">Active Milestone</div>
+        <div class="sidebar-project-name" id="sidebarProjectName" title="M2 — Card-First Hybrid">M2 · Card-First Hybrid</div>
+        <div class="sidebar-project-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="12">
+          <div class="sidebar-project-bar-fill" id="sidebarProjectBar" style="width: 33%"></div>
+        </div>
+        <div class="sidebar-project-meta" id="sidebarProjectMeta">Phase 1 · Discovery</div>
+      </div>
+
+      <div class="sidebar-nav" role="menu" id="cockpitNav">
+        <a class="nav-item active" data-view="dispatch" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">◉</span>
+          <span class="nav-label">Mission Control</span>
+        </a>
+        <a class="nav-item" data-view="dashboard" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">▦</span>
+          <span class="nav-label">Overview</span>
+        </a>
+        <a class="nav-item" data-view="agents" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">◎</span>
+          <span class="nav-label">Agent Roster</span>
+          <span class="nav-badge" id="navAgentCount">12</span>
+        </a>
+        <a class="nav-item" data-view="activity" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">≡</span>
+          <span class="nav-label">Activity</span>
+        </a>
+        <a class="nav-item" data-view="phases" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">◐</span>
+          <span class="nav-label">Phases</span>
+        </a>
+        <a class="nav-item" data-view="handoffs" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">⇄</span>
+          <span class="nav-label">Handoffs</span>
+        </a>
+        <a class="nav-item" data-view="prompts" role="menuitem" tabindex="0">
+          <span class="nav-icon" aria-hidden="true">◇</span>
+          <span class="nav-label">Prompts</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-avatar" aria-hidden="true">M</div>
+        <div class="sidebar-footer-info">
+          <div class="sidebar-footer-name">MANOEL</div>
+          <div class="sidebar-footer-sub">Owner · Sole Approver</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="app-main">
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="topbar-icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar" title="Toggle sidebar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+          <h1 class="topbar-title">Mission Control</h1>
+          <span class="topbar-env-badge" id="modeBadge">LIVE</span>
+          <span class="cockpit-last-update" id="lastUpdateTimestamp">Last update: --</span>
+        </div>
+        <div class="topbar-right">
+          <button class="btn btn-cyan btn-sm" id="btnRefreshCockpit" aria-label="Refresh data now">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+            <span>Refresh</span>
+          </button>
+          <button class="btn btn-outline btn-sm" id="btnLoadSnapshot" aria-label="Load snapshot from JSON file" title="Load a previously-exported snapshot JSON file (offline / point-in-time view)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Load</span>
+          </button>
+          <input type="file" id="snapshotFileInput" accept="application/json,.json" style="display:none" aria-hidden="true">
+          <button class="btn btn-outline btn-sm" id="btnExportSnapshot" aria-label="Export snapshot JSON">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Export</span>
+          </button>
+          <button class="topbar-icon-btn" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+            <svg class="theme-icon-dark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg class="theme-icon-light" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+          <div class="topbar-avatar" title="Manoel Benicio">MB</div>
+        </div>
+      </header>
+
+      <!-- VIEW: DISPATCH (FR-11) -->
+      <main class="app-content cockpit-view active" id="viewDispatch">
+        <div class="content-container">
+          <!-- ============ EXECUTIVE HEADER (JobFlow-style) ============ -->
+          <div class="view-header view-header-hero" data-reveal>
+            <div class="view-header-text">
+              <span class="section-eyebrow">M2 · Phase 1 · Discovery · Live Operations</span>
+              <h2>Mission Control</h2>
+              <p class="view-subtitle">Real-time orchestration of 12 parallel AI agents across the Hybrid Card-First migration. Every check-in, heartbeat, and handoff is captured here as it happens.</p>
+            </div>
+            <div class="view-header-chips" aria-label="Mission context">
+              <span class="mission-status-chip">PHASE <strong id="missionPhaseLabel">1 / 9</strong></span>
+              <span class="mission-status-chip">ENV <strong>ColOfertasBrasilPro</strong></span>
+              <span class="mission-status-chip">RELEASE <strong>3.16-RC</strong></span>
+            </div>
+          </div>
+
+          <!-- ============ FLEET KPI ROW (compact, 6 horizontal tiles) ============ -->
+          <section class="mission-kpi-grid" id="missionKpiGrid" aria-label="Fleet KPIs">
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+            <div class="kpi-skeleton skeleton"><div class="kpi-skeleton-label"></div><div class="kpi-skeleton-value"></div></div>
+          </section>
+
+          <!-- ============ MISSION PROGRESS BAR (slim) ============ -->
+          <div class="mission-progress-bar" aria-label="Mission completion">
+            <div class="mission-progress-fill" id="missionProgressFill" style="width: 0%"></div>
+          </div>
+
+          <!-- ============ DISPATCH CONSOLE ============ -->
+          <div class="view-header" data-reveal data-reveal-delay="1">
+            <div>
+              <span class="section-eyebrow">Fleet Status</span>
+              <h2>Dispatch Console</h2>
+            </div>
+            <div class="dispatch-controls">
+              <button class="btn btn-sm btn-outline" id="btnSequenceReset" title="Reset all local dispatch flags">Reset Local Flags</button>
+            </div>
+          </div>
+          <div class="dispatch-container" id="dispatchContainer">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </main>
+
+      <!-- VIEW: DASHBOARD -->
+      <main class="app-content cockpit-view view-hidden" id="viewDashboard">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">High-Level Metrics</span>
+              <h2>Cockpit Overview</h2>
+            </div>
+          </div>
+          <section class="kpi-row" id="cockpitKpis"></section>
+          <section class="dash-grid-2col">
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">Recent Activity</div>
+              </div>
+              <ul class="activity-list" id="dashActivityFeed">
+                <li class="activity-empty">Waiting for data…</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">Agent Quick Status</div>
+              </div>
+              <div id="dashAgentStrip" class="agent-strip"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- VIEW: AGENTS -->
+      <main class="app-content cockpit-view view-hidden" id="viewAgents">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">Fleet</span>
+              <h2>Agent Roster</h2>
+            </div>
+            <div class="cockpit-filters">
+              <select id="agentFilterStatus" class="filter-select-sm">
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="in_progress">In Progress</option>
+                <option value="done">Done</option>
+                <option value="ready_for_review">Ready for Review</option>
+                <option value="blocked">Blocked</option>
+                <option value="dead">Dead</option>
+              </select>
+              <input type="search" id="agentSearch" class="search-input-sm" placeholder="Search agents…" aria-label="Search agents">
+            </div>
+          </div>
+          <div class="agent-grid" id="agentRosterGrid"></div>
+        </div>
+      </main>
+
+      <!-- VIEW: ACTIVITY -->
+      <main class="app-content cockpit-view view-hidden" id="viewActivity">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">Live Stream</span>
+              <h2>Activity Feed</h2>
+            </div>
+            <div class="cockpit-filters">
+              <select id="activityFilterOp" class="filter-select-sm">
+                <option value="all">All Operations</option>
+                <option value="HEARTBEAT">Heartbeat</option>
+                <option value="CHECKIN">Check-in</option>
+                <option value="CHECKOUT">Check-out</option>
+                <option value="LOCK">Lock / Unlock</option>
+                <option value="HANDOFF">Handoff</option>
+                <option value="ERROR">Error</option>
+                <option value="WARNING">Warning</option>
+              </select>
+            </div>
+          </div>
+          <div class="panel">
+            <ul class="activity-list full-page-feed" id="fullActivityFeed"></ul>
+          </div>
+        </div>
+      </main>
+
+      <!-- VIEW: PHASES -->
+      <main class="app-content cockpit-view view-hidden" id="viewPhases">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">Roadmap</span>
+              <h2>Phase Tracker</h2>
+            </div>
+          </div>
+          <div class="phase-stepper" id="phaseStepper"></div>
+          <div class="panel" style="margin-top: 24px;">
+            <div class="panel-header"><div class="panel-title">Phase Detail</div></div>
+            <div id="phaseDetail" style="padding: 24px;">Click a phase above to view details.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- VIEW: HANDOFFS -->
+      <main class="app-content cockpit-view view-hidden" id="viewHandoffs">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">Coordination</span>
+              <h2>Handoff Map</h2>
+            </div>
+          </div>
+          <div class="panel" style="min-height: 400px;">
+            <div id="handoffGraph" class="handoff-graph-container">
+              <div style="padding:48px;text-align:center;color:var(--text-muted);">Loading handoffs…</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- VIEW: PROMPTS -->
+      <main class="app-content cockpit-view view-hidden" id="viewPrompts">
+        <div class="content-container">
+          <div class="view-header">
+            <div>
+              <span class="section-eyebrow">Library</span>
+              <h2>Dispatch Prompts</h2>
+            </div>
+          </div>
+          <div class="panel" style="padding: 24px;">
+            <div id="promptList">Loading prompts…</div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+  <div class="connection-banner" id="connectionBanner" role="alert" aria-live="assertive">
+    <span>Connection lost — retrying every 5s</span>
+  </div>
+  <script src="cockpit.js"></script>
+</body>
+</html>

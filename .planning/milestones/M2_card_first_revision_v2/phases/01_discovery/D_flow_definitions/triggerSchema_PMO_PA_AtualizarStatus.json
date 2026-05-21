@@ -1,0 +1,69 @@
+{
+  "flowName": "PMO_PA_AtualizarStatus",
+  "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+  "triggerName": "manual",
+  "type": "Request",
+  "kind": "Skills",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "risco": {
+        "type": "string",
+        "description": "Risco informado",
+        "title": "risco",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "nomeProjeto": {
+        "type": "string",
+        "description": "Nome do projeto",
+        "title": "nomeProjeto",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "bloqueio": {
+        "type": "string",
+        "description": "Bloqueio informado",
+        "title": "bloqueio",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "resumo": {
+        "type": "string",
+        "description": "Resumo do status",
+        "title": "resumo",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "proximaAcao": {
+        "type": "string",
+        "description": "Proxima acao",
+        "title": "proximaAcao",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      },
+      "percentual": {
+        "type": "number",
+        "description": "Percentual concluido",
+        "title": "percentual",
+        "x-ms-content-hint": "NUMBER",
+        "x-ms-dynamically-added": true
+      },
+      "rag": {
+        "type": "string",
+        "description": "Status RAG",
+        "title": "rag",
+        "x-ms-content-hint": "TEXT",
+        "x-ms-dynamically-added": true
+      }
+    },
+    "required": [
+      "nomeProjeto",
+      "rag",
+      "resumo"
+    ]
+  },
+  "metadata": {
+    "operationMetadataId": "6105347c-a42d-4d37-817b-35629d1ff50b"
+  }
+}

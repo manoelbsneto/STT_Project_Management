@@ -1,0 +1,27 @@
+{
+  "gap_analysis": [
+    { "name": "CriarProjetoConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "ExcluirProjetoConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "CriarTarefaConfirmCard", "existing": "YES (partial)", "path": "deploy/cards/CriarTarefaCard.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "AtualizarTarefaConfirmCard", "existing": "YES", "path": "deploy/cards/AtualizarTarefaCard.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "ExcluirTarefaConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "AtualizarStatusConfirmCard", "existing": "YES", "path": "deploy/cards/AtualizarStatusSingleBoxReviewCard.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "RegistrarRiscoConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "RegistrarBloqueioConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "PedirDecisaoConfirmCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "ConsultarPortfolioCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "ConsultarProjetoCard", "existing": "NO", "path": "", "action": "NEW", "effort": 45 },
+    { "name": "ListarTarefasCard", "existing": "YES", "path": "deploy/cards/ListarTarefasProjetoCard.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "ResumoExecutivoPortfolio", "existing": "YES", "path": "deploy/cards/ResumoExecutivoPortfolio.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "OpsFailureCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "CriarProjetoBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "ExcluirProjetoBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "CriarTarefaBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "AtualizarTarefaBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "ExcluirTarefaBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "AtualizarStatusBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "RegistrarRiscoBroadcastCard", "existing": "YES", "path": "deploy/cards/EscalacaoRisco.json", "action": "REFACTOR", "effort": 20 },
+    { "name": "RegistrarBloqueioBroadcastCard", "existing": "NO", "path": "", "action": "NEW", "effort": 30 },
+    { "name": "PedirDecisaoApproverCard", "existing": "YES", "path": "deploy/cards/DecisaoBoard.json", "action": "REFACTOR", "effort": 20 }
+  ]
+}

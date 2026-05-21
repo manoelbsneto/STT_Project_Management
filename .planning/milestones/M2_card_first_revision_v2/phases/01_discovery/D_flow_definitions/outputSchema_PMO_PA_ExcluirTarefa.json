@@ -1,0 +1,93 @@
+{
+  "flowName": "PMO_PA_ExcluirTarefa",
+  "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+  "task": "D.8",
+  "extractedAt": "2026-05-20T20:01:33.3213029-03:00",
+  "responseCount": 5,
+  "primarySchema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string",
+        "title": "message"
+      }
+    }
+  },
+  "responses": [
+    {
+      "name": "Response_Project_Not_Found",
+      "path": "Condition_Tarefa_Ativa/Condition_Projeto_Encontrado/else/Response_Project_Not_Found",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_OK",
+      "path": "Condition_Tarefa_Ativa/Response_OK",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Error_Update",
+      "path": "Condition_Tarefa_Ativa/Response_Error_Update",
+      "statusCode": 500,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Task_Project_Mismatch",
+      "path": "Condition_Tarefa_Ativa/else/Response_Task_Project_Mismatch",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    },
+    {
+      "name": "Response_Task_Not_Found",
+      "path": "Response_Task_Not_Found",
+      "statusCode": 200,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "message"
+          }
+        }
+      },
+      "bodyShape": "message"
+    }
+  ]
+}

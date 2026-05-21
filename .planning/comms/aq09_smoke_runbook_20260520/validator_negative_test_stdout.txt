@@ -1,0 +1,188 @@
+{
+    "evidenceDir":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence",
+    "decision":  "FAIL_XPIA_01_RECURS_OR_UNKNOWN",
+    "inScopeFailureCount":  5,
+    "generatedAt":  "2026-05-21 00:02:08 -03:00",
+    "results":  [
+                    {
+                        "id":  "A1_CMD-12-H",
+                        "scope":  "InScope",
+                        "status":  "FAIL_XPIA_RECURS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A1_CMD-12-H.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "A2_CMD-15",
+                        "scope":  "InScope",
+                        "status":  "FAIL_XPIA_RECURS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A2_CMD-15.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "A3_CMD-11-P0",
+                        "scope":  "InScope",
+                        "status":  "FAIL_XPIA_RECURS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A3_CMD-11-P0.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "A4_CMD-13A",
+                        "scope":  "InScope",
+                        "status":  "FAIL_XPIA_RECURS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A4_CMD-13A.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "A5_CMD-10",
+                        "scope":  "InScope",
+                        "status":  "FAIL_XPIA_RECURS",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A5_CMD-10.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B1_ConsultarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B1_ConsultarProjeto.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B2_CriarProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B2_CriarProjeto.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B3_ExcluirProjeto",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B3_ExcluirProjeto.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B4_ExcluirTarefa",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B4_ExcluirTarefa.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B5_PedirDecisao",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B5_PedirDecisao_InvalidUPN.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B6_RegistrarBloqueio",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B6_RegistrarBloqueio.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    },
+                    {
+                        "id":  "B7_RegistrarRisco",
+                        "scope":  "LegacyDebt",
+                        "status":  "LEGACY_XPIA_DEBT",
+                        "hasEvidence":  true,
+                        "evidenceFiles":  [
+                                              "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\B7_RegistrarRisco.md"
+                                          ],
+                        "markers":  {
+                                        "contentFiltered":  true,
+                                        "openAIIndirectAttack":  true,
+                                        "responsibleAi":  true,
+                                        "etapaBloqueada":  true
+                                    }
+                    }
+                ]
+}

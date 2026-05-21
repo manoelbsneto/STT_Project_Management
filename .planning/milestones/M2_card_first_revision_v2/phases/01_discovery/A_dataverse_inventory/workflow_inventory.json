@@ -1,0 +1,168 @@
+﻿{
+    "legacy_pmo_pa":  [
+                          {
+                              "workflowid":  "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+                              "name":  "PMO_PA_AtualizarStatus",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "98408d55-3748-f111-bec7-000d3abc5cc6",
+                              "name":  "PMO_PA_AtualizarTarefa",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+                              "name":  "PMO_PA_ConsultarPortfolio",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+                              "name":  "PMO_PA_ConsultarProjeto",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "3104124d-364a-f111-bec7-7ced8d955c6c",
+                              "name":  "PMO_PA_CriarProjeto",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+                              "name":  "PMO_PA_CriarTarefa",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+                              "name":  "PMO_PA_ExcluirProjeto",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+                              "name":  "PMO_PA_ExcluirTarefa",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "9544f14b-3748-f111-bec7-6045bdf42cae",
+                              "name":  "PMO_PA_ListarTarefas",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+                              "name":  "PMO_PA_PedirDecisaoBot",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:04",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+                              "name":  "PMO_PA_RegistrarBloqueioBot",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          },
+                          {
+                              "workflowid":  "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+                              "name":  "PMO_PA_RegistrarRiscoBot",
+                              "state":  "Activado",
+                              "status":  "Activado",
+                              "modifiedon":  "14/05/2026 15:03",
+                              "category":  "Flujo moderno",
+                              "type":  "Definición"
+                          }
+                      ],
+    "new_pm0_pa_card":  [
+                            {
+                                "workflowid":  "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_Card_AtualizarStatus",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 19:10",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            },
+                            {
+                                "workflowid":  "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_Card_AtualizarTarefa",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 19:10",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            },
+                            {
+                                "workflowid":  "7f662db7-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_Card_CriarTarefa",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 19:10",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            },
+                            {
+                                "workflowid":  "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_Card_ListarTarefas",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 19:10",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            },
+                            {
+                                "workflowid":  "8333bd91-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_Card_ResumoExecutivoPortfolio",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 22:31",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            },
+                            {
+                                "workflowid":  "9531fbc7-a250-f111-bec7-000d3abc5cc6",
+                                "name":  "PM0_PA_OpsFailureHandling",
+                                "state":  "Activado",
+                                "status":  "Activado",
+                                "modifiedon":  "15/05/2026 19:10",
+                                "category":  "Flujo moderno",
+                                "type":  "Definición"
+                            }
+                        ]
+}
