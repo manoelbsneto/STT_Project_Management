@@ -1,0 +1,11 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       statecode schemaname                                                       name                                 statuscode componenttype
+beb83cc5-c09c-4cd3-a279-20846686ea3e Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus          PM0_PA_Card_AtualizarStatus          Activo     Tema (V2)
+0635831a-6b13-45d6-b10e-983fcc63eefe Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio PM0_PA_Card_ResumoExecutivoPortfolio Activo     Tema (V2)
+bd507ab1-7455-400e-8379-153ce34427f8 Activo    pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling            PM0_PA_OpsFailureHandling            Activo     Tema (V2)
+0956d0c0-05f1-429c-8893-6352a927d535 Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas            PM0_PA_Card_ListarTarefas            Activo     Tema (V2)
+f6afac82-ec2b-47fb-a3d6-4aebad708702 Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa          PM0_PA_Card_AtualizarTarefa          Activo     Tema (V2)
+3f9abdf2-8801-4602-83dd-002a31f0b53e Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa              PM0_PA_Card_CriarTarefa              Activo     Tema (V2)
+

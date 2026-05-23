@@ -1,0 +1,7 @@
+timestamp_brt=2026-05-22 16:50:08 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Pm0RuntimeEvidence.ps1 -EvidencePath '.planning\comms\aq09_smoke_runbook_20260520\evidence' -ReportPath '.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_runtime_evidence.json'
+exit_code=1
+expected=exit 1 until AQ-09 smoke evidence exists
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_165008_Codex_sub-2B_runtime_evidence_output.txt
+report=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_runtime_evidence.json

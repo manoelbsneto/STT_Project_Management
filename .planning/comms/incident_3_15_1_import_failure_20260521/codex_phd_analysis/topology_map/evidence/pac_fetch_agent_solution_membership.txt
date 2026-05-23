@@ -1,0 +1,7 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+objectid                             componenttype solutioncomponentid                  rootcomponentbehavior  solution.uniquename solution.solutionid                  solution.friendlyname             solution.version solutionid
+df148bf8-0a3e-495b-80c4-841dcb61d9a4               24d59178-154a-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+df148bf8-0a3e-495b-80c4-841dcb61d9a4               23d59178-154a-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+

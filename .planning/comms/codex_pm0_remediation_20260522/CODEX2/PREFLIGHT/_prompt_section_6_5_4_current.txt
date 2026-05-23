@@ -1,0 +1,158 @@
+### 6.5.4 Reconciliation Verification (V1-V4 — must all PASS to declare Pre-Step A green)
+
+The worktree may already contain unrelated dirty files when you start. That is allowed; the verification below scopes to Pre-Step A's own delta only.
+
+**Step 0 — capture baseline BEFORE applying U1-U6 + A1:**
+
+```powershell
+$utc    = (Get-Date).ToUniversalTime().ToString("yyyyMMdd_HHmmss")
+$pfDir  = ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT"
+New-Item -ItemType Directory -Force -Path $pfDir | Out-Null
+
+# V3 baseline — full status snapshot of the worktree as it stands NOW (pre-edit)
+git status --porcelain | Set-Content -Encoding utf8 "$pfDir/_pre_step_a_status_$utc.txt"
+
+# V4 baseline — content hash of every L1-L7 LEAVE file
+$leaveFiles = @(
+  ".planning/comms/codex_pm0_remediation_20260522/INVESTIGATION_LOG.md",
+  ".planning/comms/codex_pm0_remediation_20260522/MESSAGE_TO_CODEX_1_UPDATED_OPINION_20260522.md",
+  ".planning/comms/codex_pm0_remediation_20260522/CODEX1/UPDATED_OPINION/evidence/20260522_173428_Codex1_package_consistency_strict.md",
+  ".planning/comms/codex_pm0_remediation_20260522/EXPORT_RECONCILIATION_20260522_1712.md",
+  ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/PREFLIGHT_HALT_20260522_220116.md",
+  ".planning/comms/codex_pm0_remediation_20260522/OPEN_QUESTIONS_CONSOLIDATED_20260522.md",
+  ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/PACKAGE_STATUS.md"
+)
+$leaveFiles | ForEach-Object { Get-FileHash -Algorithm SHA256 $_ } |
+  Select-Object Path, Hash | Format-Table -AutoSize |
+  Out-String | Set-Content -Encoding utf8 "$pfDir/_leave_files_pre_$utc.txt"
+```
+
+**Step 1 — apply the 7 edits (U1-U6 + A1) per Sections 6.5.1 and 6.5.2.**
+
+**Step 2 — run V1, V2, V3, V4 AFTER all 7 edits:**
+
+**V1 — New SHA present in every UPDATE file (positive check):**
+
+```powershell
+$updateFiles = @(
+  ".planning/CURRENT_BASELINE.md",
+  ".planning/STATE.md",
+  ".planning/START_HERE_CURRENT_STATUS.md",
+  ".planning/stop_ship/MASTER_CHECKLIST.md",
+  ".planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_EN.md",
+  ".planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_PT_BR.md"
+)
+$newSha = "3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB"
+$v1Pass = $true
+foreach ($f in $updateFiles) {
+  if (-not (Select-String -Path $f -SimpleMatch -Pattern $newSha -Quiet)) {
+    Write-Host "V1 FAIL: new SHA missing in $f"
+    $v1Pass = $false
+  }
+}
+```
+
+V1 passes when every UPDATE file contains the new SHA at least once. The presence of the old SHA in UPDATE files is expected (supersession audit trail) and is NOT a failure.
+
+**V2 — New check-in row present exactly once:**
+
+```powershell
+$v2Hits = (Select-String -Path ".planning/AGENT_CHECKIN_REGISTRY.md" `
+                         -SimpleMatch -Pattern "PM0-REMED-PACKAGE-CORRECTED").Count
+if ($v2Hits -ne 1) { Write-Host "V2 FAIL: expected exactly 1 hit, got $v2Hits" }
+```
+
+**V3 — Delta diff scope (only the PENDING target paths from §6.5.0 are NEW changes from Pre-Step A):**
+
+```powershell
+git status --porcelain | Set-Content -Encoding utf8 "$pfDir/_post_step_a_status_$utc.txt"
+
+$pre  = Get-Content "$pfDir/_pre_step_a_status_$utc.txt"  -ErrorAction SilentlyContinue
+$post = Get-Content "$pfDir/_post_step_a_status_$utc.txt"
+$delta = Compare-Object -ReferenceObject $pre -DifferenceObject $post |
+         Where-Object SideIndicator -EQ "=>" |
+         Select-Object -ExpandProperty InputObject
+
+# Build $expectedDelta from the §6.5.0 dispatch table — include ONLY paths whose entry is PENDING this run.
+# Mapping:
+#   U1 → .planning/CURRENT_BASELINE.md
+#   U2 → .planning/STATE.md
+#   U3 → .planning/START_HERE_CURRENT_STATUS.md
+#   U4 → .planning/stop_ship/MASTER_CHECKLIST.md
+#   U5 → .planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_EN.md
+#   U6 → .planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_PT_BR.md
+#   A1 → .planning/AGENT_CHECKIN_REGISTRY.md
+# If all 7 entries are ALREADY_APPLIED, $expectedDelta = @() (empty).
+$expectedDelta = @( <populate from §6.5.0 PENDING entries only> )
+
+# Full 7-target list (for the "no rogue files touched" check):
+$allTargets = @(
+  ".planning/CURRENT_BASELINE.md",
+  ".planning/STATE.md",
+  ".planning/START_HERE_CURRENT_STATUS.md",
+  ".planning/stop_ship/MASTER_CHECKLIST.md",
+  ".planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_EN.md",
+  ".planning/comms/codex_pm0_remediation_20260522/GEMINI/RELEASE_NOTES/RELEASE_NOTES_3_16_PT_BR.md",
+  ".planning/AGENT_CHECKIN_REGISTRY.md"
+)
+```
+
+V3 passes when:
+1. Every path in `$expectedDelta` is present in `$delta` (each PENDING target was actually modified by this run); AND
+2. No path in `$delta` falls outside `$allTargets` (Pre-Step A did not touch anything else).
+
+If all 7 entries were `ALREADY_APPLIED`, `$expectedDelta` is empty AND `$delta` (filtered to `$allTargets`) must also be empty — V3 trivially PASSes.
+
+Files that were already dirty BEFORE Pre-Step A started (present in `$pre`) are out of scope for V3 and not failures.
+
+**V4 — LEAVE files preserve the historical OLD SHA anchor (positive forensic check):**
+
+```powershell
+$oldSha = "4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15"
+$v4Pass = $true
+foreach ($f in $leaveFiles) {
+  if (-not (Select-String -Path $f -SimpleMatch -Pattern $oldSha -Quiet)) {
+    Write-Host "V4 FAIL: forensic anchor (OLD SHA) missing in $f"
+    $v4Pass = $false
+  }
+}
+
+# Optional supplementary diagnostic — not the V4 gate:
+$leaveFiles | ForEach-Object { Get-FileHash -Algorithm SHA256 $_ } |
+  Select-Object Path, Hash | Format-Table -AutoSize |
+  Out-String | Set-Content -Encoding utf8 "$pfDir/_leave_files_post_$utc.txt"
+```
+
+V4 passes when every L1-L7 LEAVE file still contains at least one occurrence of the OLD SHA `4280EC92…EDD15`. This proves the forensic record is intact and the supersession audit trail is preserved.
+
+If the OLD SHA is missing from any LEAVE file → halt (forensic anchor lost; historical audit trail corrupted).
+
+The pre/post hash snapshots (`_leave_files_pre_<UTC>.txt`, `_leave_files_post_<UTC>.txt`) are diagnostic supplements only, NOT the V4 gate. Pre-Step A may run idempotently across sessions where prior runs already updated some LEAVE files for legitimate reasons (e.g., halt-log appends to `INVESTIGATION_LOG.md` line 58, or new `PREFLIGHT_HALT_*.md` files); a byte-identical pre/post hash is therefore not required.
+
+**Step 3 — write the reconciliation evidence triplet only if V1+V2+V3+V4 all PASS:**
+
+- `00a_sha_reconciliation_<UTC>.md` — list each of the 7 edited file paths, the V1/V2/V3/V4 results (PASS per check), and the four supporting files: `_pre_step_a_status_<UTC>.txt`, `_post_step_a_status_<UTC>.txt`, `_leave_files_pre_<UTC>.txt`, `_leave_files_post_<UTC>.txt`. Include the final delta listing from V3.
+- `00a_sha_reconciliation_<UTC>.png` — optional screenshot of the verification run output.
+
+If ANY of V1-V4 fails, do NOT write the green triplet. Halt per §6.5.5.
+
+### 6.5.5 Halt Conditions Specific to Pre-Step A (idempotency-aware)
+
+Halt if any of these occur:
+
+- Any `Ui` or `A1` entry in §6.5.0 is marked `DRIFTED` — the target file's content matches NEITHER the expected `Old` nor the expected `New` state. The file may have drifted since this prompt was written; ask owner before improvising.
+- V1 fails: the new SHA `3327BD0F…E7EB` is missing from any of the 6 UPDATE files.
+- V2 fails: `PM0-REMED-PACKAGE-CORRECTED` is not present exactly once in `AGENT_CHECKIN_REGISTRY.md`.
+- V3 fails: `$delta` either omits a path that §6.5.0 marked `PENDING`, or includes any path outside the 7-target list (`$allTargets`).
+- V4 fails: any LEAVE file no longer contains the OLD SHA `4280EC92…EDD15` (forensic anchor lost).
+- The `_pre_step_a_status_*.txt` or `_post_step_a_status_*.txt` files cannot be written.
+- The `00a_sha_reconciliation_<UTC>.md` evidence triplet cannot be written.
+
+In a halt, write `PREFLIGHT_HALT_<UTC>.md` per Section 11 with: which V check or §6.5.0 entry failed, the offending lines or paths, and a recommendation. Do NOT proceed to step 0. Do NOT write the green `00a` reconciliation triplet.
+
+**Out-of-scope for Pre-Step A halt:**
+- Files that were already dirty in the worktree BEFORE Pre-Step A started (they appear in both `_pre_step_a_status_*.txt` and `_post_step_a_status_*.txt` and are NOT new changes from Pre-Step A).
+- The `--publish-changes` doc-debt in U5/U6 release notes — Section 6.5 explicitly defers this. Flag it in the output manifest; do not patch.
+
+---
+

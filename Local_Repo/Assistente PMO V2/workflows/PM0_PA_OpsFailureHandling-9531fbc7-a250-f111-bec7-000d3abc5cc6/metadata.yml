@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PM0_PA_OpsFailureHandling-9531fbc7-a250-f111-bec7-000d3abc5cc6/workflow.json
+workflowId: 9531fbc7-a250-f111-bec7-000d3abc5cc6
+name: PM0_PA_OpsFailureHandling
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

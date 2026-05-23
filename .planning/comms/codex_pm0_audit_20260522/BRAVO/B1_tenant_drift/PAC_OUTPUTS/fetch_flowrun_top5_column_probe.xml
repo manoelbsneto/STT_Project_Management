@@ -1,0 +1,6 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false" count="5">
+  <entity name="flowrun">
+    <all-attributes />
+    <order attribute="createdon" descending="true" />
+  </entity>
+</fetch>

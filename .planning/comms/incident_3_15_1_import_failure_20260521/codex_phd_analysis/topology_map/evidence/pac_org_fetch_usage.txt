@@ -1,0 +1,13 @@
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Must provide either --xml or --xmlFile but not both.
+
+Usage: pac org fetch [--environment] [--xml] [--xmlFile]
+
+  --environment               Specifies the target Dataverse. The value may be a Guid or absolute https URL. When not specified, the active organization selected for the current auth profile will be used. (alias: -env)
+  --xml                       FetchXML query to run (alias: -x)
+  --xmlFile                   File with FetchXML query to run (alias: -xf)
+

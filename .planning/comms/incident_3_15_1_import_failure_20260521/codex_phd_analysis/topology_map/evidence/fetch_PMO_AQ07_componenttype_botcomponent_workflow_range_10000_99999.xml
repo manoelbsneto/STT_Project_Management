@@ -1,0 +1,17 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" aggregate="true">
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" alias="match_count" aggregate="count" />
+    <filter type="and">
+      <condition attribute="componenttype" operator="ge" value="10000" />
+      <condition attribute="componenttype" operator="le" value="99999" />
+      <filter type="or">
+        <condition attribute="objectid" operator="eq" value="48b72cbd-a350-f111-bec7-000d3abc5cc6" />
+        <condition attribute="objectid" operator="eq" value="ca7233c3-a350-f111-bec7-000d3abc5cc6" />
+        <condition attribute="objectid" operator="eq" value="c37233c3-a350-f111-bec7-000d3abc5cc6" />
+        <condition attribute="objectid" operator="eq" value="c57233c3-a350-f111-bec7-000d3abc5cc6" />
+        <condition attribute="objectid" operator="eq" value="c27233c3-a350-f111-bec7-000d3abc5cc6" />
+        <condition attribute="objectid" operator="eq" value="cd7233c3-a350-f111-bec7-000d3abc5cc6" />
+      </filter>
+    </filter>
+  </entity>
+</fetch>

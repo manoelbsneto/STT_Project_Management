@@ -1,0 +1,9 @@
+﻿connectionReferences:
+  - connectionReferenceLogicalName: cat_DataverseIndexerSharePoint
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline
+  - connectionReferenceLogicalName: pmo_cat_DataverseIndexerSharePoint
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline
+  - connectionReferenceLogicalName: pmo_sharedplanner_87b5f
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_planner
+  - connectionReferenceLogicalName: pmo_sharedsharepointonline_6e373
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline

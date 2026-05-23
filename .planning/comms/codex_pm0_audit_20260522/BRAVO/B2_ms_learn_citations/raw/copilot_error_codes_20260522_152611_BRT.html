@@ -1,0 +1,2068 @@
+ <!DOCTYPE html>
+		<html
+			class="layout layout-holy-grail   show-table-of-contents conceptual show-breadcrumb default-focus"
+			lang="en-us"
+			dir="ltr"
+			data-authenticated="false"
+			data-auth-status-determined="false"
+			data-target="docs"
+			x-ms-format-detection="none"
+		>
+			
+		<head>
+			<title>Understand Error Codes - Copilot Studio | Microsoft Learn</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<meta name="color-scheme" content="light dark" />
+
+			<meta name="description" content="Understand error codes so that you can troubleshoot issues in your agent design by using Microsoft Copilot Studio." />
+			<link rel="canonical" href="https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes" /> 
+
+			<!-- Non-customizable open graph and sharing-related metadata -->
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@MicrosoftLearn" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image:alt" content="Microsoft Learn" />
+			<meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+			<!-- Page specific open graph and sharing-related metadata -->
+			<meta property="og:title" content="Understand Error Codes - Copilot Studio" />
+			<meta property="og:url" content="https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes" />
+			<meta property="og:description" content="Understand error codes so that you can troubleshoot issues in your agent design by using Microsoft Copilot Studio." />
+			<meta name="platform_id" content="4dde4967-82e5-61de-538e-a38b574208be" /> <meta name="scope" content="Troubleshoot,Microsoft Copilot Studio" />
+			<meta name="locale" content="en-us" />
+			 
+			<meta name="uhfHeaderId" content="MSDocsHeader-MicrosoftCopilotStudio" />
+
+			<meta name="page_type" content="conceptual" />
+
+			<!--page specific meta tags-->
+			
+
+			<!-- custom meta tags -->
+			
+		<meta name="breadcrumb_path" content="/support/breadcrumb/toc.json" />
+	
+		<meta name="feedback_system" content="Standard" />
+	
+		<meta name="recommendations" content="true" />
+	
+		<meta name="feedback_product_url" content="https://powerusers.microsoft.com/t5/Power-Virtual-Agents-Community/ct-p/PVACommunity" />
+	
+		<meta name="manager" content="dcscontentpm" />
+	
+		<meta name="audience" content="itpro" />
+	
+		<meta name="author" content="aartig13" />
+	
+		<meta name="ms.collection" content="CEnSKM-ai-copilot" />
+	
+		<meta name="ms.update-cycle" content="180-days" />
+	
+		<meta name="ms.author" content="aartigoyle" />
+	
+		<meta name="ms.topic" content="troubleshooting" />
+	
+		<meta name="ms.service" content="copilot-studio" />
+	
+		<meta name="search.app" content="capaedac-pva" />
+	
+		<meta name="search.app" content="powervirtualagents-docs" />
+	
+		<meta name="ms.date" content="2026-03-10T00:00:00Z" />
+	
+		<meta name="ms.reviewer" content="jameslew" />
+	
+		<meta name="ms.reviewer" content="erickinser" />
+	
+		<meta name="ms.reviewer" content="v-shaywood" />
+	
+		<meta name="ms.custom" content="sap:Authoring" />
+	
+		<meta name="document_id" content="2d843808-dd52-54c6-7ea5-1561d2645d10" />
+	
+		<meta name="document_version_independent_id" content="2d843808-dd52-54c6-7ea5-1561d2645d10" />
+	
+		<meta name="updated_at" content="2026-03-11T18:12:00Z" />
+	
+		<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/SupportArticles-docs-pr/blob/live/support/power-platform/copilot-studio/authoring/error-codes.md" />
+	
+		<meta name="gitcommit" content="https://github.com/MicrosoftDocs/SupportArticles-docs-pr/blob/f60d7f25dd776105ef3ef95676b4dbd9d46df4fa/support/power-platform/copilot-studio/authoring/error-codes.md" />
+	
+		<meta name="git_commit_id" content="f60d7f25dd776105ef3ef95676b4dbd9d46df4fa" />
+	
+		<meta name="site_name" content="Docs" />
+	
+		<meta name="depot_name" content="MSDN.support1-docset" />
+	
+		<meta name="schema" content="Conceptual" />
+	
+		<meta name="toc_rel" content="../toc.json" />
+	
+		<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/MSDN.support1-docset/{branchName}{pdfName}" />
+	
+		<meta name="feedback_help_link_type" content="" />
+	
+		<meta name="feedback_help_link_url" content="" />
+	
+		<meta name="word_count" content="4439" />
+	
+		<meta name="asset_id" content="power-platform/copilot-studio/authoring/error-codes" />
+	
+		<meta name="moniker_range_name" content="" />
+	
+		<meta name="item_type" content="Content" />
+	
+		<meta name="source_path" content="support/power-platform/copilot-studio/authoring/error-codes.md" />
+	
+		<meta name="previous_tlsh_hash" content="D2003DD2A60C8B10FFD26F0A346AE74925F0C04BAA707BC8062538D286492EB35B926D97EF6392043376075303A2750AB4D8EF76D17C635550B5BCED416CB3A6A64E7FB7E6" />
+	
+		<meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/power-platform/copilot-studio/authoring/error-codes.md" />
+	
+		<meta name="markdown_url" content="https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes?accept=text/markdown" />
+	 
+		<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/1ae5c491-970a-4062-8301-6336e69f9026" data-source="generated" />
+	
+		<meta name="cmProducts" content="https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/46e3c7c4-fe77-4a6e-b40a-44c569819fa5" data-source="generated" />
+	
+		<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/5bfc2259-d89d-4d6b-97d7-584a51208ec1" data-source="generated" />
+	
+		<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/f2c3e52e-3667-4e8a-bf11-20b9eaccdc8c" data-source="generated" />
+	
+		<meta name="spProducts" content="https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/d0c6fab8-2d7d-4bb0-bf40-589e08d7c132" data-source="generated" />
+	
+		<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/4e3dafb9-38f2-4708-bb18-eecf2c0a9843" data-source="generated" />
+	
+
+			<!-- assets and js globals -->
+			
+			<link rel="stylesheet" href="/static/assets/0.4.03427.7856-752ce836/styles/site.css" />
+			
+			<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+			<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script>
+			<script src="/_themes/docs.theme/master/en-us/_themes/global/deprecation.js"></script>
+
+			<!-- msdocs global object -->
+			<script id="msdocs-script">
+		var msDocs = {
+  "environment": {
+    "accessLevel": "online",
+    "azurePortalHostname": "portal.azure.com",
+    "reviewFeatures": false,
+    "supportLevel": "production",
+    "systemContent": true,
+    "siteName": "learn",
+    "legacyHosting": false
+  },
+  "data": {
+    "contentLocale": "en-us",
+    "contentDir": "ltr",
+    "userLocale": "en-us",
+    "userDir": "ltr",
+    "pageTemplate": "Conceptual",
+    "brand": "",
+    "context": {},
+    "standardFeedback": true,
+    "showFeedbackReport": false,
+    "feedbackHelpLinkType": "",
+    "feedbackHelpLinkUrl": "",
+    "feedbackSystem": "Standard",
+    "feedbackGitHubRepo": "MicrosoftDocs/SupportArticles-docs",
+    "feedbackProductUrl": "https://powerusers.microsoft.com/t5/Power-Virtual-Agents-Community/ct-p/PVACommunity",
+    "extendBreadcrumb": false,
+    "isEditDisplayable": true,
+    "isPrivateUnauthorized": false,
+    "hideViewSource": false,
+    "isPermissioned": false,
+    "hasRecommendations": true,
+    "contributors": [
+      {
+        "name": "aartig13",
+        "url": "https://github.com/aartig13"
+      },
+      {
+        "name": "haywoodsloan",
+        "url": "https://github.com/haywoodsloan"
+      },
+      {
+        "name": "Eric-tw-convAI",
+        "url": "https://github.com/Eric-tw-convAI"
+      },
+      {
+        "name": "vibhutinair23",
+        "url": "https://github.com/vibhutinair23"
+      },
+      {
+        "name": "przlplx",
+        "url": "https://github.com/przlplx"
+      }
+    ]
+  },
+  "functions": {}
+};;
+	</script>
+
+			<!-- base scripts, msdocs global should be before this -->
+			<script src="/static/assets/0.4.03427.7856-752ce836/scripts/en-us/index-docs.js"></script>
+			
+
+			<!-- json-ld -->
+			
+		</head>
+	
+			<body
+				id="body"
+				data-bi-name="body"
+				class="layout-body "
+				lang="en-us"
+				dir="ltr"
+			>
+				<header class="layout-body-header background-color-body-medium">
+		<div class="header-holder has-default-focus">
+			
+		<a
+			href="#main"
+			
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			
+		>
+			Skip to main content
+		</a>
+	
+		<a
+			href="#"
+			data-skip-to-ask-learn
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			hidden
+		>
+			Skip to Ask Learn chat experience
+		</a>
+	
+
+			<div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+			<!-- Unsupported browser warning -->
+			<div
+				id="unsupported-browser"
+				style="background-color: white; color: black; padding: 16px; border-bottom: 1px solid grey;"
+				hidden
+			>
+				<div style="max-width: 800px; margin: 0 auto;">
+					<p style="font-size: 24px">This browser is no longer supported.</p>
+					<p style="font-size: 16px; margin-top: 16px;">
+						Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.
+					</p>
+					<div style="margin-top: 12px;">
+						<a
+							href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+							style="background-color: #0078d4; border: 1px solid #0078d4; color: white; padding: 6px 12px; border-radius: 2px; display: inline-block;"
+						>
+							Download Microsoft Edge
+						</a>
+						<a
+							href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+							style="background-color: white; padding: 6px 12px; border: 1px solid #505050; color: #171717; border-radius: 2px; display: inline-block;"
+						>
+							More info about Internet Explorer and Microsoft Edge
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- site header -->
+			<div
+				id="ms--site-header"
+				data-test-id="site-header-wrapper"
+				itemscope="itemscope"
+				itemtype="http://schema.org/Organization"
+			>
+				<div
+					id="ms--mobile-nav"
+					class="site-header display-none-tablet padding-inline-none gap-none"
+					data-bi-name="mobile-header"
+					data-test-id="mobile-header"
+				></div>
+				<div
+					id="ms--primary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L1-header"
+					data-test-id="primary-header"
+				></div>
+				<div
+					id="ms--secondary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L2-header"
+					data-test-id="secondary-header"
+					
+				></div>
+			</div>
+			
+		<!-- banner -->
+		<div data-banner>
+			<div id="disclaimer-holder"></div>
+			
+		</div>
+		<!-- banner end -->
+	
+		</div>
+	</header>
+				 <section
+					id="layout-body-menu"
+					class="layout-body-menu border-right display-flex background-color-body-medium"
+					data-bi-name="menu"
+			  >
+					
+		<div
+			id="left-container"
+			class="left-container display-none padding-none display-block-tablet width-full"
+			data-toc-container="true"
+		>
+			<div
+				id="ms--toc-content"
+				class="padding-left-sm padding-right-none padding-bottom-sm height-full"
+			>
+				<nav
+					id="affixed-left-container"
+					class="margin-top-xxs-tablet position-sticky display-flex flex-direction-column width-full"
+					aria-label="Primary"
+					data-bi-name="left-toc"
+					role="navigation"
+				>
+					<div
+						id="ms--collapsible-toc-header"
+						class="display-flex flex-direction-row-reverse justify-content-center align-items-center margin-bottom-xxs margin-right-xxs"
+					>
+						<button
+							type="button"
+							class="button button-clear inner-focus"
+							data-collapsible-toc-toggle
+							aria-expanded="true"
+							aria-controls="ms--toc-content"
+							aria-label="Table of contents"
+						>
+							<span class="icon icon-mirrored-rtl font-size-md" aria-hidden="true">
+								<span class="docon docon-panel-left-contract"></span>
+							</span>
+						</button>
+						<div
+							id="ms--collapsible-toc-moniker-slot"
+							class="flex-grow-1 display-none-layout-menu-collapsed"
+						></div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	
+			  </section>
+
+				<main
+					id="main"
+					role="main"
+					class="layout-body-main "
+					data-bi-name="content"
+					lang="en-us"
+					dir="ltr"
+				>
+					
+			<div
+		id="ms--content-header"
+		class="content-header default-focus border-bottom-none"
+		data-bi-name="content-header"
+	>
+		<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+			<button
+				type="button"
+				class="contents-button button button-sm margin-right-xxs"
+				data-bi-name="contents-expand"
+				aria-haspopup="true"
+				data-contents-button
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-menu"></span></span>
+				<span class="contents-expand-title"> Table of contents </span>
+			</button>
+			<button
+				type="button"
+				class="ap-collapse-behavior ap-expanded button button-sm"
+				data-bi-name="ap-collapse"
+				aria-controls="action-panel"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-exit-mode"></span></span>
+				<span>Exit editor mode</span>
+			</button>
+		</div>
+	</div>
+			<div
+				data-main-column
+				class="reading-width margin-inline-auto layout-padding padding-top-none padding-top-sm-tablet padding-bottom-sm"
+			>
+				<div>
+					
+		<div id="article-header" class="background-color-body margin-bottom-xs display-none-print">
+			<div class="display-flex align-items-center justify-content-space-between">
+				
+		<details
+			id="article-header-breadcrumbs-overflow-popover"
+			class="popover popover-left"
+			data-for="article-header-breadcrumbs"
+		>
+			<summary
+				class="button button-clear button-primary button-sm inner-focus"
+				aria-label="All breadcrumbs"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-more"></span>
+				</span>
+			</summary>
+			<div id="article-header-breadcrumbs-overflow" class="popover-content"></div>
+		</details>
+
+		<bread-crumbs
+			id="article-header-breadcrumbs"
+			role="group"
+			aria-label="Breadcrumbs"
+			data-test-id="article-header-breadcrumbs"
+			class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"
+		></bread-crumbs>
+	 
+		<div
+			id="article-header-page-actions"
+			class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"
+		>
+			
+		<button
+			class="button button-sm border-none inner-focus display-none-tablet flex-shrink-0 "
+			data-bi-name="ask-learn-assistant-entry"
+			data-test-id="ask-learn-assistant-modal-entry-mobile"
+			data-ask-learn-modal-entry
+			
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-none display-inline-flex-tablet display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-modal-entry-tablet"
+			data-ask-learn-modal-entry
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-flyout-entry"
+			data-ask-learn-flyout-entry
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	 
+
+			<details class="popover popover-right" id="article-header-page-actions-overflow">
+				<summary
+					class="justify-content-flex-start button button-clear button-sm button-primary inner-focus"
+					aria-label="More actions"
+					title="More actions"
+				>
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-more-vertical"></span>
+					</span>
+				</summary>
+				<div class="popover-content">
+					
+		<button
+			type="button"
+			id="ms--focus-mode-button"
+			data-focus-mode
+			data-bi-name="focus-mode-entry"
+			data-page-action-item="overflow-all"
+			data-popover-close
+			class="button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus display-none display-inline-flex-tablet"
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-glasses"></span>
+			</span>
+			<span>Reading mode</span>
+		</button>
+	 
+		<button
+			data-page-action-item="overflow-mobile"
+			type="button"
+			class="button-block button-sm inner-focus button button-clear display-none-tablet justify-content-flex-start text-align-left"
+			data-bi-name="contents-expand"
+			data-contents-button
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true"
+				><span class="docon docon-editor-list-bullet"></span
+			></span>
+			<span class="contents-expand-title">Table of contents</span>
+		</button>
+	 
+		<a
+			id="lang-link-overflow"
+			class="button-sm inner-focus button button-clear button-block justify-content-flex-start text-align-left"
+			data-bi-name="language-toggle"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-read-in-link
+			href="#"
+			hidden
+		>
+			<span class="icon" aria-hidden="true" data-read-in-link-icon>
+				<span class="docon docon-locale-globe"></span>
+			</span>
+			<span data-read-in-link-text>Read in English</span>
+		</a>
+	
+					
+		<button
+			type="button"
+			class="collection button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus"
+			data-list-type="collection"
+			data-bi-name="collection"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="collection-status">Add</span>
+		</button>
+	 
+		<button
+			type="button"
+			class="collection button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+			data-list-type="plan"
+			data-bi-name="plan"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="plan-status">Add to plan</span>
+		</button>
+	 
+					
+		<a
+			data-contenteditbtn
+			class="button button-clear button-block button-sm inner-focus justify-content-flex-start text-align-left text-decoration-none"
+			data-bi-name="edit"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			
+			href="https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/power-platform/copilot-studio/authoring/error-codes.md"
+			data-original_content_git_url="https://github.com/MicrosoftDocs/SupportArticles-docs-pr/blob/live/support/power-platform/copilot-studio/authoring/error-codes.md"
+			data-original_content_git_url_template="{repo}/blob/{branch}/support/power-platform/copilot-studio/authoring/error-codes.md"
+			data-pr_repo=""
+			data-pr_branch=""
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-edit-outline"></span>
+			</span>
+			<span>Edit</span>
+		</a>
+	  
+		<hr class="margin-block-xxs" />
+		
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="copy-markdown"
+					data-page-action-item="overflow-all"
+					data-copy-markdown
+					data-copy-state="idle"
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span data-show-when="idle" class="docon docon-code-lang"></span>
+						<span data-show-when="loading" class="loader" hidden></span>
+						<span data-show-when="success" class="docon docon-check-mark" hidden></span>
+					</span>
+					<span>Copy Markdown</span>
+				</button>
+		   
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="print"
+					data-page-action-item="overflow-all"
+					data-popover-close
+					data-print-page
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span class="docon docon-print"></span>
+					</span>
+					<span>Print</span>
+				</button>
+		  
+	
+				</div>
+			</details>
+		</div>
+	
+			</div>
+		</div>
+	  
+		<!-- privateUnauthorizedTemplate is hidden by default -->
+		<div unauthorized-private-section data-bi-name="permission-content-unauthorized-private" hidden>
+			<hr class="hr margin-top-xs margin-bottom-sm" />
+			<div class="notification notification-info">
+				<div class="notification-content">
+					<p class="margin-top-none notification-title">
+						<span class="icon" aria-hidden="true"
+							><span class="docon docon-exclamation-circle-solid"></span
+						></span>
+						<span>Note</span>
+					</p>
+					<p class="margin-top-none authentication-determined not-authenticated">
+						Access to this page requires authorization. You can try <a class="docs-sign-in" href="#" data-bi-name="permission-content-sign-in">signing in</a> or <a  class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+					<p class="margin-top-none authentication-determined authenticated">
+						Access to this page requires authorization. You can try <a class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	
+					<div class="content"><h1 id="understand-error-codes">Understand error codes</h1></div>
+					
+		<div
+			id="article-metadata"
+			data-bi-name="article-metadata"
+			data-test-id="article-metadata"
+			class="page-metadata-container display-flex gap-xxs justify-content-space-between align-items-center flex-wrap-wrap"
+		>
+			 
+				<div
+					id="user-feedback"
+					class="margin-block-xxs display-none display-none-print"
+					hidden
+					data-hide-on-archived
+				>
+					
+		<button
+			id="user-feedback-button"
+			data-test-id="conceptual-feedback-button"
+			class="button button-sm button-clear button-primary display-none"
+			type="button"
+			data-bi-name="user-feedback-button"
+			data-user-feedback-button
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-like"></span>
+			</span>
+			<span>Feedback</span>
+		</button>
+	
+				</div>
+		  
+		</div>
+	 
+		<div data-id="ai-summary" class="display-none-print">
+			<div id="ms--ai-summary-cta" class="margin-top-xs display-flex align-items-center">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-sparkle-fill gradient-text-vivid"></span>
+				</span>
+				<button
+					id="ms--ai-summary"
+					type="button"
+					class="tag tag-sm tag-suggestion margin-left-xxs"
+					data-test-id="ai-summary-cta"
+					data-bi-name="ai-summary-cta"
+					data-an="ai-summary"
+				>
+					<span class="ai-summary-cta-text">
+						Summarize this article for me
+					</span>
+				</button>
+			</div>
+			<!-- Slot where the client will render the summary card after the user clicks the CTA -->
+			<div id="ms--ai-summary-header" class="margin-top-xs"></div>
+		</div>
+	 
+		<nav
+			id="center-doc-outline"
+			class="doc-outline display-none-desktop display-none-print margin-bottom-sm"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">
+				In this article
+			</h2>
+		</nav>
+	
+					<div class="content"><p>When an agent encounters a problem during a conversation, it responds by sending a message that includes an error code for the specific problem. Users of the agent should give this error code to their administrator.</p>
+<p>As an agent maker, if a problem occurs when you use the test pane to <a href="/en-us/microsoft-copilot-studio/authoring-test-bot" data-linktype="absolute-path">test your agent</a>, you receive a message that contains the error code and more context about the problem. Alternatively, you can use the <strong>Topic checker</strong> panel to <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#view-topic-errors" data-linktype="absolute-path">validate your agent's configuration</a>.</p>
+<h2 id="error-list">Error list</h2>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_webApp" role="tab" aria-controls="tabpanel_1_webApp" data-tab="webApp" tabindex="0" aria-selected="true" data-linktype="self-bookmark">Web app</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_classic+teams" role="tab" aria-controls="tabpanel_1_classic+teams" data-tab="classic+teams" tabindex="-1" data-linktype="self-bookmark">Classic/Teams</a>
+</li>
+</ul>
+<section id="tabpanel_1_webApp" role="tabpanel" data-tab="webApp">
+
+<div class="NOTE">
+<p>Note</p>
+<p>The term <em>dialog</em> is used in some error messages to refer to a <em>topic</em>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#aimodelactionbadrequest" data-linktype="self-bookmark">AIModelActionBadRequest</a></td>
+<td>There's a mismatch between the prompt action types.</td>
+</tr>
+<tr>
+<td><a href="#aimodelactionrequesttimeout" data-linktype="self-bookmark">AIModelActionRequestTimeout</a></td>
+<td>There's a timeout error that's related to a call to an AI Builder model.</td>
+</tr>
+<tr>
+<td><a href="#aipluginoperationnotfound" data-linktype="self-bookmark">AIPluginOperationNotFound</a></td>
+<td>There's an error when attempting to access a connected agent.</td>
+</tr>
+<tr>
+<td><a href="#asyncresponsepayloadtoolarge" data-linktype="self-bookmark">AsyncResponsePayloadTooLarge</a></td>
+<td>There's an error that's related to the output of a connector.</td>
+</tr>
+<tr>
+<td><a href="#authenticationnotconfigured" data-linktype="self-bookmark">AuthenticationNotConfigured</a></td>
+<td>Authentication is required but wasn't configured.</td>
+</tr>
+<tr>
+<td><a href="#bindingkeynotfounderror" data-linktype="self-bookmark">BindingKeyNotFoundError</a></td>
+<td>One or more inputs have changed on the agent flow (added, removed, or renamed). The agent flow needs to be removed and re-added to ensure Copilot Studio has the correct list of inputs.</td>
+</tr>
+<tr>
+<td><a href="#connectedagentauthmismatch" data-linktype="self-bookmark">ConnectedAgentAuthMismatch</a></td>
+<td>There's an authentication mismatch between the orchestrator and sub-agent.</td>
+</tr>
+<tr>
+<td><a href="#connectedagentbotnotfound" data-linktype="self-bookmark">ConnectedAgentBotNotFound</a></td>
+<td>A sub-agent in a multi-agent orchestration configuration wasn't found.</td>
+</tr>
+<tr>
+<td><a href="#connectedagentbotnotpublished" data-linktype="self-bookmark">ConnectedAgentBotNotPublished</a></td>
+<td>A sub-agent in a multi-agent orchestration configuration wasn't published.</td>
+</tr>
+<tr>
+<td><a href="#connectedagentchainingnotsupported" data-linktype="self-bookmark">ConnectedAgentChainingNotSupported</a></td>
+<td>Multi-level agent chaining isn't supported.</td>
+</tr>
+<tr>
+<td><a href="#connectedagentgptcomponentnotfound" data-linktype="self-bookmark">ConnectedAgentGptComponentNotFound</a></td>
+<td>A connected agent is missing descriptions or instructions.</td>
+</tr>
+<tr>
+<td><a href="#connectorpowerfxerror" data-linktype="self-bookmark">ConnectorPowerFxError</a></td>
+<td>There's an error in the Power Fx expression evaluation in connector actions.</td>
+</tr>
+<tr>
+<td><a href="#contenterror" data-linktype="self-bookmark">ContentError</a></td>
+<td>There's an error in the topic content.</td>
+</tr>
+<tr>
+<td><a href="#consentnotprovidedbyuser" data-linktype="self-bookmark">ConsentNotProvidedByUser</a></td>
+<td>A user interacting with an agent rejected the agent's SSO request.</td>
+</tr>
+<tr>
+<td><a href="#conversationstatetoolarge" data-linktype="self-bookmark">ConversationStateTooLarge</a></td>
+<td>The conversation state exceeds the size limits.</td>
+</tr>
+<tr>
+<td><a href="#datalosspreventionviolation" data-linktype="self-bookmark">DataLossPreventionViolation</a></td>
+<td>There's a data policy violation.</td>
+</tr>
+<tr>
+<td><a href="#enforcementmessagec2" data-linktype="self-bookmark">EnforcementMessageC2</a></td>
+<td>Not enough prepaid capacity is available.</td>
+</tr>
+<tr>
+<td><a href="#flowactionbadrequest" data-linktype="self-bookmark">FlowActionBadRequest</a></td>
+<td>A request that was made to an <a href="/en-us/microsoft-copilot-studio/advanced-flow" data-linktype="absolute-path">agent flow</a> is malformed.</td>
+</tr>
+<tr>
+<td><a href="#flowactionexception" data-linktype="self-bookmark">FlowActionException</a></td>
+<td>An error occurred while executing an <a href="/en-us/microsoft-copilot-studio/advanced-flow" data-linktype="absolute-path">agent flow</a>.</td>
+</tr>
+<tr>
+<td><a href="#flowactiontimedout" data-linktype="self-bookmark">FlowActionTimedOut</a></td>
+<td>An <a href="/en-us/microsoft-copilot-studio/advanced-flow" data-linktype="absolute-path">agent flow</a> took more than 100 seconds to run and timed out.</td>
+</tr>
+<tr>
+<td><a href="#flowmakerconnectionblocked" data-linktype="self-bookmark">FlowMakerConnectionBlocked</a></td>
+<td>An <a href="/en-us/microsoft-copilot-studio/advanced-flow" data-linktype="absolute-path">agent flow</a> invoked with unauthorized maker credentials in connection.</td>
+</tr>
+<tr>
+<td><a href="#genaisearchandsummarizeratelimitreached" data-linktype="self-bookmark">GenAISearchandSummarizeRateLimitReached</a></td>
+<td>The usage limit for generative AI was reached.</td>
+</tr>
+<tr>
+<td><a href="#genaitoolplannerratelimitreached" data-linktype="self-bookmark">GenAIToolPlannerRateLimitReached</a></td>
+<td>The usage limit for generative orchestration was reached.</td>
+</tr>
+<tr>
+<td><a href="#infiniteloopinbotcontent" data-linktype="self-bookmark">InfiniteLoopInBotContent</a></td>
+<td>A node was executed too many times.</td>
+</tr>
+<tr>
+<td><a href="#invalidcontent" data-linktype="self-bookmark">InvalidContent</a></td>
+<td>Invalid content was added to the code editor.</td>
+</tr>
+<tr>
+<td><a href="#latestpublishedversionnotfound" data-linktype="self-bookmark">LatestPublishedVersionNotFound</a></td>
+<td>Unable to retrieve the published version of the agent.</td>
+</tr>
+<tr>
+<td><a href="#openaihate" data-linktype="self-bookmark">OpenAIHate</a></td>
+<td>Hate content was detected.</td>
+</tr>
+<tr>
+<td><a href="#openaijailbreak" data-linktype="self-bookmark">OpenAIJailBreak</a></td>
+<td>Jailbreak content was detected.</td>
+</tr>
+<tr>
+<td><a href="#openaindirectattack" data-linktype="self-bookmark">OpenAIndirectAttack</a></td>
+<td>Indirect attack content was detected.</td>
+</tr>
+<tr>
+<td><a href="#openaiselfharm" data-linktype="self-bookmark">OpenAISelfHarm</a></td>
+<td>Self-harm content was detected.</td>
+</tr>
+<tr>
+<td><a href="#openaisexual" data-linktype="self-bookmark">OpenAISexual</a></td>
+<td>Sexual content was detected.</td>
+</tr>
+<tr>
+<td><a href="#openairatelimitreached" data-linktype="self-bookmark">OpenAIRateLimitReached</a></td>
+<td>The capacity limit of the agent was reached.</td>
+</tr>
+<tr>
+<td><a href="#openaiviolence" data-linktype="self-bookmark">OpenAIViolence</a></td>
+<td>Violence content was detected.</td>
+</tr>
+<tr>
+<td><a href="#outgoingmessagesizetoobig" data-linktype="self-bookmark">OutgoingMessageSizeTooBig</a></td>
+<td>A message sent by an agent was too large to process.</td>
+</tr>
+<tr>
+<td><a href="#redirecttodisableddialog" data-linktype="self-bookmark">RedirectToDisabledDialog</a></td>
+<td>A topic was <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#redirect-to-another-topic" data-linktype="absolute-path">redirecting</a> to a disabled topic.</td>
+</tr>
+<tr>
+<td><a href="#redirecttononexistentdialog" data-linktype="self-bookmark">RedirectToNonExistentDialog</a></td>
+<td>A topic was <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#redirect-to-another-topic" data-linktype="absolute-path">redirecting</a> to another topic that no longer exists.</td>
+</tr>
+<tr>
+<td><a href="#systemerror" data-linktype="self-bookmark">SystemError</a></td>
+<td>A system error occurred in Copilot Studio.</td>
+</tr>
+<tr>
+<td><a href="#toomuchdatatohandle" data-linktype="self-bookmark">TooMuchDataToHandle</a></td>
+<td>The request that was made by the user is too large to process.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="aimodelactionbadrequest">AIModelActionBadRequest</h4>
+<p><strong>Error messages:</strong></p>
+<ul>
+<li><p>The output of the prompt evaluated to <code>{ActualType}</code> but expected <code>{ExpectedType}</code>.</p>
+</li>
+<li><p>The input parameter <code>{ParameterName}</code> for prompt <code>{PromptName}</code> is missing.</p>
+</li>
+<li><p>The input parameter <code>{ParameterName}</code> for prompt <code>{PromptName}</code> is blank but is required.</p>
+</li>
+<li><p>Expected: <code>{ExpectedType}</code>. Actual: <code>{ActualType}</code>.</p>
+</li>
+</ul>
+<p><strong>Resolution:</strong> This error occurs if a prompt action receives incorrect input or returns unexpected output types. To resolve the problem, take one of the following actions, based on the error:</p>
+<ul>
+<li><em>Type mismatch:</em> Check your prompt configuration to make sure that the output schema matches the expected variable type.</li>
+<li><em>Missing required input:</em> Verify that all required inputs are connected to variables that have values.</li>
+<li><em>Blank required value:</em> Make sure that the variable has a value before you call the prompt.</li>
+</ul>
+<p>For more information, see <a href="/en-us/ai-builder/use-a-custom-prompt-in-mcs#create-a-prompt-action" data-linktype="absolute-path">Create a prompt action</a>.</p>
+<h4 id="aimodelactionrequesttimeout">AIModelActionRequestTimeout</h4>
+<p><strong>Error message</strong>: The prompt <code>prompt-name</code> execution timed out.</p>
+<p><strong>Resolution</strong>: Make sure that the call to the AI Builder model doesn't exceed 100 seconds.</p>
+<h4 id="aipluginoperationnotfound">AIPluginOperationNotFound</h4>
+<p><strong>Error message</strong>: Sorry, the bot can't talk for a while. It's something the bot's owner needs to address.</p>
+<p><strong>Resolution</strong>: Republish the agent. This error can occur when an agent is published through an import or a solution deployment.</p>
+<h4 id="asyncresponsepayloadtoolarge">AsyncResponsePayloadTooLarge</h4>
+<p><strong>Error message</strong>: The output returned from the connector was too large to be handled by the agent. Try reducing its size by utilizing available connector filters or by limiting the number of configured action outputs.</p>
+<p><strong>Resolution</strong>: One of the agent's real-time connectors is returning a payload that's larger than the agent can handle. For more information about the payload limit, see <a href="/en-us/microsoft-copilot-studio/requirements-quotas#copilot-studio-web-app-limits" data-linktype="absolute-path">Copilot Studio web app limits</a>.</p>
+<h4 id="authenticationnotconfigured">AuthenticationNotConfigured</h4>
+<p><strong>Error messages:</strong></p>
+<ul>
+<li><p>Authentication is not configured for this bot.</p>
+</li>
+<li><p>The bot requires sign in, but is not configured for authentication. Please update the authentication method for the bot.</p>
+</li>
+<li><p>Integrated authentication is not supported in channel <code>{channel}</code>.</p>
+</li>
+</ul>
+<p><strong>Resolution:</strong> This error occurs if your agent uses actions or features that require user authentication, but authentication isn't configured. To resolve the problem:</p>
+<ol>
+<li>In your agent, go to <strong>Settings &gt; Security &gt; Authentication</strong>.</li>
+<li>Select an appropriate authentication method: <strong>Authenticate with Microsoft</strong> for Microsoft 365 users, or <strong>Authenticate manually</strong> for custom OAuth providers.</li>
+<li>If the error mentions a specific channel, verify that the channel supports the authentication method that you're using. Some channels don't support integrated authentication.</li>
+</ol>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/configuration-end-user-authentication" data-linktype="absolute-path">Configure user authentication</a>.</p>
+<h4 id="bindingkeynotfounderror">BindingKeyNotFoundError</h4>
+<p><strong>Error messages</strong>:</p>
+<ul>
+<li>Binding '{0}' is not found, refresh this flow to get the latest bindings</li>
+<li>Input binding '{0}' is not found, refresh this flow to get the latest bindings</li>
+<li>Output binding '{0}' is not found, refresh this flow to get the latest bindings</li>
+</ul>
+<p><strong>Resolution</strong>: Check that the agent flow inputs and outputs are set up correctly. Try refreshing the inputs or outputs to resolve this issue. If that doesn't work, try setting up the agent flow again.</p>
+<p>To get the latest inputs and outputs, remove and readd the agent flow.</p>
+<h4 id="connectedagentauthmismatch">ConnectedAgentAuthMismatch</h4>
+<p><strong>Error message:</strong> Your connected agent with schema name <code>{AgentSchemaName}</code> has an authentication mismatch with the main agent.</p>
+<p><strong>Resolution:</strong> The orchestrator agent and connected sub-agent have different authentication configurations. In order for multi-agent orchestration to work, both agents must use compatible authentication settings. To resolve the problem:</p>
+<ol>
+<li>Open both agents, and go to <strong>Settings &gt; Security &gt; Authentication</strong>.</li>
+<li>Make sure that both agents use the same authentication method (for example, both use <strong>Authenticate with Microsoft</strong>).</li>
+<li>If you're using manual authentication, make sure that both agents are configured to use the same OAuth provider and settings.</li>
+</ol>
+<p>The following authentication compatibility rules apply:</p>
+<ul>
+<li>If the connected agent has <em>no authentication</em> configured, any orchestrator authentication is acceptable.</li>
+<li>If the connected agent <em>requires authentication</em>, the orchestrator must use the <em>same</em> authentication method.</li>
+<li><strong>Manual authentication (Generic OAuth2)</strong> on the orchestrator is <em>not compatible</em> with connected agents that require authentication. Both agents must use the same manual authentication configuration, or the connected agent must have no authentication requirement.</li>
+</ul>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/configuration-end-user-authentication" data-linktype="absolute-path">Configure user authentication</a> and <a href="/en-us/microsoft-copilot-studio/advanced-use-dispatcher" data-linktype="absolute-path">Use agents as actions in other agents (preview)</a>.</p>
+<h4 id="connectedagentbotnotfound">ConnectedAgentBotNotFound</h4>
+<p><strong>Error message:</strong> Connected agent with schema name {AgentSchemaName} not found.</p>
+<p><strong>Resolution:</strong> This error occurs in multi-agent orchestration if the orchestrator agent can't find a connected sub-agent. To resolve the problem:</p>
+<ol>
+<li>Verify that the connected agent exists in the same environment as the orchestrator agent.</li>
+<li>Make sure that the connected agent's schema name is spelled correctly in the orchestrator configuration.</li>
+<li>Check that you have access permissions to the connected agent.</li>
+<li>If the connected agent was recently created, wait a few minutes, and then try again.</li>
+</ol>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-use-dispatcher" data-linktype="absolute-path">Use agents as actions in other agents (preview)</a>.</p>
+<h4 id="connectedagentbotnotpublished">ConnectedAgentBotNotPublished</h4>
+<p><strong>Error message:</strong> Connected agent with schema name <code>{AgentSchemaName}</code> needs to be published to be invoked.</p>
+<p><strong>Resolution:</strong> The connected sub-agent must be published before the orchestrator agent can invoke it. To resolve the problem:</p>
+<ol>
+<li>Open the connected agent in Copilot Studio.</li>
+<li>Publish the agent.</li>
+<li>Return to the orchestrator agent, and test again.</li>
+</ol>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-use-dispatcher" data-linktype="absolute-path">Use agents as actions in other agents (preview)</a>.</p>
+<h4 id="connectedagentchainingnotsupported">ConnectedAgentChainingNotSupported</h4>
+<p><strong>Error message:</strong> Agent chaining detected. Your agent cannot be connected to agent with schema name <code>{AgentSchemaName}</code> as it already has a connected agent.</p>
+<p><strong>Resolution:</strong> Multi-level agent chaining isn't supported. An orchestrator agent can connect to sub-agents, but those sub-agents can't have their own connected agents. To resolve the problem:</p>
+<ol>
+<li>Review your agent architecture, and flatten the hierarchy.</li>
+<li>Move the functionality from deeply nested agents into either the orchestrator or first-level connected agents.</li>
+<li>Consider using topics or actions instead of additional connected agents.</li>
+</ol>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-use-dispatcher" data-linktype="absolute-path">Use agents as actions in other agents (preview)</a>.</p>
+<h4 id="connectedagentgptcomponentnotfound">ConnectedAgentGptComponentNotFound</h4>
+<p><strong>Error message:</strong> No GPT component found for connected agent with schema name <code>{AgentSchemaName}</code>.</p>
+<p><strong>Resolution:</strong> The connected agent is missing a required description or instructions that enable it to be invoked by an orchestrator agent. To resolve the problem:</p>
+<ol>
+<li>Open the connected agent in Copilot Studio.</li>
+<li>Go to the agent's <strong>Overview</strong> page.</li>
+<li>Make sure that the agent has a clear <strong>Description</strong> and <strong>Instructions</strong> configured.</li>
+<li>After you make changes, publish the connected agent.</li>
+<li>Return to the orchestrator agent, and test again.</li>
+</ol>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-use-dispatcher" data-linktype="absolute-path">Use agents as actions in other agents (preview)</a>.</p>
+<h4 id="connectorpowerfxerror">ConnectorPowerFxError</h4>
+<p><strong>Error message:</strong> Power Fx expression evaluation failed: {ErrorDetails}</p>
+<p><strong>Resolution:</strong> A Power Fx expression that's used in a connector action wasn't evaluated correctly. To resolve the problem:</p>
+<ol>
+<li>Open the topic that contains the connector action.</li>
+<li>Review the Power Fx expressions in the action's input parameters.</li>
+<li>Test the expressions by using sample data to determine the issue.</li>
+<li>Use the formula bar's error indicators to locate specific problems.</li>
+</ol>
+<p>Common causes include:</p>
+<ul>
+<li>Syntax errors.</li>
+<li>Type mismatches, such as comparing text to numbers without conversion.</li>
+<li>Null or blank values. For handling, use functions such as <code>IsBlank()</code>, <code>Coalesce()</code>, or <code>IfError()</code>.</li>
+<li>Invalid function usage.</li>
+</ul>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-power-fx" data-linktype="absolute-path">Use Power Fx in Copilot Studio</a>.</p>
+<h4 id="contenterror">ContentError</h4>
+<p><strong>Error message</strong>: This error produces dynamic messages based on the context of the error.</p>
+<p><strong>Resolution</strong>: This message is a catch-all error for problems that are related to your agent's content. The error message provides more details.</p>
+<p>Common problems include:</p>
+<ul>
+<li>A node is missing required properties.</li>
+<li>Invalid YAML was added by using the <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#edit-topics-with-the-code-editor" data-linktype="absolute-path">code editor</a>.</li>
+<li>A <a href="/en-us/microsoft-copilot-studio/advanced-power-fx" data-linktype="absolute-path">Power Fx formula</a> contains an error.</li>
+</ul>
+<h4 id="consentnotprovidedbyuser">ConsentNotProvidedByUser</h4>
+<p><strong>Error message</strong>: No consent provided for SSO connection.</p>
+<p><strong>Resolution</strong>: The user who's interacting with the agent must verify the connection by using the agent's single sign-on connection prompt.</p>
+<h4 id="datalosspreventionviolation">DataLossPreventionViolation</h4>
+<p><strong>Error message</strong>: This environment requires users to sign in before they can use the agent. Go to Manage &gt; Security &gt; Authentication and select the option that requires users to sign in.</p>
+<p><strong>Resolution</strong></p>
+<ul>
+<li>Your environment's data policies require that users sign in. See <a href="/en-us/microsoft-copilot-studio/advanced-end-user-authentication#add-user-authentication-with-the-sign-in-system-topic" data-linktype="absolute-path">Add user authentication with the Sign in system topic</a>.</li>
+<li>One or more connectors that you use in the agent aren't in the same data group. See <a href="/en-us/microsoft-copilot-studio/admin-data-loss-prevention#copilot-studio-connectors-and-data-groups" data-linktype="absolute-path">Copilot Studio connectors</a>.</li>
+<li>One or more connectors that you use in the agent were blocked by the tenant administrator.</li>
+</ul>
+<h4 id="conversationstatetoolarge">ConversationStateTooLarge</h4>
+<p><strong>Error message:</strong> Conversation state size exceeds the maximum allowed limit.</p>
+<p><strong>Resolution:</strong> The conversation accumulates too much data in its state, exceeding the allowed size limits. To resolve the problem:</p>
+<ol>
+<li>Reduce variable data by reviewing your topics and reducing the amount of data stored in variables during the conversation.</li>
+<li>Clear unused variables by setting them to blank if they're no longer needed.</li>
+<li>Simplify conversation flows by breaking complex conversations into smaller, more focused interactions.</li>
+<li>Avoid storing large JSON objects, arrays, or text blocks in conversation variables.</li>
+</ol>
+<p>To prevent this error:</p>
+<ul>
+<li>Use variables only for data that has to persist across topics.</li>
+<li>Consider using Power Automate flows to store and retrieve large data from external sources instead of keeping it in conversation state.</li>
+</ul>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/requirements-quotas" data-linktype="absolute-path">Copilot Studio quotas and limits</a>.</p>
+<h4 id="enforcementmessagec2">EnforcementMessageC2</h4>
+<p><strong>Error message</strong>: This agent is currently unavailable. It has reached its usage limit. Please try again later.</p>
+<p><strong>Resolution</strong>: This message appears if an agent reaches its message capacity or the pay-as-you-go meter reaches its limit. To resolve the problem, add more prepaid capacity or create a pay-as-you-go billing plan. The agent chat should then resume working within five minutes. For more information, see <a href="/en-us/microsoft-copilot-studio/requirements-messages-management#overage-enforcement" data-linktype="absolute-path">Overage Enforcement</a>.</p>
+<h4 id="flowactionbadrequest">FlowActionBadRequest</h4>
+<p><strong>Error messages</strong>:</p>
+<ul>
+<li>The parameter with name {KeyName} on flow {FlowName} ({FlowId}) is declared to be of type {ItemTypeKind}. This type isn't supported when invoking Power Automate. Currently, only Text, Boolean and Numbers are supported.</li>
+<li>The parameter with name {ItemKey} on flow {FlowName} ({FlowId}) is missing in the 'Call Flow' action.</li>
+<li>The parameter with name {KeyName} on flow {FlowName} ({FlowId}) evaluated to type {ResolveType}, expected type {ExpectedType}.</li>
+<li>The flow {FlowName} ({FlowId}) failed to run with response code {ResponseCode}, error code: {FlowErrorCode}.</li>
+</ul>
+<p><strong>Resolution</strong>: Verify that the <a href="/en-us/microsoft-copilot-studio/authoring-variables-about#variable-types" data-linktype="absolute-path">base type</a> of any variables that you pass to the flow matches the parameter type. For more information, see <a href="../channels/agent-flow-action-bad-request" data-linktype="relative-path">FlowActionBadRequest agent error in channels</a></p>
+<h4 id="flowactionexception">FlowActionException</h4>
+<p><strong>Error messages</strong>:</p>
+<ul>
+<li>No output was received from flow {FlowName} ({FlowId}), even though output was expected as per the agent definition.</li>
+<li>The output parameter with name {ItemKey} on flow {FlowName} ({FlowId}) is missing from the response data. Refresh the flow, or ensure the flow returns this value.</li>
+<li>The output parameter with name {ItemKey} on flow {FlowName} ({FlowId}) is missing from the output schema. Please refresh the flow.</li>
+</ul>
+<p><strong>Resolution</strong>: <a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">Check the flow for errors</a>.</p>
+<h4 id="flowactiontimedout">FlowActionTimedOut</h4>
+<p><strong>Error message</strong>: The flow with id {FlowId} has timed out. Error Code: {FlowErrorCode}</p>
+<p><strong>Resolution</strong>: <a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">Check the flow for errors</a> to understand why the cloud flow took more than 100 seconds to run before it returned to your agent. Try to optimize the query and the data that you return from the back-end system. If some of the cloud flow logic can continue to run after a result is sent to the agent, put these actions after the "Return value(s) to Copilot Studio" step in your cloud flow.</p>
+<h4 id="flowmakerconnectionblocked">FlowMakerConnectionBlocked</h4>
+<p><strong>Error message</strong>: The flow with name <code>{FlowName}</code> is using a maker connection, which isn't allowed. Error Code: <code>{FlowMakerConnectionBlocked}</code></p>
+<p><strong>Resolution</strong>: The administrator prevents using maker credentials in a connection that's invoked from the agent flow. <a href="/en-us/power-automate/overview-manage-cloud-flows#open-the-details-screen-for-a-flow" data-linktype="absolute-path">Open the flow in Power Automate</a> and <a href="/en-us/power-automate/create-team-flows#share-a-cloud-flow-with-run-only-permissions" data-linktype="absolute-path">share the cloud flow by using run-only permissions</a>.</p>
+<h4 id="genaisearchandsummarizeratelimitreached">GenAISearchandSummarizeRateLimitReached</h4>
+<p><strong>Error message</strong>: The usage limit for search and summarize has been reached. Please try again later.</p>
+<p><strong>Resolution</strong>: The agent returns this message if it reaches its <a href="/en-us/microsoft-copilot-studio/requirements-quotas#generative-ai-messages-to-an-agent" data-linktype="absolute-path">generative AI limit</a> to search and summarize sources. For more information, see <a href="../licensing/throttling-errors-agents" data-linktype="relative-path">Resolve throttling errors in agents</a>.</p>
+<h4 id="genaitoolplannerratelimitreached">GenAIToolPlannerRateLimitReached</h4>
+<p><strong>Error message</strong>: The usage limit for generative orchestration has been reached. Please try again later.</p>
+<p><strong>Resolution</strong>: The agent returns this message if it reaches its <a href="/en-us/microsoft-copilot-studio/requirements-quotas#generative-ai-messages-to-an-agent" data-linktype="absolute-path">generative orchestration limit</a>. For more information, see <a href="../licensing/throttling-errors-agents" data-linktype="relative-path">Resolve throttling errors in agents</a>.</p>
+<h4 id="infiniteloopinbotcontent">InfiniteLoopInBotContent</h4>
+<p><strong>Error message</strong>: Action {DialogId}.{TriggerId}.{ActionId} was executed more than {MaxTurnCount} times in a row. This indicates a cycle in execution of the dialog and hence dialog execution will be terminated.</p>
+<p><strong>Resolution</strong>: Make sure that the topic ends correctly and links to other topics that end correctly, such as the <strong>Escalate</strong> system topic.</p>
+<h4 id="invalidcontent">InvalidContent</h4>
+<p><strong>Error message</strong>: A total of {TotalComponents} component(s) exist in the agent, but none are valid.</p>
+<p><strong>Resolution</strong>: <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#edit-topics-with-the-code-editor" data-linktype="absolute-path">Open the code editor</a> to review problems that affect the content.</p>
+<h4 id="latestpublishedversionnotfound">LatestPublishedVersionNotFound</h4>
+<p><strong>Error message</strong>: Unable to retrieve the latest published version of the agent.</p>
+<p><strong>Resolution</strong>: <a href="/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels" data-linktype="absolute-path">Publish the agent</a>.</p>
+<h4 id="openaihate">OpenAIHate</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>A Responsible AI check blocks the content that's considered to be hateful. Hateful content refers to any content that attacks or uses discriminatory language against a person or identity group based on certain differentiating attributes of these groups.</p>
+<p>This restriction includes, but isn't limited to, content about:</p>
+<ul>
+<li>Race, ethnicity, nationality</li>
+<li>Gender identity groups and expression</li>
+<li>Sexual orientation</li>
+<li>Religion</li>
+<li>Personal appearance and body size</li>
+<li>Disability status</li>
+<li>Harassment and bullying</li>
+</ul>
+<p><strong>Resolution</strong>: To avoid this situation, reinforce responsible AI guidelines together with your agent users. You can also update the agent <a href="/en-us/microsoft-copilot-studio/knowledge-copilot-studio#content-moderation" data-linktype="absolute-path">content moderation</a> policies.</p>
+<h4 id="openaijailbreak">OpenAIJailBreak</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>A security check blocks the content of a jailbreak attempt. A jailbreak attempt is a user prompt attack that ignores system prompts and tries to alter the intended agent behavior. These attacks include attempts to change system rules, embedding a conversation mockup to confuse the model, role-play, and encoding attacks. For more information, see <a href="/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection" data-linktype="absolute-path">Prompt Shields in Azure AI Content Safety</a>.</p>
+<p><strong>Resolution</strong>: To avoid this situation, reinforce responsible AI guidelines together with your agent users. You can also update the agent <a href="/en-us/microsoft-copilot-studio/knowledge-copilot-studio#content-moderation" data-linktype="absolute-path">content moderation</a> policies.</p>
+<h4 id="openaindirectattack">OpenAIndirectAttack</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>An attack was detected from information that's not directly supplied by the agent author or the user, such as external documents. Attackers try to embed instructions in grounded data that's provided by the user in order to maliciously gain control of the system by:</p>
+<ul>
+<li>Manipulating content</li>
+<li>Intrusion</li>
+<li>Unauthorized data exfiltration or data removal from a system</li>
+<li>Blocking system capabilities</li>
+<li>Fraud</li>
+<li>Code execution and infecting other systems</li>
+</ul>
+<p>For more information, see <a href="/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection#prompt-shields-for-documents" data-linktype="absolute-path">Prompt Shields for documents</a>.</p>
+<p><strong>Resolution</strong>: If you're testing, and you didn't intend the test to be an attack, make sure that your instructions align with what you want the agent to be able to do. Otherwise, reinforce responsible AI guidelines together with your agent users to avoid this situation.</p>
+<h4 id="openaiselfharm">OpenAISelfHarm</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>A Responsible AI check blocked content that's related to self-harm. Self-harm describes language that's related to physical actions that are intended to purposely hurt, injure, damage one's body, or kill oneself.</p>
+<p>This restriction includes, but isn't limited to, content about:</p>
+<ul>
+<li>Eating disorders</li>
+<li>Bullying and intimidation</li>
+</ul>
+<p><strong>Resolution</strong>: To avoid this situation, reinforce responsible AI guidelines together with your agent users. You can also update the agent <a href="/en-us/microsoft-copilot-studio/knowledge-copilot-studio#content-moderation" data-linktype="absolute-path">content moderation</a> policies.</p>
+<h4 id="openaisexual">OpenAISexual</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>A Responsible AI check blocked content that's considered to be sexual. Sexual content describes language that's related to anatomical organs and genitals, romantic relationships, sexual acts, and acts that are portrayed in erotic or affectionate terms, including those portrayed as an assault or an act of sexual violence.</p>
+<p>This restriction includes, but isn't limited to, content about:</p>
+<ul>
+<li>Vulgar content</li>
+<li>Prostitution</li>
+<li>Nudity and pornography</li>
+<li>Abuse</li>
+<li>Child exploitation, child abuse, child grooming</li>
+</ul>
+<p><strong>Resolution</strong>: To avoid this situation, reinforce responsible AI guidelines together with your agent users. You can also update the agent <a href="/en-us/microsoft-copilot-studio/knowledge-copilot-studio#content-moderation" data-linktype="absolute-path">content moderation</a> policies.</p>
+<h4 id="openairatelimitreached">OpenAIRateLimitReached</h4>
+<p><strong>Error message</strong>: An error has occurred.</p>
+<p><strong>Resolution</strong>: Your agent reached the maximum number of generative answer responses. Review your <a href="/en-us/microsoft-copilot-studio/requirements-messages-management" data-linktype="absolute-path">message capacity</a>, and review the information in <a href="../licensing/throttling-errors-agents" data-linktype="relative-path">Resolve throttling errors in agents</a>.</p>
+<h4 id="openaiviolence">OpenAIViolence</h4>
+<p><strong>Error message</strong>: The content was filtered due to Responsible AI restrictions.</p>
+<p>A Responsible AI check blocked content that's considered to be violent. Violent content describes language that's related to physical actions that are intended to hurt, injure, damage, or kill someone or something. It also describes weapons, guns, and related entities.</p>
+<p>This restriction includes, but isn't limited to, content about:</p>
+<ul>
+<li>Weapons</li>
+<li>Bullying and intimidation</li>
+<li>Terrorist and violent extremism</li>
+<li>Stalking</li>
+</ul>
+<p><strong>Resolution</strong>: To avoid this situation, reinforce responsible AI guidelines together with your agent users. You can also update the agent <a href="/en-us/microsoft-copilot-studio/knowledge-copilot-studio#content-moderation" data-linktype="absolute-path">content moderation</a> policies.</p>
+<h4 id="outgoingmessagesizetoobig">OutgoingMessageSizeTooBig</h4>
+<p><strong>Error message</strong>: Outgoing message size too big.</p>
+<p><strong>Resolution</strong>: Depending on the channel that you use to transfer files, such as Direct Line or Facebook, you might receive the following error message: "The request content length exceeded limit of 262,144 bytes." These limits are imposed by the <a href="/en-us/azure/bot-service/bot-service-resources-faq-general?azure-bot-service-4.0#what-is-the-size-limit-of-a-file-transferred-using-channels&amp;preserve-view=true" data-linktype="absolute-path">channel</a>, not by Copilot Studio.</p>
+<p>In this scenario, consider a few options. One option is to provide a link to the resource as an internet attachment. Another option is to review your nodes to make sure that none of them use a variable that contains a large volume of text, such as a <code>JSON.stringify()</code> static method. If you use this method or a variable that contains a large volume of text, modify the node to pass only the portion of text that's necessary. For example, if you use an Adaptive Card to pass data to another topic, update the variable to pass only the necessary property.</p>
+<p>For more information, see <a href="/en-us/microsoft-copilot-studio/requirements-quotas#maximum-channel-data-message-size-limits-when-using-copilot-studio-in-omnichannel" data-linktype="absolute-path">Maximum channel data message size limits when using Copilot Studio in Omnichannel</a>.</p>
+<h4 id="redirecttodisableddialog">RedirectToDisabledDialog</h4>
+<p><strong>Error message</strong>: The Dialog with Id {DialogId} is disabled in the definition. Please enable the Dialog before using it.</p>
+<p><strong>Resolution</strong>: <a href="/en-us/microsoft-copilot-studio/authoring-topic-management" data-linktype="absolute-path">Re-enable the topic</a> or <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#delete-a-node" data-linktype="absolute-path">remove the redirect node</a>.</p>
+<h4 id="redirecttononexistentdialog">RedirectToNonExistentDialog</h4>
+<p><strong>Error message</strong>: The Dialog with Id {DialogId} wasn't found in the definition. Please check that the Dialog is present and that the Id is correct.</p>
+<p><strong>Resolution</strong>: <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#create-a-topic" data-linktype="absolute-path">Create a new topic</a> to redirect to, or <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#delete-a-node" data-linktype="absolute-path">remove the redirect node</a>.</p>
+<h4 id="systemerror">SystemError</h4>
+<p><strong>Error message</strong>: This error doesn't produce an error message.</p>
+<p><strong>Resolution</strong>: <a href="/en-us/microsoft-copilot-studio/fundamentals-support" data-linktype="absolute-path">Contact customer support</a>.</p>
+<h4 id="toomuchdatatohandle">TooMuchDataToHandle</h4>
+<p><strong>Error message</strong>: The request is resulting in too much data to handle, please evaluate the amount of data being returned by your actions.</p>
+<p><strong>Resolution</strong>: This error indicates that the request that was sent to OpenAI exceeds the maximum request size that's allowed. The request includes the user input, output from previous actions, tools that were called, and conversation history. Review the tools that you use. If it's possible, scope down their output to only the necessary fields. For more information, see <a href="/en-us/microsoft-copilot-studio/advanced-flow-create" data-linktype="absolute-path">Create a Power Automate flow</a> and <a href="/en-us/microsoft-copilot-studio/advanced-use-flow" data-linktype="absolute-path">Call a Power Automate flow as an action</a>.</p>
+</section>
+<section id="tabpanel_1_classic+teams" role="tabpanel" data-tab="classic+teams" aria-hidden="true" hidden="hidden">
+
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Bot response</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2000</strong></td>
+<td>"The user is trapped in an infinite loop. Check to make sure <code>{Topic Name}</code> reaches a logical conclusion."</td>
+<td>Make sure that the topic ends correctly, or links to other topics that end correctly, such as the <a href="/en-us/microsoft-copilot-studio/advanced-hand-off" data-linktype="absolute-path">Escalate</a> system topic.</td>
+</tr>
+<tr>
+<td><strong>2001</strong></td>
+<td>"The bot content is invalid."</td>
+<td><a href="/en-us/microsoft-copilot-studio/authoring-topic-management#view-topic-errors" data-linktype="absolute-path">Check the topic for errors</a>.</td>
+</tr>
+<tr>
+<td><strong>2002</strong></td>
+<td>"We ran into an issue with CDS."</td>
+<td>A problem occurred when you tried to access the <a href="/en-us/powerapps/maker/data-platform/data-platform-intro" data-linktype="absolute-path">Dataverse</a>. Check your configuration for errors. Otherwise, try again later because a service issue might exist.</td>
+</tr>
+<tr>
+<td><strong>2003</strong></td>
+<td>"There's a problem with <code>{Flow Name}</code> in <code>{Topic Name}</code>. Please check your content."</td>
+<td><a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">Check the flow for errors</a> and <a href="/en-us/power-automate/fix-flow-failures#identify-the-error" data-linktype="absolute-path">look for failed runs in the flow run history</a>.</td>
+</tr>
+<tr>
+<td><strong>2004</strong></td>
+<td>"There's a problem with <code>{Skill Name}</code> in <code>{Topic Name}</code>. Please check your content."</td>
+<td>A problem affects your skill. Check both <a href="/en-us/microsoft-copilot-studio/configuration-add-skills" data-linktype="absolute-path">the skill</a> and <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#view-topic-errors" data-linktype="absolute-path">topic</a> for errors messages.</td>
+</tr>
+<tr>
+<td><strong>2005</strong></td>
+<td>"We ran into a problem. Please check your content."</td>
+<td>A problem affects your Power Automate Flow template. <a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">Check the flow for errors</a>.</td>
+</tr>
+<tr>
+<td><strong>2006</strong></td>
+<td>"We couldn't find your bot."</td>
+<td>Your bot couldn't be found because the bot, or its environment, was deleted. To configure a new bot, see <a href="/en-us/microsoft-copilot-studio/authoring-first-bot" data-linktype="absolute-path">Create and delete agents</a>. To configure a new environment, see <a href="/en-us/microsoft-copilot-studio/environments-first-run-experience" data-linktype="absolute-path">Work with Power Platform environments</a>.</td>
+</tr>
+<tr>
+<td><strong>2007</strong></td>
+<td>"The bot contains too much content to be able to work."</td>
+<td>Reduce message lengths or number of topics, then try again. Read more about <a href="/en-us/microsoft-copilot-studio/requirements-quotas" data-linktype="absolute-path">content limits</a>.</td>
+</tr>
+<tr>
+<td><strong>2008</strong></td>
+<td>"We couldn't find the user's token."</td>
+<td>Check your bot's <a href="/en-us/microsoft-copilot-studio/advanced-end-user-authentication" data-linktype="absolute-path">authorization configuration</a> for errors.</td>
+</tr>
+<tr>
+<td><strong>2009</strong></td>
+<td>"To use this bot, publish it in Copilot Studio."</td>
+<td>To use this bot, <a href="/en-us/microsoft-copilot-studio/publication-fundamentals-publish-channels" data-linktype="absolute-path">publish it in Copilot Studio</a>.</td>
+</tr>
+<tr>
+<td><strong>2010</strong></td>
+<td>"We can't retrieve your bot content."</td>
+<td>Content couldn't be found because it was deleted. To configure a new agent, see <a href="/en-us/microsoft-copilot-studio/authoring-first-bot" data-linktype="absolute-path">Create and delete agents</a>. To configure a new environment, see <a href="/en-us/microsoft-copilot-studio/environments-first-run-experience" data-linktype="absolute-path">Work with Power Platform environments</a>.</td>
+</tr>
+<tr>
+<td><strong>2011</strong></td>
+<td>"We couldn't find <code>{Skill Name}</code> in <code>{Topic Name}</code>. Please check your content."</td>
+<td>Your skill couldn't be found because it was deleted. To create a skill, see <a href="/en-us/microsoft-copilot-studio/configuration-add-skills" data-linktype="absolute-path">Configure a Bot Framework skill</a>.</td>
+</tr>
+<tr>
+<td><strong>2012</strong></td>
+<td>"We couldn't find <code>{Flow Name}</code> in <code>{Topic Name}</code>. Please check your content."</td>
+<td>Your Power Automate Flow couldn't be found because it was deleted. To create a flow, see <a href="/en-us/microsoft-copilot-studio/advanced-flow-create" data-linktype="absolute-path">Create a flow</a>.</td>
+</tr>
+<tr>
+<td><strong>2014</strong></td>
+<td>"The translation service didn't respond."</td>
+<td>Try again later. If the issue persists, <a href="/en-us/microsoft-copilot-studio/fundamentals-support" data-linktype="absolute-path">contact customer support</a>.</td>
+</tr>
+<tr>
+<td><strong>2015</strong></td>
+<td>"You're not authorized to call <code>{Skill Name}</code>. Please check the skill and its usage for any issues."</td>
+<td>Check your <a href="/en-us/microsoft-copilot-studio/configuration-add-skills" data-linktype="absolute-path">skill's configuration</a>, and also check whether your bot is <a href="/en-us/azure/bot-service/skill-implement-skill" data-linktype="absolute-path">added to the skill's allowlist</a>.</td>
+</tr>
+<tr>
+<td><strong>2016</strong></td>
+<td>"Sorry, we couldn't find your bot."</td>
+<td>A problem affects an <a href="/en-us/microsoft-copilot-studio/publication-connect-bot-to-azure-bot-service-channels" data-linktype="absolute-path">Azure Bot Service channel</a>. The channel might be deleted or configured incorrectly.</td>
+</tr>
+<tr>
+<td><strong>2017</strong></td>
+<td>"Sorry, we couldn't access your bot."</td>
+<td>The <a href="/en-us/microsoft-copilot-studio/publication-connect-bot-to-azure-bot-service-channels" data-linktype="absolute-path">Azure Bot Service channel</a> couldn't be accessed. Check the channel configuration for authentication issues.</td>
+</tr>
+<tr>
+<td><strong>2018</strong></td>
+<td>"The user is typing too fast."</td>
+<td>You sent messages too quickly. Read more about <a href="/en-us/microsoft-copilot-studio/environments-first-run-experience" data-linktype="absolute-path">quotas and limits within Copilot Studio</a>.</td>
+</tr>
+<tr>
+<td><strong>2019</strong></td>
+<td>"We couldn't find your environment. It may have been deleted."</td>
+<td>Your environment was deleted. To configure a new environment, see <a href="/en-us/microsoft-copilot-studio/environments-first-run-experience" data-linktype="absolute-path">Work with Power Platform environments</a>.</td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>"Something happened, and <code>{Flow Name}</code> isn't working in <code>{Topic Name}</code>. Try again later. If the issue persists, check your flow's setup and run history."</td>
+<td>Your Power Automate flow isn't working. Try again later. If the issue persists, <a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">check the flow for errors</a>.</td>
+</tr>
+<tr>
+<td><strong>2021</strong></td>
+<td>"Number of dialogs executed in the current turn exceeded the maximum of <code>{Dialog Limit}</code>."</td>
+<td>By default, the maximum number of topics is 50. Reduce the number of topics, then try again.</td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td>"The bot sent more than <code>{Message Limit}</code> messages in this turn."</td>
+<td>Limit messages per turn to less than 30.</td>
+</tr>
+<tr>
+<td><strong>2024</strong></td>
+<td>"This environment requires users to sign in before they can use the bot. Go to Manage &gt; Security &gt; Authentication and select the option that requires users to sign in."</td>
+<td>Your environment data policies require that users sign in. To learn how to require users to sign in, see <a href="/en-us/microsoft-copilot-studio/configuration-end-user-authentication#required-user-sign-in-and-agent-sharing" data-linktype="absolute-path">Configure user authentication</a>.</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>"There are one or more empty nodes in topic <code>{Topic Name}</code>, Please check your content."</td>
+<td>Add content to empty nodes or remove them from the topic.</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>"<code>{Topic Name}</code> is redirecting to a topic, which has been turned off. Return to <code>{Topic Name}</code> and check your content."</td>
+<td>Your topic is <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#redirect-to-another-topic" data-linktype="absolute-path">redirecting</a> to another topic that has been turned off. <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#turn-a-topic-on-or-off" data-linktype="absolute-path">Turn on the other topic</a> or <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics" data-linktype="absolute-path">remove the redirect node</a>.</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>"The topic you're trying to redirect to no longer exists. Return to <code>{Topic Name}</code> and check your content."</td>
+<td>The topic you're trying to <a href="/en-us/microsoft-copilot-studio/authoring-topic-management#redirect-to-another-topic" data-linktype="absolute-path">redirect</a> to no longer exists. <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics#create-a-topic" data-linktype="absolute-path">Create a topic</a> to redirect to or <a href="/en-us/microsoft-copilot-studio/authoring-create-edit-topics" data-linktype="absolute-path">remove the redirect node</a>.</td>
+</tr>
+<tr>
+<td><strong>2026</strong></td>
+<td>"There was a problem with the Power Automate Flow. Please check your content."</td>
+<td><a href="/en-us/power-automate/error-checker" data-linktype="absolute-path">Check the flow for errors</a>.</td>
+</tr>
+<tr>
+<td><strong>2030</strong></td>
+<td>"Check Power Automate flow run history and ensure that flow ran successfully."</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>2100</strong> <em>(Teams only)</em></td>
+<td>"The user is typing too fast."</td>
+<td>Interactions with the bot are rate-limited to mitigate spam. Try again while typing slower.</td>
+</tr>
+<tr>
+<td><strong>2101</strong></td>
+<td>"The user's conversation with the bot was too long or the user's message was too long."</td>
+<td>Try to restart the conversation with the bot or use a shorter message.</td>
+</tr>
+<tr>
+<td><strong>2102</strong></td>
+<td>"The user sent a message which is too large to process."</td>
+<td>You sent a message that's too large to process. Shorten your message, then try again.</td>
+</tr>
+<tr>
+<td><strong>3000</strong></td>
+<td>"Unexpected error"</td>
+<td>A system error occurred. <a href="/en-us/microsoft-copilot-studio/fundamentals-support" data-linktype="absolute-path">Contact customer support</a> for more details.</td>
+</tr>
+<tr>
+<td><strong>3001</strong></td>
+<td>"Power Automate isn't available for your flow <code>{Flow Name}</code> now. Try again later."</td>
+<td>Power Automate isn't responding. Restart the conversation with your bot, and try again. If the issue persists, <a href="/en-us/microsoft-copilot-studio/fundamentals-support" data-linktype="absolute-path">contact customer support</a>.</td>
+</tr>
+<tr>
+<td><strong>3002</strong></td>
+<td>"Something happened in Power Automate, and your request to your flow <code>{Flow Name}</code> wasn't accepted. Try again later."</td>
+<td>An error occurred in Power Automate, and the request to your flow isn't accepted. Your flow might take more than two minutes to respond.</td>
+</tr>
+<tr>
+<td><strong>3003</strong></td>
+<td>"There's a network problem connecting to your flow <code>{Flow Name}</code>. Please try again later."</td>
+<td>Try again later. If the issue persists, <a href="/en-us/microsoft-copilot-studio/fundamentals-support" data-linktype="absolute-path">contact customer support</a>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+					
+		<div
+			id="ms--inline-notifications"
+			class="margin-block-xs"
+			data-bi-name="inline-notification"
+		></div>
+	 
+		<div
+			id="assertive-live-region"
+			role="alert"
+			aria-live="assertive"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+		<div
+			id="polite-live-region"
+			role="status"
+			aria-live="polite"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+	
+					
+		<!-- feedback section -->
+		<section
+			id="site-user-feedback-footer"
+			class="font-size-sm margin-top-md display-none-print display-none-desktop"
+			data-test-id="site-user-feedback-footer"
+			data-bi-name="site-feedback-section"
+		>
+			<hr class="hr" />
+			<h2 id="ms--feedback" class="title is-3">Feedback</h2>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="buttons">
+					<button
+						class="thumb-rating-button like button button-primary button-sm"
+						data-test-id="footer-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+						<span>Yes</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike button button-primary button-sm"
+						id="standard-rating-no-button"
+						hidden
+						data-test-id="footer-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+						<span>No</span>
+					</button>
+					<details
+						class="popover popover-top"
+						id="mobile-help-popover"
+						data-test-id="footer-feedback-popover"
+					>
+						<summary
+							class="thumb-rating-button dislike button button-primary button-sm"
+							data-test-id="details-footer-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+							<span>No</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading"
+							aria-describedby="popover-description"
+						>
+							<p id="popover-heading" class="font-size-lg margin-bottom-xxs font-weight-semibold">
+								Need help with this topic?
+							</p>
+							<p id="popover-description" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		<!-- end feedback section -->
+	
+				</div>
+				
+		<div id="ms--additional-resources-mobile" class="display-none-print">
+			<hr class="hr" hidden />
+			<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>
+				Additional resources
+			</h2>
+			
+		<section
+			id="right-rail-recommendations-mobile"
+			class=""
+			data-bi-name="recommendations"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-training-mobile"
+			class=""
+			data-bi-name="learning-resource-card"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-events-mobile"
+			class=""
+			data-bi-name="events-card"
+			hidden
+		></section>
+	
+		</div>
+	 
+		<div
+			id="article-metadata-footer"
+			data-bi-name="article-metadata-footer"
+			data-test-id="article-metadata-footer"
+			class="page-metadata-container"
+		>
+			<hr class="hr" />
+			<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+				<li class="visibility-hidden-visual-diff">
+			<span class="badge badge-sm text-wrap-pretty">
+				<span>Last updated on <local-time format="twoDigitNumeric"
+		datetime="2026-03-10T08:00:00.000Z"
+		data-article-date-source="calculated"
+		class="is-invisible"
+	>
+		2026-03-10
+	</local-time></span>
+			</span>
+		</li>
+			</ul>
+		</div>
+	
+			</div>
+			
+		<div
+			id="action-panel"
+			role="region"
+			aria-label="Action Panel"
+			class="action-panel"
+			tabindex="-1"
+		></div>
+	
+		
+				</main>
+				<aside
+					id="layout-body-aside"
+					class="layout-body-aside  "
+					data-bi-name="aside"
+					aria-label="Additional resources"
+			  >
+					
+		<div
+			id="ms--additional-resources"
+			class="right-container padding-sm display-none display-block-desktop height-full"
+			data-bi-name="pageactions"
+		>
+			<div id="affixed-right-container" data-bi-name="right-column">
+				
+		<nav
+			id="side-doc-outline"
+			class="doc-outline border-bottom padding-bottom-xs margin-bottom-xs scrollbar-width-thin"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h3>In this article</h3>
+		</nav>
+	
+				<!-- Feedback -->
+				
+		<section
+			id="ms--site-user-feedback-right-rail"
+			class="font-size-sm display-none-print"
+			data-test-id="site-user-feedback-right-rail"
+			data-bi-name="site-feedback-right-rail"
+		>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="display-flex flex-wrap-nowrap">
+					<button
+						class="thumb-rating-button like inner-focus"
+						data-test-id="right-rail-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						aria-label="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike inner-focus"
+						id="right-rail-no-button"
+						hidden
+						data-test-id="right-rail-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						aria-label="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+					</button>
+					<details class="popover popover-right" id="help-popover" data-test-id="feedback-popover">
+						<summary
+							tabindex="0"
+							class="thumb-rating-button dislike inner-focus"
+							data-test-id="details-right-rail-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							aria-label="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading-right-rail"
+							aria-describedby="popover-description-right-rail"
+						>
+							<p
+								id="popover-heading-right-rail"
+								class="font-size-lg margin-bottom-xxs font-weight-semibold"
+							>
+								Need help with this topic?
+							</p>
+							<p id="popover-description-right-rail" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+	
+			</div>
+		</div>
+	
+			  </aside> <section
+					id="layout-body-flyout"
+					class="layout-body-flyout "
+					data-bi-name="flyout"
+			  >
+					 <div
+	class="height-full border-left background-color-body-medium"
+	id="ask-learn-flyout"
+></div>
+			  </section> <div class="layout-body-footer " data-bi-name="layout-footer">
+		<footer
+			id="footer"
+			data-test-id="footer"
+			data-bi-name="footer"
+			class="footer-layout padding-xs padding-sm-desktop has-default-focus border-top"
+			role="contentinfo"
+		>
+			<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
+				
+		<a
+			data-mscc-ic="false"
+			href="#"
+			data-bi-name="select-locale"
+			class="locale-selector-link flex-shrink-0 button button-sm button-clear external-link-indicator"
+			id=""
+			title=""
+			><span class="icon" aria-hidden="true"
+				><span class="docon docon-world"></span></span
+			><span class="local-selector-link-text">en-us</span></a
+		>
+	 <div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://aka.ms/yourcaliforniaprivacychoices"
+			data-bi-name="your-privacy-choices"
+			class="button button-sm button-clear flex-shrink-0 external-link-indicator"
+			id=""
+			title=""
+			>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 30 14"
+			xml:space="preserve"
+			height="16"
+			width="43"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<path
+				d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"
+			></path>
+			<path
+				d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"
+			></path>
+			<path
+				d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"
+				style="fill:#fff"
+			></path>
+			<path
+				d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"
+				style="fill:#06f"
+			></path>
+		</svg>
+	
+			<span>Your Privacy Choices</span></a
+		>
+	
+	</div>
+				<div class="flex-shrink-0">
+		<div class="dropdown has-caret-up">
+			<button
+				data-test-id="theme-selector-button"
+				class="dropdown-trigger button button-clear button-sm inner-focus theme-dropdown-trigger"
+				aria-controls="{{ themeMenuId }}"
+				aria-expanded="false"
+				title="Theme"
+				data-bi-name="theme"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-sun"></span></span>
+				<span>Theme</span>
+				<span class="icon expanded-indicator" aria-hidden="true">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<div class="dropdown-menu" id="{{ themeMenuId }}" role="menu">
+				<ul class="theme-selector padding-xxs" data-test-id="theme-dropdown-menu">
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="light"
+						>
+							<span class="theme-light margin-right-xxs">
+								<span
+									class="theme-selector-icon border display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> Light </span>
+						</button>
+					</li>
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="dark"
+						>
+							<span class="theme-dark margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> Dark </span>
+						</button>
+					</li>
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="high-contrast"
+						>
+							<span class="theme-high-contrast margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> High contrast </span>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+			</div>
+			<ul class="links" data-bi-name="footerlinks">
+				<li class="manage-cookies-holder" hidden=""></li>
+				<li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/principles-for-ai-generated-content"
+			data-bi-name="aiDisclaimer"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>AI Disclaimer</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/previous-versions/"
+			data-bi-name="archivelink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Previous Versions</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog"
+			data-bi-name="bloglink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Blog</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/contribute"
+			data-bi-name="contributorGuide"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Contribute</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?LinkId=521839"
+			data-bi-name="privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?linkid=2259814"
+			data-bi-name="consumer-health-privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Consumer Health Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/legal/termsofuse"
+			data-bi-name="termsofuse"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Terms of Use</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/"
+			data-bi-name="trademarks"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Trademarks</a
+		>
+	
+	</li>
+				<li>&copy; Microsoft 2026</li>
+			</ul>
+		</footer>
+	</footer>
+			</body>
+		</html>

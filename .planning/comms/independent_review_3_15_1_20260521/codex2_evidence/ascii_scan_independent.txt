@@ -1,0 +1,11 @@
+Independent ASCII scan
+Package: D:\VMs\Projetos\STT_Project_Management\Solution\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip
+Entries expected: 5
+
+PASS botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data bytes=8605 nonAscii=0
+PASS botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data bytes=15260 nonAscii=0
+PASS botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data bytes=1218 nonAscii=0
+PASS botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data bytes=6893 nonAscii=0
+PASS botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data bytes=2100 nonAscii=0
+
+ViolationCount: 0

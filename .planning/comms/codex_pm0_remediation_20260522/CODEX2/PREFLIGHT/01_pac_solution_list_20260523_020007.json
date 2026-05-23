@@ -1,0 +1,6 @@
+{
+    "command":  "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe solution list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "exitCode":  0,
+    "stdout":  "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\nListing all Solutions from the current Dataverse organization...\r\nUnique Name              Friendly Name                         Version        Managed\r\nCreee23                  Common Data Services Default Solution 1.0.0.0        False\r\nCopilotStudioAccelerator Copilot Studio Kit                    20260313.2     True\r\nCreatorKitCore           Creator Kit                           1.0.20250310.1 True\r\nmpa_LeaveManagement      Leave Management (Preview)            1.0.0.9        True\r\nPMO_AQ07_CopilotBinding  PMO AQ07 Copilot Binding              1.0.0.1        False\r\nPMO_v11_Tarefas          PMO v1.1 - Task Management Topics     3.16           False\r\nDefault                  Solución predeterminada               1.0            False\r\n\r\n",
+    "stderr":  ""
+}

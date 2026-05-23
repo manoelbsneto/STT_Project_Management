@@ -1,0 +1,66 @@
+[
+  {
+    "flow": "AtualizarStatus",
+    "responseAction": "Respond_Success",
+    "path": "Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "responseBody": "{\"result\":\"@{concat('Status registrado para ', triggerBody()?['projectId'], '. RAG: ', triggerBody()?['rag'], '. Percentual: ', string(coalesce(triggerBody()?['percentual'], 0)), '%. Status item: ', string(body('Create_StatusDiario')?['ID']), '. Projeto item: ', string(body('Update_SharePoint_Project')?['ID']), '. Teams card: ', coalesce(string(body('Post_Status_Card')?['id']), 'posted'))}\"}",
+    "dynamicIndicators": [
+      "triggerBody",
+      "body\\(",
+      "Create_StatusDiario",
+      "Post_Status_Card",
+      "ProjectID"
+    ]
+  },
+  {
+    "flow": "AtualizarTarefa",
+    "responseAction": "Respond_Success",
+    "path": "Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "responseBody": "{\"result\":\"@{concat('Tarefa ', coalesce(triggerBody()?['taskId'], triggerBody()?['spItemId']), ' atualizada para ', coalesce(triggerBody()?['status'], triggerBody()?['taskStatus'], string(body('Update_SharePoint_Item')?['Status']?['Value']), ''), '. Responsavel: ', if(empty(triggerBody()?['responsavel']), 'mantido', triggerBody()?['responsavel']), '. Prazo: ', if(empty(triggerBody()?['dataFim']), 'mantido', triggerBody()?['dataFim']), '. Item SP: ', string(body('Update_SharePoint_Item')?['ID']), '. Planner percent: ', string(outputs('Determine_Bucket_and_Percent')?['percentComplete']), '.')}\"}",
+    "dynamicIndicators": [
+      "triggerBody",
+      "body\\(",
+      "outputs\\(",
+      "Update_SharePoint_Item",
+      "Planner",
+      "Responsavel",
+      "taskId"
+    ]
+  },
+  {
+    "flow": "CriarTarefa",
+    "responseAction": "Respond_Success",
+    "path": "Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "responseBody": "{\"result\":\"@{concat('Tarefa criada: ', coalesce(triggerBody()?['title'], triggerBody()?['taskTitle'], string(body('Create_SharePoint_Item')?['Title']), ''), ' (Projeto ', coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId']), ', Item SP ', string(body('Create_SharePoint_Item')?['ID']), ', Planner ', coalesce(string(body('Create_Planner_Task')?['id']), ''), ', Bucket ', outputs('Determine_Bucket_and_Status')?['status'], ').')}\"}",
+    "dynamicIndicators": [
+      "triggerBody",
+      "body\\(",
+      "outputs\\(",
+      "Create_SharePoint_Item",
+      "Planner",
+      "ProjectID",
+      "Title",
+      "title"
+    ]
+  },
+  {
+    "flow": "ListarTarefas",
+    "responseAction": "Respond_Success",
+    "path": "Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "responseBody": "{\"result\":\"@{outputs('Normalize_Tasks_Display')}\"}",
+    "dynamicIndicators": [
+      "outputs\\(",
+      "Normalize_Tasks"
+    ]
+  },
+  {
+    "flow": "ConsultarPortfolio",
+    "responseAction": "Respond_Success",
+    "path": "Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "responseBody": "{\"result\":\"@{concat('Portfolio PMO: ', string(length(body('Get_Projetos')?['value'])), ' projetos; ', string(length(body('Get_Tarefas')?['value'])), ' tarefas. Fonte: SharePoint Projetos e Tarefas.')}\"}",
+    "dynamicIndicators": [
+      "body\\(",
+      "Get_Tarefas"
+    ]
+  }
+]

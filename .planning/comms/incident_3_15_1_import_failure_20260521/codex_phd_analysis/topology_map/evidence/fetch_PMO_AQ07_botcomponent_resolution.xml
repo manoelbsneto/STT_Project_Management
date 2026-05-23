@@ -1,0 +1,26 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="or">
+      <condition attribute="botcomponentid" operator="eq" value="bd507ab1-7455-400e-8379-153ce34427f8" />
+      <condition attribute="botcomponentid" operator="eq" value="0956d0c0-05f1-429c-8893-6352a927d535" />
+      <condition attribute="botcomponentid" operator="eq" value="f6afac82-ec2b-47fb-a3d6-4aebad708702" />
+      <condition attribute="botcomponentid" operator="eq" value="0635831a-6b13-45d6-b10e-983fcc63eefe" />
+      <condition attribute="botcomponentid" operator="eq" value="beb83cc5-c09c-4cd3-a279-20846686ea3e" />
+      <condition attribute="botcomponentid" operator="eq" value="3f9abdf2-8801-4602-83dd-002a31f0b53e" />
+      <condition attribute="botcomponentid" operator="eq" value="48b72cbd-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="ca7233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="c37233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="c57233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="c27233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="cd7233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponentid" operator="eq" value="b59678d8-a850-f111-bec7-7ced8d955c6c" />
+    </filter>
+    <order attribute="schemaname" />
+  </entity>
+</fetch>

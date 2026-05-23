@@ -1,0 +1,17 @@
+Agent: Codex #2
+Timestamp BRT: 2026-05-22 16:50:00 BRT
+Step: Package build and inventory validation
+Result: LOCAL_PACKAGE_BUILT
+
+{
+    "outputZip":  "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "sha256":  "FE45D69201154BC9A2CBF54DD86F7CCE7200969C31965F8333CF0FE61FCDBE1D",
+    "version":  "3.16.0.0",
+    "workflowCount":  5
+}
+
+
+Algorithm : SHA256
+Hash      : FE45D69201154BC9A2CBF54DD86F7CCE7200969C31965F8333CF0FE61FCDBE1D
+Path      : D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\package\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip
+

@@ -1,0 +1,110 @@
+mcs.metadata:
+  componentName: ExcluirProjeto
+  description: Remove projeto do portfolio ativo por exclusao logica com confirmacao.
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ExcluirProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - excluir projeto
+      - remover projeto
+      - desativar projeto
+      - arquivar projeto
+      - cancelar projeto
+      - excluir projeto:
+      - remover projeto:
+      - desativar projeto:
+      - arquivar projeto:
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+    - kind: SetVariable
+      id: parse_project
+      variable: Topic.Projeto
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_reason
+      variable: Topic.Motivo
+      value: =If(IsMatch(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: ConditionGroup
+      id: ask_missing_project
+      conditions:
+        - id: missing_project
+          condition: =IsBlank(Topic.Projeto)
+          actions:
+            - kind: Question
+              id: ask_project
+              variable: Topic.Projeto
+              prompt: Qual projeto voce quer remover do portfolio ativo?
+              entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_reason
+      conditions:
+        - id: missing_reason
+          condition: =IsBlank(Topic.Motivo)
+          actions:
+            - kind: Question
+              id: ask_reason
+              variable: Topic.Motivo
+              prompt: Qual o motivo da remocao?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_delete_project
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou remover este projeto do portfolio ativo.
+        Projeto: {Topic.Projeto}
+        Motivo: {Topic.Motivo}
+
+        O registro sera mantido no SharePoint para auditoria.
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: InvokeFlowAction
+              id: call_excluir_projeto
+              input:
+                binding:
+                  text: =Topic.Projeto
+                  text_1: =Topic.Motivo
+                  text_2: ="mbenicios@minsait.com"
+
+              flowId: 16fbe313-2edc-406e-ad7f-d08cee0edc43
+
+            - kind: SendActivity
+              id: excluir_project_done
+              activity: Projeto removido do portfolio ativo. O registro foi mantido no SharePoint para auditoria.
+
+            - kind: EndDialog
+              id: end_excluir_project
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: excluir_project_cancelled
+          activity: Ok, remocao cancelada. Nenhum registro foi alterado.
+
+        - kind: EndDialog
+          id: end_excluir_project_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}

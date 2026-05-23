@@ -1,0 +1,16 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <attribute name="data" />
+    <filter type="and">
+      <condition attribute="schemaname" operator="like" value="pmo_AssistentePMO_V2.action.PM0_PA_Card_%" />
+    </filter>
+    <order attribute="schemaname" />
+  </entity>
+</fetch>

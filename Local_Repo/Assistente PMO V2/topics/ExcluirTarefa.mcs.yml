@@ -1,0 +1,131 @@
+mcs.metadata:
+  componentName: ExcluirTarefa
+  description: Remove uma tarefa especifica por exclusao logica com confirmacao.
+kind: AdaptiveDialog
+startBehavior: CancelOtherTopics
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: ExcluirTarefa
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - excluir tarefa
+      - remover tarefa
+      - apagar tarefa
+      - cancelar tarefa
+      - arquivar tarefa
+      - excluir linha
+      - remover linha
+      - excluir tarefa:
+      - remover tarefa:
+
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+
+
+    - kind: SetVariable
+      id: parse_project_name
+      variable: Topic.ProjectName
+      value: =If(IsMatch(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "projeto\s+(?<v>.+?)\s+(?:tarefa|id|linha|motivo)\b", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "projeto\s+(?<v>.+?)\s+(?:tarefa|id|linha|motivo)\b", MatchOptions.IgnoreCase).v), Blank()))
+    - kind: SetVariable
+      id: parse_task_id
+      variable: Topic.TaskID
+      value: =If(IsMatch(Topic.RawInput, "(?:tarefa|id|linha)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase), Value(Match(Topic.RawInput, "(?:tarefa|id|linha)\s*[:=]?\s*#?(?<v>\d+)", MatchOptions.IgnoreCase).v), Blank())
+
+    - kind: SetVariable
+      id: parse_reason
+      variable: Topic.Motivo
+      value: =If(IsMatch(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "motivo\s+(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "motivo\s+(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "^\s*(?:excluir|remover|apagar|cancelar|arquivar)\s+(?:tarefa|linha)\s+(?:tarefa\s*|id\s*|linha\s*)?[:=]?\s*#?\d+\s+(?<v>.+?)\s*$", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "^\s*(?:excluir|remover|apagar|cancelar|arquivar)\s+(?:tarefa|linha)\s+(?:tarefa\s*|id\s*|linha\s*)?[:=]?\s*#?\d+\s+(?<v>.+?)\s*$", MatchOptions.IgnoreCase).v), Blank())))
+
+    - kind: ConditionGroup
+      id: ask_missing_project_name
+      conditions:
+        - id: missing_project_name
+          condition: =IsBlank(Topic.ProjectName)
+          actions:
+            - kind: Question
+              id: ask_project_name
+              variable: Topic.ProjectName
+              prompt: Qual projeto contem a tarefa que voce quer remover?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_task_id
+      conditions:
+        - id: missing_task_id
+          condition: =IsBlank(Topic.TaskID)
+          actions:
+            - kind: Question
+              id: ask_task_id
+              variable: Topic.TaskID
+              prompt: Qual e o ID da tarefa que voce quer remover? Use o ID exibido em listar tarefas.
+              entity: NumberPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: ask_missing_reason
+      conditions:
+        - id: missing_reason
+          condition: =IsBlank(Topic.Motivo)
+          actions:
+            - kind: Question
+              id: ask_reason
+              variable: Topic.Motivo
+              prompt: Qual o motivo da remocao da tarefa?
+              entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: confirm_delete_task
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou remover a tarefa #{Topic.TaskID} do projeto {Topic.ProjectName}.
+        Motivo: {Topic.Motivo}
+
+        O registro sera mantido no SharePoint para auditoria.
+
+        Confirma?
+      entity: StringPrebuiltEntity
+
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "y", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo", Lower(Trim(Topic.ConfirmacaoTexto)) = "ok")
+          actions:
+            - kind: InvokeFlowAction
+              id: call_excluir_tarefa
+              input:
+                binding:
+                  number: =Topic.TaskID
+                  text: =Topic.Motivo
+                  text_1: ="mbenicios@minsait.com"
+                  text_2: =Topic.ProjectName
+
+              output:
+                binding:
+                  message: Topic.ExcluirTarefaMensagem
+
+              flowId: 70b39334-5926-4fb1-bd22-f10bd99f0f6d
+
+            - kind: SendActivity
+              id: excluir_task_done
+              activity: "{Topic.ExcluirTarefaMensagem}"
+
+            - kind: EndDialog
+              id: end_excluir_task
+              clearTopicQueue: true
+
+      elseActions:
+        - kind: SendActivity
+          id: excluir_task_cancelled
+          activity: Ok, remocao cancelada. Nenhum registro foi alterado.
+
+        - kind: EndDialog
+          id: end_excluir_task_cancelled
+          clearTopicQueue: true
+
+inputType: {}
+outputType: {}
+

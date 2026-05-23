@@ -3,20 +3,20 @@
    Built on DSS Universal Standard v3.0
    - Hero: Canvas 2D Geodesic Sphere
    - IntersectionObserver scroll reveals
-   - Markdown → DSS-compliant dashboard renderer
+   - Markdown → State-Based C-Level Dashboard Renderer
+   - Dynamically Editable Checkboxes, Sorting, and Global Search
    ============================================= */
 
 (function () {
   'use strict';
 
   const $ = id => document.getElementById(id);
-  const fileInput   = $('fileInput'),
-        heroSection = $('heroSection'),
-        dashboard   = $('dashboard'),
-        dropZone    = $('dropZone'),
-        btnDemo     = $('btnDemo'),
-        sidebarNav  = $('dynamicNav'),
-        sidebarGate = $('sidebarGate'),
+  const fileInput     = $('fileInput'),
+        heroSection   = $('heroSection'),
+        dashboard     = $('dashboard'),
+        dropZone      = $('dropZone'),
+        btnDemo       = $('btnDemo'),
+        sidebarNav    = $('dynamicNav'),
         topbarTitle   = $('topbarTitle'),
         topbarEyebrow = $('topbarEyebrow'),
         topbarDate    = $('topbarDate'),
@@ -26,7 +26,122 @@
         dynSections   = $('dynamicSections'),
         footerTs      = $('footerTs'),
         btnNavHome    = $('btnNavHome'),
-        heroCanvas    = $('heroCanvas');
+        heroCanvas    = $('heroCanvas'),
+        btnLangToggle = $('btnLangToggle'),
+        globalSearch  = $('globalSearch');
+
+  /* ════════════════════════════════════════
+     IN-MEMORY STATE MODEL
+     ════════════════════════════════════════ */
+  const state = {
+    rawMarkdown: '',
+    meta: { title: '', date: '', env: '', bot: '' },
+    sections: [],
+    searchQuery: '',
+    currentLang: localStorage.getItem('pmo_lang') || 'en'
+  };
+
+  /* ════════════════════════════════════════
+     INTERNATIONALIZATION (i18n) DICTIONARY
+     ════════════════════════════════════════ */
+  const i18n = {
+    en: {
+      hero_eyebrow: "Executive Intelligence Platform · v3.0",
+      hero_title: "Transform <span class=\"hero__title--accent\">Status Data</span><br>into Executive Insight",
+      hero_desc: "Upload any project .md status file and instantly render a brand-compliant C-level dashboard with real-time KPI extraction, built entirely on the official Indra corporate palette.",
+      upload_file: "Upload Status File",
+      load_demo: "Load Demo",
+      drag_hint: "Drag & drop supported",
+      kpi_overview: "KPI Overview",
+      passed: "Passed",
+      pending: "Pending",
+      failed: "Failed",
+      completion_rate: "Completion Rate",
+      badge_pass: "● Pass",
+      badge_pending: "● Pending",
+      badge_fail: "● Fail",
+      search_placeholder: "Search details...",
+      status_report: "Status Report",
+      drop_hint: "Drop your .md file here",
+      footer_brand: "<span class=\"footer-accent\">Minsait</span> · Indra Group · PMO Executive Intelligence",
+      total_items: "Total Items",
+      completion: "Completion",
+      on_track: "▲ On Track",
+      at_risk: "▼ At Risk",
+      critical: "▼ Critical",
+      clear_search: "Clear Search",
+      no_search_matches: "No Search Matches",
+      no_search_desc: "No content in any section matches your search term \"<strong>{query}</strong>\".",
+      error_title: "Parsing Failed",
+      error_desc: "The file could not be parsed. Please check if it is a valid markdown file containing headings (##) and sections.",
+      error_retry: "Load Demo Data",
+      loading_data: "Loading Status Data...",
+      gate_ship: "Ship",
+      gate_conditional: "Conditional",
+      gate_noship: "No-Ship",
+      section: "Section"
+    },
+    pt: {
+      hero_eyebrow: "Plataforma de Inteligência Executiva · v3.0",
+      hero_title: "Transforme <span class=\"hero__title--accent\">Dados de Status</span><br>em Insight Executivo",
+      hero_desc: "Faça upload de qualquer arquivo .md de status do projeto e renderize instantaneamente um painel de nível executivo em conformidade com a marca, com extração de KPI em tempo real, construído inteiramente na paleta corporativa oficial da Indra.",
+      upload_file: "Carregar Arquivo",
+      load_demo: "Carregar Demo",
+      drag_hint: "Suporte para arrastar e soltar",
+      kpi_overview: "Visão Geral de KPIs",
+      passed: "Aprovados",
+      pending: "Pendentes",
+      failed: "Falhos",
+      completion_rate: "Taxa de Conclusão",
+      badge_pass: "● Sucesso",
+      badge_pending: "● Pendente",
+      badge_fail: "● Falha",
+      search_placeholder: "Pesquisar detalhes...",
+      status_report: "Relatório de Status",
+      drop_hint: "Solte seu arquivo .md aqui",
+      footer_brand: "<span class=\"footer-accent\">Minsait</span> · Grupo Indra · Inteligência Executiva de PMO",
+      total_items: "Total de Itens",
+      completion: "Conclusão",
+      on_track: "▲ No Prazo",
+      at_risk: "▼ Em Risco",
+      critical: "▼ Crítico",
+      clear_search: "Limpar Busca",
+      no_search_matches: "Nenhum Resultado",
+      no_search_desc: "Nenhum conteúdo em qualquer seção corresponde ao termo de busca \"<strong>{query}</strong>\".",
+      error_title: "Falha na Leitura",
+      error_desc: "O arquivo não pôde ser processado. Verifique se é um arquivo markdown válido contendo títulos (##) e seções.",
+      error_retry: "Carregar Dados Demo",
+      loading_data: "Carregando Dados de Status...",
+      gate_ship: "Liberar",
+      gate_conditional: "Condicional",
+      gate_noship: "Bloquear",
+      section: "Seção"
+    }
+  };
+
+  function translatePage() {
+    const lang = state.currentLang;
+    const dict = i18n[lang] || i18n.en;
+
+    const btnLangText = btnLangToggle?.querySelector('.lang-text');
+    if (btnLangText) {
+      btnLangText.textContent = lang.toUpperCase();
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key]) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (dict[key]) {
+        el.setAttribute('placeholder', dict[key]);
+      }
+    });
+  }
 
   /* ════════════════════════════════════════
      SCROLL REVEAL — DSS [data-animate]
@@ -218,13 +333,13 @@
   };
 
   function classify(t) {
-    const l = t.toLowerCase().replace(/[*_`]/g, '');
+    const l = t.toLowerCase().replace(/[*_`]/g, '').trim();
     for (const [k, v] of Object.entries(SM)) if (l.includes(k)) return v;
     return '';
   }
 
-  function detectGate(md) {
-    const l = md.toLowerCase();
+  function detectGate(mdString) {
+    const l = mdString.toLowerCase();
     if (l.includes('no-ship') || l.includes('noship')) return 'noship';
     if (l.includes('conditional')) return 'conditional';
     if (/\bship\b/.test(l)) return 'ship';
@@ -237,7 +352,8 @@
   function parseMD(raw) {
     const lines = raw.split('\n'), sections = [];
     let cur = null;
-    const meta = { title: '', date: '', env: '', bot: '', pkg: '', pub: '' };
+    const meta = { title: '', date: '', env: '', bot: '' };
+    let blockIdCounter = 0;
 
     for (let i = 0; i < lines.length; i++) {
       const ln = lines[i];
@@ -254,12 +370,6 @@
       if (/^Bot:/i.test(ln)) {
         meta.bot = ln.replace(/^Bot:\s*/i, '').trim(); continue;
       }
-      if (/^Latest package/i.test(ln)) {
-        meta.pkg = ln.replace(/^Latest package[^:]*:\s*/i, '').replace(/`/g, '').trim(); continue;
-      }
-      if (/^Latest publish/i.test(ln)) {
-        meta.pub = ln.replace(/^Latest publish[^:]*:\s*/i, '').trim(); continue;
-      }
       if (/^## (.+)/.test(ln)) {
         cur = { heading: ln.replace(/^## /, '').trim(), blocks: [] };
         sections.push(cur); continue;
@@ -270,31 +380,95 @@
       if (ln.trim().startsWith('|') && ln.includes('|')) {
         const tl = [ln]; let j = i + 1;
         while (j < lines.length && lines[j].trim().startsWith('|')) { tl.push(lines[j]); j++; }
-        if (tl.length >= 2) { cur.blocks.push({ type: 'table', lines: tl }); i = j - 1; continue; }
-      }
-      // Ordered list
-      if (/^\d+\.\s/.test(ln.trim())) {
-        const items = [ln.trim().replace(/^\d+\.\s*/, '')]; let j = i + 1;
-        while (j < lines.length && /^\d+\.\s/.test(lines[j].trim())) {
-          items.push(lines[j].trim().replace(/^\d+\.\s*/, '')); j++;
+        if (tl.length >= 2) {
+          const parsed = parseTable(tl);
+          const statusColIndex = parsed.h.findIndex(col => /status/i.test(col));
+          
+          const rows = parsed.d.map((cells, rowIndex) => {
+            let originalStatus = '';
+            let completed = false;
+            if (statusColIndex >= 0) {
+              originalStatus = cells[statusColIndex] || '';
+              const stClass = classify(originalStatus);
+              completed = (stClass === 'pass' || stClass === 'done' || stClass === 'completed' || stClass === 'ship' || stClass === 'ready');
+            }
+            return {
+              id: `row-${blockIdCounter}-${rowIndex}`,
+              cells: [...cells],
+              originalCells: [...cells],
+              originalStatus: originalStatus,
+              completed: completed
+            };
+          });
+
+          cur.blocks.push({
+            id: `block-${blockIdCounter++}`,
+            type: 'table',
+            headers: parsed.h,
+            rows: rows,
+            statusColIndex: statusColIndex,
+            sortColumnIndex: null,
+            sortAscending: true
+          });
+          i = j - 1;
+          continue;
         }
-        cur.blocks.push({ type: 'list', items }); i = j - 1; continue;
       }
-      // Unordered list
-      if (/^[-*]\s/.test(ln.trim())) {
-        const items = [ln.trim().replace(/^[-*]\s*/, '')]; let j = i + 1;
-        while (j < lines.length && /^[-*]\s/.test(lines[j].trim())) {
-          items.push(lines[j].trim().replace(/^[-*]\s*/, '')); j++;
+      // Ordered list or Unordered list
+      if (/^\d+\.\s/.test(ln.trim()) || /^[-*]\s/.test(ln.trim())) {
+        const items = [];
+        let j = i;
+        while (j < lines.length && (/^\d+\.\s/.test(lines[j].trim()) || /^[-*]\s/.test(lines[j].trim()))) {
+          const text = lines[j].trim().replace(/^\d+\.\s*/, '').replace(/^[-*]\s*/, '');
+          let completed = false;
+          let cleanText = text;
+          let isChecklist = false;
+          if (text.startsWith('[ ]')) {
+            completed = false;
+            cleanText = text.substring(3).trim();
+            isChecklist = true;
+          } else if (text.startsWith('[x]') || text.startsWith('[X]')) {
+            completed = true;
+            cleanText = text.substring(3).trim();
+            isChecklist = true;
+          }
+          
+          items.push({
+            id: `item-${blockIdCounter}-${items.length}`,
+            text: cleanText,
+            completed: completed,
+            isChecklist: isChecklist
+          });
+          j++;
         }
-        cur.blocks.push({ type: 'list', items }); i = j - 1; continue;
+        
+        cur.blocks.push({
+          id: `block-${blockIdCounter++}`,
+          type: 'list',
+          items: items
+        });
+        i = j - 1;
+        continue;
       }
       // Code
       if (ln.trim().startsWith('```')) {
         const cl = []; let j = i + 1;
         while (j < lines.length && !lines[j].trim().startsWith('```')) { cl.push(lines[j]); j++; }
-        cur.blocks.push({ type: 'code', content: cl.join('\n') }); i = j; continue;
+        cur.blocks.push({
+          id: `block-${blockIdCounter++}`,
+          type: 'code',
+          content: cl.join('\n')
+        });
+        i = j;
+        continue;
       }
-      if (ln.trim()) cur.blocks.push({ type: 'p', text: ln.trim() });
+      if (ln.trim()) {
+        cur.blocks.push({
+          id: `block-${blockIdCounter++}`,
+          type: 'p',
+          text: ln.trim()
+        });
+      }
     }
     return { meta, sections };
   }
@@ -307,6 +481,9 @@
     return { h, d };
   }
 
+  /* ════════════════════════════════════════
+     TEXT RENDER UTILITIES
+     ════════════════════════════════════════ */
   function escapeHtml(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
@@ -318,66 +495,314 @@
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
-  function pill(t) {
-    const c = classify(t);
-    const clean = t.replace(/[*_`]/g, '').trim();
-    return c ? `<span class="pill ${c}">${escapeHtml(clean)}</span>` : escapeHtml(clean);
+  /**
+   * highlightHtml — highlight plain text (NOT HTML) search matches.
+   * NEVER pass already-escaped HTML here; escape first, then call this.
+   * @param {string} text - plain text string (already escaped)
+   * @param {string} query - raw query string
+   * @returns {string} text with <mark> wrappers around matches
+   */
+  function highlightHtml(text, query) {
+    if (!query) return text;
+    // Escape the user's query for use in a regex literal
+    const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      const regex = new RegExp(`(${safeQuery})`, 'gi');
+      return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+    } catch (e) {
+      // If the query produces an invalid regex (edge case), return unhighlighted
+      return text;
+    }
   }
 
-  function extractKPIs(secs) {
+  function pill(t, query) {
+    const c = classify(t);
+    const clean = t.replace(/[*_`]/g, '').trim();
+    const highlighted = highlightHtml(escapeHtml(clean), query);
+    return c ? `<span class="pill ${c}">${highlighted}</span>` : highlighted;
+  }
+
+  function renderCell(cellText, isStatus, query) {
+    if (isStatus) {
+      return pill(cellText, query);
+    } else {
+      const escaped = escapeHtml(cellText);
+      const highlighted = highlightHtml(escaped, query);
+      return inlineMD(highlighted);
+    }
+  }
+
+  /* ════════════════════════════════════════
+     KPI CALCULATOR FROM CURRENT STATE
+     ════════════════════════════════════════ */
+  function extractKPIs(sections) {
     const kpis = [];
     let pass = 0, pend = 0, fail = 0, total = 0;
-    for (const s of secs) for (const b of s.blocks) {
-      if (b.type !== 'table') continue;
-      const { h, d } = parseTable(b.lines);
-      const si = h.findIndex(x => /status/i.test(x));
-      if (si < 0) continue;
-      for (const r of d) {
-        const st = (r[si] || '').toLowerCase().replace(/[*_`]/g, '');
-        total++;
-        if (st.includes('pass') || st.includes('done') || st.includes('completed')) pass++;
-        else if (st.includes('fail') || st.includes('noship')) fail++;
-        else pend++;
+    const dict = i18n[state.currentLang] || i18n.en;
+    for (const s of sections) {
+      for (const b of s.blocks) {
+        if (b.type !== 'table' || b.statusColIndex < 0) continue;
+        for (const row of b.rows) {
+          total++;
+          if (row.completed) {
+            pass++;
+          } else {
+            const st = (row.cells[b.statusColIndex] || '').toLowerCase().replace(/[*_`]/g, '');
+            if (st.includes('fail') || st.includes('noship') || st.includes('error')) {
+              fail++;
+            } else {
+              pend++;
+            }
+          }
+        }
       }
     }
     if (total > 0) {
-      kpis.push({ l: 'Total Items', v: total, c: 'c' });
-      kpis.push({ l: 'Passed',      v: pass,  c: 's' });
-      kpis.push({ l: 'Pending',     v: pend,  c: pend ? 'w' : 's' });
-      kpis.push({ l: 'Failed',      v: fail,  c: fail ? 'e' : 's' });
+      kpis.push({ l: dict.total_items, v: total, c: 'c' });
+      kpis.push({ l: dict.passed,      v: pass,  c: 's' });
+      kpis.push({ l: dict.pending,     v: pend,  c: pend ? 'w' : 's' });
+      kpis.push({ l: dict.failed,      v: fail,  c: fail ? 'e' : 's' });
       const pct = Math.round((pass / total) * 100);
-      kpis.push({ l: 'Completion', v: pct + '%', c: pct >= 80 ? 's' : pct >= 50 ? 'w' : 'e' });
+      kpis.push({ l: dict.completion, v: pct + '%', c: pct >= 80 ? 's' : pct >= 50 ? 'w' : 'e' });
     }
     return kpis;
   }
 
   /* ════════════════════════════════════════
-     RENDER
+     SEARCH FILTERING CRITERIA
      ════════════════════════════════════════ */
-  function render(parsed) {
-    const { meta, sections } = parsed;
-    const gate = detectGate(JSON.stringify(parsed));
+  function hasVisibleContent(sec, query) {
+    if (!query) return true;
+    const q = query.toLowerCase();
+    
+    if (sec.heading.toLowerCase().includes(q)) return true;
 
-    // Topbar
-    topbarTitle.textContent = meta.title || 'Status Report';
+    for (const b of sec.blocks) {
+      if (b.type === 'table') {
+        if (b.headers.some(h => h.toLowerCase().includes(q))) return true;
+        if (b.rows.some(r => r.cells.some(c => c.toLowerCase().includes(q)))) return true;
+      } else if (b.type === 'list') {
+        if (b.items.some(item => item.text.toLowerCase().includes(q))) return true;
+      } else if (b.type === 'code') {
+        if (b.content.toLowerCase().includes(q)) return true;
+      } else if (b.type === 'p') {
+        if (b.text.toLowerCase().includes(q)) return true;
+      }
+    }
+    return false;
+  }
+
+  /* ════════════════════════════════════════
+     INTERACTIVE COMPONENT ACTIONS (Toggles/Sorts)
+     ════════════════════════════════════════ */
+  function toggleRowCheckbox(rowId, blockId, sectionIndex, checked) {
+    const sec = state.sections[sectionIndex];
+    if (!sec) return;
+    const block = sec.blocks.find(b => b.id === blockId);
+    if (!block || block.type !== 'table') return;
+    const row = block.rows.find(r => r.id === rowId);
+    if (!row) return;
+
+    row.completed = checked;
+    if (block.statusColIndex >= 0) {
+      if (checked) {
+        row.cells[block.statusColIndex] = 'PASS';
+      } else {
+        const origClass = classify(row.originalStatus);
+        const origIsPass = (origClass === 'pass' || origClass === 'done' || origClass === 'completed' || origClass === 'ship' || origClass === 'ready');
+        row.cells[block.statusColIndex] = origIsPass ? 'PENDING' : row.originalStatus;
+      }
+    }
+    
+    renderDashboard(false);
+    pulseKPIs();
+  }
+
+  function toggleSelectAll(blockId, sectionIndex, checked) {
+    const sec = state.sections[sectionIndex];
+    if (!sec) return;
+    const block = sec.blocks.find(b => b.id === blockId);
+    if (!block || block.type !== 'table') return;
+
+    const query = state.searchQuery.toLowerCase();
+
+    block.rows.forEach(row => {
+      // If a search query is active, only toggle rows that match the query
+      const matches = !query || 
+                      block.headers.some(hdr => hdr.toLowerCase().includes(query)) ||
+                      row.cells.some(cell => cell.toLowerCase().includes(query));
+      
+      if (matches) {
+        row.completed = checked;
+        if (block.statusColIndex >= 0) {
+          if (checked) {
+            row.cells[block.statusColIndex] = 'PASS';
+          } else {
+            const origClass = classify(row.originalStatus);
+            const origIsPass = (origClass === 'pass' || origClass === 'done' || origClass === 'completed' || origClass === 'ship' || origClass === 'ready');
+            row.cells[block.statusColIndex] = origIsPass ? 'PENDING' : row.originalStatus;
+          }
+        }
+      }
+    });
+    
+    renderDashboard(false);
+    pulseKPIs();
+  }
+
+  function toggleListCheckbox(itemId, blockId, sectionIndex, checked) {
+    const sec = state.sections[sectionIndex];
+    if (!sec) return;
+    const block = sec.blocks.find(b => b.id === blockId);
+    if (!block || block.type !== 'list') return;
+    const item = block.items.find(i => i.id === itemId);
+    if (!item) return;
+
+    item.completed = checked;
+    renderDashboard(false);
+    pulseKPIs();
+  }
+
+  function sortTable(blockId, sectionIndex, columnIndex) {
+    const sec = state.sections[sectionIndex];
+    if (!sec) return;
+    const block = sec.blocks.find(b => b.id === blockId);
+    if (!block || block.type !== 'table') return;
+
+    if (block.sortColumnIndex === columnIndex) {
+      block.sortAscending = !block.sortAscending;
+    } else {
+      block.sortColumnIndex = columnIndex;
+      block.sortAscending = true;
+    }
+
+    const dir = block.sortAscending ? 1 : -1;
+
+    block.rows.sort((rowA, rowB) => {
+      let valA = rowA.cells[columnIndex] || '';
+      let valB = rowB.cells[columnIndex] || '';
+
+      const numA = parseFloat(valA.replace(/[^\d.-]/g, ''));
+      const numB = parseFloat(valB.replace(/[^\d.-]/g, ''));
+      if (!isNaN(numA) && !isNaN(numB)) {
+        return (numA - numB) * dir;
+      }
+
+      return valA.localeCompare(valB, undefined, { numeric: true, sensitivity: 'base' }) * dir;
+    });
+
+    renderDashboard(false);
+  }
+
+    // ── KPI Pulse Animation ──
+  function pulseKPIs() {
+    const cards = kpiRow.querySelectorAll('.kpi-card');
+    cards.forEach(card => {
+      card.classList.add('kpi-card--pulse');
+      card.addEventListener('animationend', () => {
+        card.classList.remove('kpi-card--pulse');
+      }, { once: true });
+    });
+  }
+
+  // ── Skeleton Loader (Accessible, i18n-ready) ──
+  function showSkeleton() {
+    heroSection.style.display = 'none';
+    dashboard.style.display = 'block';
+    $('kpiSection').style.display = 'none';
+    
+    const dict = i18n[state.currentLang] || i18n.en;
+    topbarTitle.textContent = dict.loading_data || 'Loading...';
+    topbarEyebrow.textContent = '...';
+    topbarDate.querySelector('span').textContent = '—';
+    topbarEnv.querySelector('span').textContent = '—';
+    topbarGate.innerHTML = '';
+    
+    dynSections.innerHTML = `
+      <div class="skeleton-container" role="status" aria-live="polite" aria-busy="true" aria-label="${dict.loading_data || 'Loading status data'}">
+        <div class="skeleton-card">
+          <div class="skeleton-bar skeleton-bar--title" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--line" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--line" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--short" aria-hidden="true"></div>
+        </div>
+        <div class="skeleton-card">
+          <div class="skeleton-bar skeleton-bar--title" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--line" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--line" aria-hidden="true"></div>
+          <div class="skeleton-bar skeleton-bar--short" aria-hidden="true"></div>
+        </div>
+      </div>
+    `;
+  }
+
+  function showErrorState(msg) {
+    heroSection.style.display = 'none';
+    dashboard.style.display = 'block';
+    $('kpiSection').style.display = 'none';
+    
+    const dict = i18n[state.currentLang] || i18n.en;
+    topbarTitle.textContent = dict.error_title;
+    topbarEyebrow.textContent = 'ERROR';
+    topbarDate.querySelector('span').textContent = '—';
+    topbarEnv.querySelector('span').textContent = '—';
+    topbarGate.innerHTML = '';
+    
+    dynSections.innerHTML = `
+      <div class="error-alert-box">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <h3>${dict.error_title}</h3>
+        <p>${msg || dict.error_desc}</p>
+        <button class="btn btn-secondary" id="btnErrorRetry" type="button">${dict.error_retry}</button>
+      </div>
+    `;
+    
+    const retryBtn = $('btnErrorRetry');
+    if (retryBtn) {
+      retryBtn.addEventListener('click', () => {
+        btnDemo.click();
+      });
+    }
+  }
+
+  /*
+     RENDER DASHBOARD
+     Refactored to use Event Delegation for all interactions.
+  */
+  function renderDashboard(resetScroll = true) {
+    const { meta, sections } = state;
+    const query = state.searchQuery;
+    const gate = detectGate(JSON.stringify(sections));
+    const dict = i18n[state.currentLang] || i18n.en;
+
+    /* ── Topbar ── */
+    topbarTitle.textContent = meta.title || dict.status_report;
     topbarEyebrow.textContent = (meta.bot || 'PMO STATUS REPORT').toUpperCase();
     topbarDate.querySelector('span').textContent = meta.date || new Date().toISOString().slice(0, 10);
     topbarEnv.querySelector('span').textContent = meta.env ? meta.env.split('(')[0].trim() : '—';
 
     const gm = {
-      noship:      { l: 'No-Ship',      c: 'noship' },
-      conditional: { l: 'Conditional',  c: 'conditional' },
-      ship:        { l: 'Ship',         c: 'ship' }
+      noship:      { l: dict.gate_noship,      c: 'noship' },
+      conditional: { l: dict.gate_conditional,  c: 'conditional' },
+      ship:        { l: dict.gate_ship,         c: 'ship' }
     };
-    const g = gm[gate];
+    const g = gm[gate] || gm.noship;
     topbarGate.innerHTML = `<span class="gate-pill ${g.c}">${g.l}</span>`;
 
-    // Sidebar gate
-    sidebarGate.className = 'sidebar__status' +
-      (gate === 'ship' ? ' ship' : gate === 'conditional' ? ' conditional' : '');
-    sidebarGate.querySelector('.gate-label').textContent = g.l.toUpperCase();
+    /* ── Sidebar colour sync ── */
+    const logo = document.querySelector('.sidebar__logo');
+    if (logo) {
+      logo.style.background =
+        gate === 'ship' ? 'var(--indra-success)' :
+        gate === 'conditional' ? 'var(--indra-warning)' :
+        'var(--indra-error)';
+      logo.style.color = 'var(--indra-white)';
+      logo.style.transition = 'background var(--duration-normal) var(--ease-out)';
+    }
 
-    // KPIs
+    /* ── KPI recalculation ── */
     const kpis = extractKPIs(sections);
     kpiRow.innerHTML = '';
     if (!kpis.length) {
@@ -389,101 +814,280 @@
         d.className = 'kpi-card';
         d.setAttribute('data-animate', '');
         d.style.transitionDelay = (i * 80) + 'ms';
-        d.innerHTML = `<div class="kpi-label">${k.l}</div><div class="kpi-val ${k.c}">${k.v}</div>`;
+        let changeHtml = '';
+        if (k.l === dict.completion) {
+          if (k.c === 's') changeHtml = `<div class="kpi-change up">${dict.on_track}</div>`;
+          else if (k.c === 'w') changeHtml = `<div class="kpi-change down">${dict.at_risk}</div>`;
+          else changeHtml = `<div class="kpi-change down">${dict.critical}</div>`;
+        }
+        d.innerHTML = `
+          <div class="kpi-label">${k.l}</div>
+          <div class="kpi-val ${k.c}">${k.v}</div>
+          ${changeHtml}
+        `;
         kpiRow.appendChild(d);
       });
     }
 
-    // Sidebar nav buttons (flat DSS style)
-    sidebarNav.innerHTML = '<div class="nav-section-label">Sections</div>';
-    sections.forEach((s, i) => {
+    /* ── Sidebar nav buttons ── */
+    sidebarNav.innerHTML = '';
+    let visibleSectionCount = 0;
+    sections.forEach((sec, idx) => {
+      if (!hasVisibleContent(sec, query)) return;
       const btn = document.createElement('button');
       btn.className = 'sidebar-btn';
       btn.type = 'button';
-      btn.dataset.target = 'sec-' + i;
-      const label = s.heading.length > 24 ? s.heading.slice(0, 22) + '…' : s.heading;
+      btn.title = sec.heading;
+      btn.dataset.target = 'sec-' + idx;
       btn.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="18" height="18" rx="0"/>
           <path d="M3 9h18"/>
         </svg>
-        <span>${escapeHtml(label)}</span>
       `;
       btn.addEventListener('click', () => {
-        document.getElementById('sec-' + i)?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('sec-' + idx)?.scrollIntoView({ behavior: 'smooth' });
         document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('sidebar-btn--active'));
         btn.classList.add('sidebar-btn--active');
       });
       sidebarNav.appendChild(btn);
+      visibleSectionCount++;
     });
 
-    // Sections
+    /* ── Sections ── */
     dynSections.innerHTML = '';
     sections.forEach((sec, idx) => {
+      if (!hasVisibleContent(sec, query)) return;
+
       const el = document.createElement('section');
       el.className = 'exec-section';
       el.id = 'sec-' + idx;
       el.setAttribute('data-animate', '');
       el.style.transitionDelay = (idx * 80) + 'ms';
 
-      let h = `<p class="sec-eyebrow">Section ${String(idx + 1).padStart(2, '0')}</p>`;
-      h += `<h2 class="sec-title">${escapeHtml(sec.heading)}</h2>`;
+      let h = `<p class="sec-eyebrow">${dict.section} ${String(idx + 1).padStart(2, '0')}</p>`;
+      h += `<h2 class="sec-title">${highlightHtml(escapeHtml(sec.heading), query)}</h2>`;
 
       for (const b of sec.blocks) {
         if (b.type === 'table') {
-          const { h: hd, d } = parseTable(b.lines);
-          const si = hd.findIndex(x => /status/i.test(x));
-          h += '<div class="table-wrap"><table class="exec-table"><thead><tr>';
-          hd.forEach(c => { h += `<th>${escapeHtml(c)}</th>`; });
-          h += '</tr></thead><tbody>';
-          d.forEach(r => {
-            h += '<tr>';
-            r.forEach((c, ci) => { h += `<td>${ci === si ? pill(c) : inlineMD(escapeHtml(c))}</td>`; });
-            for (let p = r.length; p < hd.length; p++) h += '<td></td>';
-            h += '</tr>';
+          const filteredRows = b.rows.filter(row => {
+            if (!query) return true;
+            const q = query.toLowerCase();
+            if (b.headers.some(hdr => hdr.toLowerCase().includes(q))) return true;
+            return row.cells.some(cell => cell.toLowerCase().includes(q));
           });
-          h += '</tbody></table></div>';
+
+          if (filteredRows.length === 0) continue;
+
+          const allCompleted = filteredRows.length > 0 && filteredRows.every(r => r.completed);
+
+          let tblHtml = `<div class="table-wrap">
+            <table class="data-table" data-block-id="${b.id}">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">
+                    <input type="checkbox" class="tbl-check select-all" data-block-id="${b.id}" ${allCompleted ? 'checked' : ''} aria-label="Select all rows">
+                  </th>`;
+          
+          b.headers.forEach((hdr, ci) => {
+            let sortIndicator = '';
+            if (b.sortColumnIndex === ci) {
+              sortIndicator = `<span class="sort-indicator">${b.sortAscending ? '▲' : '▼'}</span>`;
+            }
+            tblHtml += `<th class="sort-header" data-column-index="${ci}">${highlightHtml(escapeHtml(hdr), query)}${sortIndicator}</th>`;
+          });
+
+          tblHtml += `</tr></thead><tbody>`;
+
+          filteredRows.forEach(row => {
+            tblHtml += `<tr class="${row.completed ? 'completed-row' : ''}">
+              <td>
+                <input type="checkbox" class="tbl-check row-check" data-row-id="${row.id}" ${row.completed ? 'checked' : ''} aria-label="Select row">
+              </td>`;
+            row.cells.forEach((cell, ci) => {
+              tblHtml += `<td>${renderCell(cell, ci === b.statusColIndex, query)}</td>`;
+            });
+            for (let p = row.cells.length; p < b.headers.length; p++) {
+              tblHtml += '<td></td>';
+            }
+            tblHtml += '</tr>';
+          });
+
+          tblHtml += `</tbody></table></div>`;
+          h += tblHtml;
+
         } else if (b.type === 'list') {
-          h += '<ol class="exec-list">';
-          b.items.forEach(i => { h += `<li>${inlineMD(escapeHtml(i))}</li>`; });
+          const filteredItems = b.items.filter(item => {
+            if (!query) return true;
+            return item.text.toLowerCase().includes(query.toLowerCase());
+          });
+
+          if (filteredItems.length === 0) continue;
+
+          h += `<ol class="exec-list" data-block-id="${b.id}">`;
+          filteredItems.forEach(item => {
+            h += `<li class="has-checkbox ${item.completed ? 'completed-item' : ''}">
+              <input type="checkbox" class="list-check" data-item-id="${item.id}" ${item.completed ? 'checked' : ''} aria-label="Toggle completed">
+              <span>${highlightHtml(inlineMD(escapeHtml(item.text)), query)}</span>
+            </li>`;
+          });
           h += '</ol>';
+
         } else if (b.type === 'code') {
-          h += `<div class="exec-code">${escapeHtml(b.content)}</div>`;
-        } else {
-          h += `<p class="exec-p">${inlineMD(escapeHtml(b.text))}</p>`;
+          if (query && !b.content.toLowerCase().includes(query.toLowerCase())) continue;
+          h += `<div class="exec-code">${highlightHtml(escapeHtml(b.content), query)}</div>`;
+
+        } else if (b.type === 'p') {
+          if (query && !b.text.toLowerCase().includes(query.toLowerCase())) continue;
+          h += `<p class="exec-p">${highlightHtml(inlineMD(escapeHtml(b.text)), query)}</p>`;
         }
       }
       el.innerHTML = h;
       dynSections.appendChild(el);
     });
 
-    footerTs.textContent = 'Rendered ' + new Date().toLocaleString('pt-BR');
+    /* ── Empty state on search ── */
+    if (visibleSectionCount === 0 && query) {
+      const emptyCard = document.createElement('div');
+      emptyCard.className = 'glass-card';
+      emptyCard.style.margin = '48px auto';
+      emptyCard.style.maxWidth = '500px';
+      emptyCard.style.textAlign = 'center';
+      emptyCard.style.padding = '40px 24px';
+      
+      const descText = dict.no_search_desc.replace('{query}', escapeHtml(query));
+      
+      emptyCard.innerHTML = `
+        <div style="font-size: 40px; color: var(--indra-cyan); margin-bottom: 16px;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: inline-block;">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/>
+          </svg>
+        </div>
+        <h3 class="text-h3" style="margin-bottom: 8px;">${dict.no_search_matches}</h3>
+        <p class="exec-p" style="margin: 0 auto 24px; font-size: 14px; color: var(--indra-light);">
+          ${descText}
+        </p>
+        <button class="btn btn-secondary" id="btnClearSearch" type="button">${dict.clear_search}</button>
+      `;
+      dynSections.appendChild(emptyCard);
+      $('btnClearSearch').addEventListener('click', () => {
+        if (globalSearch) {
+          globalSearch.value = '';
+        }
+        state.searchQuery = '';
+        renderDashboard(false);
+      });
+    }
 
-    // Transition
+    const locale = state.currentLang === 'pt' ? 'pt-BR' : 'en-US';
+    const prefix = state.currentLang === 'pt' ? 'Renderizado em ' : 'Rendered ';
+    footerTs.textContent = prefix + new Date().toLocaleString(locale);
+
     heroSection.style.display = 'none';
     dashboard.style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Re-observe new [data-animate] elements
-    observeAnimated(dashboard);
-
-    // Home button
-    btnNavHome.onclick = () => {
+    if (resetScroll) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('sidebar-btn--active'));
-      btnNavHome.classList.add('sidebar-btn--active');
-    };
+    }
+
+    observeAnimated(dashboard);
+    // Event Delegation: ONE listener on dynSections replaces per-element listeners
+    // bindEvents removed; delegation attached to dynSections
   }
 
   /* ════════════════════════════════════════
-     FILE HANDLING
+     DATA LOAD AND LOADER BRIDGE
+     ════════════════════════════════════════ */
+  function loadAndRenderMD(mdText) {
+    showSkeleton();
+    
+    setTimeout(() => {
+      try {
+        if (!mdText || !mdText.trim()) {
+          throw new Error('Empty status file.');
+        }
+        
+        const parsed = parseMD(mdText);
+        
+        if (!parsed.meta.title && parsed.sections.length === 0) {
+          throw new Error('No valid sections or titles found.');
+        }
+        
+        state.rawMarkdown = mdText;
+        state.meta = parsed.meta;
+        state.sections = parsed.sections;
+        state.searchQuery = '';
+        if (globalSearch) {
+          globalSearch.value = '';
+        }
+        renderDashboard(true);
+      } catch (err) {
+        console.error(err);
+        const dict = i18n[state.currentLang] || i18n.en;
+        showErrorState(dict.error_desc);
+      }
+    }, 300); // 300ms simulated transition
+  }
+
+  // ════════════════════════════════════════
+  //  EVENT DELEGATION — single listener for all dashboard interactions
+  // ════════════════════════════════════════
+  dynSections.addEventListener('click', (e) => {
+    const target = e.target;
+    
+    // 1. Sort headers click
+    const sortHeader = target.closest('.sort-header');
+    if (sortHeader) {
+      const table = sortHeader.closest('table');
+      const secIdx  = parseInt(table.closest('section').id.replace('sec-', ''));
+      const blockId = table.dataset.blockId;
+      const colIdx  = parseInt(sortHeader.dataset.columnIndex);
+      sortTable(blockId, secIdx, colIdx);
+      return;
+    }
+
+    // 2. "Select All" checkbox in table header
+    const selectAll = target.closest('.select-all');
+    if (selectAll) {
+      const table   = selectAll.closest('table');
+      const secIdx  = parseInt(table.closest('section').id.replace('sec-', ''));
+      const blockId = selectAll.dataset.blockId;
+      toggleSelectAll(blockId, secIdx, selectAll.checked);
+      return;
+    }
+
+    // 3. Individual row checkbox
+    const rowCheck = target.closest('.row-check');
+    if (rowCheck) {
+      const table   = rowCheck.closest('table');
+      const secIdx  = parseInt(table.closest('section').id.replace('sec-', ''));
+      const blockId = table.dataset.blockId;
+      const rowId   = rowCheck.dataset.rowId;
+      toggleRowCheckbox(rowId, blockId, secIdx, rowCheck.checked);
+      return;
+    }
+
+    // 4. List item checkbox
+    const listCheck = target.closest('.list-check');
+    if (listCheck) {
+      const ol      = listCheck.closest('ol');
+      const secIdx  = parseInt(ol.closest('section').id.replace('sec-', ''));
+      const blockId = ol.dataset.blockId;
+      const itemId  = listCheck.dataset.itemId;
+      toggleListCheckbox(itemId, blockId, secIdx, listCheck.checked);
+      return;
+    }
+  });
+
+  /* ════════════════════════════════════════
+     FILE HANDLING & TRIGGERS
      ════════════════════════════════════════ */
   function handleFile(f) {
     if (!f) return;
     const r = new FileReader();
-    r.onload = e => { render(parseMD(e.target.result)); };
+    r.onload = e => { loadAndRenderMD(e.target.result); };
     r.readAsText(f, 'utf-8');
   }
+
   fileInput.addEventListener('change', e => handleFile(e.target.files[0]));
 
   // Drag & drop
@@ -500,6 +1104,14 @@
     handleFile(e.dataTransfer.files[0]);
   });
 
+  // Global search input listener
+  if (globalSearch) {
+    globalSearch.addEventListener('input', (e) => {
+      state.searchQuery = e.target.value.trim();
+      renderDashboard(false);
+    });
+  }
+
   // Scroll spy
   window.addEventListener('scroll', () => {
     const btns = sidebarNav.querySelectorAll('.sidebar-btn');
@@ -514,10 +1126,10 @@
   });
 
   /* ════════════════════════════════════════
-     DEMO DATA
+     DEMO DATA LOAD
      ════════════════════════════════════════ */
   btnDemo.addEventListener('click', () => {
-    render(parseMD(
+    loadAndRenderMD(
 `# PMO 360 Status Report
 
 Date: ${new Date().toISOString().slice(0, 10)}
@@ -561,7 +1173,22 @@ Bot: Assistente PMO V2
 Status: NO-SHIP until v1.14 runtime proof and final export audit are complete.
 
 Reason: Core read/write P0 smoke tests are green, but PM-friendly removal is now the remaining P0 release capability and must be proven in live Copilot + SharePoint before release.`
-    ));
+    );
   });
+
+  // Language toggle click
+  if (btnLangToggle) {
+    btnLangToggle.addEventListener('click', () => {
+      state.currentLang = state.currentLang === 'en' ? 'pt' : 'en';
+      localStorage.setItem('pmo_lang', state.currentLang);
+      translatePage();
+      if (state.rawMarkdown) {
+        renderDashboard(false);
+      }
+    });
+  }
+
+  // Initial translation on boot
+  translatePage();
 
 })();

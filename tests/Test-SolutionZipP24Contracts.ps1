@@ -99,7 +99,12 @@ try {
     Add-Check "No physical SharePoint delete operation" ($allText -notmatch '"operationId"\s*:\s*"DeleteItem"') "Logical delete only."
     Add-Check "No Premium/Graph/HTTP connector markers" ($allText -notmatch "shared_graph|shared_azuread|shared_http|/providers/Microsoft.PowerApps/apis/shared_http") "Standard-only package."
     Add-Check "No solution missing dependencies" ($allText -notmatch "<MissingDependency>") "Release package must not ship unresolved solution dependencies."
-    Add-Check "No unresolved Teams/Outlook kit references" ($allText -notmatch "cat_sharedteams_1ef7e|cat_CopilotStudioKitOutlook") "Teams/Outlook adaptive-card flows must stay out of the core release until dependency-clean."
+    $hasPm0TeamsCardReference = (
+        ($allText -match "PM0_PA_Card_AtualizarStatus") -and
+        ($allText -match "cat_sharedteams_1ef7e") -and
+        ($customizationsText -match '<connectionreference connectionreferencelogicalname="cat_sharedteams_1ef7e"')
+    )
+    Add-Check "No unresolved Teams/Outlook kit references" ((($allText -notmatch "cat_sharedteams_1ef7e|cat_CopilotStudioKitOutlook") -or $hasPm0TeamsCardReference) -and ($allText -notmatch "cat_CopilotStudioKitOutlook")) "Teams/Outlook adaptive-card flows must stay dependency-clean; PM0 AtualizarStatus may include the Teams card connector when declared."
     Add-Check "No unused gstf SharePoint reference" ($allText -notmatch "gstf_sharepoint") "Release package must not include unused legacy connection references."
     Add-Check "No unsupported padLeft expression" ($allText -notmatch "padLeft") "Power Automate template language in this tenant does not support padLeft."
     Add-Check "No legacy DataAlvo eq Compose_DataAlvo filter" ($allText -notmatch "DataAlvo\s+eq\s+'@\{outputs\('Compose_DataAlvo'\)\}'") "SharePoint DateTime filters must use day ranges, not string equality."

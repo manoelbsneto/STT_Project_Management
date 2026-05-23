@@ -1,0 +1,41 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+objectid                             componenttype    solutioncomponentid                  rootcomponentbehavior  solution.uniquename solution.solutionid                  solution.friendlyname             solution.version solutionid
+70b39334-5926-4fb1-bd22-f10bd99f0f6d Flujo de trabajo 7283b1ba-6c4d-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+70b39334-5926-4fb1-bd22-f10bd99f0f6d Flujo de trabajo 7183b1ba-6c4d-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+feb79d54-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo 28037c5b-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+feb79d54-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo 0ab89d54-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+ee732d46-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo fa732d46-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+ee732d46-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo f9732d46-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+39cf292d-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo 69a5133a-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+39cf292d-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo b6000834-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+3104124d-364a-f111-bec7-7ced8d955c6c Flujo de trabajo 3c04124d-364a-f111-bec7-7ced8d955c6c Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+3104124d-364a-f111-bec7-7ced8d955c6c Flujo de trabajo e7164a9a-ca4c-f111-bec6-000d3a2b52ba Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+c11a165b-c64c-f111-bec7-7ced8d9559c1 Flujo de trabajo fcc85f63-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+0a5d2a41-24c0-4d5e-9f6d-000000000241 Flujo de trabajo 38a4c491-b34d-f111-bec6-6045bd9759aa Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+70b39334-5926-4fb1-bd22-f10bd99f0f6d Flujo de trabajo 61c4e0ad-794d-f111-bec7-6045bdf42cae Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+16fbe313-2edc-406e-ad7f-d08cee0edc43 Flujo de trabajo 8bb60edf-6c4d-f111-bec7-000d3abc5cc6 Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+16fbe313-2edc-406e-ad7f-d08cee0edc43 Flujo de trabajo 6e83b1ba-6c4d-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+16fbe313-2edc-406e-ad7f-d08cee0edc43 Flujo de trabajo 6a83b1ba-6c4d-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+feb79d54-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo 09b89d54-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+ee732d46-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo eff7624b-c64c-f111-bec7-000d3abc5cc6 Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+39cf292d-c64c-f111-bec7-7ced8d955c6c Flujo de trabajo ae000834-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+3104124d-364a-f111-bec7-7ced8d955c6c Flujo de trabajo ab613ab2-c74c-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+c11a165b-c64c-f111-bec7-7ced8d9559c1 Flujo de trabajo de0c2461-c64c-f111-bec7-7ced8d9559c1 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+0a5d2a41-24c0-4d5e-9f6d-000000000241 Flujo de trabajo 39a4c491-b34d-f111-bec6-6045bd9759aa Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+4a33b53e-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo 3f883440-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+9544f14b-3748-f111-bec7-6045bdf42cae Flujo de trabajo a544f14b-3748-f111-bec7-6045bdf42cae Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+98408d55-3748-f111-bec7-000d3abc5cc6 Flujo de trabajo a5408d55-3748-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+98408d55-3748-f111-bec7-000d3abc5cc6 Flujo de trabajo 9b624658-3748-f111-bec7-6045bdf42cae Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+98408d55-3748-f111-bec7-000d3abc5cc6 Flujo de trabajo 685d537a-3848-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+0a5d2a41-24c0-4d5e-9f6d-000000000241 Flujo de trabajo dca3a3bd-b34d-f111-bec6-6045bd9759aa Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+9544f14b-3748-f111-bec7-6045bdf42cae Flujo de trabajo 5b924b78-3848-f111-bec7-7ced8d955c6c Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+4a33b53e-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo 72b8d644-c64c-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+4a33b53e-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo 73b8d644-c64c-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+9544f14b-3748-f111-bec7-6045bdf42cae Flujo de trabajo ac44f14b-3748-f111-bec7-6045bdf42cae Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+c11a165b-c64c-f111-bec7-7ced8d9559c1 Flujo de trabajo dd0c2461-c64c-f111-bec7-7ced8d9559c1 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+3ec37952-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo 4ac37952-c64c-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_v11_Tarefas     717abee5-98e8-45e7-8ce9-264b83b7faa5 PMO v1.1 - Task Management Topics 3.15             
+3ec37952-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo fbb79d54-c64c-f111-bec7-7ced8d955c6c Incluir subcomponentes Active              fd140aae-4df4-11dd-bd17-0019b9312238 Solución activa                   1.0              
+3ec37952-c64c-f111-bec7-000d3abc5cc6 Flujo de trabajo 4bc37952-c64c-f111-bec7-000d3abc5cc6 Incluir subcomponentes Default             fd140aaf-4df4-11dd-bd17-0019b9312238 Solución predeterminada           1.0              
+

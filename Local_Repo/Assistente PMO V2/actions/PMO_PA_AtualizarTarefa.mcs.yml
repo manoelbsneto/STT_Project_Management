@@ -1,0 +1,47 @@
+mcs.metadata:
+  componentName: PMO_PA_AtualizarTarefa
+  description: Acao vinculada ao fluxo Power Automate PMO_PA_AtualizarTarefa - atualiza tarefa e recalcula percentual do projeto.
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: number
+    value: =Global.PMO_Atualizar_TaskID
+
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Atualizar_Status
+
+  - kind: ManualTaskInput
+    propertyName: number_1
+    value: =Global.PMO_Atualizar_HorasRealizadas
+
+  - kind: ManualTaskInput
+    propertyName: text_1
+    value: =Global.PMO_Atualizar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: text_2
+    value: =Global.PMO_Atualizar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: text_3
+    value: =Global.PMO_Atualizar_Prioridade
+
+  - kind: ManualTaskInput
+    propertyName: number_2
+    value: =Blank()
+
+outputs:
+  - propertyName: result
+    name: Resultado
+    description: Mensagem retornada pelo fluxo PMO_PA_AtualizarTarefa.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 98408d55-3748-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

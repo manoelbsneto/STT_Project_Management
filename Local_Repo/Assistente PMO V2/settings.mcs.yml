@@ -1,0 +1,25 @@
+displayName: Assistente PMO V2
+schemaName: pmo_AssistentePMO_V2
+accessControlPolicy: GroupMembership
+authenticationMode: Integrated
+authenticationTrigger: Always
+configuration:
+  settings:
+    GenerativeActionsEnabled: true
+
+  gPTSettings:
+    defaultSchemaName: pmo_AssistentePMO_V2.gpt.default
+
+  aISettings:
+    useModelKnowledge: false
+    isFileAnalysisEnabled: false
+    isSemanticSearchEnabled: false
+    contentModeration: Low
+    optInUseLatestModels: true
+
+  recognizer:
+    kind: GenerativeAIRecognizer
+
+publishedOn: 2026-05-22T13:09:51.0000000Z
+template: kickStartTemplate-1.0.0
+language: 1033

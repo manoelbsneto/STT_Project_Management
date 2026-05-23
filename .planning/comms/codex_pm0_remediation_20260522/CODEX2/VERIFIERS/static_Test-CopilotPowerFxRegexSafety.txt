@@ -1,0 +1,12 @@
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "All Power Fx regex literal hyphens are escaped",
+                       "passed":  true,
+                       "evidence":  ""
+                   }
+               ]
+}

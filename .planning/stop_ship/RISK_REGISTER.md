@@ -1,10 +1,11 @@
 # RISK REGISTER
 
-Status: Active stop-ship risk register
-Last Codex programmatic refresh: 2026-05-07 20:25 BRT
+Status: 🔴 **ACTIVE SEV-0 — RISK-013 PM0 functional audit failure**
+Last updated: 2026-05-22 16:28:53 BRT | Codex #1 | Recorded local Alpha remediation guard pass and remaining runtime risk.
 
 | Risk ID | Severity | GAP | Area | Risk | Evidence | Mitigation | Status |
 |---|---|---|---|---|---|---|---|
+| **RISK-013** | **SEV-0** | PM0-DEF-01/02/03/04 | PM0 Card-First Flows | AQ-09 A1 FAILED. Local 3.16 Alpha remediation has replaced hardcoded PM0 response bodies with dynamic backend expressions, added action inputs, and added topic mappings. Local guards pass, but no 3.16 package import, bot publish, or AQ-09 runtime smoke has been executed. | `.planning/comms/codex_pm0_audit_20260522/RCA_PM0_FLOWS_20260522.md`; `.planning/comms/codex_pm0_remediation_20260522/EVIDENCE_LOG.md`; `tests/Test-Pm0WorkflowResponseSemantics.ps1`; `tests/Test-Pm0TopicActionFlowContract.ps1` | Continue 3.16 release pipeline: per-flow fix reports, package build, owner Gate 4 approval, tenant import/publish, AQ-09 runtime smoke, DoD attestations. No tenant write before explicit thread approval. | **OPEN — LOCAL GUARDS PASS; RUNTIME PROOF REQUIRED** |
 | RISK-001 | SEV-0 | GAP-A1 | CriarTarefa V3 | V3 flow may remain a stub or may not write to `Projetos` until runtime is proven. | Static script PASS; programmatic deploy attempt timed out. | Opus/admin validates V3 in UI/runtime and captures success + duplicate evidence. | Pending runtime |
 | RISK-002 | SEV-0 | GAP-A2 | Copilot runtime binding | Static YAML can point to V3 while Copilot runtime still uses stale tool registration. | Local template references V3; browser publish/chat not yet captured. | Opus rebinds/publishes in Copilot Studio and captures T-007 proof. | Pending runtime |
 | RISK-003 | P0 | GAP-B1/GAP-B2 | Read topics | New read flows may be locally prepared but not registered in Copilot runtime. | Scripts/tests PASS; runtime flow IDs pending after deploy timeout. | Opus creates/binds read flows and tests live responses. | Pending runtime |

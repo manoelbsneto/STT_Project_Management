@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+solutionid                           uniquename              friendlyname             version ismanaged       modifiedon
+aef5aea2-cee2-4039-8087-f66c8574a201 PMO_AQ07_CopilotBinding PMO AQ07 Copilot Binding 1.0.0.0 No administrada 15/05/2026 19:10
+

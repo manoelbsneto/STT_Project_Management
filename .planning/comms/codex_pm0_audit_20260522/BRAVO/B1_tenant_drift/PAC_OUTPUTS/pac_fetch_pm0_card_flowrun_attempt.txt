@@ -1,0 +1,9 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: 'flowrun' entity doesn't contain attribute with Name = 'flowid' and NameMapping = 'Logical' (look up attribute by name is case-sensitive).orgIndex: 57, id: ce27e69a-59f1-466a-8c41-1274879c640d, logicalName: flowrun
+

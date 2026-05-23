@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: SeHouverErro
+  description: Tratamento de erro do agente.
+kind: AdaptiveDialog
+startBehavior: UseLatestPublishedContentAndCancelOtherTopics
+beginDialog:
+  kind: OnError
+  id: main
+  actions:
+    - kind: SendActivity
+      id: error_msg
+      activity: "Ocorreu um erro no Assistente PMO. Codigo: {System.Error.Code}."
+
+inputType: {}
+outputType: {}

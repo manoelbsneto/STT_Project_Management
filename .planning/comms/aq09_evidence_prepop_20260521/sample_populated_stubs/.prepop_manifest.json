@@ -1,0 +1,366 @@
+{
+  "generatedAtBrt": "2026-05-21T14:25:52-03:00",
+  "smokeWindow": {
+    "startUtc": "2026-05-21T00:00:00.0000000Z",
+    "endUtc": "2026-05-21T11:00:00.0000000Z"
+  },
+  "executor": "Manoel Benicio",
+  "sideEffectsReport": ".planning\\comms\\aq09_sp_side_effects_harness_20260521\\sample_outputs\\aq09_sp_side_effects_report.json",
+  "evidenceDir": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs",
+  "flowRunLookup": {
+    "enabled": false,
+    "environmentName": "",
+    "available": false,
+    "note": "flow run lookup skipped by -SkipFlowRunLookup"
+  },
+  "stubs": [
+    {
+      "testId": "A1_CMD-12-H",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\A1_CMD-12-H.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "A2_CMD-15",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\A2_CMD-15.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "A3_CMD-11-P0",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\A3_CMD-11-P0.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "A4_CMD-13A",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\A4_CMD-13A.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "A5_CMD-10",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\A5_CMD-10.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B1_ConsultarProjeto",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B1_ConsultarProjeto.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B2_CriarProjeto",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B2_CriarProjeto.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B3_ExcluirProjeto",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B3_ExcluirProjeto.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B4_ExcluirTarefa",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B4_ExcluirTarefa.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B5_PedirDecisao",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B5_PedirDecisao_InvalidUPN.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B6_RegistrarBloqueio",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B6_RegistrarBloqueio.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    },
+    {
+      "testId": "B7_RegistrarRisco",
+      "path": ".planning\\comms\\aq09_evidence_prepop_20260521\\sample_populated_stubs\\B7_RegistrarRisco.md",
+      "markerState": "initialized",
+      "updatedFields": [
+        "prepop_marker",
+        "executor",
+        "date_brt",
+        "chat_input",
+        "run_url_or_id",
+        "expected",
+        "actual",
+        "pnp_output_path"
+      ],
+      "skippedFields": [
+        {
+          "field": "build_under_test",
+          "reason": "already_matches"
+        },
+        {
+          "field": "bot",
+          "reason": "already_matches"
+        },
+        {
+          "field": "environment",
+          "reason": "already_matches"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/*.egg-info": true
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "powershell.codeFormatting.preset": "OTBS",
+  
+  "github.copilot.chat.experimental.codeGeneration.instructions": [
+    {
+      "text": "Sempre verifique se a variável de ambiente OPENAI_API_KEY está disponível antes de usar a API da OpenAI. Para o Aider, use OPENAI_API_KEY e AIDER_MODEL."
+    }
+  ],
+  
+  "github.copilot.advanced": {
+    "debug.testCodeLens": true,
+    "debug.verboseLogging": true
+  },
+
+  "terminal.integrated.defaultProfile.linux": "bash"
+}

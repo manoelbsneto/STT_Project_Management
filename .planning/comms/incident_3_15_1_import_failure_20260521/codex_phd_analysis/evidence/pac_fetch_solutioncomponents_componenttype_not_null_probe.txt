@@ -1,0 +1,15 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+solutioncomponentid                  objectid                             componenttype
+27d59178-154a-f111-bec7-000d3abc5cc6 6750ff2f-822b-45ab-83ec-058704c7808a 
+41d59178-154a-f111-bec7-000d3abc5cc6 bcbecd76-3158-40ac-b225-5ae7c3874ed1 
+30d59178-154a-f111-bec7-000d3abc5cc6 74c5fdcc-c121-452e-85af-24d3f260b3c7 
+29d59178-154a-f111-bec7-000d3abc5cc6 6750ff2f-822b-45ab-83ec-058704c7808a 
+31d59178-154a-f111-bec7-000d3abc5cc6 74c5fdcc-c121-452e-85af-24d3f260b3c7 
+4ad59178-154a-f111-bec7-000d3abc5cc6 ec4416d0-0744-4e8c-b937-aae4ad9c605b 
+2ed59178-154a-f111-bec7-000d3abc5cc6 d58258b4-b17f-4bb9-9e1f-161287a041c4 
+40d59178-154a-f111-bec7-000d3abc5cc6 bcbecd76-3158-40ac-b225-5ae7c3874ed1 
+49d59178-154a-f111-bec7-000d3abc5cc6 ec4416d0-0744-4e8c-b937-aae4ad9c605b 
+2fd59178-154a-f111-bec7-000d3abc5cc6 d58258b4-b17f-4bb9-9e1f-161287a041c4 
+

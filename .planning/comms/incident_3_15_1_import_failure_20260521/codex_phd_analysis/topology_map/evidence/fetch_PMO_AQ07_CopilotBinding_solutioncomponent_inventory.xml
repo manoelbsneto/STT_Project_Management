@@ -1,0 +1,20 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" />
+    <attribute name="objectid" />
+    <attribute name="componenttype" />
+    <attribute name="rootcomponentbehavior" />
+    <attribute name="rootsolutioncomponentid" />
+    <attribute name="solutionid" />
+    <link-entity name="solution" from="solutionid" to="solutionid" link-type="inner" alias="solution">
+      <attribute name="solutionid" />
+      <attribute name="uniquename" />
+      <attribute name="friendlyname" />
+      <filter type="and">
+        <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+      </filter>
+    </link-entity>
+    <order attribute="componenttype" />
+    <order attribute="objectid" />
+  </entity>
+</fetch>

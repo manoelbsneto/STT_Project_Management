@@ -1,0 +1,11 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponent_workflowid              botcomponentid                       workflowid                           botcomponent.botcomponentid          botcomponent.schemaname                                          botcomponent.name                    workflow.workflowid                  workflow.name
+48b72cbd-a350-f111-bec7-000d3abc5cc6 beb83cc5-c09c-4cd3-a279-20846686ea3e 1721e0a3-a250-f111-bec7-000d3abc5cc6 beb83cc5-c09c-4cd3-a279-20846686ea3e pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus          PM0_PA_Card_AtualizarStatus          1721e0a3-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarStatus
+cd7233c3-a350-f111-bec7-000d3abc5cc6 bd507ab1-7455-400e-8379-153ce34427f8 9531fbc7-a250-f111-bec7-000d3abc5cc6 bd507ab1-7455-400e-8379-153ce34427f8 pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling            PM0_PA_OpsFailureHandling            9531fbc7-a250-f111-bec7-000d3abc5cc6 PM0_PA_OpsFailureHandling
+ca7233c3-a350-f111-bec7-000d3abc5cc6 3f9abdf2-8801-4602-83dd-002a31f0b53e 7f662db7-a250-f111-bec7-000d3abc5cc6 3f9abdf2-8801-4602-83dd-002a31f0b53e pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa              PM0_PA_Card_CriarTarefa              7f662db7-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_CriarTarefa
+c37233c3-a350-f111-bec7-000d3abc5cc6 f6afac82-ec2b-47fb-a3d6-4aebad708702 7c6300c2-a250-f111-bec7-000d3abc5cc6 f6afac82-ec2b-47fb-a3d6-4aebad708702 pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa          PM0_PA_Card_AtualizarTarefa          7c6300c2-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarTarefa
+c57233c3-a350-f111-bec7-000d3abc5cc6 0956d0c0-05f1-429c-8893-6352a927d535 e0e3c6b0-a250-f111-bec7-000d3abc5cc6 0956d0c0-05f1-429c-8893-6352a927d535 pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas            PM0_PA_Card_ListarTarefas            e0e3c6b0-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ListarTarefas
+c27233c3-a350-f111-bec7-000d3abc5cc6 0635831a-6b13-45d6-b10e-983fcc63eefe 8333bd91-a250-f111-bec7-000d3abc5cc6 0635831a-6b13-45d6-b10e-983fcc63eefe pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio PM0_PA_Card_ResumoExecutivoPortfolio 8333bd91-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ResumoExecutivoPortfolio
+

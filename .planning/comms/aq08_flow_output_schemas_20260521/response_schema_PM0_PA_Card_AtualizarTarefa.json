@@ -1,0 +1,23 @@
+{
+  "responseActionName": "Respond_Success",
+  "statusCode": 200,
+  "schemaKeys": [
+    "result"
+  ],
+  "bodyKeys": [
+    "result"
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "result": {
+        "title": "result",
+        "x-ms-dynamically-added": true,
+        "type": "string"
+      }
+    }
+  },
+  "body": {
+    "result": "Task updated successfully."
+  }
+}

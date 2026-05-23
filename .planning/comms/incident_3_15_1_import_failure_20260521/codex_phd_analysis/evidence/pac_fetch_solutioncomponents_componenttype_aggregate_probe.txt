@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+solutioncomponent_count componenttype_value
+10                      
+

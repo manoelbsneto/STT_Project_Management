@@ -1,10 +1,22 @@
 # M2 State — Hybrid Card-First Revision
 
 **Milestone:** M2
-**Active phase:** 1 (Discovery)
-**Phase status:** READY TO DISPATCH
+**Active phase:** 7 (Smoke E2E)
+**Phase status:** 🔴 **NO-SHIP** — local 3.16 PM0 source/package static gates pass; runtime proof still missing
 **Started:** 2026-05-20 17:46 BRT
-**Last updated:** 2026-05-20 17:46 BRT
+**Last updated:** 2026-05-22 17:13:10 BRT | Codex | Reflected local package static-gate pass and remaining release gates.
+
+---
+
+## 🚨 Phase 7 FAILED 2026-05-22 14:42 BRT
+
+A1 (ListarTarefas) exposed non-dynamic PM0 caller output. The merged audit narrows the five PM0 workflow bodies to one `STUB`, four `PARTIAL`, and zero `REAL`.
+
+RCA: `.planning/comms/codex_pm0_audit_20260522/RCA_PM0_FLOWS_20260522.md`
+
+Owner selected fix-and-ship. Local 3.16 source guards and scoped package static gates pass, but this is not a ship decision.
+
+Codex #1 completed the local Alpha + Bravo merge lane in `.planning/comms/codex_pm0_audit_20260522/`; this does not authorize tenant writes.
 
 ---
 
@@ -14,7 +26,7 @@ See: `.planning/milestones/M2_card_first_revision_v2/PROJECT.md` (updated 2026-0
 
 **Core value:** Toda operação PMO crítica gera evidência visual auditável (card no Teams) sem forçar o usuário a abandonar o chat.
 
-**Current focus:** Discovery — read-only inventory complete antes de qualquer build.
+**Current focus:** Use the rebuilt scoped 3.16 package status to request explicit Gate 4 owner approval before any tenant import/publish.
 
 ---
 
@@ -22,16 +34,31 @@ See: `.planning/milestones/M2_card_first_revision_v2/PROJECT.md` (updated 2026-0
 
 | Phase | Name | Status | Started | Completed | Output ref |
 |---:|---|---|---|---|---|
-| 1 | Discovery | READY | — | — | — |
-| 2 | Architecture Spec | WAITING | — | — | — |
-| 3 | Card Design | WAITING | — | — | — |
-| 4 | Flow Build | WAITING | — | — | — |
-| 5 | Topic Update | WAITING | — | — | — |
-| 6 | Schema Update + Cleanup | WAITING | — | — | — |
-| 7 | Smoke E2E | WAITING | — | — | — |
-| 8 | Documentation | WAITING | — | — | — |
-| 9 | Cutover | WAITING | — | — | — |
+| 1 | Discovery | DONE | 2026-05-20 | 2026-05-20 | Inventories complete in `phases/01_discovery/` |
+| 2 | Architecture Spec | DONE | 2026-05-20 | 2026-05-20 | ADR_AQ08 accepted |
+| 3 | Card Design | DONE | 2026-05-15 | 2026-05-15 | 12 Adaptive Cards JSON |
+| 4 | Flow Build | 🟡 **LOCAL STATIC PASS** | 2026-05-15 | (runtime pending) | Local 3.16 PM0 source guards and scoped package gates PASS |
+| 5 | Topic Update | 🟡 **LOCAL STATIC PASS** | 2026-05-22 | (runtime pending) | Local topic/action/workflow contract guard PASS |
+| 6 | Schema Update + Cleanup | DONE | 2026-05-10 | 2026-05-10 | Logical delete fields |
+| 7 | Smoke E2E | 🔴 **FAILED at A1** | 2026-05-22 13:30 | 2026-05-22 14:42 | A1_FAIL_RCA_20260522.md |
+| 8 | Documentation | BLOCKED | — | — | Awaits decision |
+| 9 | Cutover | BLOCKED | — | — | Awaits decision |
 | 10 | Decommission (T+30) | SCHEDULED | scheduled ~2026-06-22 | — | — |
+
+---
+
+## Required Re-work for Phase 4
+
+For each of the 5 PM0_PA_Card_* flows, the Workflow JSON must be rebuilt to include:
+1. SharePoint Get/Create/Update items action(s)
+2. Adaptive Card post action (Teams/DM/Channel)
+3. Real serialized response in `result` (not hardcoded)
+
+For each Action `.mcs.yml`, an `inputs:` block must be declared.
+
+For each Topic `.mcs.yml`, the `BeginDialog input` must map topic variables to flow inputs.
+
+---
 
 ---
 
@@ -83,15 +110,18 @@ See: `.planning/milestones/M2_card_first_revision_v2/PROJECT.md` (updated 2026-0
 
 ## Blockers (current)
 
-None. Phase 1 is dispatchable now.
+AQ-08 structural routing is not the blocker. Local 3.16 source and scoped package static gates pass, but owner approval is still required before any tenant write and AQ-09 runtime evidence is still missing.
 
 ---
 
 ## Next Action
 
-**Owner action required:** dispatch Phase 1 prompt to Codex + Codex sub-1 + Codex sub-2 + Codex sub-3 + Opus #2 + Gemini Flash + Gemini Flash sub-1 + Gemini Flash sub-2 (8 agents in parallel).
+**Engineering action required:** Request explicit Gate 4 tenant-write approval for the rebuilt scoped 3.16 ZIP, then import/publish only after approval.
 
-Phase 1 prompt is ready in `phases/01_discovery/SPEC.md`.
+After AQ-09 evidence captured:
+1. Opus #2 / CODEX-PA runs XPIA harness (Section A in-scope) — 30min auto.
+2. Owner reviews aggregated evidence and renders SHIP / NO-SHIP decision — 30min.
+3. If SHIP, production publish (if env != prod). Otherwise execute rollback to 3.10_POST_WFSET_CLEAN.
 
 ---
 

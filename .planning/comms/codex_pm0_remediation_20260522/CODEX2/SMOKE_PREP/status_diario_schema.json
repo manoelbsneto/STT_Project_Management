@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED_AUTH_OR_MODULE",
+  "timestampBRT": "2026-05-22 16:50:19 BRT",
+  "agent": "Codex sub-2C",
+  "reason": "Status Diario field readback requires an active same-process PnP context; no existing context is available.",
+  "expectedInternalNames": [
+    "ProjectID",
+    "RAG",
+    "Resumo",
+    "Percentual",
+    "Risco",
+    "Bloqueio",
+    "ProximaAcao",
+    "Deleted",
+    "Created",
+    "Title",
+    "DataRegistro",
+    "OrigemEntrada"
+  ]
+}

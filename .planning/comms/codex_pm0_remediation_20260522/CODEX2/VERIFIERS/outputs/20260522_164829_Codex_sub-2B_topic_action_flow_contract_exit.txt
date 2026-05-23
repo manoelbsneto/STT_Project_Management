@@ -1,0 +1,6 @@
+timestamp_brt=2026-05-22 16:48:29 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Pm0TopicActionFlowContract.ps1 -SourceRoot 'Local_Repo\Assistente PMO V2' -ReportPath '.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_topic_action_flow_contract.json'
+exit_code=0
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_164829_Codex_sub-2B_topic_action_flow_contract_output.txt
+report=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_topic_action_flow_contract.json

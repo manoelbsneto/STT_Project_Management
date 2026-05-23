@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PMO_PA_CriarTarefa-0a5d2a41-24c0-4d5e-9f6d-000000000241/workflow.json
+workflowId: 0a5d2a41-24c0-4d5e-9f6d-000000000241
+name: PMO_PA_CriarTarefa
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 1
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

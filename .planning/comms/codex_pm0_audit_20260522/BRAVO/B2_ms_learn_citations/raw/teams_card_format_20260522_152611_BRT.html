@@ -1,0 +1,4006 @@
+ <!DOCTYPE html>
+		<html
+			class="layout layout-holy-grail   show-table-of-contents conceptual show-breadcrumb default-focus"
+			lang="en-us"
+			dir="ltr"
+			data-authenticated="false"
+			data-auth-status-determined="false"
+			data-target="docs"
+			x-ms-format-detection="none"
+		>
+			
+		<head>
+			<title>Format Text in Cards - Teams | Microsoft Learn</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<meta name="color-scheme" content="light dark" />
+
+			<meta name="description" content="Learn about card text formatting with Markdown and HTML, how to design responsive Adaptive Cards, and other elements to create actionable Adaptive Cards." />
+			<link rel="canonical" href="https://learn.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-format" /> 
+
+			<!-- Non-customizable open graph and sharing-related metadata -->
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@MicrosoftLearn" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image:alt" content="Microsoft Learn" />
+			<meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+			<!-- Page specific open graph and sharing-related metadata -->
+			<meta property="og:title" content="Format Text in Cards - Teams" />
+			<meta property="og:url" content="https://learn.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-format" />
+			<meta property="og:description" content="Learn about card text formatting with Markdown and HTML, how to design responsive Adaptive Cards, and other elements to create actionable Adaptive Cards." />
+			<meta name="platform_id" content="2ceedc5c-2fec-031f-03e1-58aaa1e6c3c8" /> <meta name="scope" content="Teams" />
+			<meta name="locale" content="en-us" />
+			 
+			<meta name="uhfHeaderId" content="MSDocsHeader-MicrosoftTeams" />
+
+			<meta name="page_type" content="conceptual" />
+
+			<!--page specific meta tags-->
+			
+
+			<!-- custom meta tags -->
+			
+		<meta name="breadcrumb_path" content="/microsoftteams/platform/breadcrumb/TOC.json" />
+	
+		<meta name="author" content="vikasalmal0201" />
+	
+		<meta name="ms.suite" content="office365" />
+	
+		<meta name="ms.service" content="msteams" />
+	
+		<meta name="ms.author" content="vikasalmal" />
+	
+		<meta name="feedback_system" content="OpenSource" />
+	
+		<meta name="feedback_product_url" content="https://feedbackportal.microsoft.com/feedback/forum/ad198462-1c1c-ec11-b6e7-0022481f8472" />
+	
+		<meta name="recommendations" content="false" />
+	
+		<meta name="ms.localizationpriority" content="high" />
+	
+		<meta name="ms.topic" content="reference" />
+	
+		<meta name="ms.date" content="2024-11-07T00:00:00Z" />
+	
+		<meta name="document_id" content="001a12ea-30fa-d626-18a9-02a518bfb37f" />
+	
+		<meta name="document_version_independent_id" content="e5f5f69e-66e9-d1b2-e19a-485d0ffcd6fa" />
+	
+		<meta name="updated_at" content="2025-09-17T05:22:00Z" />
+	
+		<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/msteams-docs/blob/live/msteams-platform/task-modules-and-cards/cards/cards-format.md" />
+	
+		<meta name="gitcommit" content="https://github.com/MicrosoftDocs/msteams-docs/blob/a90daf45bf66e0b830c8440dbf919ebb7a30c95c/msteams-platform/task-modules-and-cards/cards/cards-format.md" />
+	
+		<meta name="git_commit_id" content="a90daf45bf66e0b830c8440dbf919ebb7a30c95c" />
+	
+		<meta name="site_name" content="Docs" />
+	
+		<meta name="depot_name" content="office.msteams-platform" />
+	
+		<meta name="schema" content="Conceptual" />
+	
+		<meta name="toc_rel" content="../../toc.json" />
+	
+		<meta name="feedback_help_link_type" content="" />
+	
+		<meta name="feedback_help_link_url" content="" />
+	
+		<meta name="word_count" content="7410" />
+	
+		<meta name="asset_id" content="task-modules-and-cards/cards/cards-format" />
+	
+		<meta name="moniker_range_name" content="" />
+	
+		<meta name="item_type" content="Content" />
+	
+		<meta name="source_path" content="msteams-platform/task-modules-and-cards/cards/cards-format.md" />
+	
+		<meta name="previous_tlsh_hash" content="ECC01103B60CDE21BFD2AD16659F6B166BF1904DEBF02BCC08363563E20B2C9B0AA65EE99703F760633642570393750F25D7EB3C653933B6A6F5E8B442181113964A2F37D9" />
+	
+		<meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/msteams-docs/blob/main/msteams-platform/task-modules-and-cards/cards/cards-format.md" />
+	
+		<meta name="markdown_url" content="https://learn.microsoft.com/en-us/microsoftteams/platform/task-modules-and-cards/cards/cards-format?accept=text/markdown" />
+	 
+		<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/0e568c15-dbb0-4968-9dc2-bd588efd35d4" data-source="generated" />
+	
+		<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/1703fa63-dec7-4075-b143-15cb47974d6e" data-source="generated" />
+	
+
+			<!-- assets and js globals -->
+			
+			<link rel="stylesheet" href="/static/assets/0.4.03427.7856-752ce836/styles/site.css" />
+			
+			<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+			<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script>
+			<script src="/_themes/docs.theme/master/en-us/_themes/global/deprecation.js"></script>
+
+			<!-- msdocs global object -->
+			<script id="msdocs-script">
+		var msDocs = {
+  "environment": {
+    "accessLevel": "online",
+    "azurePortalHostname": "portal.azure.com",
+    "reviewFeatures": false,
+    "supportLevel": "production",
+    "systemContent": true,
+    "siteName": "learn",
+    "legacyHosting": false
+  },
+  "data": {
+    "contentLocale": "en-us",
+    "contentDir": "ltr",
+    "userLocale": "en-us",
+    "userDir": "ltr",
+    "pageTemplate": "Conceptual",
+    "brand": "",
+    "context": {},
+    "standardFeedback": false,
+    "showFeedbackReport": false,
+    "feedbackHelpLinkType": "",
+    "feedbackHelpLinkUrl": "",
+    "feedbackSystem": "OpenSource",
+    "feedbackGitHubRepo": "MicrosoftDocs/msteams-docs",
+    "feedbackProductUrl": "https://feedbackportal.microsoft.com/feedback/forum/ad198462-1c1c-ec11-b6e7-0022481f8472",
+    "extendBreadcrumb": false,
+    "isEditDisplayable": true,
+    "isPrivateUnauthorized": false,
+    "hideViewSource": false,
+    "isPermissioned": false,
+    "hasRecommendations": false,
+    "contributors": [
+      {
+        "name": "vikasalmal0201",
+        "url": "https://github.com/vikasalmal0201"
+      },
+      {
+        "name": "ryanbliss",
+        "url": "https://github.com/ryanbliss"
+      },
+      {
+        "name": "Pawank-MSFT",
+        "url": "https://github.com/Pawank-MSFT"
+      },
+      {
+        "name": "v-kushals",
+        "url": "https://github.com/v-kushals"
+      },
+      {
+        "name": "v-preethah",
+        "url": "https://github.com/v-preethah"
+      },
+      {
+        "name": "v-shalinir",
+        "url": "https://github.com/v-shalinir"
+      },
+      {
+        "name": "v-santhoshs1",
+        "url": "https://github.com/v-santhoshs1"
+      },
+      {
+        "name": "v-vanv",
+        "url": "https://github.com/v-vanv"
+      },
+      {
+        "name": "v-npaladugu",
+        "url": "https://github.com/v-npaladugu"
+      },
+      {
+        "name": "alexbuckgit",
+        "url": "https://github.com/alexbuckgit"
+      },
+      {
+        "name": "v-ypalikila",
+        "url": "https://github.com/v-ypalikila"
+      },
+      {
+        "name": "Namitha-23",
+        "url": "https://github.com/Namitha-23"
+      },
+      {
+        "name": "Prithvi-MSFT",
+        "url": "https://github.com/Prithvi-MSFT"
+      },
+      {
+        "name": "v-vvchaganti",
+        "url": "https://github.com/v-vvchaganti"
+      },
+      {
+        "name": "v-silakshmi",
+        "url": "https://github.com/v-silakshmi"
+      },
+      {
+        "name": "v-sdhakshina",
+        "url": "https://github.com/v-sdhakshina"
+      },
+      {
+        "name": "surbhigupta12",
+        "url": "https://github.com/surbhigupta12"
+      },
+      {
+        "name": "ashishguptaiitb",
+        "url": "https://github.com/ashishguptaiitb"
+      },
+      {
+        "name": "v-shalinirobinson",
+        "url": "https://github.com/v-shalinirobinson"
+      },
+      {
+        "name": "v-habibaumme",
+        "url": "https://github.com/v-habibaumme"
+      },
+      {
+        "name": "Rajeshwari-v",
+        "url": "https://github.com/Rajeshwari-v"
+      },
+      {
+        "name": "modery",
+        "url": "https://github.com/modery"
+      },
+      {
+        "name": "v-abirade",
+        "url": "https://github.com/v-abirade"
+      },
+      {
+        "name": "v-rodriguezd",
+        "url": "https://github.com/v-rodriguezd"
+      },
+      {
+        "name": "nbokil",
+        "url": "https://github.com/nbokil"
+      },
+      {
+        "name": "Mahesh2516",
+        "url": "https://github.com/Mahesh2516"
+      },
+      {
+        "name": "v-pmuthyala",
+        "url": "https://github.com/v-pmuthyala"
+      },
+      {
+        "name": "v-vrajaraman",
+        "url": "https://github.com/v-vrajaraman"
+      },
+      {
+        "name": "KirtiPereira",
+        "url": "https://github.com/KirtiPereira"
+      },
+      {
+        "name": "ojasvichoudhary",
+        "url": "https://github.com/ojasvichoudhary"
+      },
+      {
+        "name": "pradeepananth",
+        "url": "https://github.com/pradeepananth"
+      },
+      {
+        "name": "Wajeed-msft",
+        "url": "https://github.com/Wajeed-msft"
+      },
+      {
+        "name": "laujan",
+        "url": "https://github.com/laujan"
+      },
+      {
+        "name": "dibbdob",
+        "url": "https://github.com/dibbdob"
+      },
+      {
+        "name": "clearab",
+        "url": "https://github.com/clearab"
+      },
+      {
+        "name": "hamenon-ms",
+        "url": "https://github.com/hamenon-ms"
+      }
+    ],
+    "openSourceFeedbackIssueUrl": "https://github.com/MicrosoftDocs/msteams-docs/issues/new?template=Doc-Feedback.yaml",
+    "openSourceFeedbackIssueTitle": ""
+  },
+  "functions": {}
+};;
+	</script>
+
+			<!-- base scripts, msdocs global should be before this -->
+			<script src="/static/assets/0.4.03427.7856-752ce836/scripts/en-us/index-docs.js"></script>
+			
+
+			<!-- json-ld -->
+			
+		</head>
+	
+			<body
+				id="body"
+				data-bi-name="body"
+				class="layout-body "
+				lang="en-us"
+				dir="ltr"
+			>
+				<header class="layout-body-header background-color-body-medium">
+		<div class="header-holder has-default-focus">
+			
+		<a
+			href="#main"
+			
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			
+		>
+			Skip to main content
+		</a>
+	
+		<a
+			href="#"
+			data-skip-to-ask-learn
+			style="z-index: 1070"
+			class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body"
+			hidden
+		>
+			Skip to Ask Learn chat experience
+		</a>
+	
+
+			<div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+			<!-- Unsupported browser warning -->
+			<div
+				id="unsupported-browser"
+				style="background-color: white; color: black; padding: 16px; border-bottom: 1px solid grey;"
+				hidden
+			>
+				<div style="max-width: 800px; margin: 0 auto;">
+					<p style="font-size: 24px">This browser is no longer supported.</p>
+					<p style="font-size: 16px; margin-top: 16px;">
+						Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.
+					</p>
+					<div style="margin-top: 12px;">
+						<a
+							href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+							style="background-color: #0078d4; border: 1px solid #0078d4; color: white; padding: 6px 12px; border-radius: 2px; display: inline-block;"
+						>
+							Download Microsoft Edge
+						</a>
+						<a
+							href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+							style="background-color: white; padding: 6px 12px; border: 1px solid #505050; color: #171717; border-radius: 2px; display: inline-block;"
+						>
+							More info about Internet Explorer and Microsoft Edge
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- site header -->
+			<div
+				id="ms--site-header"
+				data-test-id="site-header-wrapper"
+				itemscope="itemscope"
+				itemtype="http://schema.org/Organization"
+			>
+				<div
+					id="ms--mobile-nav"
+					class="site-header display-none-tablet padding-inline-none gap-none"
+					data-bi-name="mobile-header"
+					data-test-id="mobile-header"
+				></div>
+				<div
+					id="ms--primary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L1-header"
+					data-test-id="primary-header"
+				></div>
+				<div
+					id="ms--secondary-nav"
+					class="site-header display-none display-flex-tablet"
+					data-bi-name="L2-header"
+					data-test-id="secondary-header"
+					
+				></div>
+			</div>
+			
+		<!-- banner -->
+		<div data-banner>
+			<div id="disclaimer-holder"></div>
+			
+		</div>
+		<!-- banner end -->
+	
+		</div>
+	</header>
+				 <section
+					id="layout-body-menu"
+					class="layout-body-menu border-right display-flex background-color-body-medium"
+					data-bi-name="menu"
+			  >
+					
+		<div
+			id="left-container"
+			class="left-container display-none padding-none display-block-tablet width-full"
+			data-toc-container="true"
+		>
+			<div
+				id="ms--toc-content"
+				class="padding-left-sm padding-right-none padding-bottom-sm height-full"
+			>
+				<nav
+					id="affixed-left-container"
+					class="margin-top-xxs-tablet position-sticky display-flex flex-direction-column width-full"
+					aria-label="Primary"
+					data-bi-name="left-toc"
+					role="navigation"
+				>
+					<div
+						id="ms--collapsible-toc-header"
+						class="display-flex flex-direction-row-reverse justify-content-center align-items-center margin-bottom-xxs margin-right-xxs"
+					>
+						<button
+							type="button"
+							class="button button-clear inner-focus"
+							data-collapsible-toc-toggle
+							aria-expanded="true"
+							aria-controls="ms--toc-content"
+							aria-label="Table of contents"
+						>
+							<span class="icon icon-mirrored-rtl font-size-md" aria-hidden="true">
+								<span class="docon docon-panel-left-contract"></span>
+							</span>
+						</button>
+						<div
+							id="ms--collapsible-toc-moniker-slot"
+							class="flex-grow-1 display-none-layout-menu-collapsed"
+						></div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	
+			  </section>
+
+				<main
+					id="main"
+					role="main"
+					class="layout-body-main "
+					data-bi-name="content"
+					lang="en-us"
+					dir="ltr"
+				>
+					
+			<div
+		id="ms--content-header"
+		class="content-header default-focus border-bottom-none"
+		data-bi-name="content-header"
+	>
+		<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+			<button
+				type="button"
+				class="contents-button button button-sm margin-right-xxs"
+				data-bi-name="contents-expand"
+				aria-haspopup="true"
+				data-contents-button
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-menu"></span></span>
+				<span class="contents-expand-title"> Table of contents </span>
+			</button>
+			<button
+				type="button"
+				class="ap-collapse-behavior ap-expanded button button-sm"
+				data-bi-name="ap-collapse"
+				aria-controls="action-panel"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-exit-mode"></span></span>
+				<span>Exit editor mode</span>
+			</button>
+		</div>
+	</div>
+			<div
+				data-main-column
+				class="reading-width margin-inline-auto layout-padding padding-top-none padding-top-sm-tablet padding-bottom-sm"
+			>
+				<div>
+					
+		<div id="article-header" class="background-color-body margin-bottom-xs display-none-print">
+			<div class="display-flex align-items-center justify-content-space-between">
+				
+		<details
+			id="article-header-breadcrumbs-overflow-popover"
+			class="popover popover-left"
+			data-for="article-header-breadcrumbs"
+		>
+			<summary
+				class="button button-clear button-primary button-sm inner-focus"
+				aria-label="All breadcrumbs"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-more"></span>
+				</span>
+			</summary>
+			<div id="article-header-breadcrumbs-overflow" class="popover-content"></div>
+		</details>
+
+		<bread-crumbs
+			id="article-header-breadcrumbs"
+			role="group"
+			aria-label="Breadcrumbs"
+			data-test-id="article-header-breadcrumbs"
+			class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"
+		></bread-crumbs>
+	 
+		<div
+			id="article-header-page-actions"
+			class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"
+		>
+			
+		<button
+			class="button button-sm border-none inner-focus display-none-tablet flex-shrink-0 "
+			data-bi-name="ask-learn-assistant-entry"
+			data-test-id="ask-learn-assistant-modal-entry-mobile"
+			data-ask-learn-modal-entry
+			
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-none display-inline-flex-tablet display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-modal-entry-tablet"
+			data-ask-learn-modal-entry
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-flyout-entry"
+			data-ask-learn-flyout-entry
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	 
+
+			<details class="popover popover-right" id="article-header-page-actions-overflow">
+				<summary
+					class="justify-content-flex-start button button-clear button-sm button-primary inner-focus"
+					aria-label="More actions"
+					title="More actions"
+				>
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-more-vertical"></span>
+					</span>
+				</summary>
+				<div class="popover-content">
+					
+		<button
+			type="button"
+			id="ms--focus-mode-button"
+			data-focus-mode
+			data-bi-name="focus-mode-entry"
+			data-page-action-item="overflow-all"
+			data-popover-close
+			class="button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus display-none display-inline-flex-tablet"
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-glasses"></span>
+			</span>
+			<span>Reading mode</span>
+		</button>
+	 
+		<button
+			data-page-action-item="overflow-mobile"
+			type="button"
+			class="button-block button-sm inner-focus button button-clear display-none-tablet justify-content-flex-start text-align-left"
+			data-bi-name="contents-expand"
+			data-contents-button
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true"
+				><span class="docon docon-editor-list-bullet"></span
+			></span>
+			<span class="contents-expand-title">Table of contents</span>
+		</button>
+	 
+		<a
+			id="lang-link-overflow"
+			class="button-sm inner-focus button button-clear button-block justify-content-flex-start text-align-left"
+			data-bi-name="language-toggle"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-read-in-link
+			href="#"
+			hidden
+		>
+			<span class="icon" aria-hidden="true" data-read-in-link-icon>
+				<span class="docon docon-locale-globe"></span>
+			</span>
+			<span data-read-in-link-text>Read in English</span>
+		</a>
+	
+					
+		<button
+			type="button"
+			class="collection button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus"
+			data-list-type="collection"
+			data-bi-name="collection"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="collection-status">Add</span>
+		</button>
+	 
+		<button
+			type="button"
+			class="collection button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+			data-list-type="plan"
+			data-bi-name="plan"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="plan-status">Add to plan</span>
+		</button>
+	 
+					
+		<a
+			data-contenteditbtn
+			class="button button-clear button-block button-sm inner-focus justify-content-flex-start text-align-left text-decoration-none"
+			data-bi-name="edit"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			
+			href="https://github.com/MicrosoftDocs/msteams-docs/blob/main/msteams-platform/task-modules-and-cards/cards/cards-format.md"
+			data-original_content_git_url="https://github.com/MicrosoftDocs/msteams-docs/blob/live/msteams-platform/task-modules-and-cards/cards/cards-format.md"
+			data-original_content_git_url_template="{repo}/blob/{branch}/msteams-platform/task-modules-and-cards/cards/cards-format.md"
+			data-pr_repo=""
+			data-pr_branch=""
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-edit-outline"></span>
+			</span>
+			<span>Edit</span>
+		</a>
+	  
+		<hr class="margin-block-xxs" />
+		
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="copy-markdown"
+					data-page-action-item="overflow-all"
+					data-copy-markdown
+					data-copy-state="idle"
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span data-show-when="idle" class="docon docon-code-lang"></span>
+						<span data-show-when="loading" class="loader" hidden></span>
+						<span data-show-when="success" class="docon docon-check-mark" hidden></span>
+					</span>
+					<span>Copy Markdown</span>
+				</button>
+		   
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="print"
+					data-page-action-item="overflow-all"
+					data-popover-close
+					data-print-page
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span class="docon docon-print"></span>
+					</span>
+					<span>Print</span>
+				</button>
+		  
+	
+				</div>
+			</details>
+		</div>
+	
+			</div>
+		</div>
+	  
+		<!-- privateUnauthorizedTemplate is hidden by default -->
+		<div unauthorized-private-section data-bi-name="permission-content-unauthorized-private" hidden>
+			<hr class="hr margin-top-xs margin-bottom-sm" />
+			<div class="notification notification-info">
+				<div class="notification-content">
+					<p class="margin-top-none notification-title">
+						<span class="icon" aria-hidden="true"
+							><span class="docon docon-exclamation-circle-solid"></span
+						></span>
+						<span>Note</span>
+					</p>
+					<p class="margin-top-none authentication-determined not-authenticated">
+						Access to this page requires authorization. You can try <a class="docs-sign-in" href="#" data-bi-name="permission-content-sign-in">signing in</a> or <a  class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+					<p class="margin-top-none authentication-determined authenticated">
+						Access to this page requires authorization. You can try <a class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	
+					<div class="content"><h1 id="format-cards-in-teams">Format cards in Teams</h1></div>
+					
+		<div
+			id="article-metadata"
+			data-bi-name="article-metadata"
+			data-test-id="article-metadata"
+			class="page-metadata-container display-flex gap-xxs justify-content-space-between align-items-center flex-wrap-wrap"
+		>
+			 
+				<div
+					id="user-feedback"
+					class="margin-block-xxs display-none display-none-print"
+					hidden
+					data-hide-on-archived
+				>
+					
+		<button
+			id="user-feedback-button"
+			data-test-id="conceptual-feedback-button"
+			class="button button-sm button-clear button-primary display-none"
+			type="button"
+			data-bi-name="user-feedback-button"
+			data-user-feedback-button
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-like"></span>
+			</span>
+			<span>Feedback</span>
+		</button>
+	
+				</div>
+		  
+		</div>
+	 
+		<div data-id="ai-summary" class="display-none-print">
+			<div id="ms--ai-summary-cta" class="margin-top-xs display-flex align-items-center">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-sparkle-fill gradient-text-vivid"></span>
+				</span>
+				<button
+					id="ms--ai-summary"
+					type="button"
+					class="tag tag-sm tag-suggestion margin-left-xxs"
+					data-test-id="ai-summary-cta"
+					data-bi-name="ai-summary-cta"
+					data-an="ai-summary"
+				>
+					<span class="ai-summary-cta-text">
+						Summarize this article for me
+					</span>
+				</button>
+			</div>
+			<!-- Slot where the client will render the summary card after the user clicks the CTA -->
+			<div id="ms--ai-summary-header" class="margin-top-xs"></div>
+		</div>
+	 
+		<nav
+			id="center-doc-outline"
+			class="doc-outline display-none-desktop display-none-print margin-bottom-sm"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">
+				In this article
+			</h2>
+		</nav>
+	
+					<div class="content"><div class="IMPORTANT">
+<p>Important</p>
+<p>This documentation is considered legacy. For comprehensive information and resources related to text formatting in Adaptive Cards, visit the <a href="https://adaptivecards.microsoft.com/?topic=TextBlock" data-linktype="external">Adaptive Cards documentation hub</a>.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/new-adaptive-card-hub.png" alt="Screenshot shows the home page of the Microsoft Adaptive Cards website." data-linktype="relative-path">
+</span>
+</p>
+<p>The Adaptive Cards documentation hub offers complete and latest reference documentation, an updated Adaptive Card Designer, built-in JSON examples, design best practices, and a detailed release history of Adaptive Card features. For more information, see <a href="https://devblogs.microsoft.com/microsoft365dev/introducing-the-adaptive-cards-documentation-hub-and-new-adaptive-cards-updates/#:%7E:text=Explore%20the%20latest%20adaptive%20card%20features%20and%20samples,productivity%E2%80%94all%20seamlessly%20integrated%20into%20your%20users%E2%80%99%20daily%20workflows." data-linktype="external">introducing the Adaptive Cards documentation hub and new Adaptive Cards updates</a>.</p>
+</div>
+<p>Following are the two ways to add rich text formatting to your cards:</p>
+<ul>
+<li><a href="#format-cards-with-markdown" data-linktype="self-bookmark">Markdown</a></li>
+<li><a href="#format-cards-with-html" data-linktype="self-bookmark">HTML</a></li>
+</ul>
+<p>Cards support formatting in the text property only, not in the title or subtitle properties. Formatting can be specified using a subset of XML or HTML formatting or Markdown, depending on the card type. For current and future development of Adaptive Cards, Markdown formatting is recommended.</p>
+<p>Formatting support differs between card types. Rendering of the card can differ slightly between the desktop and the mobile Microsoft Teams clients, and Teams in the desktop browser.</p>
+<p>You can include an inline image with any Teams card. Supported image formats are .png, .jpg, or .gif formats. Keep the dimensions within 1024 x 1024 pixels and file size less than 1 MB. Animated .gif images aren't supported. For more information, see <a href="cards-reference#inline-card-images" data-linktype="relative-path">types of cards</a>.</p>
+<p>You can format Adaptive Cards and connector cards for Microsoft 365 Groups with Markdown that include certain supported styles.</p>
+<h2 id="format-cards-with-markdown">Format cards with Markdown</h2>
+<p>The following card types support Markdown formatting in Teams:</p>
+<ul>
+<li>Adaptive Cards: Markdown is supported in Adaptive Card <code>Textblock</code> field, and <code>Fact.Title</code> and <code>Fact.Value</code>. HTML isn't supported in Adaptive Cards.</li>
+<li>Connector cards for Microsoft 365 Groups: Markdown and limited HTML is supported in connector cards for Microsoft 365 Groups in the text fields.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>Markdown isn't supported for OAuth sign in cards in bots.</p>
+</div>
+<p>You can use newlines for Adaptive Cards using <code>\r</code> or <code>\n</code> escape sequences for newlines in lists. Formatting is different between the desktop and the mobile versions of Teams for Adaptive Cards. Card-based mentions are supported in web, desktop, and mobile clients. You can use the information masking property to mask specific information, such as password or sensitive information from users within the Adaptive Card <code>Input.Text</code> input element. You can expand the width of an Adaptive Card using the <code>width</code> object. You can enable typeahead support within Adaptive Cards and filter the set of input choices as the user types the input. You can use the <code>msteams</code> property to add the ability to display images in Stageview selectively.</p>
+<p>Formatting is different between the desktop and the mobile versions of Teams for Adaptive Cards and connector cards. In this section, you can go through the Markdown format example for Adaptive Cards and connector cards.</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_adaptive-md" role="tab" aria-controls="tabpanel_1_adaptive-md" data-tab="adaptive-md" tabindex="0" aria-selected="true" data-linktype="self-bookmark">Markdown format for Adaptive Cards</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_connector-md" role="tab" aria-controls="tabpanel_1_connector-md" data-tab="connector-md" tabindex="-1" data-linktype="self-bookmark">Markdown format for connector cards for Microsoft 365 Groups</a>
+</li>
+</ul>
+<section id="tabpanel_1_adaptive-md" role="tabpanel" data-tab="adaptive-md">
+
+<p>The following table provides the supported styles for <code>Textblock</code>, <code>Fact.Title</code>, and <code>Fact.Value</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td><strong>Bold</strong></td>
+<td><code>**Bold**</code></td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><em>Italic</em></td>
+<td><code>_Italic_</code></td>
+</tr>
+<tr>
+<td>Unordered list</td>
+<td><ul><li>text</li><li>text</li></ul></td>
+<td><code>- Item 1\r- Item 2\r- Item 3</code></td>
+</tr>
+<tr>
+<td>Ordered list</td>
+<td><ol><li>text</li><li>text</li></ol></td>
+<td><code>1. Green\r2. Orange\r3. Blue</code></td>
+</tr>
+<tr>
+<td>Hyperlinks</td>
+<td><a href="https://www.bing.com/" data-linktype="external">Bing</a></td>
+<td><code>[Title](url)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following Markdown tags aren't supported:</p>
+<ul>
+<li>Headers</li>
+<li>Tables</li>
+<li>Images</li>
+<li>Preformatted text</li>
+<li>Blockquotes</li>
+</ul>
+<h3 id="newlines-for-adaptive-cards">Newlines for Adaptive Cards</h3>
+<p>You can use the <code>\r</code> or <code>\n</code> escape sequences for newlines in lists. Using <code>\n\n</code> in lists causes the next element in the list to be indented. If you require newlines elsewhere in the TextBlock, use <code>\n\n</code>.</p>
+<h3 id="mobile-and-desktop-differences-for-adaptive-cards">Mobile and desktop differences for Adaptive Cards</h3>
+<p>On the desktop, Adaptive Card Markdown formatting appears as shown in the following image in both web browsers and in the Teams client application:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptive-markdown-desktop-client.png" alt="Screenshot shows an example of Adaptive Card Markdown formatting in Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p>On iOS, Adaptive Card Markdown formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptive-markdown-ios-75.png" alt="Screenshot shows an example of Adaptive Card Markdown formatting in Teams iOS platform." data-linktype="relative-path">
+</span>
+</p>
+<p>On Android, Adaptive Card Markdown formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptive-markdown-android.png" alt="Screenshot shows an example of Adaptive Card Markdown formatting in Teams Android platform." data-linktype="relative-path">
+</span>
+</p>
+<p>For more information about date and time formatting and localization in Adaptive Cards, see <a href="/en-us/adaptive-cards/authoring-cards/text-features#datetime-formatting-and-localization" data-linktype="absolute-path">text features in Adaptive Cards</a>.</p>
+<h3 id="adaptive-cards-format-sample">Adaptive Cards format sample</h3>
+<p>The following code shows an example of Adaptive Cards formatting:</p>
+<pre><code class="lang-json">{
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "This is some **bold** text"
+        },
+        {
+            "type": "TextBlock",
+            "text": "This is some _italic_ text"
+        },
+        {
+            "type": "TextBlock",
+            "text": "- Bullet \r- List \r",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "1. Numbered\r2. List\r",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "Check out [Adaptive Cards](https://adaptivecards.microsoft.com/?topic=welcome)"
+        }
+    ]
+}
+</code></pre>
+<p>Adaptive Cards support emojis. The following card payload shows an Adaptive Card with an emoji:</p>
+<pre><code class="lang-json">{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Publish Adaptive Card with emojis 🥰",
+          "weight": "bolder",
+          "size": "medium"
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptive-card-emoji.png" alt="Screenshot shows an Adaptive Card with an emoji." data-linktype="relative-path">
+</span>
+</p>
+<div class="NOTE">
+<p>Note</p>
+<p>If you use REST APIs, then set <code>charset=UTF-8</code> in your request headers to add emojis in Adaptive Cards.</p>
+</div>
+<h3 id="mention-support-within-adaptive-cards">Mention support within Adaptive Cards</h3>
+<p>You can add <span class="no-loc" dir="ltr" lang="en-us">@mentions</span> within an Adaptive Card body for bots and message extension responses. To add <span class="no-loc" dir="ltr" lang="en-us">@mentions</span> in cards, follow the same notification logic and rendering as that of message based <a href="../../bots/how-to/conversations/channel-and-group-conversations#work-with-mentions" data-linktype="relative-path">mentions in channel and group chat conversations</a>.</p>
+<p>Bots and message extensions can include mentions within the card content in <a href="https://adaptivecards.microsoft.com/?topic=TextBlock" data-linktype="external">TextBlock</a> and <a href="https://adaptivecards.microsoft.com/?topic=FactSet" data-linktype="external">FactSet</a> elements.</p>
+<div class="NOTE">
+<p>Note</p>
+<ul>
+<li>Channel and team mentions aren't supported in bot messages.</li>
+<li>You can <span class="no-loc" dir="ltr" lang="en-us">@mention</span> multiple users in a single Adaptive Card message, however, ensure that the message size limit doesn't exceed 28 KB for <a href="../../webhooks-and-connectors/how-to/add-incoming-webhook" data-linktype="relative-path">Incoming Webhooks</a> and 100 KB for a <a href="../../bots/how-to/format-your-bot-messages" data-linktype="relative-path">bot message</a>.</li>
+<li>Adaptive Cards sent from Incoming Webhooks only support user mentions and don't support bot mentions.</li>
+</ul>
+</div>
+<p>To include a mention in an Adaptive Card, your app needs to include the following elements:</p>
+<ul>
+<li><code>&lt;at&gt;username&lt;/at&gt;</code> in the supported Adaptive Card elements.</li>
+<li>The <code>mention</code> object inside of an <code>msteams</code> property in the card content includes the Teams user ID of the user being mentioned.</li>
+<li>The <code>userId</code> is unique to your bot ID and a particular user. It can be used to <span class="no-loc" dir="ltr" lang="en-us">@mention</span> a particular user. The <code>userId</code> can be retrieved using one of the options mentioned in <a href="/en-us/microsoftteams/platform/bots/how-to/conversations/send-proactive-messages?tabs=dotnet#get-the-user-id-team-id-or-channel-id" data-linktype="absolute-path">get the user ID</a>.</li>
+</ul>
+<h4 id="sample-adaptive-card-with-a-mention">Sample Adaptive Card with a mention</h4>
+<p>The following code shows an example of Adaptive Card with a mention:</p>
+<pre><code class="lang-json">{
+  "contentType": "application/vnd.microsoft.card.adaptive",
+  "content": {
+    "type": "AdaptiveCard",
+    "body": [
+      {
+        "type": "TextBlock",
+        "text": "Hi &lt;at&gt;John Doe&lt;/at&gt;"
+      }
+    ],
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "msteams": {
+      "entities": [
+        {
+          "type": "mention",
+          "text": "&lt;at&gt;John Doe&lt;/at&gt;",
+          "mentioned": {
+            "id": "29:123124124124",
+            "name": "John Doe"
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p><a name="microsoft-azure-active-directory-azure-ad-object-id-and-upn-in-user-mention"></a></p>
+<h3 id="microsoft-entra-object-id-and-upn-in-user-mention">Microsoft Entra Object ID and UPN in user mention</h3>
+<p>Teams platform allows you to mention users with their Microsoft Entra Object ID and User Principle Name (UPN), in addition to the existing mention IDs. Bots with Adaptive Cards and Connectors with Incoming Webhooks support the two user mention IDs.</p>
+<p>The following table describes the newly supported user mention IDs:</p>
+<table>
+<thead>
+<tr>
+<th>IDs</th>
+<th>Supporting capabilities</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft Entra Object ID</td>
+<td>Bot, Connector</td>
+<td>Microsoft Entra user’s Object ID</td>
+<td>49c4641c-ab91-4248-aebb-6a7de286397b</td>
+</tr>
+<tr>
+<td>UPN</td>
+<td>Bot, Connector</td>
+<td>Microsoft Entra user’s UPN</td>
+<td><code>john.smith@microsoft.com</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-mention-in-bots-with-adaptive-cards">User mention in bots with Adaptive Cards</h4>
+<p>Bots support user mention with the Microsoft Entra Object ID and UPN, in addition to the existing IDs. The support for two new IDs is available in bots for text messages, Adaptive Cards body, and message extension response. Bots support the mention IDs in conversation and <code>invoke</code> scenarios. The user gets activity feed notification when being <span class="no-loc" dir="ltr" lang="en-us">@mentioned</span> with the IDs.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>Schema update and UI/UX changes aren't required for user mentions with Adaptive Cards in Bot.</p>
+</div>
+<h5 id="example">Example</h5>
+<p>Example for user mention in bots with Adaptive Cards as follows:</p>
+<pre><code class="lang-json">{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0",
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Hi &lt;at&gt;Adele UPN&lt;/at&gt;, &lt;at&gt;Adele Microsoft Entra ID&lt;/at&gt;"
+    }
+  ],
+  "msteams": {
+    "entities": [
+      {
+        "type": "mention",
+        "text": "&lt;at&gt;Adele UPN&lt;/at&gt;",
+        "mentioned": {
+          "id": "AdeleV@contoso.onmicrosoft.com",
+          "name": "Adele Vance"
+        }
+      },
+      {
+        "type": "mention",
+        "text": "&lt;at&gt;Adele Microsoft Entra ID&lt;/at&gt;",
+        "mentioned": {
+          "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+          "name": "Adele Vance"
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Following image illustrates the user mention with Adaptive Card in Bot:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/authentication/user-mention-in-bot.png" alt="Screenshot shows a user mention in bot with Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h4 id="user-mention-in-incoming-webhook-with-adaptive-cards">User mention in Incoming Webhook with Adaptive Cards</h4>
+<p>Incoming webhooks start to support user mention in Adaptive Cards with the Microsoft Entra Object ID and UPN.</p>
+<div class="NOTE">
+<p>Note</p>
+<ul>
+<li>Enable user mention in the schema for Incoming webhooks to support Microsoft Entra Object ID and UPN.</li>
+<li>UI/UX changes aren't required for user mentions with Microsoft Entra Object ID and UPN.</li>
+</ul>
+</div>
+<h5 id="example-1">Example</h5>
+<p>Example for user mention in Incoming Webhook as follows:</p>
+<pre><code class="lang-json">{
+    "type": "message",
+    "attachments": [
+        {
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+            "type": "AdaptiveCard",
+            "body": [
+                {
+                    "type": "TextBlock",
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "text": "Sample Adaptive Card with User Mention"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Hi &lt;at&gt;Adele UPN&lt;/at&gt;, &lt;at&gt;Adele Microsoft Entra ID&lt;/at&gt;"
+                }
+            ],
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.0",
+            "msteams": {
+                "entities": [
+                    {
+                        "type": "mention",
+                        "text": "&lt;at&gt;Adele UPN&lt;/at&gt;",
+                        "mentioned": {
+                          "id": "AdeleV@contoso.onmicrosoft.com",
+                          "name": "Adele Vance"
+                        }
+                      },
+                      {
+                        "type": "mention",
+                        "text": "&lt;at&gt;Adele Microsoft Entra ID&lt;/at&gt;",
+                        "mentioned": {
+                          "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+                          "name": "Adele Vance"
+                        }
+                      }
+                ]
+            }
+        }
+    }]
+}
+</code></pre>
+<p>Following image illustrates user mention in Incoming Webhook:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/authentication/user-mention-in-incoming-webhook.png" alt="Screenshot shows a user mention in Incoming Webhook." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="people-icon-in-an-adaptive-card">People icon in an Adaptive Card</h3>
+<p>People icon helps users to view the images of users in an Adaptive Card. You can insert an image and apply all the properties supported on images.</p>
+<p>There are two types of people icons that are supported in an Adaptive Card:</p>
+<ul>
+<li><p>Persona: If you want to show a single user in an Adaptive Card, it displays the people icon and the name of the user.</p>
+<p>The following JSON code is an example of a Persona card:</p>
+<pre><code class="lang-json">{
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0.0",
+  "body": [
+{
+      "type": "TextBlock",
+      "text": "Persona",
+      "weight": "bolder"
+    },
+    {
+      "type": "Component",
+      "name": "graph.microsoft.com/user",
+      "view": "compact",
+      "properties": {
+        "id": "65f50003-e15d-434a-9e14-0fcfeb3d7817",
+        "displayName": "Daniela Mandera",
+        "userPrincipalName": "damandera@microsoft.com"
+      }
+    }
+  ]
+}
+</code></pre>
+</li>
+<li><p>Persona Set: If you want to show multiple users in an Adaptive Card, it displays only the people icon of the users.</p>
+<p>The following JSON code is an example of a Persona Set:</p>
+<pre><code class="lang-json">{
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0.0",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Persona Set",
+      "weight": "bolder"
+    },
+    {
+      "type": "Component",
+      "name": "graph.microsoft.com/users",
+      "view": "compact",
+      "properties": {
+        "users": [
+          {
+            "id": "65f50003-e15d-434a-9e14-0fcfeb3d7817",
+            "displayName": "Daniela Mandera",
+            "userPrincipalName": "damandera@microsoft.com"
+          },
+          {
+            "id": "65f50003-e15d-434a-9e14-0fcfeb3d7817",
+            "displayName": "Daniela Mandera",
+            "userPrincipalName": "damandera@microsoft.com"
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>You can't customize the style of the Persona and Persona Set in an Adaptive Card.</p>
+</div>
+</li>
+</ul>
+<p>The following image is an example of the people icon in an Adaptive Card:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/people-icon-persona-persona-set.png" alt="Screenshot shows an example of the persona and persona set type people icon in an Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h4 id="schema">Schema</h4>
+<p>The following table lists the properties of the <code>Component</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>component</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Use <code>graph.microsoft.com/users</code> to search all members across the organization</td>
+</tr>
+<tr>
+<td><code>view</code></td>
+<td><code>compact</code></td>
+</tr>
+<tr>
+<td><code>properties</code></td>
+<td>Passed to the component template</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>User's MRI</td>
+</tr>
+<tr>
+<td><code>displayName</code></td>
+<td>Name of the user</td>
+</tr>
+<tr>
+<td><code>userPrincipalName</code></td>
+<td>The user's principal name of the account in Microsoft Entra ID</td>
+</tr>
+</tbody>
+</table>
+<p>Adaptive Components are high-level components powered by <a href="/en-us/adaptive-cards/templating/" data-linktype="absolute-path">templating</a> and native Adaptive Card elements. The type <code>component</code> can be used anywhere inside the card body and the component data is defined in the <code>properties</code> attribute. The component data under <code>properties</code> is passed directly to the component. The <code>properties</code> property defines the format for Persona and Persona Set and all other properties under <code>properties</code> is ignored by <code>component</code> type in the Adaptive Card schema.</p>
+<p>Your bot can query for the list of members and their basic user profiles, including Teams user IDs and Microsoft Entra information, such as <code>name</code>, <code>id</code>, and <code>userPrincipalName</code>. For more information, see <a href="../../bots/how-to/get-teams-context#fetch-the-roster-or-user-profile" data-linktype="relative-path">Fetch the roster or user profile</a>.</p>
+<p>The following images show the people icon in an Adaptive Card on Teams desktop and mobile clients:</p>
+<p><strong>Desktop client</strong>:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/people-icon-persona-persona-set.png" alt="Screenshot shows a persona and persona set icons in an Adaptive Card in Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p>When a user hovers on a people icon, the people card of that user is displayed.</p>
+<p><strong>Mobile client</strong></p>
+<section class="row">
+<div class="column">
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/people-icon-mobile-1.png" alt="Screenshot shows an example of people icon in a persona and persona set in Teams mobile client." data-linktype="relative-path">
+</span>
+</p>
+</div>
+<div class="column">
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/people-icon-mobile-2.png" alt="Screenshot shows another example of people icon in a persona and persona set in Teams mobile client." data-linktype="relative-path">
+</span>
+</p>
+</div>
+</section>
+<p>When a user selects a people icon, it displays the people card of that user.</p>
+<h3 id="information-masking-in-adaptive-cards">Information masking in Adaptive Cards</h3>
+<p>Use the information masking property to mask specific information, such as password or sensitive information from users within the Adaptive Card <a href="https://adaptivecards.microsoft.com/?topic=Input.Text" data-linktype="external"><code>Input.Text</code></a> input element.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>The feature only supports client side information masking. The masked input text is sent as clear text to the HTTPS endpoint address that was specified during <a href="../../build-your-first-app/build-bot#4-register-your-bot-endpoint" data-linktype="relative-path">bot configuration</a>.</p>
+</div>
+<p>To mask information in Adaptive Cards, add the <code>style</code> property to <strong>type</strong> <code>input.text</code>, and set its value to <strong>Password</strong>.</p>
+<h4 id="sample-adaptive-card-with-masking-property">Sample Adaptive Card with masking property</h4>
+<p>The following code shows an example of Adaptive Card with masking property:</p>
+<pre><code class="lang-json">{
+    "type": "Input.Text",
+    "id": "secretThing",
+    "style": "password",
+},
+</code></pre>
+<p>The following image is an example of masking information in Adaptive Cards:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/masking-information-view.png" alt="Screenshot shows masking information view in an Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="full-width-adaptive-card">Full width Adaptive Card</h3>
+<p>You can use the <code>msteams</code> property to expand the width of an Adaptive Card and make use of extra canvas space. The next section provides information on how to use the property.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>Test your full width Adaptive Card in narrow form factors such as mobile and meeting side panels to ensure that content isn't truncated.</p>
+</div>
+<h4 id="construct-full-width-cards">Construct full width cards</h4>
+<p>To make a full width Adaptive Card, the <code>width</code> object in <code>msteams</code> property in the card content must be set to <code>Full</code>.</p>
+<h4 id="sample-adaptive-card-with-full-width">Sample Adaptive Card with full width</h4>
+<p>To make a full width Adaptive Card, your app must include the elements from the following code sample:</p>
+<pre><code class="lang-json">{
+    "type": "AdaptiveCard",
+    "body": [{
+        "type": "Container",
+        "items": [{
+            "type": "TextBlock",
+            "text": "Digest card",
+            "size": "Large",
+            "weight": "Bolder"
+        }]
+    }],
+
+    "msteams": {
+        "width": "Full"
+    },
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
+</code></pre>
+<p>The following image shows a full width Adaptive Card:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/full-width-adaptive-card.png" alt="Screenshot shows a full width Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<p>The following image shows the default view of an Adaptive Card when you haven't set the <code>width</code> property to <strong>Full</strong>:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/small-width-adaptive-card.png" alt="Screenshot shows a small width Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="adaptive-card-responsive-layout">Adaptive Card responsive layout</h3>
+<p>Adaptive Cards automatically adapt their look and feel to the host application's style, but have a fixed layout that remains the same across Teams mobile and desktop clients. You must design your Adaptive Cards to look great on any device in order to provide an enhanced user experience across chat, channels, and meeting chat. In this article, you'll learn about designing responsive Adaptive Cards.</p>
+<p>Adaptive Card responsive layout helps you to design cards with different layouts that target different card widths.</p>
+<h4 id="design-responsive-adaptive-cards">Design responsive Adaptive Cards</h4>
+<p>Use the <code>targetWidth</code> property on any element to:</p>
+<ul>
+<li><p>Show or hide any element based on the card's width.</p>
+</li>
+<li><p>Set different target widths on different elements to create different layouts.</p>
+<p>The following table lists the available <code>targetWidth</code> values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>veryNarrow</code></td>
+<td>The element is visible when the Adaptive Card's width is very narrow such as in a meeting chat.</td>
+</tr>
+<tr>
+<td><code>narrow</code></td>
+<td>The element is visible when the Adaptive Card's width is narrow such as on a mobile phone in portrait mode.</td>
+</tr>
+<tr>
+<td><code>standard</code></td>
+<td>The element is visible when the Adaptive Card's width is standard such as on a mobile phone in landscape mode, on a tablet in portrait mode, or in a chat on desktop.</td>
+</tr>
+<tr>
+<td><code>wide</code></td>
+<td>The element is visible when the Adaptive Card's width is wide such as on a tablet in landscape mode, in a channel or chat on desktop when you set your card to be <a href="#full-width-adaptive-card" data-linktype="self-bookmark">full width</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>You can also set the <code>targetWidth</code> property to make an element visible for a range of card widths using the <code>atLeast</code> and
+<code>atMost</code> prefixes. For example, you can make an element visible only when the card width is 'standard or above' or only when the card width is 'narrow or below'. The following table provides guidance on how to make an element visible for a range of card widths:</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"targetWidth": "atLeast:standard"</code></td>
+<td>The element is visible only when the Adaptive Card's width is at least standard, which means standard or wide.</td>
+</tr>
+<tr>
+<td><code>"targetWidth": "atMost:narrow"</code></td>
+<td>The element is visible only when the Adaptive Card's width is at most narrow, which means very narrow or narrow.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<p>Note</p>
+<p>You don't have to set <code>targetWidth</code> on all elements. If you don't set <code>targetWidth</code> for an element, the element is always visible irrespective of the card's width.</p>
+</div>
+</li>
+</ul>
+<p>The following are JSON samples for an Adaptive Card designed without using <code>targetWidth</code> and modified to use<code>targetWidth</code>:</p>
+<ul>
+<li><p>Adaptive Card designed without using <code>targetWidth</code>:</p>
+<pre><code class="lang-json">{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "https://aka.ms/AAp9xo4",
+              "size": "Small"
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "spacing": "medium",
+          "verticalContentAlignment": "center",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "David Claux",
+              "wrap": true
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "spacing": "medium",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Platform Architect",
+              "isSubtle": true,
+              "wrap": true
+            }
+          ],
+          "width": "stretch",
+          "verticalContentAlignment": "center"
+        }
+      ]
+    }
+  ],
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5"
+}
+
+</code></pre>
+<p>The following images show the rendering of the Adaptive Card for different card widths:</p>
+<ul>
+<li><p>When the card's width is <strong>wide</strong>, the card looks good.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-width-wide.png" alt="Screenshot shows how an Adaptive Card with card width as wide renders when the card is designed without using targetWidth property." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When the card's width is <strong>standard</strong> or <strong>narrow</strong>, the role is squeezed.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-width-standard-narrow.png" alt="Screenshot shows how an Adaptive Card with card width as standard or narrow renders when the card is designed without using targetWidth property." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When the card's width is <strong>very narrow</strong>, the name and role are significantly squeezed.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-width-very-narrow.png" alt="Screenshot shows how an Adaptive Card with card width as very narrow  renders when the card is designed without using targetWidth property." data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ul>
+</li>
+<li><p>Adaptive Card updated to be responsive using <code>targetWidth</code>:</p>
+<pre><code class="lang-json">  {
+    "type": "AdaptiveCard",
+    "body": [
+      {
+        "type": "ColumnSet",
+        "columns": [
+          {
+            "type": "Column",
+            "targetWidth": "atLeast:narrow",
+            "items": [
+              {
+                "type": "Image",
+                "style": "Person",
+                "url": "https://aka.ms/AAp9xo4",
+                "size": "Small"
+              }
+            ],
+            "width": "auto"
+          },
+          {
+            "type": "Column",
+            "spacing": "medium",
+            "verticalContentAlignment": "center",
+            "items": [
+              {
+                "type": "TextBlock",
+                "weight": "Bolder",
+                "text": "David Claux",
+                "wrap": true
+              },
+              {
+                "type": "TextBlock",
+                "targetWidth": "atMost:narrow",
+                "spacing": "None",
+                "text": "Platform Architect",
+                "isSubtle": true,
+                "wrap": true
+              }
+            ],
+            "width": "auto"
+          },
+          {
+            "type": "Column",
+            "targetWidth": "atLeast:standard",
+            "spacing": "medium",
+            "items": [
+              {
+                "type": "TextBlock",
+                "text": "Platform Architect",
+                "isSubtle": true,
+                "wrap": true
+              }
+            ],
+            "width": "stretch",
+            "verticalContentAlignment": "center"
+          }
+        ]
+      }
+    ],
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5"
+  }
+</code></pre>
+<p>Let's see how the same Adaptive Card renders after using the <code>targetWidth</code> property for different card widths:</p>
+<ul>
+<li><p>When the card's width is <strong>wide</strong>, the card still looks good.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/target-width-wide.png" alt="Screenshot shows how an Adaptive Card renders when the targetWidth property is wide." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When the card's width is <strong>standard</strong> or <strong>narrow</strong>, the role is moved under the name as there's no horizontal space to show them side-by-side.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/target-width-standard-narrow.png" alt="Screenshot shows how an Adaptive Card renders when the targetWidth property is standard or narrow." data-linktype="relative-path">
+</span>
+</p>
+</li>
+<li><p>When the card's width is <strong>very narrow</strong>, we can hide the image and only keep the most meaningful information.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/target-width-very-narrow.png" alt="Screenshot shows how an Adaptive Card renders when the targetWidth property is veryNarrow." data-linktype="relative-path">
+</span>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>For more information on how to design an Adaptive Card, see <a href="design-effective-cards" data-linktype="relative-path">designing Adaptive Cards for your Teams app</a>.</p>
+<h3 id="typeahead-support">Typeahead support</h3>
+<p>Within the <a href="https://adaptivecards.microsoft.com/?topic=Input.ChoiceSet" data-linktype="external"><code>Input.ChoiceSet</code></a> schema element, asking users to filter and select a sizeable number of choices can significantly slow down task completion. Typeahead support within Adaptive Cards can simplify input selection by narrowing or filtering the set of input choices as the user types the input.</p>
+<p>To enable typeahead within the <code>Input.Choiceset</code>, set <code>style</code> to <code>filtered</code> and ensure <code>isMultiSelect</code> is set to <code>false</code>.</p>
+<h4 id="sample-adaptive-card-with-typeahead-support">Sample Adaptive Card with typeahead support</h4>
+<p>The following code shows an example of Adaptive Card with typeahead support:</p>
+<pre><code class="lang-json">{
+   "type": "Input.ChoiceSet",
+   "label": "Select a user",
+   "isMultiSelect": false,
+   "choices":  [
+      { "title": "User 1", "value": "User1" },
+      { "title": "User 2", "value": "User2" }
+    ],
+   "style": "filtered"
+}
+</code></pre>
+<h3 id="stageview-for-images-in-adaptive-cards">Stageview for images in Adaptive Cards</h3>
+<p>In an Adaptive Card, you can use the <code>msteams</code> property to add the ability to display images in Stageview selectively. When users hover over the images, they can see an expand icon, for which the <code>allowExpand</code> attribute is set to <code>true</code>. The following code is an example of the <code>msteams</code> property:</p>
+<pre><code class="lang-json">{
+    "type": "AdaptiveCard",
+     "body": [
+          {
+            "type": "Image",
+            "url": "https://picsum.photos/200/200?image=110",
+            "msTeams": {
+              "allowExpand": true
+            }
+          }
+     ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
+</code></pre>
+<p>When users hover over the image, an expand icon appears at the upper-right corner as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptivecard-hover-expand-icon.png" alt="Screenshot shows an Adaptive Card with an expandable image." data-linktype="relative-path">
+</span>
+</p>
+<p>The image appears in Stageview when the user selects the expand icon as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/adaptivecard-expand-image.png" alt="Screesnhots shows the image expanded to Stageview." data-linktype="relative-path">
+</span>
+</p>
+<p>In the Stageview, users can zoom in and zoom out of the image. You can select the images in your Adaptive Card that must have this capability.</p>
+<div class="NOTE">
+<p>Note</p>
+<ul>
+<li>Zoom in and zoom out capability applies only to the image elements that is image type in an Adaptive Card.</li>
+<li>For Teams mobile apps, Stageview functionality for images in Adaptive Cards is available by default. Users can view Adaptive Card images in Stageview by simply tapping on the image, irrespective of whether the <code>allowExpand</code> attribute is present or not.</li>
+</ul>
+</div>
+</section>
+<section id="tabpanel_1_connector-md" role="tabpanel" data-tab="connector-md" aria-hidden="true" hidden="hidden">
+
+<p>Connector cards support limited Markdown and HTML formatting.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td><strong>text</strong></td>
+<td><code>**text**</code></td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><em>text</em></td>
+<td><code>*text*</code></td>
+</tr>
+<tr>
+<td>Header (levels 1–3)</td>
+<td><strong>Text</strong></td>
+<td><code>### Text</code></td>
+</tr>
+<tr>
+<td>Strikethrough</td>
+<td><del>text</del></td>
+<td><code>~~text~~</code></td>
+</tr>
+<tr>
+<td>Unordered list</td>
+<td><ul><li>text</li><li>text</li></ul></td>
+<td><code>- Item 1\r- Item 2\r- Item 3</code></td>
+</tr>
+<tr>
+<td>Ordered list</td>
+<td><ol><li>text</li><li>text</li></ol></td>
+<td><code>1. Green\r2. Orange\r3. Blue</code></td>
+</tr>
+<tr>
+<td>Preformatted text</td>
+<td><code>text</code></td>
+<td><code>preformatted text</code></td>
+</tr>
+<tr>
+<td>Blockquote</td>
+<td>&gt;blockquote text</td>
+<td><code>&gt;blockquote text</code></td>
+</tr>
+<tr>
+<td>Hyperlink</td>
+<td><a href="https://www.bing.com/" data-linktype="external">Bing</a></td>
+<td><code>[Bing](https://www.bing.com/)</code></td>
+</tr>
+<tr>
+<td>Image link</td>
+<td><img src="https://aka.ms/Fo983c" alt="Duck on a rock" data-linktype="external"></td>
+<td><code>![Duck](https://aka.ms/Fo983c)</code></td>
+</tr>
+</tbody>
+</table>
+<p>In connector cards, newlines are rendered for <code>\n\n</code>, but not for <code>\n</code> or <code>\r</code>.</p>
+<h3 id="mobile-and-desktop-differences-for-connector-cards">Mobile and desktop differences for connector cards</h3>
+<p>On the desktop, Markdown formatting for connector cards appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-desktop-markdown-combined.png" alt="Screenshot shows Markdown formatting for connector cards." data-linktype="relative-path">
+</span>
+</p>
+<p>On iOS, Markdown formatting for connector cards appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-iphone-html-combined-80.png" alt="Screenshot shows Markdown formatting for connector cards in Teams iOS client." data-linktype="relative-path">
+</span>
+</p>
+<p>Connector cards using Markdown for iOS include the following issues:</p>
+<ul>
+<li>The iOS client for Teams doesn't render Markdown or HTML inline images in connector cards.</li>
+<li>Blockquotes are rendered as indented but without a gray background.</li>
+</ul>
+<p>On Android, Markdown formatting for connector cards appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-android-markdown-combined.png" alt="Screenshot shows Markdown formatting for connector cards in Teams Android client." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="format-example-for-markdown-connector-cards">Format example for Markdown connector cards</h3>
+<p>The following code shows an example of formatting for Markdown connector cards:</p>
+<pre><code class="lang-json">{
+  "contentType": "application/vnd.microsoft.teams.card.o365connector",
+  "content": {
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Summary",
+    "title": "Connector Card Markdown formatting",
+    "sections": [
+        {
+            "text": "This is some **bold** text"
+        },
+        {
+            "text": "This is some _italic_ text"
+        },
+        {
+            "text": "# Header 1\r## Header 2\r### Header 3"
+        },
+        {
+            "text": "- Bullet \r- List \r"
+        },
+        {
+            "text": "1. Numbered\r1. List \r"
+        },
+        {
+            "text": "Link: [Bing](https://www.bing.com)"
+        },
+        {
+            "text": "embedded image link: ![Duck on a rock](https://aka.ms/Fo983c)"
+        },
+        {
+            "text": "`preformatted text`"
+        },
+        {
+            "text": "Newlines (backslash n, backslash n):\n\nline a\n\nline b\n\nline c"
+        },
+        {
+            "text": "&gt;This is a blockquote"
+        }
+     ]
+  }
+}
+
+</code></pre>
+</section>
+</div>
+<h2 id="codeblock-in-adaptive-cards">CodeBlock in Adaptive Cards</h2>
+<p>The <code>CodeBlock</code> element enables you to share code snippets as richly formatted Adaptive Cards in Teams chats, channels, and meetings. Adaptive Cards with the <code>CodeBlock</code> element make the code snippet easy to read as the indentation, numbering, and syntax highlighting match the programming language. Additionally, you can add action buttons to view the code at its source or edit the code in integrated development environments (IDEs) such as Microsoft Visual Studio or Microsoft Visual Studio Code.</p>
+<p>The following screenshot shows an Adaptive Card with a code snippet:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/code-block-adaptive-card.png" alt="Screenshot shows an Adaptive Card with a code snippet." data-linktype="relative-path">
+</span>
+</p>
+<p>The <code>CodeBlock</code> element supports the following languages:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Language</th>
+<th style="text-align: center;">Supported</th>
+<th style="text-align: left;">Language</th>
+<th style="text-align: center;">Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bash</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">JSON</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">C</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">Perl</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">C++</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">PHP</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">C#</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">PowerShell</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">CSS</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">Python</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">DOS</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">SQL</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">Go</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">TypeScript</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">GraphQL</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">Visual Basic</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">HTML</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">Verilog</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">Java</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">VHDL</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td style="text-align: left;">JavaScript</td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: left;">XML</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<p>Note</p>
+<p>The <code>CodeBlock</code> element recognizes plain text as a language if you set the enum value to <code>PlainText</code> in the <code>language</code> property of the schema.</p>
+</div>
+<p>The following code is an example of an Adaptive Card displaying a code snippet:</p>
+<pre><code class="lang-json">{
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "editor.js",
+            "style": "heading"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Lines 61 - 76"
+        },
+        {
+            "type": "CodeBlock",
+            "codeSnippet": "/**\n* @author John Smith &lt;john.smith@example.com&gt;\n*/\npackage l2f.gameserver.model;\n\npublic abstract strictfp class L2Char extends L2Object {\n  public static final Short ERROR = 0x0001;\n\n  public void moveTo(int x, int y, int z) {\n    _ai = null;\n    log(\"Shouldn't be called\");\n    if (1 &gt; 5) { // what!?\n      return;\n    }\n  }\n}",
+            "language": "java",
+            "startLineNumber": 61
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "View in Azure Repos",
+            "url": "https://azure.microsoft.com/en-us/products/devops/repos/"
+        },
+        {
+            "type": "Action.OpenUrl",
+            "title": "Edit in vscode.dev",
+            "url": "https://vscode.dev/"
+        }
+    ]
+}
+</code></pre>
+<p>The <code>CodeBlock</code> element supports the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeSnippet</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>The code snippet to be displayed in an Adaptive Card.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>Enum</td>
+<td>Yes</td>
+<td>The language of the code snippet to be displayed in an Adaptive Card.</td>
+</tr>
+<tr>
+<td><code>startLineNumber</code></td>
+<td>Number</td>
+<td>No</td>
+<td>The line number in the source where the code snippet begins. If left blank, defaults to 1.</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<p>Tip</p>
+<ul>
+<li>Special characters have specific functions in the <code>codeSnippet</code> property. For example, the newline character <code>\n</code> triggers a line break.</li>
+<li>To display the newline character <code>\n</code> as part of the code snippet in an Adaptive Card, ensure that you escape it as <code>\\n</code> in the <code>codeSnippet</code> property. Else, Teams renders the code after the <code>\n</code> in the next line of the card.</li>
+</ul>
+</div>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>An Adaptive Card with the <code>CodeBlock</code> element is supported only in Teams web and desktop clients.</li>
+<li>The code snippet in an Adaptive Card is read-only and not editable.</li>
+<li>An Adaptive Card only previews the first 10 lines of the code snippet. If there are more than 10 lines of code, the user must select <strong>Expand</strong> to see the rest of the code snippet.</li>
+</ul>
+<h2 id="adaptive-cards-overflow-menu">Adaptive Cards overflow menu</h2>
+<p>Adaptive Card in Teams supports overflow menu. You can populate an overflow menu for all the secondary actions in an Adaptive Card. An overflow menu in an Adaptive Card can be added to the following:</p>
+<ul>
+<li><p><strong>Actions</strong>: In actions, the primary buttons appear on the Adaptive Card and the secondary buttons are inside the overflow menu.</p>
+</li>
+<li><p><a href="https://adaptivecards.microsoft.com/?topic=ActionSet" data-linktype="external">ActionSet</a>: ActionSet is a combination of multiple actions in an Adaptive Card. Each action set can have an overflow menu.</p>
+</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p>An Adaptive Card supports up to six primary actions to be viewed on the card. Any additional primary action is viewed in the overflow menu.</p>
+</div>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/overflow-menu-gif.gif" alt="The graphical representation shows the overflow menu experience in an Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="enable-overflow-menu">Enable overflow menu</h3>
+<p>To enable overflow menu, configure the <code>mode</code> property with the value as <code>primary</code> or <code>secondary</code> in the Adaptive Card schema. The following table describes the <code>mode</code> property:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td>Enum (Primary, Secondary)</td>
+<td>No</td>
+<td>Whether or not the action is a primary or secondary action. Secondary actions are collapsed into an overflow menu.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example shows the <code>mode</code> property in the <code>actions</code> type and the <code>ActionSet</code> element:</p>
+<p><strong>Actions</strong></p>
+<p>In the following example, there are two primary actions and one secondary action. The secondary action creates an overflow menu.</p>
+<pre><code class="lang-json">{
+   "type": "AdaptiveCard",
+   "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Set due date"
+        },
+        {
+            "type": "Action.OpenUrl",
+            "title": "View",
+            "url": "https://adaptivecards.microsoft.com/?topic=welcome"
+        },
+        {
+            "type": "Action.Submit",
+            "title": "Delete",
+            "mode": "secondary"
+        }
+    ]
+}
+</code></pre>
+<div class="NOTE">
+<p>Note</p>
+<p>The overflow menu behaves differently on a bot sent card and a message extension card for the root level <code>actions</code> in an Adaptive Card. The overflow menu on a bot sent card appears as a pop-up context menu and on the message extension card it appears at the upper-right corner under the More options (<strong>...</strong>) icon. The behavior isn't applicable to the <code>ActionSet</code> in an Adaptive Card.</p>
+</div>
+<p>The following image is an example of overflow menu in a bot sent card and a message extension card:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/overflow-menu-card-beahvior.png" alt="Screenshot shows an example of the overflow menu behavior in a bot sent card and a messaging extension card." data-linktype="relative-path">
+</span>
+</p>
+<p><strong>Action set</strong></p>
+<p>In the following example, all the actions are marked as secondary, therefore, a single overflow menu appears on the card.</p>
+<pre><code class="lang-json">{
+    "type": "ActionSet",
+     "actions": [
+
+          {
+           
+            "type": "Action.Submit",
+            "title": "view",
+            "mode": "Secondary" 
+       {
+       },
+            "type": "Action.submit",
+            "title": "Delete",
+            "mode": "secondary"
+
+       },
+       {
+             "type": "Action.submit",
+            "title": "Delete",
+            "mode": "secondary"
+       }
+     ]
+}
+</code></pre>
+<p>The following example shows the overflow menu experience in Teams desktop and mobile clients:</p>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_desktop" role="tab" aria-controls="tabpanel_2_desktop" data-tab="desktop" tabindex="0" aria-selected="true" data-linktype="self-bookmark">Desktop</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_mobile" role="tab" aria-controls="tabpanel_2_mobile" data-tab="mobile" tabindex="-1" data-linktype="self-bookmark">Mobile</a>
+</li>
+</ul>
+<section id="tabpanel_2_desktop" role="tabpanel" data-tab="desktop">
+
+<p>When a user selects the overflow menu on a desktop, the buttons that are set as secondary appear in the Adaptive Card.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/desktop-overflow-image-1.png" alt="Screenshot shows an example of buttons in an Adaptive Card on Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/desktop-overflow-image-2.png" alt="Screenshot shows an example of an Adaptive Card with the list of actions in an overflow menu on Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/desktop-overflow-menu-image-3.png" alt="Screenshot shows an example of an Adaptive Card with the buttons that are set as secondary as options in an overflow menu on Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+</section>
+<section id="tabpanel_2_mobile" role="tabpanel" data-tab="mobile" aria-hidden="true" hidden="hidden">
+
+<p>When a user selects the overflow menu on mobile, Adaptive Card displays the buttons that are defined. There's an integrated sheet that displays an overflow menu with card related tasks with a message option. A long press on any message displays a list of related messages. This option is available only for actions.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/over-flow-menu-mob-1.png" alt="Screenshot shows an example of overflow menu on Teams mobile client." data-linktype="relative-path">
+</span>
+</p>
+</section>
+</div>
+<h2 id="borders-and-rounded-corners-in-adaptive-cards">Borders and rounded corners in Adaptive Cards</h2>
+<p>Adaptive Cards support a wide variety of elements, but having too many elements clutters the card and hinders readability. You can add borders to various elements in an Adaptive Card to delineate them, making it easier for users to distinguish between them.</p>
+<div class="tabGroup" id="tabgroup_3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_3_desktop1" role="tab" aria-controls="tabpanel_3_desktop1" data-tab="desktop1" tabindex="0" aria-selected="true" data-linktype="self-bookmark">Desktop</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_mobile1" role="tab" aria-controls="tabpanel_3_mobile1" data-tab="mobile1" tabindex="-1" data-linktype="self-bookmark">Mobile</a>
+</li>
+</ul>
+<section id="tabpanel_3_desktop1" role="tabpanel" data-tab="desktop1">
+<section class="row">
+<div class="column span2">
+<p><strong>Without borders</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-no-border.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-no-border.png" alt="Screenshot shows an Adaptive Card with no borders around its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+<div class="column span2">
+<p><strong>With borders</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-border.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-border.png" alt="Screenshot shows an Adaptive Card with borders around its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+</section>
+</section>
+<section id="tabpanel_3_mobile1" role="tabpanel" data-tab="mobile1" aria-hidden="true" hidden="hidden">
+<section class="row">
+<div class="column span2">
+<p><strong>Without borders</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-no-border-mobile.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-no-border-mobile.png" alt="Screenshot shows an Adaptive Card with no borders around its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+<div class="column span2">
+<p><strong>With borders</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-border-mobile.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-border-mobile.png" alt="Screenshot shows an Adaptive Card with borders around its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+</section>
+</section>
+</div>
+
+<p>You can use Adaptive Cards across multiple hosts. Many of these hosts follow contemporary design systems and frameworks. Adaptive Cards support rounded corners for various elements to maintain consistency with these hosts and keep up with latest design trends. Rounded corners make the card design look more modern and visually appealing, creating a softer visual flow.</p>
+<div class="tabGroup" id="tabgroup_4">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_4_desktop2" role="tab" aria-controls="tabpanel_4_desktop2" data-tab="desktop2" tabindex="0" aria-selected="true" data-linktype="self-bookmark">Desktop</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_mobile2" role="tab" aria-controls="tabpanel_4_mobile2" data-tab="mobile2" tabindex="-1" data-linktype="self-bookmark">Mobile</a>
+</li>
+</ul>
+<section id="tabpanel_4_desktop2" role="tabpanel" data-tab="desktop2">
+<section class="row">
+<div class="column span2">
+<p><strong>Without rounded corners</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-no-rounded-corner.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-no-rounded-corner.png" alt="Screenshot shows an Adaptive Card without rounded corners to its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+<div class="column span2">
+<p><strong>With rounded corners</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-rounded-corner.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-rounded-corner.png" alt="Screenshot shows an Adaptive Card with rounded corners to its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+</section>
+</section>
+<section id="tabpanel_4_mobile2" role="tabpanel" data-tab="mobile2" aria-hidden="true" hidden="hidden">
+<section class="row">
+<div class="column span2">
+<p><strong>Without rounded corners</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-no-rounded-corner-mobile.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-no-rounded-corner-mobile.png" alt="Screenshot shows an Adaptive Card without rounded corners to its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+<div class="column span2">
+<p><strong>With rounded corners</strong></p>
+<p><span class="mx-imgBorder">
+<a href="../../assets/images/adaptive-cards/ac-rounded-corner-mobile.png#lightbox" data-linktype="relative-path">
+<img src="../../assets/images/adaptive-cards/ac-rounded-corner-mobile.png" alt="Screenshot shows an Adaptive Card with rounded corners to its elements." data-linktype="relative-path">
+</a>
+</span>
+</p>
+</div>
+</section>
+</section>
+</div>
+
+<p>You can add borders and rounded corners only to the following elements:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align: center;">Borders</th>
+<th style="text-align: center;">Rounded Corners</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://adaptivecards.microsoft.com/?topic=Container" data-linktype="external"><code>Container</code></a></td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td><a href="https://adaptivecards.microsoft.com/?topic=ColumnSet" data-linktype="external"><code>ColumnSet</code></a></td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td><a href="https://adaptivecards.microsoft.com/?topic=Column" data-linktype="external"><code>Column</code></a></td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td><a href="https://adaptivecards.microsoft.com/?topic=Table" data-linktype="external"><code>Table</code></a></td>
+<td style="text-align: center;">✔️</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+<tr>
+<td><a href="https://adaptivecards.microsoft.com/?topic=Image" data-linktype="external"><code>Image</code></a></td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">✔️</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implement-borders-and-rounded-corners-in-adaptive-cards">Implement borders and rounded corners in Adaptive Cards</h3>
+<p>To add a border to a <code>Container</code>, <code>ColumnSet</code>, or <code>Column</code> element, set the <code>showBorder</code> property to <code>true</code> for the element in the card’s payload. To add a border to a <code>Table</code> element, set the <code>showGridLines</code> property to <code>true</code>. The border color matches the element’s style, as defined in the <a href="/en-us/adaptive-cards/rendering-cards/host-config" data-linktype="absolute-path"><code>HostConfig.json</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>showBorder</code></td>
+<td>Boolean</td>
+<td>No</td>
+<td>Adds a border to the <code>Container</code>, <code>ColumnSet</code>, or <code>Column</code> elements.</td>
+</tr>
+<tr>
+<td><code>showGridLines</code></td>
+<td>Boolean</td>
+<td>No</td>
+<td>Adds a border to the <code>Table</code> element. Default value: <code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p>To add rounded corners to a <code>Container</code>, <code>ColumnSet</code>, <code>Column</code>, or <code>Table</code> element, set the <code>roundedCorners</code> property to <code>true</code> for the element in the card’s payload. To add rounded corners to the <code>Image</code> element, set the <code>style</code> property to <code>RoundedCorners</code> within the element.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>roundedCorners</code></td>
+<td>Boolean</td>
+<td>No</td>
+<td>Adds rounded corners to the <code>Container</code>, <code>ColumnSet</code>, <code>Column</code>, or <code>Table</code> elements.</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>String</td>
+<td>No</td>
+<td>Adds rounded corners to the <code>Image</code> element when you set the value to <code>roundedCorners</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The following JSON payload shows an Adaptive Card with borders and rounded corners around its elements:</p>
+<pre><code class="lang-json">{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Below is a **ColumnSet** with borders and rounded corners:",
+            "wrap": true
+        },
+        {
+            "type": "ColumnSet",
+            "showBorder": true,
+            "roundedCorners": true,
+            "style": "emphasis",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "showBorder": true,
+                    "roundedCorners": true,
+                    "style": "accent",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "This is a **Column** with borders and rounded corners",
+                            "wrap": true
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "showBorder": true,
+                    "roundedCorners": true,
+                    "style": "good",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "This is another **Column** with borders and rounded corners",
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "style": "attention",
+            "showBorder": true,
+            "roundedCorners": true,
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "This is a **Container** with borders and rounded corners",
+                    "wrap": true
+                }
+            ]
+        },
+        {
+            "type": "Table",
+            "roundedCorners": true,
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 1
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "This **Table**...",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "...has borders and rounded corners",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "The below **Image** has rounded corners:",
+            "wrap": true
+        },
+        {
+            "type": "Image",
+            "url": "https://media.licdn.com/dms/image/C4E03AQF5uhIghtPzrA/profile-displayphoto-shrink_400_400/0/1517690039090?e=2147483647&amp;v=beta&amp;t=g1DFilNHZhah2fhaTS9ylBxGGGb2XyPA2C7LZptk4QE",
+            "width": "100px",
+            "style": "RoundedCorners"
+        }
+    ]
+}
+</code></pre>
+<h2 id="scrollable-containers-in-adaptive-cards">Scrollable containers in Adaptive Cards</h2>
+<p>A container with many elements might lead to a long, unreadable card. Use the <code>maxHeight</code> property to define the maximum height of the container. When the container has a maximum height and its content exceeds that height, a vertical scrollbar appears.</p>
+<p>Here's how the <code>maxHeight</code> property is defined:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxHeight</code></td>
+<td>String</td>
+<td>Defines the maximum height of the container. This property is available in <code>Container</code>, <code>Column</code>, <code>TableCell</code>, and in other containers as well.<br>You must define the value in the <code>&lt;number&gt;px</code> format.</td>
+</tr>
+</tbody>
+</table>
+<p>The following card payload shows a container with a scroll bar:</p>
+<pre><code class="lang-json">{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "This is a scrollable container",
+            "wrap": true,
+            "size": "ExtraLarge",
+            "weight": "Bolder"
+        },
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "showBorder": true,
+            "maxHeight": "100px",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Item 1",
+                    "size": "ExtraLarge"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Item 2",
+                    "size": "ExtraLarge"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Item 3",
+                    "size": "ExtraLarge"
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/adaptive-card-container-scroll.png" alt="Screenshot shows a scrollable container in an Adaptive Card on the Teams desktop client." data-linktype="relative-path">
+</span>
+</p>
+<h2 id="compound-button-in-adaptive-cards">Compound button in Adaptive Cards</h2>
+<p>Compound button is a special type of button with an icon, title, and description. You can add a Compound button using the <code>CompoundButton</code> element. This element enables you to replicate the appearance of <a href="../../bots/how-to/conversations/prompt-suggestions#prompt-starters" data-linktype="relative-path">prompt starters</a> in an Adaptive Card.</p>
+<p>Here are the properties of the <code>CompoundButton</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>Must be <code>CompoundButton</code>.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>Title of the button. Markdown isn't supported.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td></td>
+<td>String</td>
+<td>Unique identifier for the element or action.</td>
+</tr>
+<tr>
+<td><code>requires</code></td>
+<td></td>
+<td>Object</td>
+<td>A list of capabilities that the element requires the host app to support. If the host app doesn't support at least one of the listed capabilities, either the element isn't rendered or its fallback is rendered, if provided.</td>
+</tr>
+<tr>
+<td><code>isVisible</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Controls the visibility of the element.</td>
+</tr>
+<tr>
+<td><code>separator</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Controls whether a separator line must be displayed above the element to visually separate it from the previous element. No separator is displayed for the first element in a container, even if this property is set to <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td></td>
+<td>String</td>
+<td>Height of the element. When set to <code>stretch</code>, the element uses the remaining vertical space in its container. <br> Allowed values: <code>auto</code>, <code>stretch</code></td>
+</tr>
+<tr>
+<td><code>horizontalAlignment</code></td>
+<td></td>
+<td>String</td>
+<td>Controls how the element must be horizontally aligned. <br> Allowed values: <code>Left</code>, <code>Center</code>, <code>Right</code></td>
+</tr>
+<tr>
+<td><code>Spacing</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the amount of space between this element and the previous one. No space is added for the first element in a container. <br> Allowed values: <code>None</code>, <code>Small</code>, <code>Default</code>, <code>Medium</code>, <code>Large</code>, <code>ExtraLarge</code></td>
+</tr>
+<tr>
+<td><code>targetWidth</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the card width for which the element should be displayed. If <code>targetWidth</code> isn't specified, the element is rendered at all card widths. Using <code>targetWidth</code> makes it possible to author responsive cards that adapt their layout to the available horizontal space. For more information, see <a href="#adaptive-card-responsive-layout" data-linktype="self-bookmark">Adaptive Card responsive layout</a>. <br> Allowed values: <code>VeryNarrow</code>, <code>Narrow</code>, <code>Standard</code>, <code>Wide</code></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td></td>
+<td>String</td>
+<td>Icon shown on the button.</td>
+</tr>
+<tr>
+<td><code>badge</code></td>
+<td></td>
+<td>String</td>
+<td>Badge shown on the button. Markdown isn't supported.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td></td>
+<td>String</td>
+<td>Description text of the button. Markdown isn't supported.</td>
+</tr>
+<tr>
+<td><code>selectAction</code></td>
+<td></td>
+<td></td>
+<td>Action that gets invoked when the button is selected. All Actions are allowed except <code>Action.ShowCard</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Here are the properties of the <code>icon</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>Name of the icon, as per the Fluent icon directory. It's same as the name of the new icon element.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td>String</td>
+<td>Size of the icon. Allowed values: <code>xxSmall</code>, <code>xSmall</code>, <code>Small</code>, <code>Standard</code>, <code>Medium</code>, <code>Large</code>, <code>xLarge</code>, <code>xxLarge</code></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td></td>
+<td>String</td>
+<td>Style of the icon. Allowed values: <code>Regular</code>, <code>Filled</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td></td>
+<td>String</td>
+<td>Color of the icon. Allowed values: <code>Default</code>, <code>Dark</code>, <code>Light</code>, <code>Accent</code>, <code>Good</code>, <code>Warning</code>, <code>Attention</code></td>
+</tr>
+</tbody>
+</table>
+<p>Here's an Adaptive Card example that uses the <code>CompoundButton</code> element:</p>
+<pre><code class="lang-json">{ 
+    "type": "AdaptiveCard", 
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json", 
+    "version": "1.5", 
+    "body": [ 
+        { 
+            "type": "CompoundButton", 
+            "title": "Photos", 
+            "icon": { 
+                "name": "Camera" 
+            }, 
+            "description": "Add photos", 
+            "height": "stretch"
+        } 
+    ] 
+}
+</code></pre>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/compoundbutton.png" alt="Screenshot of desktop and mobile view of Compound buttons in an Adaptive Card." data-linktype="relative-path">
+</span>
+</p>
+<h2 id="icons-in-adaptive-card">Icons in Adaptive Card</h2>
+<p>Adaptive Cards support adding icons from the <a href="https://www.figma.com/community/file/836835755999342788" data-linktype="external">Fluent icon</a> library using the <code>Icon</code> element. You can also use Fluent icons on action buttons by setting the action's <code>iconUrl</code> property to a value in the format of <code>icon:&lt;icon name&gt;[,regular|filled]</code>.</p>
+<p>Here are the properties of the <code>Icon</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>Must be <code>Icon</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the icon to display. For example, <code>calendar</code>.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Size of the icon. <br> Allowed values: <code>xxSmall</code>, <code>xSmall</code>, <code>Small</code>, <code>Medium</code>, <code>Large</code>, <code>xLarge</code>, and <code>xxLarge</code> <br> Default value: <code>Standard</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>Color of the icon. <br> Allowed values: <code>Dark</code>, <code>Light</code>, <code>Accent</code>, <code>Good</code>, <code>Warning</code>, and <code>Attention</code> <br> Default value: <code>Default</code></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>Style of the icon. <br> Allowed values: <code>Filled</code>, <code>Regular</code></td>
+</tr>
+<tr>
+<td><code>selectAction</code></td>
+<td>Action that's invoked when the icon is tapped or selected. All Action types are supported except <code>Action.ShowCard</code>. <br> Allowed values: <code>Action.Execute</code>, <code>Action.OpenUrl</code>, <code>Action.Popover</code>, <code>Action.ResetInputs</code>, <code>Action.Submit</code>, <code>Action.ToggleVisibility</code></td>
+</tr>
+</tbody>
+</table>
+<p>Here's an Adaptive Card example that uses the <code>Icon</code> element and the <code>iconUrl</code> property in an action button:</p>
+<pre><code class="lang-json">{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Here's an Icon element"
+    },
+    {
+  "type": "Icon",
+        "name": "Calendar",
+        "size": "Medium",
+        "style": "Filled",
+        "color": "Accent"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Here's an Icon element in a button"
+    }
+ ],
+ "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Filled icon",
+            "url": "https://www.microsoft.com",
+            "iconUrl": "icon:AccessTime,filled"
+        }
+    ]
+}
+</code></pre>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/adaptive-card-fluent-icon.png" alt="Screenshot shows an Adaptive Card with a Fluent icon." data-linktype="relative-path">
+</span>
+</p>
+<h2 id="ratings-in-adaptive-cards">Ratings in Adaptive Cards</h2>
+<p>You can add a star rating input to your Adaptive Card using the <a href="#inputrating" data-linktype="self-bookmark"><code>Input.Rating</code></a> element. You can also include a read-only star rating using the <a href="#rating" data-linktype="self-bookmark"><code>Rating</code></a> element.</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/adaptive-cards/adaptive-card-rating.png" alt="Screenshot shows an Adaptive Card with the input rating and read-only star ratings." data-linktype="relative-path">
+</span>
+</p>
+<p>The following payload shows an Adaptive Card with input-enabled and read-only star ratings:</p>
+<pre><code class="lang-json">{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Large",
+            "text": "Rating input"
+        },
+        {
+            "type": "Input.Rating",
+            "id": "rating1",
+            "label": "Pick a rating",
+            "size": "medium",
+            "color": "marigold",
+            "isRequired": true,
+            "errorMessage": "Please pick a rating"
+        },
+        {
+            "type": "TextBlock",
+            "size": "large",
+            "text": "Read-only rating",
+            "separator": true,
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "Rating",
+            "max": 20,
+            "value": 3.2,
+            "color": "marigold"
+        }
+    ]
+}
+</code></pre>
+<h3 id="inputrating">Input.Rating</h3>
+<p>Here are the properties of the <code>Input.Rating</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>Must be <code>Input.Rating</code>.</td>
+</tr>
+<tr>
+<td><code>allowHalfSteps</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Controls if the user can select half stars. Default value: <code>false</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td></td>
+<td>String</td>
+<td>The color of the stars.<br>Allowed values: <code>Neutral</code>, <code>Marigold</code><br>Default value: <code>Neutral</code></td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td></td>
+<td>String</td>
+<td>The error message to display when the input fails validation.</td>
+</tr>
+<tr>
+<td><code>fallback</code></td>
+<td></td>
+<td>One of Object or String</td>
+<td>An alternate element to render if the type of this element is unsupported or if the host application doesn't support all the capabilities specified in the <code>requires</code> property.<br>Allowed values: <code>Container</code>, <code>ActionSet</code>, <code>ColumnSet</code>, <code>Media</code>, <code>RichTextBlock</code>, <code>Table</code>, <code>TextBlock</code>, <code>FactSet</code>, <code>ImageSet</code>, <code>Image</code>, <code>Input.Text</code>, <code>Input.Date</code>, <code>Input.Time</code>, <code>Input.Number</code>, <code>Input.Toggle</code>, <code>Input.ChoiceSet</code>, <code>Input.Rating</code>, <code>Rating</code>, <code>CompoundButton</code>, <code>Icon</code>, <code>Chart.Donut</code>, <code>Chart.Pie</code>, <code>Chart.VerticalBar.Grouped</code>, <code>Chart.VerticalBar</code>, <code>Chart.HorizontalBar</code>, <code>Chart.HorizontalBar.Stacked</code>, <code>Chart.Line</code>, <code>Chart.Gauge</code>, <code>CodeBlock</code>, <code>drop</code></td>
+</tr>
+<tr>
+<td><code>grid.area</code></td>
+<td></td>
+<td>String</td>
+<td>The area of a <code>Layout.AreaGrid</code> layout in which an element must be displayed.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the height of the element. When set to <code>stretch</code>, the element uses the remaining vertical space in its container.<br>Allowed values: <code>auto</code>, <code>stretch</code><br>Default value: <code>auto</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>A unique identifier for the element or action.</td>
+</tr>
+<tr>
+<td><code>isRequired</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Determines whether the input is required.<br>Default value: <code>false</code></td>
+</tr>
+<tr>
+<td><code>isVisible</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Determines the visibility of the element.<br>Default value: <code>true</code></td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td></td>
+<td>String</td>
+<td>The label of the input.</td>
+</tr>
+<tr>
+<td><code>lang</code></td>
+<td></td>
+<td>String</td>
+<td>The locale associated with the element.</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td></td>
+<td>Number</td>
+<td>The number of stars to display. The default and maximum supported number of stars is five.</td>
+</tr>
+<tr>
+<td><code>requires</code></td>
+<td></td>
+<td>Object</td>
+<td>A list of capabilities the element requires the host application to support. If the host application doesn't support at least one of the listed capabilities, the element isn't rendered or its fallback is rendered, if provided.<br>Allowed values: <code>HostCapabilities</code></td>
+</tr>
+<tr>
+<td><code>separator</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Determines whether a separator line should be displayed above the element to visually separate it from the previous element. No separator is displayed for the first element in a container, even if this property is set to <code>true</code>.<br>Default value: <code>false</code></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td>String</td>
+<td>The size of the stars.<br>Allowed values: <code>Medium</code>, <code>Large</code><br>Default value: <code>Large</code></td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the amount of space between this element and the previous one. No space is added for the first element in a container.<br>Allowed values: <code>None</code>, <code>Small</code>, <code>Default</code>, <code>Medium</code>, <code>Large</code>, <code>ExtraLarge</code>, <code>Padding</code><br>Default value: <code>Default</code></td>
+</tr>
+<tr>
+<td><code>targetWidth</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the card width for which the element should be displayed. If <code>targetWidth</code> isn't specified, the element is rendered at all card widths. Using <code>targetWidth</code> makes it possible to author responsive cards that adapt their layout to the available horizontal space. For more information, see <a href="#adaptive-card-responsive-layout" data-linktype="self-bookmark">Adaptive Card responsive layout</a>.<br>Allowed values: <code>VeryNarrow</code>, <code>Narrow</code>, <code>Standard</code>, <code>Wide</code>, <code>atLeast:VeryNarrow</code>, <code>atMost:VeryNarrow</code>, <code>atLeast:Narrow</code>, <code>atMost:Narrow</code>, <code>atLeast:Standard</code>, <code>atMost:Standard</code>, <code>atLeast:Wide</code>, <code>atMost:Wide</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td></td>
+<td>Number</td>
+<td>The default value of the input. This value can't exceed <code>max</code>, if <code>max</code> is specified.</td>
+</tr>
+<tr>
+<td><code>valueChangedAction</code></td>
+<td></td>
+<td>Action</td>
+<td>An <code>Action.ResetInputs</code> action that will be executed when the value of the input changes.<br>Allowed value: <code>Action.ResetInputs</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rating">Rating</h3>
+<p>Here are the properties of the <code>Rating</code> element:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>✔️</td>
+<td>String</td>
+<td>Must be <code>Rating</code>.</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td></td>
+<td>String</td>
+<td>The color of the stars.<br>Allowed values: <code>Neutral</code>, <code>Marigold</code><br>Default value: <code>Neutral</code></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td></td>
+<td>Number</td>
+<td>The number of "votes" associated with the rating.</td>
+</tr>
+<tr>
+<td><code>fallback</code></td>
+<td></td>
+<td>One of Object or String</td>
+<td>An alternate element to render if this type of element is unsupported or if the host application doesn't support all the capabilities specified in the <code>requires</code> property.<br>Allowed values: <code>Container</code>, <code>ActionSet</code>, <code>ColumnSet</code>, <code>Media</code>, <code>RichTextBlock</code>, <code>Table</code>, <code>TextBlock</code>, <code>FactSet</code>, <code>ImageSet</code>, <code>Image</code>, <code>Input.Text</code>, <code>Input.Date</code>, <code>Input.Time</code>, <code>Input.Number</code>, <code>Input.Toggle</code>, <code>Input.ChoiceSet</code>, <code>Input.Rating</code>, <code>Rating</code>, <code>CompoundButton</code>, <code>Icon</code>, <code>Chart.Donut</code>, <code>Chart.Pie</code>, <code>Chart.VerticalBar.Grouped</code>, <code>Chart.VerticalBar</code>, <code>Chart.HorizontalBar</code>, <code>Chart.HorizontalBar.Stacked</code>, <code>Chart.Line</code>, <code>Chart.Gauge</code>, <code>CodeBlock</code>, <code>drop</code></td>
+</tr>
+<tr>
+<td><code>grid.area</code></td>
+<td></td>
+<td>String</td>
+<td>The area of a <code>Layout.AreaGrid</code> layout in which an element must be displayed.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td></td>
+<td>String</td>
+<td>The height of the element. When set to <code>stretch</code>, the element uses the remaining vertical space in its container.<br>Allowed values: <code>Auto</code>, <code>Stretch</code></td>
+</tr>
+<tr>
+<td><code>horizontalAlignment</code></td>
+<td></td>
+<td>String</td>
+<td>Controls how the element should be horizontally aligned.<br>Allowed values: <code>Left</code>, <code>Center</code>, <code>Right</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td></td>
+<td>String</td>
+<td>A unique identifier for the element or action.</td>
+</tr>
+<tr>
+<td><code>isVisible</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Controls the visibility of the element.<br>Default value: <code>true</code></td>
+</tr>
+<tr>
+<td><code>lang</code></td>
+<td></td>
+<td>String</td>
+<td>The locale associated with the element.</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td></td>
+<td>Number</td>
+<td>The number of stars to display. The default and maximum supported number of stars is five.</td>
+</tr>
+<tr>
+<td><code>requires</code></td>
+<td></td>
+<td>Object</td>
+<td>A list of capabilities the element requires the host application to support. If the host application doesn't support at least one of the listed capabilities, the element isn't rendered or its fallback is rendered, if provided.<br>Allowed value: <code>HostCapabilities</code></td>
+</tr>
+<tr>
+<td><code>separator</code></td>
+<td></td>
+<td>Boolean</td>
+<td>Controls whether a separator line should be displayed above the element to visually separate it from the previous element. No separator is displayed for the first element in a container, even if this property is set to <code>true</code>.<br>Default value: <code>false</code></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td>String</td>
+<td>The size of the stars.<br>Allowed values: <code>Medium</code>, <code>Large</code><br>Default value: <code>Large</code></td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the amount of space between this element and the previous one. No space is added for the first element in a container.<br>Allowed values: <code>None</code>, <code>Small</code>, <code>Default</code>, <code>Medium</code>, <code>Large</code>, <code>ExtraLarge</code>, <code>Padding</code><br>Default value: <code>Default</code></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td></td>
+<td>String</td>
+<td>The style of the stars. In compact mode, only one star is displayed.<br>Allowed values: <code>Default</code>, <code>Compact</code><br>Default value: <code>Default</code></td>
+</tr>
+<tr>
+<td><code>targetWidth</code></td>
+<td></td>
+<td>String</td>
+<td>Controls the card width for which the element should be displayed. If <code>targetWidth</code> isn't specified, the element is rendered at all card widths. Using <code>targetWidth</code> makes it possible to author responsive cards that adapt their layout to the available horizontal space. For more information, see <a href="#adaptive-card-responsive-layout" data-linktype="self-bookmark">Adaptive Card responsive layout</a>.<br>Allowed values: <code>VeryNarrow</code>, <code>Narrow</code>, <code>Standard</code>, <code>Wide</code>, <code>atLeast:VeryNarrow</code>, <code>atMost:VeryNarrow</code>, <code>atLeast:Narrow</code>, <code>atMost:Narrow</code>, <code>atLeast:Standard</code>, <code>atMost:Standard</code>, <code>atLeast:Wide</code>, <code>atMost:Wide</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td></td>
+<td>Number</td>
+<td>The value of the rating. This value must be between zero and <code>max</code>, if <code>max</code> is specified.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="format-cards-with-html">Format cards with HTML</h2>
+<p>The following card types support HTML formatting in Teams:</p>
+<ul>
+<li>Connector cards for Microsoft 365 Groups: Limited Markdown and HTML formatting are supported in connector card for Microsoft 365 Groups.</li>
+<li>Hero and thumbnail cards: HTML tags are supported for simple cards, such as the hero and thumbnail cards.</li>
+</ul>
+<p>Formatting is different between the desktop and the mobile versions of Teams for connector cards for Microsoft 365 Groups and simple cards. In this section, you can go through the HTML format example for connector cards and simple cards.</p>
+<div class="tabGroup" id="tabgroup_5">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_5_connector-html" role="tab" aria-controls="tabpanel_5_connector-html" data-tab="connector-html" tabindex="0" aria-selected="true" data-linktype="self-bookmark">HTML format for connector cards for Microsoft 365 Groups</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_5_simple-html" role="tab" aria-controls="tabpanel_5_simple-html" data-tab="simple-html" tabindex="-1" data-linktype="self-bookmark">HTML format for hero and thumbnail cards</a>
+</li>
+</ul>
+<section id="tabpanel_5_connector-html" role="tabpanel" data-tab="connector-html">
+
+<p>Connector cards support limited Markdown and HTML formatting.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td><strong>text</strong></td>
+<td><code>&lt;strong&gt;text&lt;/strong&gt;</code></td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><em>text</em></td>
+<td><code>&lt;em&gt;text&lt;/em&gt;</code></td>
+</tr>
+<tr>
+<td>Header (levels 1–3)</td>
+<td><strong>Text</strong></td>
+<td><code>&lt;h3&gt;Text&lt;/h3&gt;</code></td>
+</tr>
+<tr>
+<td>Strikethrough</td>
+<td><del>text</del></td>
+<td><code>&lt;strike&gt;text&lt;/strike&gt;</code></td>
+</tr>
+<tr>
+<td>Unordered list</td>
+<td><ul><li>text</li><li>text</li></ul></td>
+<td><code>&lt;ul&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td>Ordered list</td>
+<td><ol><li>text</li><li>text</li></ol></td>
+<td><code>&lt;ol&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ol&gt;</code></td>
+</tr>
+<tr>
+<td>Preformatted text</td>
+<td><code>text</code></td>
+<td><code>&lt;pre&gt;text&lt;/pre&gt;</code></td>
+</tr>
+<tr>
+<td>Blockquote</td>
+<td><blockquote>text</blockquote></td>
+<td><code>&lt;blockquote&gt;text&lt;/blockquote&gt;</code></td>
+</tr>
+<tr>
+<td>Hyperlink</td>
+<td><a href="https://www.bing.com/" data-linktype="external">Bing</a></td>
+<td><code>&lt;a href="https://www.bing.com/"&gt;Bing&lt;/a&gt;</code></td>
+</tr>
+<tr>
+<td>Image link</td>
+<td><img src="https://aka.ms/Fo983c" alt="Duck on a rock" data-linktype="external"></td>
+<td><code>&lt;img src="https://aka.ms/Fo983c" alt="Duck on a rock"&gt;&lt;/img&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>In connector cards, newlines are rendered in HTML using the <code>&lt;p&gt;</code> tag.</p>
+<h3 id="mobile-and-desktop-differences-for-connector-cards-1">Mobile and desktop differences for connector cards</h3>
+<p>On the desktop, HTML formatting for connector cards appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-desktop-html-combined.png" alt="Screenshot shows HTML formatting for connector cards in the desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p>On iOS, HTML formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-iphone-html-combined-80.png" alt="Screenshot shows HTML formatting for connector cards in the iOS client." data-linktype="relative-path">
+</span>
+</p>
+<p>Connector cards using HTML for iOS include the following issues:</p>
+<ul>
+<li>Inline images aren't rendered on iOS using either Markdown or HTML in connector cards.</li>
+<li>Preformatted text is rendered but doesn't have a gray background.</li>
+</ul>
+<p>On Android, HTML formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/connector-android-html-combined.png" alt="Screenshot shows HTML formatting for connector cards in the Android client." data-linktype="relative-path">
+</span>
+</p>
+<h3 id="format-sample-for-html-connector-cards">Format sample for HTML connector cards</h3>
+<p>The following code shows an example of formatting for HTML connector cards:</p>
+<pre><code class="lang-json">{
+  "contentType": "application/vnd.microsoft.teams.card.o365connector",
+  "content": {
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Summary",
+    "title": "Connector Card HTML formatting",
+    "sections": [
+        {
+            "text": "This is some &lt;strong&gt;bold&lt;/strong&gt; text"
+        },
+        {
+            "text": "This is some &lt;em&gt;italic&lt;/em&gt; text"
+        },
+        {
+            "text": "This is some &lt;strike&gt;strikethrough&lt;/strike&gt; text"
+        },
+        {
+            "text": "&lt;h1&gt;Header 1&lt;/h1&gt;\r&lt;h2&gt;Header 2&lt;/h2&gt;\r &lt;h3&gt;Header 3&lt;/h3&gt;"
+        },
+        {
+            "text": "bullet list &lt;ul&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ul&gt;"
+        },
+        {
+            "text": "ordered list &lt;ol&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ol&gt;"
+        },
+        {
+            "text": "hyperlink &lt;a href=\"https://www.bing.com/\"&gt;Bing&lt;/a&gt;"
+        },
+        {
+            "text": "embedded image &lt;img src=\"https://aka.ms/Fo983c\" alt=\"Duck on a rock\"&gt;&lt;/img&gt;"
+        },
+        {
+            "text": "preformatted text &lt;pre&gt;text&lt;/pre&gt;"
+        },
+        {
+            "text": "Paragraphs &lt;p&gt;Line a&lt;/p&gt;&lt;p&gt;Line b&lt;/p&gt;"
+        },
+        {
+            "text": "&lt;blockquote&gt;Blockquote text&lt;/blockquote&gt;"
+        }
+     ]
+  }
+}
+
+</code></pre>
+</section>
+<section id="tabpanel_5_simple-html" role="tabpanel" data-tab="simple-html" aria-hidden="true" hidden="hidden">
+
+<p>HTML tags are supported for simple cards, such as the hero and thumbnail cards. Markdown isn't supported.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bold</td>
+<td><strong>text</strong></td>
+<td><code>&lt;strong&gt;text&lt;/strong&gt;</code></td>
+</tr>
+<tr>
+<td>Italic</td>
+<td><em>text</em></td>
+<td><code>&lt;em&gt;text&lt;/em&gt;</code></td>
+</tr>
+<tr>
+<td>Header (levels 1–3)</td>
+<td><strong>Text</strong></td>
+<td><code>&lt;h3&gt;Text&lt;/h3&gt;</code></td>
+</tr>
+<tr>
+<td>Strikethrough</td>
+<td><del>text</del></td>
+<td><code>&lt;strike&gt;text&lt;/strike&gt;</code></td>
+</tr>
+<tr>
+<td>Unordered list</td>
+<td><ul><li>text</li><li>text</li></ul></td>
+<td><code>&lt;ul&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td>Ordered list</td>
+<td><ol><li>text</li><li>text</li></ol></td>
+<td><code>&lt;ol&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ol&gt;</code></td>
+</tr>
+<tr>
+<td>Preformatted text</td>
+<td><code>text</code></td>
+<td><code>&lt;pre&gt;text&lt;/pre&gt;</code></td>
+</tr>
+<tr>
+<td>Blockquote</td>
+<td><blockquote>text</blockquote></td>
+<td><code>&lt;blockquote&gt;text&lt;/blockquote&gt;</code></td>
+</tr>
+<tr>
+<td>Hyperlink</td>
+<td><a href="https://www.bing.com/" data-linktype="external">Bing</a></td>
+<td><code>&lt;a href="https://www.bing.com/"&gt;Bing&lt;/a&gt;</code></td>
+</tr>
+<tr>
+<td>Image link</td>
+<td><img src="https://aka.ms/Fo983c" alt="Duck on a rock" data-linktype="external"></td>
+<td><code>&lt;img src="https://aka.ms/Fo983c" alt="Duck on a rock"&gt;&lt;/img&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mobile-and-desktop-differences-for-simple-cards">Mobile and desktop differences for simple cards</h3>
+<p>As there are resolution differences between the desktop and mobile platform, formatting is different between the desktop and the mobile version of Teams.</p>
+<p>On the desktop, HTML formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-formatting-xml-desktop-v2.png" alt="Screenshot shows HTML formatting in the desktop client." data-linktype="relative-path">
+</span>
+</p>
+<p>On iOS, HTML formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-formatting-xml-mobile-v2.png" alt="Screenshot shows HTML formatting in the iOS client." data-linktype="relative-path">
+</span>
+</p>
+<p>Character formatting, such as bold and italic isn't rendered on iOS.</p>
+<p>On Android, HTML formatting appears as shown in the following image:</p>
+<p><span class="mx-imgBorder">
+<img src="../../assets/images/cards/card-formatting-xml-android-60.png" alt="Screenshot shows HTML formatting in the Android client." data-linktype="relative-path">
+</span>
+</p>
+<p>Character formatting, such as bold and italic displays correctly on Android.</p>
+<h3 id="format-example-for-simple-cards">Format example for simple cards</h3>
+<p>You can test formatting in your own cards by modifying this code, where the text property of a hero card is set to the following string:</p>
+<p><code>&lt;p&gt;bold: &lt;strong&gt;Bold Text&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;italic: &lt;em&gt;Italic Text&lt;/em&gt;&lt;/p&gt;&lt;p&gt;strikethrough: &lt;strike&gt;Strikethrough text&lt;/strike&gt;&lt;/p&gt;&lt;h1&gt;Header 1&lt;/h1&gt;&lt;h2&gt;Header 2&lt;/h2&gt;&lt;h3&gt;Header 3&lt;/h3&gt;&lt;p&gt;bullet list: &lt;ul&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;ordered list: &lt;ol&gt;&lt;li&gt;text&lt;/li&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ol&gt;&lt;/p&gt;&lt;pre&gt;preformatted text&lt;/pre&gt;&lt;blockquote&gt;blockquote text&lt;/blockquote&gt;&lt;/p&gt;&lt;p&gt;hyperlink: &lt;a href=\"https://www.bing.com/\"&gt;Bing&lt;/a&gt;&lt;/p&gt;&lt;p&gt;embedded image: &lt;img src=\"https://aka.ms/Fo983c\" alt=\"Duck on a rock\"&gt;&lt;/img&gt;&lt;/p&gt;</code></p>
+</section>
+</div>
+<h2 id="code-samples">Code samples</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">S.No.</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">.NET</th>
+<th>Node.js</th>
+<th>Manifest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">This sample demonstrates how to use various formatting styles in Adaptive Cards such as mentions, persona icons, and responsive layout.</td>
+<td style="text-align: left;"><a href="https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-formatting-cards/csharp" data-linktype="external">View</a></td>
+<td><a href="https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-formatting-cards/nodejs" data-linktype="external">View</a></td>
+<td><a href="https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-formatting-cards/csharp/demo-manifest/bot-formatting-cards.zip" data-linktype="external">View</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../cards-and-task-modules" data-linktype="relative-path">Cards and dialogs</a></li>
+<li><a href="../task-modules/task-modules-bots" data-linktype="relative-path">Use dialogs from bots</a></li>
+<li><a href="https://adaptivecards.microsoft.com/?topic=AdaptiveCard" data-linktype="external">Schema explorer for Adaptive Cards</a></li>
+<li><a href="../../webhooks-and-connectors/how-to/connectors-creating" data-linktype="relative-path">Create connectors for Microsoft 365 Groups</a></li>
+<li><a href="../../webhooks-and-connectors/how-to/add-incoming-webhook" data-linktype="relative-path">Create Incoming Webhooks</a></li>
+<li><a href="/en-us/adaptive-cards/templating/sdk" data-linktype="absolute-path">Adaptive Card Templating SDKs</a></li>
+</ul>
+</div>
+					
+		<div
+			id="ms--inline-notifications"
+			class="margin-block-xs"
+			data-bi-name="inline-notification"
+		></div>
+	 
+		<div
+			id="assertive-live-region"
+			role="alert"
+			aria-live="assertive"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+		<div
+			id="polite-live-region"
+			role="status"
+			aria-live="polite"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+	
+					
+			
+		<!-- feedback section -->
+		<section
+			class="feedback-section position-relative margin-top-lg border border-radius padding-xxs display-none-print"
+			data-bi-name="open-source-feedback-section"
+			data-open-source-feedback-section
+			hidden
+		>
+			<div class="display-flex flex-direction-column flex-direction-row-tablet">
+				<div
+					class="width-450-tablet padding-inline-xs padding-inline-xs-tablet padding-top-xs padding-bottom-sm padding-top-xs-tablet background-color-body-medium"
+				>
+					<div class="display-flex flex-direction-column">
+						<div class="padding-bottom-xxs">
+							<span class="icon margin-right-xxs" aria-hidden="true">
+								<span class="docon docon-brand-github"></span>
+							</span>
+							<span class="font-weight-semibold">
+								Collaborate with us on GitHub
+							</span>
+						</div>
+						<span class="line-height-normal">
+							The source for this content can be found on GitHub, where you can also create and review issues and pull requests. For more information, see <a href="https://learn.microsoft.com/microsoftteams/platform/resources/teams-contributor-reference">our contributor guide</a>.
+						</span>
+					</div>
+				</div>
+				<div
+					class="display-flex gap-xs width-full-tablet flex-direction-column padding-xs justify-content-space-evenly"
+				>
+					<div class="media">
+						
+
+						<div class="media-content">
+							<p
+								class="font-size-xl font-weight-semibold margin-bottom-xxs"
+								data-open-source-product-title
+							>
+								Platform Docs
+							</p>
+							<div class="display-flex gap-xs flex-direction-column">
+								<p class="line-height-normal" data-open-source-product-description></p>
+								<div class="display-flex gap-xs flex-direction-column">
+									<a href="#" data-github-link>
+										<span class="icon margin-right-xxs" aria-hidden="true">
+											<span class="docon docon-bug"></span>
+										</span>
+										<span>Open a documentation issue</span>
+									</a>
+									<a
+										href="https://feedbackportal.microsoft.com/feedback/forum/ad198462-1c1c-ec11-b6e7-0022481f8472"
+										class="display-block margin-top-auto font-size-md"
+										data-feedback-product-url
+									>
+										<span class="icon margin-right-xxs" aria-hidden="true">
+											<span class="docon docon-feedback"></span>
+										</span>
+										<span>Provide product feedback</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end feedback section -->
+	
+			
+		<!-- feedback section -->
+		<section
+			id="site-user-feedback-footer"
+			class="font-size-sm margin-top-md display-none-print display-none-desktop"
+			data-test-id="site-user-feedback-footer"
+			data-bi-name="site-feedback-section"
+		>
+			<hr class="hr" />
+			<h2 id="ms--feedback" class="title is-3">Feedback</h2>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="buttons">
+					<button
+						class="thumb-rating-button like button button-primary button-sm"
+						data-test-id="footer-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+						<span>Yes</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike button button-primary button-sm"
+						id="standard-rating-no-button"
+						hidden
+						data-test-id="footer-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+						<span>No</span>
+					</button>
+					<details
+						class="popover popover-top"
+						id="mobile-help-popover"
+						data-test-id="footer-feedback-popover"
+					>
+						<summary
+							class="thumb-rating-button dislike button button-primary button-sm"
+							data-test-id="details-footer-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+							<span>No</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading"
+							aria-describedby="popover-description"
+						>
+							<p id="popover-heading" class="font-size-lg margin-bottom-xxs font-weight-semibold">
+								Need help with this topic?
+							</p>
+							<p id="popover-description" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		<!-- end feedback section -->
+	
+		
+				</div>
+				
+		<div id="ms--additional-resources-mobile" class="display-none-print">
+			<hr class="hr" hidden />
+			<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>
+				Additional resources
+			</h2>
+			 
+		<section
+			id="right-rail-training-mobile"
+			class=""
+			data-bi-name="learning-resource-card"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-events-mobile"
+			class=""
+			data-bi-name="events-card"
+			hidden
+		></section>
+	
+		</div>
+	 
+		<div
+			id="article-metadata-footer"
+			data-bi-name="article-metadata-footer"
+			data-test-id="article-metadata-footer"
+			class="page-metadata-container"
+		>
+			<hr class="hr" />
+			<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+				<li class="visibility-hidden-visual-diff">
+			<span class="badge badge-sm text-wrap-pretty">
+				<span>Last updated on <local-time format="twoDigitNumeric"
+		datetime="2024-11-07T08:12:00.000Z"
+		data-article-date-source="calculated"
+		class="is-invisible"
+	>
+		2024-11-07
+	</local-time></span>
+			</span>
+		</li>
+			</ul>
+		</div>
+	
+			</div>
+			
+		<div
+			id="action-panel"
+			role="region"
+			aria-label="Action Panel"
+			class="action-panel"
+			tabindex="-1"
+		></div>
+	
+		
+				</main>
+				<aside
+					id="layout-body-aside"
+					class="layout-body-aside  "
+					data-bi-name="aside"
+					aria-label="Additional resources"
+			  >
+					
+		<div
+			id="ms--additional-resources"
+			class="right-container padding-sm display-none display-block-desktop height-full"
+			data-bi-name="pageactions"
+		>
+			<div id="affixed-right-container" data-bi-name="right-column">
+				
+		<nav
+			id="side-doc-outline"
+			class="doc-outline border-bottom padding-bottom-xs margin-bottom-xs scrollbar-width-thin"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h3>In this article</h3>
+		</nav>
+	
+				<!-- Feedback -->
+				
+		<section
+			id="ms--site-user-feedback-right-rail"
+			class="font-size-sm display-none-print"
+			data-test-id="site-user-feedback-right-rail"
+			data-bi-name="site-feedback-right-rail"
+		>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="display-flex flex-wrap-nowrap">
+					<button
+						class="thumb-rating-button like inner-focus"
+						data-test-id="right-rail-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						aria-label="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike inner-focus"
+						id="right-rail-no-button"
+						hidden
+						data-test-id="right-rail-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						aria-label="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+					</button>
+					<details class="popover popover-right" id="help-popover" data-test-id="feedback-popover">
+						<summary
+							tabindex="0"
+							class="thumb-rating-button dislike inner-focus"
+							data-test-id="details-right-rail-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							aria-label="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading-right-rail"
+							aria-describedby="popover-description-right-rail"
+						>
+							<p
+								id="popover-heading-right-rail"
+								class="font-size-lg margin-bottom-xxs font-weight-semibold"
+							>
+								Need help with this topic?
+							</p>
+							<p id="popover-description-right-rail" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+	
+			</div>
+		</div>
+	
+			  </aside> <section
+					id="layout-body-flyout"
+					class="layout-body-flyout "
+					data-bi-name="flyout"
+			  >
+					 <div
+	class="height-full border-left background-color-body-medium"
+	id="ask-learn-flyout"
+></div>
+			  </section> <div class="layout-body-footer " data-bi-name="layout-footer">
+		<footer
+			id="footer"
+			data-test-id="footer"
+			data-bi-name="footer"
+			class="footer-layout padding-xs padding-sm-desktop has-default-focus border-top"
+			role="contentinfo"
+		>
+			<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
+				
+		<a
+			data-mscc-ic="false"
+			href="#"
+			data-bi-name="select-locale"
+			class="locale-selector-link flex-shrink-0 button button-sm button-clear external-link-indicator"
+			id=""
+			title=""
+			><span class="icon" aria-hidden="true"
+				><span class="docon docon-world"></span></span
+			><span class="local-selector-link-text">en-us</span></a
+		>
+	 <div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://aka.ms/yourcaliforniaprivacychoices"
+			data-bi-name="your-privacy-choices"
+			class="button button-sm button-clear flex-shrink-0 external-link-indicator"
+			id=""
+			title=""
+			>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 30 14"
+			xml:space="preserve"
+			height="16"
+			width="43"
+			aria-hidden="true"
+			focusable="false"
+		>
+			<path
+				d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"
+			></path>
+			<path
+				d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"
+				style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"
+			></path>
+			<path
+				d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"
+				style="fill:#fff"
+			></path>
+			<path
+				d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"
+				style="fill:#06f"
+			></path>
+		</svg>
+	
+			<span>Your Privacy Choices</span></a
+		>
+	
+	</div>
+				<div class="flex-shrink-0">
+		<div class="dropdown has-caret-up">
+			<button
+				data-test-id="theme-selector-button"
+				class="dropdown-trigger button button-clear button-sm inner-focus theme-dropdown-trigger"
+				aria-controls="{{ themeMenuId }}"
+				aria-expanded="false"
+				title="Theme"
+				data-bi-name="theme"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-sun"></span></span>
+				<span>Theme</span>
+				<span class="icon expanded-indicator" aria-hidden="true">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<div class="dropdown-menu" id="{{ themeMenuId }}" role="menu">
+				<ul class="theme-selector padding-xxs" data-test-id="theme-dropdown-menu">
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="light"
+						>
+							<span class="theme-light margin-right-xxs">
+								<span
+									class="theme-selector-icon border display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> Light </span>
+						</button>
+					</li>
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="dark"
+						>
+							<span class="theme-dark margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> Dark </span>
+						</button>
+					</li>
+					<li class="theme display-block">
+						<button
+							class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left"
+							data-theme-to="high-contrast"
+						>
+							<span class="theme-high-contrast margin-right-xxs">
+								<span
+									class="border theme-selector-icon display-inline-block has-body-background"
+									aria-hidden="true"
+								>
+									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+										<rect width="22" height="14" class="has-fill-body-background" />
+										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+									</svg>
+								</span>
+							</span>
+							<span role="menuitem"> High contrast </span>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+			</div>
+			<ul class="links" data-bi-name="footerlinks">
+				<li class="manage-cookies-holder" hidden=""></li>
+				<li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/principles-for-ai-generated-content"
+			data-bi-name="aiDisclaimer"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>AI Disclaimer</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/previous-versions/"
+			data-bi-name="archivelink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Previous Versions</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog"
+			data-bi-name="bloglink"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Blog</a
+		>
+	
+	</li> <li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/contribute"
+			data-bi-name="contributorGuide"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Contribute</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?LinkId=521839"
+			data-bi-name="privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://go.microsoft.com/fwlink/?linkid=2259814"
+			data-bi-name="consumer-health-privacy"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Consumer Health Privacy</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://learn.microsoft.com/en-us/legal/termsofuse"
+			data-bi-name="termsofuse"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Terms of Use</a
+		>
+	
+	</li><li>
+		
+		<a
+			data-mscc-ic="false"
+			href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/"
+			data-bi-name="trademarks"
+			class=" external-link-indicator"
+			id=""
+			title=""
+			>Trademarks</a
+		>
+	
+	</li>
+				<li>&copy; Microsoft 2026</li>
+			</ul>
+		</footer>
+	</footer>
+			</body>
+		</html>

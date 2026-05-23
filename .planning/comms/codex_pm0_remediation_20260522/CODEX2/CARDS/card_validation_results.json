@@ -1,0 +1,120 @@
+[
+  {
+    "card": "AtualizarStatusCard.json",
+    "path": "deploy\\cards\\AtualizarStatusCard.json",
+    "exists": true,
+    "status": "PASS_LOCAL_STRUCTURAL",
+    "sizeBytes": 2811,
+    "under27KB": true,
+    "jsonValid": true,
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "versionAllowed": true,
+    "nonAsciiCount": 0,
+    "findings": []
+  },
+  {
+    "card": "AtualizarTarefaCard.json",
+    "path": "deploy\\cards\\AtualizarTarefaCard.json",
+    "exists": true,
+    "status": "PASS_LOCAL_STRUCTURAL",
+    "sizeBytes": 3679,
+    "under27KB": true,
+    "jsonValid": true,
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "versionAllowed": true,
+    "nonAsciiCount": 0,
+    "findings": []
+  },
+  {
+    "card": "CriarTarefaCard.json",
+    "path": "deploy\\cards\\CriarTarefaCard.json",
+    "exists": true,
+    "status": "PASS_LOCAL_STRUCTURAL",
+    "sizeBytes": 3342,
+    "under27KB": true,
+    "jsonValid": true,
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "versionAllowed": true,
+    "nonAsciiCount": 0,
+    "findings": []
+  },
+  {
+    "card": "ListarTarefasProjetoCard.json",
+    "path": "deploy\\cards\\ListarTarefasProjetoCard.json",
+    "exists": true,
+    "status": "PASS_LOCAL_STRUCTURAL",
+    "sizeBytes": 3463,
+    "under27KB": true,
+    "jsonValid": true,
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "versionAllowed": true,
+    "nonAsciiCount": 0,
+    "findings": []
+  },
+  {
+    "card": "ResumoExecutivoPortfolio.json",
+    "path": "deploy\\cards\\ResumoExecutivoPortfolio.json",
+    "exists": true,
+    "status": "PASS_LOCAL_STRUCTURAL",
+    "sizeBytes": 3676,
+    "under27KB": true,
+    "jsonValid": true,
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "versionAllowed": true,
+    "nonAsciiCount": 0,
+    "findings": []
+  },
+  {
+    "card": "AtualizarStatusCard_v316.json",
+    "path": "deploy\\cards\\AtualizarStatusCard_v316.json",
+    "exists": false,
+    "status": "MISSING",
+    "sizeBytes": null,
+    "under27KB": false,
+    "jsonValid": false,
+    "type": null,
+    "version": null,
+    "versionAllowed": false,
+    "nonAsciiCount": null,
+    "findings": [
+      "Expected PM0/v316 card file not present in deploy/cards"
+    ]
+  },
+  {
+    "card": "ListarTarefasCard_v316.json",
+    "path": "deploy\\cards\\ListarTarefasCard_v316.json",
+    "exists": false,
+    "status": "MISSING",
+    "sizeBytes": null,
+    "under27KB": false,
+    "jsonValid": false,
+    "type": null,
+    "version": null,
+    "versionAllowed": false,
+    "nonAsciiCount": null,
+    "findings": [
+      "Expected PM0/v316 card file not present in deploy/cards"
+    ]
+  },
+  {
+    "card": "ResumoExecutivoPortfolioCard_v316.json",
+    "path": "deploy\\cards\\ResumoExecutivoPortfolioCard_v316.json",
+    "exists": false,
+    "status": "MISSING",
+    "sizeBytes": null,
+    "under27KB": false,
+    "jsonValid": false,
+    "type": null,
+    "version": null,
+    "versionAllowed": false,
+    "nonAsciiCount": null,
+    "findings": [
+      "Expected PM0/v316 card file not present in deploy/cards"
+    ]
+  }
+]

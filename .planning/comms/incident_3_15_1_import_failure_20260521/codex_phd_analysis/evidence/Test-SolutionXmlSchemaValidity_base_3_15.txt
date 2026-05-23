@@ -1,0 +1,90 @@
+{
+    "inputPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_15_LIST_STATIC_RUNTIME_BYPASS.zip",
+    "inputKind":  "Zip",
+    "solutionXmlManifest":  "solution.xml",
+    "metadataSource":  "OfficialMicrosoftCache",
+    "metadataReference":  "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/reference/entities/solutioncomponent#componenttype-choicesoptions",
+    "metadataDetail":  "Cached SolutionComponent.componenttype choices from Microsoft Learn.",
+    "metadataFallbackReason":  null,
+    "allowedComponentTypeCount":  90,
+    "rootComponentCount":  12,
+    "invalidRootComponentCount":  0,
+    "passed":  true,
+    "rootComponents":  [
+                           {
+                               "id":  "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           }
+                       ],
+    "issues":  [
+
+               ]
+}

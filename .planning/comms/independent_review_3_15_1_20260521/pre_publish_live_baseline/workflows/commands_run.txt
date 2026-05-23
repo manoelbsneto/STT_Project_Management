@@ -1,0 +1,10 @@
+Read-only tenant commands:
+
+pac auth list
+pac env who
+pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/workflows/fetch_workflow_clientdata_live.xml
+
+Local extraction and validation commands:
+
+[scriptblock]::Create((Get-Content -LiteralPath .planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/workflows/Split-LiveWorkflowClientdata.ps1 -Raw))
+& .planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/workflows/Split-LiveWorkflowClientdata.ps1

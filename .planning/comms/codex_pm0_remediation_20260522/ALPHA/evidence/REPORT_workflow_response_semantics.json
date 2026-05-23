@@ -1,0 +1,158 @@
+{
+  "sourceRoot": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2",
+  "generatedAt": "2026-05-22 16:23:55 -03:00",
+  "passed": true,
+  "failedCheckCount": 0,
+  "checks": [
+    {
+      "name": "PM0_PA_Card_AtualizarStatus workflow file exists",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarStatus workflow JSON parses",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarStatus has a Skills response action",
+      "passed": true,
+      "evidence": "At least one Response action must return output to Copilot Studio."
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarStatus has SharePoint or Planner lineage",
+      "passed": true,
+      "evidence": "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarStatus response Respond_Success is not audited placeholder",
+      "passed": true,
+      "evidence": "Observed result: @{concat('Status registrado para ', triggerBody()?['projectId'], '. RAG: ', triggerBody()?['rag'], '. Percentual: ', string(coalesce(triggerBody()?['percentual'], 0)), '%. Status item: ', string(body('Create_StatusDiario')?['ID']), '. Projeto item: ', string(body('Update_SharePoint_Project')?['ID']), '. Teams card: ', coalesce(string(body('Post_Status_Card')?['id']), 'posted'))}"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarStatus response Respond_Success is dynamic or feature-derived",
+      "passed": true,
+      "evidence": "Static success-only text cannot prove PMO data/output semantics: @{concat('Status registrado para ', triggerBody()?['projectId'], '. RAG: ', triggerBody()?['rag'], '. Percentual: ', string(coalesce(triggerBody()?['percentual'], 0)), '%. Status item: ', string(body('Create_StatusDiario')?['ID']), '. Projeto item: ', string(body('Update_SharePoint_Project')?['ID']), '. Teams card: ', coalesce(string(body('Post_Status_Card')?['id']), 'posted'))}"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa workflow file exists",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa workflow JSON parses",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa has a Skills response action",
+      "passed": true,
+      "evidence": "At least one Response action must return output to Copilot Studio."
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa has SharePoint or Planner lineage",
+      "passed": true,
+      "evidence": "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa response Respond_Success is not audited placeholder",
+      "passed": true,
+      "evidence": "Observed result: @{concat('Tarefa ', coalesce(triggerBody()?['taskId'], triggerBody()?['spItemId']), ' atualizada para ', coalesce(triggerBody()?['status'], triggerBody()?['taskStatus'], string(body('Update_SharePoint_Item')?['Status']?['Value']), ''), '. Responsavel: ', if(empty(triggerBody()?['responsavel']), 'mantido', triggerBody()?['responsavel']), '. Prazo: ', if(empty(triggerBody()?['dataFim']), 'mantido', triggerBody()?['dataFim']), '. Item SP: ', string(body('Update_SharePoint_Item')?['ID']), '. Planner percent: ', string(outputs('Determine_Bucket_and_Percent')?['percentComplete']), '.')}"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa response Respond_Success is dynamic or feature-derived",
+      "passed": true,
+      "evidence": "Static success-only text cannot prove PMO data/output semantics: @{concat('Tarefa ', coalesce(triggerBody()?['taskId'], triggerBody()?['spItemId']), ' atualizada para ', coalesce(triggerBody()?['status'], triggerBody()?['taskStatus'], string(body('Update_SharePoint_Item')?['Status']?['Value']), ''), '. Responsavel: ', if(empty(triggerBody()?['responsavel']), 'mantido', triggerBody()?['responsavel']), '. Prazo: ', if(empty(triggerBody()?['dataFim']), 'mantido', triggerBody()?['dataFim']), '. Item SP: ', string(body('Update_SharePoint_Item')?['ID']), '. Planner percent: ', string(outputs('Determine_Bucket_and_Percent')?['percentComplete']), '.')}"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio workflow file exists",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio workflow JSON parses",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio has a Skills response action",
+      "passed": true,
+      "evidence": "At least one Response action must return output to Copilot Studio."
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio has SharePoint or Planner lineage",
+      "passed": true,
+      "evidence": "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio response Respond_Success is not audited placeholder",
+      "passed": true,
+      "evidence": "Observed result: @{concat('Portfolio PMO: ', string(length(body('Get_Projetos')?['value'])), ' projetos; ', string(length(body('Get_Tarefas')?['value'])), ' tarefas. Fonte: SharePoint Projetos e Tarefas.')}"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio response Respond_Success is dynamic or feature-derived",
+      "passed": true,
+      "evidence": "Static success-only text cannot prove PMO data/output semantics: @{concat('Portfolio PMO: ', string(length(body('Get_Projetos')?['value'])), ' projetos; ', string(length(body('Get_Tarefas')?['value'])), ' tarefas. Fonte: SharePoint Projetos e Tarefas.')}"
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa workflow file exists",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa workflow JSON parses",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa has a Skills response action",
+      "passed": true,
+      "evidence": "At least one Response action must return output to Copilot Studio."
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa has SharePoint or Planner lineage",
+      "passed": true,
+      "evidence": "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa response Respond_Success is not audited placeholder",
+      "passed": true,
+      "evidence": "Observed result: @{concat('Tarefa criada: ', coalesce(triggerBody()?['title'], triggerBody()?['taskTitle'], string(body('Create_SharePoint_Item')?['Title']), ''), ' (Projeto ', coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId']), ', Item SP ', string(body('Create_SharePoint_Item')?['ID']), ', Planner ', coalesce(string(body('Create_Planner_Task')?['id']), ''), ', Bucket ', outputs('Determine_Bucket_and_Status')?['status'], ').')}"
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa response Respond_Success is dynamic or feature-derived",
+      "passed": true,
+      "evidence": "Static success-only text cannot prove PMO data/output semantics: @{concat('Tarefa criada: ', coalesce(triggerBody()?['title'], triggerBody()?['taskTitle'], string(body('Create_SharePoint_Item')?['Title']), ''), ' (Projeto ', coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId']), ', Item SP ', string(body('Create_SharePoint_Item')?['ID']), ', Planner ', coalesce(string(body('Create_Planner_Task')?['id']), ''), ', Bucket ', outputs('Determine_Bucket_and_Status')?['status'], ').')}"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas workflow file exists",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas workflow JSON parses",
+      "passed": true,
+      "evidence": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas has a Skills response action",
+      "passed": true,
+      "evidence": "At least one Response action must return output to Copilot Studio."
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas has SharePoint or Planner lineage",
+      "passed": true,
+      "evidence": "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas response Respond_Success is not audited placeholder",
+      "passed": true,
+      "evidence": "Observed result: @{outputs('Normalize_Tasks_Display')}"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas response Respond_Success is dynamic or feature-derived",
+      "passed": true,
+      "evidence": "Static success-only text cannot prove PMO data/output semantics: @{outputs('Normalize_Tasks_Display')}"
+    }
+  ]
+}

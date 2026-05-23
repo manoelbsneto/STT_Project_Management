@@ -1,0 +1,3 @@
+Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url
+[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/
+

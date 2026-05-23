@@ -1,0 +1,24 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="flowrun">
+    <attribute name="flowrunid" />
+    <attribute name="name" />
+    <attribute name="clienttrackingid" />
+    <attribute name="workflow" />
+    <attribute name="starttime" />
+    <attribute name="endtime" />
+    <attribute name="createdon" />
+    <attribute name="modifiedon" />
+    <attribute name="status" />
+    <attribute name="errorcode" />
+    <attribute name="errormessage" />
+    <attribute name="triggertype" />
+    <filter type="or">
+      <condition attribute="workflow" operator="eq" value="1721e0a3-a250-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflow" operator="eq" value="7c6300c2-a250-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflow" operator="eq" value="8333bd91-a250-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflow" operator="eq" value="7f662db7-a250-f111-bec7-000d3abc5cc6" />
+      <condition attribute="workflow" operator="eq" value="e0e3c6b0-a250-f111-bec7-000d3abc5cc6" />
+    </filter>
+    <order attribute="starttime" descending="true" />
+  </entity>
+</fetch>

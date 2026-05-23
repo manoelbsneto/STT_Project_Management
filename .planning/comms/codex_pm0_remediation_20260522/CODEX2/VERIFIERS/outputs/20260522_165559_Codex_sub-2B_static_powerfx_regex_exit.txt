@@ -1,0 +1,5 @@
+timestamp_brt=2026-05-22 16:55:59 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-CopilotPowerFxRegexSafety.ps1 -PackagePath 'Solution/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip'
+exit_code=0
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_165559_Codex_sub-2B_static_powerfx_regex_output.txt

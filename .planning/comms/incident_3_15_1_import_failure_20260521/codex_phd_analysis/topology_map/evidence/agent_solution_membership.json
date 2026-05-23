@@ -1,0 +1,19 @@
+{
+  "botId": "df148bf8-0a3e-495b-80c4-841dcb61d9a4",
+  "schemaName": "pmo_AssistentePMO_V2",
+  "name": "Assistente PMO V2",
+  "solutions": [
+    {
+      "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+      "uniqueName": "PMO_v11_Tarefas",
+      "friendlyName": "PMO v1.1 - Task Management Topics",
+      "version": "3.15"
+    },
+    {
+      "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+      "uniqueName": "Default",
+      "friendlyName": "Solucion predeterminada",
+      "version": "1.0"
+    }
+  ]
+}

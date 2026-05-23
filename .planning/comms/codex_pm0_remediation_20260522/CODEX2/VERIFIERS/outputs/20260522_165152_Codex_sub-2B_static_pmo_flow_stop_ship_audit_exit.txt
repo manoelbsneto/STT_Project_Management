@@ -1,0 +1,5 @@
+timestamp_brt=2026-05-22 16:51:52 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-PMOFlowStopShipAudit.ps1 -SolutionSourcePath '.planning/comms/codex_pm0_remediation_20260522/CODEX2/VERIFIERS/package_unpacked_20260522_165123'
+exit_code=1
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_165152_Codex_sub-2B_static_pmo_flow_stop_ship_audit_output.txt

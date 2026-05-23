@@ -1,0 +1,49 @@
+{
+    "mode":  "SelfTest",
+    "metadataSource":  "OfficialMicrosoftCache",
+    "metadataReference":  "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/reference/entities/solutioncomponent#componenttype-choicesoptions",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Base 3.15 XML passes",
+                       "passed":  true,
+                       "evidence":  {
+                                        "path":  "D:\\VMs\\Projetos\\STT_Project_Management\\tests\\fixtures\\schema_validity\\base_3_15_solution.xml",
+                                        "guardPassed":  true,
+                                        "expectedGuardPassed":  true,
+                                        "invalidRootComponentCount":  0
+                                    }
+                   },
+                   {
+                       "name":  "Base 3.15 ZIP passes",
+                       "passed":  true,
+                       "evidence":  {
+                                        "path":  "C:\\Users\\dataops-lab\\AppData\\Local\\Temp\\pmo_solution_schema_selftest_b33b8095a86348c188fc4b3411cb833a\\base_3_15.zip",
+                                        "guardPassed":  true,
+                                        "expectedGuardPassed":  true,
+                                        "invalidRootComponentCount":  0
+                                    }
+                   },
+                   {
+                       "name":  "Hotfix 3.15.1 XML blocks string botcomponent types",
+                       "passed":  true,
+                       "evidence":  {
+                                        "path":  "D:\\VMs\\Projetos\\STT_Project_Management\\tests\\fixtures\\schema_validity\\hotfix_3_15_1_invalid_solution.xml",
+                                        "guardPassed":  false,
+                                        "expectedGuardPassed":  false,
+                                        "invalidRootComponentCount":  5
+                                    }
+                   },
+                   {
+                       "name":  "Hotfix 3.15.1 ZIP blocks string botcomponent types",
+                       "passed":  true,
+                       "evidence":  {
+                                        "path":  "C:\\Users\\dataops-lab\\AppData\\Local\\Temp\\pmo_solution_schema_selftest_b33b8095a86348c188fc4b3411cb833a\\hotfix_3_15_1.zip",
+                                        "guardPassed":  false,
+                                        "expectedGuardPassed":  false,
+                                        "invalidRootComponentCount":  5
+                                    }
+                   }
+               ]
+}

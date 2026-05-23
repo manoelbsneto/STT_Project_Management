@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-05-22 17:33:20 BRT",
+  "agent": "Codex #1",
+  "package": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/package/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+  "packageSha": "4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15",
+  "tempUnpack": "C:\\Users\\DATAOP~1\\AppData\\Local\\Temp\\codex1_pkg_review_447065c6db1e430380960d09672d6620",
+  "workflowResults": [
+    {
+      "Flow": "AtualizarStatus",
+      "WorkflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetMappingPresent": false,
+      "LocalShaMatch": false,
+      "ZipSha": "3A9B46E49F7589260DF821897C9083DA58CB425AB1BC49EC61DB4E01BE88719F",
+      "LocalSha": "259C3C47C4AC66DD31A64A423E15859269E50D109B80320101A56D8F177A9845",
+      "Placeholder": false
+    },
+    {
+      "Flow": "AtualizarTarefa",
+      "WorkflowId": "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetMappingPresent": false,
+      "LocalShaMatch": false,
+      "ZipSha": "F5574F254821D6E1826AE670E26383A493351C2EEC917DDB155D639BC694B48F",
+      "LocalSha": "507008C8924925833B8B7727CAFE3D3F7EA4715EFB0BC793B0D612CA0ED32F22",
+      "Placeholder": false
+    },
+    {
+      "Flow": "CriarTarefa",
+      "WorkflowId": "7f662db7-a250-f111-bec7-000d3abc5cc6",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetMappingPresent": false,
+      "LocalShaMatch": false,
+      "ZipSha": "CD01C7712F0ACCDD7E4241895A8BBBDD2DA6A878A2DECAE89711DEDBB5186278",
+      "LocalSha": "73300D3DEE067590007AB605FC9A24C17F9B7385B8A5E07A0373D2889D8C70D9",
+      "Placeholder": false
+    },
+    {
+      "Flow": "ListarTarefas",
+      "WorkflowId": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetMappingPresent": false,
+      "LocalShaMatch": false,
+      "ZipSha": "C3E924A5B290B773270A1C046D2FBB6944647C2F747C89087BB77BF70E6C81DE",
+      "LocalSha": "1407040099AA9B789D76924ECD52CAE6364AA2338D1E4129B9F8A5F4983B707D",
+      "Placeholder": false
+    },
+    {
+      "Flow": "ResumoExecutivoPortfolio",
+      "WorkflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetMappingPresent": false,
+      "LocalShaMatch": false,
+      "ZipSha": "E759F6708B1A5455D55F0864DEE342BE7A51D0085449E2512F79D107B30EC071",
+      "LocalSha": "A7262CC35D64834ECEC99B9459C7DFB6C05BE39ED38F7E89CF82A25FC1ED59B4",
+      "Placeholder": false
+    }
+  ],
+  "duplicateZipEntries": null,
+  "pm0BotcomponentEntryCount": 0,
+  "pm0BotcomponentDuplicateEntries": null,
+  "solutionXmlRelevantLines": [
+    "<UniqueName>PMO_v11_Tarefas</UniqueName>",
+    "<Version>3.16.0.0</Version>",
+    "<Managed>0</Managed>",
+    "<UniqueName>DefaultPublishercolofertasbrasilpro</UniqueName>",
+    "<RootComponent type=\"29\" id=\"{0a5d2a41-24c0-4d5e-9f6d-000000000241}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{16fbe313-2edc-406e-ad7f-d08cee0edc43}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{3104124d-364a-f111-bec7-7ced8d955c6c}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{39cf292d-c64c-f111-bec7-7ced8d955c6c}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{3ec37952-c64c-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{4a33b53e-c64c-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{70b39334-5926-4fb1-bd22-f10bd99f0f6d}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{9544f14b-3748-f111-bec7-6045bdf42cae}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{98408d55-3748-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{c11a165b-c64c-f111-bec7-7ced8d9559c1}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{ee732d46-c64c-f111-bec7-7ced8d955c6c}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{feb79d54-c64c-f111-bec7-7ced8d955c6c}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{1721e0a3-a250-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{7c6300c2-a250-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{8333bd91-a250-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{7f662db7-a250-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />",
+    "<RootComponent type=\"29\" id=\"{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}\" behavior=\"0\" />"
+  ]
+}

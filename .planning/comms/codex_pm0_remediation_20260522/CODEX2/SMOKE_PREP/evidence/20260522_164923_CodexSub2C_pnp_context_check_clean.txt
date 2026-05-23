@@ -1,0 +1,4 @@
+{
+    "status":  "BLOCKED_AUTH_OR_MODULE",
+    "detail":  "The current connection holds no SharePoint context. Please use one of the Connect-PnPOnline commands which uses the -Url argument to connect."
+}

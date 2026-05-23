@@ -1,0 +1,291 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "aprovador": {
+                  "type": "string",
+                  "description": "UPN do aprovador",
+                  "title": "aprovador",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "solicitante": {
+                  "type": "string",
+                  "description": "UPN do solicitante",
+                  "title": "solicitante",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "descricao": {
+                  "type": "string",
+                  "description": "Descricao da decisao",
+                  "title": "descricao",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "projectName": {
+                  "type": "string",
+                  "description": "Nome do projeto",
+                  "title": "projectName",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "impacto": {
+                  "type": "string",
+                  "description": "Impacto",
+                  "title": "impacto",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "prazo": {
+                  "type": "string",
+                  "description": "Prazo",
+                  "title": "prazo",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "projectName",
+                "descricao",
+                "impacto",
+                "prazo",
+                "aprovador"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "35c9ed5d-51a3-4d58-a8ec-67896874331c"
+          }
+        }
+      },
+      "actions": {
+        "Compose_Solicitante": {
+          "runAfter": {
+            "Compose_DecisionID": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@trim(coalesce(triggerBody()?[\u0027solicitante\u0027], triggerBody()?[\u0027aprovador\u0027]))"
+        },
+        "Get_Projeto": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "table": "Projetos",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "$top": 1,
+              "$filter": "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Ativo eq 1 and Deleted eq 0"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters(\u0027$authentication\u0027)"
+          }
+        },
+        "Condition_Projeto_Encontrado": {
+          "actions": {
+            "Create_Decisao_SharePoint": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "item/CardVersion": "1.0",
+                  "item/Deleted": false,
+                  "item/ApproverUPN": "@trim(triggerBody()?[\u0027aprovador\u0027])",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/Impacto/Value": "@outputs(\u0027Map_Impacto\u0027)",
+                  "item/Aprovador/Claims": "@concat(\u0027i:0#.f|membership|\u0027, trim(triggerBody()?[\u0027aprovador\u0027]))",
+                  "item/Solicitante/Claims": "@concat(\u0027i:0#.f|membership|\u0027, outputs(\u0027Compose_Solicitante\u0027))",
+                  "item/DecisionID": "@outputs(\u0027Compose_DecisionID\u0027)",
+                  "item/Descricao": "@triggerBody()?[\u0027descricao\u0027]",
+                  "item/ResponseSource/Value": "CopilotStudio",
+                  "item/Title": "@outputs(\u0027Compose_DecisionID\u0027)",
+                  "table": "Decisoes do Board",
+                  "item/ProjectID": "@body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027]",
+                  "item/Prazo": "@outputs(\u0027Compose_Prazo\u0027)",
+                  "item/StatusDecisao/Value": "Pendente"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem"
+                },
+                "authentication": "@parameters(\u0027$authentication\u0027)"
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Create_Decisao_SharePoint": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat(\u0027Decisao \u0027, outputs(\u0027Compose_DecisionID\u0027), \u0027 registrada para projeto \u0027, outputs(\u0027Compose_ProjectName\u0027), \u0027.\u0027)}"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "title": "message",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "Response_Error_Write": {
+              "runAfter": {
+                "Create_Decisao_SharePoint": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao registrar decisao no SharePoint. Codigo: SP_WRITE_FAILED."
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "title": "message",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_Solicitante": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "runAfter": {},
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "title": "message",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+              0
+            ]
+          },
+          "type": "If"
+        },
+        "Compose_Prazo": {
+          "runAfter": {
+            "Map_Impacto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(or(empty(triggerBody()?[\u0027prazo\u0027]), not(contains(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), triggerBody()?[\u0027prazo\u0027], concat(last(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)), \u0027-\u0027, if(equals(length(first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), 1), concat(\u00270\u0027, first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), first(skip(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027), 1))), \u0027-\u0027, if(equals(length(first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), 1), concat(\u00270\u0027, first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027))), first(split(string(triggerBody()?[\u0027prazo\u0027]), \u0027/\u0027)))))"
+        },
+        "Compose_ProjectName": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto=\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto:\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))))"
+        },
+        "Map_Impacto": {
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027cr\u0027), \u0027Critico\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027a\u0027), \u0027Alto\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027m\u0027), \u0027Medio\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027b\u0027), \u0027Baixo\u0027, \u0027Medio\u0027))))"
+        },
+        "Compose_DecisionID": {
+          "runAfter": {
+            "Compose_Prazo": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat(\u0027DEC-\u0027, toUpper(substring(guid(), 0, 8)))"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

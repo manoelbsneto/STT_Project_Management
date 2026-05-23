@@ -1,0 +1,13 @@
+
+card                                   status                sizeBytes version nonAsciiCount
+----                                   ------                --------- ------- -------------
+AtualizarStatusCard.json               PASS_LOCAL_STRUCTURAL      2811 1.4                 0
+AtualizarTarefaCard.json               PASS_LOCAL_STRUCTURAL      3679 1.4                 0
+CriarTarefaCard.json                   PASS_LOCAL_STRUCTURAL      3342 1.4                 0
+ListarTarefasProjetoCard.json          PASS_LOCAL_STRUCTURAL      3463 1.4                 0
+ResumoExecutivoPortfolio.json          PASS_LOCAL_STRUCTURAL      3676 1.4                 0
+AtualizarStatusCard_v316.json          MISSING                                              
+ListarTarefasCard_v316.json            MISSING                                              
+ResumoExecutivoPortfolioCard_v316.json MISSING                                              
+
+

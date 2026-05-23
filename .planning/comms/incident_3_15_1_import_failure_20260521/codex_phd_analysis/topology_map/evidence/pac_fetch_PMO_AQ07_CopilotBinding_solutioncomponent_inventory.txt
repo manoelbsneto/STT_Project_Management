@@ -1,0 +1,24 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+objectid                             componenttype    solutioncomponentid                  rootcomponentbehavior  solution.uniquename     solution.solutionid                  solution.friendlyname    solutionid
+9531fbc7-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo ecba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+48b72cbd-a350-f111-bec7-000d3abc5cc6                  ffba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+bd507ab1-7455-400e-8379-153ce34427f8                  f5ba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+ca7233c3-a350-f111-bec7-000d3abc5cc6                  07bb2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+c37233c3-a350-f111-bec7-000d3abc5cc6                  03bb2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+c57233c3-a350-f111-bec7-000d3abc5cc6                  05bb2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+c27233c3-a350-f111-bec7-000d3abc5cc6                  01bb2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+cd7233c3-a350-f111-bec7-000d3abc5cc6                  09bb2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+0956d0c0-05f1-429c-8893-6352a927d535                  fbba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+f6afac82-ec2b-47fb-a3d6-4aebad708702                  f9ba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+b59678d8-a850-f111-bec7-7ced8d955c6c                  16a292de-a850-f111-bec7-7ced8d955c6c Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+8333bd91-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo d17233c3-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+0635831a-6b13-45d6-b10e-983fcc63eefe                  fdba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+1721e0a3-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo d27233c3-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+e0e3c6b0-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo d37233c3-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+beb83cc5-c09c-4cd3-a279-20846686ea3e                  f7ba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+7c6300c2-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo d57233c3-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+3f9abdf2-8801-4602-83dd-002a31f0b53e                  f3ba2bc9-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+7f662db7-a250-f111-bec7-000d3abc5cc6 Flujo de trabajo d47233c3-a350-f111-bec7-000d3abc5cc6 Incluir subcomponentes PMO_AQ07_CopilotBinding aef5aea2-cee2-4039-8087-f66c8574a201 PMO AQ07 Copilot Binding 
+

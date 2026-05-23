@@ -1,0 +1,13 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+Listing all Solutions from the current Dataverse organization...
+Unique Name              Friendly Name                         Version        Managed
+Creee23                  Common Data Services Default Solution 1.0.0.0        False
+CopilotStudioAccelerator Copilot Studio Kit                    20260313.2     True
+CreatorKitCore           Creator Kit                           1.0.20250310.1 True
+mpa_LeaveManagement      Leave Management (Preview)            1.0.0.9        True
+PMO_AQ07_CopilotBinding  PMO AQ07 Copilot Binding              1.0.0.1        False
+PMO_v11_Tarefas          PMO v1.1 - Task Management Topics     3.16           False
+Default                  Solución predeterminada               1.0            False
+

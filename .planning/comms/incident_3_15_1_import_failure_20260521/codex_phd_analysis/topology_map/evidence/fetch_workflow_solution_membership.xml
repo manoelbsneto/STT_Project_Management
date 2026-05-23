@@ -1,0 +1,30 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" />
+    <attribute name="objectid" />
+    <attribute name="componenttype" />
+    <attribute name="rootcomponentbehavior" />
+    <attribute name="solutionid" />
+    <filter type="or">
+      <condition attribute="objectid" operator="eq" value="0a5d2a41-24c0-4d5e-9f6d-000000000241" />
+      <condition attribute="objectid" operator="eq" value="16fbe313-2edc-406e-ad7f-d08cee0edc43" />
+      <condition attribute="objectid" operator="eq" value="3104124d-364a-f111-bec7-7ced8d955c6c" />
+      <condition attribute="objectid" operator="eq" value="39cf292d-c64c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="objectid" operator="eq" value="3ec37952-c64c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="objectid" operator="eq" value="4a33b53e-c64c-f111-bec7-000d3abc5cc6" />
+      <condition attribute="objectid" operator="eq" value="70b39334-5926-4fb1-bd22-f10bd99f0f6d" />
+      <condition attribute="objectid" operator="eq" value="9544f14b-3748-f111-bec7-6045bdf42cae" />
+      <condition attribute="objectid" operator="eq" value="98408d55-3748-f111-bec7-000d3abc5cc6" />
+      <condition attribute="objectid" operator="eq" value="c11a165b-c64c-f111-bec7-7ced8d9559c1" />
+      <condition attribute="objectid" operator="eq" value="ee732d46-c64c-f111-bec7-7ced8d955c6c" />
+      <condition attribute="objectid" operator="eq" value="feb79d54-c64c-f111-bec7-7ced8d955c6c" />
+    </filter>
+    <link-entity name="solution" from="solutionid" to="solutionid" link-type="inner" alias="solution">
+      <attribute name="solutionid" />
+      <attribute name="uniquename" />
+      <attribute name="friendlyname" />
+      <attribute name="version" />
+    </link-entity>
+    <order attribute="objectid" />
+  </entity>
+</fetch>

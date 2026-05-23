@@ -1,0 +1,256 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedsharepointonline_6e373"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descricao": {
+                  "type": "string",
+                  "description": "Descricao do bloqueio",
+                  "title": "descricao",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "projectName": {
+                  "type": "string",
+                  "description": "Nome do projeto",
+                  "title": "projectName",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "impacto": {
+                  "type": "string",
+                  "description": "Impacto",
+                  "title": "impacto",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "projectName",
+                "descricao",
+                "impacto"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "95afc9c3-9975-46b9-aa89-92ab177e4f9e"
+          }
+        }
+      },
+      "actions": {
+        "Map_Severidade": {
+          "runAfter": {
+            "Map_Impacto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(equals(outputs(\u0027Map_Impacto\u0027), \u0027Critico\u0027), \u0027Critica\u0027, if(equals(outputs(\u0027Map_Impacto\u0027), \u0027Alto\u0027), \u0027Alta\u0027, if(equals(outputs(\u0027Map_Impacto\u0027), \u0027Baixo\u0027), \u0027Baixa\u0027, \u0027Media\u0027)))"
+        },
+        "Map_Impacto": {
+          "runAfter": {
+            "Get_Projeto": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027cr\u0027), \u0027Critico\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027a\u0027), \u0027Alto\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027m\u0027), \u0027Medio\u0027, if(startsWith(toLower(coalesce(triggerBody()?[\u0027impacto\u0027], \u0027Medio\u0027)), \u0027b\u0027), \u0027Baixo\u0027, \u0027Medio\u0027))))"
+        },
+        "Compose_RiskID": {
+          "runAfter": {
+            "Map_Severidade": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@concat(\u0027BLOCK-\u0027, toUpper(substring(guid(), 0, 8)))"
+        },
+        "Compose_ProjectName": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto=\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), if(startsWith(toLower(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), \u0027projeto:\u0027), trim(substring(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027)), 8, sub(length(trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))), 8))), trim(coalesce(triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027projectName\u0027], triggerBody()?[\u0027nomeProjeto\u0027], \u0027\u0027))))"
+        },
+        "Get_Projeto": {
+          "runAfter": {
+            "Compose_ProjectName": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "table": "Projetos",
+              "$filter": "NomeProjeto eq \u0027@{replace(outputs(\u0027Compose_ProjectName\u0027),\u0027\u0027\u0027\u0027,\u0027\u0027\u0027\u0027\u0027\u0027)}\u0027 and Ativo eq 1 and Deleted eq 0",
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters(\u0027$authentication\u0027)"
+          }
+        },
+        "Condition_Projeto_Encontrado": {
+          "actions": {
+            "Create_Bloqueio_SharePoint": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "table": "Riscos e Bloqueios",
+                  "item/Severidade/Value": "@outputs(\u0027Map_Severidade\u0027)",
+                  "item/DataCriacao": "@utcNow()",
+                  "item/RiskID": "@outputs(\u0027Compose_RiskID\u0027)",
+                  "item/Impacto/Value": "@outputs(\u0027Map_Impacto\u0027)",
+                  "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+                  "item/StatusRisco/Value": "Aberto",
+                  "item/Descricao": "@triggerBody()?[\u0027descricao\u0027]",
+                  "item/Deleted": false,
+                  "item/Tipo/Value": "Bloqueio",
+                  "item/Title": "@outputs(\u0027Compose_RiskID\u0027)",
+                  "item/ProjectID": "@body(\u0027Get_Projeto\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027]"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "PostItem"
+                },
+                "authentication": "@parameters(\u0027$authentication\u0027)"
+              }
+            },
+            "Response_OK": {
+              "runAfter": {
+                "Create_Bloqueio_SharePoint": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "@{concat(\u0027Bloqueio \u0027, outputs(\u0027Compose_RiskID\u0027), \u0027 registrado para projeto \u0027, outputs(\u0027Compose_ProjectName\u0027), \u0027. Impacto: \u0027, outputs(\u0027Map_Impacto\u0027), \u0027.\u0027)}"
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "title": "message",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "Response_Error_Write": {
+              "runAfter": {
+                "Create_Bloqueio_SharePoint": [
+                  "Failed",
+                  "TimedOut"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "statusCode": 500,
+                "headers": {
+                  "Content-Type": "application/json"
+                },
+                "body": {
+                  "message": "Erro ao registrar bloqueio no SharePoint. Codigo: SP_WRITE_FAILED."
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "title": "message",
+                      "x-ms-dynamically-added": true,
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_RiskID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_Project_Not_Found": {
+                "runAfter": {},
+                "type": "Response",
+                "kind": "Skills",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Content-Type": "application/json"
+                  },
+                  "body": {
+                    "message": "Projeto nao encontrado. Codigo: PROJECT_NOT_FOUND."
+                  },
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "title": "message",
+                        "x-ms-dynamically-added": true,
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@length(body(\u0027Get_Projeto\u0027)?[\u0027value\u0027])",
+              0
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

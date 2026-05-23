@@ -1,0 +1,148 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "bleed": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Portfolio Executive Summary",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Active Projects: ${activeProjects}",
+          "spacing": "None",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "RAG Status Distribution:",
+          "weight": "Bolder",
+          "size": "Small",
+          "wrap": true
+        },
+        {
+          "type": "ColumnSet",
+          "spacing": "Small",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Verde",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${verde}",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Good",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Amarelo",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${amarelo}",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Warning",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Vermelho",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${vermelho}",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Attention",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Open Tasks across Portfolio",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${openTasks}",
+                  "weight": "Bolder",
+                  "size": "Medium",
+                  "color": "Accent",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

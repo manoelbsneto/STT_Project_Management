@@ -1,9 +1,10 @@
 # Credentials
 .env
+.env.local
+*.local.env
 .planning/.env
 .planning/config.json
 .planning/config.local.json
-*.local.env
 
 # Logs with sensitive data
 *.log

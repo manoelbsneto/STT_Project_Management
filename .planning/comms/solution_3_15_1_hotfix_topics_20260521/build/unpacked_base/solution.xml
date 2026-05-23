@@ -1,0 +1,48 @@
+<ImportExportXml version="9.2.26042.165" SolutionPackageVersion="9.2" languagecode="3082" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26042.165" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26042.00165">
+  <SolutionManifest>
+    <UniqueName>PMO_v11_Tarefas</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="PMO v1.1 - Task Management Topics" languagecode="3082" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="3 topics + 3 action bindings para GerenciarTarefas no Assistente PMO" languagecode="3082" />
+    </Descriptions>
+    <Version>3.15.1</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>DefaultPublishercolofertasbrasilpro</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Default publisher for colofertasbrasilpro" languagecode="3082" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Editor predeterminado para esta organizacion" languagecode="3082" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>pmo</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses />
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{0a5d2a41-24c0-4d5e-9f6d-000000000241}" behavior="0" />
+      <RootComponent type="29" id="{16fbe313-2edc-406e-ad7f-d08cee0edc43}" behavior="0" />
+      <RootComponent type="29" id="{3104124d-364a-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="29" id="{39cf292d-c64c-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="29" id="{3ec37952-c64c-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{4a33b53e-c64c-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{70b39334-5926-4fb1-bd22-f10bd99f0f6d}" behavior="0" />
+      <RootComponent type="29" id="{9544f14b-3748-f111-bec7-6045bdf42cae}" behavior="0" />
+      <RootComponent type="29" id="{98408d55-3748-f111-bec7-000d3abc5cc6}" behavior="0" />
+      <RootComponent type="29" id="{c11a165b-c64c-f111-bec7-7ced8d9559c1}" behavior="0" />
+      <RootComponent type="29" id="{ee732d46-c64c-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="29" id="{feb79d54-c64c-f111-bec7-7ced8d955c6c}" behavior="0" />
+      <RootComponent type="botcomponent" id="{ec4416d0-0744-4e8c-b937-aae4ad9c605b}" behavior="0" />
+      <RootComponent type="botcomponent" id="{6750ff2f-822b-45ab-83ec-058704c7808a}" behavior="0" />
+      <RootComponent type="botcomponent" id="{74c5fdcc-c121-452e-85af-24d3f260b3c7}" behavior="0" />
+      <RootComponent type="botcomponent" id="{bcbecd76-3158-40ac-b225-5ae7c3874ed1}" behavior="0" />
+      <RootComponent type="botcomponent" id="{d58258b4-b17f-4bb9-9e1f-161287a041c4}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>
+

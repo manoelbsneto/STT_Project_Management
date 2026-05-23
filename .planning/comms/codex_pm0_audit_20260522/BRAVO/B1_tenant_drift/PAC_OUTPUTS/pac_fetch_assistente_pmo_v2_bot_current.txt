@@ -1,0 +1,60 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+authenticationtrigger statecode statuscode    createdon        configuration                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             schemaname           ownerid                       name              template                synchronizationstatus                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            solutionid                           ismanaged       publishedon      timezoneruleversionnumber language modifiedby                 iscustomizable modifiedon       applicationmanifestinformation                                                                                              componentstate botid                                createdby                     componentidunique                    owningbusinessunit  authenticationmode owninguser accesscontrolpolicy  runtimeprovider
+Siempre               Activo    Aprovisionado 07/05/2026 10:05 {
+  "$kind": "BotConfiguration",
+  "settings": {
+    "GenerativeActionsEnabled": true
+  },
+  "gPTSettings": {
+    "$kind": "GPTSettings",
+    "defaultSchemaName": "pmo_AssistentePMO_V2.gpt.default"
+  },
+  "aISettings": {
+    "$kind": "AISettings",
+    "useModelKnowledge": false,
+    "isFileAnalysisEnabled": false,
+    "isSemanticSearchEnabled": false,
+    "contentModeration": "Low",
+    "optInUseLatestModels": true
+  },
+  "recognizer": {
+    "$kind": "GenerativeAIRecognizer"
+  }
+} pmo_AssistentePMO_V2 Manoel Benicio De Souza Filho Assistente PMO V2 kickStartTemplate-1.0.0 {
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "userId": "3882eb28-005d-4948-a668-81263d778f6d",
+    "operationStart": "2026-05-22T17:40:01.6763587Z",
+    "operationEnd": "2026-05-22T17:40:38.1069122Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "Integrated"
+  },
+  "lastPublishedUserId": "3882eb28-005d-4948-a668-81263d778f6d",
+  "lastPublishedOnUtc": "2026-05-22T17:40:36.5620391",
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "botRegistration": {
+      "$kind": "BotRegistrationDetails",
+      "botRegistrationIdConsumptionTime": "2026-05-07T13:06:51Z",
+      "applicationId": "47adedf0-2509-4cb7-a4e7-f720ad34a4cb",
+      "isAppAvailableInTenant": true
+    },
+    "provisioningStatus": "Provisioned",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2026-05-22T17:41:03.4608955Z"
+} fd140aae-4df4-11dd-bd17-0019b9312238 No administrado 22/05/2026 14:40 4                         Inglés   # Microsoft Copilot Studio False          22/05/2026 14:41 {
+  "$kind": "ApplicationDetails",
+  "teams": {
+    "$kind": "TeamsApplicationDetails",
+    "version": "1.0.56"
+  }
+} Publicado      df148bf8-0a3e-495b-80c4-841dcb61d9a4 Manoel Benicio De Souza Filho 14a94a3d-7283-4d54-9334-8c745f7ad129 colofertasbrasilpro Integrado                     Pertenencia a grupos Power Virtual Agents
+

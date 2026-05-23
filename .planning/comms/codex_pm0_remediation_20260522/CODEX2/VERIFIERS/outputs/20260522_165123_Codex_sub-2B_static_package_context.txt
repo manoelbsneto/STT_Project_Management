@@ -1,0 +1,5 @@
+timestamp_brt=2026-05-22 16:51:23 BRT
+agent=Codex sub-2B
+package=Solution/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip
+sha256=FE45D69201154BC9A2CBF54DD86F7CCE7200969C31965F8333CF0FE61FCDBE1D
+unpacked=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\package_unpacked_20260522_165123

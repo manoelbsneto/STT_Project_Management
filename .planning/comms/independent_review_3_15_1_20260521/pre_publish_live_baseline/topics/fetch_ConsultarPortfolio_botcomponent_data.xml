@@ -1,0 +1,8 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="data" />
+    <filter type="and">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.ConsultarPortfolio" />
+    </filter>
+  </entity>
+</fetch>

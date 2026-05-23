@@ -1,0 +1,10 @@
+
+Name                           Value                                                                                   
+----                           -----                                                                                   
+generatedAtUtc                 2026-05-21T19:43:20Z                                                                    
+solutionZip                    D:\VMs\Projetos\STT_Project_Management\Solution\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip
+rawFetchPath                   D:\VMs\Projetos\STT_Project_Management\.planning\comms\incident_3_15_1_import_failure...
+workflowCount                  12                                                                                      
+workflows                      {System.Collections.Specialized.OrderedDictionary, System.Collections.Specialized.Ord...
+
+

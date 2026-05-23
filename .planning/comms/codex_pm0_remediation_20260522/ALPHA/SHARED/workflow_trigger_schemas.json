@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-05-22",
+  "agent": "Codex sub-A1",
+  "scope": "PM0 workflow trigger schemas after local remediation patch",
+  "schemas": {
+    "AtualizarStatus": {
+      "workflowPath": "Local_Repo/Assistente PMO V2/workflows/PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6/workflow.json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Action"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status"
+          },
+          "routeKey": {
+            "type": "string",
+            "description": "Route key"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID"
+          },
+          "rag": {
+            "type": "string",
+            "description": "Project RAG status"
+          },
+          "resumo": {
+            "type": "string",
+            "description": "Status summary"
+          },
+          "percentual": {
+            "type": "number",
+            "description": "Completion percent"
+          },
+          "risco": {
+            "type": "string",
+            "description": "Risk summary"
+          },
+          "bloqueio": {
+            "type": "string",
+            "description": "Blocker summary"
+          },
+          "proximaAcao": {
+            "type": "string",
+            "description": "Next action"
+          }
+        },
+        "required": [
+          "routeKey",
+          "projectId",
+          "rag",
+          "resumo"
+        ]
+      }
+    },
+    "AtualizarTarefa": {
+      "workflowPath": "Local_Repo/Assistente PMO V2/workflows/PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6/workflow.json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Action"
+          },
+          "spItemId": {
+            "type": "string",
+            "description": "SharePoint item ID"
+          },
+          "taskId": {
+            "type": "string",
+            "description": "SharePoint item ID from card"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status"
+          },
+          "taskStatus": {
+            "type": "string",
+            "description": "Status from card"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments"
+          },
+          "horasRealizadas": {
+            "type": "number",
+            "description": "Completed hours"
+          },
+          "responsavel": {
+            "type": "string",
+            "description": "Task responsible"
+          },
+          "dataFim": {
+            "type": "string",
+            "description": "Task due date"
+          },
+          "prioridade": {
+            "type": "string",
+            "description": "Task priority"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    },
+    "CriarTarefa": {
+      "workflowPath": "Local_Repo/Assistente PMO V2/workflows/PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6/workflow.json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "dueDate": {
+            "type": "string",
+            "description": "Due date from card"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action"
+          },
+          "taskTitle": {
+            "type": "string",
+            "description": "Task title from card"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End date"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Start date"
+          },
+          "bucket": {
+            "type": "string",
+            "description": "Bucket"
+          },
+          "title": {
+            "type": "string",
+            "description": "Task title"
+          },
+          "plannerBucketName": {
+            "type": "string",
+            "description": "Bucket from card"
+          },
+          "responsavel": {
+            "type": "string",
+            "description": "Task responsible"
+          },
+          "prazo": {
+            "type": "string",
+            "description": "Task due date"
+          },
+          "horas": {
+            "type": "number",
+            "description": "Estimated hours"
+          },
+          "prioridade": {
+            "type": "string",
+            "description": "Task priority"
+          }
+        },
+        "required": [
+          "projectId",
+          "action"
+        ]
+      }
+    },
+    "ListarTarefas": {
+      "workflowPath": "Local_Repo/Assistente PMO V2/workflows/PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6/workflow.json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Action"
+          },
+          "projectId": {
+            "type": "string",
+            "description": "Project ID"
+          }
+        },
+        "required": [
+          "action",
+          "projectId"
+        ]
+      }
+    },
+    "ResumoExecutivoPortfolio": {
+      "workflowPath": "Local_Repo/Assistente PMO V2/workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6/workflow.json",
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  }
+}

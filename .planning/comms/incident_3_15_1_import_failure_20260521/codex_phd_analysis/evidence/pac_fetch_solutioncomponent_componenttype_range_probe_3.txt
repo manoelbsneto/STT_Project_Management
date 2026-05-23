@@ -1,0 +1,42 @@
+RANGE 10000-14999
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+10
+
+RANGE 15000-19999
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+0
+
+RANGE 10000-12499
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+10
+
+RANGE 12500-14999
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+0
+
+RANGE 10000-11249
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+10
+
+RANGE 11250-12499
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+match_count
+0
+

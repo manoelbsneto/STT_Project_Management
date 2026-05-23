@@ -1,0 +1,37 @@
+{
+  "TimestampBRT": "2026-05-22 17:35:43 BRT",
+  "Agent": "Codex #1",
+  "PackagePath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+  "Rows": [
+    {
+      "Flow": "AtualizarStatus",
+      "CanonicalMatch": false,
+      "ZipCanonicalSha": "D04F29601D21D7C6645C4E11D22B1EF144D9AD595FC85579148A22833BD19730",
+      "LocalCanonicalSha": "02CD1F36042925A271A8A18B57FD480F808C702F1CD58BD0327E67D1157A2A1C"
+    },
+    {
+      "Flow": "AtualizarTarefa",
+      "CanonicalMatch": false,
+      "ZipCanonicalSha": "332D7FDA2233CA4338CEBFA7E96F1C611D8F7315F84448F79CDE740C68DE15D1",
+      "LocalCanonicalSha": "27EBEB723B2317667059589B9F45FA21EAB8998AA5858F94EF1D3259EDE79545"
+    },
+    {
+      "Flow": "CriarTarefa",
+      "CanonicalMatch": false,
+      "ZipCanonicalSha": "9EED5E003F149EF42E559867117011EBC5AC8447FFC236358503BE499691A57C",
+      "LocalCanonicalSha": "0804D98D499FD3367BEFD245F4C7034087421AF14071C32EBD3D43BD8FC5D08C"
+    },
+    {
+      "Flow": "ListarTarefas",
+      "CanonicalMatch": false,
+      "ZipCanonicalSha": "5C1F1129F36532045C6BD9E370E6004C8FF67F82F312CF4770BBCB0EB2DE8177",
+      "LocalCanonicalSha": "DBF8A2669249648961A8081FA12967C6A995C8844289747C4ADAA46962B1B6CA"
+    },
+    {
+      "Flow": "ResumoExecutivoPortfolio",
+      "CanonicalMatch": false,
+      "ZipCanonicalSha": "BFB52E5FD7E1BBA1A12035745DD594ADB33081D99B3F2903E1755DBCA9273ACE",
+      "LocalCanonicalSha": "67EACD8F5C7AB848A919387A5E327A1895B7E91837E0D98DE34357EE2D81E44D"
+    }
+  ]
+}

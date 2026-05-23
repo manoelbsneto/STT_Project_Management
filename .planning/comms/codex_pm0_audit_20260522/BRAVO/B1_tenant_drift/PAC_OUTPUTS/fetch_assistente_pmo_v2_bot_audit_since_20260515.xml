@@ -1,0 +1,16 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="audit">
+    <attribute name="auditid" />
+    <attribute name="createdon" />
+    <attribute name="action" />
+    <attribute name="operation" />
+    <attribute name="objectid" />
+    <attribute name="objecttypecode" />
+    <attribute name="userid" />
+    <filter type="and">
+      <condition attribute="createdon" operator="on-or-after" value="2026-05-15" />
+      <condition attribute="objectid" operator="eq" value="df148bf8-0a3e-495b-80c4-841dcb61d9a4" />
+    </filter>
+    <order attribute="createdon" descending="false" />
+  </entity>
+</fetch>

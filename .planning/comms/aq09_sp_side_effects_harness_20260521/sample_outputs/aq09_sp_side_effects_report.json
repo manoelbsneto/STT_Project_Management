@@ -1,0 +1,419 @@
+{
+    "generatedAt":  "2026-05-21T11:11:03-03:00",
+    "environment":  {
+                        "expectedName":  "ColOfertasBrasilPro",
+                        "sharePointSite":  {
+                                               "title":  "Grp_T_DN_Transformacao_Digital",
+                                               "url":  "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital"
+                                           },
+                        "pacCheckSkipped":  false
+                    },
+    "smokeWindow":  {
+                        "startUtc":  "2026-05-21T00:00:00.0000000Z",
+                        "endUtc":  "2026-05-21T11:00:00.0000000Z",
+                        "startBrt":  "2026-05-20T21:00:00-03:00",
+                        "endBrt":  "2026-05-21T08:00:00-03:00"
+                    },
+    "projectScope":  "QA Robust 20260513 F",
+    "expectedProjectId":  "PRJ-274E5ACC",
+    "lists":  {
+                  "Projetos":  {
+                                   "totalActive":  25,
+                                   "rowsInWindowPath":  "Projetos_rows_in_window.json",
+                                   "rowsInWindow":  {
+
+                                                    },
+                                   "sampleRows":  [
+                                                      {
+                                                          "ID":  34,
+                                                          "Title":  "QA Projeto Runtime 315 20260514",
+                                                          "NomeProjeto":  "QA Projeto Runtime 315 20260514",
+                                                          "ProjectID":  "PRJ-5FFC861A",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-14T19:10:32.0000000Z",
+                                                          "Created":  "2026-05-14T19:10:33.0000000Z",
+                                                          "Modified":  "2026-05-14T19:10:33.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  33,
+                                                          "Title":  "QA Robust 20260513 F",
+                                                          "NomeProjeto":  "QA Robust 20260513 F",
+                                                          "ProjectID":  "PRJ-274E5ACC",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-14T19:10:01.0000000Z",
+                                                          "Created":  "2026-05-13T14:46:52.0000000Z",
+                                                          "Modified":  "2026-05-14T19:10:01.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  32,
+                                                          "Title":  "QA Robust 20260513 E",
+                                                          "NomeProjeto":  "QA Robust 20260513 E",
+                                                          "ProjectID":  "PRJ-CCCBAA11",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T14:46:14.0000000Z",
+                                                          "Created":  "2026-05-13T14:46:14.0000000Z",
+                                                          "Modified":  "2026-05-13T14:46:14.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  31,
+                                                          "Title":  "QA Robust 20260513",
+                                                          "NomeProjeto":  "QA Robust 20260513",
+                                                          "ProjectID":  "PRJ-6D2F713C",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T13:37:06.0000000Z",
+                                                          "Created":  "2026-05-13T13:37:08.0000000Z",
+                                                          "Modified":  "2026-05-13T13:37:08.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  30,
+                                                          "Title":  "Teste Data BR Projeto 3.0",
+                                                          "NomeProjeto":  "Teste Data BR Projeto 3.0",
+                                                          "ProjectID":  "PRJ-A7B03E50",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T11:19:44.0000000Z",
+                                                          "Created":  "2026-05-13T11:19:45.0000000Z",
+                                                          "Modified":  "2026-05-13T11:19:45.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  27,
+                                                          "Title":  "Teste Data BR Projeto 2.9",
+                                                          "NomeProjeto":  "Teste Data BR Projeto 2.9",
+                                                          "ProjectID":  "PRJ-D1828086",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T09:50:46.0000000Z",
+                                                          "Created":  "2026-05-13T09:50:47.0000000Z",
+                                                          "Modified":  "2026-05-13T11:16:58.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  29,
+                                                          "Title":  "Teste Parser Tail 2.9",
+                                                          "NomeProjeto":  "Teste Parser Tail 2.9",
+                                                          "ProjectID":  "PRJ-67B13D57",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T10:01:16.0000000Z",
+                                                          "Created":  "2026-05-13T10:01:17.0000000Z",
+                                                          "Modified":  "2026-05-13T10:01:17.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  28,
+                                                          "Title":  "Teste Parser Tail 2.9",
+                                                          "NomeProjeto":  "Teste Parser Tail 2.9",
+                                                          "ProjectID":  "PRJ-0A64C204",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-13T09:55:53.0000000Z",
+                                                          "Created":  "2026-05-13T09:55:54.0000000Z",
+                                                          "Modified":  "2026-05-13T09:55:54.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  26,
+                                                          "Title":  "Teste Data ISO Projeto 2.8",
+                                                          "NomeProjeto":  "Teste Data ISO Projeto 2.8",
+                                                          "ProjectID":  "PRJ-9CF9F7A5",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-12T23:49:43.0000000Z",
+                                                          "Created":  "2026-05-12T23:49:43.0000000Z",
+                                                          "Modified":  "2026-05-12T23:49:43.0000000Z"
+                                                      },
+                                                      {
+                                                          "ID":  25,
+                                                          "Title":  "Teste Data BR Projeto 2.8",
+                                                          "NomeProjeto":  "Teste Data BR Projeto 2.8",
+                                                          "ProjectID":  "PRJ-C2D37835",
+                                                          "StatusRAG":  "Verde",
+                                                          "Ativo":  true,
+                                                          "Deleted":  false,
+                                                          "UltimaAtualizacao":  "2026-05-12T23:46:19.0000000Z",
+                                                          "Created":  "2026-05-12T23:46:20.0000000Z",
+                                                          "Modified":  "2026-05-12T23:46:20.0000000Z"
+                                                      }
+                                                  ]
+                               },
+                  "Tarefas":  {
+                                  "rowsInWindowPath":  "Tarefas_rows_in_window.json",
+                                  "rowsInWindow":  {
+
+                                                   }
+                              },
+                  "StatusDiario":  {
+                                       "rowsInWindowPath":  "StatusDiario_rows_in_window.json",
+                                       "rowsInWindow":  {
+
+                                                        }
+                                   },
+                  "RiscosBloqueios":  {
+                                          "rowsInWindowPath":  "RiscosBloqueios_rows_in_window.json",
+                                          "rowsInWindow":  {
+
+                                                           }
+                                      },
+                  "DecisoesBoard":  {
+                                        "rowsInWindowPath":  "DecisoesBoard_rows_in_window.json",
+                                        "rowsInWindow":  {
+
+                                                         }
+                                    }
+              },
+    "tests":  {
+                  "A1_CMD-12-H":  {
+                                      "status":  "PASS",
+                                      "details":  "Project exists and has at least one active non-deleted task.",
+                                      "evidence":  {
+                                                       "project":  {
+                                                                       "ID":  33,
+                                                                       "Title":  "QA Robust 20260513 F",
+                                                                       "NomeProjeto":  "QA Robust 20260513 F",
+                                                                       "ProjectID":  "PRJ-274E5ACC",
+                                                                       "StatusRAG":  "Verde",
+                                                                       "Ativo":  true,
+                                                                       "Deleted":  false,
+                                                                       "UltimaAtualizacao":  "2026-05-14T19:10:01.0000000Z",
+                                                                       "Created":  "2026-05-13T14:46:52.0000000Z",
+                                                                       "Modified":  "2026-05-14T19:10:01.0000000Z"
+                                                                   },
+                                                       "taskCount":  3,
+                                                       "first5Tasks":  [
+                                                                           {
+                                                                               "Id":  14,
+                                                                               "Title":  "QA Skip Opcional 20260513 1935",
+                                                                               "Responsavel":  "mbenicios@minsait.com",
+                                                                               "Prazo":  "2026-05-19T22:00:00.0000000Z",
+                                                                               "Status":  "Em Andamento"
+                                                                           },
+                                                                           {
+                                                                               "Id":  15,
+                                                                               "Title":  "QA Final Skip 20260513 2105",
+                                                                               "Responsavel":  "mbenicios@minsait.com",
+                                                                               "Prazo":  "2026-05-20T22:00:00.0000000Z",
+                                                                               "Status":  "Em Andamento"
+                                                                           },
+                                                                           {
+                                                                               "Id":  16,
+                                                                               "Title":  "QA CriarTarefa Runtime 315 20260514",
+                                                                               "Responsavel":  "mbenicios@minsait.com",
+                                                                               "Prazo":  "2026-05-30T22:00:00.0000000Z",
+                                                                               "Status":  "Pendente"
+                                                                           }
+                                                                       ]
+                                                   }
+                                  },
+                  "A2_CMD-15":  {
+                                    "status":  "PASS",
+                                    "details":  "Portfolio baseline query returned active non-deleted projects.",
+                                    "evidence":  {
+                                                     "activeProjectCount":  25,
+                                                     "tenMostRecentProjects":  [
+                                                                                   {
+                                                                                       "ID":  34,
+                                                                                       "Title":  "QA Projeto Runtime 315 20260514",
+                                                                                       "NomeProjeto":  "QA Projeto Runtime 315 20260514",
+                                                                                       "ProjectID":  "PRJ-5FFC861A",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-14T19:10:32.0000000Z",
+                                                                                       "Created":  "2026-05-14T19:10:33.0000000Z",
+                                                                                       "Modified":  "2026-05-14T19:10:33.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  33,
+                                                                                       "Title":  "QA Robust 20260513 F",
+                                                                                       "NomeProjeto":  "QA Robust 20260513 F",
+                                                                                       "ProjectID":  "PRJ-274E5ACC",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-14T19:10:01.0000000Z",
+                                                                                       "Created":  "2026-05-13T14:46:52.0000000Z",
+                                                                                       "Modified":  "2026-05-14T19:10:01.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  32,
+                                                                                       "Title":  "QA Robust 20260513 E",
+                                                                                       "NomeProjeto":  "QA Robust 20260513 E",
+                                                                                       "ProjectID":  "PRJ-CCCBAA11",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T14:46:14.0000000Z",
+                                                                                       "Created":  "2026-05-13T14:46:14.0000000Z",
+                                                                                       "Modified":  "2026-05-13T14:46:14.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  31,
+                                                                                       "Title":  "QA Robust 20260513",
+                                                                                       "NomeProjeto":  "QA Robust 20260513",
+                                                                                       "ProjectID":  "PRJ-6D2F713C",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T13:37:06.0000000Z",
+                                                                                       "Created":  "2026-05-13T13:37:08.0000000Z",
+                                                                                       "Modified":  "2026-05-13T13:37:08.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  30,
+                                                                                       "Title":  "Teste Data BR Projeto 3.0",
+                                                                                       "NomeProjeto":  "Teste Data BR Projeto 3.0",
+                                                                                       "ProjectID":  "PRJ-A7B03E50",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T11:19:44.0000000Z",
+                                                                                       "Created":  "2026-05-13T11:19:45.0000000Z",
+                                                                                       "Modified":  "2026-05-13T11:19:45.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  27,
+                                                                                       "Title":  "Teste Data BR Projeto 2.9",
+                                                                                       "NomeProjeto":  "Teste Data BR Projeto 2.9",
+                                                                                       "ProjectID":  "PRJ-D1828086",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T09:50:46.0000000Z",
+                                                                                       "Created":  "2026-05-13T09:50:47.0000000Z",
+                                                                                       "Modified":  "2026-05-13T11:16:58.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  29,
+                                                                                       "Title":  "Teste Parser Tail 2.9",
+                                                                                       "NomeProjeto":  "Teste Parser Tail 2.9",
+                                                                                       "ProjectID":  "PRJ-67B13D57",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T10:01:16.0000000Z",
+                                                                                       "Created":  "2026-05-13T10:01:17.0000000Z",
+                                                                                       "Modified":  "2026-05-13T10:01:17.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  28,
+                                                                                       "Title":  "Teste Parser Tail 2.9",
+                                                                                       "NomeProjeto":  "Teste Parser Tail 2.9",
+                                                                                       "ProjectID":  "PRJ-0A64C204",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-13T09:55:53.0000000Z",
+                                                                                       "Created":  "2026-05-13T09:55:54.0000000Z",
+                                                                                       "Modified":  "2026-05-13T09:55:54.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  26,
+                                                                                       "Title":  "Teste Data ISO Projeto 2.8",
+                                                                                       "NomeProjeto":  "Teste Data ISO Projeto 2.8",
+                                                                                       "ProjectID":  "PRJ-9CF9F7A5",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-12T23:49:43.0000000Z",
+                                                                                       "Created":  "2026-05-12T23:49:43.0000000Z",
+                                                                                       "Modified":  "2026-05-12T23:49:43.0000000Z"
+                                                                                   },
+                                                                                   {
+                                                                                       "ID":  25,
+                                                                                       "Title":  "Teste Data BR Projeto 2.8",
+                                                                                       "NomeProjeto":  "Teste Data BR Projeto 2.8",
+                                                                                       "ProjectID":  "PRJ-C2D37835",
+                                                                                       "StatusRAG":  "Verde",
+                                                                                       "Ativo":  true,
+                                                                                       "Deleted":  false,
+                                                                                       "UltimaAtualizacao":  "2026-05-12T23:46:19.0000000Z",
+                                                                                       "Created":  "2026-05-12T23:46:20.0000000Z",
+                                                                                       "Modified":  "2026-05-12T23:46:20.0000000Z"
+                                                                                   }
+                                                                               ]
+                                                 }
+                                },
+                  "A3_CMD-11-P0":  {
+                                       "status":  "NO_DATA",
+                                       "details":  "No CriarTarefa smoke row matched in the supplied window.",
+                                       "evidence":  {
+                                                        "expectedTitle":  "QA CriarTarefa Smoke 315 20260520",
+                                                        "expectedResponsavel":  "mbenicios@minsait.com",
+                                                        "expectedPrazo":  "2026-06-30",
+                                                        "expectedHoras":  2,
+                                                        "expectedPrioridade":  "Media",
+                                                        "expectedDeleted":  false,
+                                                        "actual":  "NO_MATCH"
+                                                    }
+                                   },
+                  "A4_CMD-13A":  {
+                                     "status":  "NO_DATA",
+                                     "details":  "Task item exists, but was not modified in the supplied smoke window.",
+                                     "evidence":  {
+                                                      "itemId":  15,
+                                                      "modifiedInWindow":  false,
+                                                      "expectedStatus":  "Em andamento",
+                                                      "actual":  {
+                                                                     "ID":  15,
+                                                                     "Title":  "QA Final Skip 20260513 2105",
+                                                                     "ProjectID":  "PRJ-274E5ACC",
+                                                                     "Status":  "Em Andamento",
+                                                                     "Responsavel":  "mbenicios@minsait.com",
+                                                                     "DataFim":  "2026-05-20T22:00:00.0000000Z",
+                                                                     "Prioridade":  "Media",
+                                                                     "HorasEstimadas":  8,
+                                                                     "HorasRealizadas":  2,
+                                                                     "Deleted":  false,
+                                                                     "Created":  "2026-05-14T00:07:30.0000000Z",
+                                                                     "Modified":  "2026-05-14T19:04:50.0000000Z"
+                                                                 },
+                                                      "optionalFieldChecks":  {
+                                                                                  "responsavelPreserved":  true,
+                                                                                  "prazoPreserved":  true,
+                                                                                  "horasNonBlank":  true,
+                                                                                  "statusChanged":  true
+                                                                              }
+                                                  }
+                                 },
+                  "A5_CMD-10":  {
+                                    "status":  "NO_DATA",
+                                    "details":  "No AtualizarStatus smoke row matched in the supplied window.",
+                                    "evidence":  {
+                                                     "expectedProjectId":  "PRJ-274E5ACC",
+                                                     "expectedRag":  "Amarelo",
+                                                     "expectedPercentual":  45,
+                                                     "expectedResumoContains":  "Smoke 3.15 multilinha",
+                                                     "actual":  "NO_MATCH"
+                                                 }
+                                }
+              },
+    "decision":  "MIXED",
+    "readOnly":  {
+                     "pnpCommandsUsed":  [
+                                             "Import-Module",
+                                             "Connect-PnPOnline",
+                                             "Get-PnPWeb",
+                                             "Get-PnPListItem"
+                                         ],
+                     "forbiddenWriteCommands":  [
+                                                    "Set-PnPListItem",
+                                                    "Add-PnPListItem",
+                                                    "Remove-PnPListItem",
+                                                    "Update-PnP*",
+                                                    "Set-PnP*",
+                                                    "Add-PnP*",
+                                                    "Remove-PnP*"
+                                                ],
+                     "deletedFilterApplied":  true
+                 }
+}

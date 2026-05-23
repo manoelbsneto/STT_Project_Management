@@ -1,0 +1,20 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="schemaname" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <attribute name="data" />
+    <filter type="or">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.AtualizarStatus" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.AtualizarTarefa" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.ConsultarPortfolio" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.CriarTarefa" />
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2.topic.ListarTarefas" />
+    </filter>
+    <order attribute="schemaname" />
+  </entity>
+</fetch>

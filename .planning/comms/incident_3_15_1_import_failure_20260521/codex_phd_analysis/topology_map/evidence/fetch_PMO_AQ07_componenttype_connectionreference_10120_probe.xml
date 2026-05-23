@@ -1,0 +1,14 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" aggregate="true">
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" alias="match_count" aggregate="count" />
+    <filter type="and">
+      <condition attribute="componenttype" operator="eq" value="10120" />
+      <condition attribute="objectid" operator="eq" value="b59678d8-a850-f111-bec7-7ced8d955c6c" />
+    </filter>
+    <link-entity name="solution" from="solutionid" to="solutionid" link-type="inner" alias="solution">
+      <filter type="and">
+        <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+      </filter>
+    </link-entity>
+  </entity>
+</fetch>

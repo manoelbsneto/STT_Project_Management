@@ -1,0 +1,67 @@
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Default GPT instructions exist",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.gpt.default/data."
+                   },
+                   {
+                       "name":  "LowConfidence fallback exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.LowConfidence/data."
+                   },
+                   {
+                       "name":  "CriarProjeto topic exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.CriarProjeto/data."
+                   },
+                   {
+                       "name":  "CriarTarefa topic exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.CriarTarefa/data."
+                   },
+                   {
+                       "name":  "Project creation routes to CriarProjeto",
+                       "passed":  true,
+                       "evidence":  "One-shot project requests must not be sent to CriarTarefa."
+                   },
+                   {
+                       "name":  "Task creation routes to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "Task requests still need the task topic."
+                   },
+                   {
+                       "name":  "No combined project/task instruction to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "This exact instruction caused observed one-shot project misrouting."
+                   },
+                   {
+                       "name":  "Fallback project creation routes to CriarProjeto",
+                       "passed":  true,
+                       "evidence":  "Unknown project-create phrases must redirect to CriarProjeto."
+                   },
+                   {
+                       "name":  "Fallback task creation routes to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "Unknown task-create phrases must still redirect to CriarTarefa."
+                   },
+                   {
+                       "name":  "Fallback task route excludes project phrases",
+                       "passed":  true,
+                       "evidence":  "Project creation must not be captured by detect_criar_tarefa."
+                   },
+                   {
+                       "name":  "Project topic advertises project phrases",
+                       "passed":  true,
+                       "evidence":  "CriarProjeto needs direct trigger coverage."
+                   },
+                   {
+                       "name":  "Task topic does not advertise project creation phrase",
+                       "passed":  true,
+                       "evidence":  "Task topic must not compete for project creation utterances."
+                   }
+               ]
+}

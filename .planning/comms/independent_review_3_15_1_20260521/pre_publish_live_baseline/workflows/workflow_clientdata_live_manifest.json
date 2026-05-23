@@ -1,0 +1,92 @@
+{
+  "generatedAtUtc": "2026-05-21T18:32:57Z",
+  "solutionZip": "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip",
+  "rawFetchPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\independent_review_3_15_1_20260521\\pre_publish_live_baseline\\workflows\\pac_fetch_workflow_clientdata_live.txt",
+  "workflowCount": 12,
+  "workflows": [
+    {
+      "workflowName": "PMO_PA_CriarTarefa",
+      "workflowId": "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+      "clientdataFile": "PMO_PA_CriarTarefa.clientdata.live.json",
+      "sha256": "B6B9C96632EEB33DEAF3C18762A655E6AEBF53AF4C34DAAA68B7D28030AF01FA",
+      "byteLength": 6183
+    },
+    {
+      "workflowName": "PMO_PA_ExcluirProjeto",
+      "workflowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+      "clientdataFile": "PMO_PA_ExcluirProjeto.clientdata.live.json",
+      "sha256": "F01FD94F85F86FE2E47A1A330D976A01EAEAD91874C2ACF4CBBDC281F19ECB44",
+      "byteLength": 5565
+    },
+    {
+      "workflowName": "PMO_PA_CriarProjeto",
+      "workflowId": "3104124d-364a-f111-bec7-7ced8d955c6c",
+      "clientdataFile": "PMO_PA_CriarProjeto.clientdata.live.json",
+      "sha256": "7E10E01A8C100A8B4908DFD7FB972ECB4D563E1E4B37BD52FBD8D9C0F79A3602",
+      "byteLength": 6881
+    },
+    {
+      "workflowName": "PMO_PA_ConsultarPortfolio",
+      "workflowId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+      "clientdataFile": "PMO_PA_ConsultarPortfolio.clientdata.live.json",
+      "sha256": "BD8688D0B8F5F0C2C84F0C57819E3247C25593DB6C7DCBB3DA670DFC8B8B5F68",
+      "byteLength": 4861
+    },
+    {
+      "workflowName": "PMO_PA_RegistrarBloqueioBot",
+      "workflowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+      "clientdataFile": "PMO_PA_RegistrarBloqueioBot.clientdata.live.json",
+      "sha256": "8A1FF59597A9A7FA4369062E93FDBBA3CFEDE3DDCF67D4F2F2426AF3CA3DB442",
+      "byteLength": 5821
+    },
+    {
+      "workflowName": "PMO_PA_ConsultarProjeto",
+      "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+      "clientdataFile": "PMO_PA_ConsultarProjeto.clientdata.live.json",
+      "sha256": "EF08B2FFBA9435537550D7E3787C323F7F5478538F4CCE32556426D7A341ED0D",
+      "byteLength": 5425
+    },
+    {
+      "workflowName": "PMO_PA_ExcluirTarefa",
+      "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+      "clientdataFile": "PMO_PA_ExcluirTarefa.clientdata.live.json",
+      "sha256": "B9DBCA72F51B13EF79A5585A6E1FE18E813519347141B960AEA51143C5248B6B",
+      "byteLength": 10839
+    },
+    {
+      "workflowName": "PMO_PA_ListarTarefas",
+      "workflowId": "9544f14b-3748-f111-bec7-6045bdf42cae",
+      "clientdataFile": "PMO_PA_ListarTarefas.clientdata.live.json",
+      "sha256": "AD00E5DC75DB247368DAFFAC7AE0177B1D65C087CBAAFB2EC9E4249F4EBCBDD9",
+      "byteLength": 5051
+    },
+    {
+      "workflowName": "PMO_PA_AtualizarTarefa",
+      "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6",
+      "clientdataFile": "PMO_PA_AtualizarTarefa.clientdata.live.json",
+      "sha256": "0D137BE3DAA295221327AD73D43B324A75B7A114E015E370A66018D94033BD95",
+      "byteLength": 11101
+    },
+    {
+      "workflowName": "PMO_PA_AtualizarStatus",
+      "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+      "clientdataFile": "PMO_PA_AtualizarStatus.clientdata.live.json",
+      "sha256": "724E5843A040F479FE8E0A31EB5556A40DD2F4FBD670B6C7CC79B778EB7E2730",
+      "byteLength": 7512
+    },
+    {
+      "workflowName": "PMO_PA_RegistrarRiscoBot",
+      "workflowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+      "clientdataFile": "PMO_PA_RegistrarRiscoBot.clientdata.live.json",
+      "sha256": "D7789B2958F991C0A20956F3DFD3A3FA011424E9D4D87F3C49F5BE36B0BFA617",
+      "byteLength": 5613
+    },
+    {
+      "workflowName": "PMO_PA_PedirDecisaoBot",
+      "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+      "clientdataFile": "PMO_PA_PedirDecisaoBot.clientdata.live.json",
+      "sha256": "B3FA708475E11AD0E1A3D29521970C0DA2C1D19E0B0E82A83A3C810BABFCBC68",
+      "byteLength": 7062
+    }
+  ]
+}

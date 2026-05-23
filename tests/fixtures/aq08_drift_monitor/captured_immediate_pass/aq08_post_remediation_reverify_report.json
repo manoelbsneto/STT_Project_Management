@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-21 13:00:00 -03:00",
+  "mode": "ExistingSnapshots",
+  "evidenceDir": "tests/fixtures/aq08_drift_monitor/captured_immediate_pass",
+  "overall": "PASS",
+  "blockingTopicCount": 0,
+  "topics": [
+    {
+      "topicName": "AtualizarStatus",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+      "status": "PASS"
+    },
+    {
+      "topicName": "AtualizarTarefa",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+      "status": "PASS"
+    },
+    {
+      "topicName": "ConsultarPortfolio",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+      "status": "PASS"
+    },
+    {
+      "topicName": "CriarTarefa",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.CriarTarefa",
+      "status": "PASS"
+    },
+    {
+      "topicName": "ListarTarefas",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.ListarTarefas",
+      "status": "PASS"
+    }
+  ]
+}

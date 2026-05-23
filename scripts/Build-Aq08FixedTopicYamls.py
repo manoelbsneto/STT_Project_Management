@@ -4,7 +4,8 @@ AQ-08 — minimal-diff, gated builder for the 5 in-scope topic YAMLs.
 Approach:
   - Read each AS-IS topic file (live state from M2 discovery, byte for byte).
   - Apply the SMALLEST possible change required for AQ-08:
-      * AtualizarTarefa, CriarTarefa, ListarTarefas: single-line dialog rebind.
+      * AtualizarTarefa, ListarTarefas: single-line dialog rebind.
+      * CriarTarefa: dialog rebind plus `message` -> `result` output key fix.
       * AtualizarStatus, ConsultarPortfolio: structural swap of the action call
         block from `kind: InvokeFlowAction` (with flowId) to `kind: BeginDialog`
         (with dialog: <PM0_PA_Card_*>).
@@ -12,7 +13,7 @@ Approach:
     other byte.
   - Do NOT touch comments. Do NOT add legacy strings anywhere.
   - Write to a NEW path; only after all gates pass.
-  - Run G1..G7 quality gates and exit non-zero on any failure.
+  - Run G1..G8 quality gates and exit non-zero on any failure.
 """
 
 from __future__ import annotations
@@ -59,21 +60,27 @@ def join_with_eol(parts, eol_bytes: bytes) -> bytes:
 # -------- per-file builders --------
 
 def build_simple_dialog_swap(filename: str, legacy: str, new_action: str) -> bytes:
-    """For AtualizarTarefa, CriarTarefa, ListarTarefas: swap one line."""
+    """For existing BeginDialog topics: swap the dialog and any required output key."""
     src = read_bytes_strict(AS_IS_DIR / filename)
     parts, eol = split_keep_eol(src)
     legacy_token = f"dialog: pmo_AssistentePMO_V2.action.{legacy}".encode("utf-8")
     new_token = f"dialog: pmo_AssistentePMO_V2.action.{new_action}".encode("utf-8")
-    hits = 0
+    dialog_hits = 0
+    binding_hits = 0
     new_parts = []
     for line in parts:
         if legacy_token in line:
             new_parts.append(line.replace(legacy_token, new_token))
-            hits += 1
+            dialog_hits += 1
+        elif filename == "CriarTarefa.yaml" and b"message: Topic.Result" in line:
+            new_parts.append(line.replace(b"message: Topic.Result", b"result: Topic.Result"))
+            binding_hits += 1
         else:
             new_parts.append(line)
-    if hits != 1:
-        raise RuntimeError(f"{filename}: expected exactly 1 legacy dialog match, found {hits}")
+    if dialog_hits != 1:
+        raise RuntimeError(f"{filename}: expected exactly 1 legacy dialog match, found {dialog_hits}")
+    if filename == "CriarTarefa.yaml" and binding_hits != 1:
+        raise RuntimeError(f"{filename}: expected exactly 1 message output binding match, found {binding_hits}")
     return join_with_eol(new_parts, eol)
 
 
@@ -178,6 +185,10 @@ def build_invokeflow_swap(filename: str, new_action: str, expected_legacy_flow_i
         raise RuntimeError(f"{filename}: cannot parse output.binding line: '{bind_line}'")
     bind_indent, bind_key, bind_var = bind_match.group(1), bind_match.group(2), bind_match.group(3)
 
+    # PM0 card actions expose `result`; preserve each topic variable on the RHS.
+    if filename in {"AtualizarStatus.yaml", "ConsultarPortfolio.yaml"}:
+        bind_key = "result"
+
     # Build the replacement BeginDialog block, preserving outer indent + id + output binding.
     inner = indent + "  "
     inner2 = indent + "    "
@@ -257,9 +268,15 @@ def validate(filename: str, fixed_bytes: bytes, new_action: str, legacy_flow_id:
         edit_lines += max(i2 - i1, j2 - j1)
         edits.append((tag, i1, i2, j1, j2))
     if legacy_flow_id is None:
-        # simple dialog swap -> exactly 1 edit (1-line replace)
-        ok = edit_lines == 1
-        overall &= gate("G5 simple swap = 1 edit line", ok, f"{edit_lines} edits across {len(edits)} ops")
+        # Existing BeginDialog topics are one-line dialog swaps except CriarTarefa,
+        # whose PM0 card action exposes `result` instead of the legacy `message`.
+        expected_edit_lines = 2 if filename == "CriarTarefa.yaml" else 1
+        ok = edit_lines == expected_edit_lines
+        overall &= gate(
+            f"G5 simple swap = {expected_edit_lines} edit line{'s' if expected_edit_lines != 1 else ''}",
+            ok,
+            f"{edit_lines} edits across {len(edits)} ops",
+        )
     else:
         # InvokeFlowAction -> BeginDialog: bounded structural change
         ok = edit_lines <= 30

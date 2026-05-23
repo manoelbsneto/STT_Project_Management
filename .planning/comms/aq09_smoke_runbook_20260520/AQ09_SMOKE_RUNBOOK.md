@@ -316,3 +316,5 @@ Save chat transcripts, copied error text, PnP output, run history IDs, and scree
 ```
 
 Use `EVIDENCE_TEMPLATE.md` in this folder for PASS/FAIL capture.
+
+AQ-09 SharePoint side-effect harness is available at `tests/Test-Aq09SharePointSideEffects.ps1`; write its generated `aq09_sp_side_effects_report.json` path into each evidence stub `pnp_output_path`.

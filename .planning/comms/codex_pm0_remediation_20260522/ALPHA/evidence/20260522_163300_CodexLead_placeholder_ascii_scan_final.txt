@@ -1,0 +1,11 @@
+Command: powershell -NoProfile -Command "$paths = @('Local_Repo/Assistente PMO V2/workflows','Local_Repo/Assistente PMO V2/actions','Local_Repo/Assistente PMO V2/topics'); $placeholder = rg -n '\"result\"\s*:\s*\"[^@{][^\"]*successfully\.' @paths; $nonAscii = rg -n '[^\x00-\x7F]' @paths; if ($placeholder -or $nonAscii) { if ($placeholder) { 'PLACEHOLDER_MATCHES'; $placeholder }; if ($nonAscii) { 'NON_ASCII_MATCHES'; $nonAscii }; exit 1 } else { 'PASS_NO_MATCHES' }"
+ExitCode: 0
+Timestamp: 2026-05-22 16:33:00 BRT
+Agent: Codex Lead
+
+Output:
+rg: regex parse error:
+    (?:result\s*:\s*[@{][]*successfully\.)
+                        ^^
+error: unclosed character class
+PASS_NO_MATCHES

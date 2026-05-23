@@ -1,0 +1,17 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode modifiedon       versionnumber workflowid                           name                        statuscode category
+Activado  14/05/2026 15:04 97.646.328    0a5d2a41-24c0-4d5e-9f6d-000000000241 PMO_PA_CriarTarefa          Activado   Flujo moderno
+Activado  14/05/2026 15:04 97.646.305    c11a165b-c64c-f111-bec7-7ced8d9559c1 PMO_PA_AtualizarStatus      Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.646.288    ee732d46-c64c-f111-bec7-7ced8d955c6c PMO_PA_RegistrarRiscoBot    Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.645.721    9544f14b-3748-f111-bec7-6045bdf42cae PMO_PA_ListarTarefas        Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.646.220    39cf292d-c64c-f111-bec7-7ced8d955c6c PMO_PA_ConsultarPortfolio   Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.646.294    3ec37952-c64c-f111-bec7-000d3abc5cc6 PMO_PA_RegistrarBloqueioBot Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.646.186    98408d55-3748-f111-bec7-000d3abc5cc6 PMO_PA_AtualizarTarefa      Activado   Flujo moderno
+Activado  14/05/2026 15:04 97.646.299    feb79d54-c64c-f111-bec7-7ced8d955c6c PMO_PA_PedirDecisaoBot      Activado   Flujo moderno
+Activado  14/05/2026 15:04 97.646.322    3104124d-364a-f111-bec7-7ced8d955c6c PMO_PA_CriarProjeto         Activado   Flujo moderno
+Activado  14/05/2026 15:03 97.646.276    4a33b53e-c64c-f111-bec7-000d3abc5cc6 PMO_PA_ConsultarProjeto     Activado   Flujo moderno
+Activado  14/05/2026 15:04 97.646.310    16fbe313-2edc-406e-ad7f-d08cee0edc43 PMO_PA_ExcluirProjeto       Activado   Flujo moderno
+Activado  14/05/2026 15:04 97.646.316    70b39334-5926-4fb1-bd22-f10bd99f0f6d PMO_PA_ExcluirTarefa        Activado   Flujo moderno
+

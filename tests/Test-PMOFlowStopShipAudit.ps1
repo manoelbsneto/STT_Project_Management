@@ -206,7 +206,12 @@ if (Test-Path $workflowSetPath) {
 }
 
 Add-Check "No unresolved solution dependencies" ($allSolutionText -notmatch "<MissingDependency>") "Release package must not contain unresolved solution dependencies."
-Add-Check "No unresolved Teams/Outlook kit connection references" ($allSolutionText -notmatch "cat_sharedteams_1ef7e|cat_CopilotStudioKitOutlook") "Teams/Outlook kit references require explicit connection references or removal from the core package."
+$hasPm0TeamsCardReference = (
+    ($allSolutionText -match "PM0_PA_Card_AtualizarStatus") -and
+    ($allSolutionText -match "cat_sharedteams_1ef7e") -and
+    ($allSolutionText -match '<connectionreference connectionreferencelogicalname="cat_sharedteams_1ef7e"')
+)
+Add-Check "No unresolved Teams/Outlook kit connection references" ((($allSolutionText -notmatch "cat_sharedteams_1ef7e|cat_CopilotStudioKitOutlook") -or $hasPm0TeamsCardReference) -and ($allSolutionText -notmatch "cat_CopilotStudioKitOutlook")) "Teams/Outlook kit references require explicit connection references or removal from the core package; PM0 AtualizarStatus may include the Teams card connector when declared."
 Add-Check "No unused gstf SharePoint connection reference" ($allSolutionText -notmatch "gstf_sharepoint") "Remove unused legacy SharePoint connection reference noise."
 Add-Check "Preview-only batch has no orphan workflow" (($allSolutionText -notmatch 'Name="PMO_PA_Gerar_Multiplos_Projetos"') -and ($allSolutionText -notmatch "PMO_PA_Gerar_Multiplos_Projetos-0A5D2A42")) "Preview-only batch topic must not ship an unused workflow root component."
 

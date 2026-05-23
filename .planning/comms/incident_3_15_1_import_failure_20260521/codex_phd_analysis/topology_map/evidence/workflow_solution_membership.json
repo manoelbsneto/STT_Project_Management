@@ -1,0 +1,290 @@
+[
+  {
+    "workflowId": "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+    "schemaName": "PMO_PA_CriarTarefa",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+    "schemaName": "PMO_PA_ExcluirProjeto",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "3104124d-364a-f111-bec7-7ced8d955c6c",
+    "schemaName": "PMO_PA_CriarProjeto",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+    "schemaName": "PMO_PA_ConsultarPortfolio",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+    "schemaName": "PMO_PA_RegistrarBloqueioBot",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+    "schemaName": "PMO_PA_ConsultarProjeto",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+    "schemaName": "PMO_PA_ExcluirTarefa",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "9544f14b-3748-f111-bec7-6045bdf42cae",
+    "schemaName": "PMO_PA_ListarTarefas",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6",
+    "schemaName": "PMO_PA_AtualizarTarefa",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+    "schemaName": "PMO_PA_AtualizarStatus",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+    "schemaName": "PMO_PA_RegistrarRiscoBot",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  },
+  {
+    "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+    "schemaName": "PMO_PA_PedirDecisaoBot",
+    "solutions": [
+      {
+        "solutionId": "717abee5-98e8-45e7-8ce9-264b83b7faa5",
+        "uniqueName": "PMO_v11_Tarefas",
+        "friendlyName": "PMO v1.1 - Task Management Topics",
+        "version": "3.15"
+      },
+      {
+        "solutionId": "fd140aae-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Active",
+        "friendlyName": "Solucion activa",
+        "version": "1.0"
+      },
+      {
+        "solutionId": "fd140aaf-4df4-11dd-bd17-0019b9312238",
+        "uniqueName": "Default",
+        "friendlyName": "Solucion predeterminada",
+        "version": "1.0"
+      }
+    ]
+  }
+]

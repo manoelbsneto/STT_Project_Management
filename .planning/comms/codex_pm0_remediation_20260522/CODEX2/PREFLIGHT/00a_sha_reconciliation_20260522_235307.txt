@@ -1,0 +1,12 @@
+Pre-Step A verification UTC: 20260522_235307
+Timestamp BRT: 2026-05-22 20:53:07 BRT
+V1: PASS
+V2: PASS (hits=1)
+V3: PASS
+V4: PASS
+Expected delta: 
+Actual new delta paths: 
+Rogue delta: 
+Missing delta: 
+V1 missing: 
+V4 missing old SHA: 

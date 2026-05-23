@@ -1,0 +1,23 @@
+Connected as mbenicios@minsait.com
+Found unknown argument /ENVIRONMENT.
+Connected to... ColOfertasBrasilPro
+Begin reading metadata from MetadataProviderService
+	Begin Reading Metadata from Server
+	Read 1 Entities - 00:00:01.723
+	Read 0 Global OptionSets - 00:00:00.003
+	Read 0 SDK Messages - 00:00:00.008
+	Completed Reading Metadata from Server - 00:00:04.212
+Completed reading metadata from MetadataProviderService - 00:00:04.220
+Begin Writing Code Files
+	Processing 1 Entities
+	Wrote 1 Entities - 00:00:00.1584159
+	Processing 0 Messages
+	Wrote 0 Message(s). Skipped 0 Message(s) - 00:00:00.0000143
+	Processing 1 Global OptionSets
+	Wrote 1 Global OptionSets - 00:00:00.0273368
+	Code written to D:\VMs\Projetos\STT_Project_Management\.planning\comms\incident_3_15_1_import_failure_20260521\codex_phd_analysis\evidence\modelbuilder_solutioncomponent\Entities\solutioncomponent.cs.
+	Code written to D:\VMs\Projetos\STT_Project_Management\.planning\comms\incident_3_15_1_import_failure_20260521\codex_phd_analysis\evidence\modelbuilder_solutioncomponent\OptionSets\componenttype.cs.
+	Code written to D:\VMs\Projetos\STT_Project_Management\.planning\comms\incident_3_15_1_import_failure_20260521\codex_phd_analysis\evidence\modelbuilder_solutioncomponent\EntityOptionSetEnum.cs.
+	ProxyTypesAssemblyAttribute not written, Please add [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()] to a file in your class if you require Linq or direct casting support.
+Completed Writing Code Files - 00:00:00.237
+Generation Complete - 00:00:04.458

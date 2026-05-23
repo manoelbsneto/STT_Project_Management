@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PMO_PA_PedirDecisaoBot-feb79d54-c64c-f111-bec7-7ced8d955c6c/workflow.json
+workflowId: feb79d54-c64c-f111-bec7-7ced8d955c6c
+name: PMO_PA_PedirDecisaoBot
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.1.0.1
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

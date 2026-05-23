@@ -1,0 +1,25 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="botcomponent_workflow">
+    <attribute name="botcomponent_workflowid" />
+    <attribute name="botcomponentid" />
+    <attribute name="workflowid" />
+    <filter type="or">
+      <condition attribute="botcomponent_workflowid" operator="eq" value="48b72cbd-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponent_workflowid" operator="eq" value="ca7233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponent_workflowid" operator="eq" value="c37233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponent_workflowid" operator="eq" value="c57233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponent_workflowid" operator="eq" value="c27233c3-a350-f111-bec7-000d3abc5cc6" />
+      <condition attribute="botcomponent_workflowid" operator="eq" value="cd7233c3-a350-f111-bec7-000d3abc5cc6" />
+    </filter>
+    <link-entity name="botcomponent" from="botcomponentid" to="botcomponentid" link-type="inner" alias="botcomponent">
+      <attribute name="botcomponentid" />
+      <attribute name="schemaname" />
+      <attribute name="name" />
+    </link-entity>
+    <link-entity name="workflow" from="workflowid" to="workflowid" link-type="inner" alias="workflow">
+      <attribute name="workflowid" />
+      <attribute name="name" />
+    </link-entity>
+    <order attribute="botcomponent_workflowid" />
+  </entity>
+</fetch>

@@ -1,0 +1,5 @@
+Workflow baseline validation
+Manifest count: 12
+JSON file count: 12
+Hash rows checked: 12
+Status: PASS

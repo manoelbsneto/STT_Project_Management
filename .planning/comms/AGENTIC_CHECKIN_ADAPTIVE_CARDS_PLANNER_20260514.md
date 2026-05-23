@@ -1,5 +1,7 @@
 # Agentic Check-In Board: Adaptive Cards + Planner P0 Delivery
 
+Last updated: 2026-05-22 20:55 BRT | Codex #2 Bravo | Registered Gate 4 read-only preflight access plan before tenant access.
+
 Created: 2026-05-14  
 Status: ACTIVE  
 Purpose: single point of coordination for Codex Lead, 3 Codex sub-agents, and Gemini 3.1 Pro Preview during the P0 Adaptive Cards + Planner delivery.
@@ -116,6 +118,152 @@ Every update must use this format:
 ```
 
 ## 7. Check-In Log
+
+### 2026-05-22 23:26 BRT — CODEX #2 BRAVO — GATE4_PREFLIGHT_SECTION67_RESUME
+- **Task ID:** Gate 4 Preflight read-only baseline for PM0 3.16.
+- **Current action:** Resuming the Gate 4 preflight at Step 03 using the owner-ratified Section 6.7 Dataverse token wrapper.
+- **Progress since last check-in:** Read the updated prompt Section 6.7. Patched `scripts/Run-Gate4-Preflight.ps1` to replace Dataverse `InvokeApi` with `Invoke-DataverseGet` using in-memory token handling, transcript scrubbing, and leak verification. PSScriptAnalyzer default rules return no findings.
+- **Access route planned:** Resume from Step 03 only. Use Az CLI token acquisition first (`az account get-access-token --resource https://colofertasbrasilpro.crm4.dynamics.com/ --query accessToken -o tsv`) with stdout captured in process memory only, then direct Dataverse Web API GETs via `Invoke-RestMethod` for Steps 03, 04, 06, and 09. Continue Step 05 through Windows PowerShell 5.1 `Get-Flow`, local Steps 07-08/11, Step 10 screenshot stub, then rollback export and canonical artifact relocation only if all preflight steps are green.
+- **Token safety:** No token is written to disk, echoed to console, or included in evidence. Transcript is scrubbed and verified for zero `Bearer eyJ` and zero `accessToken` hits before any final output is accepted.
+- **Action classification:** Read-only tenant discovery and rollback export only, plus local artifact relocation after green preflight. No tenant import, publish, delete, PATCH, POST, SharePoint write, Planner write, Teams post, Graph direct, service principal, ClientId/certificate auth, HTTP Premium, `m365`, `pac flow`, `pac env fetch`, or `pac copilot list/publish`.
+- **Owner approval reference:** Current user instruction: resume at Step 03 using new Section 6.7 wrapper; `.planning/comms/codex_pm0_remediation_20260522/PROMPT_FOR_CODEX_2_GATE4_PREFLIGHT.md`, owner-ratified Option B 2026-05-22 23:18 BRT.
+- **Expected evidence:** New timestamped Step 03+ evidence under `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/`, rollback set under `CODEX2/ROLLBACK/4A_pre_import_<UTC>/` only if green, and ship relocation evidence under `CODEX2/SHIP_ARTIFACT/` only if green.
+- **Files being edited:** `scripts/Run-Gate4-Preflight.ps1`; generated evidence/trail files.
+- **Files changed:** `scripts/Run-Gate4-Preflight.ps1`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** Token acquisition can fail, Dataverse GET can return 401/403/404, transcript leak verification can halt, or downstream gates can halt.
+- **Next 5 minutes:** Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Run-Gate4-Preflight.ps1 -ResumeFromStep03`.
+- **Handoff / dependency:** Owner receives no Gate 4A request until full preflight and Codex #1 peer review pass.
+
+### 2026-05-22 22:59 BRT — CODEX #2 BRAVO — GATE4_PREFLIGHT_RERUN_READY
+- **Task ID:** Gate 4 Preflight read-only baseline for PM0 3.16.
+- **Current action:** Starting the corrected read-only Gate 4 preflight rerun after refreshing Pre-Step A evidence and PSScriptAnalyzer validation.
+- **Progress since last check-in:** Re-read all prompt-mandatory references, patched `scripts/Run-Gate4-Preflight.ps1` for PSScriptAnalyzer cleanliness and Section 7.6 canonical artifact relocation, added `scripts/Invoke-Gate4PreStepAReconciliation.ps1`, and generated `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/00a_sha_reconciliation_20260523_015857.md`.
+- **Access route planned:** Channel A interactive PAC CLI and Windows PowerShell 5.1 only. Read-only steps: `pac auth list`; `pac env who`; `pac env select --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56` only if current env differs; `pac solution list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; `pac connection list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; Dataverse `InvokeApi -Method GET` reads for `solutioncomponents`, PM0 bot/action binding rows, `bots`, and `processsessions`; Windows PowerShell 5.1 absolute module import followed by `Get-Flow -EnvironmentName e2d10003-4d8e-e007-9d63-76d5fe89ef56 -Top 200`; local AQ-08 verifier; local strict package consistency; local AQ-09 harness readiness inspection; pre-Gate-4A rollback exports via `pac solution export` for `PMO_v11_Tarefas` and `PMO_AQ07_CopilotBinding` managed/unmanaged only after preflight is green; local canonical artifact relocation from `CODEX2/PACKAGE/package/...zip` to `Solution/...zip`.
+- **Action classification:** Read-only tenant discovery and rollback export only, plus local file evidence/canonical ZIP copy. No tenant import, publish, delete, PATCH, POST, SharePoint write, Planner write, Teams post, Graph direct, service principal, ClientId/certificate auth, HTTP Premium, `m365`, `pac flow`, `pac env fetch`, or `pac copilot list/publish`.
+- **Owner approval reference:** `.planning/comms/codex_pm0_remediation_20260522/PROMPT_FOR_CODEX_2_GATE4_PREFLIGHT.md`, current user instruction to execute it end-to-end, read-only only, halt before any tenant write.
+- **Expected evidence:** `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/`, `.planning/comms/codex_pm0_remediation_20260522/CODEX2/ROLLBACK/4A_pre_import_<UTC>/`, and `.planning/comms/codex_pm0_remediation_20260522/CODEX2/SHIP_ARTIFACT/relocation_<UTC>.md`.
+- **Files being edited:** Evidence/trail files generated by the preflight; no tenant assets.
+- **Files changed:** `scripts/Run-Gate4-Preflight.ps1`; `scripts/Invoke-Gate4PreStepAReconciliation.ps1`; `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/00a_sha_reconciliation_20260523_015857.*`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** Any 401/403/404, wrong environment, connection drift, AQ-08 fail, strict SHA mismatch, AQ-09 readiness mismatch, rollback verification failure, or canonical relocation failure halts the phase.
+- **Next 5 minutes:** Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Run-Gate4-Preflight.ps1` and stop immediately on the first halt condition.
+- **Handoff / dependency:** Owner receives no Gate 4A import request until Codex #1 peer review signs off PASS per Section 13.1.
+
+### 2026-05-22 20:55 BRT — CODEX #2 BRAVO — GATE4_PREFLIGHT_ACCESS_PLAN
+- **Task ID:** Gate 4 Preflight read-only baseline for PM0 3.16.
+- **Current action:** Preparing read-only preflight scripts and tenant baseline capture for `ColOfertasBrasilPro`.
+- **Progress since last check-in:** Completed Pre-Step A SHA reconciliation evidence at `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/00a_sha_reconciliation_20260522_235307.md`; read `.planning/TENANT_COMMAND_RUNBOOK.md` and all prompt-mandatory references.
+- **Access route planned:** Channel A interactive PAC CLI and Windows PowerShell 5.1 only. Read-only steps: `pac auth list`; `pac env who`; `pac env select --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56` only if current env differs; `pac solution list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; `pac connection list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; Dataverse `InvokeApi -Method GET` reads for `solutioncomponents`, PM0 bot/action binding rows, `bots`, and `processsessions`; Windows PowerShell 5.1 absolute module import followed by `Get-Flow -EnvironmentName e2d10003-4d8e-e007-9d63-76d5fe89ef56 -Top 200`; local AQ-08 verifier; local strict package consistency; local AQ-09 harness readiness inspection; pre-Gate-4A rollback exports via `pac solution export` for `PMO_v11_Tarefas` and `PMO_AQ07_CopilotBinding` managed/unmanaged only after preflight is green.
+- **Action classification:** Read-only tenant discovery and rollback export only. No tenant import, publish, delete, PATCH, POST, SharePoint write, Planner write, Teams post, Graph direct, service principal, ClientId/certificate auth, HTTP Premium, `m365`, `pac flow`, `pac env fetch`, or `pac copilot list/publish`.
+- **Owner approval reference:** `.planning/comms/codex_pm0_remediation_20260522/PROMPT_FOR_CODEX_2_GATE4_PREFLIGHT.md`, owner-ratified Gate 4 Preflight, read-only only, halt before any tenant write.
+- **Expected evidence:** `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/` plus `.planning/comms/codex_pm0_remediation_20260522/CODEX2/ROLLBACK/4A_pre_import_<UTC>/`.
+- **Files being edited:** `scripts/Run-Gate4-Preflight.ps1`; supporting preflight evidence under `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** PAC auth or PowerApps `InvokeApi` may fail; any 401/403/404, wrong env, AQ-08 fail, strict SHA mismatch, AQ-09 readiness mismatch, or rollback export verification failure halts the phase.
+- **Next 5 minutes:** Author the read-only orchestrator script, run static validation, then start step 0 auth verification.
+- **Handoff / dependency:** Owner receives Gate 4A ASK draft only if all 13 evidence triplets and rollback R1-R4 are green.
+
+### 2026-05-22 16:06 BRT — CODEX #3 — PM0_LOCAL_VERIFIERS_PARTIAL
+- **Task ID:** PM0-REMEDIATE-LOCAL-GUARDS
+- **Current action:** Completed local-only verifier guard implementation for PM0 contract, response semantics, and runtime evidence completeness.
+- **Progress since last check-in:** Added `tests/Test-Pm0TopicActionFlowContract.ps1`, `tests/Test-Pm0WorkflowResponseSemantics.ps1`, and `tests/Test-Pm0RuntimeEvidence.ps1`; ran all three against current PM0 source/evidence and captured expected failing reports under `.planning/comms/codex_pm0_audit_20260522/PM0_LOCAL_VERIFIERS/`.
+- **Files being edited:** None.
+- **Files changed:** `tests/Test-Pm0TopicActionFlowContract.ps1`; `tests/Test-Pm0WorkflowResponseSemantics.ps1`; `tests/Test-Pm0RuntimeEvidence.ps1`; `.planning/START_HERE_CURRENT_STATUS.md`; `.planning/AGENT_CHECKIN_REGISTRY.md`; `.planning/stop_ship/MASTER_CHECKLIST.md`; `.planning/comms/codex_pm0_audit_20260522/REMEDIATION_PLAN.md`; `.planning/comms/codex_pm0_audit_20260522/DOC_UPDATES_LOG.md`; `.planning/comms/codex_pm0_audit_20260522/INVESTIGATION_LOG.md`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** Source fixes, tenant import/publish, runtime retest, and containment still require owner decision and explicit approval. Release remains NO-SHIP.
+- **Next 5 minutes:** Verify git diff and summarize outcome to owner.
+- **Handoff / dependency:** Owner containment decision remains the blocking dependency for any tenant remediation.
+
+### 2026-05-21 23:40 BRT — CODEX-PHD — DATAVERSE_PATCH_REPLAN_BLOCKED
+- **Task ID:** Incident 3.15.1 owner-authorized Dataverse patch replan for five in-scope topic `botcomponent.data` rows.
+- **Current action:** Stopped at the Phase 1 `InvokeApi` Dataverse gate and handed the runbook limitation report to Owner.
+- **Progress since last check-in:** Phase 0 passed under Windows PowerShell 5.1 with the mandatory PowerApps module versions and `Get-Flow` validation. Phase 1 tested read-only `InvokeApi -Method GET` against `https://colofertasbrasilpro.crm4.dynamics.com/api/data/v9.2/botcomponents(ec4416d0-0744-4e8c-b937-aae4ad9c605b)` and failed during token acquisition with `AADSTS65002` for the Dataverse resource.
+- **Validation:** `phase0_auth_setup.md` records required doc SHA256, module versions, runbook line references, and live flow validation. `phase1_invokeapi_dataverse_test.md` records the direct Dataverse GET probe, `InvokeApi` syntax, full failure summary, Microsoft Learn endpoint references, and the owner escalation question. Consolidated report: `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/dataverse_patch_replan/DATAVERSE_PATCH_REPORT.md`.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/dataverse_patch_replan/phase0_auth_setup.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/dataverse_patch_replan/phase1_invokeapi_dataverse_test.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/dataverse_patch_replan/DATAVERSE_PATCH_REPORT.md`.
+- **Risks / blockers:** The approved PowerApps `InvokeApi` path did not clear the Dataverse `botcomponents` GET gate. Any retry needs an Owner-selected documented path; no alternate auth is authorized.
+- **Next 5 minutes:** Return the final verdict and report path. No Dataverse PATCH, backup, solution import/export, bot publish, ZIP edit, manifest edit, or git commit occurred.
+- **Handoff / dependency:** Owner must decide whether to update the runbook with an approved Dataverse access path or return this hotfix to the Copilot Studio authoring/export/import path.
+
+### 2026-05-21 23:34 BRT — CODEX-PHD — DATAVERSE_PATCH_REPLAN_IN_PROGRESS
+- **Task ID:** Incident 3.15.1 owner-authorized Dataverse patch replan for five in-scope topic `botcomponent.data` rows.
+- **Current action:** Starting runbook-gated access setup before any Dataverse read or write.
+- **Progress since last check-in:** Read `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CHECKIN_REGISTRY.md`, `.planning/TENANT_COMMAND_RUNBOOK.md` line-by-line, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, `.planning/comms/incident_3_15_1_import_failure_20260521/EXEC_SUMMARY.md`, `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/FORENSIC_TENANT_STATE.md`, `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/topology_map/TOPOLOGY_MAP.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, and `docs/MANUAL_OPERACIONAL_PMO.md`; recorded SHA256 for the eight prompt-mandatory files before access work.
+- **Access route planned:** Windows PowerShell 5.1 only via `powershell.exe -NoProfile -ExecutionPolicy Bypass`; import absolute versioned `.psd1` modules `Microsoft.PowerApps.Administration.PowerShell` `2.0.217` and `Microsoft.PowerApps.PowerShell` `1.0.45`; authenticate with `Add-PowerAppsAccount -Endpoint prod`; validate with `Get-Flow -EnvironmentName e2d10003-4d8e-e007-9d63-76d5fe89ef56 -Top 5`; then test `InvokeApi -Method GET` only against `https://colofertasbrasilpro.crm4.dynamics.com/api/data/v9.2/botcomponents(ec4416d0-0744-4e8c-b937-aae4ad9c605b)` before any Dataverse `PATCH`. If `InvokeApi` cannot call the Dataverse route, execution stops without alternate auth.
+- **Action classification:** Owner-approved tenant write from the current thread is limited to `botcomponents.data` for the five hotfix 3.15.1 topic IDs after read-only-first gates, backup snapshots, and before/after hashes. No MSAL device code, ClientId, app registration, service principal, certificate auth, Graph direct, HTTP Premium connector, PnP interactive login, solution import/export, bot publish, ZIP edit, manifest edit, or git commit is planned.
+- **Owner approval reference:** Current-thread approval timestamp `2026-05-21T23:19:28-03:00`: Dataverse Web API `PATCH` in `botcomponents.data` for the five in-scope topics, read-only-first, backup mandatory, hashes before/after, `ColOfertasBrasilPro`.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/dataverse_patch_replan/**`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** `InvokeApi` may not support direct Dataverse Web API routes through this module/session. That is a mandatory stop condition for this mission.
+- **Next 5 minutes:** Verify the required Windows PowerShell/module versions locally and run Phase 0 authentication evidence only through the logged route.
+- **Handoff / dependency:** Owner receives a phase output path after each gate and a blocker report if the runbook-approved Dataverse route fails.
+
+### 2026-05-21 20:18 BRT — CODEX-PHD — INCIDENT_3_15_1_TOPOLOGY_MAP_DONE
+- **Task ID:** Incident 3.15.1 topology map for `PMO_v11_Tarefas` and `PMO_AQ07_Copilot_Binding`.
+- **Current action:** Completed read-only topology evidence and handed a scenario decision to the Incident Commander.
+- **Progress since last check-in:** Captured PAC FetchXML membership for all five in-scope topic IDs, all twelve manifest workflow IDs, the bot discovered from schema `pmo_AssistentePMO_V2`, and the full AQ-07 solutioncomponent inventory; resolved AQ-07 workflow, action, binding, and connection-reference object names; confirmed the tenant AQ-07 unique name is `PMO_AQ07_CopilotBinding`; wrote `TOPOLOGY_MAP.md` and the required JSON/raw evidence set.
+- **Validation:** PAC `2.6.4` usage evidence captured; every membership query returned solution joins; raw membership counts are topic `10`, workflow `36`, bot `2`; AQ-07 inventory count is `19`; topic count cross-check matches prior forensic ten topic `solutioncomponent` rows; JSON evidence parses; new report and JSON evidence ASCII scan returned no matches; exact AQ-07 componenttype probes returned six `10163` botcomponent rows, six `10169` botcomponent_workflow rows, and one `10120` connectionreference row inside AQ-07.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/topology_map/TOPOLOGY_MAP.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/topology_map/evidence/**`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** The topology decision is based on current Dataverse membership rows only. Future export package scope and post-import Copilot runtime behavior remain separate release gates.
+- **Next 5 minutes:** Return scenario `1` and the absolute report path. No import, publish, tenant write, ZIP edit, or git commit occurred.
+- **Handoff / dependency:** Owner/Incident Commander can decide consolidation scope using the topology map evidence.
+
+### 2026-05-21 19:52 BRT — CODEX-PHD — INCIDENT_3_15_1_TOPOLOGY_MAP_IN_PROGRESS
+- **Task ID:** Incident 3.15.1 topology map for `PMO_v11_Tarefas` and `PMO_AQ07_Copilot_Binding`.
+- **Current action:** Starting owner-authorized PAC FetchXML read-only topology capture for in-scope topics, in-scope workflows, the `pmo_AssistentePMO_V2` bot row, and full AQ-07 binding-solution inventory.
+- **Progress since last check-in:** Re-read `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CHECKIN_REGISTRY.md`, `.planning/comms/incident_3_15_1_import_failure_20260521/EXEC_SUMMARY.md`, `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/FORENSIC_TENANT_STATE.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, `docs/MANUAL_OPERACIONAL_PMO.md`, and the 12-workflow manifest from the pre-publish live baseline.
+- **Access route planned:** PAC CLI `2.6.4` read-only route in `ColOfertasBrasilPro` only: `pac auth list`; `pac env who`; `pac solution list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <FetchXML>` for solution rows `PMO_v11_Tarefas` and `PMO_AQ07_Copilot_Binding`; FetchXML solutioncomponent-to-solution joins for the five topic `botcomponentid` values and twelve workflow `workflowid` values; FetchXML `bot` discovery for schema name `pmo_AssistentePMO_V2`; FetchXML solutioncomponent-to-solution join for the discovered `botid`; and FetchXML full `solutioncomponent` inventory for `PMO_AQ07_Copilot_Binding` with object-name resolution probes where supported.
+- **Action classification:** Owner-authorized read-only tenant discovery from the current incident prompt plus local-only FetchXML, raw PAC evidence, JSON evidence, and Markdown report writing. No import, publish, save, rollback execution, ZIP edit, solution mutation, SharePoint write, Planner write, Teams post, or git commit is planned.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/topology_map/**`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** PAC may reject unsupported columns or links; any rejected FetchXML output will be preserved as evidence and reported as not queryable rather than inferred.
+- **Next 5 minutes:** Create topology-map evidence FetchXML files locally and execute only the recorded PAC read-only route.
+- **Handoff / dependency:** Incident Commander receives one-line scenario decision and the absolute report path after the quality gates are checked.
+
+### 2026-05-21 17:04 BRT — CODEX-PHD — INCIDENT_3_15_1_ANALYSIS_DONE
+- **Task ID:** Incident 3.15.1 SEV-0 forensic diagnosis, Microsoft remediation path, and schema recurrence guard.
+- **Current action:** Completed read-only tenant evidence, official Microsoft remediation comparison, and local recurrence guard handoff to Incident Commander.
+- **Progress since last check-in:** Captured current solution version `3.15`; captured active workflow state for all 12 in-scope workflow IDs; verified all 12 post-failure `workflow.clientdata` hashes match the pre-publish baseline; verified all five topic data PAC raw fetches match the pre-publish baseline; captured ten live solutioncomponent rows for the five botcomponent IDs; proved with exact Dataverse filter counts that their live `solutioncomponent.componenttype` is `10163`; wrote the requested forensic/remediation/main analysis deliverables.
+- **Validation:** `tests/Test-SolutionXmlSchemaValidity.ps1 -SelfTest` PASS; base 3.15 ZIP PASS; quarantined hotfix 3.15.1 ZIP expected FAIL on five string `RootComponent type="botcomponent"` entries; ASCII scan over the new guard files returned no matches.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/FORENSIC_TENANT_STATE.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/MICROSOFT_REMEDIATION_PATH.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/CODEX_PHD_ANALYSIS.md`; `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/evidence/**`; `tests/Test-SolutionXmlSchemaValidity.ps1`; `tests/fixtures/schema_validity/**`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** The immediate tenant degradation suspicion is contradicted for the queried workflow/topic rows, but release remains `NO-SHIP`. Microsoft Learn supports Copilot Studio topic authoring plus solution export/import; it does not prove a standard in-place five-topic solution carrier that excludes the twelve workflow components in the current workflow-bearing solution.
+- **Next 5 minutes:** Hand one-line summary and absolute deliverable paths to Incident Commander. No import, publish, rollback, ZIP edit, or git commit occurred.
+- **Handoff / dependency:** Owner/Incident Commander chooses the documented ALM tradeoff before any tenant write or hotfix retry.
+
+### 2026-05-21 16:30 BRT — CODEX-PHD — INCIDENT_3_15_1_FORENSIC_IN_PROGRESS
+- **Task ID:** Incident 3.15.1 SEV-0 forensic diagnosis, Microsoft remediation path, and schema recurrence guard.
+- **Current action:** Preparing owner-authorized read-only PAC evidence capture for post-failure tenant state before any remediation claim.
+- **Progress since last check-in:** Read `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CHECKIN_REGISTRY.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, `docs/MANUAL_OPERACIONAL_PMO.md`, the 3.15.1 incident RCA/evidence/readiness files, the failed import log, and the Track I dispatch.
+- **Access route planned:** PAC CLI read-only route in `ColOfertasBrasilPro` only: `pac auth list`; `pac env who`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <workflow state FetchXML>` for the 12 manifest workflow IDs; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <solution FetchXML>` for `PMO_v11_Tarefas`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <botcomponent FetchXML>` for the five in-scope topic IDs; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <solutioncomponent FetchXML>` for solutioncomponent rows linked to those five botcomponent IDs; and `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <componenttype metadata FetchXML or equivalent documented PAC metadata query>` only if the local/live route can return the Dataverse componenttype OptionSet read-only.
+- **Action classification:** Owner-authorized read-only tenant discovery from the current incident prompt plus local-only Markdown/test/fixture work. No import, publish, save, rollback execution, ZIP mutation, solution XML mutation, SharePoint write, Planner write, Teams post, or git commit is planned.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned `.planning/comms/incident_3_15_1_import_failure_20260521/codex_phd_analysis/**`; planned `tests/Test-SolutionXmlSchemaValidity.ps1`; planned `tests/fixtures/schema_validity/**`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** PAC authentication expiry or metadata query limitations may block one evidence slice. Any missing five-topic row, missing workflow row, or unresolved componenttype source remains a NO-SHIP fact, not an inferred success.
+- **Next 5 minutes:** Create the FetchXML evidence files locally and run only the recorded PAC read-only commands.
+- **Handoff / dependency:** Incident Commander receives evidence and deliverable paths after the local guard and documentation are verified.
+
+### 2026-05-21 15:36 BRT — CODEX-1 — PRE_PUBLISH_DEFENSE_READY
+- **Task ID:** Track I hotfix 3.15.1 pre-publish defense layer
+- **Current action:** Completed the live baseline capture and rollback drill consolidation for Owner pre-import use.
+- **Progress since last check-in:** Captured five live `botcomponent.data` topic payload baselines, captured 12 live `workflow.clientdata` baselines for the hotfix Type 29 workflow manifest scope, verified rollback ZIP SHA256, staged the non-executed rollback script, and wrote the defense report.
+- **Validation:** Topic baseline count `5 / 5`; workflow baseline count `12 / 12`; rollback ZIP SHA256 exact match; `rollback_ready.ps1` marker present and `[scriptblock]::Create(...)` parser check `PASS`; defense report required sections present; defense report and rollback script ASCII scan returned no matches.
+- **Files being edited:** None.
+- **Files changed:** `.planning/comms/independent_review_3_15_1_20260521/codex1_pre_publish_defense.md`; `.planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/topics/**`; `.planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/workflows/**`; `.planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/rollback_ready.ps1`; `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** Rollback script remains staged only and was not executed. Existing rollback procedure target for published rollback completion remains 15 minutes; the staged script reduces Owner rollback command start time when PAC auth remains valid.
+- **Next 5 minutes:** Hand report path back to Owner.
+- **Handoff / dependency:** Owner can use `.planning/comms/independent_review_3_15_1_20260521/codex1_pre_publish_defense.md` before any hotfix 3.15.1 import decision.
+
+### 2026-05-21 14:45 BRT — CODEX-1 — PRE_PUBLISH_DEFENSE_IN_PROGRESS
+- **Task ID:** Track I hotfix 3.15.1 pre-publish defense layer
+- **Current action:** Staging live tenant baseline capture for the five in-scope topics and the 12 Type 29 hotfix workflows, plus a local rollback drill script.
+- **Progress since last check-in:** Read `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CHECKIN_REGISTRY.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, `docs/MANUAL_OPERACIONAL_PMO.md`, `.planning/comms/CODEX_PA_GEMINI_PA_TRACK_I_SOLUTION_HOTFIX_BUILD_20260521.md`, and `.planning/comms/rollback_evidence_pre_3_15_20260520/ROLLBACK_PROCEDURE.md`.
+- **Access route planned:** Owner-authorized read-only PAC CLI from the current dispatch only: `pac auth list`; `pac env who`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <topic FetchXML>` for `botcomponent.data` rows `AtualizarStatus`, `AtualizarTarefa`, `ConsultarPortfolio`, `CriarTarefa`, and `ListarTarefas`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <workflow FetchXML>` for the 12 hotfix Type 29 workflow `clientdata` rows read from `Solution/PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip`.
+- **Action classification:** Read-only tenant discovery plus local-only SHA256 capture, report writing, rollback ZIP hash verification, rollback PowerShell script generation, and parser validation. No import, publish, solution mutation, Copilot UI edit, SharePoint write, Planner write, Teams post, or rollback execution is authorized or planned.
+- **Files being edited:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`; planned `.planning/comms/independent_review_3_15_1_20260521/pre_publish_live_baseline/**`; planned `.planning/comms/independent_review_3_15_1_20260521/codex1_pre_publish_defense.md`.
+- **Files changed:** `.planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md`.
+- **Risks / blockers:** PAC auth or FetchXML row resolution may block baseline capture. Any rollback ZIP SHA256 mismatch is an immediate HOLD / NOT_READY.
+- **Next 5 minutes:** Delegate the three bounded subtasks, inspect the hotfix manifest workflow list locally, and start only the approved read-only PAC route.
+- **Handoff / dependency:** Owner import remains blocked until this defense report records the baseline and rollback drill status.
 
 ### 2026-05-20 16:35 BRT — CODEX-PA — IN_PROGRESS
 - **Task ID:** P0-W2-1, P0-W2-2, P0-W2-3
@@ -1630,3 +1778,13 @@ Every update must use this format:
 - **Files changed:** `.planning/comms/CODEX_WAVE2_HARDENING_HANDOFF_20260520.md`; `.planning/comms/rollback_evidence_pre_3_15_20260520/ROLLBACK_PROCEDURE.md`; `.planning/START_HERE_CURRENT_STATUS.md`; `.planning/stop_ship/MASTER_CHECKLIST.md`; `.planning/stop_ship/RISK_REGISTER.md`; `.planning/AGENT_CHECKIN_REGISTRY.md`; plus W2 verifier/config/evidence files already listed in the prior check-in.
 - **Risks / blockers:** `NO-SHIP` remains active. Owner must remediate the five in-scope topics and then run the post-remediation verifier to get `PASS` before any 3.15 import/publish.
 - **Next 5 minutes:** Await Owner topic-remediation completion; then run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Aq08PostRemediationReverify.ps1`.
+
+### 2026-05-22 15:20 BRT — CODEX #2 — BRAVO_B1_READ_ONLY_ACCESS_PLAN
+- **Task ID:** BRAVO-B1-TENANT-DRIFT
+- **Master documents read:** `.planning/GOLDEN_RULES.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, `.planning/CURRENT_BASELINE.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, and `docs/MANUAL_OPERACIONAL_PMO.md`.
+- **Owner approval reference:** Active 2026-05-22 Codex #2 Bravo dispatch explicitly orders read-only PAC evidence and forbids tenant writes.
+- **Access route planned:** PAC CLI against environment `e2d10003-4d8e-e007-9d63-76d5fe89ef56`; no SharePoint, Planner, Teams, Copilot Studio UI, Power Automate save, import, publish, delete, or runtime write path.
+- **Exact read-only command plan:** `pac auth list`; `pac env who`; `pac connection list --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile <BRAVO workflow/botcomponent/bot publish-history FetchXML file>` for the five named workflow IDs plus required binding/publish-history rows. If run timestamps or connection owner/status are not returned by PAC FetchXML, capture the read-only gap as evidence rather than switching to an unapproved write or access path.
+- **Action classification:** Tenant read-only discovery only.
+- **Expected evidence:** `.planning/comms/codex_pm0_audit_20260522/BRAVO/B1_tenant_drift/PAC_OUTPUTS/` plus per-flow drift reports and `DRIFT_TABLE.md`.
+- **Forbidden paths excluded:** No `pac solution import`, no `pac copilot publish`, no flow create/update/enable/disable, no SharePoint write, no Planner write, no Teams post, no Graph direct, no `m365`, no HTTP Premium, and no destructive operation.

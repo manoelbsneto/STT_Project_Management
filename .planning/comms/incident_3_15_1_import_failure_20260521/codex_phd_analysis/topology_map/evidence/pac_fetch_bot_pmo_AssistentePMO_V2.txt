@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botid                                schemaname           name              statecode statuscode
+df148bf8-0a3e-495b-80c4-841dcb61d9a4 pmo_AssistentePMO_V2 Assistente PMO V2 Activo    Aprovisionado
+

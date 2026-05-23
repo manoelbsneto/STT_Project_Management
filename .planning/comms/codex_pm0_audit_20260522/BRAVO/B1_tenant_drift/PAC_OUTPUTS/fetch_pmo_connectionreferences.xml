@@ -1,0 +1,21 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="connectionreference">
+    <attribute name="connectionreferenceid" />
+    <attribute name="connectionreferencelogicalname" />
+    <attribute name="connectionreferencedisplayname" />
+    <attribute name="connectorid" />
+    <attribute name="connectionid" />
+    <attribute name="ownerid" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+      <condition attribute="connectionreferencelogicalname" operator="like" value="pmo_%" />
+      <condition attribute="connectionreferencedisplayname" operator="like" value="%PMO%" />
+      <condition attribute="connectionreferencelogicalname" operator="like" value="%DataverseIndexerSharePoint%" />
+      <condition attribute="connectionreferencelogicalname" operator="like" value="%sharedplanner_87b5f%" />
+      <condition attribute="connectionreferencelogicalname" operator="like" value="%sharedteams_1ef7e%" />
+    </filter>
+    <order attribute="connectionreferencelogicalname" />
+  </entity>
+</fetch>

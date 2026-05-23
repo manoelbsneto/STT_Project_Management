@@ -1,0 +1,236 @@
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "passed":  false,
+    "failedCheckCount":  10,
+    "checks":  [
+                   {
+                       "name":  "Zip entries use Dataverse path separators",
+                       "passed":  true,
+                       "evidence":  "Dataverse import resolves manifest paths with /, not Windows backslashes."
+                   },
+                   {
+                       "name":  "Zip contains AtualizarStatus workflow at manifest path",
+                       "passed":  true,
+                       "evidence":  "Import log failed when /Workflows/... was not present as a ZIP entry."
+                   },
+                   {
+                       "name":  "No UTF-8 BOM in workflow/clientdata files",
+                       "passed":  false,
+                       "evidence":  "Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json; Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json; Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json; Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json; Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "Zip has solution.xml",
+                       "passed":  true,
+                       "evidence":  "Required Dataverse solution manifest."
+                   },
+                   {
+                       "name":  "Zip has customizations.xml",
+                       "passed":  true,
+                       "evidence":  "Required customizations manifest."
+                   },
+                   {
+                       "name":  "Zip has [Content_Types].xml",
+                       "passed":  true,
+                       "evidence":  "Required package content type manifest."
+                   },
+                   {
+                       "name":  "All workflow JsonFileName manifest paths exist in ZIP",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Package version is 3.16.0.0",
+                       "passed":  true,
+                       "evidence":  "Solution version must match the active release candidate."
+                   },
+                   {
+                       "name":  "No runtimeSource invoker",
+                       "passed":  false,
+                       "evidence":  "No per-user invoker connection source."
+                   },
+                   {
+                       "name":  "No raw APIM token auth",
+                       "passed":  false,
+                       "evidence":  "No unsupported raw connection token auth."
+                   },
+                   {
+                       "name":  "No physical SharePoint delete operation",
+                       "passed":  true,
+                       "evidence":  "Logical delete only."
+                   },
+                   {
+                       "name":  "No Premium/Graph/HTTP connector markers",
+                       "passed":  true,
+                       "evidence":  "Standard-only package."
+                   },
+                   {
+                       "name":  "No solution missing dependencies",
+                       "passed":  true,
+                       "evidence":  "Release package must not ship unresolved solution dependencies."
+                   },
+                   {
+                       "name":  "No unresolved Teams/Outlook kit references",
+                       "passed":  false,
+                       "evidence":  "Teams/Outlook adaptive-card flows must stay out of the core release until dependency-clean."
+                   },
+                   {
+                       "name":  "No unused gstf SharePoint reference",
+                       "passed":  true,
+                       "evidence":  "Release package must not include unused legacy connection references."
+                   },
+                   {
+                       "name":  "No unsupported padLeft expression",
+                       "passed":  true,
+                       "evidence":  "Power Automate template language in this tenant does not support padLeft."
+                   },
+                   {
+                       "name":  "No legacy DataAlvo eq Compose_DataAlvo filter",
+                       "passed":  true,
+                       "evidence":  "SharePoint DateTime filters must use day ranges, not string equality."
+                   },
+                   {
+                       "name":  "CriarProjeto topic exists",
+                       "passed":  true,
+                       "evidence":  "Project creation must have its own topic."
+                   },
+                   {
+                       "name":  "CriarProjeto excludes task trigger phrases",
+                       "passed":  true,
+                       "evidence":  "Project topic cannot own task intent."
+                   },
+                   {
+                       "name":  "CriarProjeto prompt requires Brazilian date",
+                       "passed":  true,
+                       "evidence":  "User-facing project prazo prompt must use Brazilian date format."
+                   },
+                   {
+                       "name":  "CriarTarefa topic exists",
+                       "passed":  true,
+                       "evidence":  "Task creation must have its own topic."
+                   },
+                   {
+                       "name":  "CriarTarefa excludes project trigger phrases",
+                       "passed":  true,
+                       "evidence":  "Task topic cannot own project intent."
+                   },
+                   {
+                       "name":  "CriarTarefa title parser ignores command prefix",
+                       "passed":  true,
+                       "evidence":  "The parser must not capture \u0027criar tarefa:\u0027 as the task title."
+                   },
+                   {
+                       "name":  "CriarTarefa prompt requires Brazilian date",
+                       "passed":  true,
+                       "evidence":  "User-facing prazo prompt must use Brazilian date format."
+                   },
+                   {
+                       "name":  "CriarTarefa parses full one-shot command",
+                       "passed":  true,
+                       "evidence":  "One-line command must not re-ask fields already present."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos topic exists",
+                       "passed":  true,
+                       "evidence":  "Batch topic required."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos topic routes batch phrases",
+                       "passed":  true,
+                       "evidence":  "Batch phrases required."
+                   },
+                   {
+                       "name":  ".\\tests\\Test-CriarTarefaCreatesTarefas.ps1 output",
+                       "passed":  false,
+                       "evidence":  "CriarTarefa creates Tarefas test failed: Uses embedded connection; Accepts project and task inputs; Looks up Projetos "
+                   },
+                   {
+                       "name":  ".\\tests\\Test-CriarTarefaPublishBinding.ps1 output",
+                       "passed":  false,
+                       "evidence":  "CriarTarefa publish binding test failed: Topic calls action component; Topic maps action message output"
+                   },
+                   {
+                       "name":  ".\\tests\\Test-ListarTarefasContentSafeContract.ps1 output",
+                       "passed":  false,
+                       "evidence":  "ListarTarefas content-safe contract failed: ListarTarefas topic ignores dynamic tool result in SendActivity"
+                   },
+                   {
+                       "name":  "CriarProjeto flow subtest",
+                       "passed":  true,
+                       "evidence":  "Project flow contract."
+                   },
+                   {
+                       "name":  "CriarProjeto parser subtest",
+                       "passed":  true,
+                       "evidence":  "Project topic parser contract."
+                   },
+                   {
+                       "name":  "CriarProjeto publish binding subtest",
+                       "passed":  true,
+                       "evidence":  "Project topic must call an action component, not direct CloudFlow."
+                   },
+                   {
+                       "name":  "CriarTarefa flow subtest",
+                       "passed":  false,
+                       "evidence":  "Task flow contract."
+                   },
+                   {
+                       "name":  "CriarTarefa parser subtest",
+                       "passed":  true,
+                       "evidence":  "Task topic parser contract."
+                   },
+                   {
+                       "name":  "CriarTarefa publish binding subtest",
+                       "passed":  false,
+                       "evidence":  "Topic must call an action component, not direct CloudFlow."
+                   },
+                   {
+                       "name":  "ListarTarefas content-safe response subtest",
+                       "passed":  false,
+                       "evidence":  "Blocks Markdown-heavy/untrusted flow output that can trigger Copilot ContentFiltered."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos subtest",
+                       "passed":  true,
+                       "evidence":  "Batch flow/topic contract."
+                   },
+                   {
+                       "name":  "CriarProjeto content-safe output subtest",
+                       "passed":  true,
+                       "evidence":  "Project action output must be mapped to static bot text."
+                   },
+                   {
+                       "name":  "Copilot routing instructions subtest",
+                       "passed":  true,
+                       "evidence":  "Project creation must route to CriarProjeto in GPT and fallback instructions."
+                   },
+                   {
+                       "name":  "PedirDecisao topic validation subtest",
+                       "passed":  true,
+                       "evidence":  "Decision topic must block invalid approver UPN before invoking Power Automate."
+                   },
+                   {
+                       "name":  "Power Fx regex safety subtest",
+                       "passed":  true,
+                       "evidence":  "Package must not contain Copilot Studio-invalid regex character classes."
+                   },
+                   {
+                       "name":  "AtualizarTarefa skip semantics subtest",
+                       "passed":  true,
+                       "evidence":  "Updating optional task fields with skip tokens must preserve current SharePoint values."
+                   }
+               ]
+}
+Solution ZIP P24 contract test failed: No UTF-8 BOM in workflow/clientdata files; No runtimeSource invoker; No raw 
+APIM token auth; No unresolved Teams/Outlook kit references; .\tests\Test-CriarTarefaCreatesTarefas.ps1 output; 
+.\tests\Test-CriarTarefaPublishBinding.ps1 output; .\tests\Test-ListarTarefasContentSafeContract.ps1 output; 
+CriarTarefa flow subtest; CriarTarefa publish binding subtest; ListarTarefas content-safe response subtest
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionZipP24Contracts.ps1:172 caractere:5
++     throw "Solution ZIP P24 contract test failed: $($failed.name -joi ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Solution ZIP P2...esponse subtest:String) [], RuntimeException
+    + FullyQualifiedErrorId : Solution ZIP P24 contract test failed: No UTF-8 BOM in workflow/clientdata files; No run 
+   timeSource invoker; No raw APIM token auth; No unresolved Teams/Outlook kit references; .\tests\Test-CriarTarefaCr  
+  eatesTarefas.ps1 output; .\tests\Test-CriarTarefaPublishBinding.ps1 output; .\tests\Test-ListarTarefasContentSafeC   
+ ontract.ps1 output; CriarTarefa flow subtest; CriarTarefa publish binding subtest; ListarTarefas content-safe resp    
+onse subtest
+ 

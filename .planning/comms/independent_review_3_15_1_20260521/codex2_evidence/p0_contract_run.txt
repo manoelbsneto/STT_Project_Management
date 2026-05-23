@@ -1,0 +1,63 @@
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SolutionZipP0Contracts.ps1 -PackagePath .\Solution\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip
+StartedUtc: 2026-05-21T18:26:23Z
+HotfixSHA256: 661606EDB9E92A2D0B9606A91831D0F93079D6F76BC5368DF1C342FB595E7403
+--- OUTPUT START ---
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Zip has solution.xml",
+                       "passed":  true,
+                       "evidence":  "Package must be a valid Dataverse solution zip."
+                   },
+                   {
+                       "name":  "Zip has [Content_Types].xml",
+                       "passed":  true,
+                       "evidence":  "Required by Dataverse solution package format."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio returns project names",
+                       "passed":  true,
+                       "evidence":  "P0: listar projetos ativos must return names."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic routes listar projetos ativos",
+                       "passed":  true,
+                       "evidence":  "P0: user phrase must be reachable."
+                   },
+                   {
+                       "name":  "ListarTarefas accepts NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "P0: flow trigger must accept a project name."
+                   },
+                   {
+                       "name":  "ListarTarefas resolves project before tasks",
+                       "passed":  true,
+                       "evidence":  "P0: resolve NomeProjeto/ProjectID to canonical ProjectID."
+                   },
+                   {
+                       "name":  "ListarTarefas has not-found guard",
+                       "passed":  true,
+                       "evidence":  "P0: invalid project names must not silently list empty tasks."
+                   },
+                   {
+                       "name":  "ListarTarefas topic asks name or code",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must collect a human-friendly input."
+                   },
+                   {
+                       "name":  "ListarTarefas topic parses inline project input",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must handle commands such as listar tarefas PRJ-001 without a second prompt."
+                   },
+                   {
+                       "name":  "ListarTarefas action binds NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "Action must pass NomeProjeto into flow."
+                   }
+               ]
+}
+--- OUTPUT END ---
+ExitCode: 0

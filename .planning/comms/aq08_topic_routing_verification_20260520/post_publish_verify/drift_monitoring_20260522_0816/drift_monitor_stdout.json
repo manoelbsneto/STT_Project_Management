@@ -1,0 +1,156 @@
+{
+    "publishUtc":  "2026-05-22T11:15:52.9307207+00:00",
+    "invocationUtc":  "2026-05-22T11:23:24.7897253+00:00",
+    "mode":  "LivePacReadOnly",
+    "outputDir":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq08_topic_routing_verification_20260520\\post_publish_verify\\drift_monitoring_20260522_0816",
+    "driftDecisionPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq08_topic_routing_verification_20260520\\post_publish_verify\\drift_monitoring_20260522_0816\\DRIFT_DECISION.md",
+    "recommendation":  "ROLLBACK",
+    "fingerprintDriftDetected":  true,
+    "passToBlockRegressionDetected":  true,
+    "passes":  [
+                   {
+                       "label":  "T+5min",
+                       "publishUtc":  "2026-05-22T11:15:52.9307207+00:00",
+                       "invocationUtc":  "2026-05-22T11:23:24.7897253+00:00",
+                       "scheduledUtc":  "2026-05-22T11:28:24.7897253+00:00",
+                       "observedUtc":  "2026-05-22T11:28:45.9201720+00:00",
+                       "mode":  "LivePacReadOnly",
+                       "reverifyExitCode":  0,
+                       "decision":  "PASS",
+                       "reportPath":  "aq08_post_remediation_reverify_report.json",
+                       "topics":  [
+                                      {
+                                          "topicName":  "AtualizarStatus",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+                                          "status":  "PASS",
+                                          "fingerprint":  "46af5ca427e6dbe7ced69f9ab181080a31043519edc07e31e8f67d74f17a68b0",
+                                          "dataPath":  "topic_data/AtualizarStatus.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "AtualizarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+                                          "status":  "PASS",
+                                          "fingerprint":  "685bafd71ef600de040df624fecebf5a2823a7bc190c1d41167206092b0e53d2",
+                                          "dataPath":  "topic_data/AtualizarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ConsultarPortfolio",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+                                          "status":  "PASS",
+                                          "fingerprint":  "c458c8200a4cfa9834ed8585bf7fdd3b5be0bf8a5910a5ddc067d4c4a319a786",
+                                          "dataPath":  "topic_data/ConsultarPortfolio.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "CriarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.CriarTarefa",
+                                          "status":  "PASS",
+                                          "fingerprint":  "925ea942bb9c6e2dac389401d6dbe630da45586f1a951d6aef0fa3a181a4df15",
+                                          "dataPath":  "topic_data/CriarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ListarTarefas",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ListarTarefas",
+                                          "status":  "PASS",
+                                          "fingerprint":  "d946a7ff4b5ecd4f14eb94db1c783a63733215b48996670fa768bfa05f6ed59f",
+                                          "dataPath":  "topic_data/ListarTarefas.botcomponent.data.txt"
+                                      }
+                                  ]
+                   },
+                   {
+                       "label":  "T+1h",
+                       "publishUtc":  "2026-05-22T11:15:52.9307207+00:00",
+                       "invocationUtc":  "2026-05-22T11:23:24.7897253+00:00",
+                       "scheduledUtc":  "2026-05-22T12:23:24.7897253+00:00",
+                       "observedUtc":  "2026-05-22T12:23:46.7160185+00:00",
+                       "mode":  "LivePacReadOnly",
+                       "reverifyExitCode":  0,
+                       "decision":  "PASS",
+                       "reportPath":  "aq08_post_remediation_reverify_report.json",
+                       "topics":  [
+                                      {
+                                          "topicName":  "AtualizarStatus",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+                                          "status":  "PASS",
+                                          "fingerprint":  "46af5ca427e6dbe7ced69f9ab181080a31043519edc07e31e8f67d74f17a68b0",
+                                          "dataPath":  "topic_data/AtualizarStatus.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "AtualizarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+                                          "status":  "PASS",
+                                          "fingerprint":  "685bafd71ef600de040df624fecebf5a2823a7bc190c1d41167206092b0e53d2",
+                                          "dataPath":  "topic_data/AtualizarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ConsultarPortfolio",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+                                          "status":  "PASS",
+                                          "fingerprint":  "0f3193b2c1c66d8487821655302383f2f183addb6e54e9c304fdd218875f9de9",
+                                          "dataPath":  "topic_data/ConsultarPortfolio.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "CriarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.CriarTarefa",
+                                          "status":  "PASS",
+                                          "fingerprint":  "c5feb49255b59fd736ff2a4466814f7065aa542ff748da72a5aa6620710bad50",
+                                          "dataPath":  "topic_data/CriarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ListarTarefas",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ListarTarefas",
+                                          "status":  "PASS",
+                                          "fingerprint":  "042300ca93851794909e72d2ec96559413ac621d64a78e91834b8ea755970d58",
+                                          "dataPath":  "topic_data/ListarTarefas.botcomponent.data.txt"
+                                      }
+                                  ]
+                   },
+                   {
+                       "label":  "T+6h",
+                       "publishUtc":  "2026-05-22T11:15:52.9307207+00:00",
+                       "invocationUtc":  "2026-05-22T11:23:24.7897253+00:00",
+                       "scheduledUtc":  "2026-05-22T17:23:24.7897253+00:00",
+                       "observedUtc":  "2026-05-22T17:23:46.8725050+00:00",
+                       "mode":  "LivePacReadOnly",
+                       "reverifyExitCode":  1,
+                       "decision":  "BLOCK",
+                       "reportPath":  "aq08_post_remediation_reverify_report.json",
+                       "topics":  [
+                                      {
+                                          "topicName":  "AtualizarStatus",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+                                          "status":  "BLOCK",
+                                          "fingerprint":  "1f4501c29afc82465197c0410ba679d2b7e916c5e37c7ce4130e6bbc970b5d7c",
+                                          "dataPath":  "topic_data/AtualizarStatus.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "AtualizarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+                                          "status":  "BLOCK",
+                                          "fingerprint":  "1f4501c29afc82465197c0410ba679d2b7e916c5e37c7ce4130e6bbc970b5d7c",
+                                          "dataPath":  "topic_data/AtualizarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ConsultarPortfolio",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+                                          "status":  "BLOCK",
+                                          "fingerprint":  "1f4501c29afc82465197c0410ba679d2b7e916c5e37c7ce4130e6bbc970b5d7c",
+                                          "dataPath":  "topic_data/ConsultarPortfolio.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "CriarTarefa",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.CriarTarefa",
+                                          "status":  "BLOCK",
+                                          "fingerprint":  "1f4501c29afc82465197c0410ba679d2b7e916c5e37c7ce4130e6bbc970b5d7c",
+                                          "dataPath":  "topic_data/CriarTarefa.botcomponent.data.txt"
+                                      },
+                                      {
+                                          "topicName":  "ListarTarefas",
+                                          "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ListarTarefas",
+                                          "status":  "BLOCK",
+                                          "fingerprint":  "1f4501c29afc82465197c0410ba679d2b7e916c5e37c7ce4130e6bbc970b5d7c",
+                                          "dataPath":  "topic_data/ListarTarefas.botcomponent.data.txt"
+                                      }
+                                  ]
+                   }
+               ]
+}

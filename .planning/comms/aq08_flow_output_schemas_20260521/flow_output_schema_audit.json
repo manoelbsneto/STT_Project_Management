@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-05-21 10:40:40 -03:00",
+  "mode": "LivePacReadOnly",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "evidenceDir": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq08_flow_output_schemas_20260521",
+  "fetchXml": [
+    "fetch_pm0_card_workflow_clientdata.xml",
+    "fetch_pmo_v2_topic_data.xml"
+  ],
+  "rawOutputs": [
+    "workflow_clientdata_fetch_raw.txt",
+    "topic_data_fetch_raw.txt",
+    "pac_env_who.txt"
+  ],
+  "overall": "MISMATCH",
+  "mismatchCount": 2,
+  "flows": [
+    {
+      "topicName": "AtualizarStatus",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+      "actionComponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+      "flowName": "PM0_PA_Card_AtualizarStatus",
+      "workflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+      "flowStateFound": true,
+      "triggerKind": "Skills",
+      "responseActions": [
+        "Respond_Success"
+      ],
+      "outputJsonKeys": [
+        "result"
+      ],
+      "expectedOutputBindingKey": "result",
+      "liveTopicBindingKey": "message",
+      "bindingStatus": "MISMATCH",
+      "responseSchemaFile": "response_schema_PM0_PA_Card_AtualizarStatus.json",
+      "clientDataFile": "clientdata_PM0_PA_Card_AtualizarStatus.json"
+    },
+    {
+      "topicName": "AtualizarTarefa",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+      "actionComponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+      "flowName": "PM0_PA_Card_AtualizarTarefa",
+      "workflowId": "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+      "flowStateFound": true,
+      "triggerKind": "Skills",
+      "responseActions": [
+        "Respond_Success"
+      ],
+      "outputJsonKeys": [
+        "result"
+      ],
+      "expectedOutputBindingKey": "result",
+      "liveTopicBindingKey": "result",
+      "bindingStatus": "PASS",
+      "responseSchemaFile": "response_schema_PM0_PA_Card_AtualizarTarefa.json",
+      "clientDataFile": "clientdata_PM0_PA_Card_AtualizarTarefa.json"
+    },
+    {
+      "topicName": "ConsultarPortfolio",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+      "actionComponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+      "flowName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "workflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+      "flowStateFound": true,
+      "triggerKind": "Skills",
+      "responseActions": [
+        "Respond_Success"
+      ],
+      "outputJsonKeys": [
+        "result"
+      ],
+      "expectedOutputBindingKey": "result",
+      "liveTopicBindingKey": "result",
+      "bindingStatus": "PASS",
+      "responseSchemaFile": "response_schema_PM0_PA_Card_ResumoExecutivoPortfolio.json",
+      "clientDataFile": "clientdata_PM0_PA_Card_ResumoExecutivoPortfolio.json"
+    },
+    {
+      "topicName": "CriarTarefa",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.CriarTarefa",
+      "actionComponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+      "flowName": "PM0_PA_Card_CriarTarefa",
+      "workflowId": "7f662db7-a250-f111-bec7-000d3abc5cc6",
+      "flowStateFound": true,
+      "triggerKind": "Skills",
+      "responseActions": [
+        "Respond_Success"
+      ],
+      "outputJsonKeys": [
+        "result"
+      ],
+      "expectedOutputBindingKey": "result",
+      "liveTopicBindingKey": "message",
+      "bindingStatus": "MISMATCH",
+      "responseSchemaFile": "response_schema_PM0_PA_Card_CriarTarefa.json",
+      "clientDataFile": "clientdata_PM0_PA_Card_CriarTarefa.json"
+    },
+    {
+      "topicName": "ListarTarefas",
+      "topicSchemaName": "pmo_AssistentePMO_V2.topic.ListarTarefas",
+      "actionComponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+      "flowName": "PM0_PA_Card_ListarTarefas",
+      "workflowId": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+      "flowStateFound": true,
+      "triggerKind": "Skills",
+      "responseActions": [
+        "Respond_Success"
+      ],
+      "outputJsonKeys": [
+        "result"
+      ],
+      "expectedOutputBindingKey": "result",
+      "liveTopicBindingKey": "result",
+      "bindingStatus": "PASS",
+      "responseSchemaFile": "response_schema_PM0_PA_Card_ListarTarefas.json",
+      "clientDataFile": "clientdata_PM0_PA_Card_ListarTarefas.json"
+    }
+  ]
+}

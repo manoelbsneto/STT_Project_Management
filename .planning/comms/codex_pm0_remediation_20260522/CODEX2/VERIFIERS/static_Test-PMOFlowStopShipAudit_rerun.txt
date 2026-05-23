@@ -1,0 +1,654 @@
+{
+    "solutionSourcePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16",
+    "passed":  false,
+    "failedCheckCount":  1,
+    "checks":  [
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\work\\unpacked_3_16\\Workflows\\PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "Solution text is ASCII-only",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Solution text has no mojibake",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Solution has no deleted original bot schema references",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "CriarProjeto has no padLeft",
+                       "passed":  true,
+                       "evidence":  "Power Automate template language does not support padLeft in this tenant."
+                   },
+                   {
+                       "name":  "CriarProjeto duplicate lookup uses DateTime day range",
+                       "passed":  true,
+                       "evidence":  "Avoid SharePoint DateTime eq string comparison."
+                   },
+                   {
+                       "name":  "CriarProjeto maps required PM person field",
+                       "passed":  true,
+                       "evidence":  "Projetos.PM is required by provisioning."
+                   },
+                   {
+                       "name":  "CriarProjeto supports critical priority choice",
+                       "passed":  true,
+                       "evidence":  "Projetos.Prioridade uses ASCII Critica choice."
+                   },
+                   {
+                       "name":  "CriarProjeto writes Projetos only",
+                       "passed":  true,
+                       "evidence":  "REQ-14: project creation must not write Tarefas."
+                   },
+                   {
+                       "name":  "CriarTarefa writes Tarefas only",
+                       "passed":  true,
+                       "evidence":  "REQ-15: task creation must not create/update Projetos."
+                   },
+                   {
+                       "name":  "CriarTarefa resolves active project",
+                       "passed":  true,
+                       "evidence":  "REQ-15: task creation requires active non-deleted project."
+                   },
+                   {
+                       "name":  "ListarTarefas targets Tarefas list",
+                       "passed":  true,
+                       "evidence":  "Flow must query the provisioned task list."
+                   },
+                   {
+                       "name":  "ListarTarefas completed filter uses ASCII choice",
+                       "passed":  true,
+                       "evidence":  "Completed count must use ASCII SharePoint choice value."
+                   },
+                   {
+                       "name":  "ListarTarefas accepts NomeProjeto input",
+                       "passed":  true,
+                       "evidence":  "Flow must accept a human project name, not only ProjectID."
+                   },
+                   {
+                       "name":  "ListarTarefas resolves NomeProjeto to ProjectID",
+                       "passed":  true,
+                       "evidence":  "Flow must lookup Projetos by NomeProjeto/ProjectID before querying Tarefas."
+                   },
+                   {
+                       "name":  "ListarTarefas handles project not found",
+                       "passed":  true,
+                       "evidence":  "Avoid listing empty tasks when the project name is invalid."
+                   },
+                   {
+                       "name":  "ListarTarefas response is deterministic ultra-safe plain text",
+                       "passed":  true,
+                       "evidence":  "Avoid Markdown-heavy or verbose dynamic output that can trigger Copilot Studio Responsible AI filters."
+                   },
+                   {
+                       "name":  "ListarTarefas suppresses SharePoint free-text and verbose task fields before response",
+                       "passed":  true,
+                       "evidence":  "Live runtime showed even verbose deterministic rows can be blocked; bot-visible response keeps a static confirmation only."
+                   },
+                   {
+                       "name":  "ListarTarefas uses single-line output instead of literal or dynamic line breaks",
+                       "passed":  true,
+                       "evidence":  "Avoid raw or dynamic line-break patterns in bot-visible output."
+                   },
+                   {
+                       "name":  "ListarTarefas keeps response schema stable",
+                       "passed":  true,
+                       "evidence":  "Copilot action contract remains a single result string with static runtime-safe content."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio returns active project names",
+                       "passed":  true,
+                       "evidence":  "listar projetos ativos must return project names, not only counts."
+                   },
+                   {
+                       "name":  "ListarTarefas action binds NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "Copilot action must pass NomeProjeto into the flow trigger contract."
+                   },
+                   {
+                       "name":  "ListarTarefas topic asks for name or code",
+                       "passed":  true,
+                       "evidence":  "Topic must collect a project name as a first-class input."
+                   },
+                   {
+                       "name":  "ListarTarefas topic parses inline project input",
+                       "passed":  true,
+                       "evidence":  "Topic must parse inline commands such as listar tarefas PRJ-001."
+                   },
+                   {
+                       "name":  "AtualizarTarefa targets Tarefas list",
+                       "passed":  true,
+                       "evidence":  "Flow must update the provisioned task list."
+                   },
+                   {
+                       "name":  "AtualizarTarefa uses SharePoint choice path for Status",
+                       "passed":  true,
+                       "evidence":  "PatchItem choice fields must use /Value parameter paths."
+                   },
+                   {
+                       "name":  "AtualizarTarefa uses SharePoint choice path for Prioridade",
+                       "passed":  true,
+                       "evidence":  "PatchItem choice fields must use /Value parameter paths."
+                   },
+                   {
+                       "name":  "AtualizarTarefa preserves required PM as claims",
+                       "passed":  true,
+                       "evidence":  "Projeto updates must not patch raw person objects."
+                   },
+                   {
+                       "name":  "AtualizarTarefa normalizes critical priority",
+                       "passed":  true,
+                       "evidence":  "Tarefas.Prioridade uses ASCII Critica choice."
+                   },
+                   {
+                       "name":  "AtualizarTarefa has project lookup guard",
+                       "passed":  true,
+                       "evidence":  "Avoid unguarded first() when ProjectID is missing."
+                   },
+                   {
+                       "name":  "AtualizarTarefa overdue comparison is date-normalized",
+                       "passed":  true,
+                       "evidence":  "Avoid treating today\u0027s date as overdue due to UTC time."
+                   },
+                   {
+                       "name":  "AtualizarTarefa skip tokens preserve optional fields",
+                       "passed":  true,
+                       "evidence":  "Optional AtualizarTarefa inputs must treat 0/nao/n/short n-token as keep-current instead of patching invalid SharePoint values."
+                   },
+                   {
+                       "name":  "CheckIn adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "EscalarRiscoCritico adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "RegistrarDecisaoBoard adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "Provisioning creates Tarefas list",
+                       "passed":  true,
+                       "evidence":  "ListarTarefas and AtualizarTarefa depend on this list."
+                   },
+                   {
+                       "name":  "Provisioning pilot projects include PM",
+                       "passed":  true,
+                       "evidence":  "Projetos.PM is required."
+                   },
+                   {
+                       "name":  "No orphaned pmo_AssistentePMO ghost bot components",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Bot workflow bindings target active V2 components only",
+                       "passed":  true,
+                       "evidence":  "Workflow bindings must target active V2 action components and not stale direct topic bindings."
+                   },
+                   {
+                       "name":  "No unrouted adaptive action workflow bindings",
+                       "passed":  true,
+                       "evidence":  "Teams/Outlook adaptive-card action bindings must stay out of the core release until routed and dependency-clean."
+                   },
+                   {
+                       "name":  "No unresolved solution dependencies",
+                       "passed":  true,
+                       "evidence":  "Release package must not contain unresolved solution dependencies."
+                   },
+                   {
+                       "name":  "No unresolved Teams/Outlook kit connection references",
+                       "passed":  false,
+                       "evidence":  "Teams/Outlook kit references require explicit connection references or removal from the core package."
+                   },
+                   {
+                       "name":  "No unused gstf SharePoint connection reference",
+                       "passed":  true,
+                       "evidence":  "Remove unused legacy SharePoint connection reference noise."
+                   },
+                   {
+                       "name":  "Preview-only batch has no orphan workflow",
+                       "passed":  true,
+                       "evidence":  "Preview-only batch topic must not ship an unused workflow root component."
+                   }
+               ]
+}
+PMO flow stop-ship audit failed: No unresolved Teams/Outlook kit connection references
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-PMOFlowStopShipAudit.ps1:224 caractere:5
++     throw "PMO flow stop-ship audit failed: $($failed.name -join '; ' ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (PMO flow stop-s...tion references:String) [], RuntimeException
+    + FullyQualifiedErrorId : PMO flow stop-ship audit failed: No unresolved Teams/Outlook kit connection references
+ 

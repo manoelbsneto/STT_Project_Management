@@ -1,0 +1,6 @@
+timestamp_brt=2026-05-22 16:49:16 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-Pm0WorkflowResponseSemantics.ps1 -SourceRoot 'Local_Repo\Assistente PMO V2' -ReportPath '.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_workflow_response_semantics.json'
+exit_code=0
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_164916_Codex_sub-2B_workflow_response_semantics_output.txt
+report=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\post_alpha_workflow_response_semantics.json

@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+connectionreferenceid                connectionreferencelogicalname     connectionreferencedisplayname connectorid
+b59678d8-a850-f111-bec7-7ced8d955c6c pmo_cat_DataverseIndexerSharePoint cat_DataverseIndexerSharePoint /providers/Microsoft.PowerApps/apis/shared_sharepointonline
+

@@ -1,0 +1,43 @@
+mcs.metadata:
+  componentName: PMO_PA_CriarTarefa
+  description: Acao vinculada ao fluxo Power Automate PMO_PA_CriarTarefa - cria tarefa na lista Tarefas.
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Criar_NomeProjeto
+
+  - kind: ManualTaskInput
+    propertyName: text_1
+    value: =Global.PMO_Criar_Titulo
+
+  - kind: ManualTaskInput
+    propertyName: text_2
+    value: =Global.PMO_Criar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: text_3
+    value: =Global.PMO_Criar_Prazo
+
+  - kind: ManualTaskInput
+    propertyName: number
+    value: =Global.PMO_Criar_Horas
+
+  - kind: ManualTaskInput
+    propertyName: text_4
+    value: =Global.PMO_Criar_Prioridade
+
+outputs:
+  - propertyName: message
+    name: Mensagem
+    description: Mensagem retornada pelo fluxo PMO_PA_CriarTarefa.
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 0a5d2a41-24c0-4d5e-9f6d-000000000241
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

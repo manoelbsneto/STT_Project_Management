@@ -1,0 +1,66 @@
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "passed":  false,
+    "failedCheckCount":  3,
+    "checks":  [
+                   {
+                       "name":  "Zip has solution.xml",
+                       "passed":  true,
+                       "evidence":  "Package must be a valid Dataverse solution zip."
+                   },
+                   {
+                       "name":  "Zip has [Content_Types].xml",
+                       "passed":  true,
+                       "evidence":  "Required by Dataverse solution package format."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio returns project names",
+                       "passed":  true,
+                       "evidence":  "P0: listar projetos ativos must return names."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic routes listar projetos ativos",
+                       "passed":  true,
+                       "evidence":  "P0: user phrase must be reachable."
+                   },
+                   {
+                       "name":  "ListarTarefas accepts NomeProjeto",
+                       "passed":  false,
+                       "evidence":  "P0: flow trigger must accept a project name."
+                   },
+                   {
+                       "name":  "ListarTarefas resolves project before tasks",
+                       "passed":  false,
+                       "evidence":  "P0: resolve NomeProjeto/ProjectID to canonical ProjectID."
+                   },
+                   {
+                       "name":  "ListarTarefas has not-found guard",
+                       "passed":  false,
+                       "evidence":  "P0: invalid project names must not silently list empty tasks."
+                   },
+                   {
+                       "name":  "ListarTarefas topic asks name or code",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must collect a human-friendly input."
+                   },
+                   {
+                       "name":  "ListarTarefas topic parses inline project input",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must handle commands such as listar tarefas PRJ-001 without a second prompt."
+                   },
+                   {
+                       "name":  "ListarTarefas action binds NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "Action must pass NomeProjeto into flow."
+                   }
+               ]
+}
+Solution ZIP P0 contract test failed: ListarTarefas accepts NomeProjeto; ListarTarefas resolves project before tasks; 
+ListarTarefas has not-found guard
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionZipP0Contracts.ps1:72 caractere:5
++     throw "Solution ZIP P0 contract test failed: $($failed.name -join ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Solution ZIP P0...not-found guard:String) [], RuntimeException
+    + FullyQualifiedErrorId : Solution ZIP P0 contract test failed: ListarTarefas accepts NomeProjeto; ListarTarefas r 
+   esolves project before tasks; ListarTarefas has not-found guard
+ 

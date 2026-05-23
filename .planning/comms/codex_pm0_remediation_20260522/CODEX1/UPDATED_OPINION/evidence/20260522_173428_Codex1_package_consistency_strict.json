@@ -1,0 +1,91 @@
+{
+  "TimestampBRT": "2026-05-22 17:34:28 BRT",
+  "Agent": "Codex #1",
+  "PackagePath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+  "PackageSha256": "4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15",
+  "EntryCount": 75,
+  "WorkflowsetPresent": true,
+  "PM0ActionComponentCount": 5,
+  "PM0TopicComponentCount": 5,
+  "DuplicateZipEntryCount": 0,
+  "DuplicatePM0BotComponentCount": 0,
+  "WorkflowsetPM0LineCount": 0,
+  "FlowChecks": [
+    {
+      "Flow": "AtualizarStatus",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetHasAction": false,
+      "WorkflowsetHasWorkflowId": false,
+      "LocalWorkflowExists": true,
+      "RawShaMatches": false,
+      "ZipSha": "3A9B46E49F7589260DF821897C9083DA58CB425AB1BC49EC61DB4E01BE88719F",
+      "LocalSha": "259C3C47C4AC66DD31A64A423E15859269E50D109B80320101A56D8F177A9845",
+      "PlaceholderPatternPresent": false,
+      "DiffSample": "=>     \"properties\":  {\n<=   \"properties\": {\n=>                        \"connectionReferences\":  {\n<=     \"connectionReferences\": {\n=>                                                     \"shared_sharepointonline\":  {\n<=       \"shared_sharepointonline\": {\n=>                                                                                     \"connectionName\":  \"44f187cde7f54f208cf22bac4e533816\",\n<=         \"connectionName\": \"44f187cde7f54f208cf22bac4e533816\","
+    },
+    {
+      "Flow": "AtualizarTarefa",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetHasAction": false,
+      "WorkflowsetHasWorkflowId": false,
+      "LocalWorkflowExists": true,
+      "RawShaMatches": false,
+      "ZipSha": "F5574F254821D6E1826AE670E26383A493351C2EEC917DDB155D639BC694B48F",
+      "LocalSha": "507008C8924925833B8B7727CAFE3D3F7EA4715EFB0BC793B0D612CA0ED32F22",
+      "PlaceholderPatternPresent": false,
+      "DiffSample": "=>     \"properties\":  {\n<=   \"properties\": {\n=>                        \"connectionReferences\":  {\n<=     \"connectionReferences\": {\n=>                                                     \"shared_sharepointonline\":  {\n<=       \"shared_sharepointonline\": {\n=>                                                                                     \"connectionName\":  \"44f187cde7f54f208cf22bac4e533816\",\n<=         \"connectionName\": \"44f187cde7f54f208cf22bac4e533816\","
+    },
+    {
+      "Flow": "CriarTarefa",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetHasAction": false,
+      "WorkflowsetHasWorkflowId": false,
+      "LocalWorkflowExists": true,
+      "RawShaMatches": false,
+      "ZipSha": "CD01C7712F0ACCDD7E4241895A8BBBDD2DA6A878A2DECAE89711DEDBB5186278",
+      "LocalSha": "73300D3DEE067590007AB605FC9A24C17F9B7385B8A5E07A0373D2889D8C70D9",
+      "PlaceholderPatternPresent": false,
+      "DiffSample": "=>     \"properties\":  {\n<=   \"properties\": {\n=>                        \"connectionReferences\":  {\n<=     \"connectionReferences\": {\n=>                                                     \"shared_sharepointonline\":  {\n<=       \"shared_sharepointonline\": {\n=>                                                                                     \"connectionName\":  \"44f187cde7f54f208cf22bac4e533816\",\n<=         \"connectionName\": \"44f187cde7f54f208cf22bac4e533816\","
+    },
+    {
+      "Flow": "ListarTarefas",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetHasAction": false,
+      "WorkflowsetHasWorkflowId": false,
+      "LocalWorkflowExists": true,
+      "RawShaMatches": false,
+      "ZipSha": "C3E924A5B290B773270A1C046D2FBB6944647C2F747C89087BB77BF70E6C81DE",
+      "LocalSha": "1407040099AA9B789D76924ECD52CAE6364AA2338D1E4129B9F8A5F4983B707D",
+      "PlaceholderPatternPresent": false,
+      "DiffSample": "=>     \"properties\":  {\n<=   \"properties\": {\n=>                        \"connectionReferences\":  {\n<=     \"connectionReferences\": {\n=>                                                     \"shared_planner\":  {\n<=       \"shared_planner\": {\n=>                                                                            \"runtimeSource\":  \"embedded\",\n<=         \"runtimeSource\": \"invoker\","
+    },
+    {
+      "Flow": "ResumoExecutivoPortfolio",
+      "WorkflowEntryPresent": true,
+      "WorkflowsetHasAction": false,
+      "WorkflowsetHasWorkflowId": false,
+      "LocalWorkflowExists": true,
+      "RawShaMatches": false,
+      "ZipSha": "E759F6708B1A5455D55F0864DEE342BE7A51D0085449E2512F79D107B30EC071",
+      "LocalSha": "A7262CC35D64834ECEC99B9459C7DFB6C05BE39ED38F7E89CF82A25FC1ED59B4",
+      "PlaceholderPatternPresent": false,
+      "DiffSample": "=>     \"properties\":  {\n<=   \"properties\": {\n=>                        \"connectionReferences\":  {\n<=     \"connectionReferences\": {\n=>                                                     \"shared_sharepointonline\":  {\n<=       \"shared_sharepointonline\": {\n=>                                                                                     \"runtimeSource\":  \"embedded\",\n<=         \"runtimeSource\": \"embedded\","
+    }
+  ],
+  "PM0ActionComponents": [
+    "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+    "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+    "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+    "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+    "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio"
+  ],
+  "PM0TopicComponents": [
+    "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+    "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+    "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+    "pmo_AssistentePMO_V2.topic.CriarTarefa",
+    "pmo_AssistentePMO_V2.topic.ListarTarefas"
+  ],
+  "DuplicateZipEntries": [],
+  "WorkflowsetPM0Lines": []
+}

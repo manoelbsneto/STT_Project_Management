@@ -1,0 +1,10 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+ownerid                       connectorid                                                 modifiedon       connectionreferencedisplayname       connectionid                                      statuscode connectionreferenceid                connectionreferencelogicalname     statecode
+Manoel Benicio De Souza Filho /providers/Microsoft.PowerApps/apis/shared_sharepointonline 19/04/2026 19:14 Copilot Studio Kit - SharePoint      44f187cde7f54f208cf22bac4e533816                  Activa     bb3dd612-989c-4138-a453-53e0028be012 cat_DataverseIndexerSharePoint     Activa
+Manoel Benicio De Souza Filho /providers/Microsoft.PowerApps/apis/shared_planner          15/05/2026 18:11 Planner Default-87b5f                6b763b98729c4d99a7a8df4033d381af                  Activa     dde3c6b0-a250-f111-bec7-000d3abc5cc6 pmo_sharedplanner_87b5f            Activa
+Manoel Benicio De Souza Filho /providers/Microsoft.PowerApps/apis/shared_teams            19/04/2026 19:14 Copilot Studio Kit - Microsoft Teams shared-teams-1440d346-f1dd-44ea-912f-3787038ac333 Activa     161a259b-78c9-4ab6-a01c-9343e347ae54 cat_sharedteams_1ef7e              Activa
+Manoel Benicio De Souza Filho /providers/Microsoft.PowerApps/apis/shared_sharepointonline 14/05/2026 15:02 SharePoint PMO_v11_Tarefas-6e373     44f187cde7f54f208cf22bac4e533816                  Activa     35cf292d-c64c-f111-bec7-7ced8d955c6c pmo_sharedsharepointonline_6e373   Activa
+Manoel Benicio De Souza Filho /providers/Microsoft.PowerApps/apis/shared_sharepointonline 15/05/2026 18:56 cat_DataverseIndexerSharePoint       44f187cde7f54f208cf22bac4e533816                  Activa     b59678d8-a850-f111-bec7-7ced8d955c6c pmo_cat_DataverseIndexerSharePoint Activa
+

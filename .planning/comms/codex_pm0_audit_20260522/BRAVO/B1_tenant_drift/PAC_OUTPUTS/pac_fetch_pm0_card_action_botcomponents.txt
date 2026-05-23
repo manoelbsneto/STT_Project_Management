@@ -1,0 +1,70 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+botcomponentid                       statecode schemaname                                                       modifiedon      name                                 statuscode componenttype data
+0635831a-6b13-45d6-b10e-983fcc63eefe Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio 22/05/2026 9:45 PM0_PA_Card_ResumoExecutivoPortfolio Activo     Tema (V2)     kind: TaskDialog
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 8333bd91-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+f6afac82-ec2b-47fb-a3d6-4aebad708702 Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa          22/05/2026 9:43 PM0_PA_Card_AtualizarTarefa          Activo     Tema (V2)     kind: TaskDialog
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7c6300c2-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+beb83cc5-c09c-4cd3-a279-20846686ea3e Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus          22/05/2026 8:56 PM0_PA_Card_AtualizarStatus          Activo     Tema (V2)     kind: TaskDialog
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 1721e0a3-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+0956d0c0-05f1-429c-8893-6352a927d535 Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas            22/05/2026 8:56 PM0_PA_Card_ListarTarefas            Activo     Tema (V2)     kind: TaskDialog
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e0e3c6b0-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+3f9abdf2-8801-4602-83dd-002a31f0b53e Activo    pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa              22/05/2026 8:56 PM0_PA_Card_CriarTarefa              Activo     Tema (V2)     kind: TaskDialog
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7f662db7-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
+

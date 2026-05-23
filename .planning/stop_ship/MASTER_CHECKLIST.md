@@ -1,22 +1,50 @@
 # MASTER CHECKLIST
 
-Status: NO-SHIP — 3.15 AQ-08 hybrid migration requires five manual topic remediations plus post-remediation verifier PASS before publish
+Status: 🔴 **NO-SHIP** — PM0 local source and scoped 3.16 package static gates pass, but no tenant import/publish/runtime smoke has been approved or run. AQ-08 routing PASS remains structural only. See `.planning/comms/codex_pm0_remediation_20260522/`.
 Active plan: `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md`
-Last update: 2026-05-20 16:40 BRT (P0 Wave 2 / CODEX-PA)
+Last updated: 2026-05-22 17:13:10 BRT | Codex | PM0 local package static gates passed; runtime remains blocked.
+
+## 🚨 CRITICAL DISCOVERY 2026-05-22 14:42 BRT
+
+Original A1 failure found five non-dynamic PM0 caller responses. Local workflow/action/topic fixes now clear response semantics, topic/action/workflow contract propagation, placeholder/ASCII scans, and scoped package P0/P24/stop-ship/schema gates. This does not satisfy Functional DoD until the patched artifact is imported/published with explicit approval and runtime bot evidence is captured.
+
+Codex #1 merged Alpha and Bravo evidence into the RCA, remediation plan, mitigation plan, and executive summary under `.planning/comms/codex_pm0_audit_20260522/`.
+
+| Flow | Caller response | Audit classification |
+|---|---|---|
+| PM0_PA_Card_AtualizarStatus | "Status update card posted successfully." | `STUB` |
+| PM0_PA_Card_AtualizarTarefa | "Task updated successfully." | `PARTIAL` |
+| PM0_PA_Card_CriarTarefa | "Task created successfully." | `PARTIAL` |
+| PM0_PA_Card_ListarTarefas | "Tasks retrieved successfully." | `PARTIAL` |
+| PM0_PA_Card_ResumoExecutivoPortfolio | "Executive portfolio retrieved successfully." | `PARTIAL` |
+
+## PM0 Local Remediation Snapshot 2026-05-22 17:13 BRT
+
+| Gate | Status | Evidence |
+|---|---|---|
+| Local workflow response semantics | PASS | `.planning/comms/codex_pm0_remediation_20260522/ALPHA/evidence/20260522_162457_CodexLead_workflow_response_semantics_rerun.md` |
+| Local topic/action/workflow propagation | PASS | `.planning/comms/codex_pm0_remediation_20260522/ALPHA/evidence/20260522_162538_CodexLead_topic_action_flow_contract_final.md` |
+| Placeholder and ASCII scan | PASS_NO_MATCHES | `.planning/comms/codex_pm0_remediation_20260522/ALPHA/evidence/20260522_162457_CodexLead_placeholder_ascii_scan_rerun.md` |
+| Scoped 3.16 package P0/P24/stop-ship/schema gates | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/PACKAGE_STATUS.md`; ZIP SHA256 `3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB` (corrected 2026-05-22 18:06 BRT by Codex #2 Bravo; supersedes `4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15`) |
+| Tenant import/publish | NOT_RUN | Requires explicit owner approval in active thread |
+| AQ-09 runtime smoke | NOT_RUN | Requires imported/published artifact and Evidence Triplet |
 
 ## 2026-05-20 AQ-08 Hybrid Migration Gates
 
 | Gate | Status | Evidence / next evidence |
 |---|---|---|
 | ADR accepted for hybrid card-first scope | DONE | `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md` |
-| `AtualizarStatus` routes to `PM0_PA_Card_AtualizarStatus` | BLOCKED_OWNER_UI | Owner must replace direct legacy call, then run `tests/Test-Aq08PostRemediationReverify.ps1`. |
-| `AtualizarTarefa` routes to `PM0_PA_Card_AtualizarTarefa` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa`, then run verifier. |
-| `ConsultarPortfolio` routes to `PM0_PA_Card_ResumoExecutivoPortfolio` | BLOCKED_OWNER_UI | Owner must replace direct legacy call, then run verifier. |
-| `CriarTarefa` routes to `PM0_PA_Card_CriarTarefa` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa`, then run verifier. |
-| `ListarTarefas` routes to `PM0_PA_Card_ListarTarefas` | BLOCKED_OWNER_UI | Owner must replace `pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas`, then run verifier. |
-| AQ-08 post-remediation verifier | READY | `tests/Test-Aq08PostRemediationReverify.ps1`; expected current pre-remediation result is `BLOCK`. Required pre-publish result is `PASS`. |
+| `AtualizarStatus` routes to `PM0_PA_Card_AtualizarStatus` | **PASS** | T+1h reverify report `aq08_post_remediation_reverify_report.json` 2026-05-22 09:23 BRT |
+| `AtualizarTarefa` routes to `PM0_PA_Card_AtualizarTarefa` | **PASS** | T+1h reverify report 2026-05-22 09:23 BRT |
+| `ConsultarPortfolio` routes to `PM0_PA_Card_ResumoExecutivoPortfolio` | **PASS** | T+1h reverify report 2026-05-22 09:23 BRT |
+| `CriarTarefa` routes to `PM0_PA_Card_CriarTarefa` | **PASS** | T+1h reverify report 2026-05-22 09:23 BRT |
+| `ListarTarefas` routes to `PM0_PA_Card_ListarTarefas` | **PASS** | T+1h reverify report 2026-05-22 09:23 BRT |
+| AQ-08 post-remediation verifier | **PASS** | `aq08_post_remediation_reverify_report.json` overall=PASS, blockingTopicCount=0 (T+5min and T+1h) |
 | Pre-publish rollback evidence | DONE | `.planning/comms/rollback_evidence_pre_3_15_20260520/` |
-| AQ-09 smoke and XPIA harness | READY | `.planning/comms/aq09_smoke_runbook_20260520/`; `.planning/comms/xpia_01_verify_20260520/` |
+| Drift monitor T+5min | **PASS** | `drift_monitoring_20260522_0816/T+5min/summary.md` |
+| Drift monitor T+1h | **PASS** | `drift_monitoring_20260522_0816/T+1h/summary.md` |
+| Drift monitor T+6h | SCHEDULED 14:23 BRT | `drift_monitoring_20260522_0816/T+6h/` |
+| AQ-09 smoke and XPIA harness | **READY TO EXECUTE** | `.planning/comms/aq09_smoke_runbook_20260520/`; `.planning/comms/xpia_01_verify_20260520/` |
 
 ## 2026-05-20 Accepted Legacy Debt
 
@@ -96,6 +124,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-PedirDecisaoFlowD
 powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-CopilotGhostBotInventory.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-OperationsManualArtifact.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-PMOFlowStopShipAudit.ps1 -SolutionSourcePath .planning\stop_ship\live_export\PMO_v11_Tarefas_live_20260507_132627_unpacked
+powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-Pm0TopicActionFlowContract.ps1 -SourceRoot "Local_Repo\Assistente PMO V2"
+powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-Pm0WorkflowResponseSemantics.ps1 -SourceRoot "Local_Repo\Assistente PMO V2"
+powershell -NoProfile -ExecutionPolicy Bypass -File tests\Test-Pm0RuntimeEvidence.ps1 -EvidencePath ".planning\comms\aq09_smoke_runbook_20260520\evidence"
 ```
 
 ## 2026-05-13 Active Checklist - Candidate 3.3

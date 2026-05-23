@@ -1,0 +1,141 @@
+{
+    "inputPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip",
+    "inputKind":  "Zip",
+    "solutionXmlManifest":  "solution.xml",
+    "metadataSource":  "OfficialMicrosoftCache",
+    "metadataReference":  "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/reference/entities/solutioncomponent#componenttype-choicesoptions",
+    "metadataDetail":  "Cached SolutionComponent.componenttype choices from Microsoft Learn.",
+    "metadataFallbackReason":  null,
+    "allowedComponentTypeCount":  90,
+    "rootComponentCount":  17,
+    "invalidRootComponentCount":  5,
+    "passed":  false,
+    "rootComponents":  [
+                           {
+                               "id":  "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{ec4416d0-0744-4e8c-b937-aae4ad9c605b}",
+                               "type":  "botcomponent",
+                               "valid":  false,
+                               "issue":  "RootComponent \u0027{ec4416d0-0744-4e8c-b937-aae4ad9c605b}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+                           },
+                           {
+                               "id":  "{6750ff2f-822b-45ab-83ec-058704c7808a}",
+                               "type":  "botcomponent",
+                               "valid":  false,
+                               "issue":  "RootComponent \u0027{6750ff2f-822b-45ab-83ec-058704c7808a}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+                           },
+                           {
+                               "id":  "{74c5fdcc-c121-452e-85af-24d3f260b3c7}",
+                               "type":  "botcomponent",
+                               "valid":  false,
+                               "issue":  "RootComponent \u0027{74c5fdcc-c121-452e-85af-24d3f260b3c7}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+                           },
+                           {
+                               "id":  "{bcbecd76-3158-40ac-b225-5ae7c3874ed1}",
+                               "type":  "botcomponent",
+                               "valid":  false,
+                               "issue":  "RootComponent \u0027{bcbecd76-3158-40ac-b225-5ae7c3874ed1}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+                           },
+                           {
+                               "id":  "{d58258b4-b17f-4bb9-9e1f-161287a041c4}",
+                               "type":  "botcomponent",
+                               "valid":  false,
+                               "issue":  "RootComponent \u0027{d58258b4-b17f-4bb9-9e1f-161287a041c4}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+                           }
+                       ],
+    "issues":  [
+                   "RootComponent \u0027{ec4416d0-0744-4e8c-b937-aae4ad9c605b}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer.",
+                   "RootComponent \u0027{6750ff2f-822b-45ab-83ec-058704c7808a}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer.",
+                   "RootComponent \u0027{74c5fdcc-c121-452e-85af-24d3f260b3c7}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer.",
+                   "RootComponent \u0027{bcbecd76-3158-40ac-b225-5ae7c3874ed1}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer.",
+                   "RootComponent \u0027{d58258b4-b17f-4bb9-9e1f-161287a041c4}\u0027 type \u0027botcomponent\u0027 is not a Dataverse componenttype integer."
+               ]
+}
+Solution XML RootComponent type validation failed: RootComponent '{ec4416d0-0744-4e8c-b937-aae4ad9c605b}' type 
+'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{6750ff2f-822b-45ab-83ec-058704c7808a}' type 
+'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{74c5fdcc-c121-452e-85af-24d3f260b3c7}' type 
+'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{bcbecd76-3158-40ac-b225-5ae7c3874ed1}' type 
+'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{d58258b4-b17f-4bb9-9e1f-161287a041c4}' type 
+'botcomponent' is not a Dataverse componenttype integer.
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionXmlSchemaValidity.ps1:399 caractere:5
++     throw "Solution XML RootComponent type validation failed: $($resu ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Solution XML Ro...nttype integer.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Solution XML RootComponent type validation failed: RootComponent '{ec4416d0-0744-4e8c-b9 
+   37-aae4ad9c605b}' type 'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{6750ff2f-822b-45a  
+  b-83ec-058704c7808a}' type 'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{74c5fdcc-c121   
+ -452e-85af-24d3f260b3c7}' type 'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{bcbecd76-    
+3158-40ac-b225-5ae7c3874ed1}' type 'botcomponent' is not a Dataverse componenttype integer.; RootComponent '{d5825    
+8b4-b17f-4bb9-9e1f-161287a041c4}' type 'botcomponent' is not a Dataverse componenttype integer.
+ 

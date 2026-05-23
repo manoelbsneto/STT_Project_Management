@@ -44,10 +44,13 @@ try {
     $respondEmptyResult = if ($workflow -and $workflow.properties.definition.actions.Condition_Projeto_Encontrado.actions.Check_Tarefas_Exist.actions.Respond_Empty) { [string]$workflow.properties.definition.actions.Condition_Projeto_Encontrado.actions.Check_Tarefas_Exist.actions.Respond_Empty.inputs.body.result } else { "" }
     $topicFiles = @(Get-ChildItem -LiteralPath (Join-Path $tempRoot "botcomponents") -Recurse -File | Where-Object { $_.FullName -like "*topic.ListarTarefas*data" })
     $topicText = if ($topicFiles.Count -eq 1) { Get-Content -LiteralPath $topicFiles[0].FullName -Raw } else { "" }
+    $topicUsesPm0Action = $topicText -match "dialog:\s*pmo_AssistentePMO_V2\.action\.PM0_PA_Card_ListarTarefas"
 
     Add-Check "ListarTarefas flow output is static runtime-safe text" (($respondListaResult -eq "Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA.") -and ($respondEmptyResult -eq "Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA.")) "3.14 proved dynamic list output still triggers Copilot ContentFiltered after the message; 3.15 must not expose dynamic SharePoint rows to bot text."
     $staticTopicActivity = "activity: Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA."
-    Add-Check "ListarTarefas topic ignores dynamic tool result in SendActivity" (($topicText.Contains($staticTopicActivity)) -and ($topicText -notmatch 'activity: "\{Topic\.tarefas\}"')) "The topic message must not echo Topic.tarefas."
+    $legacyTopicIsStatic = ($topicText.Contains($staticTopicActivity)) -and ($topicText -notmatch 'activity: "\{Topic\.tarefas\}"')
+    $pm0TopicReturnsResult = $topicUsesPm0Action -and ($topicText -match 'activity: "\{Topic\.tarefas\}"')
+    Add-Check "ListarTarefas topic matches active action result contract" ($legacyTopicIsStatic -or $pm0TopicReturnsResult) "Legacy PMO topics suppress dynamic list output; PM0 topics emit the PM0 action result for AQ-09 runtime verification."
     Add-Check "ListarTarefas compose remains non-bot-visible compact diagnostic" (($composeExpression -match "IDs ") -and ($composeExpression -match "join\(body\('Select_Tarefas'\), ', '\)") -and ($composeExpression -notmatch "decodeUriComponent") -and (-not $composeExpression.Contains("\n---\n")) -and (-not $composeExpression.Contains("'\\n'"))) "The internal compose can keep diagnostic IDs, but response must not expose it to Copilot text."
     Add-Check "ListarTarefas suppresses task title in bot-visible output" ($selectExpression -notmatch "item\(\)\?\['Title'\]") "Task title is SharePoint free text and can trigger indirect-attack filtering."
     Add-Check "ListarTarefas suppresses responsible email in bot-visible output" ($selectExpression -notmatch "item\(\)\?\['Responsavel'\]") "Email/free text is not required to run follow-up commands."

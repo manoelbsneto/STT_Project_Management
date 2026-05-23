@@ -1,0 +1,56 @@
+{
+  "name": "STT Project Management Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.powershell",
+        "github.copilot",
+        "github.copilot-chat",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+
+  "forwardPorts": [7777, 3000, 8080],
+  "portsAttributes": {
+    "7777": { "label": "PMO Cockpit" },
+    "3000": { "label": "Web App" },
+    "8080": { "label": "API Server" }
+  },
+
+  "postCreateCommand": "pip install -e . && cd Web_MD_Viewer && npm install && if [ -f .env.local ]; then set -a; . .env.local; set +a; fi",
+  
+  "remoteEnv": {
+    "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}",
+    "GITHUB_USER": "${{ secrets.GITHUB_USER }}",
+    "OPENAI_API_KEY": "${{ secrets.OPENAI_API_KEY }}",
+    "AIDER_MODEL": "${{ secrets.AIDER_MODEL }}",
+    "AIDER_WEAK_MODEL": "${{ secrets.AIDER_WEAK_MODEL }}",
+    "GOOGLE_CLOUD_PROJECT": "${{ secrets.GOOGLE_CLOUD_PROJECT }}",
+    "GOOGLE_CLOUD_LOCATION": "${{ secrets.GOOGLE_CLOUD_LOCATION }}",
+    "GOOGLE_GENAI_USE_VERTEXAI": "${{ secrets.GOOGLE_GENAI_USE_VERTEXAI }}"
+  },
+
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  }
+}

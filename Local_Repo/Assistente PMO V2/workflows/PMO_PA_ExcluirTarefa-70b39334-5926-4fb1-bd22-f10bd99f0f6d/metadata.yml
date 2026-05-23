@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PMO_PA_ExcluirTarefa-70b39334-5926-4fb1-bd22-f10bd99f0f6d/workflow.json
+workflowId: 70b39334-5926-4fb1-bd22-f10bd99f0f6d
+name: PMO_PA_ExcluirTarefa
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

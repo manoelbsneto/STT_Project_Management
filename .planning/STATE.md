@@ -4,12 +4,23 @@
 **M2 — Hybrid Card-First Revision** (active since 2026-05-20)
 
 ## Current Phase
-M2 Phase 1 — Discovery (READY FOR DISPATCH)
+🔴 **M2 Phase 7 — PM0 local remediation and documentation complete**; SHIP=NO; awaiting Codex #2 live tenant smoke to backfill and Gate 9 SHIP decision.
 
-See: `.planning/milestones/M2_card_first_revision_v2/STATE.md` for detailed M2 progress.
+Last updated: 2026-05-22 17:18:30 BRT | Gemini Lead | Completed parallel design and documentation mission; backfilled Gate 3 package items.
 
-## Next Phase
-M2 Phase 2 — Architecture Specification (auto-advance after Phase 1 PASS)
+## 🚨 Critical Status
+
+AQ-09 A1 (ListarTarefas) FAILED. Codex PM0 audit merge at `.planning/comms/codex_pm0_audit_20260522/RCA_PM0_FLOWS_20260522.md` confirmed all five audited PM0 caller responses were non-dynamic, with workflow-body classification `STUB=1`, `PARTIAL=4`, `REAL=0`. Local PM0 workflows/actions/topics under `Local_Repo/Assistente PMO V2` now pass source guards and the scoped 3.16 ZIP passes local P0/P24/stop-ship/schema gates with SHA256 `3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB` (corrected 2026-05-22 18:06 BRT by Codex #2 Bravo; supersedes `4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15`). AQ-08 routing PASS remains structural only, and runtime evidence remains NOT_RUN.
+
+Codex #1 PM0 audit artifacts are merged under `.planning/comms/codex_pm0_audit_20260522/`. Codex #1 performed local edits only; no tenant write was performed without owner approval.
+
+### Owner Decision Required
+
+| Option | Description | Time | Trade-off |
+|---|---|---|---|
+| **A** | Implement 5 flows real logic | 20-30h | Clean delivery, ship 2-3 days delayed |
+| **B** | Rollback to `3.10_POST_WFSET_CLEAN.zip` | 15min | M1 chat-first restored in prod, card-first deferred |
+| **C** | Keep current routing, NO-SHIP, BACKLOG-PM0-FLOWS-IMPLEMENTATION as next sprint | 0 | Current state stays in env (broken), proper sprint to fix |
 
 ## Active Agents
 8 parallel tracks dispatching for Phase 1:

@@ -64,6 +64,94 @@ Required practice:
 - Record doc links or exact command evidence in release notes, blockers, or stop-ship evidence when a Microsoft behavior affects implementation.
 - If official docs and runtime behavior conflict, capture both and keep the release NO-SHIP until the discrepancy is resolved or accepted by the owner.
 
+## Continuous Documentation Update Rule (MANDATORY)
+
+Project status documents MUST be kept in sync with reality at all times. This is a SEV-0 process rule, not a closing-task formality.
+
+Required practice:
+
+- Update status docs **immediately** after any task event: claim, progress checkpoint, blocker change, evidence captured, test executed (PASS or FAIL), tenant write, import, publish, decision rendered, gate transition.
+- Do not batch updates "for later" or "at end of phase". Stale docs cause rework, miscommunication, and wrong release decisions.
+- After every test run, every verifier execution, every drift-monitor pass, every smoke step: update the relevant status row before moving to the next action.
+- Documents that MUST be in continuous sync:
+  - `.planning/STATE.md`
+  - `.planning/CURRENT_BASELINE.md`
+  - `.planning/AGENT_CHECKIN_REGISTRY.md`
+  - `.planning/START_HERE_CURRENT_STATUS.md`
+  - `.planning/stop_ship/MASTER_CHECKLIST.md`
+  - `.planning/stop_ship/RISK_REGISTER.md`
+  - `.planning/milestones/<active>/STATE.md`
+  - Any active `STATUS_REPORT_*.md` and `STATUS_REPORT_*.csv`
+- When evidence in tenant disagrees with what the docs say, **the docs are wrong** — fix them immediately, do not "trust the older doc".
+- Every document must carry a `Last updated:` line with timestamp BRT, the agent name, and a one-line reason.
+- The agent that ran the action that changed reality is the agent responsible for updating the docs. Do not delegate "update later".
+- New chats and new agents must trust the docs only after confirming the latest update timestamp matches the latest tenant evidence in the active evidence folder.
+
+Failure to comply with this rule is treated as a process incident, not a minor oversight.
+
+## Evidence Triplet Rule (MANDATORY for every test, deploy, gate, claim of DONE)
+
+Owner directive 2026-05-22: NO test, deploy, audit, gate, smoke, or claim of DONE may be accepted without ALL THREE of the following evidence elements present, attached, and verifiable. This rule supersedes any prior wording that allowed evidence "as appropriate".
+
+The mandatory evidence triplet is:
+
+1. **Screenshot (printscreen)** — visual proof of the actual outcome. PNG/JPG file saved under the relevant evidence folder. Required even for CLI/headless tests when a UI surface exists (Copilot Studio, Teams, SharePoint UI, Power Automate run history). For pure-CLI cases, attach full terminal screenshot or render of the run output, not just text logs.
+2. **Timestamp BRT** — exact moment the action was performed, `YYYY-MM-DD HH:mm:ss BRT`, captured by the agent at moment of action (not afterwards-from-memory).
+3. **Agent name** — the named agent (Codex Lead, Codex #2, Codex sub-A1, Owner, Kiro, etc.) that performed the action. No anonymous evidence accepted.
+
+Additionally encouraged when applicable: file path of artifact, command output verbatim, run/correlation ID, hash of artifact, URL of run history. These are supplements, not substitutes.
+
+Where evidence is stored:
+- Per task: under `.planning/comms/<active_workstream>/<task>/evidence/<YYYYMMDD_HHmmss>_<agent>_<step>.{png,md,txt,json}`
+- Indexed in: an `EVIDENCE_LOG.md` per workstream with row per evidence entry (path, agent, timestamp BRT, action, result)
+
+Acceptance gates that MUST enforce the triplet:
+
+- Any AQ-XX gate (AQ-07 build, AQ-08 routing verify, AQ-09 runtime smoke, future verifiers)
+- Any tenant write (import, publish, topic edit, SharePoint write, flow create/update)
+- Any test run claiming PASS
+- Any RCA finding
+- Any DONE/PUBLISH wording in any project doc
+
+If any of the three elements is missing, the entry is `INCOMPLETE` and cannot be cited as proof of DONE/PASS/PUBLISH. Re-execute the action with full triplet capture.
+
+Owner literal directive (preserved): *"todos testes e deploy somente são considerados entregues se tiver timestamp do agente, nome e evidência com printscreen"*.
+
+## Placeholder Backfill Rule (MANDATORY)
+
+Owner directive 2026-05-22: documents that are written ahead of the data they reference (e.g., release notes drafted before runtime smoke evidence exists, manuals authored before screenshots are captured, communication plans assembled before final stakeholder counts) MUST mark every pending data point with an explicit, machine-grep-able placeholder. The agent that produced the document is the agent responsible for backfilling each placeholder the moment the underlying data becomes available.
+
+Required practice:
+
+- Every placeholder uses the exact token `<<TODO_BACKFILL: <reason> (depends on: <upstream artifact path or task ID>)>>` so that automated grep can list all open placeholders at any time.
+- Each section that contains placeholders must include a `## Backfill Manifest` block at the bottom of the section listing each placeholder, the upstream evidence path, the responsible agent, and the trigger condition (e.g., "Codex #2 publishes `CODEX2/SMOKE/A1_ListarTarefas/REPORT.md` PASS").
+- The agent that owns the document MUST monitor `INVESTIGATION_LOG.md` and the upstream evidence folders in continuous-update cadence (per the Continuous Documentation Update Rule). The moment the upstream data lands, the placeholder is filled within 10 minutes, the document `Last updated:` header is refreshed, and the entry is logged in `DOC_UPDATES_LOG.md` with diff link.
+- A document with one or more open `<<TODO_BACKFILL: ...>>` placeholders is `INCOMPLETE`. It cannot be cited as DONE/PASS/PUBLISH. It cannot be sent to stakeholders.
+- Acceptance gate for any document with a Backfill Manifest: zero `<<TODO_BACKFILL:` matches under `git grep -F '<<TODO_BACKFILL:' <document>` once upstream evidence is available.
+- If upstream evidence does NOT arrive (task fails, smoke aborts, decision changes), the document MUST be either deleted or rewritten without the placeholders. Stale placeholders are not allowed to ship.
+
+Owner literal directive (preserved): *"deixe descrto nas golden rules que é mandatorio o preenchimento assim que for finalizado esses outros scenarios"*.
+
+This rule complements the Continuous Documentation Update Rule and the Evidence Triplet Rule. A document that includes placeholders for evidence is still subject to the Evidence Triplet Rule once the placeholders are backfilled.
+
+## Functional Definition of Done Rule (MANDATORY for all flows, topics, actions)
+Owner directive 2026-05-22: structural verification alone is NOT sufficient to declare any Power Automate flow, Copilot Studio topic, or action component DONE. The Definition of Done MUST be functional.
+
+A flow is DONE only when:
+
+1. A real runtime call to the flow returns real data from the backend (SharePoint / Planner / Teams), not a hardcoded placeholder string in the Response action body.
+2. The runtime call evidence is captured per the Evidence Triplet Rule (screenshot of `pac flow run` output or Power Automate run history or Copilot Studio test panel + timestamp BRT + agent name).
+3. The bot end-to-end test (Copilot Studio test panel or Teams chat) reproduces the same successful outcome and the bot-rendered response contains the real backend data.
+4. The action component `.mcs.yml` declares `inputs:` matching the workflow trigger schema.
+5. The topic `.mcs.yml` `BeginDialog input:` Power Fx mapping passes all required workflow trigger fields.
+6. No agent may write `DONE`, `PASS`, `PUBLISH_GO`, or equivalent in any project doc until conditions 1-5 above are evidenced.
+
+Verifiers (e.g., `Test-Aq08PostRemediationReverify.ps1` and successors) must include functional checks, not only structural component-name and binding-name matching. A verifier that returns PASS without evidencing conditions 1-5 above is itself a defect to be fixed.
+
+Owner literal directive (preserved): *"NAS GOLDEN RULES ESTA DESCRITO Q TODOS TESTES E DEPLOY SOMENTE SOA CONSIDERADOS ENTREGUES SE TIVER TIMESTAMP DO AGENTES, NOME E EVIDENCIA COM PRINTSCREEEN"*.
+
+This rule is retroactive: any past DONE/PUBLISH wording grounded only in structural evidence must be relabeled `STRUCTURAL_PASS_ONLY` until functional evidence is captured.
+
 ## Pre-Code-Ship Rules
 
 Before changing code or deployable artifacts:

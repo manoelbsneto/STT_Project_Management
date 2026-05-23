@@ -1,0 +1,5 @@
+Card File: deploy/cards/CriarTarefaCard.json
+Size: 3916 bytes (3.82 KB)
+Size Gate (< 27KB): PASS (Significantly below the strict 27KB limit, optimizing message payload)
+Encoding: 100% ASCII-safe
+Last measured: 2026-05-22 20:08:00 BRT

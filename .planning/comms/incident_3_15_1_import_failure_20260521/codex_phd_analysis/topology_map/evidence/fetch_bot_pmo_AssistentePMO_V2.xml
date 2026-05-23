@@ -1,0 +1,12 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="bot">
+    <attribute name="botid" />
+    <attribute name="schemaname" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter type="and">
+      <condition attribute="schemaname" operator="eq" value="pmo_AssistentePMO_V2" />
+    </filter>
+  </entity>
+</fetch>

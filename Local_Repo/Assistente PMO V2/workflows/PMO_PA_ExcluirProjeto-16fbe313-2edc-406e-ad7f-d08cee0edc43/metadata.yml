@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PMO_PA_ExcluirProjeto-16fbe313-2edc-406e-ad7f-d08cee0edc43/workflow.json
+workflowId: 16fbe313-2edc-406e-ad7f-d08cee0edc43
+name: PMO_PA_ExcluirProjeto
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

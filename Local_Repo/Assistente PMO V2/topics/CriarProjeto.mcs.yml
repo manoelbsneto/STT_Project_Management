@@ -1,0 +1,149 @@
+mcs.metadata:
+  componentName: CriarProjeto
+  description: Cria projeto na lista Projetos.
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: CriarProjeto
+    includeInOnSelectIntent: true
+    triggerQueries:
+      - criar projeto
+      - novo projeto
+      - abrir projeto
+      - registrar projeto
+  actions:
+    - kind: SetVariable
+      id: set_raw_input
+      variable: Topic.RawInput
+      value: =System.Activity.Text
+    - kind: SetVariable
+      id: parse_nome_projeto
+      variable: Topic.NomeProjeto
+      value: =If(IsMatch(Topic.RawInput, "criar\s+projeto\s*:\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "criar\s+projeto\s*:\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*nome\s*_?\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*projeto\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.RawInput, "criar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "criar\s+projeto\s*:\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank()))))
+    - kind: SetVariable
+      id: parse_pm
+      variable: Topic.PM
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*pm\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*pm\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_prazo
+      variable: Topic.Prazo
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*(?:prazo|data\s*alvo|dataalvo)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*(?:prazo|data\s*alvo|dataalvo)\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: SetVariable
+      id: parse_prioridade
+      variable: Topic.Prioridade
+      value: =If(IsMatch(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase), Trim(Match(Topic.RawInput, "(?:^|[,;\r\n])\s*prioridade\s*[:=]\s*(?<v>[^,\r\n]+)", MatchOptions.IgnoreCase).v), Blank())
+    - kind: ConditionGroup
+      id: ask_missing_nome_projeto
+      conditions:
+        - id: missing_nome_projeto
+          condition: =IsBlank(Topic.NomeProjeto)
+          actions:
+            - kind: Question
+              id: ask_nome_projeto
+              variable: Topic.NomeProjeto
+              prompt: Qual o nome do projeto?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_pm
+      conditions:
+        - id: missing_pm
+          condition: =IsBlank(Topic.PM)
+          actions:
+            - kind: Question
+              id: ask_pm
+              variable: Topic.PM
+              prompt: Qual o email do PM?
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prazo
+      conditions:
+        - id: missing_prazo
+          condition: =IsBlank(Topic.Prazo)
+          actions:
+            - kind: Question
+              id: ask_prazo
+              variable: Topic.Prazo
+              prompt: Qual o prazo do projeto? Use dd/MM/aaaa.
+              entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: ask_missing_prioridade
+      conditions:
+        - id: missing_prioridade
+          condition: =IsBlank(Topic.Prioridade)
+          actions:
+            - kind: Question
+              id: ask_prioridade
+              variable: Topic.Prioridade
+              prompt: Qual a prioridade? Baixa, Media, Alta ou Critica.
+              entity: StringPrebuiltEntity
+    - kind: Question
+      id: confirm_criar_projeto
+      variable: Topic.ConfirmacaoTexto
+      prompt: |-
+        Vou criar o projeto {Topic.NomeProjeto}. Confirma?
+      entity: StringPrebuiltEntity
+    - kind: ConditionGroup
+      id: confirm_branch
+      conditions:
+        - id: confirmed
+          condition: =Or(Lower(Trim(Topic.ConfirmacaoTexto)) = "sim", Lower(Trim(Topic.ConfirmacaoTexto)) = "s", Lower(Trim(Topic.ConfirmacaoTexto)) = "yes", Lower(Trim(Topic.ConfirmacaoTexto)) = "confirmo")
+          actions:
+            - kind: SetVariable
+              id: set_global_projeto_nome
+              variable: Global.PMO_Projeto_NomeProjeto
+              value: =Topic.NomeProjeto
+            - kind: SetVariable
+              id: set_global_projeto_pm
+              variable: Global.PMO_Projeto_PM
+              value: =Topic.PM
+            - kind: SetVariable
+              id: set_global_projeto_prazo
+              variable: Global.PMO_Projeto_Prazo
+              value: =Topic.Prazo
+            - kind: SetVariable
+              id: set_global_projeto_prioridade
+              variable: Global.PMO_Projeto_Prioridade
+              value: =Topic.Prioridade
+            - kind: BeginDialog
+              id: call_criar_projeto
+              input: {}
+              dialog: pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto
+              output:
+                binding:
+                  message: Topic.Result
+            - kind: ConditionGroup
+              id: send_safe_result
+              conditions:
+                - id: result_created
+                  condition: =Topic.Result = "Projeto criado com sucesso!"
+                  actions:
+                    - kind: SendActivity
+                      id: created
+                      activity: Projeto criado com sucesso.
+
+                - id: result_duplicate
+                  condition: =Topic.Result = "Ja existe um projeto com o nome especificado. Nenhum item duplicado foi criado."
+                  actions:
+                    - kind: SendActivity
+                      id: duplicate
+                      activity: Ja existe um projeto com esse nome. Nenhum item duplicado foi criado.
+
+                - id: result_invalid_date
+                  condition: =StartsWith(Topic.Result, "Prazo invalido.")
+                  actions:
+                    - kind: SendActivity
+                      id: invalid_date
+                      activity: Prazo invalido. Use dd/MM/aaaa.
+
+              elseActions:
+                - kind: SendActivity
+                  id: result_generic
+                  activity: Operacao concluida. Verifique o resultado no SharePoint.
+      elseActions:
+        - kind: SendActivity
+          id: cancelled
+          activity: Criacao cancelada.
+inputType: {}
+outputType: {}

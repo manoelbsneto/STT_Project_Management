@@ -1,0 +1,11 @@
+{
+  "projectTitle": "STT Project Management",
+  "projectId": "PRJ-2127A0E4",
+  "rag": "Amarelo",
+  "percentual": "35.5",
+  "resumo": "Fase Alpha concluida, integracao do bot iniciada no tenant",
+  "risco": "Nenhum risco critico no momento",
+  "bloqueio": "Aguardando smoke test de Codex #2",
+  "proximaAcao": "Liberar documentacao e iniciar homologacao",
+  "statusItemId": "1025"
+}

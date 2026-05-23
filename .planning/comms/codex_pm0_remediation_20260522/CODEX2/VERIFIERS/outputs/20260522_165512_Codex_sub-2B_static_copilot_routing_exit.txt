@@ -1,0 +1,5 @@
+timestamp_brt=2026-05-22 16:55:12 BRT
+agent=Codex sub-2B
+command=powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-CopilotRoutingInstructions.ps1 -PackagePath 'Solution/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip'
+exit_code=0
+output=.planning\comms\codex_pm0_remediation_20260522\CODEX2\VERIFIERS\outputs\20260522_165512_Codex_sub-2B_static_copilot_routing_output.txt

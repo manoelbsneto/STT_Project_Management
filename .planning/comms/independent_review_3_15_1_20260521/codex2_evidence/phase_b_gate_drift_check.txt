@@ -1,0 +1,9 @@
+G1 CONFIRMED zipEntries=60; xml=True; workflowRoots=12; workflowFiles=12; topicRoots=5; topicDataFiles=5
+G2 CONFIRMED workflowFilesCompared=12; mismatches=0
+G3 CONFIRMED topicDataFilesCompared=5; mismatches=0
+G4 CONFIRMED manifestTopicIds=5; expectedTopicIds=5; idDiffs=0
+G5 CONFIRMED topicsChecked=5; invalidBindingKeys=0
+G6 CONFIRMED topicsChecked=5; mismatches=0
+G7 CONFIRMED topicsChecked=5; legacyTopicRefs=0
+G8 CONFIRMED topicsChecked=5; nonAsciiTopics=0
+G9 CONFIRMED topicsChecked=5; unexpected=0; missing=0

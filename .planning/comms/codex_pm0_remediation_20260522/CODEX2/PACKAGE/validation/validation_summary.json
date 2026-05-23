@@ -1,0 +1,22 @@
+[
+  {
+    "name": "solution_xml_schema",
+    "exitCode": 0,
+    "outputPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\validation\\solution_xml_schema.txt"
+  },
+  {
+    "name": "solution_zip_p0_contracts",
+    "exitCode": 1,
+    "outputPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\validation\\solution_zip_p0_contracts.txt"
+  },
+  {
+    "name": "solution_zip_p24_contracts",
+    "exitCode": 1,
+    "outputPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\validation\\solution_zip_p24_contracts.txt"
+  },
+  {
+    "name": "pm0_placeholder_scan",
+    "exitCode": 0,
+    "outputPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\validation\\pm0_placeholder_scan.json"
+  }
+]

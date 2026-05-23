@@ -1,0 +1,15 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+solutioncomponentid                  componenttype objectid                             rootcomponentbehavior  rootsolutioncomponentid              solutionidversionnumber
+27d59178-154a-f111-bec7-000d3abc5cc6               6750ff2f-822b-45ab-83ec-058704c7808a Incluir subcomponentes 23d59178-154a-f111-bec7-000d3abc5cc6 97.450.688
+41d59178-154a-f111-bec7-000d3abc5cc6               bcbecd76-3158-40ac-b225-5ae7c3874ed1 Incluir subcomponentes                                      97.450.654
+29d59178-154a-f111-bec7-000d3abc5cc6               6750ff2f-822b-45ab-83ec-058704c7808a Incluir subcomponentes                                      97.450.634
+49d59178-154a-f111-bec7-000d3abc5cc6               ec4416d0-0744-4e8c-b937-aae4ad9c605b Incluir subcomponentes 23d59178-154a-f111-bec7-000d3abc5cc6 97.450.702
+4ad59178-154a-f111-bec7-000d3abc5cc6               ec4416d0-0744-4e8c-b937-aae4ad9c605b Incluir subcomponentes                                      97.450.662
+31d59178-154a-f111-bec7-000d3abc5cc6               74c5fdcc-c121-452e-85af-24d3f260b3c7 Incluir subcomponentes                                      97.450.642
+2fd59178-154a-f111-bec7-000d3abc5cc6               d58258b4-b17f-4bb9-9e1f-161287a041c4 Incluir subcomponentes                                      97.450.640
+30d59178-154a-f111-bec7-000d3abc5cc6               74c5fdcc-c121-452e-85af-24d3f260b3c7 Incluir subcomponentes 23d59178-154a-f111-bec7-000d3abc5cc6 97.450.692
+2ed59178-154a-f111-bec7-000d3abc5cc6               d58258b4-b17f-4bb9-9e1f-161287a041c4 Incluir subcomponentes 23d59178-154a-f111-bec7-000d3abc5cc6 97.450.691
+40d59178-154a-f111-bec7-000d3abc5cc6               bcbecd76-3158-40ac-b225-5ae7c3874ed1 Incluir subcomponentes 23d59178-154a-f111-bec7-000d3abc5cc6 97.450.698
+

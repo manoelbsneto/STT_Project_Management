@@ -1,0 +1,6 @@
+
+Gate Status Detail
+---- ------ ------
+G1   PASS   zipEntries=; xml=True; workflowRoots=12; workflowFiles=12; topicRoots=5; topicDataFiles=5
+
+

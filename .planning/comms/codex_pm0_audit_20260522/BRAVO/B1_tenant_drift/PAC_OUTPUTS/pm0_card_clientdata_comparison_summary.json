@@ -1,0 +1,62 @@
+[
+  {
+    "flowName": "PM0_PA_Card_AtualizarStatus",
+    "workflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+    "localPath": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "liveClientdataPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_AtualizarStatus_1721e0a3-a250-f111-bec7-000d3abc5cc6_live_clientdata.json",
+    "fieldDiffPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_AtualizarStatus_1721e0a3-a250-f111-bec7-000d3abc5cc6_field_diff.json",
+    "localSha256": "763D9EA3DB12E40B485CAC46E154705044E950DDBF655929955C770F81A4DDB8",
+    "liveSha256": "E4A63936E600FECEB3663B13AE105F7C195CF5A60ADC92F3ADF51BF53D20CDB2",
+    "localLeafCount": 50,
+    "liveLeafCount": 50,
+    "fieldDriftCount": 0
+  },
+  {
+    "flowName": "PM0_PA_Card_AtualizarTarefa",
+    "workflowId": "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+    "localPath": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "liveClientdataPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_AtualizarTarefa_7c6300c2-a250-f111-bec7-000d3abc5cc6_live_clientdata.json",
+    "fieldDiffPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_AtualizarTarefa_7c6300c2-a250-f111-bec7-000d3abc5cc6_field_diff.json",
+    "localSha256": "C842A77F8479485C91D27CA67103831EA660A94E053DF19C6FC9679223A83A4C",
+    "liveSha256": "30EC6F70410833B9B578D3EA1F95B193863B6A824467317744364582E6194B25",
+    "localLeafCount": 93,
+    "liveLeafCount": 93,
+    "fieldDriftCount": 0
+  },
+  {
+    "flowName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+    "workflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+    "localPath": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "liveClientdataPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_ResumoExecutivoPortfolio_8333bd91-a250-f111-bec7-000d3abc5cc6_live_clientdata.json",
+    "fieldDiffPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_ResumoExecutivoPortfolio_8333bd91-a250-f111-bec7-000d3abc5cc6_field_diff.json",
+    "localSha256": "B5BCD30982CF43769356394C5C4BF3DC14D1BA6FA58D23BBCE4FCA65E1930050",
+    "liveSha256": "519DB115949428505C208E2A54E3A19D871864B9DB69031EAC0C1CEB191D73B3",
+    "localLeafCount": 46,
+    "liveLeafCount": 46,
+    "fieldDriftCount": 0
+  },
+  {
+    "flowName": "PM0_PA_Card_CriarTarefa",
+    "workflowId": "7f662db7-a250-f111-bec7-000d3abc5cc6",
+    "localPath": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "liveClientdataPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_CriarTarefa_7f662db7-a250-f111-bec7-000d3abc5cc6_live_clientdata.json",
+    "fieldDiffPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_CriarTarefa_7f662db7-a250-f111-bec7-000d3abc5cc6_field_diff.json",
+    "localSha256": "9FF2FED6704E93F24357BEC49322D9CCCC33F13A7F6BA6C923898498C9B9682F",
+    "liveSha256": "DAE5B72E01E0046907A53E6276E423E4D98FA08B67B6CD3E367080E593A89306",
+    "localLeafCount": 91,
+    "liveLeafCount": 91,
+    "fieldDriftCount": 0
+  },
+  {
+    "flowName": "PM0_PA_Card_ListarTarefas",
+    "workflowId": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+    "localPath": "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json",
+    "liveClientdataPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_ListarTarefas_e0e3c6b0-a250-f111-bec7-000d3abc5cc6_live_clientdata.json",
+    "fieldDiffPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_audit_20260522\\BRAVO\\B1_tenant_drift\\PAC_OUTPUTS\\PM0_PA_Card_ListarTarefas_e0e3c6b0-a250-f111-bec7-000d3abc5cc6_field_diff.json",
+    "localSha256": "7C9F42DE0D8E606A417EAC04541E71841A2B4B5D9FF46C99E76CB4EF6BD3ADEE",
+    "liveSha256": "F9FE29928609CFB00C92D0FA1206651C646992FF1A08FC48260E62C2952D5EE0",
+    "localLeafCount": 64,
+    "liveLeafCount": 64,
+    "fieldDriftCount": 0
+  }
+]

@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+friendlyname                      modifiedon       ismanaged       uniquename      installedon version solutionid
+PMO v1.1 - Task Management Topics 14/05/2026 15:03 No administrada PMO_v11_Tarefas 04/05/2026  3.15    717abee5-98e8-45e7-8ce9-264b83b7faa5
+

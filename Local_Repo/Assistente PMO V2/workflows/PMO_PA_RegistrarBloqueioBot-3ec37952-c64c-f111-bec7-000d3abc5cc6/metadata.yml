@@ -1,0 +1,30 @@
+﻿jsonFileName: workflows/PMO_PA_RegistrarBloqueioBot-3ec37952-c64c-f111-bec7-000d3abc5cc6/workflow.json
+workflowId: 3ec37952-c64c-f111-bec7-000d3abc5cc6
+name: PMO_PA_RegistrarBloqueioBot
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.1.0.1
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 0
+primaryEntity: none

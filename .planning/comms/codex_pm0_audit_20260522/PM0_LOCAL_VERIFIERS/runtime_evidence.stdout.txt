@@ -1,0 +1,87 @@
+{
+    "evidencePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence",
+    "generatedAt":  "2026-05-22 16:05:52 -03:00",
+    "decision":  "FAIL_PM0_RUNTIME_EVIDENCE_INCOMPLETE",
+    "failureCount":  5,
+    "results":  [
+                    {
+                        "id":  "AtualizarStatus",
+                        "status":  "FAIL_MISSING_REQUIRED_FIELD",
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A5_CMD-10.md",
+                        "missingFields":  [
+                                              "timestamp_brt",
+                                              "observed_result",
+                                              "result"
+                                          ],
+                        "agent":  "\u003cOwner name or agent\u003e",
+                        "timestampBrt":  "\u003cYYYY-MM-DDTHH:MM:SS-03:00\u003e",
+                        "runUrlOrId":  "\u003cURL or run ID, or \"N/A\" if no flow was invoked\u003e",
+                        "result":  "PASS | FAIL | NOT_RUN"
+                    },
+                    {
+                        "id":  "AtualizarTarefa",
+                        "status":  "FAIL_MISSING_REQUIRED_FIELD",
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A4_CMD-13A.md",
+                        "missingFields":  [
+                                              "timestamp_brt",
+                                              "observed_result",
+                                              "result"
+                                          ],
+                        "agent":  "\u003cOwner name or agent\u003e",
+                        "timestampBrt":  "\u003cYYYY-MM-DDTHH:MM:SS-03:00\u003e",
+                        "runUrlOrId":  "\u003cURL or run ID, or \"N/A\" if no flow was invoked\u003e",
+                        "result":  "PASS | FAIL | NOT_RUN"
+                    },
+                    {
+                        "id":  "ConsultarPortfolio",
+                        "status":  "FAIL_MISSING_REQUIRED_FIELD",
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A2_CMD-15.md",
+                        "missingFields":  [
+                                              "timestamp_brt",
+                                              "observed_result",
+                                              "result"
+                                          ],
+                        "agent":  "\u003cOwner name or agent\u003e",
+                        "timestampBrt":  "\u003cYYYY-MM-DDTHH:MM:SS-03:00\u003e",
+                        "runUrlOrId":  "\u003cURL or run ID, or \"N/A\" if no flow was invoked\u003e",
+                        "result":  "PASS | FAIL | NOT_RUN"
+                    },
+                    {
+                        "id":  "CriarTarefa",
+                        "status":  "FAIL_MISSING_REQUIRED_FIELD",
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A3_CMD-11-P0.md",
+                        "missingFields":  [
+                                              "timestamp_brt",
+                                              "observed_result",
+                                              "result"
+                                          ],
+                        "agent":  "\u003cOwner name or agent\u003e",
+                        "timestampBrt":  "\u003cYYYY-MM-DDTHH:MM:SS-03:00\u003e",
+                        "runUrlOrId":  "\u003cURL or run ID, or \"N/A\" if no flow was invoked\u003e",
+                        "result":  "PASS | FAIL | NOT_RUN"
+                    },
+                    {
+                        "id":  "ListarTarefas",
+                        "status":  "FAIL_MISSING_REQUIRED_FIELD",
+                        "selectedEvidenceFile":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq09_smoke_runbook_20260520\\evidence\\A1_CMD-12-H.md",
+                        "missingFields":  [
+                                              "timestamp_brt",
+                                              "observed_result",
+                                              "result"
+                                          ],
+                        "agent":  "\u003cOwner name or agent\u003e",
+                        "timestampBrt":  "\u003cYYYY-MM-DDTHH:MM:SS-03:00\u003e",
+                        "runUrlOrId":  "\u003cURL or run ID, or \"N/A\" if no flow was invoked\u003e",
+                        "result":  "PASS | FAIL | NOT_RUN"
+                    }
+                ]
+}
+PM0 runtime evidence validation failed: FAIL_PM0_RUNTIME_EVIDENCE_INCOMPLETE; failures: AtualizarStatus, 
+AtualizarTarefa, ConsultarPortfolio, CriarTarefa, ListarTarefas
+No D:\VMs\Projetos\STT_Project_Management\tests\Test-Pm0RuntimeEvidence.ps1:161 caractere:5
++     throw "PM0 runtime evidence validation failed: $decision; failure ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (PM0 runtime evi..., ListarTarefas:String) [], RuntimeException
+    + FullyQualifiedErrorId : PM0 runtime evidence validation failed: FAIL_PM0_RUNTIME_EVIDENCE_INCOMPLETE; failures:  
+   AtualizarStatus, AtualizarTarefa, ConsultarPortfolio, CriarTarefa, ListarTarefas
+ 

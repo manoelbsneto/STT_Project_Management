@@ -1,0 +1,114 @@
+AQ-08 minimal-diff fixed YAML builder + gates
+============================================================
+
+=== AtualizarStatus.yaml ===
+  [PASS] G1 non-empty: 8605 bytes
+  [PASS] G2 no BOM: 
+  [PASS] G3 line endings: AS-IS CRLF=167 LF=0 | FIXED CRLF=158 LF=0
+  [PASS] G4 fixed YAML parses: 
+  [PASS] G5 structural swap edit lines <= 30: 13 edits across 4 ops
+    delete: AS-IS lines 2..2  FIXED lines 2..1
+      - AS-IS[2]: |# Purpose: parse long STT text, confirm, and call the PMO_PA_AtualizarStatus flow.|
+    replace: AS-IS lines 139..139  FIXED lines 138..138
+      - AS-IS[139]: |            - kind: InvokeFlowAction|
+      + FIXED[138]: |            - kind: BeginDialog|
+    replace: AS-IS lines 141..149  FIXED lines 140..141
+      - AS-IS[141]: |              input:|
+      - AS-IS[142]: |                binding:|
+      - AS-IS[143]: |                  nomeProjeto: =Global.PMO_Status_Projeto|
+      - ... (6 more removed)
+      + FIXED[140]: |              input: {}|
+      + FIXED[141]: |              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus|
+    replace: AS-IS lines 152..153  FIXED lines 144..144
+      - AS-IS[152]: |                  message: Topic.AtualizarStatusResult|
+      - AS-IS[153]: |              flowId: c11a165b-c64c-f111-bec7-7ced8d9559c1|
+      + FIXED[144]: |                  result: Topic.AtualizarStatusResult|
+  [PASS] G6 contains new action component: PM0_PA_Card_AtualizarStatus
+  [PASS] G6 no legacy action ref anywhere (incl. comments): checking absence of 'PMO_PA_AtualizarStatus'
+  [PASS] G6 no legacy flowId: checking absence of 'c11a165b-c64c-f111-bec7-7ced8d9559c1'
+  [PASS] G7 top-level keys preserved: ['beginDialog', 'inputType', 'kind', 'outputType', 'startBehavior']
+  [PASS] G8 new action component appears exactly once: count=1
+
+=== AtualizarTarefa.yaml ===
+  [PASS] G1 non-empty: 15260 bytes
+  [PASS] G2 no BOM: 
+  [PASS] G3 line endings: AS-IS CRLF=191 LF=0 | FIXED CRLF=191 LF=0
+  [PASS] G4 fixed YAML parses: 
+  [PASS] G5 simple swap = 1 edit line: 1 edits across 1 ops
+    replace: AS-IS lines 182..182  FIXED lines 182..182
+      - AS-IS[182]: |              dialog: pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa|
+      + FIXED[182]: |              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa|
+  [PASS] G6 contains new action component: PM0_PA_Card_AtualizarTarefa
+  [PASS] G6 no legacy action ref anywhere (incl. comments): checking absence of 'PMO_PA_AtualizarTarefa'
+  [PASS] G7 top-level keys preserved: ['beginDialog', 'kind']
+  [PASS] G8 new action component appears exactly once: count=1
+
+=== ConsultarPortfolio.yaml ===
+  [PASS] G1 non-empty: 1218 bytes
+  [PASS] G2 no BOM: 
+  [PASS] G3 line endings: AS-IS CRLF=39 LF=0 | FIXED CRLF=39 LF=0
+  [PASS] G4 fixed YAML parses: 
+  [PASS] G5 structural swap edit lines <= 30: 6 edits across 4 ops
+    delete: AS-IS lines 2..2  FIXED lines 2..1
+      - AS-IS[2]: |# Purpose: call the PMO_PA_ConsultarPortfolio flow and return portfolio counts.|
+    replace: AS-IS lines 27..27  FIXED lines 26..26
+      - AS-IS[27]: |    - kind: InvokeFlowAction|
+      + FIXED[26]: |    - kind: BeginDialog|
+    insert: AS-IS lines 29..28  FIXED lines 28..29
+      + FIXED[28]: |      input: {}|
+      + FIXED[29]: |      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio|
+    replace: AS-IS lines 31..32  FIXED lines 32..32
+      - AS-IS[31]: |          message: Topic.ConsultarPortfolioResult|
+      - AS-IS[32]: |      flowId: 39cf292d-c64c-f111-bec7-7ced8d955c6c|
+      + FIXED[32]: |          result: Topic.ConsultarPortfolioResult|
+  [PASS] G6 contains new action component: PM0_PA_Card_ResumoExecutivoPortfolio
+  [PASS] G6 no legacy action ref anywhere (incl. comments): checking absence of 'PMO_PA_ConsultarPortfolio'
+  [PASS] G6 no legacy flowId: checking absence of '39cf292d-c64c-f111-bec7-7ced8d955c6c'
+  [PASS] G7 top-level keys preserved: ['beginDialog', 'inputType', 'kind', 'outputType', 'startBehavior']
+  [PASS] G8 new action component appears exactly once: count=1
+
+=== CriarTarefa.yaml ===
+  [PASS] G1 non-empty: 6894 bytes
+  [PASS] G2 no BOM: 
+  [PASS] G3 line endings: AS-IS CRLF=160 LF=0 | FIXED CRLF=160 LF=0
+  [PASS] G4 fixed YAML parses: 
+  [PASS] G5 simple swap = 1 edit line: 1 edits across 1 ops
+    replace: AS-IS lines 149..149  FIXED lines 149..149
+      - AS-IS[149]: |              dialog: pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa|
+      + FIXED[149]: |              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa|
+  [PASS] G6 contains new action component: PM0_PA_Card_CriarTarefa
+  [PASS] G6 no legacy action ref anywhere (incl. comments): checking absence of 'PMO_PA_CriarTarefa'
+  [PASS] G7 top-level keys preserved: ['beginDialog', 'inputType', 'kind', 'outputType']
+  [PASS] G8 new action component appears exactly once: count=1
+
+=== ListarTarefas.yaml ===
+  [PASS] G1 non-empty: 2100 bytes
+  [PASS] G2 no BOM: 
+  [PASS] G3 line endings: AS-IS CRLF=46 LF=0 | FIXED CRLF=46 LF=0
+  [PASS] G4 fixed YAML parses: 
+  [PASS] G5 simple swap = 1 edit line: 1 edits across 1 ops
+    replace: AS-IS lines 41..41  FIXED lines 41..41
+      - AS-IS[41]: |      dialog: pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas|
+      + FIXED[41]: |      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas|
+  [PASS] G6 contains new action component: PM0_PA_Card_ListarTarefas
+  [PASS] G6 no legacy action ref anywhere (incl. comments): checking absence of 'PMO_PA_ListarTarefas'
+  [PASS] G7 top-level keys preserved: ['beginDialog', 'kind']
+  [PASS] G8 new action component appears exactly once: count=1
+
+============================================================
+WRITING (only PASS files):
+  wrote D:\VMs\Projetos\STT_Project_Management\.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\AtualizarStatus.yaml (8605 bytes)
+  wrote D:\VMs\Projetos\STT_Project_Management\.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\AtualizarTarefa.yaml (15260 bytes)
+  wrote D:\VMs\Projetos\STT_Project_Management\.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\ConsultarPortfolio.yaml (1218 bytes)
+  wrote D:\VMs\Projetos\STT_Project_Management\.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\CriarTarefa.yaml (6894 bytes)
+  wrote D:\VMs\Projetos\STT_Project_Management\.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\ListarTarefas.yaml (2100 bytes)
+
+============================================================
+SUMMARY
+  [PASS] AtualizarStatus.yaml
+  [PASS] AtualizarTarefa.yaml
+  [PASS] ConsultarPortfolio.yaml
+  [PASS] CriarTarefa.yaml
+  [PASS] ListarTarefas.yaml
+
+OverallDecision: PASS

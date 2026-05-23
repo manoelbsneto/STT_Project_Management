@@ -1,0 +1,82 @@
+ M .env.example
+ M .gitignore
+ M .planning/AGENT_CHECKIN_REGISTRY.md
+ M .planning/CURRENT_BASELINE.md
+ M .planning/GOLDEN_RULES.md
+ M .planning/START_HERE_CURRENT_STATUS.md
+ M .planning/STATE.md
+ M .planning/comms/AGENTIC_CHECKIN_ADAPTIVE_CARDS_PLANNER_20260514.md
+ M .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/AtualizarStatus.yaml
+ M .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/ConsultarPortfolio.yaml
+ M .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/CriarTarefa.yaml
+ M .planning/comms/aq09_smoke_runbook_20260520/AQ09_SMOKE_RUNBOOK.md
+ M .planning/milestones/M2_card_first_revision_v2/STATE.md
+ M .planning/stop_ship/MASTER_CHECKLIST.md
+ M .planning/stop_ship/RISK_REGISTER.md
+ M deploy/cards/AtualizarTarefaCard.json
+ M deploy/cards/CriarTarefaCard.json
+ M docs/MANUAL_OPERACIONAL_PMO.md
+ M frontend/pmo-executive-viewer/app.js
+ M frontend/pmo-executive-viewer/index.html
+ M frontend/pmo-executive-viewer/styles.css
+ M scripts/Build-Aq08FixedTopicYamls.py
+ M tests/Test-CriarTarefaCreatesTarefas.ps1
+ M tests/Test-CriarTarefaPublishBinding.ps1
+ M tests/Test-ListarTarefasContentSafeContract.ps1
+ M tests/Test-PMOFlowStopShipAudit.ps1
+ M tests/Test-SolutionZipP0Contracts.ps1
+ M tests/Test-SolutionZipP24Contracts.ps1
+?? .antigravitycli/c97771ea-dea3-42da-b89d-7e1bcf53641e.json
+?? .devcontainer/
+?? .env.local.example
+?? .github/workflows/
+?? .planning/comms/CODEX_PA_GEMINI_PA_TRACK_I_SOLUTION_HOTFIX_BUILD_20260521.md
+?? .planning/comms/CODEX_PA_P0_W2_TRACK_B_ANOMALY_REMEDIATION_v2_20260521.md
+?? .planning/comms/CODEX_QA_TRACK_H_DRIFT_MONITOR_AND_PREPOP_20260521.md
+?? .planning/comms/GEMINI_PA_TRACK_G_AQ09_SP_SIDE_EFFECTS_HARNESS_20260521.md
+?? .planning/comms/STATUS_REPORT_20260522/
+?? .planning/comms/aq08_drift_monitor_20260521/
+?? .planning/comms/aq08_flow_output_schemas_20260521/
+?? .planning/comms/aq08_topic_routing_verification_20260520/anomaly_20260521_0457/
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_publish_verify/
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/QA_EVIDENCE_v2.md
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/build_aq08_fixed_topic_yamls_v2_exit_code.txt
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/build_aq08_fixed_topic_yamls_v2_stderr.txt
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/fixed_topic_yamls/build_aq08_fixed_topic_yamls_v2_stdout.txt
+?? .planning/comms/aq08_topic_routing_verification_20260520/post_remediation_reverify/post_owner_edits_20260521_repaste_run1/
+?? .planning/comms/aq09_evidence_prepop_20260521/
+?? .planning/comms/aq09_sp_side_effects_harness_20260521/
+?? .planning/comms/codex_pm0_audit_20260522/
+?? .planning/comms/codex_pm0_remediation_20260522/
+?? .planning/comms/gemini_pa_audit_3_15_1_hotfix_topics_20260521/
+?? .planning/comms/gemini_pa_pre_publish_audit_3_15_20260521/
+?? .planning/comms/incident_3_15_1_import_failure_20260521/
+?? .planning/comms/independent_review_3_15_1_20260521/
+?? .planning/comms/solution_3_15_1_hotfix_topics_20260521/
+?? .planning/comms/track_h_cross_validation_20260521/
+?? .planning/power-platform-tooling-guide.md
+?? .planning/stop_ship/A1_FAIL_RCA_20260522.md
+?? .vscode/
+?? AGENTS.md
+?? Local_Repo/
+?? Local_Repo_Code_workspace.code-workspace
+?? PRD/PRD_PMO_M365_v2_0_M2_FINAL.md
+?? Solution/PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip
+?? Solution/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip
+?? deploy/cards/AtualizarStatusCard_v316.json
+?? deploy/cards/ListarTarefasCard_v316.json
+?? deploy/cards/ResumoExecutivoPortfolioCard_v316.json
+?? scripts/Build-Solution316Pm0FunctionalFix.ps1
+?? scripts/Close-DriftMonitorRun.ps1
+?? scripts/Diff-DriftTopicData.ps1
+?? scripts/Inspect-DriftMonitorProcess.ps1
+?? scripts/New-Solution316Pm0PackageEvidence.ps1
+?? setup-local-env.ps1
+?? tests/Build-Aq09EvidenceFromArtifacts.ps1
+?? tests/Test-Aq08PublishDriftMonitor.ps1
+?? tests/Test-Aq09SharePointSideEffects.ps1
+?? tests/Test-Pm0RuntimeEvidence.ps1
+?? tests/Test-Pm0TopicActionFlowContract.ps1
+?? tests/Test-Pm0WorkflowResponseSemantics.ps1
+?? tests/Test-SolutionXmlSchemaValidity.ps1
+?? tests/fixtures/

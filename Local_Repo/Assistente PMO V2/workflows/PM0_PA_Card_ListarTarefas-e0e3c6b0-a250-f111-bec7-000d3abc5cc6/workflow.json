@@ -1,0 +1,195 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_planner": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "pmo_sharedplanner_87b5f"
+        },
+        "api": {
+          "name": "shared_planner"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "9cbde7bc-3df8-45fc-863c-7935c9786a95"
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "description": "Action"
+                },
+                "projectId": {
+                  "type": "string",
+                  "description": "Project ID"
+                }
+              },
+              "required": [
+                "action",
+                "projectId"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "List_Planner_Tasks": {
+          "runAfter": {
+            "Get_Tarefas": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fcb9cb41-a8a1-4b2b-b467-b7af2ec8d3ab"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_planner",
+              "operationId": "ListTasks_V3",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_planner"
+            },
+            "parameters": {
+              "groupId": "96c5b0c4-46cc-46cd-8695-50451db74994",
+              "id": "-1kBj1PLv0qQM-R4PwkqbpcABv_P"
+            },
+            "authentication": "@parameters(\u0027$authentication\u0027)"
+          }
+        },
+        "Respond_Success": {
+          "runAfter": {
+            "Normalize_Tasks_Display": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "233f3f1e-a32b-4a6a-9622-163b1a9f72b6"
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "result": "@{outputs('Normalize_Tasks_Display')}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "title": "result",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Normalize_Tasks": {
+          "runAfter": {
+            "List_Planner_Tasks": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1ecc37e4-d2cf-4583-bf74-ab0725c3c274"
+          },
+          "type": "Select",
+          "inputs": {
+            "from": "@body(\u0027Get_Tarefas\u0027)?[\u0027value\u0027]",
+            "select": {
+              "plannerBucketId": "@item()?[\u0027PlannerBucketId\u0027]",
+              "plannerTaskId": "@item()?[\u0027PlannerTaskId\u0027]",
+              "title": "@item()?[\u0027Title\u0027]",
+              "projectId": "@item()?[\u0027ProjectID\u0027]",
+              "status": "@coalesce(item()?[\u0027Status\u0027]?[\u0027Value\u0027], item()?[\u0027Status\u0027])"
+            }
+          }
+        },
+        "Normalize_Tasks_Display": {
+          "runAfter": {
+            "Normalize_Tasks": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@if(equals(length(body('Get_Project_By_Name')?['value']), 0), concat('Projeto nao encontrado: ', triggerBody()?['projectId'], '.'), if(equals(length(body('Normalize_Tasks')), 0), concat('Nenhuma tarefa ativa para o projeto ', body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], '.'), concat('Tarefas do projeto ', body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], ' (', string(length(body('Normalize_Tasks'))), ' itens): ', string(body('Normalize_Tasks')))))"
+        },
+        "Get_Tarefas": {
+          "runAfter": {
+            "Get_Project_By_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "264ec4b3-d02d-4f49-84d5-81592ae68917"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Tarefas",
+              "$filter": "ProjectID eq '@{replace(coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId']),'''','''''')}' and Deleted eq 0",
+              "$top": 100
+            },
+            "authentication": "@parameters(\u0027$authentication\u0027)"
+          }
+        },
+        "Get_Project_By_Name": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "ProjectID eq '@{replace(triggerBody()?['projectId'],'''','''''')}' or Title eq '@{replace(triggerBody()?['projectId'],'''','''''')}' or NomeProjeto eq '@{replace(triggerBody()?['projectId'],'''','''''')}'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

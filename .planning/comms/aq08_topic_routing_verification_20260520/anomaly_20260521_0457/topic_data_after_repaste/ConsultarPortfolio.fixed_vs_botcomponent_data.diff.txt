@@ -1,0 +1,41 @@
+warning: in the working copy of '.planning\comms\aq08_topic_routing_verification_20260520\post_remediation_reverify\fixed_topic_yamls\ConsultarPortfolio.yaml', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\aq08_topic_routing_verification_20260520\anomaly_20260521_0457\topic_data_after_repaste\ConsultarPortfolio.botcomponent_data.yaml', CRLF will be replaced by LF the next time Git touches it
+diff --git "a/.planning\\comms\\aq08_topic_routing_verification_20260520\\post_remediation_reverify\\fixed_topic_yamls\\ConsultarPortfolio.yaml" "b/.planning\\comms\\aq08_topic_routing_verification_20260520\\anomaly_20260521_0457\\topic_data_after_repaste\\ConsultarPortfolio.botcomponent_data.yaml"
+index 778babc..9cb6192 100644
+--- "a/.planning\\comms\\aq08_topic_routing_verification_20260520\\post_remediation_reverify\\fixed_topic_yamls\\ConsultarPortfolio.yaml"
++++ "b/.planning\\comms\\aq08_topic_routing_verification_20260520\\anomaly_20260521_0457\\topic_data_after_repaste\\ConsultarPortfolio.botcomponent_data.yaml"
+@@ -1,6 +1,3 @@
+-# ConsultarPortfolio topic
+-# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarPortfolio.
+-# After creating the flow in Power Automate Classic Designer, replace flowId.
+ kind: AdaptiveDialog
+ startBehavior: CancelOtherTopics
+ beginDialog:
+@@ -22,6 +19,7 @@ beginDialog:
+       - quais projetos ativos
+       - dashboard
+       - visao geral
++
+   actions:
+     - kind: BeginDialog
+       id: invokeFlowAction_consultar_portfolio
+@@ -29,12 +27,16 @@ beginDialog:
+       dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio
+       output:
+         binding:
+-          message: Topic.ConsultarPortfolioResult
++          result: Topic.result
++
+     - kind: SendActivity
+       id: consultar_portfolio_done
+       activity: "{Topic.ConsultarPortfolioResult}"
++
+     - kind: EndDialog
+       id: end_consultar_portfolio
+       clearTopicQueue: true
++
+ inputType: {}
+-outputType: {}
+\ No newline at end of file
++outputType: {}
++

@@ -21,7 +21,7 @@ function Add-Check {
 try {
     [System.IO.Compression.ZipFile]::ExtractToDirectory($resolvedPackagePath, $tempRoot)
     $customizations = Get-Content -LiteralPath (Join-Path $tempRoot "customizations.xml") -Raw
-    $workflowPath = Get-ChildItem -LiteralPath (Join-Path $tempRoot "Workflows") -Filter "*CriarTarefa*.json" |
+    $workflowPath = Get-ChildItem -LiteralPath (Join-Path $tempRoot "Workflows") -Filter "PMO_PA_CriarTarefa*.json" |
         Where-Object { $_.Name -notmatch "CriarTarefa_V3" } |
         Select-Object -First 1 -ExpandProperty FullName
     $text = if ($workflowPath) { Get-Content -LiteralPath $workflowPath -Raw } else { "" }

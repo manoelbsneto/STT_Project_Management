@@ -1,0 +1,131 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "bleed": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "PMO Assistant - Daily Status Update",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Project: ${projectTitle}",
+          "spacing": "None",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "RAG Status",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${rag}",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Warning",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Progress",
+                  "size": "Small",
+                  "isSubtle": true,
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${percentual}%",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "color": "Good",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "FactSet",
+          "facts": [
+            {
+              "title": "Project ID:",
+              "value": "${projectId}"
+            },
+            {
+              "title": "Summary:",
+              "value": "${resumo}"
+            },
+            {
+              "title": "Risk:",
+              "value": "${risco}"
+            },
+            {
+              "title": "Blockers:",
+              "value": "${bloqueio}"
+            },
+            {
+              "title": "Next Action:",
+              "value": "${proximaAcao}"
+            }
+          ],
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Daily Status Item ID: ${statusItemId}",
+          "size": "Small",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="solutioncomponent">
+    <attribute name="solutioncomponentid" />
+    <attribute name="objectid" />
+    <attribute name="componenttype" />
+    <attribute name="rootcomponentbehavior" />
+    <attribute name="solutionid" />
+    <filter type="and">
+      <condition attribute="objectid" operator="eq" value="df148bf8-0a3e-495b-80c4-841dcb61d9a4" />
+    </filter>
+    <link-entity name="solution" from="solutionid" to="solutionid" link-type="inner" alias="solution">
+      <attribute name="solutionid" />
+      <attribute name="uniquename" />
+      <attribute name="friendlyname" />
+      <attribute name="version" />
+    </link-entity>
+    <order attribute="solutionid" />
+  </entity>
+</fetch>

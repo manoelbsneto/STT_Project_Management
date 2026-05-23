@@ -1,0 +1,10 @@
+{
+  "timestampBrt": "2026-05-22 16:56:05 BRT",
+  "agent": "Codex sub-2A",
+  "action": "package_inventory_hash_diff_regenerated",
+  "package": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+  "sha256": "663928667C785E4A0F6A3F9E548FB15E0E81758D27FC84A45E512084BF2C32AC",
+  "entryCount": 75,
+  "addedEntries": 15,
+  "removedEntries": 0
+}
