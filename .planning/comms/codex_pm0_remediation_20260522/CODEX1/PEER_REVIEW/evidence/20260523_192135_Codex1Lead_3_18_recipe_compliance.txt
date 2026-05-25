@@ -1,0 +1,8 @@
+Codex #1 Lead 3.18 recipe compliance
+Timestamp: 2026-05-23 19:21:35 BRT
+3.16 prescribed files matched: 13/13
+PM0_PA_OpsFailureHandling live 3.17 files preserved: 2/2
+Root XML checks passed: 12/17
+Failed recipe rows: 0
+Failed root checks: 5
+JSON: .planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\evidence\20260523_192135_Codex1Lead_3_18_recipe_compliance.json

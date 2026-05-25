@@ -1,0 +1,117 @@
+{
+  "package": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\package\\PMO_v11_Tarefas_3_18_PM0_FUNCTIONAL_FIX.zip",
+  "sha256": "757FC7A552B1708047F1D35CADD6ECB353B1A73289E4130F0AB6AC0DD27A13FF",
+  "copied": [
+    {
+      "rel": "Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "source": "3.16_fix",
+      "sha256": "31D6FFA24E75DF3EE9013E038B23ACECEED150B4D79BD21E7B1FA7FFF728B03B"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/botcomponent.xml",
+      "source": "3.16_fix",
+      "sha256": "D5C71838FC383B2E5B29754700B1707652FB06D24E0FA4DB4DA07E72A376E508"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data",
+      "source": "3.16_fix",
+      "sha256": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data",
+      "source": "3.16_fix",
+      "sha256": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7"
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "source": "3.16_fix",
+      "sha256": "6BF6D6C4FBB38BB5972A8CB22E6066EFD76460E46128968BA7BE89D37BE2E01E"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/botcomponent.xml",
+      "source": "3.16_fix",
+      "sha256": "4780FDF9BF624A9F790CE74A228058FB0619D8397225C01D5E66201991F71963"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data",
+      "source": "3.16_fix",
+      "sha256": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data",
+      "source": "3.16_fix",
+      "sha256": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1"
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "source": "3.16_fix",
+      "sha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/botcomponent.xml",
+      "source": "3.16_fix",
+      "sha256": "E48421BA775F5001B4FE76F9BCECCA9BD64BA23EF2C4583FB21FED4559798CA8"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data",
+      "source": "3.16_fix",
+      "sha256": "DC6C216ACD5D723C12B458B2B055C5E0848832C1BEA0DEB0B1E2FD4F00D20901"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data",
+      "source": "3.16_fix",
+      "sha256": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC"
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "source": "3.16_fix",
+      "sha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/botcomponent.xml",
+      "source": "3.16_fix",
+      "sha256": "12BD1E82DDB6F70A2329E08121D44E97B486C37EECD2586C385410845294EE3C"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data",
+      "source": "3.16_fix",
+      "sha256": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data",
+      "source": "3.16_fix",
+      "sha256": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319"
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "source": "3.16_fix",
+      "sha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/botcomponent.xml",
+      "source": "3.16_fix",
+      "sha256": "C4EAB635F9AE040DDB5D882EB7C39FA597717A1F02307F17DABFB1C681071809"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data",
+      "source": "3.16_fix",
+      "sha256": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data",
+      "source": "3.16_fix",
+      "sha256": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA"
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data",
+      "source": "3.16_fix",
+      "sha256": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC"
+    }
+  ],
+  "pm0WorkflowFiles": 5,
+  "pm0WorkflowsetBindings": 5,
+  "pm0WorkflowDefinitions": 5,
+  "opsFailurePreserved": true,
+  "finalPackageSha256": "270F569A0D34CB596115B8776A8354F88F184F1D2F772755416175A80D0A12FD",
+  "p24ContractRestore": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/data copied from 3.16 fix to restore Embedded connection mode"
+}

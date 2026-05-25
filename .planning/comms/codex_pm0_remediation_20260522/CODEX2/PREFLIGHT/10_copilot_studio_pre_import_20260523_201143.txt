@@ -1,0 +1,5 @@
+{
+    "requiredOperatorAction":  "Capture Copilot Studio Assistente PMO V2 overview showing publish state, version, and visible PM0 topic list.",
+    "expectedPngPattern":  "10_copilot_studio_pre_import_\u003cUTC\u003e.png",
+    "noUiWrite":  true
+}

@@ -1,0 +1,31 @@
+
+Unpacking Solution...
+
+Extracting D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\package\PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip to D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\pac_source_3_20
+
+Skipping localization
+Processing Component: Workflows
+ - PM0_PA_Card_AtualizarStatus
+ - PM0_PA_Card_AtualizarTarefa
+ - PM0_PA_Card_CriarTarefa
+ - PM0_PA_Card_ListarTarefas
+ - PM0_PA_Card_ResumoExecutivoPortfolio
+ - PMO_PA_AtualizarStatus
+ - PMO_PA_AtualizarTarefa
+ - PMO_PA_ConsultarPortfolio
+ - PMO_PA_ConsultarProjeto
+ - PMO_PA_CriarProjeto
+ - PMO_PA_CriarTarefa
+ - PMO_PA_ExcluirProjeto
+ - PMO_PA_ExcluirTarefa
+ - PMO_PA_ListarTarefas
+ - PMO_PA_PedirDecisaoBot
+ - PMO_PA_RegistrarBloqueioBot
+ - PMO_PA_RegistrarRiscoBot
+
+Unmanaged Extract complete.
+
+
+Unpacked Solution.
+
+

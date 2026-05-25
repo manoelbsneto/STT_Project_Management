@@ -1,0 +1,77 @@
+{
+    "TimestampBRT":  "2026-05-23 17:11:17 BRT",
+    "Agent":  "Codex #2 Bravo",
+    "PackagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+    "PackageSha256":  "3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB",
+    "EntryCount":  75,
+    "WorkflowsetPresent":  true,
+    "PM0ActionComponentCount":  5,
+    "PM0TopicComponentCount":  5,
+    "DuplicateZipEntryCount":  0,
+    "DuplicatePM0BotComponentCount":  0,
+    "WorkflowsetPM0LineCount":  5,
+    "FlowChecks":  [
+                       {
+                           "Flow":  "AtualizarStatus",
+                           "WorkflowEntryPresent":  true,
+                           "WorkflowsetHasAction":  true,
+                           "WorkflowsetHasWorkflowId":  true,
+                           "LocalWorkflowExists":  true,
+                           "RawShaMatches":  false,
+                           "CanonicalLeafDiffCount":  14,
+                           "UnexplainedLeafDiffCount":  0,
+                           "PlaceholderPatternPresent":  false
+                       },
+                       {
+                           "Flow":  "AtualizarTarefa",
+                           "WorkflowEntryPresent":  true,
+                           "WorkflowsetHasAction":  true,
+                           "WorkflowsetHasWorkflowId":  true,
+                           "LocalWorkflowExists":  true,
+                           "RawShaMatches":  false,
+                           "CanonicalLeafDiffCount":  11,
+                           "UnexplainedLeafDiffCount":  0,
+                           "PlaceholderPatternPresent":  false
+                       },
+                       {
+                           "Flow":  "CriarTarefa",
+                           "WorkflowEntryPresent":  true,
+                           "WorkflowsetHasAction":  true,
+                           "WorkflowsetHasWorkflowId":  true,
+                           "LocalWorkflowExists":  true,
+                           "RawShaMatches":  false,
+                           "CanonicalLeafDiffCount":  11,
+                           "UnexplainedLeafDiffCount":  0,
+                           "PlaceholderPatternPresent":  false
+                       },
+                       {
+                           "Flow":  "ListarTarefas",
+                           "WorkflowEntryPresent":  true,
+                           "WorkflowsetHasAction":  true,
+                           "WorkflowsetHasWorkflowId":  true,
+                           "LocalWorkflowExists":  true,
+                           "RawShaMatches":  false,
+                           "CanonicalLeafDiffCount":  2,
+                           "UnexplainedLeafDiffCount":  0,
+                           "PlaceholderPatternPresent":  false
+                       },
+                       {
+                           "Flow":  "ResumoExecutivoPortfolio",
+                           "WorkflowEntryPresent":  true,
+                           "WorkflowsetHasAction":  true,
+                           "WorkflowsetHasWorkflowId":  true,
+                           "LocalWorkflowExists":  true,
+                           "RawShaMatches":  false,
+                           "CanonicalLeafDiffCount":  6,
+                           "UnexplainedLeafDiffCount":  0,
+                           "PlaceholderPatternPresent":  false
+                       }
+                   ],
+    "WorkflowsetPM0Lines":  [
+                                "  \u003cbotcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\" workflowid.workflowid=\"1721e0a3-a250-f111-bec7-000d3abc5cc6\"\u003e",
+                                "  \u003cbotcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\" workflowid.workflowid=\"7c6300c2-a250-f111-bec7-000d3abc5cc6\"\u003e",
+                                "  \u003cbotcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\" workflowid.workflowid=\"8333bd91-a250-f111-bec7-000d3abc5cc6\"\u003e",
+                                "  \u003cbotcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\" workflowid.workflowid=\"7f662db7-a250-f111-bec7-000d3abc5cc6\"\u003e",
+                                "  \u003cbotcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\" workflowid.workflowid=\"e0e3c6b0-a250-f111-bec7-000d3abc5cc6\"\u003e"
+                            ]
+}

@@ -1,0 +1,7 @@
+Codex #2 Lead | 2026-05-24 09:19:08 BRT | DEEP DIVE 3.20 HOLD
+Mission: PM0-3_20-POST-IMPORT-VERIFY
+Verdict: HOLD
+Reason: PAC Dataverse auth expired (AADSTS70043); tenant runtime/export checks unavailable; AQ-08 live reverify invalid/auth-blocked.
+Import log SHA256: 0397356A0460837506B26B65896E278B55007FE7507423F510911DF3EF6F7D5F
+Import log finding: One real nonblank Sin procesar activation row for PM0_PA_Card_AtualizarStatus; no 0x80040216.
+PAC auth: Token Expires 24/04/2026 03:16:36 +00:00; Dataverse commands report AADSTS70043.

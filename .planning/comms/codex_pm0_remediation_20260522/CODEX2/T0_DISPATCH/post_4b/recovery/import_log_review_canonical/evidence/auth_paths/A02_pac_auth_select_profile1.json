@@ -1,0 +1,9 @@
+{
+  "id": "A02_pac_auth_select_profile1",
+  "title": "A.2 select each PAC profile then pac org who",
+  "startedBrt": "2026-05-24 10:47:27 BRT",
+  "status": "FAILED_OR_AUTH_BLOCKED",
+  "captureExit": 0,
+  "command": "pac auth select --index 1; pac org who",
+  "output": "New default profile:\r\n    * UNIVERSAL COLQA0424                      : mbenicios@minsait.com                    Public https://colofertasbrasilpro.crm4.dynamics.com/\r\n\r\nConnected as mbenicios@minsait.com\r\nConnected to... \r\nCould not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.\r\nMicrosoft PowerPlatform CLI\r\nVersion: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)\r\nOnline documentation: https://aka.ms/PowerPlatformCLI\r\nFeedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions\r\n\r\nError: Failed to connect to Dataverse\r\n    ExternalTokenManagement Authentication Requested but not configured correctly. 003\r\n        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 03c3808c-69d8-48c3-acf6-452070451400 Correlation ID: 03843b29-6bba-4d08-88d6-a32260d1aa0e Timestamp: 2026-05-24 13:48:10Z\r\n\r\nFailed to connect to Dataverse\r\nExternalTokenManagement Authentication Requested but not configured correctly. 003\r\nAADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 03c3808c-69d8-48c3-acf6-452070451400 Correlation ID: 03843b29-6bba-4d08-88d6-a32260d1aa0e Timestamp: 2026-05-24 13:48:10Z\r\n\r\n"
+}

@@ -1,0 +1,139 @@
+{
+  "exportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\post_import_3_18_export_after_apply.zip",
+  "exportSha256": "EEE550ACB5448240DCEB73F42CAB790529BCE7129275642AA1078E24D434DD51",
+  "expectedPackageSha256": "270F569A0D34CB596115B8776A8354F88F184F1D2F772755416175A80D0A12FD",
+  "shaClassification": "PASS_STRUCTURALLY_EQUIVALENT",
+  "solutionManifest": {
+    "UniqueName": "PMO_v11_Tarefas",
+    "Version": "3.18.0.0",
+    "Managed": "0"
+  },
+  "workflows": [
+    {
+      "Path": "Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "Present": true
+    },
+    {
+      "Path": "Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "Present": true
+    },
+    {
+      "Path": "Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "Present": true
+    },
+    {
+      "Path": "Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "Present": true
+    },
+    {
+      "Path": "Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "Present": true
+    }
+  ],
+  "actions": [
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasManualTaskInput": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasManualTaskInput": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasManualTaskInput": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasManualTaskInput": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasManualTaskInput": false
+    }
+  ],
+  "topics": [
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarStatus",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasInputBinding": true,
+      "ReferencesPm0Card": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasInputBinding": true,
+      "ReferencesPm0Card": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasInputBinding": false,
+      "ReferencesPm0Card": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.topic.CriarTarefa",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasInputBinding": true,
+      "ReferencesPm0Card": true
+    },
+    {
+      "Path": "botcomponents\\pmo_AssistentePMO_V2.topic.ListarTarefas",
+      "DirPresent": true,
+      "DataPresent": true,
+      "XmlPresent": true,
+      "HasInputBinding": true,
+      "ReferencesPm0Card": true
+    }
+  ],
+  "workflowsetLinks": [
+    {
+      "Name": "AtualizarStatus",
+      "Present": true
+    },
+    {
+      "Name": "AtualizarTarefa",
+      "Present": true
+    },
+    {
+      "Name": "CriarTarefa",
+      "Present": true
+    },
+    {
+      "Name": "ListarTarefas",
+      "Present": true
+    },
+    {
+      "Name": "ResumoExecutivoPortfolio",
+      "Present": true
+    }
+  ],
+  "opsFailureHandlingReferences": [
+    ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\post_import_3_18_export_after_apply_unpacked\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling\\botcomponent.xml"
+  ],
+  "passStructural": true,
+  "note": "Validated against peer-reviewed 3.18 recipe: four PM0 functional card actions carry ManualTaskInput; ConsultarPortfolio/ResumoExecutivoPortfolio is metadata-only with empty input and output binding."
+}

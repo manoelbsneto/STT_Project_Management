@@ -1,0 +1,27 @@
+{
+  "generatedAtBrt": "2026-05-24 09:59:14 BRT",
+  "canonical": {
+    "zipPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\canonical_package_3_20.zip",
+    "zipSha256": "ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC",
+    "solutionXml": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\canonical_package_3_20_raw\\solution.xml",
+    "uniqueName": "PMO_v11_Tarefas",
+    "version": "3.20.0.0",
+    "managed": "0",
+    "pm0WorkflowCount": 5,
+    "statusId": "@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))",
+    "origemEntradaValue": "CopilotStudio",
+    "percentualCreate": "@coalesce(triggerBody()?['percentual'], 0)"
+  },
+  "previousWrongImport": {
+    "zipPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\wrong_previous_package_3_18_label.zip",
+    "zipSha256": "F01CC9EE0A982969A7C0722E0DB41B43305A90942A784958D6D7228ED1B53027",
+    "solutionXml": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\wrong_previous_package_raw\\solution.xml",
+    "uniqueName": "PMO_v11_Tarefas",
+    "version": "3.18",
+    "managed": "0",
+    "pm0WorkflowCount": 5,
+    "statusId": "@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))",
+    "origemEntradaValue": "CopilotStudio",
+    "percentualCreate": "@coalesce(triggerBody()?['percentual'], 0)"
+  }
+}

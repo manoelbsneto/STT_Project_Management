@@ -4,23 +4,28 @@
 **M2 — Hybrid Card-First Revision** (active since 2026-05-20)
 
 ## Current Phase
-🔴 **M2 Phase 7 — PM0 local remediation and documentation complete**; SHIP=NO; awaiting Codex #2 live tenant smoke to backfill and Gate 9 SHIP decision.
+🟡 **M2 Phase 7 — T0/T1 COMPLETE; T2 BLOCKED on AtualizarStatus activation defect (RCA-confirmed); 3.20 candidate BUILT, awaiting peer review + Owner Gate 4A**. 3.19 imported by Owner 2026-05-23 ~19:34 BRT but `PM0_PA_Card_AtualizarStatus` failed activation (`0x80040216` — missing `item/StatusID`). RCA H1 CONFIRMED 2026-05-24 02:55:01 BRT. 3.20 BUILD COMPLETE 2026-05-24 03:16:05 BRT (Codex #2 Lead) SHA `ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC`.
 
-Last updated: 2026-05-22 17:18:30 BRT | Gemini Lead | Completed parallel design and documentation mission; backfilled Gate 3 package items.
+Last updated: 2026-05-24 03:16:05 BRT | Codex #2 Lead via Kiro | RCA-3_19-ATUALIZARSTATUS DONE; 3.20 BUILD COMPLETE; Codex #1 Lead peer review pending.
 
 ## 🚨 Critical Status
 
-AQ-09 A1 (ListarTarefas) FAILED. Codex PM0 audit merge at `.planning/comms/codex_pm0_audit_20260522/RCA_PM0_FLOWS_20260522.md` confirmed all five audited PM0 caller responses were non-dynamic, with workflow-body classification `STUB=1`, `PARTIAL=4`, `REAL=0`. Local PM0 workflows/actions/topics under `Local_Repo/Assistente PMO V2` now pass source guards and the scoped 3.16 ZIP passes local P0/P24/stop-ship/schema gates with SHA256 `3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB` (corrected 2026-05-22 18:06 BRT by Codex #2 Bravo; supersedes `4280EC92E29FC19C457273C6222ACC81383D0B59D66254578567AF42EC5EDD15`). AQ-08 routing PASS remains structural only, and runtime evidence remains NOT_RUN.
+Owner approved Option A (ship 3.16+) at 2026-05-23 10:25 BRT and ratified operational sub-decisions at 16:15 BRT. Mission evolved through 3.16 → 3.17 (Owner manual export drift) → 3.18 (rebuild, imported 23/05 ~20:53) → 3.19 (runtime fix, imported 23/05 ~19:34, post-import FAIL on AtualizarStatus) → 3.20 (StatusID fix, BUILT 2026-05-24 03:16:05 BRT, peer-review pending). Active tenant solution: `PMO_v11_Tarefas` 3.19.0.0 unmanaged. Latest local candidate: `Solution/.../PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip` SHA `ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC`. Bot last successful publish: 2026-05-22 14:40 BRT (from 3.15.1 publish event; no republish from 3.18 or 3.19 due to Track-Β halt). Open SEV-0 risk: RISK-013 still OPEN with RCA-confirmed scope. Real-time bottleneck: Codex #1 Lead independent peer review of 3.20 → Owner Gate 4A dispatch → tenant import → AtualizarStatus activation verification.
 
-Codex #1 PM0 audit artifacts are merged under `.planning/comms/codex_pm0_audit_20260522/`. Codex #1 performed local edits only; no tenant write was performed without owner approval.
+Coordinator file: `.planning/comms/codex_pm0_remediation_20260522/T0_FANOUT_DISPATCH_20260523_1615.md`
+**📊 Live progress board (single source of truth): `.planning/comms/codex_pm0_remediation_20260522/T0_PROGRESS_BOARD.md`**
+**📋 Canonical evidence-based backlog: `.planning/BACKLOG_EVIDENCE_BASED.md`** — active backlog only where current evidence proves the item remains open; retired/future/retrospective items are separated.
+Decision audit: `.planning/comms/codex_pm0_remediation_20260522/DECISION_RESPONSES/AGENT_DECISION_RESPONSES_PM0_CONTAINMENT_20260523.md` Sections 9–11
 
-### Owner Decision Required
+### Owner Decisions Ratified 2026-05-23 16:15 BRT
 
-| Option | Description | Time | Trade-off |
-|---|---|---|---|
-| **A** | Implement 5 flows real logic | 20-30h | Clean delivery, ship 2-3 days delayed |
-| **B** | Rollback to `3.10_POST_WFSET_CLEAN.zip` | 15min | M1 chat-first restored in prod, card-first deferred |
-| **C** | Keep current routing, NO-SHIP, BACKLOG-PM0-FLOWS-IMPLEMENTATION as next sprint | 0 | Current state stays in env (broken), proper sprint to fix |
+| # | Decision | Status |
+|---|---|---|
+| 1 | Containment path Option A (ship 3.16) | APPROVED 10:25 BRT |
+| 2 | Recovery via Owner's manual export of both solutions; no formal rollback ladder. Backup paths TBD by Owner. | APPROVED 16:15 BRT |
+| 3 | 3-gate model: 4A import / 4B publish / 4C AQ07 cleanup. AQ-09 Section A smoke mandatory between 4B and 4C. Post-import SHA read-back is evidence. | APPROVED 16:15 BRT |
+| 4 | Standing auth: Owner + any Codex execute Gate 4A and 4B without per-step approval. Gate 4C requires explicit Owner per-step approval. | APPROVED 16:15 BRT |
+| Cap | 15-actor parallel deployment authorized (overrides 3-subagent cap in `.planning/CURRENT_BASELINE.md` for this mission only). | APPROVED 16:04 BRT |
 
 ## Active Agents
 8 parallel tracks dispatching for Phase 1:

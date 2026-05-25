@@ -1,0 +1,1783 @@
+Static gates final generated UTC: 20260524_061103
+Package: .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+
+===== Test-SolutionXmlSchemaValidity =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-SolutionXmlSchemaValidity.ps1 -Path .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+{
+    "inputPath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+    "inputKind":  "Zip",
+    "solutionXmlManifest":  "solution.xml",
+    "metadataSource":  "OfficialMicrosoftCache",
+    "metadataReference":  "https://learn.microsoft.com/en-us/power-apps/developer/data-platform/reference/entities/solutioncomponent#componenttype-choicesoptions",
+    "metadataDetail":  "Cached SolutionComponent.componenttype choices from Microsoft Learn.",
+    "metadataFallbackReason":  null,
+    "allowedComponentTypeCount":  90,
+    "rootComponentCount":  17,
+    "invalidRootComponentCount":  0,
+    "passed":  true,
+    "rootComponents":  [
+                           {
+                               "id":  "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           },
+                           {
+                               "id":  "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+                               "type":  "29",
+                               "valid":  true,
+                               "issue":  null
+                           }
+                       ],
+    "issues":  [
+
+               ]
+}
+ExitCode: 0
+
+===== PM0 placeholder scan =====
+Command: rg -n 'TODO_BACKFILL|PLACEHOLDER|REPLACE_ME|FIXME' .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\unpacked_3_20 (pass when no matches)
+PASS: no placeholders matched.
+ExitCode: 0
+
+===== Test-Pm0WorkflowResponseSemantics =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-Pm0WorkflowResponseSemantics.ps1 -SourceRoot .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\pm0_source_from_package
+{
+    "sourceRoot":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package",
+    "generatedAt":  "2026-05-24 03:11:05 -03:00",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus has a Skills response action",
+                       "passed":  true,
+                       "evidence":  "At least one Response action must return output to Copilot Studio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus has SharePoint or Planner lineage",
+                       "passed":  true,
+                       "evidence":  "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus response Respond_Success is not audited placeholder",
+                       "passed":  true,
+                       "evidence":  "Observed result: @{concat(\u0027Status registrado para \u0027, triggerBody()?[\u0027projectId\u0027], \u0027. RAG: \u0027, triggerBody()?[\u0027rag\u0027], \u0027. Percentual: \u0027, string(coalesce(triggerBody()?[\u0027percentual\u0027], 0)), \u0027%. Status item: \u0027, string(body(\u0027Create_StatusDiario\u0027)?[\u0027ID\u0027]), \u0027. Projeto item: \u0027, string(body(\u0027Update_SharePoint_Project\u0027)?[\u0027ID\u0027]), \u0027. Teams card: \u0027, coalesce(string(body(\u0027Post_Status_Card\u0027)?[\u0027id\u0027]), \u0027posted\u0027))}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus response Respond_Success is dynamic or feature-derived",
+                       "passed":  true,
+                       "evidence":  "Static success-only text cannot prove PMO data/output semantics: @{concat(\u0027Status registrado para \u0027, triggerBody()?[\u0027projectId\u0027], \u0027. RAG: \u0027, triggerBody()?[\u0027rag\u0027], \u0027. Percentual: \u0027, string(coalesce(triggerBody()?[\u0027percentual\u0027], 0)), \u0027%. Status item: \u0027, string(body(\u0027Create_StatusDiario\u0027)?[\u0027ID\u0027]), \u0027. Projeto item: \u0027, string(body(\u0027Update_SharePoint_Project\u0027)?[\u0027ID\u0027]), \u0027. Teams card: \u0027, coalesce(string(body(\u0027Post_Status_Card\u0027)?[\u0027id\u0027]), \u0027posted\u0027))}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa has a Skills response action",
+                       "passed":  true,
+                       "evidence":  "At least one Response action must return output to Copilot Studio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa has SharePoint or Planner lineage",
+                       "passed":  true,
+                       "evidence":  "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa response Respond_Success is not audited placeholder",
+                       "passed":  true,
+                       "evidence":  "Observed result: @{concat(\u0027Tarefa \u0027, coalesce(triggerBody()?[\u0027taskId\u0027], triggerBody()?[\u0027spItemId\u0027]), \u0027 atualizada para \u0027, coalesce(triggerBody()?[\u0027status\u0027], triggerBody()?[\u0027taskStatus\u0027], string(body(\u0027Update_SharePoint_Item\u0027)?[\u0027Status\u0027]?[\u0027Value\u0027]), \u0027\u0027), \u0027. Responsavel: \u0027, if(empty(triggerBody()?[\u0027responsavel\u0027]), \u0027mantido\u0027, triggerBody()?[\u0027responsavel\u0027]), \u0027. Prazo: \u0027, if(empty(triggerBody()?[\u0027dataFim\u0027]), \u0027mantido\u0027, triggerBody()?[\u0027dataFim\u0027]), \u0027. Item SP: \u0027, string(body(\u0027Update_SharePoint_Item\u0027)?[\u0027ID\u0027]), \u0027. Planner percent: \u0027, string(outputs(\u0027Determine_Bucket_and_Percent\u0027)?[\u0027percentComplete\u0027]), \u0027.\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa response Respond_Success is dynamic or feature-derived",
+                       "passed":  true,
+                       "evidence":  "Static success-only text cannot prove PMO data/output semantics: @{concat(\u0027Tarefa \u0027, coalesce(triggerBody()?[\u0027taskId\u0027], triggerBody()?[\u0027spItemId\u0027]), \u0027 atualizada para \u0027, coalesce(triggerBody()?[\u0027status\u0027], triggerBody()?[\u0027taskStatus\u0027], string(body(\u0027Update_SharePoint_Item\u0027)?[\u0027Status\u0027]?[\u0027Value\u0027]), \u0027\u0027), \u0027. Responsavel: \u0027, if(empty(triggerBody()?[\u0027responsavel\u0027]), \u0027mantido\u0027, triggerBody()?[\u0027responsavel\u0027]), \u0027. Prazo: \u0027, if(empty(triggerBody()?[\u0027dataFim\u0027]), \u0027mantido\u0027, triggerBody()?[\u0027dataFim\u0027]), \u0027. Item SP: \u0027, string(body(\u0027Update_SharePoint_Item\u0027)?[\u0027ID\u0027]), \u0027. Planner percent: \u0027, string(outputs(\u0027Determine_Bucket_and_Percent\u0027)?[\u0027percentComplete\u0027]), \u0027.\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio has a Skills response action",
+                       "passed":  true,
+                       "evidence":  "At least one Response action must return output to Copilot Studio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio has SharePoint or Planner lineage",
+                       "passed":  true,
+                       "evidence":  "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio response Respond_Success is not audited placeholder",
+                       "passed":  true,
+                       "evidence":  "Observed result: @{concat(\u0027Portfolio PMO: \u0027, string(length(body(\u0027Get_Projetos\u0027)?[\u0027value\u0027])), \u0027 projetos; \u0027, string(length(body(\u0027Get_Tarefas\u0027)?[\u0027value\u0027])), \u0027 tarefas. Fonte: SharePoint Projetos e Tarefas.\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio response Respond_Success is dynamic or feature-derived",
+                       "passed":  true,
+                       "evidence":  "Static success-only text cannot prove PMO data/output semantics: @{concat(\u0027Portfolio PMO: \u0027, string(length(body(\u0027Get_Projetos\u0027)?[\u0027value\u0027])), \u0027 projetos; \u0027, string(length(body(\u0027Get_Tarefas\u0027)?[\u0027value\u0027])), \u0027 tarefas. Fonte: SharePoint Projetos e Tarefas.\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa has a Skills response action",
+                       "passed":  true,
+                       "evidence":  "At least one Response action must return output to Copilot Studio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa has SharePoint or Planner lineage",
+                       "passed":  true,
+                       "evidence":  "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa response Respond_Success is not audited placeholder",
+                       "passed":  true,
+                       "evidence":  "Observed result: @{concat(\u0027Tarefa criada: \u0027, coalesce(triggerBody()?[\u0027title\u0027], triggerBody()?[\u0027taskTitle\u0027], string(body(\u0027Create_SharePoint_Item\u0027)?[\u0027Title\u0027]), \u0027\u0027), \u0027 (Projeto \u0027, coalesce(body(\u0027Get_Project_By_Name\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027], triggerBody()?[\u0027projectId\u0027]), \u0027, Item SP \u0027, string(body(\u0027Create_SharePoint_Item\u0027)?[\u0027ID\u0027]), \u0027, Planner \u0027, coalesce(string(body(\u0027Create_Planner_Task\u0027)?[\u0027id\u0027]), \u0027\u0027), \u0027, Bucket \u0027, outputs(\u0027Determine_Bucket_and_Status\u0027)?[\u0027status\u0027], \u0027).\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa response Respond_Success is dynamic or feature-derived",
+                       "passed":  true,
+                       "evidence":  "Static success-only text cannot prove PMO data/output semantics: @{concat(\u0027Tarefa criada: \u0027, coalesce(triggerBody()?[\u0027title\u0027], triggerBody()?[\u0027taskTitle\u0027], string(body(\u0027Create_SharePoint_Item\u0027)?[\u0027Title\u0027]), \u0027\u0027), \u0027 (Projeto \u0027, coalesce(body(\u0027Get_Project_By_Name\u0027)?[\u0027value\u0027]?[0]?[\u0027ProjectID\u0027], triggerBody()?[\u0027projectId\u0027]), \u0027, Item SP \u0027, string(body(\u0027Create_SharePoint_Item\u0027)?[\u0027ID\u0027]), \u0027, Planner \u0027, coalesce(string(body(\u0027Create_Planner_Task\u0027)?[\u0027id\u0027]), \u0027\u0027), \u0027, Bucket \u0027, outputs(\u0027Determine_Bucket_and_Status\u0027)?[\u0027status\u0027], \u0027).\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas has a Skills response action",
+                       "passed":  true,
+                       "evidence":  "At least one Response action must return output to Copilot Studio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas has SharePoint or Planner lineage",
+                       "passed":  true,
+                       "evidence":  "Release-scoped PM0 flow must derive caller-visible result from PMO backend data or side effect."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas response Respond_Success is not audited placeholder",
+                       "passed":  true,
+                       "evidence":  "Observed result: @{outputs(\u0027Normalize_Tasks_Display\u0027)}"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas response Respond_Success is dynamic or feature-derived",
+                       "passed":  true,
+                       "evidence":  "Static success-only text cannot prove PMO data/output semantics: @{outputs(\u0027Normalize_Tasks_Display\u0027)}"
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-Pm0TopicActionFlowContract =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-Pm0TopicActionFlowContract.ps1 -SourceRoot .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\pm0_source_from_package
+{
+    "sourceRoot":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package",
+    "generatedAt":  "2026-05-24 03:11:06 -03:00",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarStatus topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\topics\\AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 1721e0a3-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "AtualizarStatus calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input routeKey",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input routeKey",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input rag",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input rag",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input resumo",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input resumo",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input routeKey",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input rag",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input resumo",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input percentual",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input risco",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input bloqueio",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input proximaAcao",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarTarefa topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\topics\\AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 7c6300c2-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "AtualizarTarefa calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action."
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input spItemId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input taskId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input status",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input taskStatus",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input comments",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input horasRealizadas",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input responsavel",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input dataFim",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input prioridade",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_ResumoExecutivoPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\topics\\ConsultarPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 8333bd91-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio has no required workflow inputs to propagate",
+                       "passed":  true,
+                       "evidence":  "Workflow trigger required list is empty."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "CriarTarefa topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\topics\\CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 7f662db7-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "CriarTarefa calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: projectId, action."
+                   },
+                   {
+                       "name":  "CriarTarefa maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: projectId, action."
+                   },
+                   {
+                       "name":  "CriarTarefa maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input title",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input taskTitle",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input responsavel",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input prazo",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input horas",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input prioridade",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input bucket",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input dueDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input endDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input startDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input plannerBucketName",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "ListarTarefas topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\topics\\ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow e0e3c6b0-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "ListarTarefas calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action, projectId."
+                   },
+                   {
+                       "name":  "ListarTarefas maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action, projectId."
+                   },
+                   {
+                       "name":  "ListarTarefas maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "ListarTarefas maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "ListarTarefas maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-PMOFlowStopShipAudit =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-PMOFlowStopShipAudit.ps1 -SolutionSourcePath .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\unpacked_3_20
+{
+    "solutionSourcePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "JSON parse: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json"
+                   },
+                   {
+                       "name":  "No user-visible mojibake: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must not contain corrupted UTF-8 sequences that render as trash in Teams/Power Automate."
+                   },
+                   {
+                       "name":  "No invoker runtime source: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must not force per-user connector consent for PMO flows."
+                   },
+                   {
+                       "name":  "No raw APIM token auth: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Solution package must use connection reference authentication."
+                   },
+                   {
+                       "name":  "ASCII-only workflow text: PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+                       "passed":  true,
+                       "evidence":  "Flow text must avoid accents, emoji, cedilla, and special punctuation."
+                   },
+                   {
+                       "name":  "Solution text is ASCII-only",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Solution text has no mojibake",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Solution has no deleted original bot schema references",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "CriarProjeto has no padLeft",
+                       "passed":  true,
+                       "evidence":  "Power Automate template language does not support padLeft in this tenant."
+                   },
+                   {
+                       "name":  "CriarProjeto duplicate lookup uses DateTime day range",
+                       "passed":  true,
+                       "evidence":  "Avoid SharePoint DateTime eq string comparison."
+                   },
+                   {
+                       "name":  "CriarProjeto maps required PM person field",
+                       "passed":  true,
+                       "evidence":  "Projetos.PM is required by provisioning."
+                   },
+                   {
+                       "name":  "CriarProjeto supports critical priority choice",
+                       "passed":  true,
+                       "evidence":  "Projetos.Prioridade uses ASCII Critica choice."
+                   },
+                   {
+                       "name":  "CriarProjeto writes Projetos only",
+                       "passed":  true,
+                       "evidence":  "REQ-14: project creation must not write Tarefas."
+                   },
+                   {
+                       "name":  "CriarTarefa writes Tarefas only",
+                       "passed":  true,
+                       "evidence":  "REQ-15: task creation must not create/update Projetos."
+                   },
+                   {
+                       "name":  "CriarTarefa resolves active project",
+                       "passed":  true,
+                       "evidence":  "REQ-15: task creation requires active non-deleted project."
+                   },
+                   {
+                       "name":  "ListarTarefas targets Tarefas list",
+                       "passed":  true,
+                       "evidence":  "Flow must query the provisioned task list."
+                   },
+                   {
+                       "name":  "ListarTarefas completed filter uses ASCII choice",
+                       "passed":  true,
+                       "evidence":  "Completed count must use ASCII SharePoint choice value."
+                   },
+                   {
+                       "name":  "ListarTarefas accepts NomeProjeto input",
+                       "passed":  true,
+                       "evidence":  "Flow must accept a human project name, not only ProjectID."
+                   },
+                   {
+                       "name":  "ListarTarefas resolves NomeProjeto to ProjectID",
+                       "passed":  true,
+                       "evidence":  "Flow must lookup Projetos by NomeProjeto/ProjectID before querying Tarefas."
+                   },
+                   {
+                       "name":  "ListarTarefas handles project not found",
+                       "passed":  true,
+                       "evidence":  "Avoid listing empty tasks when the project name is invalid."
+                   },
+                   {
+                       "name":  "ListarTarefas response is deterministic ultra-safe plain text",
+                       "passed":  true,
+                       "evidence":  "Avoid Markdown-heavy or verbose dynamic output that can trigger Copilot Studio Responsible AI filters."
+                   },
+                   {
+                       "name":  "ListarTarefas suppresses SharePoint free-text and verbose task fields before response",
+                       "passed":  true,
+                       "evidence":  "Live runtime showed even verbose deterministic rows can be blocked; bot-visible response keeps a static confirmation only."
+                   },
+                   {
+                       "name":  "ListarTarefas uses single-line output instead of literal or dynamic line breaks",
+                       "passed":  true,
+                       "evidence":  "Avoid raw or dynamic line-break patterns in bot-visible output."
+                   },
+                   {
+                       "name":  "ListarTarefas keeps response schema stable",
+                       "passed":  true,
+                       "evidence":  "Copilot action contract remains a single result string with static runtime-safe content."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio returns active project names",
+                       "passed":  true,
+                       "evidence":  "listar projetos ativos must return project names, not only counts."
+                   },
+                   {
+                       "name":  "ListarTarefas action binds NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "Copilot action must pass NomeProjeto into the flow trigger contract."
+                   },
+                   {
+                       "name":  "ListarTarefas topic asks for name or code",
+                       "passed":  true,
+                       "evidence":  "Topic must collect a project name as a first-class input."
+                   },
+                   {
+                       "name":  "ListarTarefas topic parses inline project input",
+                       "passed":  true,
+                       "evidence":  "Topic must parse inline commands such as listar tarefas PRJ-001."
+                   },
+                   {
+                       "name":  "AtualizarTarefa targets Tarefas list",
+                       "passed":  true,
+                       "evidence":  "Flow must update the provisioned task list."
+                   },
+                   {
+                       "name":  "AtualizarTarefa uses SharePoint choice path for Status",
+                       "passed":  true,
+                       "evidence":  "PatchItem choice fields must use /Value parameter paths."
+                   },
+                   {
+                       "name":  "AtualizarTarefa uses SharePoint choice path for Prioridade",
+                       "passed":  true,
+                       "evidence":  "PatchItem choice fields must use /Value parameter paths."
+                   },
+                   {
+                       "name":  "AtualizarTarefa preserves required PM as claims",
+                       "passed":  true,
+                       "evidence":  "Projeto updates must not patch raw person objects."
+                   },
+                   {
+                       "name":  "AtualizarTarefa normalizes critical priority",
+                       "passed":  true,
+                       "evidence":  "Tarefas.Prioridade uses ASCII Critica choice."
+                   },
+                   {
+                       "name":  "AtualizarTarefa has project lookup guard",
+                       "passed":  true,
+                       "evidence":  "Avoid unguarded first() when ProjectID is missing."
+                   },
+                   {
+                       "name":  "AtualizarTarefa overdue comparison is date-normalized",
+                       "passed":  true,
+                       "evidence":  "Avoid treating today\u0027s date as overdue due to UTC time."
+                   },
+                   {
+                       "name":  "AtualizarTarefa skip tokens preserve optional fields",
+                       "passed":  true,
+                       "evidence":  "Optional AtualizarTarefa inputs must treat 0/nao/n/short n-token as keep-current instead of patching invalid SharePoint values."
+                   },
+                   {
+                       "name":  "CheckIn adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "EscalarRiscoCritico adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "RegistrarDecisaoBoard adaptive-card flow excluded cleanly",
+                       "passed":  true,
+                       "evidence":  "Core release may exclude unrouted adaptive-card flows only when no workflow, bot action, binding, dependency, or solution component remains."
+                   },
+                   {
+                       "name":  "Provisioning creates Tarefas list",
+                       "passed":  true,
+                       "evidence":  "ListarTarefas and AtualizarTarefa depend on this list."
+                   },
+                   {
+                       "name":  "Provisioning pilot projects include PM",
+                       "passed":  true,
+                       "evidence":  "Projetos.PM is required."
+                   },
+                   {
+                       "name":  "No orphaned pmo_AssistentePMO ghost bot components",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Bot workflow bindings target active V2 components only",
+                       "passed":  true,
+                       "evidence":  "Workflow bindings must target active V2 action components and not stale direct topic bindings."
+                   },
+                   {
+                       "name":  "No unrouted adaptive action workflow bindings",
+                       "passed":  true,
+                       "evidence":  "Teams/Outlook adaptive-card action bindings must stay out of the core release until routed and dependency-clean."
+                   },
+                   {
+                       "name":  "No unresolved solution dependencies",
+                       "passed":  true,
+                       "evidence":  "Release package must not contain unresolved solution dependencies."
+                   },
+                   {
+                       "name":  "No unresolved Teams/Outlook kit connection references",
+                       "passed":  true,
+                       "evidence":  "Teams/Outlook kit references require explicit connection references or removal from the core package; PM0 AtualizarStatus may include the Teams card connector when declared."
+                   },
+                   {
+                       "name":  "No unused gstf SharePoint connection reference",
+                       "passed":  true,
+                       "evidence":  "Remove unused legacy SharePoint connection reference noise."
+                   },
+                   {
+                       "name":  "Preview-only batch has no orphan workflow",
+                       "passed":  true,
+                       "evidence":  "Preview-only batch topic must not ship an unused workflow root component."
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-SolutionZipP0Contracts =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-SolutionZipP0Contracts.ps1 -PackagePath .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Zip has solution.xml",
+                       "passed":  true,
+                       "evidence":  "Package must be a valid Dataverse solution zip."
+                   },
+                   {
+                       "name":  "Zip has [Content_Types].xml",
+                       "passed":  true,
+                       "evidence":  "Required by Dataverse solution package format."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio returns project names",
+                       "passed":  true,
+                       "evidence":  "P0: listar projetos ativos must return names."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic routes listar projetos ativos",
+                       "passed":  true,
+                       "evidence":  "P0: user phrase must be reachable."
+                   },
+                   {
+                       "name":  "ListarTarefas accepts NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "P0: flow trigger must accept a project name or code; PM0 carries it in projectId and resolves it before task lookup."
+                   },
+                   {
+                       "name":  "ListarTarefas resolves project before tasks",
+                       "passed":  true,
+                       "evidence":  "P0: resolve NomeProjeto/ProjectID to canonical ProjectID."
+                   },
+                   {
+                       "name":  "ListarTarefas has not-found guard",
+                       "passed":  true,
+                       "evidence":  "P0: invalid or empty project lookups must not return placeholder success."
+                   },
+                   {
+                       "name":  "ListarTarefas topic asks name or code",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must collect a human-friendly input."
+                   },
+                   {
+                       "name":  "ListarTarefas topic parses inline project input",
+                       "passed":  true,
+                       "evidence":  "Copilot topic must handle commands such as listar tarefas PRJ-001 without a second prompt."
+                   },
+                   {
+                       "name":  "ListarTarefas action binds NomeProjeto",
+                       "passed":  true,
+                       "evidence":  "Action must pass the collected project name/code into the flow."
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-SolutionZipP24Contracts =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-SolutionZipP24Contracts.ps1 -PackagePath .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip -ExpectedVersion 3.20.0.0
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Zip entries use Dataverse path separators",
+                       "passed":  true,
+                       "evidence":  "Dataverse import resolves manifest paths with /, not Windows backslashes."
+                   },
+                   {
+                       "name":  "Zip contains AtualizarStatus workflow at manifest path",
+                       "passed":  true,
+                       "evidence":  "Import log failed when /Workflows/... was not present as a ZIP entry."
+                   },
+                   {
+                       "name":  "No UTF-8 BOM in workflow/clientdata files",
+                       "passed":  true,
+                       "evidence":  "Checked Workflows/*.json and botcomponents/*/data entries."
+                   },
+                   {
+                       "name":  "Zip has solution.xml",
+                       "passed":  true,
+                       "evidence":  "Required Dataverse solution manifest."
+                   },
+                   {
+                       "name":  "Zip has customizations.xml",
+                       "passed":  true,
+                       "evidence":  "Required customizations manifest."
+                   },
+                   {
+                       "name":  "Zip has [Content_Types].xml",
+                       "passed":  true,
+                       "evidence":  "Required package content type manifest."
+                   },
+                   {
+                       "name":  "All workflow JsonFileName manifest paths exist in ZIP",
+                       "passed":  true,
+                       "evidence":  ""
+                   },
+                   {
+                       "name":  "Package version is 3.20.0.0",
+                       "passed":  true,
+                       "evidence":  "Solution version must match the active release candidate."
+                   },
+                   {
+                       "name":  "No runtimeSource invoker",
+                       "passed":  true,
+                       "evidence":  "No per-user invoker connection source."
+                   },
+                   {
+                       "name":  "No raw APIM token auth",
+                       "passed":  true,
+                       "evidence":  "No unsupported raw connection token auth."
+                   },
+                   {
+                       "name":  "No physical SharePoint delete operation",
+                       "passed":  true,
+                       "evidence":  "Logical delete only."
+                   },
+                   {
+                       "name":  "No Premium/Graph/HTTP connector markers",
+                       "passed":  true,
+                       "evidence":  "Standard-only package."
+                   },
+                   {
+                       "name":  "No solution missing dependencies",
+                       "passed":  true,
+                       "evidence":  "Release package must not ship unresolved solution dependencies."
+                   },
+                   {
+                       "name":  "No unresolved Teams/Outlook kit references",
+                       "passed":  true,
+                       "evidence":  "Teams/Outlook adaptive-card flows must stay dependency-clean; PM0 AtualizarStatus may include the Teams card connector when declared."
+                   },
+                   {
+                       "name":  "No unused gstf SharePoint reference",
+                       "passed":  true,
+                       "evidence":  "Release package must not include unused legacy connection references."
+                   },
+                   {
+                       "name":  "No unsupported padLeft expression",
+                       "passed":  true,
+                       "evidence":  "Power Automate template language in this tenant does not support padLeft."
+                   },
+                   {
+                       "name":  "No legacy DataAlvo eq Compose_DataAlvo filter",
+                       "passed":  true,
+                       "evidence":  "SharePoint DateTime filters must use day ranges, not string equality."
+                   },
+                   {
+                       "name":  "CriarProjeto topic exists",
+                       "passed":  true,
+                       "evidence":  "Project creation must have its own topic."
+                   },
+                   {
+                       "name":  "CriarProjeto excludes task trigger phrases",
+                       "passed":  true,
+                       "evidence":  "Project topic cannot own task intent."
+                   },
+                   {
+                       "name":  "CriarProjeto prompt requires Brazilian date",
+                       "passed":  true,
+                       "evidence":  "User-facing project prazo prompt must use Brazilian date format."
+                   },
+                   {
+                       "name":  "CriarTarefa topic exists",
+                       "passed":  true,
+                       "evidence":  "Task creation must have its own topic."
+                   },
+                   {
+                       "name":  "CriarTarefa excludes project trigger phrases",
+                       "passed":  true,
+                       "evidence":  "Task topic cannot own project intent."
+                   },
+                   {
+                       "name":  "CriarTarefa title parser ignores command prefix",
+                       "passed":  true,
+                       "evidence":  "The parser must not capture \u0027criar tarefa:\u0027 as the task title."
+                   },
+                   {
+                       "name":  "CriarTarefa prompt requires Brazilian date",
+                       "passed":  true,
+                       "evidence":  "User-facing prazo prompt must use Brazilian date format."
+                   },
+                   {
+                       "name":  "CriarTarefa parses full one-shot command",
+                       "passed":  true,
+                       "evidence":  "One-line command must not re-ask fields already present."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos topic exists",
+                       "passed":  true,
+                       "evidence":  "Batch topic required."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos topic routes batch phrases",
+                       "passed":  true,
+                       "evidence":  "Batch phrases required."
+                   },
+                   {
+                       "name":  "CriarProjeto flow subtest",
+                       "passed":  true,
+                       "evidence":  "Project flow contract."
+                   },
+                   {
+                       "name":  "CriarProjeto parser subtest",
+                       "passed":  true,
+                       "evidence":  "Project topic parser contract."
+                   },
+                   {
+                       "name":  "CriarProjeto publish binding subtest",
+                       "passed":  true,
+                       "evidence":  "Project topic must call an action component, not direct CloudFlow."
+                   },
+                   {
+                       "name":  "CriarTarefa flow subtest",
+                       "passed":  true,
+                       "evidence":  "Task flow contract."
+                   },
+                   {
+                       "name":  "CriarTarefa parser subtest",
+                       "passed":  true,
+                       "evidence":  "Task topic parser contract."
+                   },
+                   {
+                       "name":  "CriarTarefa publish binding subtest",
+                       "passed":  true,
+                       "evidence":  "Topic must call an action component, not direct CloudFlow."
+                   },
+                   {
+                       "name":  "ListarTarefas content-safe response subtest",
+                       "passed":  true,
+                       "evidence":  "Blocks Markdown-heavy/untrusted flow output that can trigger Copilot ContentFiltered."
+                   },
+                   {
+                       "name":  "Gerar_Multiplos_Projetos subtest",
+                       "passed":  true,
+                       "evidence":  "Batch flow/topic contract."
+                   },
+                   {
+                       "name":  "CriarProjeto content-safe output subtest",
+                       "passed":  true,
+                       "evidence":  "Project action output must be mapped to static bot text."
+                   },
+                   {
+                       "name":  "Copilot routing instructions subtest",
+                       "passed":  true,
+                       "evidence":  "Project creation must route to CriarProjeto in GPT and fallback instructions."
+                   },
+                   {
+                       "name":  "PedirDecisao topic validation subtest",
+                       "passed":  true,
+                       "evidence":  "Decision topic must block invalid approver UPN before invoking Power Automate."
+                   },
+                   {
+                       "name":  "Power Fx regex safety subtest",
+                       "passed":  true,
+                       "evidence":  "Package must not contain Copilot Studio-invalid regex character classes."
+                   },
+                   {
+                       "name":  "AtualizarTarefa skip semantics subtest",
+                       "passed":  true,
+                       "evidence":  "Updating optional task fields with skip tokens must preserve current SharePoint values."
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-CopilotRoutingInstructions =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-CopilotRoutingInstructions.ps1 -PackagePath .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "Default GPT instructions exist",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.gpt.default/data."
+                   },
+                   {
+                       "name":  "LowConfidence fallback exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.LowConfidence/data."
+                   },
+                   {
+                       "name":  "CriarProjeto topic exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.CriarProjeto/data."
+                   },
+                   {
+                       "name":  "CriarTarefa topic exists",
+                       "passed":  true,
+                       "evidence":  "Expected pmo_AssistentePMO_V2.topic.CriarTarefa/data."
+                   },
+                   {
+                       "name":  "Project creation routes to CriarProjeto",
+                       "passed":  true,
+                       "evidence":  "One-shot project requests must not be sent to CriarTarefa."
+                   },
+                   {
+                       "name":  "Task creation routes to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "Task requests still need the task topic."
+                   },
+                   {
+                       "name":  "No combined project/task instruction to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "This exact instruction caused observed one-shot project misrouting."
+                   },
+                   {
+                       "name":  "Fallback project creation routes to CriarProjeto",
+                       "passed":  true,
+                       "evidence":  "Unknown project-create phrases must redirect to CriarProjeto."
+                   },
+                   {
+                       "name":  "Fallback task creation routes to CriarTarefa",
+                       "passed":  true,
+                       "evidence":  "Unknown task-create phrases must still redirect to CriarTarefa."
+                   },
+                   {
+                       "name":  "Fallback task route excludes project phrases",
+                       "passed":  true,
+                       "evidence":  "Project creation must not be captured by detect_criar_tarefa."
+                   },
+                   {
+                       "name":  "Project topic advertises project phrases",
+                       "passed":  true,
+                       "evidence":  "CriarProjeto needs direct trigger coverage."
+                   },
+                   {
+                       "name":  "Task topic does not advertise project creation phrase",
+                       "passed":  true,
+                       "evidence":  "Task topic must not compete for project creation utterances."
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Test-CopilotPowerFxRegexSafety =====
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\Test-CopilotPowerFxRegexSafety.ps1 -PackagePath .planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+{
+    "packagePath":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "All Power Fx regex literal hyphens are escaped",
+                       "passed":  true,
+                       "evidence":  ""
+                   }
+               ]
+}
+ExitCode: 0
+
+===== Status Diario required-field gap check =====
+Command: Custom static check: required fields present in Create_StatusDiario item
+{
+  "Required": [
+    "Title",
+    "StatusID",
+    "ProjectID",
+    "DataRegistro",
+    "RAG",
+    "Resumo",
+    "OrigemEntrada"
+  ],
+  "SentKeys": [
+    "dataset",
+    "table",
+    "item/Title",
+    "item/StatusID",
+    "item/ProjectID",
+    "item/DataRegistro",
+    "item/RAG/Value",
+    "item/Resumo",
+    "item/Percentual",
+    "item/Risco",
+    "item/Bloqueio",
+    "item/ProximaAcao",
+    "item/OrigemEntrada/Value"
+  ],
+  "Missing": [],
+  "MissingCount": 0
+}
+ExitCode: 0
+

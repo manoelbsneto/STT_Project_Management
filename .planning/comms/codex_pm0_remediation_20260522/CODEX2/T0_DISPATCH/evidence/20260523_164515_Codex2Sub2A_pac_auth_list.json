@@ -1,0 +1,10 @@
+{
+  "agent": "Codex #2 Sub 2A",
+  "timestamp_brt": "2026-05-23 16:45:15 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164515_Codex2Sub2A_pac_auth_list.png",
+  "action_classification": "READ_ONLY_TENANT_DISCOVERY",
+  "command": "pac auth list",
+  "exit_code": 0,
+  "stdout": "Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url\r\n[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/\r\n",
+  "stderr": ""
+}

@@ -1,0 +1,197 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-23 16:48:58 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164858_Codex2Lead_pinned_az_pac_probe.png
+Action: Pinned executable read-only AZ/PAC identity and role-discovery probe for Dataverse Step 03 403.
+AZ path: C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin\az.cmd
+PAC path: C:\Users\dataops-lab\AppData\Local\Microsoft\PowerAppsCli\Microsoft.PowerApps.CLI.2.6.4\tools\pac.exe
+
+COMMAND: az account show --output json
+EXIT: 0
+STDOUT:
+{
+  "environmentName": "AzureCloud",
+  "homeTenantId": "edd5b6c2-b6eb-444e-9bab-4c29290938ff",
+  "id": "d869175e-4031-443b-8a43-57c5730bd82f",
+  "isDefault": true,
+  "managedByTenants": [],
+  "name": "Pago pelo Uso",
+  "state": "Enabled",
+  "tenantDefaultDomain": "manoelbeniciogmail.onmicrosoft.com",
+  "tenantDisplayName": "Default Directory",
+  "tenantId": "edd5b6c2-b6eb-444e-9bab-4c29290938ff",
+  "user": {
+    "name": "manoel.benicio@icloud.com",
+    "type": "user"
+  }
+}
+
+STDERR:
+
+
+COMMAND: pac --version
+EXIT: 1
+STDOUT:
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Not a valid command. Try running 'pac [command] help'.
+
+Hints: 
+  Parse failed on:            --version
+  Current command:            (None)
+  Is this a known command?    No, was it misspelled?
+  Is this a known argument?   Yes
+  Was it quote wrapped?       No, be sure to wrap values that contain spaces.
+
+Usage: pac [admin] [application] [auth] [canvas] [catalog] [code] [connection] [connector] [copilot] [data] [env] [help] [managed-identity] [model] [modelbuilder] [package] [pages] [pcf] [pipeline] [plugin] [power-fx] [solution] [telemetry] [test] [tool]
+
+  admin                       Work with your Power Platform Admin Account.
+  application                 Commands for listing and installing available Dataverse applications from Microsoft Marketplace.
+  auth                        Manage how you authenticate to various services.
+  canvas                      Operating with Power Apps .msapp files.
+  catalog                     Commands for working with Catalog in Power Platform.
+  code                        (Preview) Commands to manage your Code apps.
+  connection                  Commands for working with Dataverse connection.
+  connector                   Commands for working with Power Platform Connectors.
+  copilot                     Tools and utilities for copilot management.
+  data                        Import and export data from Dataverse.
+  env                         Work with your Dataverse organization.
+  help                        Show help for the Microsoft Power Platform CLI.
+  managed-identity            Commands for managing Managed Identity records for Dataverse components.
+  model                       (Preview) Commands for working with model-driven apps.
+  modelbuilder                Code Generator for Dataverse APIs and Tables.
+  package                     Commands for working with Dataverse package projects.
+  pages                       Commands for working with Power Pages website.
+  pcf                         Commands for working with Power Apps component framework projects.
+  pipeline                    Work with Pipelines.
+  plugin                      Commands for working with Dataverse plug-in class library.
+  power-fx                    (Preview) Commands for working with Power Fx.
+  solution                    Commands for working with Dataverse solution projects.
+  telemetry                   Manage telemetry settings.
+  test                        (Preview) Execution of automated tests for a Power App.
+  tool                        Power Platform tools that can be installed and launched.
+
+
+STDERR:
+
+
+COMMAND: pac auth list
+EXIT: 0
+STDOUT:
+Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url
+[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/
+
+
+STDERR:
+
+
+COMMAND: pac env who
+EXIT: 0
+STDOUT:
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+Organization Information
+  Org ID:                     e0b9c35e-79a2-ef11-8a66-000d3a24857a
+  Unique Name:                unqe0b9c35e79a2ef118a66000d3a248
+  Friendly Name:              ColOfertasBrasilPro
+  Org URL:                    https://colofertasbrasilpro.crm4.dynamics.com/
+  User Email:                 mbenicios@minsait.com
+  User ID:                    1f9b0044-42e2-f011-8544-6045bd91772f
+  Environment ID:             e2d10003-4d8e-e007-9d63-76d5fe89ef56
+
+STDERR:
+
+
+COMMAND: pac admin --help
+EXIT: 1
+STDOUT:
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Unneeded argument was passed.
+
+Usage: pac admin [list] [list-groups] [add-group] [list-roles] [create] [backup] [set-backup-retention-period] [delete] [reset] [list-backups] [restore] [copy] [status] [assign-user] [assign-group] [self-elevate] [list-app-templates] [create-service-principal] [list-service-principal] [set-governance-config] [list-tenant-settings] [update-tenant-settings] [application] [dlp-policy] [set-runtime-state]
+
+  list                        List all environments from your tenant.
+  list-groups                 List environment groups from your tenant.
+  add-group                   Add environment to a group.
+  list-roles                  List security roles from a Dataverse environment.
+  create                      Creates a Dataverse instance in your tenant.
+  backup                      Takes a manual backup of your environment.
+  set-backup-retention-period Sets the backup retention period in days as provided. Valid values are: 7, 14, 21, 28.
+  delete                      Deletes the environment from your tenant.
+  reset                       Reset the environment from your tenant.
+  list-backups                Lists all backups of your environment.
+  restore                     Restores an environment to a given backup.
+  copy                        Copy Source Environment to Destination Environment.
+  status                      This command lists the status of all the operations in progress.
+  assign-user                 Assign a user to a target Dataverse environment with specified security role.
+  assign-group                Assign group to target Dataverse environment with specified security role.
+  self-elevate                Self-elevate to System Administrator role in an environment (requires Global admin, Power Platform admin, or Dynamics 365 admin).
+  list-app-templates          Lists all supported Dataverse templates of model-driven apps in Dynamics 365.
+  create-service-principal    Add Microsoft Entra ID application and associated application user to the Dataverse environment.
+  list-service-principal      List Microsoft Entra ID applications which have access to Dataverse.
+  set-governance-config       Enable, disable, and edit managed environments.
+  list-tenant-settings        List tenant settings.
+  update-tenant-settings      Update tenant settings.
+  application                 Work with Microsoft Entra ID applications.
+  dlp-policy                  Work with Data Loss Prevention (DLP) policies.
+  set-runtime-state           Update environment administration mode.
+
+
+
+STDERR:
+
+
+COMMAND: pac admin list-active-users --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56
+EXIT: 1
+STDOUT:
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Not a valid command. Try running 'pac [command] help'.
+
+Hints: 
+  Parse failed on:            list-active-users
+  Current command:            admin
+  Is this a known command?    No, was it misspelled?
+  Is this a known argument?   No, was it misspelled?
+  Was it quote wrapped?       No, be sure to wrap values that contain spaces.
+
+Usage: pac [admin] [application] [auth] [canvas] [catalog] [code] [connection] [connector] [copilot] [data] [env] [help] [managed-identity] [model] [modelbuilder] [package] [pages] [pcf] [pipeline] [plugin] [power-fx] [solution] [telemetry] [test] [tool]
+
+  admin                       Work with your Power Platform Admin Account.
+  application                 Commands for listing and installing available Dataverse applications from Microsoft Marketplace.
+  auth                        Manage how you authenticate to various services.
+  canvas                      Operating with Power Apps .msapp files.
+  catalog                     Commands for working with Catalog in Power Platform.
+  code                        (Preview) Commands to manage your Code apps.
+  connection                  Commands for working with Dataverse connection.
+  connector                   Commands for working with Power Platform Connectors.
+  copilot                     Tools and utilities for copilot management.
+  data                        Import and export data from Dataverse.
+  env                         Work with your Dataverse organization.
+  help                        Show help for the Microsoft Power Platform CLI.
+  managed-identity            Commands for managing Managed Identity records for Dataverse components.
+  model                       (Preview) Commands for working with model-driven apps.
+  modelbuilder                Code Generator for Dataverse APIs and Tables.
+  package                     Commands for working with Dataverse package projects.
+  pages                       Commands for working with Power Pages website.
+  pcf                         Commands for working with Power Apps component framework projects.
+  pipeline                    Work with Pipelines.
+  plugin                      Commands for working with Dataverse plug-in class library.
+  power-fx                    (Preview) Commands for working with Power Fx.
+  solution                    Commands for working with Dataverse solution projects.
+  telemetry                   Manage telemetry settings.
+  test                        (Preview) Execution of automated tests for a Power App.
+  tool                        Power Platform tools that can be installed and launched.
+
+
+STDERR:
+

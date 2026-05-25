@@ -1,0 +1,5 @@
+Agent: Codex #1 Lead
+Timestamp: 2026-05-23 19:06:13 BRT
+Status: IN PROGRESS
+Task: Evidence-based backlog rewrite per Owner directive.
+Tenant write commands: None

@@ -1,0 +1,74 @@
+﻿{
+    "generatedAt":  "2026-05-24 09:16:21 -03:00",
+    "mode":  "LivePacReadOnly",
+    "evidenceDir":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\aq08_post_remediation_reverify_3_20",
+    "overall":  "BLOCK",
+    "blockingTopicCount":  5,
+    "topics":  [
+                   {
+                       "topicName":  "AtualizarStatus",
+                       "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+                       "expectedActionComponent":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+                       "expectedWorkflowId":  "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+                       "foundTopic":  false,
+                       "hasExpectedActionReferenceInTopic":  false,
+                       "legacyHitsInTopic":  [
+
+                                             ],
+                       "expectedActionWorkflowBound":  false,
+                       "status":  "BLOCK"
+                   },
+                   {
+                       "topicName":  "AtualizarTarefa",
+                       "topicSchemaName":  "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+                       "expectedActionComponent":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+                       "expectedWorkflowId":  "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+                       "foundTopic":  false,
+                       "hasExpectedActionReferenceInTopic":  false,
+                       "legacyHitsInTopic":  [
+
+                                             ],
+                       "expectedActionWorkflowBound":  false,
+                       "status":  "BLOCK"
+                   },
+                   {
+                       "topicName":  "ConsultarPortfolio",
+                       "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+                       "expectedActionComponent":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+                       "expectedWorkflowId":  "8333bd91-a250-f111-bec7-000d3abc5cc6",
+                       "foundTopic":  false,
+                       "hasExpectedActionReferenceInTopic":  false,
+                       "legacyHitsInTopic":  [
+
+                                             ],
+                       "expectedActionWorkflowBound":  false,
+                       "status":  "BLOCK"
+                   },
+                   {
+                       "topicName":  "CriarTarefa",
+                       "topicSchemaName":  "pmo_AssistentePMO_V2.topic.CriarTarefa",
+                       "expectedActionComponent":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+                       "expectedWorkflowId":  "7f662db7-a250-f111-bec7-000d3abc5cc6",
+                       "foundTopic":  false,
+                       "hasExpectedActionReferenceInTopic":  false,
+                       "legacyHitsInTopic":  [
+
+                                             ],
+                       "expectedActionWorkflowBound":  false,
+                       "status":  "BLOCK"
+                   },
+                   {
+                       "topicName":  "ListarTarefas",
+                       "topicSchemaName":  "pmo_AssistentePMO_V2.topic.ListarTarefas",
+                       "expectedActionComponent":  "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+                       "expectedWorkflowId":  "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+                       "foundTopic":  false,
+                       "hasExpectedActionReferenceInTopic":  false,
+                       "legacyHitsInTopic":  [
+
+                                             ],
+                       "expectedActionWorkflowBound":  false,
+                       "status":  "BLOCK"
+                   }
+               ]
+}

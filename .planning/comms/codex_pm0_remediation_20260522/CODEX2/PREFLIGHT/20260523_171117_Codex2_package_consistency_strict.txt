@@ -1,0 +1,17 @@
+Evidence Triplet - Codex #2 Package Consistency Strict Check
+Timestamp BRT: 2026-05-23 17:11:17 BRT
+Agent: Codex #2 Bravo
+Package SHA256: 3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB
+Entry count: 75
+PM0 action components: 5
+PM0 topic components: 5
+Duplicate zip entries: 0
+Duplicate PM0 bot components: 0
+Workflowset PM0 mapping lines: 5
+
+Flow checks:
+- AtualizarStatus: workflow=True, workflowsetAction=True, workflowsetId=True, local=True, rawSha=False, canonicalLeafDiffs=14, unexplained=0, placeholder=False
+- AtualizarTarefa: workflow=True, workflowsetAction=True, workflowsetId=True, local=True, rawSha=False, canonicalLeafDiffs=11, unexplained=0, placeholder=False
+- CriarTarefa: workflow=True, workflowsetAction=True, workflowsetId=True, local=True, rawSha=False, canonicalLeafDiffs=11, unexplained=0, placeholder=False
+- ListarTarefas: workflow=True, workflowsetAction=True, workflowsetId=True, local=True, rawSha=False, canonicalLeafDiffs=2, unexplained=0, placeholder=False
+- ResumoExecutivoPortfolio: workflow=True, workflowsetAction=True, workflowsetId=True, local=True, rawSha=False, canonicalLeafDiffs=6, unexplained=0, placeholder=False

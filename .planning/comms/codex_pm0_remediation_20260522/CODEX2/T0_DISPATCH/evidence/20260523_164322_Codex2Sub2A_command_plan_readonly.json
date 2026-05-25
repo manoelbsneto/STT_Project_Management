@@ -1,0 +1,17 @@
+{
+  "agent": "Codex #2 Sub 2A",
+  "timestamp_brt": "2026-05-23 16:43:22 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164322_Codex2Sub2A_command_plan_readonly.png",
+  "task": "Dataverse 403 unblock command plan before tenant/access commands",
+  "action_classification": "READ_ONLY_TENANT_DISCOVERY_ONLY",
+  "environment_id": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "environment_name": "ColOfertasBrasilPro",
+  "commands": [
+    "az account show --output json",
+    "pac auth list",
+    "pac env who",
+    "pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\fetchxml\\systemuser_roles_by_upn.xml",
+    "pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\fetchxml\\role_names_probe.xml"
+  ],
+  "write_rule": "No permission write in this batch; separate pre-write triplet required before pac admin assign-user if role missing and admin rights verified."
+}

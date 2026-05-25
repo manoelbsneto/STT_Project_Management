@@ -1,0 +1,22 @@
+Agent: Codex #2 Sub 2C
+Timestamp BRT: 2026-05-23 16:44:17 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\screenshots\20260523_194417_Codex2Sub2C_sha_compare_tooling_complete.png
+Status: COMPLETE_LOCAL_STATIC_READY
+
+Deliverables:
+- .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_SHA_COMPARE.ps1
+- .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_POST_PUBLISH_RUNBOOK.md
+
+Validation performed:
+- T0_SHA_COMPARE.ps1 parsed successfully with System.Management.Automation.Language.Parser.
+- pac solution export syntax checked via pac solution export --help; no export was executed.
+- pac copilot list/publish syntax checked via pac copilot list --help and pac copilot publish --help; no publish was executed.
+- Existing Track E drift command helper parsed successfully.
+- tests/Test-Aq08PublishDriftMonitor.ps1 executed with -DryRun against fixtures and returned recommendation SHIP; temporary dry-run output was removed after validation.
+
+Tenant export executed: false
+Tenant write executed: false
+Expected SHA: 3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB
+Environment default: e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Solution unique name: PMO_v11_Tarefas
+Gate 4B target bot: Assistente PMO V2

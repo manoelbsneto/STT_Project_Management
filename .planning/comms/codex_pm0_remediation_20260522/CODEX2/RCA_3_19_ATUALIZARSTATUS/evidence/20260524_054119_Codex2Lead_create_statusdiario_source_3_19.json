@@ -1,0 +1,50 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-24 02:41:19 BRT",
+  "source_zip": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+  "source_zip_sha256": "43A33783ABC30E7A3DC74EAED162558FBA0781AC163804F85FDC559023D514BF",
+  "extracted_workflow": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\RCA_3_19_ATUALIZARSTATUS\\work\\3_19_source_extract\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+  "create_statusdiario_action": {
+    "runAfter": {
+      "Get_Projeto_Item": [
+        "Succeeded"
+      ]
+    },
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+        "table": "Status Diario",
+        "item/Title": "@concat('Status ', triggerBody()?['projectId'], ' ', utcNow())",
+        "item/ProjectID": "@triggerBody()?['projectId']",
+        "item/DataRegistro": "@utcNow()",
+        "item/RAG/Value": "@triggerBody()?['rag']",
+        "item/Resumo": "@triggerBody()?['resumo']",
+        "item/Percentual": "@coalesce(triggerBody()?['percentual'], 0)",
+        "item/Risco": "@coalesce(triggerBody()?['risco'], '')",
+        "item/Bloqueio": "@coalesce(triggerBody()?['bloqueio'], '')",
+        "item/ProximaAcao": "@coalesce(triggerBody()?['proximaAcao'], '')",
+        "item/OrigemEntrada/Value": "CopilotStudio"
+      },
+      "host": {
+        "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+        "connectionName": "shared_sharepointonline",
+        "operationId": "PostItem"
+      },
+      "authentication": "@parameters('$authentication')"
+    }
+  },
+  "item_properties_present": [
+    "item/Title",
+    "item/ProjectID",
+    "item/DataRegistro",
+    "item/RAG/Value",
+    "item/Resumo",
+    "item/Percentual",
+    "item/Risco",
+    "item/Bloqueio",
+    "item/ProximaAcao",
+    "item/OrigemEntrada/Value"
+  ],
+  "item_statusid_present": false
+}

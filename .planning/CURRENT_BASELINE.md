@@ -1,21 +1,24 @@
 # Current Baseline
 
-Date: 2026-05-22
-Last updated: 2026-05-22 17:13:10 BRT | Codex | Clarified local 3.16 package/static-gate state versus live tenant.
+Date: 2026-05-24
+Last updated: 2026-05-24 03:16:05 BRT | Codex #2 Lead via Kiro | Tenant solution upgraded to 3.19.0.0 by Owner manual import 2026-05-23; AtualizarStatus activation FAILED post-import; RCA H1 CONFIRMED; 3.20 BUILD COMPLETE awaiting peer review.
 
-The active baseline is the 3.15.1 hotfix package, imported and published in `Assistente PMO V2` on `ColOfertasBrasilPro`. AQ-08 reverify PASS at T+5min and T+1h. Drift monitor stable.
+The live tenant solution is `PMO_v11_Tarefas` 3.19.0.0 unmanaged (imported via Owner Apply Upgrade ~2026-05-23 19:34 BRT). The bot's last successful publish event is 2026-05-22 14:40 BRT, sourced from the 3.15.1 publish; no republish occurred from 3.18 or 3.19 because Track-Β halted on `PM0_PA_Card_AtualizarStatus` activation `0x80040216`. AQ-08 reverify post-3.19 import: BLOCK (blockingTopicCount=1, ListarTarefas).
 
-Audit note: AQ-09 A1 failure keeps this baseline under SEV-0 NO-SHIP review. The merged Codex audit found `STUB=1`, `PARTIAL=4`, `REAL=0` across the five audited PM0 workflow bodies and missing topic/action input propagation on four required paths. Local 3.16 source and package static gates now pass, but the live tenant remains 3.15.1 until explicit owner Gate 4 approval, tenant import, publish, and runtime proof complete.
+Audit note: AQ-09 A1 failure originated SEV-0 RISK-013 (still OPEN). RCA H1 CONFIRMED 2026-05-24 02:55:01 BRT — root cause = missing `item/StatusID` in Create_StatusDiario action of `PM0_PA_Card_AtualizarStatus` workflow. H5 CONFIRMED — defect existed in 3.18, latent behind OrigemEntrada string-vs-object error. 3.20 BUILD COMPLETE 2026-05-24 03:16:05 BRT by Codex #2 Lead — SHA `ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC`. Awaits Codex #1 Lead independent peer review.
 
 ## Active Solution Artifact (CURRENT)
 
-- Active package: `Solution/PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip`
-- Publish UTC label: `2026-05-22T11:15:52.9307207+00:00`
-- Bot: `Assistente PMO V2` (Published / Active / Provisioned)
+- Live tenant solution: `PMO_v11_Tarefas` 3.19.0.0 unmanaged (imported by Owner 2026-05-23; AtualizarStatus in Borrador/Borrador)
+- Latest local candidate: `Solution/PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip` SHA `ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC` (BUILD COMPLETE 2026-05-24 03:16:05 BRT — peer review pending)
+- Prior failed candidate: `Solution/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip` SHA `43A33783ABC30E7A3DC74EAED162558FBA0781AC163804F85FDC559023D514BF` (peer review PASS_WITH_NOTES; post-import activation FAIL on AtualizarStatus)
+- Bot last publish UTC: `2026-05-22T11:15:52.9307207+00:00` (from 3.15.1 publish event; no republish from 3.18/3.19)
+- Bot status: `Assistente PMO V2` Published / Active / Provisioned — runtime topic/flow set still backed by 3.15.1 publish; 3.19 imported workflows in tenant Dataverse but `PM0_PA_Card_AtualizarStatus` is in `Borrador/Borrador` state
 - Environment: `ColOfertasBrasilPro` (e2d10003-4d8e-e007-9d63-76d5fe89ef56)
-- AQ-08 verifier T+5min: PASS — `aq08_post_remediation_reverify_report.json`
-- AQ-08 verifier T+1h: PASS — `aq08_post_remediation_reverify_report.json`
-- Drift monitor T+6h: SCHEDULED 14:23 BRT
+- AQ-08 reverify post-3.19 import: BLOCK (blockingTopicCount=1, ListarTarefas)
+- RCA verdict (root cause confirmed): `.planning/comms/codex_pm0_remediation_20260522/CODEX2/RCA_3_19_ATUALIZARSTATUS/RCA_3_19_ATUALIZARSTATUS_VERDICT.md`
+- 3.20 build report: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_20/BUILD_REPORT.md`
+- Remediation plan applied in 3.20: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/RCA_3_19_ATUALIZARSTATUS/REMEDIATION.md`
 - Pre-publish rollback evidence: `.planning/comms/rollback_evidence_pre_3_15_20260520/`
 - Rollback target if needed: `Solution/PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip` (SHA256 `37A3E7C85392D9E049CD26E01CF1D31F4B78A00DF35E0B7FAE23A252F29CB691`)
 

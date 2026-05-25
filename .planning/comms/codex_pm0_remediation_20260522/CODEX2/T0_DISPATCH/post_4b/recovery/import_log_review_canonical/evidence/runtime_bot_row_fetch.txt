@@ -1,0 +1,6 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode name              componentstate statuscode    ismanaged       botid
+Activo    Assistente PMO V2 Publicado      Aprovisionado No administrado df148bf8-0a3e-495b-80c4-841dcb61d9a4
+

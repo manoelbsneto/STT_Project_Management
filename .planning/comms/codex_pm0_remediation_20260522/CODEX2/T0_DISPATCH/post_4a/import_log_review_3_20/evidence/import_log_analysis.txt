@@ -1,0 +1,17 @@
+Import copy SHA256: 0397356A0460837506B26B65896E278B55007FE7507423F510911DF3EF6F7D5F
+Component worksheet rows: 70
+0x80040216 hits: 0
+0x80045042 hits: 16
+Real Sin procesar rows: 1
+PM0 summary:
+
+name                                 importPresence  replacementNoticeCount activationRows activationStatuses failedActi
+                                                                                                                  vation
+----                                 --------------  ---------------------- -------------- ------------------ ----------
+PM0_PA_Card_AtualizarStatus          Present, 2 rows                      0              1 Sin procesar                0
+PM0_PA_Card_AtualizarTarefa          Present, 3 rows                      1              1 Procesado                   0
+PM0_PA_Card_CriarTarefa              Present, 3 rows                      1              1 Procesado                   0
+PM0_PA_Card_ListarTarefas            Present, 3 rows                      1              1 Procesado                   0
+PM0_PA_Card_ResumoExecutivoPortfolio Present, 3 rows                      1              1 Procesado                   0
+
+

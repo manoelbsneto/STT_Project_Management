@@ -1,0 +1,8 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestampBrt": "2026-05-24 09:26:48 BRT",
+  "verdict": "HOLD_AMENDED",
+  "note": "Owner export filename is not used as evidence; internal solution.xml Version is 3.18 while source 3.20 package is 3.20.0.0.",
+  "statusId": "Present in Owner export AtualizarStatus Create_StatusDiario.",
+  "normalizedDiff": "0 functional normalized diffs across 5 PM0 workflows."
+}

@@ -1,0 +1,68 @@
+mcs.metadata:
+  componentName: PM0_PA_Card_CriarTarefa
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: projectId
+    value: =Global.PMO_Criar_NomeProjeto
+
+  - kind: ManualTaskInput
+    propertyName: action
+    value: ="CriarTarefa"
+
+  - kind: ManualTaskInput
+    propertyName: title
+    value: =Global.PMO_Criar_Titulo
+
+  - kind: ManualTaskInput
+    propertyName: taskTitle
+    value: =Global.PMO_Criar_Titulo
+
+  - kind: ManualTaskInput
+    propertyName: responsavel
+    value: =Global.PMO_Criar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: prazo
+    value: =Global.PMO_Criar_Prazo
+
+  - kind: ManualTaskInput
+    propertyName: horas
+    value: =Global.PMO_Criar_Horas
+
+  - kind: ManualTaskInput
+    propertyName: prioridade
+    value: =Global.PMO_Criar_Prioridade
+
+  - kind: ManualTaskInput
+    propertyName: bucket
+    value: =Blank()
+
+  - kind: ManualTaskInput
+    propertyName: dueDate
+    value: =Global.PMO_Criar_Prazo
+
+  - kind: ManualTaskInput
+    propertyName: endDate
+    value: =Global.PMO_Criar_Prazo
+
+  - kind: ManualTaskInput
+    propertyName: startDate
+    value: =Blank()
+
+  - kind: ManualTaskInput
+    propertyName: plannerBucketName
+    value: =Blank()
+
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7f662db7-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

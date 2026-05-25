@@ -1,0 +1,12 @@
+SOURCE VS TENANT WORKFLOW DIFF - PM0 3.20
+Generated: 2026-05-24 09:18:41 BRT
+
+Tenant export was not produced because PAC cannot connect to Dataverse. PAC auth profile token expired on 2026-04-24 03:16:36 +00:00 and commands return AADSTS70043.
+
+Source 3.20 check only:
+- solution.xml Version: 3.20.0.0
+- solution.xml Managed: 0
+- Five PM0 JSONs present: True
+- Create_StatusDiario item/StatusID: @concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))
+
+Tenant comparison result: NOT_RUN_AUTH_BLOCKED.

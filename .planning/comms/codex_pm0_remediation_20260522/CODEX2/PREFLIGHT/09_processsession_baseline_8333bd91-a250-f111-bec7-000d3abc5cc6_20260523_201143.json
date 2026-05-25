@@ -1,0 +1,7 @@
+{
+    "fetchXmlPath":  ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\09_processsession_baseline_processsession_8333bd91-a250-f111-bec7-000d3abc5cc6_20260523_201138.xml",
+    "command":  "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\09_processsession_baseline_processsession_8333bd91-a250-f111-bec7-000d3abc5cc6_20260523_201138.xml",
+    "exitCode":  0,
+    "stdout":  "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\nNo results returned.\r\n",
+    "stderr":  ""
+}

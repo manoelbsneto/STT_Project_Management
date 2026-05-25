@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa">
+  <componenttype>9</componenttype>
+  <description>PM0 card-first action PM0_PA_Card_AtualizarTarefa.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PM0_PA_Card_AtualizarTarefa</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

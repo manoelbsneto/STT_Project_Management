@@ -1,0 +1,40 @@
+kind: TaskDialog
+modelDescription: Cria projeto na lista SharePoint Projetos.
+outputs:
+  - propertyName: message
+    name: Mensagem
+    description: Mensagem retornada pelo fluxo PMO_PA_CriarProjeto.
+inputs:
+  - kind: ManualTaskInput
+    propertyName: text
+    value: =Global.PMO_Projeto_NomeProjeto
+
+  - kind: ManualTaskInput
+    propertyName: text_1
+    value: =Global.PMO_Projeto_NomeProjeto
+
+  - kind: ManualTaskInput
+    propertyName: text_2
+    value: =Global.PMO_Projeto_PM
+
+  - kind: ManualTaskInput
+    propertyName: text_3
+    value: =Global.PMO_Projeto_Prazo
+
+  - kind: ManualTaskInput
+    propertyName: number
+    value: =0
+
+  - kind: ManualTaskInput
+    propertyName: text_4
+    value: =Global.PMO_Projeto_Prioridade
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 3104124d-364a-f111-bec7-7ced8d955c6c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Embedded
+
+outputMode: All

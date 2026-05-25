@@ -1,0 +1,83 @@
+[
+  {
+    "id": "A02_pac_auth_select_profile1",
+    "title": "A.2 select each PAC profile then pac org who",
+    "status": "FAILED_OR_AUTH_BLOCKED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A02_pac_auth_select_profile1.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A02_pac_auth_select_profile1.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A02_pac_auth_select_profile1.png"
+  },
+  {
+    "id": "A03_pac_auth_create_devicecode",
+    "title": "A.3 pac auth create with deviceCode",
+    "status": "TIMEOUT_OR_INTERACTIVE",
+    "captureExit": 124,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A03_pac_auth_create_devicecode.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A03_pac_auth_create_devicecode.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A03_pac_auth_create_devicecode.png"
+  },
+  {
+    "id": "A04_pac_auth_create_tenant_url",
+    "title": "A.4 pac auth create tenant plus URL",
+    "status": "CAPTURED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A04_pac_auth_create_tenant_url.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A04_pac_auth_create_tenant_url.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A04_pac_auth_create_tenant_url.png"
+  },
+  {
+    "id": "A05_az_login_tenant_then_pac",
+    "title": "A.5 az login tenant fallback then pac auth create",
+    "status": "FAILED_OR_AUTH_BLOCKED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A05_az_login_tenant_then_pac.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A05_az_login_tenant_then_pac.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A05_az_login_tenant_then_pac.png"
+  },
+  {
+    "id": "A06_personal_guest_pattern_probe",
+    "title": "A.6 personal guest access pattern probe",
+    "status": "CAPTURED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A06_personal_guest_pattern_probe.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A06_personal_guest_pattern_probe.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A06_personal_guest_pattern_probe.png"
+  },
+  {
+    "id": "A07_powerapps_module_getflow",
+    "title": "A.7 Microsoft.PowerApps.PowerShell Get-Flow path",
+    "status": "CAPTURED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A07_powerapps_module_getflow.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A07_powerapps_module_getflow.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A07_powerapps_module_getflow.png"
+  },
+  {
+    "id": "A08_powerapps_admin_module",
+    "title": "A.8 Microsoft.PowerApps.Administration.PowerShell path",
+    "status": "CAPTURED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A08_powerapps_admin_module.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A08_powerapps_admin_module.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A08_powerapps_admin_module.png"
+  },
+  {
+    "id": "A09_pac_mcp",
+    "title": "A.9 PAC MCP server probes",
+    "status": "FAILED_OR_AUTH_BLOCKED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A09_pac_mcp.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A09_pac_mcp.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A09_pac_mcp.png"
+  },
+  {
+    "id": "A10_auth_cache_probe",
+    "title": "A.10 auth cache discovery",
+    "status": "CAPTURED",
+    "captureExit": 0,
+    "txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A10_auth_cache_probe.txt",
+    "json": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A10_auth_cache_probe.json",
+    "png": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\evidence\\auth_paths\\A10_auth_cache_probe.png"
+  }
+]

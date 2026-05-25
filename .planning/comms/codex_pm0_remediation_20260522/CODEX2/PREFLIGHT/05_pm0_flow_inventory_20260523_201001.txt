@@ -1,0 +1,7 @@
+{
+    "fetchXmlPath":  ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\05_pm0_flow_inventory_pm0_workflows_20260523_200955.xml",
+    "command":  "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\05_pm0_flow_inventory_pm0_workflows_20260523_200955.xml",
+    "exitCode":  0,
+    "stdout":  "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nworkflowid                           name                                 statecode statuscode modifiedon\r\n8333bd91-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ResumoExecutivoPortfolio Activado  Activado   15/05/2026 22:31\r\ne0e3c6b0-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ListarTarefas            Activado  Activado   22/05/2026 8:41\r\n1721e0a3-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarStatus          Activado  Activado   15/05/2026 19:10\r\n7f662db7-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_CriarTarefa              Activado  Activado   15/05/2026 19:10\r\n7c6300c2-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarTarefa          Activado  Activado   15/05/2026 19:10\r\n\r\n",
+    "stderr":  ""
+}

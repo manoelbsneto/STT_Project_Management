@@ -1,0 +1,7 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-23 16:37:48 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_163748_Codex2Lead_preflight_ready_waiting_2A.png
+Status: IN_PROGRESS
+Current action: Preflight rerun path inspected and ready; waiting on Codex #2 Sub 2A 403 clearance.
+Findings: scripts/Run-Gate4-Preflight.ps1 supports -ResumeFromStep03, captures evidence triplets per step, uses AZ_CLI token acquisition for Dataverse, and halts on Step 03 403 before tenant writes.
+Next step: when 2A clears Dataverse read access, run powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Run-Gate4-Preflight.ps1 -ResumeFromStep03 from repo root.

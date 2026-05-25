@@ -1,0 +1,90 @@
+{
+  "GeneratedAt": "2026-05-23 21:30:11 -03:00",
+  "WorkflowSummaries": [
+    {
+      "Workflow": "PM0_PA_Card_AtualizarStatus",
+      "File": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\unpacked_3_18\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "NumericInputs": [
+        "percentual"
+      ],
+      "ComposeActions": [],
+      "ActionCount": 5
+    },
+    {
+      "Workflow": "PM0_PA_Card_AtualizarTarefa",
+      "File": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\unpacked_3_18\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "NumericInputs": [
+        "horasRealizadas"
+      ],
+      "ComposeActions": [
+        "Determine_Bucket_and_Percent"
+      ],
+      "ActionCount": 5
+    },
+    {
+      "Workflow": "PM0_PA_Card_CriarTarefa",
+      "File": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\unpacked_3_18\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "NumericInputs": [
+        "horas"
+      ],
+      "ComposeActions": [
+        "Determine_Bucket_and_Status"
+      ],
+      "ActionCount": 5
+    },
+    {
+      "Workflow": "PM0_PA_Card_ListarTarefas",
+      "File": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\unpacked_3_18\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "NumericInputs": [],
+      "ComposeActions": [
+        "Normalize_Tasks_Display"
+      ],
+      "ActionCount": 6
+    },
+    {
+      "Workflow": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "File": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\unpacked_3_18\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "NumericInputs": [],
+      "ComposeActions": [],
+      "ActionCount": 3
+    }
+  ],
+  "Defects": [
+    {
+      "Workflow": "PM0_PA_Card_AtualizarStatus",
+      "Check": "B",
+      "Severity": "RUNTIME_FAIL",
+      "Location": "workflow expression",
+      "Field": "percentual",
+      "Current": "empty(triggerBody()?['percentual'])",
+      "Recommended": "Use coalesce(triggerBody()?['percentual'], 0) or equals(triggerBody()?['percentual'], null) instead of empty()/length() on numeric input."
+    },
+    {
+      "Workflow": "PM0_PA_Card_AtualizarStatus",
+      "Check": "A",
+      "Severity": "EDGE_CASE",
+      "Location": "Update_SharePoint_Project parameter item/Title",
+      "Field": "Title",
+      "Current": "@body('Get_Projeto_Item')?['value']?[0]?['Title']",
+      "Recommended": "Field not found in local schema docs; verify tenant field exists or update schema docs."
+    },
+    {
+      "Workflow": "PM0_PA_Card_AtualizarStatus",
+      "Check": "A",
+      "Severity": "BLOCKING_ACTIVATION",
+      "Location": "Create_StatusDiario parameter item/OrigemEntrada",
+      "Field": "OrigemEntrada",
+      "Current": "Copilot Studio PM0 card",
+      "Recommended": "Use item/OrigemEntrada/Value with allowed choice value."
+    },
+    {
+      "Workflow": "PM0_PA_Card_AtualizarTarefa",
+      "Check": "B",
+      "Severity": "RUNTIME_FAIL",
+      "Location": "workflow expression",
+      "Field": "horasRealizadas",
+      "Current": "empty(triggerBody()?['horasRealizadas'])",
+      "Recommended": "Use coalesce(triggerBody()?['horasRealizadas'], 0) or equals(triggerBody()?['horasRealizadas'], null) instead of empty()/length() on numeric input."
+    }
+  ]
+}

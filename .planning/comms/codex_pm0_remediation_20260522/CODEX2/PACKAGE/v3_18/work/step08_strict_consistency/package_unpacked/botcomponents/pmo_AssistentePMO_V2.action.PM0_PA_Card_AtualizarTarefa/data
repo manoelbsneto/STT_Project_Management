@@ -1,0 +1,56 @@
+mcs.metadata:
+  componentName: PM0_PA_Card_AtualizarTarefa
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: action
+    value: ="AtualizarTarefa"
+
+  - kind: ManualTaskInput
+    propertyName: spItemId
+    value: =Global.PMO_Atualizar_TaskID
+
+  - kind: ManualTaskInput
+    propertyName: taskId
+    value: =Global.PMO_Atualizar_TaskID
+
+  - kind: ManualTaskInput
+    propertyName: status
+    value: =Global.PMO_Atualizar_Status
+
+  - kind: ManualTaskInput
+    propertyName: taskStatus
+    value: =Global.PMO_Atualizar_Status
+
+  - kind: ManualTaskInput
+    propertyName: comments
+    value: =Blank()
+
+  - kind: ManualTaskInput
+    propertyName: horasRealizadas
+    value: =Global.PMO_Atualizar_HorasRealizadas
+
+  - kind: ManualTaskInput
+    propertyName: responsavel
+    value: =Global.PMO_Atualizar_Responsavel
+
+  - kind: ManualTaskInput
+    propertyName: dataFim
+    value: =Global.PMO_Atualizar_DataFim
+
+  - kind: ManualTaskInput
+    propertyName: prioridade
+    value: =Global.PMO_Atualizar_Prioridade
+
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7c6300c2-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

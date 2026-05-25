@@ -1,0 +1,15 @@
+{
+  "agent": "Sub G2B",
+  "timestamp_brt": "2026-05-23 16:42:00 BRT",
+  "event": "stubs_prefill_complete",
+  "track": "E",
+  "status": "COMPLETE",
+  "stub_directory": ".planning/comms/aq09_smoke_runbook_20260520/evidence/post_3_16_TODO_BACKFILL_UTC/",
+  "stubs": [
+    "A1_CMD-12-H.md",
+    "A2_CMD-15.md",
+    "A3_CMD-11-P0.md",
+    "A4_CMD-13A.md",
+    "A5_CMD-10.md"
+  ]
+}

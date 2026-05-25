@@ -1,0 +1,9 @@
+Codex #1 Lead 3.18 recipe compliance corrected
+Timestamp: 2026-05-23 19:22:44 BRT
+Note: solution.xml root component checks use workflow GUIDs; solution.xml does not carry workflow names.
+3.16 prescribed files matched: 13/13
+PM0_PA_OpsFailureHandling live 3.17 files preserved: 2/2
+Root XML checks passed: 17/17
+Failed recipe rows: 0
+Failed root checks: 0
+JSON: .planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\evidence\20260523_192244_Codex1Lead_3_18_recipe_compliance_corrected.json

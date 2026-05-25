@@ -1,0 +1,10 @@
+
+component                            import39                                         import41                                         delta
+---------                            --------                                         --------                                         -----
+PM0_PA_Card_AtualizarStatus          replacement=0; activation=Sin procesar; failed=0 replacement=0; activation=Sin procesar; failed=0 NO_CHANGE
+PM0_PA_Card_AtualizarTarefa          replacement=1; activation=Procesado; failed=0    replacement=1; activation=Procesado; failed=0    NO_CHANGE
+PM0_PA_Card_CriarTarefa              replacement=1; activation=Procesado; failed=0    replacement=1; activation=Procesado; failed=0    NO_CHANGE
+PM0_PA_Card_ListarTarefas            replacement=1; activation=Procesado; failed=0    replacement=1; activation=Procesado; failed=0    NO_CHANGE
+PM0_PA_Card_ResumoExecutivoPortfolio replacement=1; activation=Procesado; failed=0    replacement=1; activation=Procesado; failed=0    NO_CHANGE
+
+

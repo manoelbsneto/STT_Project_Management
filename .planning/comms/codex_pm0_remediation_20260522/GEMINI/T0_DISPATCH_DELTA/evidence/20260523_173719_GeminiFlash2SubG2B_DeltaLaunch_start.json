@@ -1,0 +1,12 @@
+{
+  "agent": "Sub G2B acting as Δ G1B",
+  "timestamp_brt": "2026-05-23 17:37:19 BRT",
+  "event": "launch_start",
+  "track": "Δ",
+  "status": "IN_PROGRESS",
+  "tasks": [
+    "Align release notes PT/EN",
+    "Bump versions to 3.18",
+    "Generate T0_RELEASE_NOTES_ALIGNMENT_DIFF.md"
+  ]
+}

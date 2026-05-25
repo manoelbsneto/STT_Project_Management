@@ -1,0 +1,14 @@
+<fetch>
+  <entity name="solutioncomponent">
+    <attribute name="componenttype" />
+    <attribute name="objectid" />
+    <attribute name="rootcomponentbehavior" />
+    <link-entity name="solution" from="solutionid" to="solutionid" alias="sol">
+      <attribute name="uniquename" />
+      <filter type="or">
+        <condition attribute="uniquename" operator="eq" value="PMO_v11_Tarefas" />
+        <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+      </filter>
+    </link-entity>
+  </entity>
+</fetch>

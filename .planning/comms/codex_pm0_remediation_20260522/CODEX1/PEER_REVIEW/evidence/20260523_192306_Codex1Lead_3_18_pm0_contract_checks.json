@@ -1,0 +1,70 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp": "2026-05-23 19:23:06 BRT",
+  "sourceRoot": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_18/work/pm0_source_from_package",
+  "failedCount": 1,
+  "checks": [
+    {
+      "topic": "AtualizarStatus",
+      "action": "PM0_PA_Card_AtualizarStatus",
+      "actionPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarStatus.mcs.yml",
+      "topicPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\AtualizarStatus.mcs.yml",
+      "hasManualTaskInput": true,
+      "topicHasInputEmptyStub": false,
+      "expectedBindings": {
+        "status": true,
+        "projectId": true,
+        "action": true
+      },
+      "allExpectedBindingsPresent": true,
+      "passed": true
+    },
+    {
+      "topic": "AtualizarTarefa",
+      "action": "PM0_PA_Card_AtualizarTarefa",
+      "actionPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarTarefa.mcs.yml",
+      "topicPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\AtualizarTarefa.mcs.yml",
+      "hasManualTaskInput": true,
+      "topicHasInputEmptyStub": false,
+      "expectedBindings": {
+        "taskStatus": true,
+        "status": true,
+        "spItemId": true,
+        "action": true,
+        "taskId": true
+      },
+      "allExpectedBindingsPresent": true,
+      "passed": true
+    },
+    {
+      "topic": "CriarTarefa",
+      "action": "PM0_PA_Card_CriarTarefa",
+      "actionPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_CriarTarefa.mcs.yml",
+      "topicPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\CriarTarefa.mcs.yml",
+      "hasManualTaskInput": true,
+      "topicHasInputEmptyStub": false,
+      "expectedBindings": {
+        "prioridade": true,
+        "nomeProjeto": false,
+        "nomeTarefa": false,
+        "responsavel": true
+      },
+      "allExpectedBindingsPresent": false,
+      "passed": false
+    },
+    {
+      "topic": "ListarTarefas",
+      "action": "PM0_PA_Card_ListarTarefas",
+      "actionPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_ListarTarefas.mcs.yml",
+      "topicPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\ListarTarefas.mcs.yml",
+      "hasManualTaskInput": true,
+      "topicHasInputEmptyStub": false,
+      "expectedBindings": {
+        "action": true,
+        "projectId": true
+      },
+      "allExpectedBindingsPresent": true,
+      "passed": true
+    }
+  ]
+}

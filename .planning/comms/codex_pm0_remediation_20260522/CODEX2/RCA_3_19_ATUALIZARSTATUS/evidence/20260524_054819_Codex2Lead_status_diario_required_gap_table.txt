@@ -1,0 +1,18 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-24 02:48:19 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054819_Codex2Lead_status_diario_required_gap_table.png
+
+Status Diario required x workflow item gap table
+
+| Required field | Type | Sent by 3.19 workflow? | Sent key(s) | Gap |
+|---|---|---:|---|---:|
+| Title | Text | True | item/Title | False |
+| StatusID | Text | False |  | True |
+| ProjectID | Text | True | item/ProjectID | False |
+| DataRegistro | DateTime | True | item/DataRegistro | False |
+| RAG | Choice | True | item/RAG/Value | False |
+| Resumo | Note | True | item/Resumo | False |
+| OrigemEntrada | Choice | True | item/OrigemEntrada/Value | False |
+
+Missing required count: 1
+Missing required names: StatusID

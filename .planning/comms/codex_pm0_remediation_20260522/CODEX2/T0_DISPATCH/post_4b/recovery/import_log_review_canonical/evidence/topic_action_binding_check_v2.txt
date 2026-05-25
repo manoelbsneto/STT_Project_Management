@@ -1,0 +1,7 @@
+Topic action binding check v2
+
+AtualizarStatus: tenantExists=true; tenantHasExpectedAction=true; byteEqual=true; expected=pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus
+AtualizarTarefa: tenantExists=true; tenantHasExpectedAction=true; byteEqual=true; expected=pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa
+CriarTarefa: tenantExists=true; tenantHasExpectedAction=true; byteEqual=true; expected=pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa
+ListarTarefas: tenantExists=true; tenantHasExpectedAction=true; byteEqual=true; expected=pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas
+ConsultarPortfolio: tenantExists=true; tenantHasExpectedAction=true; byteEqual=true; expected=pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio

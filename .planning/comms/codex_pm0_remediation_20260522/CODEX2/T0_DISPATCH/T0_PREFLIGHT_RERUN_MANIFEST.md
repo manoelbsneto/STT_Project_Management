@@ -1,0 +1,57 @@
+# T0 Preflight Rerun Manifest - Track B
+
+| Field | Value |
+|---|---|
+| Agent name | Codex #2 Lead |
+| Timestamp BRT | 2026-05-23 17:14:15 BRT |
+| Screenshot path | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_171415_Codex2Lead_preflight_rerun_manifest.png` |
+| Status | PREFLIGHT_GREEN_WITH_TENANT_VERSION_DRIFT |
+| Environment | `ColOfertasBrasilPro` / `e2d10003-4d8e-e007-9d63-76d5fe89ef56` |
+| Active package under review | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/package/PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip` |
+| Expected package SHA256 | `3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB` |
+
+## Outcome
+
+`scripts/Run-Gate4-Preflight.ps1 -ResumeFromStep03` reached the end successfully at `2026-05-23 17:12:59 BRT`.
+
+The original Dataverse Step 03 `403 Forbidden` was unblocked by replacing the wrong AZ_CLI Dataverse token path with the approved PAC FetchXML read path when AZ and PAC identities differ.
+
+## Critical Drift Note
+
+Step 03 live tenant read-back reports:
+
+- `PMO_v11_Tarefas` version `3.17`
+- `PMO_AQ07_CopilotBinding` version `1.0.0.2`
+
+This differs from the active package plan for `3.16.0.0`. Do not execute Gate 4A import until Codex #1 peer review and Owner/Kiro confirm the intended action against the current live tenant version.
+
+## Evidence Index
+
+| Step | Result | Evidence PNG |
+|---|---|---|
+| 03 solutioncomponents | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/03_solutioncomponents_20260523_201100.png` |
+| 04 workflowset binding | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/04_workflowset_binding_20260523_201105.png` |
+| 05 PM0 flow inventory | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/05_pm0_flow_inventory_20260523_201111.png` |
+| 06 bot row | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/06_bot_row_20260523_201116.png` |
+| 07 AQ-08 verifier | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/07_aq08_verifier_20260523_201117.png` |
+| 08 strict consistency | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/08_strict_consistency_20260523_201118.png` |
+| 09 processsession baseline, AtualizarStatus | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/09_processsession_baseline_1721e0a3-a250-f111-bec7-000d3abc5cc6_20260523_201123.png` |
+| 09 processsession baseline, AtualizarTarefa | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/09_processsession_baseline_7c6300c2-a250-f111-bec7-000d3abc5cc6_20260523_201128.png` |
+| 09 processsession baseline, CriarTarefa | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/09_processsession_baseline_7f662db7-a250-f111-bec7-000d3abc5cc6_20260523_201133.png` |
+| 09 processsession baseline, ListarTarefas | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/09_processsession_baseline_e0e3c6b0-a250-f111-bec7-000d3abc5cc6_20260523_201138.png` |
+| 09 processsession baseline, ConsultarPortfolio | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/09_processsession_baseline_8333bd91-a250-f111-bec7-000d3abc5cc6_20260523_201143.png` |
+| 10 Copilot Studio pre-import stub | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/10_copilot_studio_pre_import_20260523_201143.png` |
+| 11 AQ-09 harness readiness | PASS | `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/11_aq09_harness_readiness_20260523_201144.png` |
+
+## Generated Artifacts
+
+- Preflight summary: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/PREFLIGHT/PREFLIGHT_SUMMARY_20260523_201259.md`
+- Rollback exports: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/ROLLBACK/4A_pre_import_20260523_201144/`
+- Relocation evidence: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/SHIP_ARTIFACT/relocation_20260523_201259.md`
+- Generated Gate 4A ASK draft: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/GATE_4A_ASK_DRAFT_20260523_201259.md`
+- SHA compare tool: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_SHA_COMPARE.ps1`
+- Post-publish runbook: `.planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_POST_PUBLISH_RUNBOOK.md`
+
+## Lead Decision
+
+Preflight evidence is green. Gate 4A import remains held pending peer review and explicit confirmation that importing the `3.16` package over a live `3.17` tenant state is still intended.

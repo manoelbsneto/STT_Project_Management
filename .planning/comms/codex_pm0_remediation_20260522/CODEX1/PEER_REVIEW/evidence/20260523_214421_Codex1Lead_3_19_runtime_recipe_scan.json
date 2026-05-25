@@ -1,0 +1,309 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp": "2026-05-23 21:44:22 BRT",
+  "unpacked": ".planning/comms/codex_pm0_remediation_20260522/CODEX1/PEER_REVIEW/work/unpacked_3_19_peer_review",
+  "workflowResults": [
+    {
+      "name": "PM0_PA_Card_AtualizarStatus",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0,
+      "numericChecks": [
+        {
+          "field": "percentual",
+          "referenceCount": 3,
+          "coalesceReferenceCount": 3,
+          "emptyReferenceCount": 0,
+          "lengthReferenceCount": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "emptyTriggerBodyCount": 5,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 1,
+      "numericChecks": [
+        {
+          "field": "horasRealizadas",
+          "referenceCount": 1,
+          "coalesceReferenceCount": 1,
+          "emptyReferenceCount": 0,
+          "lengthReferenceCount": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "emptyTriggerBodyCount": 1,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 1,
+      "numericChecks": [
+        {
+          "field": "horas",
+          "referenceCount": 1,
+          "coalesceReferenceCount": 1,
+          "emptyReferenceCount": 0,
+          "lengthReferenceCount": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0,
+      "numericChecks": []
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0,
+      "numericChecks": []
+    }
+  ],
+  "defectChecks": [
+    {
+      "id": "C1-OrigemEntrada-Value",
+      "passed": true,
+      "evidence": "PM0_PA_Card_AtualizarStatus workflow has item/OrigemEntrada/Value = CopilotStudio"
+    },
+    {
+      "id": "C1-OrigemEntrada-no-bare",
+      "passed": true,
+      "evidence": "No bare item/OrigemEntrada key"
+    },
+    {
+      "id": "C2-percentual-no-empty",
+      "passed": true,
+      "evidence": "No empty(triggerBody percentual)"
+    },
+    {
+      "id": "C2-percentual-coalesce",
+      "passed": true,
+      "evidence": "percentual references use coalesce"
+    },
+    {
+      "id": "C3-horasRealizadas-no-empty",
+      "passed": true,
+      "evidence": "No empty(triggerBody horasRealizadas)"
+    },
+    {
+      "id": "C3-horasRealizadas-coalesce",
+      "passed": true,
+      "evidence": "horasRealizadas references use coalesce"
+    }
+  ],
+  "antiPatterns": [
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "responsavel",
+      "match": "empty(triggerBody()?['responsavel'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "dataFim",
+      "match": "empty(triggerBody()?['dataFim'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "prioridade",
+      "match": "empty(triggerBody()?['prioridade'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "responsavel",
+      "match": "empty(triggerBody()?['responsavel'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "dataFim",
+      "match": "empty(triggerBody()?['dataFim'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "bare Choice/Lookup/Person binding",
+      "field": "Responsavel",
+      "match": "\"item/Responsavel\":"
+    },
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "prioridade",
+      "match": "empty(triggerBody()?['prioridade'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "type": "bare Choice/Lookup/Person binding",
+      "field": "Responsavel",
+      "match": "\"item/Responsavel\":"
+    }
+  ],
+  "solutionChecks": [
+    {
+      "id": "solution-version",
+      "passed": true,
+      "evidence": "solution.xml Version=3.19.0.0"
+    },
+    {
+      "id": "solution-managed",
+      "passed": true,
+      "evidence": "solution.xml Managed=0"
+    }
+  ],
+  "recipeRows": [
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_AtualizarStatus",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\\data",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_AtualizarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\\data",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_CriarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\\data",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_ListarTarefas",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\\data",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\\data",
+      "exists": true,
+      "hasManualTaskInput": false,
+      "passed": false
+    },
+    {
+      "kind": "topic-data",
+      "name": "AtualizarStatus",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarStatus\\data",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "kind": "topic-data",
+      "name": "AtualizarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa\\data",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "kind": "topic-data",
+      "name": "CriarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.CriarTarefa\\data",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "kind": "topic-data",
+      "name": "ListarTarefas",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.ListarTarefas\\data",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "kind": "topic-data",
+      "name": "ConsultarPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio\\data",
+      "exists": true,
+      "hasInputBinding": false,
+      "passed": false
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_AtualizarStatus",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_AtualizarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_CriarTarefa",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_ListarTarefas",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    }
+  ],
+  "opsFailureRows": [
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/botcomponent.xml",
+      "sha317": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "sha319": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/data",
+      "sha317": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "sha319": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "match": true
+    }
+  ],
+  "failedDefectCount": 0,
+  "antiPatternCount": 8,
+  "failedSolutionCount": 0,
+  "failedRecipeCount": 2,
+  "opsFailurePreserved": true
+}

@@ -1,0 +1,35 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-23 16:47:34 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164734_Codex2Lead_az_pac_identity_probe.png",
+  "az_account_show": {
+    "command": "az account show --output json",
+    "exitCode": -1,
+    "stdout": "",
+    "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'az' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema não pode encontrar o arquivo especificado.\""
+  },
+  "pac_auth_list": {
+    "command": "pac auth list",
+    "exitCode": -1,
+    "stdout": "",
+    "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema não pode encontrar o arquivo especificado.\""
+  },
+  "pac_env_who": {
+    "command": "pac env who",
+    "exitCode": -1,
+    "stdout": "",
+    "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema não pode encontrar o arquivo especificado.\""
+  },
+  "pac_admin_help": {
+    "command": "pac admin --help",
+    "exitCode": -1,
+    "stdout": "",
+    "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema não pode encontrar o arquivo especificado.\""
+  },
+  "pac_admin_list_active_users": {
+    "command": "pac admin list-active-users --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+    "exitCode": -1,
+    "stdout": "",
+    "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema não pode encontrar o arquivo especificado.\""
+  }
+}

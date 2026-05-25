@@ -1,0 +1,9 @@
+{
+  "id": "A05_az_login_tenant_then_pac",
+  "title": "A.5 az login tenant fallback then pac auth create",
+  "startedBrt": "2026-05-24 10:49:21 BRT",
+  "status": "FAILED_OR_AUTH_BLOCKED",
+  "captureExit": 0,
+  "command": "az login --tenant 7808e005-1489-4374-954b-d3b08f193920; az account show; pac auth create --environment ColOfertasBrasilPro",
+  "output": "WARNING: Select the account you want to log in with. For more information on login with Azure CLI, see https://go.microsoft.com/fwlink/?linkid=2271136\r\nERROR: No subscriptions found for mbenicios@minsait.com.\r\n{\r\n  \"environmentName\": \"AzureCloud\",\r\n  \"homeTenantId\": \"edd5b6c2-b6eb-444e-9bab-4c29290938ff\",\r\n  \"id\": \"d869175e-4031-443b-8a43-57c5730bd82f\",\r\n  \"isDefault\": true,\r\n  \"managedByTenants\": [],\r\n  \"name\": \"Pago pelo Uso\",\r\n  \"state\": \"Enabled\",\r\n  \"tenantDefaultDomain\": \"manoelbeniciogmail.onmicrosoft.com\",\r\n  \"tenantDisplayName\": \"Default Directory\",\r\n  \"tenantId\": \"edd5b6c2-b6eb-444e-9bab-4c29290938ff\",\r\n  \"user\": {\r\n    \"name\": \"manoel.benicio@icloud.com\",\r\n    \"type\": \"user\"\r\n  }\r\n}\r\n'mbenicios@minsait.com' authenticated successfully.\r\nValidating connection...\r\nConnected to... ColOfertasBrasilPro\r\nDefault organization: ColOfertasBrasilPro\r\nAuthentication profile created\r\n    * UNIVERSAL                                : mbenicios@minsait.com                    Public https://colofertasbrasilpro.crm4.dynamics.com/\r\n\r\n"
+}

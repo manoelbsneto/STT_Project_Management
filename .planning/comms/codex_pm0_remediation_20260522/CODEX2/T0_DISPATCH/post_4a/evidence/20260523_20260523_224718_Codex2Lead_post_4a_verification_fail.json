@@ -1,0 +1,31 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestampBrt": "2026-05-23 19:47:18 BRT",
+  "screenshotPath": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/screenshots/20260523_20260523_224718_Codex2Lead_post_4a_verification_fail.png",
+  "classification": "FAIL",
+  "finalVerdict": "HOLD",
+  "expectedSha256": "270F569A0D34CB596115B8776A8354F88F184F1D2F772755416175A80D0A12FD",
+  "exportSha256": "66F81669BEA3035728ECE22E7BBBB146FE92721558C3EDECEE30444398F9D8D8",
+  "manifest": {
+    "uniqueName": "PMO_v11_Tarefas",
+    "version": "3.17",
+    "managed": "0"
+  },
+  "structural": {
+    "workflowCount": 0,
+    "actionComponentCount": 5,
+    "manualTaskInputActionCount": 0,
+    "topicInputBindingCount": 0,
+    "opsFailureHandlingPreserved": true
+  },
+  "aq08": "NOT_RUN_HALTED",
+  "pacCopilotList": "NOT_RUN_HALTED",
+  "pacFlowList": "NOT_RUN_HALTED",
+  "evidence": {
+    "report": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/T0_POST_4A_VERIFICATION.md",
+    "halt": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/FORENSIC_HALT_POST_IMPORT.md",
+    "exportLog": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/evidence/20260523_20260523_224437_Codex2Lead_post_4a_pac_solution_export.txt",
+    "envWho": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/evidence/20260523_20260523_224550_pac_env_who_post_4a.txt",
+    "solutionList": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4a/evidence/20260523_20260523_224550_pac_solution_list_post_4a.txt"
+  }
+}

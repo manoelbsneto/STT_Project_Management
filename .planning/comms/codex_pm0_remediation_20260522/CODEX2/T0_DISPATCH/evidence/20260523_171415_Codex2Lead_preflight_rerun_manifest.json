@@ -1,0 +1,7 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-23 17:14:15 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_171415_Codex2Lead_preflight_rerun_manifest.png",
+  "status": "PREFLIGHT_GREEN_WITH_TENANT_VERSION_DRIFT",
+  "manifest": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_PREFLIGHT_RERUN_MANIFEST.md"
+}

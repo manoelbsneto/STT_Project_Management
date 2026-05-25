@@ -1,0 +1,14 @@
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\unpacked_3_20\Workflows\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+diff --git "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json" "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+index 5bda799..8af455e 100644
+--- "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
++++ "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+@@ -157,6 +157,7 @@
+               "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+               "table": "Status Diario",
+               "item/Title": "@concat('Status ', triggerBody()?['projectId'], ' ', utcNow())",
++              "item/StatusID": "@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))",
+               "item/ProjectID": "@triggerBody()?['projectId']",
+               "item/DataRegistro": "@utcNow()",
+               "item/RAG/Value": "@triggerBody()?['rag']",

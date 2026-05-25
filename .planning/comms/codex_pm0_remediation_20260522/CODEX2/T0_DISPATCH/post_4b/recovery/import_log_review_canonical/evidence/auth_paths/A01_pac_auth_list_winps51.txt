@@ -1,0 +1,35 @@
+# A.1 pac auth list/env who/json in Windows PowerShell 5.1
+
+- ID: A01_pac_auth_list_winps51
+- Started BRT: 2026-05-24 10:46:39 BRT
+- Status: FAILED_OR_AUTH_BLOCKED
+- Capture exit: 0
+
+```powershell
+pac auth list; pac env who; pac auth list --json
+```
+
+```text
+Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url
+[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/
+
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 4f108b9d-054d-4d26-99dd-a5b6c5b61600 Correlation ID: e366097c-ab53-4d5a-94f9-ea1528d657c6 Timestamp: 2026-05-24 13:47:23Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 4f108b9d-054d-4d26-99dd-a5b6c5b61600 Correlation ID: e366097c-ab53-4d5a-94f9-ea1528d657c6 Timestamp: 2026-05-24 13:47:23Z
+
+Error: The value passed to '--json' is invalid. The verb 'list' doesn't support json output format.
+
+
+```

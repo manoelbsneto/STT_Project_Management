@@ -1,0 +1,47 @@
+{
+  "agent": "Codex #2 Sub 2C",
+  "timestampBrt": "2026-05-23 16:44:17 BRT",
+  "screenshotPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\screenshots\\20260523_194417_Codex2Sub2C_sha_compare_tooling_complete.png",
+  "status": "COMPLETE_LOCAL_STATIC_READY",
+  "tenantExportExecuted": false,
+  "tenantWriteExecuted": false,
+  "expectedSha256": "3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB",
+  "environmentId": "e2d10003-4d8e-e007-9d63-76d5fe89ef56",
+  "solutionName": "PMO_v11_Tarefas",
+  "targetBot": "Assistente PMO V2",
+  "deliverables": [
+    ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_SHA_COMPARE.ps1",
+    ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/T0_POST_PUBLISH_RUNBOOK.md"
+  ],
+  "validations": [
+    {
+      "name": "T0_SHA_COMPARE.ps1 parser",
+      "result": "PASS"
+    },
+    {
+      "result": "PASS",
+      "tenantAccess": false,
+      "name": "pac solution export help/syntax"
+    },
+    {
+      "result": "PASS",
+      "tenantAccess": false,
+      "name": "pac copilot list help/syntax"
+    },
+    {
+      "result": "PASS",
+      "tenantAccess": false,
+      "name": "pac copilot publish help/syntax"
+    },
+    {
+      "name": "T0_DRIFT_MONITOR_COMMANDS.ps1 parser",
+      "result": "PASS"
+    },
+    {
+      "result": "PASS",
+      "recommendation": "SHIP",
+      "tenantAccess": false,
+      "name": "Test-Aq08PublishDriftMonitor.ps1 -DryRun"
+    }
+  ]
+}

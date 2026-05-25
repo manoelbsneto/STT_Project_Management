@@ -1,0 +1,7 @@
+{
+  "command": "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe solution pack --zipfile \"D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip\" --folder \"D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\" --packagetype Unmanaged",
+  "exit_code": 1,
+  "stdout": "\nPacking Solution...\r\n\r\nPacking D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20 to D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip\r\n\r\nMicrosoft PowerPlatform CLI\r\nVersion: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)\r\nOnline documentation: https://aka.ms/PowerPlatformCLI\r\nFeedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions\r\n\r\nError: Cannot find required file 'D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Other\\Customizations.xml'.\r\n\r\n\r\n",
+  "stderr": "",
+  "package": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip"
+}

@@ -1,0 +1,7 @@
+{
+  "artifact": "workflow_inventory_post_publish_all",
+  "exitCode": 0,
+  "timestampBrt": "2026-05-24 11:52:52 BRT",
+  "fetchXml": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\post_publish_all\\fetch_pm0_workflows_post_publish_all.xml",
+  "raw": "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nstatecode modifiedon      versionnumber workflowid                           name                                 statuscode category\r\nBorrador  24/05/2026 9:49 97.769.794    1721e0a3-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarStatus          Borrador   Flujo moderno\r\nActivado  24/05/2026 9:50 97.772.076    8333bd91-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ResumoExecutivoPortfolio Activado   Flujo moderno\r\nActivado  24/05/2026 9:50 97.772.070    7c6300c2-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarTarefa          Activado   Flujo moderno\r\nActivado  24/05/2026 9:50 97.772.095    e0e3c6b0-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ListarTarefas            Activado   Flujo moderno\r\nActivado  24/05/2026 9:50 97.772.085    7f662db7-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_CriarTarefa              Activado   Flujo moderno\r\n\r\n"
+}

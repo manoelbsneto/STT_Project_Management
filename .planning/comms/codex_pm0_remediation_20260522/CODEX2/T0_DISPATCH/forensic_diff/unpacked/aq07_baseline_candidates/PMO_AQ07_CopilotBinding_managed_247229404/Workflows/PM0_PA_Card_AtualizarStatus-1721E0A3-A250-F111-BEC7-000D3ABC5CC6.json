@@ -1,0 +1,114 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_teams": {
+        "connectionReferenceLogicalName": "cat_sharedteams_1ef7e",
+        "source": "Invoker",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_teams",
+        "displayName": "Microsoft Teams",
+        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.0028/1.0.1811.4721/teams/icon.png",
+        "brandColor": "",
+        "tier": "Standard",
+        "apiName": "teams",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "description": "Action"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Status"
+                },
+                "routeKey": {
+                  "type": "string",
+                  "description": "Route key"
+                }
+              },
+              "required": [
+                "routeKey"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Post_Status_Card": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "poster": "Flow bot",
+              "body/messageBody": "{\"type\":\"AdaptiveCard\",\"version\":\"1.5\",\"body\":[{\"type\":\"TextBlock\",\"text\":\"Status update requested\",\"wrap\":true}]}",
+              "body/recipient/channelId": "19:4c8fe80b169f4e698c9b1b15d1868691@thread.tacv2",
+              "location": "Channel",
+              "body/recipient/groupId": "96c5b0c4-46cc-46cd-8695-50451db74994"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+              "connectionName": "shared_teams",
+              "operationId": "PostCardToConversation"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Respond_Success": {
+          "runAfter": {
+            "Post_Status_Card": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "result": "Status update card posted successfully."
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "title": "result",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

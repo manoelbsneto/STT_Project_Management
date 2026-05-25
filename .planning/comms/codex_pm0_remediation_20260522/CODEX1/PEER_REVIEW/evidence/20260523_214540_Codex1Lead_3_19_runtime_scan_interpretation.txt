@@ -1,0 +1,10 @@
+Codex #1 Lead 3.19 runtime scan interpretation
+Timestamp: 2026-05-23 21:45:40 BRT
+Targeted defects passed: True
+Empty(triggerBody) findings: 6
+Length(triggerBody) findings: 0
+Bare Choice/Lookup/Person after schema refinement: 0
+Functional action ManualTaskInput: 4/4
+Functional topic input.binding: 4/4
+Portfolio note: ResumoExecutivoPortfolio action lacks ManualTaskInput and ConsultarPortfolio topic uses input:{} in both 3.18 and 3.19; this preserves 3.18 behavior but does not satisfy a literal 5/5 ManualTaskInput/input.binding wording.
+JSON: .planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\evidence\20260523_214540_Codex1Lead_3_19_runtime_scan_interpretation.json

@@ -1,0 +1,14 @@
+{
+  "agent": "Sub G2B",
+  "timestamp_brt": "2026-05-23 16:35:00 BRT",
+  "event": "launch_start",
+  "track": "E",
+  "status": "IN_PROGRESS",
+  "tasks": [
+    "Pre-fill A1_CMD-12-H evidence stub",
+    "Pre-fill A2_CMD-15 evidence stub",
+    "Pre-fill A3_CMD-11-P0 evidence stub",
+    "Pre-fill A4_CMD-13A evidence stub",
+    "Pre-fill A5_CMD-10 evidence stub"
+  ]
+}

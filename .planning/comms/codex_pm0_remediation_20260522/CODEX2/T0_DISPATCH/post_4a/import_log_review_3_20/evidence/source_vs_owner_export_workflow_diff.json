@@ -1,0 +1,32 @@
+[
+  {
+    "workflow": "PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "rawDiffCount": 3,
+    "normalizedDiffCount": 0,
+    "normalizedDiffs": []
+  },
+  {
+    "workflow": "PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "rawDiffCount": 3,
+    "normalizedDiffCount": 0,
+    "normalizedDiffs": []
+  },
+  {
+    "workflow": "PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "rawDiffCount": 3,
+    "normalizedDiffCount": 0,
+    "normalizedDiffs": []
+  },
+  {
+    "workflow": "PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "rawDiffCount": 0,
+    "normalizedDiffCount": 0,
+    "normalizedDiffs": []
+  },
+  {
+    "workflow": "PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "rawDiffCount": 1,
+    "normalizedDiffCount": 0,
+    "normalizedDiffs": []
+  }
+]

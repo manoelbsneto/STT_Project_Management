@@ -1,0 +1,59 @@
+
+===== pac auth list before =====
+COMMAND: pac auth list
+Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url
+[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/
+
+EXIT_CAPTURE: 0
+
+===== pac auth select index 1 =====
+COMMAND: pac auth select --index 1
+New default profile:
+    * UNIVERSAL COLQA0424                      : mbenicios@minsait.com                    Public https://colofertasbrasilpro.crm4.dynamics.com/
+
+EXIT_CAPTURE: 0
+
+===== pac env who after select =====
+COMMAND: pac env who
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: f076fef9-4db3-4d42-b098-4b63478a1400 Correlation ID: e53bb363-8864-411d-acee-62289fa7cbf7 Timestamp: 2026-05-24 12:58:11Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: f076fef9-4db3-4d42-b098-4b63478a1400 Correlation ID: e53bb363-8864-411d-acee-62289fa7cbf7 Timestamp: 2026-05-24 12:58:11Z
+
+EXIT_CAPTURE: 0
+
+===== pac auth create ColOfertasBrasilPro capped =====
+COMMAND: pac auth create --environment ColOfertasBrasilPro
+TIMEOUT after 45 seconds; likely interactive or blocked.
+EXIT_CAPTURE: 124
+
+===== pac env who after create attempt =====
+COMMAND: pac env who
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: ddef864b-07f7-4d25-a683-6f382da31f00 Correlation ID: d8f191e2-6f87-47d5-8944-d8b51d8ca30e Timestamp: 2026-05-24 12:59:02Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: ddef864b-07f7-4d25-a683-6f382da31f00 Correlation ID: d8f191e2-6f87-47d5-8944-d8b51d8ca30e Timestamp: 2026-05-24 12:59:02Z
+
+EXIT_CAPTURE: 0

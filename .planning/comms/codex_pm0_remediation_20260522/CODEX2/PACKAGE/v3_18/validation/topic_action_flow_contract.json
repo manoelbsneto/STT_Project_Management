@@ -1,0 +1,83 @@
+﻿{
+    "sourceRoot":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package",
+    "generatedAt":  "2026-05-23 18:57:50 -03:00",
+    "passed":  false,
+    "failedCheckCount":  10,
+    "checks":  [
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus action file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarStatus topic file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa action file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarTarefa topic file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio action file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_ResumoExecutivoPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\ConsultarPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa action file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "CriarTarefa topic file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas action file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\actions\\PM0_PA_Card_ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "ListarTarefas topic file exists",
+                       "passed":  false,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\topics\\ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\work\\pm0_source_from_package\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   }
+               ]
+}

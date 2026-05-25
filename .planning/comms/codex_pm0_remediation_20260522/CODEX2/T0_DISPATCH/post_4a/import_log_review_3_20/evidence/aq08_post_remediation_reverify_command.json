@@ -1,0 +1,8 @@
+{
+  "command": "tests/Test-Aq08PostRemediationReverify.ps1",
+  "evidenceDir": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\aq08_post_remediation_reverify_3_20",
+  "exitCode": 1,
+  "log": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\evidence\\aq08_post_remediation_reverify_command.log",
+  "report": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\aq08_post_remediation_reverify_3_20\\aq08_post_remediation_reverify_report.json",
+  "timestampBrt": "2026-05-24 09:16:21 BRT"
+}

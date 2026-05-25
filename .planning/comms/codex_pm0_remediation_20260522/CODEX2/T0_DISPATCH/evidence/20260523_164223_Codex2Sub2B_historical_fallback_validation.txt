@@ -1,0 +1,30 @@
+Evidence Triplet - Codex #2 Sub 2B Historical Fallback Validation
+Agent: Codex #2 Sub 2B
+Timestamp BRT: 2026-05-23 16:42:23 BRT
+Scope: historical fallback only; Owner manual export paths pending
+Package: Solution\PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip
+Archive exists: True
+Archive bytes: 66060
+Solution name: PMO_v11_Tarefas
+Solution version: 3.9
+Expected SHA256: 37A3E7C85392D9E049CD26E01CF1D31F4B78A00DF35E0B7FAE23A252F29CB691
+Actual SHA256:   37A3E7C85392D9E049CD26E01CF1D31F4B78A00DF35E0B7FAE23A252F29CB691
+SHA match: True
+No tenant access: True
+Owner backup paths: PENDING
+
+Check summary:
+- Archive integrity: PASS
+- Solution XML schema validity: PASS
+- P0 ZIP contracts: PASS
+- P24 current guard: FAIL_LEGACY_STATIC_DELTAS
+
+Conclusion: Historical fallback archive is present and hash/schema/P0-valid, but it is not a primary recovery path and does not satisfy the current P24 static guard. Owner manual export paths remain pending.
+
+Commands:
+- [0] solution_xml_schema_validity: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SolutionXmlSchemaValidity.ps1 -Path .\Solution\PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip
+- [0] solution_zip_p0_contracts: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SolutionZipP0Contracts.ps1 -PackagePath .\Solution\PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip
+- [1] solution_zip_p24_contracts_current_guard: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Test-SolutionZipP24Contracts.ps1 -PackagePath .\Solution\PMO_v11_Tarefas_3_10_POST_WFSET_CLEAN.zip -ExpectedVersion 3.9
+- [0] zip_inventory: local System.IO.Compression inventory of solution.xml and ZIP entries
+
+P24 current guard failed checks are captured in JSON output; this is recorded as current-policy legacy delta for historical fallback only.

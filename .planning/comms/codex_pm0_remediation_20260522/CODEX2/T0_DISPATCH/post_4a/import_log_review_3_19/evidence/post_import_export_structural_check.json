@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-05-23 22:15:24 -03:00",
+  "packageZip": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\package\\PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+  "packageSha256": "43A33783ABC30E7A3DC74EAED162558FBA0781AC163804F85FDC559023D514BF",
+  "expectedPackageSha256": "43A33783ABC30E7A3DC74EAED162558FBA0781AC163804F85FDC559023D514BF",
+  "exportZip": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export.zip",
+  "exportSha256": "DA5F8DB0FA735CAF45609BA86BD58884FD0D472C09499B79EEA262667D026B08",
+  "solutionXml": {
+    "UniqueName": "PMO_v11_Tarefas",
+    "Version": "3.19.0.0",
+    "Managed": "0"
+  },
+  "workflowChecks": [
+    {
+      "name": "PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "sourceExists": true,
+      "tenantExists": true,
+      "byteEqual": false,
+      "sourceSha": "FFEAA4BE0CD0A05CC99F8EC8680FFD21FB9B1BB8F180C988066B2229DAF646E3",
+      "tenantSha": "6EFDB71E46EE2A3F7EDDF83C0B27E9EA1985B5D68BBEBDF6A90C2A9D92A4622C",
+      "createStatusDiario": {
+        "origemEntradaValue": "CopilotStudio",
+        "hasBareOrigemEntrada": false,
+        "percentual": "@coalesce(triggerBody()?['percentual'], 0)",
+        "hasStatusID": false
+      }
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "sourceExists": true,
+      "tenantExists": true,
+      "byteEqual": false,
+      "sourceSha": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "tenantSha": "0F5F84D51DC9867CEE42EFC837EB63C2328F3027AF27BD9CB9EDF5712047E922",
+      "updateSharePointItem": {
+        "horasRealizadas": "@coalesce(triggerBody()?['horasRealizadas'], body('Get_SharePoint_Item')?['HorasRealizadas'], 0)"
+      }
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "sourceExists": true,
+      "tenantExists": true,
+      "byteEqual": false,
+      "sourceSha": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "tenantSha": "819D6EE3582C96444D42D9D94752C8B7F5E8FF3C776585D6D6410A4412F3D0E4"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "sourceExists": true,
+      "tenantExists": true,
+      "byteEqual": true,
+      "sourceSha": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "tenantSha": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "sourceExists": true,
+      "tenantExists": true,
+      "byteEqual": false,
+      "sourceSha": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "tenantSha": "DA71CB55767075D228989668215E320B0285A878A5D61E4063A46C50E0DA3308"
+    }
+  ]
+}

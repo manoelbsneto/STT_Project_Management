@@ -1,0 +1,37 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-24 02:50:07 BRT",
+  "package": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\package\\PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+  "sandbox_runner_found": false,
+  "note": "No separate local/sandbox tenant runner found in repo context; no import or tenant write attempted. pac flow validate was probed only for local CLI support.",
+  "commands": [
+    {
+      "label": "pac version",
+      "command": "pac ",
+      "exit_code": "START_FAILED",
+      "stdout": "",
+      "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema n?o pode encontrar o arquivo especificado.\""
+    },
+    {
+      "label": "pac solution unpack 3.19",
+      "command": "pac ",
+      "exit_code": "START_FAILED",
+      "stdout": "",
+      "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema n?o pode encontrar o arquivo especificado.\""
+    },
+    {
+      "label": "pac flow help",
+      "command": "pac ",
+      "exit_code": "START_FAILED",
+      "stdout": "",
+      "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema n?o pode encontrar o arquivo especificado.\""
+    },
+    {
+      "label": "pac flow validate help",
+      "command": "pac ",
+      "exit_code": "START_FAILED",
+      "stdout": "",
+      "stderr": "Exception calling \"Start\" with \"1\" argument(s): \"An error occurred trying to start process 'pac' with working directory 'd:\\VMs\\Projetos\\STT_Project_Management'. O sistema n?o pode encontrar o arquivo especificado.\""
+    }
+  ]
+}

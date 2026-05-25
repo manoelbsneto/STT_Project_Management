@@ -1,0 +1,56 @@
+# A1_CMD-12-H — ListarTarefas
+
+## Metadata
+
+- test_id: A1_CMD-12-H
+- section: A in-scope ship-gate
+- executor: <<TODO_BACKFILL: executor_name (depends on: T4_execution)>>
+- date_brt: <<TODO_BACKFILL: date_brt (depends on: T4_execution)>>
+- build_under_test: 3.16
+- bot: Assistente PMO V2
+- environment: ColOfertasBrasilPro
+
+## Chat input
+
+<!-- INPUT BEGIN -->
+listar tarefas QA Robust 20260513 F
+<!-- INPUT END -->
+
+## Bot response transcript
+
+<!-- TRANSCRIPT BEGIN -->
+<<TODO_BACKFILL: bot_response_transcript (depends on: T4_execution)>>
+<!-- TRANSCRIPT END -->
+
+## Power Automate run
+
+- run_url_or_id: <<TODO_BACKFILL: run_url_or_id (depends on: T4_execution)>>
+
+## SharePoint side effect
+
+- expected: None
+- actual: <<TODO_BACKFILL: actual_sp_side_effect (depends on: T4_execution)>>
+- pnp_output_path: <<TODO_BACKFILL: pnp_output_path (depends on: T4_execution)>>
+
+PnP read-back command:
+```powershell
+Get-PnPListItem -List "Tarefas" -PageSize 100 -Fields "ID","Title","ProjectID","Status","Responsavel","DataFim","Prioridade","HorasRealizadas","Deleted" |
+  Where-Object { $_["ProjectID"] -eq "PRJ-274E5ACC" } |
+  Select-Object Id,@{n="Title";e={$_["Title"]}},@{n="Status";e={$_["Status"]}},@{n="Deleted";e={$_["Deleted"]}}
+```
+
+## XPIA marker observation
+
+- cf_observed: <<TODO_BACKFILL: cf_observed (depends on: T4_execution)>>
+- oai_observed: <<TODO_BACKFILL: oai_observed (depends on: T4_execution)>>
+- rai_observed: <<TODO_BACKFILL: rai_observed (depends on: T4_execution)>>
+- eb_observed: <<TODO_BACKFILL: eb_observed (depends on: T4_execution)>>
+
+## Screenshot
+
+- path: .planning/comms/aq09_smoke_runbook_20260520/screenshots/A1_CMD-12-H_chat.png
+
+## Outcome
+
+- result: <<TODO_BACKFILL: result (depends on: T4_execution)>>
+- justification: <<TODO_BACKFILL: justification (depends on: T4_execution)>>

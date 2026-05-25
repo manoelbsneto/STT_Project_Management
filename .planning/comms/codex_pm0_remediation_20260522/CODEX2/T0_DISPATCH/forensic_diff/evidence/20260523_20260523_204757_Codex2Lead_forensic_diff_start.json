@@ -1,0 +1,8 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-23 17:47:57 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/forensic_diff/screenshots/20260523_20260523_204757_Codex2Lead_forensic_diff_start.png",
+  "transition": "STARTED",
+  "task": "Read-only forensic diff for BLK-LIVE-317",
+  "tenant_write": false
+}

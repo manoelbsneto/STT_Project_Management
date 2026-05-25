@@ -1,0 +1,144 @@
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_19\work\unpacked_3_19\Workflows/PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\post_import_3_19_export_raw\Workflows/PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json', CRLF will be replaced by LF the next time Git touches it
+diff --git "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json" "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+index 5bda799..8903449 100644
+--- "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
++++ "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json"
+@@ -2,7 +2,6 @@
+   "properties": {
+     "connectionReferences": {
+       "shared_sharepointonline": {
+-        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+         "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+@@ -14,7 +13,6 @@
+         "isProcessSimpleApiReferenceConversionAlreadyDone": false
+       },
+       "shared_teams": {
+-        "connectionName": "shared-teams-1440d346-f1dd-44ea-912f-3787038ac333",
+         "connectionReferenceLogicalName": "cat_sharedteams_1ef7e",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_teams",
+@@ -228,7 +226,8 @@
+         }
+       },
+       "outputs": {}
+-    }
++    },
++    "templateName": null
+   },
+   "schemaVersion": "1.0.0.0"
+ }
+\ No newline at end of file
+diff --git "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json" "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+index c424b6d..107f2ba 100644
+--- "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
++++ "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+@@ -2,7 +2,6 @@
+   "properties": {
+     "connectionReferences": {
+       "shared_sharepointonline": {
+-        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+         "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+@@ -14,7 +13,6 @@
+         "isProcessSimpleApiReferenceConversionAlreadyDone": false
+       },
+       "shared_planner": {
+-        "connectionName": "6b763b98729c4d99a7a8df4033d381af",
+         "connectionReferenceLogicalName": "pmo_sharedplanner_87b5f",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_planner",
+@@ -204,7 +202,8 @@
+         }
+       },
+       "outputs": {}
+-    }
++    },
++    "templateName": null
+   },
+   "schemaVersion": "1.0.0.0"
+ }
+\ No newline at end of file
+diff --git "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json" "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+index 32b7e8b..1121af8 100644
+--- "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
++++ "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+@@ -2,7 +2,6 @@
+   "properties": {
+     "connectionReferences": {
+       "shared_sharepointonline": {
+-        "connectionName": "44f187cde7f54f208cf22bac4e533816",
+         "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+@@ -14,7 +13,6 @@
+         "isProcessSimpleApiReferenceConversionAlreadyDone": false
+       },
+       "shared_planner": {
+-        "connectionName": "6b763b98729c4d99a7a8df4033d381af",
+         "connectionReferenceLogicalName": "pmo_sharedplanner_87b5f",
+         "source": "Embedded",
+         "id": "/providers/Microsoft.PowerApps/apis/shared_planner",
+@@ -218,7 +216,8 @@
+         }
+       },
+       "outputs": {}
+-    }
++    },
++    "templateName": null
+   },
+   "schemaVersion": "1.0.0.0"
+ }
+\ No newline at end of file
+diff --git "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json" "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+index 0cb5d2a..f086282 100644
+--- "a/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
++++ "b/.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\post_import_3_19_export_raw\\Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+@@ -106,7 +106,8 @@
+         }
+       },
+       "outputs": {}
+-    }
++    },
++    "templateName": null
+   },
+   "schemaVersion": "1.0.0.0"
+ }
+\ No newline at end of file
+
+DIFF_EXIT=1 (1 means differences found for git diff --no-index)

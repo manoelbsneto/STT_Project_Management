@@ -1,0 +1,5 @@
+Codex #2 Lead | 2026-05-24 10:00:29 BRT | CANONICAL DEEP DIVE HOLD
+Mission: PM0-3_20-CANONICAL-IMPORT-DEEP-DIVE
+Reason: PAC auth create requires interactive login or blocks; live tenant verification stopped per mission instruction.
+Import 41: Version 3.20.0.0; zero 0x80040216; 16 replacement notices; one real Sin procesar activation row for AtualizarStatus.
+Canonical package: SHA ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC; Version 3.20.0.0; StatusID present.

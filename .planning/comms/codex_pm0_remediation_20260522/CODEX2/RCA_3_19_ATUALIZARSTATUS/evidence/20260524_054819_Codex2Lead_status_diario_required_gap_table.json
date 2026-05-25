@@ -1,0 +1,134 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-24 02:48:19 BRT",
+  "source_evidence": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\RCA_3_19_ATUALIZARSTATUS\\evidence\\20260524_054119_Codex2Lead_create_statusdiario_source_3_19.json",
+  "schema_evidence": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\RCA_3_19_ATUALIZARSTATUS\\evidence\\20260524_054740_Codex2Lead_status_diario_field_schema.json",
+  "workflow_item_properties": [
+    "item/Title",
+    "item/ProjectID",
+    "item/DataRegistro",
+    "item/RAG/Value",
+    "item/Resumo",
+    "item/Percentual",
+    "item/Risco",
+    "item/Bloqueio",
+    "item/ProximaAcao",
+    "item/OrigemEntrada/Value"
+  ],
+  "required_gap_rows": [
+    {
+      "internal_name": "Title",
+      "title": "T?tulo",
+      "type": "Text",
+      "required": true,
+      "accepted_item_keys": [
+        "item/Title",
+        "item/Title/Value",
+        "item/Title/Claims"
+      ],
+      "sent_keys": [
+        "item/Title"
+      ],
+      "sent": true,
+      "gap": false
+    },
+    {
+      "internal_name": "StatusID",
+      "title": "StatusID",
+      "type": "Text",
+      "required": true,
+      "accepted_item_keys": [
+        "item/StatusID",
+        "item/StatusID/Value",
+        "item/StatusID/Claims"
+      ],
+      "sent_keys": [],
+      "sent": false,
+      "gap": true
+    },
+    {
+      "internal_name": "ProjectID",
+      "title": "ProjectID",
+      "type": "Text",
+      "required": true,
+      "accepted_item_keys": [
+        "item/ProjectID",
+        "item/ProjectID/Value",
+        "item/ProjectID/Claims"
+      ],
+      "sent_keys": [
+        "item/ProjectID"
+      ],
+      "sent": true,
+      "gap": false
+    },
+    {
+      "internal_name": "DataRegistro",
+      "title": "DataRegistro",
+      "type": "DateTime",
+      "required": true,
+      "accepted_item_keys": [
+        "item/DataRegistro",
+        "item/DataRegistro/Value",
+        "item/DataRegistro/Claims"
+      ],
+      "sent_keys": [
+        "item/DataRegistro"
+      ],
+      "sent": true,
+      "gap": false
+    },
+    {
+      "internal_name": "RAG",
+      "title": "RAG",
+      "type": "Choice",
+      "required": true,
+      "accepted_item_keys": [
+        "item/RAG",
+        "item/RAG/Value",
+        "item/RAG/Claims"
+      ],
+      "sent_keys": [
+        "item/RAG/Value"
+      ],
+      "sent": true,
+      "gap": false
+    },
+    {
+      "internal_name": "Resumo",
+      "title": "Resumo",
+      "type": "Note",
+      "required": true,
+      "accepted_item_keys": [
+        "item/Resumo",
+        "item/Resumo/Value",
+        "item/Resumo/Claims"
+      ],
+      "sent_keys": [
+        "item/Resumo"
+      ],
+      "sent": true,
+      "gap": false
+    },
+    {
+      "internal_name": "OrigemEntrada",
+      "title": "OrigemEntrada",
+      "type": "Choice",
+      "required": true,
+      "accepted_item_keys": [
+        "item/OrigemEntrada",
+        "item/OrigemEntrada/Value",
+        "item/OrigemEntrada/Claims"
+      ],
+      "sent_keys": [
+        "item/OrigemEntrada/Value"
+      ],
+      "sent": true,
+      "gap": false
+    }
+  ],
+  "missing_required_count": 1,
+  "missing_required_internal_names": [
+    "StatusID"
+  ]
+}

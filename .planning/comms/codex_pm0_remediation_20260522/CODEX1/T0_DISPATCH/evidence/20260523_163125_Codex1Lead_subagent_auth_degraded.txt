@@ -1,0 +1,5 @@
+Agent: Codex #1 Lead
+Timestamp: 2026-05-23 16:31:25 BRT
+Action: Sub-agent spawn degradation recorded.
+Details: Sub 1A, Sub 1B, and Sub 1C spawn attempts returned platform token-refresh errors. Lead taking over ASK drafting locally to preserve Track Alpha critical path.
+Screenshot: .planning/comms/codex_pm0_remediation_20260522/CODEX1/T0_DISPATCH/screenshots/20260523_163125_Codex1Lead_subagent_auth_degraded.png

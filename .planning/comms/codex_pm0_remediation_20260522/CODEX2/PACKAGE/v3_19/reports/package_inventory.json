@@ -1,0 +1,387 @@
+[
+  {
+    "Relative": "[Content_Types].xml",
+    "Bytes": 3712,
+    "Sha256": "9981F9678C8E5F1E341D290D4BDA1979934BD3009FF6702524C4D4D490E09A38"
+  },
+  {
+    "Relative": "Assets\\botcomponent_workflowset.xml",
+    "Bytes": 3547,
+    "Sha256": "D0224CA2BC093B9042FF8EE14D4170EEF1AA334483568F39E01DBF37B8DB569D"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\\botcomponent.xml",
+    "Bytes": 433,
+    "Sha256": "D5C71838FC383B2E5B29754700B1707652FB06D24E0FA4DB4DA07E72A376E508"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\\data",
+    "Bytes": 1043,
+    "Sha256": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\\botcomponent.xml",
+    "Bytes": 433,
+    "Sha256": "4780FDF9BF624A9F790CE74A228058FB0619D8397225C01D5E66201991F71963"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\\data",
+    "Bytes": 1254,
+    "Sha256": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\\botcomponent.xml",
+    "Bytes": 421,
+    "Sha256": "12BD1E82DDB6F70A2329E08121D44E97B486C37EECD2586C385410845294EE3C"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\\data",
+    "Bytes": 1438,
+    "Sha256": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\\botcomponent.xml",
+    "Bytes": 427,
+    "Sha256": "C4EAB635F9AE040DDB5D882EB7C39FA597717A1F02307F17DABFB1C681071809"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\\data",
+    "Bytes": 493,
+    "Sha256": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\\botcomponent.xml",
+    "Bytes": 460,
+    "Sha256": "E48421BA775F5001B4FE76F9BCECCA9BD64BA23EF2C4583FB21FED4559798CA8"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\\data",
+    "Bytes": 325,
+    "Sha256": "DC6C216ACD5D723C12B458B2B055C5E0848832C1BEA0DEB0B1E2FD4F00D20901"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling\\botcomponent.xml",
+    "Bytes": 358,
+    "Sha256": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling\\data",
+    "Bytes": 255,
+    "Sha256": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa\\botcomponent.xml",
+    "Bytes": 497,
+    "Sha256": "A24809A7486B42201CD5A79B9636B0E4D9DBEC83992F34F16523C88E01BD8610"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa\\data",
+    "Bytes": 1030,
+    "Sha256": "41EDBD692FB72BD8771FDAEA41BA0B12595E39105D41F40DFA7117B90F0DA2E4"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto\\botcomponent.xml",
+    "Bytes": 469,
+    "Sha256": "CE95FD83436FE426579AB4FAA4D4B5E7750A6AB66CB66050DB2C9A8F126E047B"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto\\data",
+    "Bytes": 923,
+    "Sha256": "E0D99E27DC9FD0A0F06ADFEF1B343389F5D599EDEC71BCD67681F44A2BF06F49"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa\\botcomponent.xml",
+    "Bytes": 464,
+    "Sha256": "B5E7F3DF54A16830D48DB8856CA8C1AFA679051CA3E4EB8A233C5FF6564FC485"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa\\data",
+    "Bytes": 915,
+    "Sha256": "D76F5F48DBC687719B96115A98802415A9A538A3E8C7CDE1C79AA3073445AD16"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas\\botcomponent.xml",
+    "Bytes": 469,
+    "Sha256": "98E73036A50916C1692123FA08DDCA1C985CA333777590FF8BCFE219176774D7"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas\\data",
+    "Bytes": 572,
+    "Sha256": "8B9D244965D8603B7591120F1CDB80D7F08CDCBB232D6B424DC5F6223D9C9204"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.gpt.default\\botcomponent.xml",
+    "Bytes": 330,
+    "Sha256": "A438BE103784D2D1E73BF4CB80DA0225ACAC46BCA3DD2F263A923D895ED8E4C2"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.gpt.default\\data",
+    "Bytes": 1421,
+    "Sha256": "53926C6BE88B2F3BBB525E88F79E7D71C0CBFBBC4EDA8F04108092066A8B35EC"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarStatus\\botcomponent.xml",
+    "Bytes": 432,
+    "Sha256": "096A9DA3F0449B07EEAF4B60FE7CE31B621FA0A0AF6DFECFA76DB05399D73E7D"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarStatus\\data",
+    "Bytes": 9492,
+    "Sha256": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa\\botcomponent.xml",
+    "Bytes": 492,
+    "Sha256": "2829057CB2BA747D9DB0D0AD4D92A32887AE558E7E6C95282A0FD44BAE2D22E6"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.AtualizarTarefa\\data",
+    "Bytes": 16898,
+    "Sha256": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio\\botcomponent.xml",
+    "Bytes": 398,
+    "Sha256": "71F54F6B6251B53DC91A91DA110C722FEC74509246A4C99487C29B4973702DD8"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio\\data",
+    "Bytes": 1125,
+    "Sha256": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarProjeto\\botcomponent.xml",
+    "Bytes": 412,
+    "Sha256": "F1CE0706D50ABBACAFCF24EC425375E92CB813B87BF2CC4910E992E687AB7BB8"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarProjeto\\data",
+    "Bytes": 2749,
+    "Sha256": "708D8AD6F7860C450F68AB59D1B9EC728B74A9763AE7B120A6B1A3F125DED499"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.CriarProjeto\\botcomponent.xml",
+    "Bytes": 393,
+    "Sha256": "AD86AADE281BDD8EF416BA40F78D8D4EA80D4466386CAA41332A34FAEF4D71AF"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.CriarProjeto\\data",
+    "Bytes": 6614,
+    "Sha256": "0F14A734B520544F23821943F57FC48CF117AE3D7EA6A695ACDF0976FFC1B775"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.CriarTarefa\\botcomponent.xml",
+    "Bytes": 415,
+    "Sha256": "BC5C7E379EFDDDCCB8882981FBCDF21609A3F09B2594CB2BB7B60A25C1ECD0D6"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.CriarTarefa\\data",
+    "Bytes": 7917,
+    "Sha256": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ExcluirProjeto\\botcomponent.xml",
+    "Bytes": 436,
+    "Sha256": "39CC8753108703F8343599F4A67939D3F953CD0FFC5C22BCF6B9A10957CB47A1"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ExcluirProjeto\\data",
+    "Bytes": 3505,
+    "Sha256": "2BF0F2A2626D14BE7EE55E5886A5B3D9CCD6DA8958604D2A86DB975F7656C52A"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ExcluirTarefa\\botcomponent.xml",
+    "Bytes": 429,
+    "Sha256": "95DAD1F1E40060B9F9E5A8564195798084353BDEE9FFEC02FA0300B5353756A3"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ExcluirTarefa\\data",
+    "Bytes": 5064,
+    "Sha256": "FEEA2FD33BE81B2D5E9D77FA9C513C6EDCCC26E793AF855640B0B5957198FA31"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos\\botcomponent.xml",
+    "Bytes": 441,
+    "Sha256": "195C6247242D13914C383E51D1905D0F740F092CFB2D80D92D7529DD58F1322C"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos\\data",
+    "Bytes": 1141,
+    "Sha256": "B0BE2A6386CC75B8FBEF4CEC1F49625157305423E4C8C622EE484A703FF093DC"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.Greeting\\botcomponent.xml",
+    "Bytes": 385,
+    "Sha256": "B85AC9EA0F95D1DECFDD10D639C060C8BC4128EB10D8CC1AC969F6511A79B802"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.Greeting\\data",
+    "Bytes": 260,
+    "Sha256": "0948C6E348A77CDB2BA6EB57EE61FC18B7434B1ACB15F4FE0AD327CBA65D1C62"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ListarTarefas\\botcomponent.xml",
+    "Bytes": 438,
+    "Sha256": "03313DEEC908A2F49B662B9ED1C50E0905D86E2B8507619F5C5EA592BB71EBDF"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.ListarTarefas\\data",
+    "Bytes": 2507,
+    "Sha256": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.LowConfidence\\botcomponent.xml",
+    "Bytes": 411,
+    "Sha256": "CE7A9AC79FE33A2DFEDA527264E79B4D7516282AE10DF804BC69ABD9091D47AA"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.LowConfidence\\data",
+    "Bytes": 10508,
+    "Sha256": "0F0719AFB66C5DA16E035DF253845A55CAB18B146A22F87D7789FD2BF087C4A1"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.PedirDecisao\\botcomponent.xml",
+    "Bytes": 430,
+    "Sha256": "BCB6CBB647190AD1C1B88CF63DAEB87757C8F89F45CF6BF6418A697DB7D960B3"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.PedirDecisao\\data",
+    "Bytes": 8100,
+    "Sha256": "3D72275D0EA93234DE39EE784C392AA9D41DCE54847CC026C220DA38C4C64A91"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.RegistrarBloqueio\\botcomponent.xml",
+    "Bytes": 426,
+    "Sha256": "4F64CBE4419A252A8EF0435E8DAF7ED40353987F184411EC48E58FED5E52AF85"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.RegistrarBloqueio\\data",
+    "Bytes": 5580,
+    "Sha256": "8C8621CA4A0BD8036931793817FD0E57215550B48C893AEEFDE726D99A384911"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.RegistrarRisco\\botcomponent.xml",
+    "Bytes": 417,
+    "Sha256": "BCA478A99042ED174C10734220408B85CAEED1573D0DDFFBE705EB887AC9BEB7"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.RegistrarRisco\\data",
+    "Bytes": 6081,
+    "Sha256": "8186032D4C9AD6378310AAB3398F9D65352DFD2280E28095FEF84B72B874B97D"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.SeHouverErro\\botcomponent.xml",
+    "Bytes": 391,
+    "Sha256": "3902F0B2D5D39035D1327C6E946D6560EF278DE0931026B75F5E6C23F6D2FA51"
+  },
+  {
+    "Relative": "botcomponents\\pmo_AssistentePMO_V2.topic.SeHouverErro\\data",
+    "Bytes": 291,
+    "Sha256": "ED4D038B356158615730EA7AABC6B835F62AC5720090C79F60249098F466AC98"
+  },
+  {
+    "Relative": "bots\\pmo_AssistentePMO_V2\\bot.xml",
+    "Bytes": 394,
+    "Sha256": "2CA1A02647F6ED9455D6BA43904624D5D66BB0E3304776FA6F998B2B7AC1354B"
+  },
+  {
+    "Relative": "bots\\pmo_AssistentePMO_V2\\configuration.json",
+    "Bytes": 505,
+    "Sha256": "101B2CCC55B44D04C0413A588FCFDCF4DD1B82FD361C4F64F25DE2E61E9A0CB9"
+  },
+  {
+    "Relative": "customizations.xml",
+    "Bytes": 23048,
+    "Sha256": "DC31B4B94FBD4E113A1796965BAB8921AAE801D23320F2AEF920E1AC165A768F"
+  },
+  {
+    "Relative": "solution.xml",
+    "Bytes": 3091,
+    "Sha256": "35E64AE9226A3004A3E4040979602EC17CB5DDB611AA86E07C97546E661C34E5"
+  },
+  {
+    "Relative": "Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 9874,
+    "Sha256": "FFEAA4BE0CD0A05CC99F8EC8680FFD21FB9B1BB8F180C988066B2229DAF646E3"
+  },
+  {
+    "Relative": "Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 9639,
+    "Sha256": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443"
+  },
+  {
+    "Relative": "Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 9983,
+    "Sha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE"
+  },
+  {
+    "Relative": "Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 6805,
+    "Sha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101"
+  },
+  {
+    "Relative": "Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 3430,
+    "Sha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+    "Bytes": 13378,
+    "Sha256": "F17FEF9353A26FCDBBDBD6859D30B59167B6535A1F19473B77DB79645B6ABEB9"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 16792,
+    "Sha256": "78BB7702100F3EF6773F4BCE95EE67FF06254A724A10481C7DDE4A07F2AE029C"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+    "Bytes": 9932,
+    "Sha256": "CABBD51C199503DA8B4EE40A88230F75FBC0A8288C61FFE36938469D08D8284A"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 8329,
+    "Sha256": "9FE7F484AAB05676BD30AEB1696C3AB64FA995F0CBB86A816F4D4071F9AA3EFD"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+    "Bytes": 11636,
+    "Sha256": "60C38CC093DC6461A0EC01A46D05F17600560FE77EA6FBA262929F58E074A84C"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+    "Bytes": 10767,
+    "Sha256": "3446C3D89DC366E7A7269BFA246455CAD621E407F03C6F96D5E3B207C5C351C5"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+    "Bytes": 10167,
+    "Sha256": "EE2E5386286A022A69DD1FAAD60DCE2906EFEB4BB4A4BED4C280FAB57AB43C6C"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+    "Bytes": 19331,
+    "Sha256": "AD4213350CD04F2BE9467C1833CCBC776BEB994C30122B33C2A2C975DB5301CD"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+    "Bytes": 10030,
+    "Sha256": "2F6FD75EAE693494EAFCCA555B397808BBB7BAEB7A379451CBF03A8F7EA2793E"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+    "Bytes": 11865,
+    "Sha256": "32F0FE5B52E2889B20BFE83E084A74CC39AD2A3770A3ED489686AF89BED04829"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+    "Bytes": 9982,
+    "Sha256": "71D33E2C49049644E90ECDB3B39059E59621CEEC1966D3E355C88607FEA37E21"
+  },
+  {
+    "Relative": "Workflows\\PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+    "Bytes": 9799,
+    "Sha256": "2F9E3E2572B633F8E1523B366B7A3EAAB946692E7D724D874599B448140E0BE4"
+  }
+]

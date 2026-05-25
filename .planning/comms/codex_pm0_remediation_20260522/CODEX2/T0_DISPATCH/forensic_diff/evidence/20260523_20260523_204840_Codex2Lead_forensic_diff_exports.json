@@ -1,0 +1,25 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-23 17:48:40 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/forensic_diff/screenshots/20260523_20260523_204840_Codex2Lead_forensic_diff_exports.png",
+  "commands": [
+    {
+      "name": "PMO_v11_Tarefas",
+      "exit_code": 1,
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\live_3_17_export.zip",
+      "exists": false,
+      "sha256": null,
+      "bytes": 0,
+      "output": "Microsoft PowerPlatform CLI\r\nVersion: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)\r\nOnline documentation: https://aka.ms/PowerPlatformCLI\r\nFeedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions\r\n\r\nError: An unknown argument value for --include was passed.\r\n\r\nUsage: pac solution export [--environment] --name [--path] [--managed] [--include] [--async] [--max-async-wait-time] [--overwrite] [--targetversion]\r\n\r\n  --environment               Specifies the target Dataverse. The value may be a Guid or absolute https URL. When not specified, the active organization selected for the current auth profile will be used. (alias: -env)\r\n  --name                      The name of the solution to be exported. (alias: -n)\r\n  --path                      Path where the exported solution zip file is written. (alias: -p)\r\n  --managed                   Whether the solution should be exported as a managed solution. (alias: -m)\r\n  --include                   Which settings should be included in the solution being exported. (alias: -i)\r\n                              Values: autonumbering, calendar, customization, emailtracking, externalapplications, general, isvconfig, marketing, outlooksynchronization, relationshiproles, sales\r\n  --async                     Exports the solution asynchronously. (alias: -a)\r\n  --max-async-wait-time       Max asynchronous wait time in minutes. The default value is 60 minutes. (alias: -wt)\r\n  --overwrite                 The exported solution file can overwrite the solution zip file on the local file system. (alias: -ow)\r\n  --targetversion             (deprecated) The version that the exported solution will support (alias: -v)"
+    },
+    {
+      "name": "PMO_AQ07_CopilotBinding",
+      "exit_code": 0,
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\live_aq07_1_0_0_2_export.zip",
+      "exists": true,
+      "sha256": "A7C3B9D5E85265EE6CB299468B432EBC8F1D504D93DEE2CD7B6178923F5BD793",
+      "bytes": 76817,
+      "output": "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nStarting Solution Export...\r\nSolution export succeeded."
+    }
+  ]
+}

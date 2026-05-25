@@ -235,6 +235,56 @@ function Invoke-Pac {
     Invoke-External -Arguments (@($PacExe) + $Arguments)
 }
 
+function Invoke-PacFetchXml {
+    param(
+        [Parameter(Mandatory)][string]$Step,
+        [Parameter(Mandatory)][string]$Slug,
+        [Parameter(Mandatory)][string]$FetchXml
+    )
+    $fetchDir = Join-Path $PreflightDir 'fetchxml'
+    New-Item -ItemType Directory -Force -Path (Resolve-RepoRelativePath -Path $fetchDir) | Out-Null
+    $fetchPath = Join-Path $fetchDir ("{0}_{1}_{2}.xml" -f $Step, $Slug, (Get-UtcStamp))
+    Write-Utf8File -Path $fetchPath -Value $FetchXml
+    $result = Invoke-Pac -Arguments @('org', 'fetch', '--environment', $EnvironmentId, '--xmlFile', (Resolve-RepoRelativePath -Path $fetchPath))
+    if ($result.exitCode -ne 0) {
+        Write-Halt -Step $Step -Reason "PAC FetchXML failed for $Slug. Command: $($result.command)`n$($result.stderr)" -SuccessfulCommands $successful
+    }
+    [pscustomobject]@{
+        fetchXmlPath = $fetchPath
+        command = $result.command
+        exitCode = $result.exitCode
+        stdout = $result.stdout
+        stderr = $result.stderr
+    }
+}
+
+function Test-AzPacIdentityMismatch {
+    $azCommand = Get-Command az -ErrorAction SilentlyContinue
+    if (-not $azCommand) {
+        return $true
+    }
+    $az = Invoke-External -Arguments @($azCommand.Source, 'account', 'show', '--output', 'json')
+    $pac = Invoke-Pac -Arguments @('env', 'who')
+    if ($az.exitCode -ne 0 -or $pac.exitCode -ne 0) {
+        return $true
+    }
+    try {
+        $azAccount = $az.stdout | ConvertFrom-Json
+    }
+    catch {
+        return $true
+    }
+    $azUser = [string]$azAccount.user.name
+    $pacUser = ''
+    if ($pac.stdout -match 'User Email:\s*(?<email>\S+)') {
+        $pacUser = $Matches.email
+    }
+    if ([string]::IsNullOrWhiteSpace($azUser) -or [string]::IsNullOrWhiteSpace($pacUser)) {
+        return $true
+    }
+    return ($azUser.Trim().ToLowerInvariant() -ne $pacUser.Trim().ToLowerInvariant())
+}
+
 function Get-ToolVersionText {
     param(
         [Parameter(Mandatory)][string]$Tool,
@@ -421,29 +471,86 @@ try {
     }
 
     Import-PowerAppsModule
-    $tokenInfo = Get-DataverseToken
-    $dataverseToken = $tokenInfo.Token
+    $usePacFetchForDataverse = Test-AzPacIdentityMismatch
+    if ($usePacFetchForDataverse) {
+        $tokenInfo = [pscustomobject]@{
+            Path = 'PAC_ORG_FETCH_FALLBACK'
+            ToolVersion = (Invoke-Pac -Arguments @('help')).stdout.Split("`n")[1].Trim()
+            Resource = $DataverseResource
+            TimeToAcquireSeconds = 0
+            Token = $null
+        }
+        $dataverseToken = $null
+    }
+    else {
+        $tokenInfo = Get-DataverseToken
+        $dataverseToken = $tokenInfo.Token
+    }
 
     # Step 3: Section 6.7 Dataverse Web API GET for solutions and solutioncomponents.
-    $solutionFilter = "uniquename eq 'PMO_v11_Tarefas' or uniquename eq 'PMO_AQ07_CopilotBinding'"
-    $solutionsPath = "/api/data/v9.2/solutions?`$select=solutionid,uniquename,friendlyname,version,ismanaged&`$filter=$([uri]::EscapeDataString($solutionFilter))"
-    $solutions = Invoke-DataverseGet -Path $solutionsPath -Token $dataverseToken -Step '03_solutioncomponents'
-    $solutionRows = @($solutions.value)
-    $solutionIds = @{}
-    foreach ($solution in $solutionRows) {
-        $solutionIds[$solution.uniquename] = $solution.solutionid
-    }
-    foreach ($name in $TargetSolutions) {
-        if (-not $solutionIds.ContainsKey($name)) {
-            Write-Halt -Step '03_solutioncomponents' -Reason "Unable to resolve solution ID for $name." -SuccessfulCommands $successful
+    if ($usePacFetchForDataverse) {
+        $solutionsFetch = @'
+<fetch>
+  <entity name="solution">
+    <attribute name="solutionid" />
+    <attribute name="uniquename" />
+    <attribute name="friendlyname" />
+    <attribute name="version" />
+    <attribute name="ismanaged" />
+    <filter type="or">
+      <condition attribute="uniquename" operator="eq" value="PMO_v11_Tarefas" />
+      <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+    </filter>
+  </entity>
+</fetch>
+'@
+        $componentsFetch = @'
+<fetch>
+  <entity name="solutioncomponent">
+    <attribute name="componenttype" />
+    <attribute name="objectid" />
+    <attribute name="rootcomponentbehavior" />
+    <link-entity name="solution" from="solutionid" to="solutionid" alias="sol">
+      <attribute name="uniquename" />
+      <filter type="or">
+        <condition attribute="uniquename" operator="eq" value="PMO_v11_Tarefas" />
+        <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+      </filter>
+    </link-entity>
+  </entity>
+</fetch>
+'@
+        $solutions = Invoke-PacFetchXml -Step '03_solutioncomponents' -Slug 'solutions' -FetchXml $solutionsFetch
+        $components = Invoke-PacFetchXml -Step '03_solutioncomponents' -Slug 'solutioncomponents' -FetchXml $componentsFetch
+        foreach ($name in $TargetSolutions) {
+            if ($solutions.stdout -notmatch [regex]::Escape($name)) {
+                Write-Halt -Step '03_solutioncomponents' -Reason "Unable to resolve solution row for $name via PAC FetchXML." -SuccessfulCommands $successful
+            }
         }
+        $componentData = [ordered]@{ solutions = $solutions; components = $components }
+        $successful.Add('pac org fetch solutions + solutioncomponents') | Out-Null
     }
-    $componentData = [ordered]@{ solutions = $solutionRows; components = @{} }
-    foreach ($name in $TargetSolutions) {
-        $path = "/api/data/v9.2/solutioncomponents?`$filter=_solutionid_value eq $($solutionIds[$name])&`$select=componenttype,objectid,rootcomponentbehavior"
-        $componentData.components[$name] = (Invoke-DataverseGet -Path $path -Token $dataverseToken -Step '03_solutioncomponents').value
+    else {
+        $solutionFilter = "uniquename eq 'PMO_v11_Tarefas' or uniquename eq 'PMO_AQ07_CopilotBinding'"
+        $solutionsPath = "/api/data/v9.2/solutions?`$select=solutionid,uniquename,friendlyname,version,ismanaged&`$filter=$([uri]::EscapeDataString($solutionFilter))"
+        $solutions = Invoke-DataverseGet -Path $solutionsPath -Token $dataverseToken -Step '03_solutioncomponents'
+        $solutionRows = @($solutions.value)
+        $solutionIds = @{}
+        foreach ($solution in $solutionRows) {
+            $solutionIds[$solution.uniquename] = $solution.solutionid
+        }
+        foreach ($name in $TargetSolutions) {
+            if (-not $solutionIds.ContainsKey($name)) {
+                Write-Halt -Step '03_solutioncomponents' -Reason "Unable to resolve solution ID for $name." -SuccessfulCommands $successful
+            }
+        }
+        $componentData = [ordered]@{ solutions = $solutionRows; components = @{} }
+        foreach ($name in $TargetSolutions) {
+            $path = "/api/data/v9.2/solutioncomponents?`$filter=_solutionid_value eq $($solutionIds[$name])&`$select=componenttype,objectid,rootcomponentbehavior"
+            $componentData.components[$name] = (Invoke-DataverseGet -Path $path -Token $dataverseToken -Step '03_solutioncomponents').value
+        }
+        $successful.Add('Invoke-DataverseGet solutions + solutioncomponents') | Out-Null
     }
-    $successful.Add('Invoke-DataverseGet solutions + solutioncomponents') | Out-Null
     $step03 = Write-Evidence -Step '03' -Slug 'solutioncomponents' -Description 'Solution component inventory captured for PMO_v11_Tarefas and AQ07.' -CommandLine 'Invoke-DataverseGet /api/data/v9.2/solutioncomponents' -Data ([ordered]@{ tokenPath = $tokenInfo.Path; tokenToolVersion = $tokenInfo.ToolVersion; resource = $tokenInfo.Resource; timeToAcquireSeconds = $tokenInfo.TimeToAcquireSeconds; components = $componentData })
     $tokenHeader = @"
 
@@ -460,30 +567,98 @@ try {
     $evidence.Add($step03) | Out-Null
 
     # Step 4: Section 6.7 Dataverse Web API GET for PM0 bot/action binding rows.
-    $bindingPath = "/api/data/v9.2/botcomponents?`$select=botcomponentid,name,componenttype,statecode,statuscode&`$filter=contains(name,'PM0_PA_Card')"
-    $bindings = Invoke-DataverseGet -Path $bindingPath -Token $dataverseToken -Step '04_workflowset_binding'
-    $successful.Add('Invoke-DataverseGet botcomponents PM0_PA_Card') | Out-Null
-    $evidence.Add((Write-Evidence -Step '04' -Slug 'workflowset_binding' -Description 'PM0 bot component binding candidates captured.' -CommandLine "Invoke-DataverseGet $bindingPath" -Data $bindings)) | Out-Null
-
-    # Step 5: runbook sections 3 and 4 Get-Flow.
-    $flows = @(Get-Flow -EnvironmentName $EnvironmentId -Top 200 -ErrorAction Stop)
-    $pm0Flows = @($flows | Where-Object { $Pm0WorkflowIds -contains $_.Internal.properties.workflowEntityId } |
-        Select-Object DisplayName, FlowName, Enabled, CreatedTime, LastModifiedTime,
-            @{ Name = 'State'; Expression = { $_.Internal.properties.state } },
-            @{ Name = 'WorkflowEntityId'; Expression = { $_.Internal.properties.workflowEntityId } },
-            @{ Name = 'DefinitionSummary'; Expression = { $_.Internal.properties.definitionSummary } })
-    if ($pm0Flows.Count -ne 5) {
-        Write-Halt -Step '05_pm0_flow_inventory' -Reason "Expected 5 PM0 flows from Get-Flow, found $($pm0Flows.Count)." -SuccessfulCommands $successful
+    if ($usePacFetchForDataverse) {
+        $bindingFetch = @'
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter>
+      <condition attribute="name" operator="like" value="%PM0_PA_Card%" />
+    </filter>
+  </entity>
+</fetch>
+'@
+        $bindings = Invoke-PacFetchXml -Step '04_workflowset_binding' -Slug 'pm0_botcomponents' -FetchXml $bindingFetch
+        $successful.Add('pac org fetch botcomponents PM0_PA_Card') | Out-Null
+        $evidence.Add((Write-Evidence -Step '04' -Slug 'workflowset_binding' -Description 'PM0 bot component binding candidates captured.' -CommandLine 'pac org fetch botcomponent PM0_PA_Card' -Data $bindings)) | Out-Null
     }
-    $successful.Add('Get-Flow -EnvironmentName <env> -Top 200') | Out-Null
-    $evidence.Add((Write-Evidence -Step '05' -Slug 'pm0_flow_inventory' -Description 'PM0 flow inventory captured with definition summaries.' -CommandLine 'Get-Flow -EnvironmentName <env> -Top 200' -Data $pm0Flows)) | Out-Null
+    else {
+        $bindingPath = "/api/data/v9.2/botcomponents?`$select=botcomponentid,name,componenttype,statecode,statuscode&`$filter=contains(name,'PM0_PA_Card')"
+        $bindings = Invoke-DataverseGet -Path $bindingPath -Token $dataverseToken -Step '04_workflowset_binding'
+        $successful.Add('Invoke-DataverseGet botcomponents PM0_PA_Card') | Out-Null
+        $evidence.Add((Write-Evidence -Step '04' -Slug 'workflowset_binding' -Description 'PM0 bot component binding candidates captured.' -CommandLine "Invoke-DataverseGet $bindingPath" -Data $bindings)) | Out-Null
+    }
+
+    # Step 5: PM0 flow inventory.
+    if ($usePacFetchForDataverse) {
+        $workflowConditions = ($Pm0WorkflowIds | ForEach-Object { "      <condition attribute=`"workflowid`" operator=`"eq`" value=`"$_`" />" }) -join "`n"
+        $workflowFetch = @"
+<fetch>
+  <entity name="workflow">
+    <attribute name="workflowid" />
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="modifiedon" />
+    <filter type="or">
+$workflowConditions
+    </filter>
+  </entity>
+</fetch>
+"@
+        $pm0Flows = Invoke-PacFetchXml -Step '05_pm0_flow_inventory' -Slug 'pm0_workflows' -FetchXml $workflowFetch
+        foreach ($workflowId in $Pm0WorkflowIds) {
+            if ($pm0Flows.stdout -notmatch [regex]::Escape($workflowId)) {
+                Write-Halt -Step '05_pm0_flow_inventory' -Reason "Expected PM0 workflow ID missing from PAC FetchXML output: $workflowId." -SuccessfulCommands $successful
+            }
+        }
+        $successful.Add('pac org fetch workflow PM0 IDs') | Out-Null
+        $evidence.Add((Write-Evidence -Step '05' -Slug 'pm0_flow_inventory' -Description 'PM0 flow inventory captured via PAC FetchXML because AZ token identity mismatched PAC identity.' -CommandLine 'pac org fetch workflow PM0 IDs' -Data $pm0Flows)) | Out-Null
+    }
+    else {
+        $flows = @(Get-Flow -EnvironmentName $EnvironmentId -Top 200 -ErrorAction Stop)
+        $pm0Flows = @($flows | Where-Object { $Pm0WorkflowIds -contains $_.Internal.properties.workflowEntityId } |
+            Select-Object DisplayName, FlowName, Enabled, CreatedTime, LastModifiedTime,
+                @{ Name = 'State'; Expression = { $_.Internal.properties.state } },
+                @{ Name = 'WorkflowEntityId'; Expression = { $_.Internal.properties.workflowEntityId } },
+                @{ Name = 'DefinitionSummary'; Expression = { $_.Internal.properties.definitionSummary } })
+        if ($pm0Flows.Count -ne 5) {
+            Write-Halt -Step '05_pm0_flow_inventory' -Reason "Expected 5 PM0 flows from Get-Flow, found $($pm0Flows.Count)." -SuccessfulCommands $successful
+        }
+        $successful.Add('Get-Flow -EnvironmentName <env> -Top 200') | Out-Null
+        $evidence.Add((Write-Evidence -Step '05' -Slug 'pm0_flow_inventory' -Description 'PM0 flow inventory captured with definition summaries.' -CommandLine 'Get-Flow -EnvironmentName <env> -Top 200' -Data $pm0Flows)) | Out-Null
+    }
 
     # Step 6: Section 6.7 Dataverse Web API GET bot row.
-    $botFilter = "name eq 'Assistente PMO V2'"
-    $botPath = "/api/data/v9.2/bots?`$filter=$([uri]::EscapeDataString($botFilter))&`$select=name,statecode,statuscode,publishedon,configuration"
-    $botRow = Invoke-DataverseGet -Path $botPath -Token $dataverseToken -Step '06_bot_row'
-    $successful.Add('Invoke-DataverseGet bots Assistente PMO V2') | Out-Null
-    $evidence.Add((Write-Evidence -Step '06' -Slug 'bot_row' -Description 'Assistente PMO V2 bot row captured.' -CommandLine "Invoke-DataverseGet $botPath" -Data $botRow)) | Out-Null
+    if ($usePacFetchForDataverse) {
+        $botFetch = @'
+<fetch>
+  <entity name="bot">
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="publishedon" />
+    <filter>
+      <condition attribute="name" operator="eq" value="Assistente PMO V2" />
+    </filter>
+  </entity>
+</fetch>
+'@
+        $botRow = Invoke-PacFetchXml -Step '06_bot_row' -Slug 'assistente_pmo_v2_bot' -FetchXml $botFetch
+        $successful.Add('pac org fetch bots Assistente PMO V2') | Out-Null
+        $evidence.Add((Write-Evidence -Step '06' -Slug 'bot_row' -Description 'Assistente PMO V2 bot row captured.' -CommandLine 'pac org fetch bot Assistente PMO V2' -Data $botRow)) | Out-Null
+    }
+    else {
+        $botFilter = "name eq 'Assistente PMO V2'"
+        $botPath = "/api/data/v9.2/bots?`$filter=$([uri]::EscapeDataString($botFilter))&`$select=name,statecode,statuscode,publishedon,configuration"
+        $botRow = Invoke-DataverseGet -Path $botPath -Token $dataverseToken -Step '06_bot_row'
+        $successful.Add('Invoke-DataverseGet bots Assistente PMO V2') | Out-Null
+        $evidence.Add((Write-Evidence -Step '06' -Slug 'bot_row' -Description 'Assistente PMO V2 bot row captured.' -CommandLine "Invoke-DataverseGet $botPath" -Data $botRow)) | Out-Null
+    }
 
     # Step 7: local AQ-08 structural verifier without unapproved PAC org/env fetch.
     $aq08 = Invoke-External -Arguments @('powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Resolve-RepoRelativePath -Path 'tests/Test-CopilotRoutingInstructions.ps1'), '-PackagePath', (Resolve-RepoRelativePath -Path $PackagePath))
@@ -503,13 +678,36 @@ try {
 
     # Step 9: runbook section 6 InvokeApi GET processsession baseline per PM0 workflow.
     foreach ($workflowId in $Pm0WorkflowIds) {
-        $processPath = "/api/data/v9.2/processsessions?`$filter=_regardingobjectid_value eq $workflowId&`$select=processid,regardingobjectid,startedon,completedon,status&`$top=50&`$orderby=startedon desc"
-        $processRows = Invoke-DataverseGet -Path $processPath -Token $dataverseToken -Step '09_processsession_baseline'
-        $successful.Add("Invoke-DataverseGet processsessions $workflowId") | Out-Null
-        $evidence.Add((Write-Evidence -Step '09' -Slug "processsession_baseline_$workflowId" -Description "Process session baseline captured for $workflowId." -CommandLine "Invoke-DataverseGet $processPath" -Data $processRows)) | Out-Null
+        if ($usePacFetchForDataverse) {
+            $processFetch = @"
+<fetch count="50">
+  <entity name="processsession">
+    <attribute name="processid" />
+    <attribute name="regardingobjectid" />
+    <attribute name="startedon" />
+    <attribute name="completedon" />
+    <filter>
+      <condition attribute="regardingobjectid" operator="eq" value="$workflowId" />
+    </filter>
+    <order attribute="startedon" descending="true" />
+  </entity>
+</fetch>
+"@
+            $processRows = Invoke-PacFetchXml -Step '09_processsession_baseline' -Slug "processsession_$workflowId" -FetchXml $processFetch
+            $successful.Add("pac org fetch processsessions $workflowId") | Out-Null
+            $evidence.Add((Write-Evidence -Step '09' -Slug "processsession_baseline_$workflowId" -Description "Process session baseline captured for $workflowId." -CommandLine 'pac org fetch processsession baseline' -Data $processRows)) | Out-Null
+        }
+        else {
+            $processPath = "/api/data/v9.2/processsessions?`$filter=_regardingobjectid_value eq $workflowId&`$select=processid,regardingobjectid,startedon,completedon,status&`$top=50&`$orderby=startedon desc"
+            $processRows = Invoke-DataverseGet -Path $processPath -Token $dataverseToken -Step '09_processsession_baseline'
+            $successful.Add("Invoke-DataverseGet processsessions $workflowId") | Out-Null
+            $evidence.Add((Write-Evidence -Step '09' -Slug "processsession_baseline_$workflowId" -Description "Process session baseline captured for $workflowId." -CommandLine "Invoke-DataverseGet $processPath" -Data $processRows)) | Out-Null
+        }
     }
     $dataverseToken = $null
-    $tokenInfo.Token = $null
+    if ($tokenInfo.PSObject.Properties.Name -contains 'Token') {
+        $tokenInfo.Token = $null
+    }
 
     # Step 10: operator UI screenshot stub only, no UI write.
     $uiStub = [ordered]@{

@@ -1,0 +1,550 @@
+{
+  "Source": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\import_38.xml",
+  "CopiedSha256": "E56A1603712F1F17E3F27D5BF4C8D3B8983387C9726D923654AF3C585715A92D",
+  "Solution": {
+    "Name": "PMO_v11_Tarefas",
+    "DisplayName": "PMO v1.1 - Task Management Topics",
+    "Version": "3.19.0.0",
+    "PackageType": "No administrada",
+    "ManagedFlag": "0",
+    "Status": "Procesado",
+    "Progress": "86.27",
+    "DurationSeconds": "151.0",
+    "StartTime": "05/24/2026 12:51:50.445 (UTC) Coordinated Universal Time",
+    "StopTime": "05/24/2026 12:54:21.444 (UTC) Coordinated Universal Time"
+  },
+  "ComponentRowCount": 71,
+  "StatusCounts": [
+    {
+      "Status": "Procesado",
+      "Count": 64
+    },
+    {
+      "Status": "Sin procesar",
+      "Count": 7
+    }
+  ],
+  "ItemTypeCounts": [
+    {
+      "ItemType": "Flujo de trabajo",
+      "Count": 34
+    },
+    {
+      "ItemType": "Activación de flujo de trabajo",
+      "Count": 17
+    },
+    {
+      "ItemType": "",
+      "Count": 10
+    },
+    {
+      "ItemType": "Transformar paquete",
+      "Count": 5
+    },
+    {
+      "ItemType": "Cálculo de dependencias",
+      "Count": 1
+    },
+    {
+      "ItemType": "Etiquetas",
+      "Count": 1
+    },
+    {
+      "ItemType": "Inserciones de componentes raíz",
+      "Count": 1
+    },
+    {
+      "ItemType": "Solución",
+      "Count": 1
+    },
+    {
+      "ItemType": "Validación de paquete",
+      "Count": 1
+    }
+  ],
+  "ErrorOrWarningRows": [
+    {
+      "Time": "00:51:59.46",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+      "Name": "PMO_PA_ListarTarefas",
+      "LocalizedName": "PMO_PA_ListarTarefas",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:02.91",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+      "Name": "PMO_PA_AtualizarTarefa",
+      "LocalizedName": "PMO_PA_AtualizarTarefa",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:04.87",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+      "Name": "PMO_PA_ConsultarPortfolio",
+      "LocalizedName": "PMO_PA_ConsultarPortfolio",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:07.29",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+      "Name": "PMO_PA_ConsultarProjeto",
+      "LocalizedName": "PMO_PA_ConsultarProjeto",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:09.02",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+      "Name": "PMO_PA_RegistrarRiscoBot",
+      "LocalizedName": "PMO_PA_RegistrarRiscoBot",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:10.98",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+      "Name": "PMO_PA_RegistrarBloqueioBot",
+      "LocalizedName": "PMO_PA_RegistrarBloqueioBot",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:13.09",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+      "Name": "PMO_PA_PedirDecisaoBot",
+      "LocalizedName": "PMO_PA_PedirDecisaoBot",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:14.87",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+      "Name": "PMO_PA_AtualizarStatus",
+      "LocalizedName": "PMO_PA_AtualizarStatus",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:16.71",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+      "Name": "PMO_PA_ExcluirProjeto",
+      "LocalizedName": "PMO_PA_ExcluirProjeto",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:19.37",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+      "Name": "PMO_PA_ExcluirTarefa",
+      "LocalizedName": "PMO_PA_ExcluirTarefa",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:21.79",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+      "Name": "PMO_PA_CriarProjeto",
+      "LocalizedName": "PMO_PA_CriarProjeto",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:23.64",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+      "Name": "PMO_PA_CriarTarefa",
+      "LocalizedName": "PMO_PA_CriarTarefa",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:26.56",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_AtualizarStatus",
+      "LocalizedName": "PM0_PA_Card_AtualizarStatus",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:28.31",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_AtualizarTarefa",
+      "LocalizedName": "PM0_PA_Card_AtualizarTarefa",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:30.28",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "LocalizedName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:33.34",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_CriarTarefa",
+      "LocalizedName": "PM0_PA_Card_CriarTarefa",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:52:35.33",
+      "ItemType": "Flujo de trabajo",
+      "Id": "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_ListarTarefas",
+      "LocalizedName": "PM0_PA_Card_ListarTarefas",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80045042",
+      "ErrorText": "The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "Time": "00:54:09.64",
+      "ItemType": "Activación de flujo de trabajo",
+      "Id": "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+      "Name": "PM0_PA_Card_AtualizarStatus",
+      "LocalizedName": "PM0_PA_Card_AtualizarStatus",
+      "OriginalName": "",
+      "Description": "",
+      "Status": "Procesado",
+      "ErrorCode": "0x80040216",
+      "ErrorText": "Flow client error returned with status code \"BadRequest\" and details \"{\"error\":{\"code\":\"InvalidOpenApiFlow\",\"message\":\"Error al guardar el flujo con el código \\\"OpenApiOperationParameterValidationFailed\\\" y el mensaje \\\"Input parameter 'item' validation failed in workflow operation 'Create_StatusDiario': The API operation 'PostItem' is missing required property 'item/StatusID'.\\\".\"}}\"."
+    }
+  ],
+  "Occurrences_0x80040216": 1,
+  "Occurrences_0x80045042": 17,
+  "Occurrences_OrigemEntrada": 0,
+  "Occurrences_emptyIntegerPatterns": 0,
+  "PM0Verification": [
+    {
+      "Name": "PM0_PA_Card_AtualizarStatus",
+      "Present": true,
+      "RowCount": 3,
+      "WorkflowRows": 2,
+      "ActivationRows": 1,
+      "Statuses": [
+        "Procesado"
+      ],
+      "ErrorCodes": [
+        "0x80045042",
+        "0x80040216"
+      ],
+      "Classification": "FAILED_ACTIVATION",
+      "Rows": [
+        {
+          "Time": "00:52:26.56",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarStatus",
+          "LocalizedName": "PM0_PA_Card_AtualizarStatus",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80045042",
+          "ErrorText": "The original workflow definition has been deactivated and replaced."
+        },
+        {
+          "Time": "00:52:28.29",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarStatus",
+          "LocalizedName": "PM0_PA_Card_AtualizarStatus",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        },
+        {
+          "Time": "00:54:09.64",
+          "ItemType": "Activación de flujo de trabajo",
+          "Id": "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarStatus",
+          "LocalizedName": "PM0_PA_Card_AtualizarStatus",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80040216",
+          "ErrorText": "Flow client error returned with status code \"BadRequest\" and details \"{\"error\":{\"code\":\"InvalidOpenApiFlow\",\"message\":\"Error al guardar el flujo con el código \\\"OpenApiOperationParameterValidationFailed\\\" y el mensaje \\\"Input parameter 'item' validation failed in workflow operation 'Create_StatusDiario': The API operation 'PostItem' is missing required property 'item/StatusID'.\\\".\"}}\"."
+        }
+      ]
+    },
+    {
+      "Name": "PM0_PA_Card_AtualizarTarefa",
+      "Present": true,
+      "RowCount": 3,
+      "WorkflowRows": 2,
+      "ActivationRows": 1,
+      "Statuses": [
+        "Procesado"
+      ],
+      "ErrorCodes": [
+        "0x80045042"
+      ],
+      "Classification": "UPDATED_REPLACED",
+      "Rows": [
+        {
+          "Time": "00:52:28.31",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarTarefa",
+          "LocalizedName": "PM0_PA_Card_AtualizarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80045042",
+          "ErrorText": "The original workflow definition has been deactivated and replaced."
+        },
+        {
+          "Time": "00:52:30.25",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarTarefa",
+          "LocalizedName": "PM0_PA_Card_AtualizarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        },
+        {
+          "Time": "00:54:12.61",
+          "ItemType": "Activación de flujo de trabajo",
+          "Id": "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_AtualizarTarefa",
+          "LocalizedName": "PM0_PA_Card_AtualizarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        }
+      ]
+    },
+    {
+      "Name": "PM0_PA_Card_CriarTarefa",
+      "Present": true,
+      "RowCount": 3,
+      "WorkflowRows": 2,
+      "ActivationRows": 1,
+      "Statuses": [
+        "Procesado"
+      ],
+      "ErrorCodes": [
+        "0x80045042"
+      ],
+      "Classification": "UPDATED_REPLACED",
+      "Rows": [
+        {
+          "Time": "00:52:33.34",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_CriarTarefa",
+          "LocalizedName": "PM0_PA_Card_CriarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80045042",
+          "ErrorText": "The original workflow definition has been deactivated and replaced."
+        },
+        {
+          "Time": "00:52:35.31",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_CriarTarefa",
+          "LocalizedName": "PM0_PA_Card_CriarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        },
+        {
+          "Time": "00:54:18.49",
+          "ItemType": "Activación de flujo de trabajo",
+          "Id": "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_CriarTarefa",
+          "LocalizedName": "PM0_PA_Card_CriarTarefa",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        }
+      ]
+    },
+    {
+      "Name": "PM0_PA_Card_ListarTarefas",
+      "Present": true,
+      "RowCount": 3,
+      "WorkflowRows": 2,
+      "ActivationRows": 1,
+      "Statuses": [
+        "Procesado"
+      ],
+      "ErrorCodes": [
+        "0x80045042"
+      ],
+      "Classification": "UPDATED_REPLACED",
+      "Rows": [
+        {
+          "Time": "00:52:35.33",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ListarTarefas",
+          "LocalizedName": "PM0_PA_Card_ListarTarefas",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80045042",
+          "ErrorText": "The original workflow definition has been deactivated and replaced."
+        },
+        {
+          "Time": "00:52:37.39",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ListarTarefas",
+          "LocalizedName": "PM0_PA_Card_ListarTarefas",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        },
+        {
+          "Time": "00:54:21.41",
+          "ItemType": "Activación de flujo de trabajo",
+          "Id": "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ListarTarefas",
+          "LocalizedName": "PM0_PA_Card_ListarTarefas",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        }
+      ]
+    },
+    {
+      "Name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "Present": true,
+      "RowCount": 3,
+      "WorkflowRows": 2,
+      "ActivationRows": 1,
+      "Statuses": [
+        "Procesado"
+      ],
+      "ErrorCodes": [
+        "0x80045042"
+      ],
+      "Classification": "UPDATED_REPLACED",
+      "Rows": [
+        {
+          "Time": "00:52:30.28",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "LocalizedName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "0x80045042",
+          "ErrorText": "The original workflow definition has been deactivated and replaced."
+        },
+        {
+          "Time": "00:52:33.31",
+          "ItemType": "Flujo de trabajo",
+          "Id": "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "LocalizedName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        },
+        {
+          "Time": "00:54:15.39",
+          "ItemType": "Activación de flujo de trabajo",
+          "Id": "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+          "Name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "LocalizedName": "PM0_PA_Card_ResumoExecutivoPortfolio",
+          "OriginalName": "",
+          "Description": "",
+          "Status": "Procesado",
+          "ErrorCode": "",
+          "ErrorText": ""
+        }
+      ]
+    }
+  ]
+}

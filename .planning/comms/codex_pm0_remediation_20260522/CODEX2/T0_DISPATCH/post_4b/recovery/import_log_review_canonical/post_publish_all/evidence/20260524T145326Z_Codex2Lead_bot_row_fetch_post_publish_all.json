@@ -1,0 +1,7 @@
+{
+  "artifact": "bot_row_fetch_post_publish_all",
+  "exitCode": 0,
+  "timestampBrt": "2026-05-24 11:53:34 BRT",
+  "fetchXml": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\post_publish_all\\fetch_assistente_pmo_v2_bot_post_publish_all.xml",
+  "raw": "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nstatecode publishedon      modifiedon      name              componentstate statuscode    ismanaged       botid\r\nActivo    22/05/2026 14:40 24/05/2026 9:51 Assistente PMO V2 Publicado      Aprovisionado No administrado df148bf8-0a3e-495b-80c4-841dcb61d9a4\r\n\r\n"
+}

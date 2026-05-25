@@ -1,0 +1,11 @@
+<fetch>
+  <entity name="bot">
+    <attribute name="name" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="publishedon" />
+    <filter>
+      <condition attribute="name" operator="eq" value="Assistente PMO V2" />
+    </filter>
+  </entity>
+</fetch>

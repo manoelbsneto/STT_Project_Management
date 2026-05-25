@@ -1,0 +1,70 @@
+{
+  "generated_brt": "2026-05-23 18:14:29 BRT",
+  "aq07_baseline": null,
+  "aq07_live": {
+    "UniqueName": "PMO_AQ07_CopilotBinding",
+    "Version": "1.0.0.2",
+    "Managed": "0",
+    "Path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\unpacked\\aq07_1_0_0_2_live_unpacked\\solution.xml"
+  },
+  "aq07_candidates": [
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\PMO_AQ07_CopilotBinding_20260515_181052.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.0",
+      "managed": "0",
+      "sha256": "6A9A2ABAEB670AA3EFC304C4C1AF0DE648D2FDB6B1E053BAD05D8D0702972ADF",
+      "bytes": 18692
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\connection_reference_repair_20260515_1902\\PMO_AQ07_CopilotBinding_connection_reference_repair_20260515_1902.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.0",
+      "managed": "0",
+      "sha256": "D6CC7F10DF11FEC9A2E11AAD86320DD35FC2025EE53665DFA770C80ACB15F37D",
+      "bytes": 18221
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\connection_reference_repair_v2_20260515_1910\\PMO_AQ07_CopilotBinding_connection_reference_repair_v2_20260515_1910.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.0",
+      "managed": "0",
+      "sha256": "037C398B543B5F56D2A3B136E2BBC2711D7C382E173BBA429C5DF69E4AA13BA7",
+      "bytes": 17893
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\PMO_AQ07_CopilotBinding_20260515_181446.zip",
+      "uniqueName": "",
+      "version": "",
+      "managed": null,
+      "sha256": "A133B5D4E6CCBC7A08EE9E0A057577E28D3DC9AF970A78E0DB92E14794FD0457",
+      "bytes": 14623
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\aq07_power_automate_build_20260515\\execution_evidence\\PMO_AQ07_CopilotBinding_20260515_181649.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.0",
+      "managed": "0",
+      "sha256": "F221A3AE1DA4C9720F0051B8822C9EAC04A5F91E7FEF77F18225DD6FE97B8698",
+      "bytes": 18440
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\ROLLBACK\\4A_pre_import_20260523_201144\\PMO_AQ07_CopilotBinding_managed.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.2",
+      "managed": "1",
+      "sha256": "0CBFD79BA047E10F699567912B1E8838C32FC93141366CAD2CC7A3D45650F12E",
+      "bytes": 76817
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\ROLLBACK\\4A_pre_import_20260523_201144\\PMO_AQ07_CopilotBinding_unmanaged.zip",
+      "uniqueName": "PMO_AQ07_CopilotBinding",
+      "version": "1.0.0.2",
+      "managed": "0",
+      "sha256": "6E3347665626C4CDD420DDA9FF259D7B2B729E88DCF83CD74284A03A52F3CCB1",
+      "bytes": 76817
+    }
+  ],
+  "diff": null,
+  "gap": "AQ07 1.0.0.1 local baseline not found"
+}

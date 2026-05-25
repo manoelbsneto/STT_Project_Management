@@ -1,0 +1,37 @@
+[
+  {
+    "name": "pac auth list before",
+    "command": "pac auth list",
+    "startedBrt": "2026-05-24 09:57:23 BRT",
+    "captureExit": 0,
+    "output": "Index Active Kind      Name      User                  Cloud  Type Environment         Environment Url\n[1]   *      UNIVERSAL COLQA0424 mbenicios@minsait.com Public User ColOfertasBrasilPro https://colofertasbrasilpro.crm4.dynamics.com/\n"
+  },
+  {
+    "name": "pac auth select index 1",
+    "command": "pac auth select --index 1",
+    "startedBrt": "2026-05-24 09:57:27 BRT",
+    "captureExit": 0,
+    "output": "New default profile:\n    * UNIVERSAL COLQA0424                      : mbenicios@minsait.com                    Public https://colofertasbrasilpro.crm4.dynamics.com/\n"
+  },
+  {
+    "name": "pac env who after select",
+    "command": "pac env who",
+    "startedBrt": "2026-05-24 09:57:30 BRT",
+    "captureExit": 0,
+    "output": "Connected as mbenicios@minsait.com\nConnected to... \nCould not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.\nMicrosoft PowerPlatform CLI\nVersion: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)\nOnline documentation: https://aka.ms/PowerPlatformCLI\nFeedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions\n\nError: Failed to connect to Dataverse\n    ExternalTokenManagement Authentication Requested but not configured correctly. 003\n        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: f076fef9-4db3-4d42-b098-4b63478a1400 Correlation ID: e53bb363-8864-411d-acee-62289fa7cbf7 Timestamp: 2026-05-24 12:58:11Z\n\nFailed to connect to Dataverse\nExternalTokenManagement Authentication Requested but not configured correctly. 003\nAADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: f076fef9-4db3-4d42-b098-4b63478a1400 Correlation ID: e53bb363-8864-411d-acee-62289fa7cbf7 Timestamp: 2026-05-24 12:58:11Z\n"
+  },
+  {
+    "name": "pac auth create ColOfertasBrasilPro capped",
+    "command": "pac auth create --environment ColOfertasBrasilPro",
+    "startedBrt": "2026-05-24 09:57:35 BRT",
+    "captureExit": 124,
+    "output": "TIMEOUT after 45 seconds; likely interactive or blocked."
+  },
+  {
+    "name": "pac env who after create attempt",
+    "command": "pac env who",
+    "startedBrt": "2026-05-24 09:58:21 BRT",
+    "captureExit": 0,
+    "output": "Connected as mbenicios@minsait.com\nConnected to... \nCould not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.\nMicrosoft PowerPlatform CLI\nVersion: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)\nOnline documentation: https://aka.ms/PowerPlatformCLI\nFeedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions\n\nError: Failed to connect to Dataverse\n    ExternalTokenManagement Authentication Requested but not configured correctly. 003\n        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: ddef864b-07f7-4d25-a683-6f382da31f00 Correlation ID: d8f191e2-6f87-47d5-8944-d8b51d8ca30e Timestamp: 2026-05-24 12:59:02Z\n\nFailed to connect to Dataverse\nExternalTokenManagement Authentication Requested but not configured correctly. 003\nAADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: ddef864b-07f7-4d25-a683-6f382da31f00 Correlation ID: d8f191e2-6f87-47d5-8944-d8b51d8ca30e Timestamp: 2026-05-24 12:59:02Z\n"
+  }
+]

@@ -1,0 +1,14 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-23 16:46:28 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164628_Codex2Lead_2A_takeover_access_plan.png
+Status: IN_PROGRESS
+Reason: Sub 2A/2B/2C delegated sessions produced no checkpoint and were closed; Lead is taking over critical-path 403 diagnosis.
+Access route planned: approved PAC/AZ/Windows PowerShell runbook paths only, environment e2d10003-4d8e-e007-9d63-76d5fe89ef56.
+Exact read-only commands planned:
+1. az account show --output json
+2. pac auth list
+3. pac env who
+4. pac admin list-active-users --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 (or local PAC help-confirmed equivalent)
+5. powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Run-Gate4-Preflight.ps1 -ResumeFromStep03 only if identity/role path indicates Dataverse read should now succeed.
+Action classification: read-only discovery; no import, publish, delete, PATCH, POST, SharePoint write, Planner write, Teams post, Graph direct, m365, service principal, ClientId, certificate, or HTTP Premium.
+Owner authorization reference: current Track Β prompt + decision response Sections 9-10; Gate 4A/4B standing auth exists, Gate 4C excluded.

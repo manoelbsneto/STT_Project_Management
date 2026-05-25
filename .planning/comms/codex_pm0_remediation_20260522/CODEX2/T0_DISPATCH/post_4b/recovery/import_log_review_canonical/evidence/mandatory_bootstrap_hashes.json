@@ -1,0 +1,47 @@
+[
+  {
+    "path": ".planning\\GOLDEN_RULES.md",
+    "exists": true,
+    "sha256": "B5A61C91D3DB71C79D1C439DBE42B45F94FB2C416973F8B3252DB08EB78E8DC0"
+  },
+  {
+    "path": ".planning\\CURRENT_BASELINE.md",
+    "exists": true,
+    "sha256": "199B41FB015D38C64467AE8181782F2F59E97D29F90F2A0FBF33E57F7C6B5DD5"
+  },
+  {
+    "path": ".planning\\AGENT_CHECKIN_REGISTRY.md",
+    "exists": true,
+    "sha256": "8F269D37E2C0C0C22476877D7728A8084BA0D52923C0F425E2D878C51B9EF1DE"
+  },
+  {
+    "path": ".planning\\comms\\SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md",
+    "exists": true,
+    "sha256": "973FE673873BFC322C5A99ED63FD4A5F09693E9AC04E22845D65228F87D0E23F"
+  },
+  {
+    "path": ".planning\\comms\\codex_pm0_remediation_20260522\\T0_PROGRESS_BOARD.md",
+    "exists": true,
+    "sha256": "E1D264BFFA6DFDBFC4C969D18499CF090B1EB62B14FB84F70CE161A4578ADCAE"
+  },
+  {
+    "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\BUILD_REPORT.md",
+    "exists": true,
+    "sha256": "833707F002AAE1D606F87748E0BACD11D2814A5F46D7D94DA475DB8B1E4F8912"
+  },
+  {
+    "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\RCA_3_19_ATUALIZARSTATUS\\RCA_3_19_ATUALIZARSTATUS_VERDICT.md",
+    "exists": true,
+    "sha256": "45456217E35E5BEA79E9E63856016667E8D01C71A1B30CEEDF429BAF0FBA8147"
+  },
+  {
+    "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_19\\T0_IMPORT_LOG_DEEP_DIVE_3_19.md",
+    "exists": true,
+    "sha256": "E9C224A401B644131A63A7BB3668113A77E18296E114F0AE2B929946C4AEE656"
+  },
+  {
+    "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\T0_GATE4B_PUBLISH_ASK_3_20_20260524_0936.md",
+    "exists": true,
+    "sha256": "01E706509A4398C23806FEBD5223C08077B61EBA58F3AA7394ABFE533A9314BE"
+  }
+]

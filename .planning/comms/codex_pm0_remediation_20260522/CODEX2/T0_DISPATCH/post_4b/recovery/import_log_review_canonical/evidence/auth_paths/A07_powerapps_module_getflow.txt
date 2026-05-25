@@ -1,0 +1,739 @@
+# A.7 Microsoft.PowerApps.PowerShell Get-Flow path
+
+- ID: A07_powerapps_module_getflow
+- Started BRT: 2026-05-24 10:50:27 BRT
+- Status: CAPTURED
+- Capture exit: 0
+
+```powershell
+$envId="e2d10003-4d8e-e007-9d63-76d5fe89ef56"; Import-Module "C:\Users\dataops-lab\Documents\PowerShell\Modules\Microsoft.PowerApps.PowerShell\1.0.45\Microsoft.PowerApps.PowerShell.psd1" -ErrorAction Stop; Add-PowerAppsAccount -Endpoint prod; Get-Flow -EnvironmentName $envId -Top 5
+```
+
+```text
+AVISO: Os nomes de alguns comandos importados do módulo 'Microsoft.PowerApps.AuthModule' incluem verbos nao aprovados 
+que podem os tornar menos detectáveis. Para localizar os comandos com verbos nao aprovados, execute novamente o comando
+ Import-Module com o parâmetro Verbose. Para obter uma lista de verbos aprovados, digite Get-Verb.
+AVISO: Os nomes de alguns comandos importados do módulo 'Microsoft.PowerApps.PowerShell' incluem verbos nao aprovados 
+que podem os tornar menos detectáveis. Para localizar os comandos com verbos nao aprovados, execute novamente o comando
+ Import-Module com o parâmetro Verbose. Para obter uma lista de verbos aprovados, digite Get-Verb.
+
+
+FlowName         : c9e44878-77ed-4b17-9b6f-0bab008a0587
+Enabled          : True
+DisplayName      : PM0_PA_Card_ListarTarefas
+UserType         : 
+CreatedTime      : 2026-05-15T21:11:54Z
+LastModifiedTime : 2026-05-24T12:50:57Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=c9e44878-77ed-4b17-9b6f-0bab008a0587; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/c9e44878-77ed-4b17-9b6f-0bab008a0587; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 76146280-a6c2-4068-8a3f-3310e3e9210f
+Enabled          : True
+DisplayName      : PM0_PA_Card_CriarTarefa
+UserType         : 
+CreatedTime      : 2026-05-15T21:12:06Z
+LastModifiedTime : 2026-05-24T12:50:54Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=76146280-a6c2-4068-8a3f-3310e3e9210f; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/76146280-a6c2-4068-8a3f-3310e3e9210f; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : b4df90ec-a721-44cf-adbd-a5ced1d7f9f7
+Enabled          : True
+DisplayName      : PM0_PA_Card_ResumoExecutivoPortfolio
+UserType         : 
+CreatedTime      : 2026-05-15T21:11:07Z
+LastModifiedTime : 2026-05-24T12:50:52Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=b4df90ec-a721-44cf-adbd-a5ced1d7f9f7; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/b4df90ec-a721-44cf-adbd-a5ced1d7f9f7; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 36142fd3-9f83-4d4f-81e2-748ded919a92
+Enabled          : True
+DisplayName      : PM0_PA_Card_AtualizarTarefa
+UserType         : 
+CreatedTime      : 2026-05-15T21:12:23Z
+LastModifiedTime : 2026-05-24T12:50:49Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=36142fd3-9f83-4d4f-81e2-748ded919a92; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/36142fd3-9f83-4d4f-81e2-748ded919a92; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : b70dc891-7e57-89e7-7494-f2786553893c
+Enabled          : True
+DisplayName      : PMO_PA_CriarTarefa
+UserType         : 
+CreatedTime      : 2026-05-12T03:34:29Z
+LastModifiedTime : 2026-05-24T12:50:46Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=b70dc891-7e57-89e7-7494-f2786553893c; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/b70dc891-7e57-89e7-7494-f2786553893c; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 89050663-1163-b36c-659b-6fcaa0edfee0
+Enabled          : True
+DisplayName      : PMO_PA_CriarProjeto
+UserType         : 
+CreatedTime      : 2026-05-07T17:00:55Z
+LastModifiedTime : 2026-05-24T12:50:43Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=89050663-1163-b36c-659b-6fcaa0edfee0; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/89050663-1163-b36c-659b-6fcaa0edfee0; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 2269a995-6e7f-3ccf-29de-8ecffaee50e1
+Enabled          : True
+DisplayName      : PMO_PA_ExcluirTarefa
+UserType         : 
+CreatedTime      : 2026-05-11T19:07:10Z
+LastModifiedTime : 2026-05-24T12:50:40Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=2269a995-6e7f-3ccf-29de-8ecffaee50e1; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/2269a995-6e7f-3ccf-29de-8ecffaee50e1; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 30280f3e-fada-0f11-4c98-3afe359ea6a0
+Enabled          : True
+DisplayName      : PMO_PA_ExcluirProjeto
+UserType         : 
+CreatedTime      : 2026-05-11T19:07:09Z
+LastModifiedTime : 2026-05-24T12:50:37Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=30280f3e-fada-0f11-4c98-3afe359ea6a0; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/30280f3e-fada-0f11-4c98-3afe359ea6a0; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 18487291-ce63-472e-9ebd-9fe871bf7371
+Enabled          : True
+DisplayName      : PMO_PA_AtualizarStatus
+UserType         : 
+CreatedTime      : 2026-05-10T23:17:14Z
+LastModifiedTime : 2026-05-24T12:50:35Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=18487291-ce63-472e-9ebd-9fe871bf7371; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/18487291-ce63-472e-9ebd-9fe871bf7371; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 259a4a9f-80c1-4ff6-9580-9c0c7e112246
+Enabled          : True
+DisplayName      : PMO_PA_PedirDecisaoBot
+UserType         : 
+CreatedTime      : 2026-05-10T23:17:02Z
+LastModifiedTime : 2026-05-24T12:50:31Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=259a4a9f-80c1-4ff6-9580-9c0c7e112246; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/259a4a9f-80c1-4ff6-9580-9c0c7e112246; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 7cc187d3-9e67-4880-b358-57c3ab71b5d5
+Enabled          : True
+DisplayName      : PMO_PA_RegistrarBloqueioBot
+UserType         : 
+CreatedTime      : 2026-05-10T23:16:51Z
+LastModifiedTime : 2026-05-24T12:50:29Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=7cc187d3-9e67-4880-b358-57c3ab71b5d5; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/7cc187d3-9e67-4880-b358-57c3ab71b5d5; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 367d7db3-ed36-478c-bbc7-151e880b2606
+Enabled          : True
+DisplayName      : PMO_PA_RegistrarRiscoBot
+UserType         : 
+CreatedTime      : 2026-05-10T23:16:38Z
+LastModifiedTime : 2026-05-24T12:50:26Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=367d7db3-ed36-478c-bbc7-151e880b2606; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/367d7db3-ed36-478c-bbc7-151e880b2606; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 54477fc9-4475-4622-82b1-79e63408697d
+Enabled          : True
+DisplayName      : PMO_PA_ConsultarProjeto
+UserType         : 
+CreatedTime      : 2026-05-10T23:16:26Z
+LastModifiedTime : 2026-05-24T12:50:24Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=54477fc9-4475-4622-82b1-79e63408697d; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/54477fc9-4475-4622-82b1-79e63408697d; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 15dd011a-fc10-4e8a-aaa2-d95d21c399d1
+Enabled          : True
+DisplayName      : PMO_PA_ConsultarPortfolio
+UserType         : 
+CreatedTime      : 2026-05-10T23:15:58Z
+LastModifiedTime : 2026-05-24T12:50:21Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=15dd011a-fc10-4e8a-aaa2-d95d21c399d1; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/15dd011a-fc10-4e8a-aaa2-d95d21c399d1; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : cf4a5713-68fe-416c-b4e3-562e70fd6708
+Enabled          : True
+DisplayName      : PMO_PA_AtualizarTarefa
+UserType         : 
+CreatedTime      : 2026-05-05T04:03:13Z
+LastModifiedTime : 2026-05-24T12:50:19Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=cf4a5713-68fe-416c-b4e3-562e70fd6708; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/cf4a5713-68fe-416c-b4e3-562e70fd6708; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 9aeed2ff-1fb3-4e75-bc2c-dcbe950c834a
+Enabled          : True
+DisplayName      : PMO_PA_ListarTarefas
+UserType         : 
+CreatedTime      : 2026-05-05T04:02:58Z
+LastModifiedTime : 2026-05-24T12:50:14Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=9aeed2ff-1fb3-4e75-bc2c-dcbe950c834a; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/9aeed2ff-1fb3-4e75-bc2c-dcbe950c834a; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : b7678a81-df01-4070-b6db-3c0dbcc7f924
+Enabled          : False
+DisplayName      : PM0_PA_Card_AtualizarStatus
+UserType         : 
+CreatedTime      : 2026-05-15T21:11:39Z
+LastModifiedTime : 2026-05-24T12:49:28Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=b7678a81-df01-4070-b6db-3c0dbcc7f924; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/b7678a81-df01-4070-b6db-3c0dbcc7f924; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : e117bbc5-5684-4191-8d03-fb183452ac5f
+Enabled          : True
+DisplayName      : PMO_PA_EnviarCheckInDiario
+UserType         : Owner
+CreatedTime      : 2026-05-02T15:50:32.616597Z
+LastModifiedTime : 2026-05-22T13:53:21.7145726Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=e117bbc5-5684-4191-8d03-fb183452ac5f; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/e117bbc5-5684-4191-8d03-fb183452ac5f; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441
+Enabled          : True
+DisplayName      : PM0_PA_OpsFailureHandling
+UserType         : 
+CreatedTime      : 2026-05-15T21:12:35Z
+LastModifiedTime : 2026-05-15T22:10:44Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/2fb10a2f-e2d0-4ae3-93a8-6eb3fd133441; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 8cf26dba-93fd-46ea-abe4-1c185dd69e95
+Enabled          : True
+DisplayName      : teste
+UserType         : Owner
+CreatedTime      : 2026-05-15T18:11:06.2167775Z
+LastModifiedTime : 2026-05-15T18:29:46.6557176Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=8cf26dba-93fd-46ea-abe4-1c185dd69e95; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/8cf26dba-93fd-46ea-abe4-1c185dd69e95; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 09fac023-ae01-41e7-ba21-67087f954f25
+Enabled          : True
+DisplayName      : TESTE - Planner - List my tasks
+UserType         : Owner
+CreatedTime      : 2026-05-15T10:37:22.6704685Z
+LastModifiedTime : 2026-05-15T11:25:22.9152342Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=09fac023-ae01-41e7-ba21-67087f954f25; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/09fac023-ae01-41e7-ba21-67087f954f25; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 1964c4bf-ef25-4e46-a88d-4a5a89c71bfb
+Enabled          : True
+DisplayName      : PMO_PA_ResumoSemanal
+UserType         : Owner
+CreatedTime      : 2026-05-03T13:59:38.3350695Z
+LastModifiedTime : 2026-05-03T14:13:44.603238Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=1964c4bf-ef25-4e46-a88d-4a5a89c71bfb; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/1964c4bf-ef25-4e46-a88d-4a5a89c71bfb; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 3eb1be49-a9ff-48ca-888d-847ca7ae8b04
+Enabled          : False
+DisplayName      : PMO_PA_SyncPlannerStats_Standard
+UserType         : Owner
+CreatedTime      : 2026-05-03T14:13:19.0083745Z
+LastModifiedTime : 2026-05-03T14:13:19.7293598Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=3eb1be49-a9ff-48ca-888d-847ca7ae8b04; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/3eb1be49-a9ff-48ca-888d-847ca7ae8b04; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2
+Enabled          : True
+DisplayName      : PMO_PA_ResumoDiarioBoard
+UserType         : Owner
+CreatedTime      : 2026-05-03T00:10:32.7837906Z
+LastModifiedTime : 2026-05-03T14:12:49.4629633Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/a2cf01fb-8559-4398-96b8-c0e0a1c1d8a2; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 6c8ae320-46e0-42da-bc05-5d5a9622be03
+Enabled          : False
+DisplayName      : PMO_PA_ProcessarRespostaCheckIn
+UserType         : Owner
+CreatedTime      : 2026-05-02T16:32:25.2598084Z
+LastModifiedTime : 2026-05-02T17:57:01.1991329Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=6c8ae320-46e0-42da-bc05-5d5a9622be03; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/6c8ae320-46e0-42da-bc05-5d5a9622be03; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd
+Enabled          : True
+DisplayName      : PMO_PA_AlertaProjetoVermelho
+UserType         : Owner
+CreatedTime      : 2026-05-02T16:59:03.9655591Z
+LastModifiedTime : 2026-05-02T17:40:13.913239Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/5a2a491c-e135-4d3e-a4b5-5bfd0f5bc5fd; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 0550c8ba-faf8-4e21-864e-d1fa5f625ce7
+Enabled          : True
+DisplayName      : PMO_PA_AlertaSemAtualizacao
+UserType         : Owner
+CreatedTime      : 2026-05-02T15:48:36.1926832Z
+LastModifiedTime : 2026-05-02T15:48:37.0564243Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=0550c8ba-faf8-4e21-864e-d1fa5f625ce7; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/0550c8ba-faf8-4e21-864e-d1fa5f625ce7; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 48bb3d34-ca7a-4817-8049-70687e66f3ec
+Enabled          : True
+DisplayName      : GF_QA_Report-FeriasProximas
+UserType         : 
+CreatedTime      : 2026-04-26T03:43:35Z
+LastModifiedTime : 2026-04-28T12:09:52Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=48bb3d34-ca7a-4817-8049-70687e66f3ec; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/48bb3d34-ca7a-4817-8049-70687e66f3ec; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : cabc21ae-5ab4-4dff-805f-4d993c247b0a
+Enabled          : True
+DisplayName      : GF_QA_Reagendar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-27T00:05:36Z
+LastModifiedTime : 2026-04-28T12:09:48Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=cabc21ae-5ab4-4dff-805f-4d993c247b0a; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/cabc21ae-5ab4-4dff-805f-4d993c247b0a; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : d7c6b211-62bd-09b7-a548-120d02fa79e6
+Enabled          : True
+DisplayName      : GF_QA_Get-SolicitacoesPendentes
+UserType         : 
+CreatedTime      : 2026-04-21T16:16:15Z
+LastModifiedTime : 2026-04-28T12:09:45Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=d7c6b211-62bd-09b7-a548-120d02fa79e6; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/d7c6b211-62bd-09b7-a548-120d02fa79e6; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : c771a367-8892-814b-fcbe-6d46e313d875
+Enabled          : True
+DisplayName      : GF_QA_Get-MinhasSolicitacoes
+UserType         : 
+CreatedTime      : 2026-04-21T11:28:17Z
+LastModifiedTime : 2026-04-28T12:09:42Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=c771a367-8892-814b-fcbe-6d46e313d875; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/c771a367-8892-814b-fcbe-6d46e313d875; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : bf42db98-afa8-c45d-7014-ca80ab067f1e
+Enabled          : True
+DisplayName      : GF_QA_Criar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-21T11:05:19Z
+LastModifiedTime : 2026-04-28T12:09:39Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=bf42db98-afa8-c45d-7014-ca80ab067f1e; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/bf42db98-afa8-c45d-7014-ca80ab067f1e; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : fe904ff8-58e6-43ef-9963-5e4403f269e8
+Enabled          : True
+DisplayName      : GF_QA_Cancelar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-26T04:07:15Z
+LastModifiedTime : 2026-04-28T12:09:36Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=fe904ff8-58e6-43ef-9963-5e4403f269e8; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/fe904ff8-58e6-43ef-9963-5e4403f269e8; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 29605629-cb90-6ef2-5754-254c0541c096
+Enabled          : True
+DisplayName      : GF_QA_Aprovar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-21T04:25:15Z
+LastModifiedTime : 2026-04-28T12:09:33Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=29605629-cb90-6ef2-5754-254c0541c096; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/29605629-cb90-6ef2-5754-254c0541c096; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 86df0954-2dbb-d712-3d53-5678eee67052
+Enabled          : True
+DisplayName      : 04_21_2026_GF_QA_VT_Consulta_Saldo_QA
+UserType         : 
+CreatedTime      : 2026-04-21T14:05:31Z
+LastModifiedTime : 2026-04-28T12:09:26Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=86df0954-2dbb-d712-3d53-5678eee67052; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/86df0954-2dbb-d712-3d53-5678eee67052; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 8dd2909b-7651-4596-93b6-760681d97370
+Enabled          : False
+DisplayName      : GF_QA_Reagendar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-26T04:17:37Z
+LastModifiedTime : 2026-04-28T12:08:38Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=8dd2909b-7651-4596-93b6-760681d97370; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/8dd2909b-7651-4596-93b6-760681d97370; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 6f7be842-16ab-202a-c6aa-ec8ceac06e6d
+Enabled          : False
+DisplayName      : GF_QA_VT_Consulta_Saldo
+UserType         : 
+CreatedTime      : 2026-01-28T02:30:00Z
+LastModifiedTime : 2026-04-26T00:13:17Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=6f7be842-16ab-202a-c6aa-ec8ceac06e6d; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/6f7be842-16ab-202a-c6aa-ec8ceac06e6d; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : b4435684-cd2e-e38a-9ede-950430035147
+Enabled          : False
+DisplayName      : Duplicated_GF_QA_VT_Consulta_Saldo_04_21_2026
+UserType         : 
+CreatedTime      : 2026-04-21T13:48:41Z
+LastModifiedTime : 2026-04-26T00:13:04Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=b4435684-cd2e-e38a-9ede-950430035147; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/b4435684-cd2e-e38a-9ede-950430035147; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 50f7ae86-47b4-4774-ad7b-bde87fc6dd7d
+Enabled          : True
+DisplayName      : GF_QA_VacationApproval_ApprovalNotification
+UserType         : Owner
+CreatedTime      : 2026-04-14T11:48:33.3526006Z
+LastModifiedTime : 2026-04-25T17:03:23.5606966Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=50f7ae86-47b4-4774-ad7b-bde87fc6dd7d; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/50f7ae86-47b4-4774-ad7b-bde87fc6dd7d; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : a6ca1f27-fb75-1027-ec0b-10f1b2e6b727
+Enabled          : False
+DisplayName      : RFP_ETL_Processor
+UserType         : 
+CreatedTime      : 2026-01-27T15:43:51Z
+LastModifiedTime : 2026-04-23T19:40:46Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=a6ca1f27-fb75-1027-ec0b-10f1b2e6b727; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/a6ca1f27-fb75-1027-ec0b-10f1b2e6b727; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 7a0d5670-275a-b2a9-ad83-eb1f17aa34bb
+Enabled          : False
+DisplayName      : RFP_Risk_Analyzer
+UserType         : 
+CreatedTime      : 2026-01-27T15:57:09Z
+LastModifiedTime : 2026-04-23T19:40:44Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=7a0d5670-275a-b2a9-ad83-eb1f17aa34bb; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/7a0d5670-275a-b2a9-ad83-eb1f17aa34bb; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : c3a5cbc2-eac2-40ba-b85e-2b3d3f944223
+Enabled          : False
+DisplayName      : RFP_Inbox_Archiver
+UserType         : 
+CreatedTime      : 2026-01-27T11:17:25Z
+LastModifiedTime : 2026-04-23T19:40:40Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=c3a5cbc2-eac2-40ba-b85e-2b3d3f944223; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/c3a5cbc2-eac2-40ba-b85e-2b3d3f944223; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : d8e8e671-4260-3d9c-4826-3942e5c3fea4
+Enabled          : False
+DisplayName      : RFP-03-Report-Generation
+UserType         : 
+CreatedTime      : 2026-04-10T15:45:20Z
+LastModifiedTime : 2026-04-23T19:40:25Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=d8e8e671-4260-3d9c-4826-3942e5c3fea4; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/d8e8e671-4260-3d9c-4826-3942e5c3fea4; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : ed69e987-b75d-bb08-4083-ebce3309d52f
+Enabled          : False
+DisplayName      : RFP-02-Processing-v3
+UserType         : 
+CreatedTime      : 2026-04-10T15:45:20Z
+LastModifiedTime : 2026-04-23T19:40:17Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=ed69e987-b75d-bb08-4083-ebce3309d52f; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/ed69e987-b75d-bb08-4083-ebce3309d52f; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : fcdc0634-abff-b172-15f3-d11e32253a22
+Enabled          : False
+DisplayName      : RFP-01-Email-Intake
+UserType         : 
+CreatedTime      : 2026-04-10T15:45:20Z
+LastModifiedTime : 2026-04-23T19:39:32Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=fcdc0634-abff-b172-15f3-d11e32253a22; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/fcdc0634-abff-b172-15f3-d11e32253a22; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 63a1ad4b-883d-f111-88b5-000d3abc5cc6
+Enabled          : False
+DisplayName      : Cópia de - GF_QA_VT_Consulta_Saldo
+UserType         : 
+CreatedTime      : 2026-04-21T13:45:10Z
+LastModifiedTime : 2026-04-21T13:45:10Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=63a1ad4b-883d-f111-88b5-000d3abc5cc6; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/63a1ad4b-883d-f111-88b5-000d3abc5cc6; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 6e6fabfc-393d-f111-88b5-000d3abc5cc6
+Enabled          : False
+DisplayName      : GF_QA_Aprovar-SolicitacaoFerias
+UserType         : 
+CreatedTime      : 2026-04-21T04:24:30Z
+LastModifiedTime : 2026-04-21T04:24:30Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=6e6fabfc-393d-f111-88b5-000d3abc5cc6; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/6e6fabfc-393d-f111-88b5-000d3abc5cc6; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : b0604bd3-ec9f-5fe7-73ed-50ef725df364
+Enabled          : True
+DisplayName      : Sharepoint Synchronization | Scheduler
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:30Z
+LastModifiedTime : 2026-04-19T22:28:13Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=b0604bd3-ec9f-5fe7-73ed-50ef725df364; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/b0604bd3-ec9f-5fe7-73ed-50ef725df364; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 59fc29b0-cdf4-eee5-32cf-d4c064e0b2d2
+Enabled          : True
+DisplayName      : Test Automation | Assign Copilot Studio Kit Tester Role to Team
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:30Z
+LastModifiedTime : 2026-04-19T22:28:07Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=59fc29b0-cdf4-eee5-32cf-d4c064e0b2d2; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/59fc29b0-cdf4-eee5-32cf-d4c064e0b2d2; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : fdc812ec-8109-b372-239f-eebaa6c5f7b0
+Enabled          : True
+DisplayName      : Sharepoint Synchronization | Synchronize files to Agent (Child)
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:30Z
+LastModifiedTime : 2026-04-19T22:27:59Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=fdc812ec-8109-b372-239f-eebaa6c5f7b0; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/fdc812ec-8109-b372-239f-eebaa6c5f7b0; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 09a0ee5f-cad8-017e-efdd-7bf95fb58e84
+Enabled          : True
+DisplayName      : Adaptive Card | Approval Request Change Id
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:14Z
+LastModifiedTime : 2026-04-19T22:27:51Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=09a0ee5f-cad8-017e-efdd-7bf95fb58e84; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/09a0ee5f-cad8-017e-efdd-7bf95fb58e84; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 1be7cb06-2eb2-13ab-3572-f0c65059cf58
+Enabled          : True
+DisplayName      : Adaptive Card | Schedule Form
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:15Z
+LastModifiedTime : 2026-04-19T22:27:44Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=1be7cb06-2eb2-13ab-3572-f0c65059cf58; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/1be7cb06-2eb2-13ab-3572-f0c65059cf58; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 9a191a67-cd75-e434-239e-70527fa148b4
+Enabled          : True
+DisplayName      : Adaptive Card | Order Confirmation
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:14Z
+LastModifiedTime : 2026-04-19T22:27:38Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=9a191a67-cd75-e434-239e-70527fa148b4; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/9a191a67-cd75-e434-239e-70527fa148b4; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : aa935e5a-61b6-d890-7bac-30e16f3f8b4f
+Enabled          : True
+DisplayName      : Adaptive Card | Profile Summary
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:15Z
+LastModifiedTime : 2026-04-19T22:27:33Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=aa935e5a-61b6-d890-7bac-30e16f3f8b4f; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/aa935e5a-61b6-d890-7bac-30e16f3f8b4f; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 14b686da-796e-73b8-4317-7065eeb1dab2
+Enabled          : True
+DisplayName      : Conversation KPI | Get Conversation Transcripts Count
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:19Z
+LastModifiedTime : 2026-04-19T22:27:25Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=14b686da-796e-73b8-4317-7065eeb1dab2; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/14b686da-796e-73b8-4317-7065eeb1dab2; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : dca2445b-65d7-2e4d-7cea-bff2ddac5eeb
+Enabled          : True
+DisplayName      : Conversation KPI | Copy Transcripts (Child)
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:19Z
+LastModifiedTime : 2026-04-19T22:27:19Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=dca2445b-65d7-2e4d-7cea-bff2ddac5eeb; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/dca2445b-65d7-2e4d-7cea-bff2ddac5eeb; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 1c71fd07-494f-d79f-3a5e-6e25e16add9b
+Enabled          : True
+DisplayName      : Conversation KPI | Copy Transcripts (Grandchild)
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:19Z
+LastModifiedTime : 2026-04-19T22:27:11Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=1c71fd07-494f-d79f-3a5e-6e25e16add9b; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/1c71fd07-494f-d79f-3a5e-6e25e16add9b; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : e204d07d-5f45-0187-9ab5-e3f680076497
+Enabled          : True
+DisplayName      : Agent Compliance | Check Compliance (Grandchild)
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:15Z
+LastModifiedTime : 2026-04-19T22:27:05Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=e204d07d-5f45-0187-9ab5-e3f680076497; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/e204d07d-5f45-0187-9ab5-e3f680076497; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 7448b02a-1e87-c17d-1ff2-34303cd58487
+Enabled          : True
+DisplayName      : Agent Inventory | Compliance Scan
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:16Z
+LastModifiedTime : 2026-04-19T22:26:59Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=7448b02a-1e87-c17d-1ff2-34303cd58487; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/7448b02a-1e87-c17d-1ff2-34303cd58487; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 5290ea73-6a8c-dfc9-d84d-d3aa05bc998b
+Enabled          : True
+DisplayName      : Sharepoint Synchronization | Validate Connection On Demand
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:30Z
+LastModifiedTime : 2026-04-19T22:26:53Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=5290ea73-6a8c-dfc9-d84d-d3aa05bc998b; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/5290ea73-6a8c-dfc9-d84d-d3aa05bc998b; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : ef5eabee-2768-704f-5656-e0b7d49c858a
+Enabled          : True
+DisplayName      : Value Summary | New agent classification
+UserType         : 
+CreatedTime      : 2025-12-28T11:12:33Z
+LastModifiedTime : 2026-04-19T22:26:46Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=ef5eabee-2768-704f-5656-e0b7d49c858a; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/ef5eabee-2768-704f-5656-e0b7d49c858a; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 9dfa9bf6-71d6-432a-8ab5-5273fe6bf395
+Enabled          : True
+DisplayName      : ScheduledAlerts
+UserType         : Owner
+CreatedTime      : 2026-04-14T13:00:29.7340536Z
+LastModifiedTime : 2026-04-19T01:50:28.6825471Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=9dfa9bf6-71d6-432a-8ab5-5273fe6bf395; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/9dfa9bf6-71d6-432a-8ab5-5273fe6bf395; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 66b1bad4-5c97-47ef-955a-9f44cf174aa7
+Enabled          : True
+DisplayName      : GestaoFerias_VacationApproval
+UserType         : Owner
+CreatedTime      : 2026-04-15T03:56:07.613848Z
+LastModifiedTime : 2026-04-19T00:13:20.4815926Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=66b1bad4-5c97-47ef-955a-9f44cf174aa7; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/66b1bad4-5c97-47ef-955a-9f44cf174aa7; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 381fbed5-2fb7-4e43-b756-d14e77cd1de2
+Enabled          : True
+DisplayName      : JIRA CSV para Excel com Links
+UserType         : Owner
+CreatedTime      : 2026-04-06T20:49:10.6505641Z
+LastModifiedTime : 2026-04-08T16:58:25.1419922Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=381fbed5-2fb7-4e43-b756-d14e77cd1de2; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/381fbed5-2fb7-4e43-b756-d14e77cd1de2; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+FlowName         : 0961314c-9729-4d51-ace5-22ca13762149
+Enabled          : True
+DisplayName      : API_Consulta_Colaboradores
+UserType         : Owner
+CreatedTime      : 2026-01-29T11:13:08.8752724Z
+LastModifiedTime : 2026-01-29T11:16:05.7558508Z
+EnvironmentName  : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Internal         : @{name=0961314c-9729-4d51-ace5-22ca13762149; id=/providers/Microsoft.ProcessSimple/environments/e2d1
+                   0003-4d8e-e007-9d63-76d5fe89ef56/flows/0961314c-9729-4d51-ace5-22ca13762149; 
+                   type=Microsoft.ProcessSimple/environments/flows; properties=}
+
+
+
+
+```

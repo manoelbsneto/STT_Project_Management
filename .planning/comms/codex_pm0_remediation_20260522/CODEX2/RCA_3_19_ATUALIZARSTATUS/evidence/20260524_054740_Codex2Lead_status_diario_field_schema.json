@@ -1,0 +1,56 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-24 02:47:48 BRT",
+  "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File work/get_status_diario_schema_to_file.ps1",
+  "exit_code": 0,
+  "parse_ok": true,
+  "parse_error": null,
+  "required_fields": [
+    {
+      "Title": "T?tulo",
+      "InternalName": "Title",
+      "TypeAsString": "Text",
+      "Required": true
+    },
+    {
+      "Title": "StatusID",
+      "InternalName": "StatusID",
+      "TypeAsString": "Text",
+      "Required": true
+    },
+    {
+      "Title": "ProjectID",
+      "InternalName": "ProjectID",
+      "TypeAsString": "Text",
+      "Required": true
+    },
+    {
+      "Title": "DataRegistro",
+      "InternalName": "DataRegistro",
+      "TypeAsString": "DateTime",
+      "Required": true
+    },
+    {
+      "Title": "RAG",
+      "InternalName": "RAG",
+      "TypeAsString": "Choice",
+      "Required": true
+    },
+    {
+      "Title": "Resumo",
+      "InternalName": "Resumo",
+      "TypeAsString": "Note",
+      "Required": true
+    },
+    {
+      "Title": "OrigemEntrada",
+      "InternalName": "OrigemEntrada",
+      "TypeAsString": "Choice",
+      "Required": true
+    }
+  ],
+  "full_field_count": 102,
+  "stdout_file": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\RCA_3_19_ATUALIZARSTATUS\\evidence\\20260524_054740_Codex2Lead_status_diario_field_schema.raw.json",
+  "stderr": null,
+  "auth_error": []
+}

@@ -1,0 +1,13 @@
+{
+    "workflowsetPath":  "Assets/botcomponent_workflowset.xml",
+    "workflowIdsPresent":  [
+                               "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+                               "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+                               "7f662db7-a250-f111-bec7-000d3abc5cc6",
+                               "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+                               "8333bd91-a250-f111-bec7-000d3abc5cc6"
+                           ],
+    "harnessPath":  "tests/Test-PMOFlowStopShipAudit.ps1",
+    "harnessMentionsPm0":  true,
+    "result":  "PASS"
+}

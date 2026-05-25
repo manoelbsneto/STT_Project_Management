@@ -1,0 +1,15 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="bot">
+    <attribute name="name" />
+    <attribute name="botid" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <attribute name="componentstate" />
+    <attribute name="ismanaged" />
+    <attribute name="publishedon" />
+    <attribute name="modifiedon" />
+    <filter type="and">
+      <condition attribute="botid" operator="eq" value="df148bf8-0a3e-495b-80c4-841dcb61d9a4" />
+    </filter>
+  </entity>
+</fetch>

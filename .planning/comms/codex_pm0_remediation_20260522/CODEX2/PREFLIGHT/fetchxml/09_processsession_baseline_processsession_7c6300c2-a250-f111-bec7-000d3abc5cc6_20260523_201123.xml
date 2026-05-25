@@ -1,0 +1,12 @@
+<fetch count="50">
+  <entity name="processsession">
+    <attribute name="processid" />
+    <attribute name="regardingobjectid" />
+    <attribute name="startedon" />
+    <attribute name="completedon" />
+    <filter>
+      <condition attribute="regardingobjectid" operator="eq" value="7c6300c2-a250-f111-bec7-000d3abc5cc6" />
+    </filter>
+    <order attribute="startedon" descending="true" />
+  </entity>
+</fetch>

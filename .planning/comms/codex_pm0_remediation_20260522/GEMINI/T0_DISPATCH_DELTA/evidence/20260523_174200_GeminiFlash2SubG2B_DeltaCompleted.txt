@@ -1,0 +1,3 @@
+Sub G2B acting as Δ G1B
+2026-05-23 17:42:00 BRT
+Track Delta Sub G2B completed release notes alignment and re-versioning to v3.18. Aligned PT-BR and EN release notes on disk and created T0_RELEASE_NOTES_ALIGNMENT_DIFF.md detailing solution version bumps and rebuild placeholders.

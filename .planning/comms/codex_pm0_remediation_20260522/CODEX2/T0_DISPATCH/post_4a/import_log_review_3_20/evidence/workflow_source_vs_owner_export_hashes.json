@@ -1,0 +1,42 @@
+[
+  {
+    "workflow": "PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourcePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\package_extract_verify_3_20\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourceSha256": "4D7737960092254D96750F400635294647524252B6826EC559747916734C30BA",
+    "ownerExportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\owner_provided_post_import_export_raw\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "ownerExportSha256": "AA12DBC0CEF460F6D0861BF4A26180833E04B825499BDECD7764178FFFA23E04",
+    "byteEquivalent": false
+  },
+  {
+    "workflow": "PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourcePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\package_extract_verify_3_20\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourceSha256": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+    "ownerExportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\owner_provided_post_import_export_raw\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "ownerExportSha256": "0F5F84D51DC9867CEE42EFC837EB63C2328F3027AF27BD9CB9EDF5712047E922",
+    "byteEquivalent": false
+  },
+  {
+    "workflow": "PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourcePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\package_extract_verify_3_20\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourceSha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+    "ownerExportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\owner_provided_post_import_export_raw\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "ownerExportSha256": "819D6EE3582C96444D42D9D94752C8B7F5E8FF3C776585D6D6410A4412F3D0E4",
+    "byteEquivalent": false
+  },
+  {
+    "workflow": "PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourcePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\package_extract_verify_3_20\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourceSha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+    "ownerExportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\owner_provided_post_import_export_raw\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "ownerExportSha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+    "byteEquivalent": true
+  },
+  {
+    "workflow": "PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourcePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\package_extract_verify_3_20\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "sourceSha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+    "ownerExportPath": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4a\\import_log_review_3_20\\owner_provided_post_import_export_raw\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "ownerExportSha256": "DA71CB55767075D228989668215E320B0285A878A5D61E4063A46C50E0DA3308",
+    "byteEquivalent": false
+  }
+]

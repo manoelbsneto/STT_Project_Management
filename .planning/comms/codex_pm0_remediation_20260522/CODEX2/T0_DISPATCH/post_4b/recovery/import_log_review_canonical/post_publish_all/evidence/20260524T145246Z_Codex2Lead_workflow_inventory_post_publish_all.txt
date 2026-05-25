@@ -1,0 +1,10 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+statecode modifiedon      versionnumber workflowid                           name                                 statuscode category
+Borrador  24/05/2026 9:49 97.769.794    1721e0a3-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarStatus          Borrador   Flujo moderno
+Activado  24/05/2026 9:50 97.772.076    8333bd91-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ResumoExecutivoPortfolio Activado   Flujo moderno
+Activado  24/05/2026 9:50 97.772.070    7c6300c2-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_AtualizarTarefa          Activado   Flujo moderno
+Activado  24/05/2026 9:50 97.772.095    e0e3c6b0-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_ListarTarefas            Activado   Flujo moderno
+Activado  24/05/2026 9:50 97.772.085    7f662db7-a250-f111-bec7-000d3abc5cc6 PM0_PA_Card_CriarTarefa              Activado   Flujo moderno
+

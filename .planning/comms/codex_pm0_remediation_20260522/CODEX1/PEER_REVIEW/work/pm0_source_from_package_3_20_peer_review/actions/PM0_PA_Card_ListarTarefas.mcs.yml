@@ -1,0 +1,24 @@
+mcs.metadata:
+  componentName: PM0_PA_Card_ListarTarefas
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: action
+    value: ="ListarTarefas"
+
+  - kind: ManualTaskInput
+    propertyName: projectId
+    value: =Global.PMO_Listar_NomeProjeto
+
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: e0e3c6b0-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

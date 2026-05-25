@@ -1,0 +1,8 @@
+Agent: Codex #2 Lead
+Timestamp: 2026-05-23 18:45:12 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_18/screenshots/20260523_20260523_214512_Codex2Lead_3_18_rebuild_start.png
+Transition: STARTED
+Task: 3.18 rebuild - staging working dir + applying per-file recipe
+Source baseline: Owner/live 3.17 unpacked solution
+Override authority: Owner ratified 2026-05-23 18:40 BRT; overwrite input stubs with 3.16 functional bindings.
+Constraint: local package build only; NO TENANT WRITE.

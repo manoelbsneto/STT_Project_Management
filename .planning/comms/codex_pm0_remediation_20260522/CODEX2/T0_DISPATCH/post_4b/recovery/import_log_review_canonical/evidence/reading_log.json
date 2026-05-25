@@ -1,0 +1,68 @@
+[
+  {
+    "document": ".planning\\TENANT_COMMAND_RUNBOOK.md",
+    "lines": 444,
+    "readingTimeMs": 43,
+    "sha256": "AB7C6EA78372C4FC5444A5B912340330ADB02E94ACF92DE10001FE6F630BAD4F"
+  },
+  {
+    "document": ".planning\\power-platform-tooling-guide.md",
+    "lines": 637,
+    "readingTimeMs": 3,
+    "sha256": "B5C4EBD24BF60724BB0206A5E63853D8BDEDC5E4EE18670717B8E92FC77355D7"
+  },
+  {
+    "document": ".planning\\SHAREPOINT_ACCESS_RUNBOOK.md",
+    "lines": 46,
+    "readingTimeMs": 1,
+    "sha256": "AF186FC830B0376006E9144BB886EAB6775FDCE46368C6FE2E5C3BC0A7D8E063"
+  },
+  {
+    "document": ".planning\\GOLDEN_RULES.md",
+    "lines": 171,
+    "readingTimeMs": 1,
+    "sha256": "B5A61C91D3DB71C79D1C439DBE42B45F94FB2C416973F8B3252DB08EB78E8DC0"
+  },
+  {
+    "document": ".planning\\CURRENT_BASELINE.md",
+    "lines": 93,
+    "readingTimeMs": 1,
+    "sha256": "199B41FB015D38C64467AE8181782F2F59E97D29F90F2A0FBF33E57F7C6B5DD5"
+  },
+  {
+    "document": ".planning\\AGENT_CHECKIN_REGISTRY.md",
+    "lines": 232,
+    "readingTimeMs": 1,
+    "sha256": "3D5C332198D23DCD85FBD050F8A83023A1432061F9283BE8EEB49F83A4752DB2"
+  },
+  {
+    "document": ".planning\\comms\\codex_pm0_remediation_20260522\\T0_PROGRESS_BOARD.md",
+    "lines": 205,
+    "readingTimeMs": 11,
+    "sha256": "55D2D5533E51F56E5B51920E15E66F13842EFE87C0F9B5992A5612C146743DDB"
+  },
+  {
+    "document": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\00_auth_verify_20260523_000318.md",
+    "lines": 12,
+    "readingTimeMs": 1,
+    "sha256": "0CA1C20C8F873DA26D08D7E36B2362C6DD35B592DA8EDF71DFDA40B391501AD7"
+  },
+  {
+    "document": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\00_auth_verify_20260523_020002.md",
+    "lines": 12,
+    "readingTimeMs": 1,
+    "sha256": "6BE2DFFD3C5B3740627BDF2B8F88432BA32D16F423195BD74F5743CD27D77601"
+  },
+  {
+    "document": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\00_auth_verify_20260523_020132.md",
+    "lines": 12,
+    "readingTimeMs": 1,
+    "sha256": "37DF3FE9E9FCFFB21E098B53DB15AC6FDC3448F4D3AB62DC708F01F3ED8B57AF"
+  },
+  {
+    "document": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\T0_PREFLIGHT_RERUN_MANIFEST.md",
+    "lines": 57,
+    "readingTimeMs": 1,
+    "sha256": "8101C21A4D1266F4DBD5B1C6C8073B305CFC6E9F0F447C562CB7695334594C05"
+  }
+]

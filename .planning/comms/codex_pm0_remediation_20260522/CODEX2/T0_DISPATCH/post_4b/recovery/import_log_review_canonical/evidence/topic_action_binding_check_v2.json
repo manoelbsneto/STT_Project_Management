@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-24T13:56:59.652Z",
+  "rows": [
+    {
+      "topic": "AtualizarStatus",
+      "expectedAction": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+      "sourceExists": true,
+      "tenantExists": true,
+      "sourceSha": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7",
+      "tenantSha": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7",
+      "byteEqual": true,
+      "sourceHasExpectedAction": true,
+      "tenantHasExpectedAction": true
+    },
+    {
+      "topic": "AtualizarTarefa",
+      "expectedAction": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+      "sourceExists": true,
+      "tenantExists": true,
+      "sourceSha": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1",
+      "tenantSha": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1",
+      "byteEqual": true,
+      "sourceHasExpectedAction": true,
+      "tenantHasExpectedAction": true
+    },
+    {
+      "topic": "CriarTarefa",
+      "expectedAction": "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+      "sourceExists": true,
+      "tenantExists": true,
+      "sourceSha": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319",
+      "tenantSha": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319",
+      "byteEqual": true,
+      "sourceHasExpectedAction": true,
+      "tenantHasExpectedAction": true
+    },
+    {
+      "topic": "ListarTarefas",
+      "expectedAction": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+      "sourceExists": true,
+      "tenantExists": true,
+      "sourceSha": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA",
+      "tenantSha": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA",
+      "byteEqual": true,
+      "sourceHasExpectedAction": true,
+      "tenantHasExpectedAction": true
+    },
+    {
+      "topic": "ConsultarPortfolio",
+      "expectedAction": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+      "sourceExists": true,
+      "tenantExists": true,
+      "sourceSha": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC",
+      "tenantSha": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC",
+      "byteEqual": true,
+      "sourceHasExpectedAction": true,
+      "tenantHasExpectedAction": true
+    }
+  ]
+}

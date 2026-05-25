@@ -1,0 +1,3 @@
+Sub G2A
+2026-05-23 16:38:00 BRT
+Staged drift monitor command script T0_DRIFT_MONITOR_COMMANDS.ps1 in the Track E evidence root. The script dynamically generates the exact execution commands and stages output folders under .planning/comms/codex_pm0_remediation_20260522/drift_monitoring_post_3_16_<UTC>/, utilizing the placeholder publish_utc_timestamp to be backfilled post-publish. Rerunning with default parameters succeeded.

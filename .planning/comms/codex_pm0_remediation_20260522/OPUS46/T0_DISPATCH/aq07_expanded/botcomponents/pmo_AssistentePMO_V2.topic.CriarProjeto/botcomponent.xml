@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.topic.CriarProjeto">
+  <componenttype>9</componenttype>
+  <description>Cria projeto na lista Projetos.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>CriarProjeto</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

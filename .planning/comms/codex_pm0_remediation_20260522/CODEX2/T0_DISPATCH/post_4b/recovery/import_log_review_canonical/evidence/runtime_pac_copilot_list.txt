@@ -1,0 +1,11 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+Name                    Copilot ID                           Component State Is Managed Solution ID                          Status Code State Code
+Gestão Férias           bdeeebd5-89f9-f011-8406-6045bdf42cae Published       False      fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+Assistente PMO V2       df148bf8-0a3e-495b-80c4-841dcb61d9a4 Published       False      fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+RFP_Risk_Analyzer_Agent 370e9e0b-7ff9-f011-8406-7ced8d955c6c Published       False      fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+Gestao_Férias_MVP_QA    f9243921-1b3d-f111-88b6-6045bdf42cae Published       False      fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+Adaptive Card Gallery   fbf913e4-1666-456b-9a4f-e0a43863d8a1 Published       True       216a0c23-a2d2-4f84-890a-dc00a05bb101 Active      Provisioned
+Copilot in Power Apps   f7bc31d9-0016-4b1a-9a87-f8d532df3368 Published       True       fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+Leave Management        d8c60529-5a5a-42e7-9abf-fabeba8ddc18 Published       True       fd140aae-4df4-11dd-bd17-0019b9312238 Active      Provisioned
+

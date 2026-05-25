@@ -1,0 +1,18 @@
+{
+  "generatedAtBrt": "2026-05-24 09:18:41 BRT",
+  "tenantExportAvailable": false,
+  "tenantExportStatus": "NOT_AVAILABLE_PAC_AUTH_BLOCKED_AADSTS70043",
+  "sourceSolutionXml": {
+    "version": "3.20.0.0",
+    "managed": "0",
+    "uniqueName": "PMO_v11_Tarefas"
+  },
+  "sourceWorkflowChecks": {
+    "fivePm0JsonsPresent": true,
+    "atualizarStatusOrigemEntradaValue": "CopilotStudio",
+    "atualizarStatusStatusId": "@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))",
+    "atualizarStatusPercentualCreate": "@coalesce(triggerBody()?['percentual'], 0)"
+  },
+  "tenantWorkflowChecks": null,
+  "result": "HOLD_INSUFFICIENT_TENANT_EVIDENCE"
+}

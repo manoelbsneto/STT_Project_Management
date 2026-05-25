@@ -1,0 +1,36 @@
+# RUNTIME_EVIDENCE - PM0 3.20 Canonical Full Validate V2
+
+- Agent: Codex #2 Lead
+- Timestamp: 2026-05-24 11:01:24 BRT
+- Tenant: ColOfertasBrasilPro (e2d10003-4d8e-e007-9d63-76d5fe89ef56)
+- Solution: PMO_v11_Tarefas
+
+## Key Result
+
+The canonical 3.20 package is installed and structurally correct in tenant export. However, PM0_PA_Card_AtualizarStatus currently reports Borrador/Borrador in PAC workflow inventory and Enabled=False through the PowerApps module. Owner clarified that Publicar todas as personalizacoes has not yet been executed after import; this is a tenant write/publish action and was not authorized for this read-only mission.
+
+## Runtime Checks
+
+| Check | Result | Evidence |
+|---|---|---|
+| PAC identity | PASS - connected as mbenicios@minsait.com to ColOfertasBrasilPro | evidence/runtime_pac_solution_identity.{txt,json,png} |
+| Solution version | PASS - PMO_v11_Tarefas version 3.20.0.0, Managed=False | evidence/runtime_pac_solution_identity.{txt,json,png} |
+| Solution export | PASS - post_canonical_import_export.zip exported read-only | evidence/runtime_pac_solution_export.{txt,json,png} |
+| Tenant export SHA256 | AA21BCBBC9289499B6F0EB669D1FF3B228862477DC844B168D76A5AC45DB5696 | post_canonical_import_export.zip |
+| Export structural check | PASS - solution.xml Version=3.20.0.0, Managed=0, item/StatusID present | evidence/post_import_export_structural_check_v2.{txt,json,png} |
+| Source vs tenant workflow diff | PASS with YEL-001 - 0 functional diffs after ignoring connectionName and templateName normalization | evidence/source_vs_tenant_workflow_diff_v2.{txt,json,png} |
+| Topic action binding check | PASS - 5 in-scope topics contain expected PM0 card action references; byte-equal to source | evidence/topic_action_binding_check_v2.{txt,json,png} |
+| AQ-08 post-remediation reverify | PASS - overall=PASS, blockingTopicCount=0, 5/5 topics PASS | aq08_post_canonical_import_v2/aq08_post_remediation_reverify_report.json, evidence/runtime_aq08_reverify.{txt,json,png} |
+| PAC workflow activation inventory | BLOCKED FOR GATE - 4/5 Activado/Activado; PM0_PA_Card_AtualizarStatus is Borrador/Borrador | evidence/runtime_pac_workflow_inventory.{txt,json,png} |
+| PowerApps Get-Flow inventory | Confirms same operational state: AtualizarStatus Enabled=False; other 4 Enabled=True | evidence/auth_paths/A07_powerapps_module_getflow.{txt,json,png} |
+| pac copilot list | PASS - Assistente PMO V2 Published / Active / Provisioned | evidence/runtime_pac_copilot_list.{txt,json,png} |
+| Bot row fetch | PASS - Activo, Publicado, Aprovisionado, publishedon 22/05/2026 14:40 | evidence/runtime_bot_row_fetch_publishedon.{txt,json,png} |
+
+## Interpretation
+
+This is not evidence of a bad 3.20 ZIP. It is evidence that the tenant runtime has not yet completed the post-import publish/customization propagation step. Because the mission is read-only, I did not run Publicar todas as personalizacoes or any equivalent write/publish command.
+
+## Gate 4B Readiness
+
+Current status: HOLD_PENDING_OWNER_PUBLISH_ALL_CUSTOMIZATIONS. After Owner runs Publicar todas as personalizacoes, rerun only the workflow inventory, AQ-08, and Copilot list/bot row checks. If PM0_PA_Card_AtualizarStatus becomes Activado/Activado, the evidence supports proceeding to Gate 4B Copilot Studio publish.
+

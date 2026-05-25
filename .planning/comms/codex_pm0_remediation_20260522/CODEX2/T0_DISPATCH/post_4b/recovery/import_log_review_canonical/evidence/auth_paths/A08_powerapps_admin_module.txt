@@ -1,0 +1,530 @@
+# A.8 Microsoft.PowerApps.Administration.PowerShell path
+
+- ID: A08_powerapps_admin_module
+- Started BRT: 2026-05-24 10:50:40 BRT
+- Status: CAPTURED
+- Capture exit: 0
+
+```powershell
+$envId="e2d10003-4d8e-e007-9d63-76d5fe89ef56"; Import-Module "C:\Users\dataops-lab\Documents\WindowsPowerShell\Modules\Microsoft.PowerApps.Administration.PowerShell\2.0.217\Microsoft.PowerApps.Administration.PowerShell.psd1" -ErrorAction Stop; Add-PowerAppsAccount -Endpoint prod; Get-PowerAppEnvironment -Name $envId; Get-AdminPowerApp -EnvironmentName $envId
+```
+
+```text
+AVISO: Os nomes de alguns comandos importados do módulo 'Microsoft.PowerApps.AuthModule' incluem verbos nao aprovados 
+que podem os tornar menos detectáveis. Para localizar os comandos com verbos nao aprovados, execute novamente o comando
+ Import-Module com o parâmetro Verbose. Para obter uma lista de verbos aprovados, digite Get-Verb.
+AVISO: Os nomes de alguns comandos importados do módulo 'Microsoft.PowerApps.Administration.PowerShell' incluem verbos 
+nao aprovados que podem os tornar menos detectáveis. Para localizar os comandos com verbos nao aprovados, execute 
+novamente o comando Import-Module com o parâmetro Verbose. Para obter uma lista de verbos aprovados, digite Get-Verb.
+Get-PowerAppEnvironment : O termo 'Get-PowerAppEnvironment' nao é reconhecido como nome de cmdlet, funçao, arquivo de 
+script ou programa operável. Verifique a grafia do nome ou, se um caminho tiver sido incluído, veja se o caminho está 
+correto e tente novamente.
+No linha:1 caractere:282
++ ...  Add-PowerAppsAccount -Endpoint prod; Get-PowerAppEnvironment -Name $ ...
++                                           ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-PowerAppEnvironment:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+
+AppName                  : fca562ec-ccc6-4264-9cd6-a57343f7b9d3
+DisplayName              : Plugin Monitor
+CreatedTime              : 2024-11-15T07:44:25.9812268Z
+Owner                    : @{id=e07ba832-064b-4f92-83b3-b09f005cc25e; displayName=SYSTEM; type=ServicePrincipal; 
+                           tenantId=7808e005-1489-4374-954b-d3b08f193920}
+LastModifiedTime         : 2024-11-15T07:44:26.1553726Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=fca562ec-ccc6-4264-9cd6-a57343f7b9d3; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/fca562ec-ccc6-4264-9cd6-a57343f7b9d3;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_plugintracelog_d12af; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : ccaf5788-55e5-4cc4-818d-0bfca2acf6ee
+DisplayName              : Overview
+CreatedTime              : 2024-11-15T07:44:29.0370256Z
+Owner                    : @{id=e07ba832-064b-4f92-83b3-b09f005cc25e; displayName=SYSTEM; type=ServicePrincipal; 
+                           tenantId=7808e005-1489-4374-954b-d3b08f193920}
+LastModifiedTime         : 2024-11-15T07:44:29.2052492Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=ccaf5788-55e5-4cc4-818d-0bfca2acf6ee; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/ccaf5788-55e5-4cc4-818d-0bfca2acf6ee;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_overview_3dbf5; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : ef6e0ac0-a9db-4b15-b83a-2f30d4319b5a
+DisplayName              : API Playground
+CreatedTime              : 2024-11-15T07:44:32.4398673Z
+Owner                    : @{id=e07ba832-064b-4f92-83b3-b09f005cc25e; displayName=SYSTEM; type=ServicePrincipal; 
+                           tenantId=7808e005-1489-4374-954b-d3b08f193920}
+LastModifiedTime         : 2024-11-15T07:44:32.594604Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=ef6e0ac0-a9db-4b15-b83a-2f30d4319b5a; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/ef6e0ac0-a9db-4b15-b83a-2f30d4319b5a;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_apiplayground_62f25; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 471114b7-a46f-44d2-b387-81f8442f137c
+DisplayName              : Dataverse Actions Page
+CreatedTime              : 2024-11-15T07:44:39.6558451Z
+Owner                    : @{id=e07ba832-064b-4f92-83b3-b09f005cc25e; displayName=SYSTEM; type=ServicePrincipal; 
+                           tenantId=7808e005-1489-4374-954b-d3b08f193920}
+LastModifiedTime         : 2024-11-15T07:44:39.883721Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=471114b7-a46f-44d2-b387-81f8442f137c; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/471114b7-a46f-44d2-b387-81f8442f137c;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_dataverseactiondetailspage_eec36; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=CustomCanvasPage}
+
+AppName                  : a9003d0d-8e16-4b91-af43-2a2aace47146
+DisplayName              : VT_Controle_Ferias
+CreatedTime              : 2026-01-17T20:43:38.3813803Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T05:26:35.0273295Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=a9003d0d-8e16-4b91-af43-2a2aace47146; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/a9003d0d-8e16-4b91-af43-2a2aace47146;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=ClassicCanvasApp}
+
+AppName                  : f13a2bba-9d1a-457e-857a-d3b63e3d0f14
+DisplayName              : Aplicativo
+CreatedTime              : 2026-01-18T01:19:15.7851835Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-20T01:01:43.6786633Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=f13a2bba-9d1a-457e-857a-d3b63e3d0f14; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/f13a2bba-9d1a-457e-857a-d3b63e3d0f14;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=crbdf_aplicativo_0021c; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=ClassicCanvasApp}
+
+AppName                  : ed45cd3f-c94e-4f92-8d5b-7bd9bd1fb854
+DisplayName              : Aplicativo frontend
+CreatedTime              : 2026-04-19T19:17:25.4261895Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T19:21:35.4065418Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=ed45cd3f-c94e-4f92-8d5b-7bd9bd1fb854; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/ed45cd3f-c94e-4f92-8d5b-7bd9bd1fb854;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=ClassicCanvasApp}
+
+AppName                  : 2b269e46-45be-4efc-a920-021d159d6c85
+DisplayName              : Power CAT Component Library
+CreatedTime              : 2025-12-28T11:05:01.9776807Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2025-12-28T11:05:02.261481Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=2b269e46-45be-4efc-a920-021d159d6c85; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/2b269e46-45be-4efc-a920-021d159d6c85;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_powercatcomponentlibrary_0be3a; appLocation=europe; 
+                           isAppComponentLibrary=True; appType=AppComponentLibrary}
+
+AppName                  : 62f5f2b9-97db-4c59-bc78-ab5da38ff4e0
+DisplayName              : CopilotStudioAccelerator_DefaultCommandLibrary
+CreatedTime              : 2025-12-28T11:13:11.1527313Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:15.5306141Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=62f5f2b9-97db-4c59-bc78-ab5da38ff4e0; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/62f5f2b9-97db-4c59-bc78-ab5da38ff4e0;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_copilotstudioacceleratordefaultcommandlibrary_40e65; appLocation=europe; 
+                           isAppComponentLibrary=True; appType=AppComponentLibrary}
+
+AppName                  : 4bbca173-466b-478b-a654-a9db0aba30d2
+DisplayName              : MCS Agent Inventory Component Library
+CreatedTime              : 2025-12-28T11:13:12.12715Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:17.1782144Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=4bbca173-466b-478b-a654-a9db0aba30d2; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/4bbca173-466b-478b-a654-a9db0aba30d2;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_mcsagentsinventorycomponentlibrary_40986; appLocation=europe; 
+                           isAppComponentLibrary=True; appType=AppComponentLibrary}
+
+AppName                  : 88a18301-601b-4ea0-a71e-28b6d3c2bbbc
+DisplayName              : Adaptive Cards
+CreatedTime              : 2025-12-28T11:13:13.0788263Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:18.7295383Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=88a18301-601b-4ea0-a71e-28b6d3c2bbbc; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/88a18301-601b-4ea0-a71e-28b6d3c2bbbc;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_adaptivecards_4476e; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 92483461-c3fc-49ef-8c11-b69e1d68b152
+DisplayName              : Agent Inventory
+CreatedTime              : 2025-12-28T11:13:14.0700679Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:20.1681085Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=92483461-c3fc-49ef-8c11-b69e1d68b152; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/92483461-c3fc-49ef-8c11-b69e1d68b152;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_agentinventory_0b104; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 74ac0b83-aa32-48dc-ac2c-cd28ecd3c3f2
+DisplayName              : Agent test tunner
+CreatedTime              : 2025-12-28T11:13:15.3788803Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:21.3399197Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=74ac0b83-aa32-48dc-ac2c-cd28ecd3c3f2; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/74ac0b83-aa32-48dc-ac2c-cd28ecd3c3f2;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_agenttestrunner_18503; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : e8634c7d-cf64-48b1-9f39-bf1ab73ede87
+DisplayName              : Agent Value Summary
+CreatedTime              : 2025-12-28T11:13:16.458474Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:22.4600078Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=e8634c7d-cf64-48b1-9f39-bf1ab73ede87; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/e8634c7d-cf64-48b1-9f39-bf1ab73ede87;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_agentvaluesummary_d89a0; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 1d451719-6958-4417-a3f6-ccdb83545434
+DisplayName              : Compliance Hub
+CreatedTime              : 2025-12-28T11:13:17.5807073Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:23.8370178Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=1d451719-6958-4417-a3f6-ccdb83545434; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/1d451719-6958-4417-a3f6-ccdb83545434;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_compliancehub_329f8; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : df85dc90-fb0f-457e-9dfd-f6c8c7b051a4
+DisplayName              : Conversation Analyser
+CreatedTime              : 2025-12-28T11:13:18.6163546Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:25.2117352Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=df85dc90-fb0f-457e-9dfd-f6c8c7b051a4; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/df85dc90-fb0f-457e-9dfd-f6c8c7b051a4;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_conversationanalyser_c058b; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=CustomCanvasPage}
+
+AppName                  : 705865b4-d36b-465a-8747-e37712b33ebe
+DisplayName              : Conversation KPI
+CreatedTime              : 2025-12-28T11:13:19.6192667Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:26.2512398Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=705865b4-d36b-465a-8747-e37712b33ebe; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/705865b4-d36b-465a-8747-e37712b33ebe;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_conversationkpi_6082b; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : a19d462c-306a-49c5-8b2c-80dc5b21ac6a
+DisplayName              : HomeCoE
+CreatedTime              : 2025-12-28T11:13:20.6769512Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:28.6461471Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=a19d462c-306a-49c5-8b2c-80dc5b21ac6a; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/a19d462c-306a-49c5-8b2c-80dc5b21ac6a;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_homecoe_70fca; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : b98dab25-6232-49d2-a776-b77ed336861b
+DisplayName              : HomeMaker
+CreatedTime              : 2025-12-28T11:13:21.5787742Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:29.8204512Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=b98dab25-6232-49d2-a776-b77ed336861b; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/b98dab25-6232-49d2-a776-b77ed336861b;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_homemaker_c8b72; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 0f7ab639-b113-434a-a8fc-c8cf02439720
+DisplayName              : Power Platform Review Tool
+CreatedTime              : 2025-12-28T11:13:22.8029173Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:31.0897944Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=0f7ab639-b113-434a-a8fc-c8cf02439720; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/0f7ab639-b113-434a-a8fc-c8cf02439720;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_homepage_f8fb3; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 73f9683b-72b8-4eb3-9e05-67f814843be1
+DisplayName              : HomeClassic
+CreatedTime              : 2025-12-28T11:13:24.0162602Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:27.4950682Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=73f9683b-72b8-4eb3-9e05-67f814843be1; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/73f9683b-72b8-4eb3-9e05-67f814843be1;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_home_c8017; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 1de2f963-cfa5-4c60-9891-ae682245306d
+DisplayName              : Prompt Advisor Studio
+CreatedTime              : 2025-12-28T11:13:25.1532541Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:32.509782Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=1de2f963-cfa5-4c60-9891-ae682245306d; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/1de2f963-cfa5-4c60-9891-ae682245306d;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_promptadvisorstudio_6e1ce; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 3576b1db-546a-4319-afca-09ec93bb9dea
+DisplayName              : Setup Wizard
+CreatedTime              : 2025-12-28T11:13:26.0291209Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:34.599683Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=3576b1db-546a-4319-afca-09ec93bb9dea; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/3576b1db-546a-4319-afca-09ec93bb9dea;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_setupwizard_3f990; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 70daea8a-81c7-4356-8e78-3fc8fee19a8f
+DisplayName              : Validate SharePoint Connection
+CreatedTime              : 2025-12-28T11:13:26.9230447Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:35.7712045Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=70daea8a-81c7-4356-8e78-3fc8fee19a8f; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/70daea8a-81c7-4356-8e78-3fc8fee19a8f;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_validatesharepointconnection_d362d; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=CustomCanvasPage}
+
+AppName                  : bec23985-1e91-4d93-83be-57317adf8210
+DisplayName              : Webchat Customizer
+CreatedTime              : 2025-12-28T11:13:28.1157781Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:37.0027086Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=bec23985-1e91-4d93-83be-57317adf8210; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/bec23985-1e91-4d93-83be-57317adf8210;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_webchatcustomizer_48d6e; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : 2f9f271f-392d-4114-a5ca-247e335ec81b
+DisplayName              : Gest
+CreatedTime              : 2026-04-14T13:20:19.0296547Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-14T13:20:19.1475928Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=2f9f271f-392d-4114-a5ca-247e335ec81b; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/2f9f271f-392d-4114-a5ca-247e335ec81b;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; appLocation=europe; 
+                           isAppComponentLibrary=False; appType=ClassicCanvasApp}
+
+AppName                  : ce883f69-1b0a-4198-afd0-06af1dda447c
+DisplayName              : Rubric Refinement
+CreatedTime              : 2026-04-19T22:14:33.3094025Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:33.4150826Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=ce883f69-1b0a-4198-afd0-06af1dda447c; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/ce883f69-1b0a-4198-afd0-06af1dda447c;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cat_rubricrefinement_af389; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CustomCanvasPage}
+
+AppName                  : fb40a7e9-9a03-4929-a973-32b0a5a8344d
+DisplayName              : Copilot Studio Kit
+CreatedTime              : 2026-04-19T22:14:39.4861904Z
+Owner                    : @{id=3882eb28-005d-4948-a668-81263d778f6d; displayName=Benicio De Souza Filho, Manoel; 
+                           email=mbenicios@minsait.com; type=User; tenantId=7808e005-1489-4374-954b-d3b08f193920; 
+                           userPrincipalName=mbenicios@minsait.com}
+LastModifiedTime         : 2026-04-19T22:14:39.8461651Z
+EnvironmentName          : e2d10003-4d8e-e007-9d63-76d5fe89ef56
+UnpublishedAppDefinition : 
+IsFeaturedApp            : False
+IsHeroApp                : False
+BypassConsent            : False
+Internal                 : @{name=fb40a7e9-9a03-4929-a973-32b0a5a8344d; id=/providers/Microsoft.PowerApps/scopes/admin/
+                           environments/e2d10003-4d8e-e007-9d63-76d5fe89ef56/apps/fb40a7e9-9a03-4929-a973-32b0a5a8344d;
+                            type=Microsoft.PowerApps/scopes/admin/apps; tags=; properties=; 
+                           logicalName=cr7f9_copilotstudiokit_b6f82; appLocation=europe; isAppComponentLibrary=False; 
+                           appType=CodeApp}
+
+
+
+
+```

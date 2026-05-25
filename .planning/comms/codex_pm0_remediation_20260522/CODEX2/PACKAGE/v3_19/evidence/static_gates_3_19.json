@@ -1,0 +1,68 @@
+{
+  "Passed": true,
+  "Results": [
+    {
+      "Name": "Test-SolutionXmlSchemaValidity",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-SolutionXmlSchemaValidity.ps1 -Path .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:35",
+      "Ended": "2026-05-23T21:32:36"
+    },
+    {
+      "Name": "PM0 placeholder scan",
+      "Command": "rg -n 'TODO_BACKFILL|PLACEHOLDER|REPLACE_ME|FIXME' .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/work/unpacked_3_19",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:36",
+      "Ended": "2026-05-23T21:32:36"
+    },
+    {
+      "Name": "Test-Pm0WorkflowResponseSemantics",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-Pm0WorkflowResponseSemantics.ps1 -SourceRoot .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/work/pm0_source_from_package",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:36",
+      "Ended": "2026-05-23T21:32:37"
+    },
+    {
+      "Name": "Test-Pm0TopicActionFlowContract",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-Pm0TopicActionFlowContract.ps1 -SourceRoot .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/work/pm0_source_from_package",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:37",
+      "Ended": "2026-05-23T21:32:38"
+    },
+    {
+      "Name": "Test-PMOFlowStopShipAudit",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-PMOFlowStopShipAudit.ps1 -SolutionSourcePath .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/work/unpacked_3_19",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:38",
+      "Ended": "2026-05-23T21:32:39"
+    },
+    {
+      "Name": "Test-SolutionZipP0Contracts",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-SolutionZipP0Contracts.ps1 -PackagePath .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:39",
+      "Ended": "2026-05-23T21:32:39"
+    },
+    {
+      "Name": "Test-SolutionZipP24Contracts",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-SolutionZipP24Contracts.ps1 -PackagePath .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip -ExpectedVersion 3.19.0.0",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:39",
+      "Ended": "2026-05-23T21:32:47"
+    },
+    {
+      "Name": "Test-CopilotRoutingInstructions",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-CopilotRoutingInstructions.ps1 -PackagePath .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:47",
+      "Ended": "2026-05-23T21:32:48"
+    },
+    {
+      "Name": "Test-CopilotPowerFxRegexSafety",
+      "Command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\\Test-CopilotPowerFxRegexSafety.ps1 -PackagePath .planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_19/package/PMO_v11_Tarefas_3_19_PM0_RUNTIME_FIX.zip",
+      "ExitCode": 0,
+      "Started": "2026-05-23T21:32:48",
+      "Ended": "2026-05-23T21:32:48"
+    }
+  ]
+}

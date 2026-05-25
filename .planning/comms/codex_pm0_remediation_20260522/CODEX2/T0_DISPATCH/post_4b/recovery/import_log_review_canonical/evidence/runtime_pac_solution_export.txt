@@ -1,0 +1,5 @@
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+Starting Solution Export...
+Solution export succeeded.

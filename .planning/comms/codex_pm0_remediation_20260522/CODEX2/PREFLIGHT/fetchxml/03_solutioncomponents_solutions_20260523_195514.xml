@@ -1,0 +1,13 @@
+<fetch>
+  <entity name="solution">
+    <attribute name="solutionid" />
+    <attribute name="uniquename" />
+    <attribute name="friendlyname" />
+    <attribute name="version" />
+    <attribute name="ismanaged" />
+    <filter type="or">
+      <condition attribute="uniquename" operator="eq" value="PMO_v11_Tarefas" />
+      <condition attribute="uniquename" operator="eq" value="PMO_AQ07_CopilotBinding" />
+    </filter>
+  </entity>
+</fetch>

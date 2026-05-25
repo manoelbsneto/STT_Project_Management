@@ -1,0 +1,10 @@
+Agent: Codex #2 Lead
+Timestamp: 2026-05-23 17:50:10 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/forensic_diff/screenshots/20260523_20260523_205010_Codex2Lead_forensic_halt_pmo_export_include_unsupported.png
+Transition: BLOCKED
+Task: BLK-LIVE-317 read-only forensic diff
+Halt reason: PMO_v11_Tarefas export command failed before download because PAC 2.6.4 rejects --include canvas.
+PMO export exit code: 1
+AQ07 export exit code: 0
+AQ07 export SHA256: A7C3B9D5E85265EE6CB299468B432EBC8F1D504D93DEE2CD7B6178923F5BD793
+No tenant write commands were run.

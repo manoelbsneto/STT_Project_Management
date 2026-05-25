@@ -1,0 +1,11 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp_brt": "2026-05-23 16:31:25 BRT",
+  "action": "Sub-agent spawn degradation recorded; lead taking over ASK drafts locally.",
+  "affected_subagents": [
+    "Codex #1 Sub 1A",
+    "Codex #1 Sub 1B",
+    "Codex #1 Sub 1C"
+  ],
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX1/T0_DISPATCH/screenshots/20260523_163125_Codex1Lead_subagent_auth_degraded.png"
+}

@@ -1,0 +1,73 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp_brt": "2026-05-24 08:06:58 BRT",
+  "source_3_19": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\pm0_source_from_package_3_19_for_3_20_peer_review",
+  "source_3_20": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\pm0_source_from_package_3_20_peer_review",
+  "package_3_19": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review",
+  "package_3_20": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review",
+  "source_diff": [
+    {
+      "path": "workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6\\workflow.json",
+      "status": "CHANGED",
+      "left": "FFEAA4BE0CD0A05CC99F8EC8680FFD21FB9B1BB8F180C988066B2229DAF646E3",
+      "right": "4D7737960092254D96750F400635294647524252B6826EC559747916734C30BA"
+    }
+  ],
+  "package_diff": [
+    {
+      "path": "solution.xml",
+      "status": "CHANGED",
+      "left": "35E64AE9226A3004A3E4040979602EC17CB5DDB611AA86E07C97546E661C34E5",
+      "right": "DB18D9D2267E4A6698C02ABB47D266F701BF219C5397C2BB592A7805B19D1028"
+    },
+    {
+      "path": "Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "status": "CHANGED",
+      "left": "FFEAA4BE0CD0A05CC99F8EC8680FFD21FB9B1BB8F180C988066B2229DAF646E3",
+      "right": "4D7737960092254D96750F400635294647524252B6826EC559747916734C30BA"
+    }
+  ],
+  "source_added_lines": [
+    "              \"item/StatusID\": \"@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))\","
+  ],
+  "source_removed_lines": [],
+  "solution_version_319": "3.19.0.0",
+  "solution_version_320": "3.20.0.0",
+  "diff_a_expected_plus_one_statusid": true,
+  "diff_b_expected_workflow_and_solution_version": true,
+  "diff_c_other_four_hashes_identical": true,
+  "other_four_hash_compare": [
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "sha319": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "sha320": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_ListarTarefas",
+      "sha319": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "sha320": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "sha319": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "sha320": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "sha319": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "sha320": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+    }
+  ]
+}

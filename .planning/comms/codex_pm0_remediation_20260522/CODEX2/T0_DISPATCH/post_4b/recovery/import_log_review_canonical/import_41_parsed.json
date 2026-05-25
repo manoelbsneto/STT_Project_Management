@@ -1,0 +1,951 @@
+{
+  "source": "C:\\Users\\dataops-lab\\Downloads\\PMO v1.1 - Task Management Topics_import (41).xml",
+  "copiedTo": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\post_4b\\recovery\\import_log_review_canonical\\import_41.xml",
+  "sha256": "C596F47E997E3F9B4009DF00EE2D769BB3EB22AF7A2362CD168999EA32015B5E",
+  "parsedAtBrt": "2026-05-24 09:56:07 BRT",
+  "xmlRoot": "Workbook",
+  "rowCount": 97,
+  "rows": [
+    {
+      "cells": [
+        "Solución"
+      ],
+      "text": "Solución"
+    },
+    {
+      "cells": [
+        "Nombre",
+        "PMO_v11_Tarefas"
+      ],
+      "text": "Nombre | PMO_v11_Tarefas"
+    },
+    {
+      "cells": [
+        "Nombre para mostrar",
+        "PMO v1.1 - Task Management Topics"
+      ],
+      "text": "Nombre para mostrar | PMO v1.1 - Task Management Topics"
+    },
+    {
+      "cells": [
+        "Descripción",
+        "3 topics + 3 action bindings para GerenciarTarefas no Assistente PMO"
+      ],
+      "text": "Descripción | 3 topics + 3 action bindings para GerenciarTarefas no Assistente PMO"
+    },
+    {
+      "cells": [
+        "Versión",
+        "3.20.0.0"
+      ],
+      "text": "Versión | 3.20.0.0"
+    },
+    {
+      "cells": [
+        "Tipo de paquete",
+        "No administrada"
+      ],
+      "text": "Tipo de paquete | No administrada"
+    },
+    {
+      "cells": [
+        "Editor"
+      ],
+      "text": "Editor"
+    },
+    {
+      "cells": [
+        "Nombre",
+        "DefaultPublishercolofertasbrasilpro"
+      ],
+      "text": "Nombre | DefaultPublishercolofertasbrasilpro"
+    },
+    {
+      "cells": [
+        "Nombre para mostrar",
+        "Default publisher for colofertasbrasilpro"
+      ],
+      "text": "Nombre para mostrar | Default publisher for colofertasbrasilpro"
+    },
+    {
+      "cells": [
+        "Descripción",
+        "Editor predeterminado para esta organizacion"
+      ],
+      "text": "Descripción | Editor predeterminado para esta organizacion"
+    },
+    {
+      "cells": [
+        "Correo electrónico"
+      ],
+      "text": "Correo electrónico"
+    },
+    {
+      "cells": [
+        "Sitio web"
+      ],
+      "text": "Sitio web"
+    },
+    {
+      "cells": [
+        "Ciudad"
+      ],
+      "text": "Ciudad"
+    },
+    {
+      "cells": [
+        "País o región"
+      ],
+      "text": "País o región"
+    },
+    {
+      "cells": [
+        "Calle 1"
+      ],
+      "text": "Calle 1"
+    },
+    {
+      "cells": [
+        "Calle 2"
+      ],
+      "text": "Calle 2"
+    },
+    {
+      "cells": [
+        "Código postal"
+      ],
+      "text": "Código postal"
+    },
+    {
+      "cells": [
+        "Estado o provincia"
+      ],
+      "text": "Estado o provincia"
+    },
+    {
+      "cells": [
+        "Teléfono"
+      ],
+      "text": "Teléfono"
+    },
+    {
+      "cells": [
+        "Estado",
+        "Procesado"
+      ],
+      "text": "Estado | Procesado"
+    },
+    {
+      "cells": [
+        "Mensaje"
+      ],
+      "text": "Mensaje"
+    },
+    {
+      "cells": [
+        "Progreso [%]",
+        "84.31"
+      ],
+      "text": "Progreso [%] | 84.31"
+    },
+    {
+      "cells": [
+        "Duration [s]",
+        "119.6"
+      ],
+      "text": "Duration [s] | 119.6"
+    },
+    {
+      "cells": [
+        "ActivityId [s]"
+      ],
+      "text": "ActivityId [s]"
+    },
+    {
+      "cells": [
+        "StartTime [s]",
+        "05/24/2026 12:48:58.671 (UTC) Coordinated Universal Time"
+      ],
+      "text": "StartTime [s] | 05/24/2026 12:48:58.671 (UTC) Coordinated Universal Time"
+    },
+    {
+      "cells": [
+        "StopTime [s]",
+        "05/24/2026 12:50:58.271 (UTC) Coordinated Universal Time"
+      ],
+      "text": "StopTime [s] | 05/24/2026 12:50:58.271 (UTC) Coordinated Universal Time"
+    },
+    {
+      "cells": [
+        "Fecha y hora",
+        "TipoDeElemento",
+        "Identificador",
+        "Nombre",
+        "Nombre localizado",
+        "Nombre original",
+        "Descripción",
+        "Estado",
+        "CódigoDeError",
+        "TextoDeError"
+      ],
+      "text": "Fecha y hora | TipoDeElemento | Identificador | Nombre | Nombre localizado | Nombre original | Descripción | Estado | CódigoDeError | TextoDeError"
+    },
+    {
+      "cells": [
+        "12:48:58.46",
+        "Transformar paquete",
+        "RemoveParentContactMissingDependencyNode",
+        "Quitar nodo MissingDependency innecesario",
+        "Quitar nodo MissingDependency innecesario",
+        "Procesado"
+      ],
+      "text": "12:48:58.46 | Transformar paquete | RemoveParentContactMissingDependencyNode | Quitar nodo MissingDependency innecesario | Quitar nodo MissingDependency innecesario | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:58.46",
+        "Transformar paquete",
+        "RemoveContactParentContactRelationship",
+        "Transformar paquete",
+        "Transformar paquete",
+        "Procesado"
+      ],
+      "text": "12:48:58.46 | Transformar paquete | RemoveContactParentContactRelationship | Transformar paquete | Transformar paquete | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:58.46",
+        "Transformar paquete",
+        "UpdateRolesDepthLevel",
+        "Transformar paquete",
+        "Transformar paquete",
+        "Procesado"
+      ],
+      "text": "12:48:58.46 | Transformar paquete | UpdateRolesDepthLevel | Transformar paquete | Transformar paquete | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:58.46",
+        "Transformar paquete",
+        "RemoveParentContactIdAttribute",
+        "Transformar paquete",
+        "Transformar paquete",
+        "Procesado"
+      ],
+      "text": "12:48:58.46 | Transformar paquete | RemoveParentContactIdAttribute | Transformar paquete | Transformar paquete | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:58.46",
+        "Transformar paquete",
+        "UpdateMacrosCategoryAttribute",
+        "Transformar paquete",
+        "Transformar paquete",
+        "Procesado"
+      ],
+      "text": "12:48:58.46 | Transformar paquete | UpdateMacrosCategoryAttribute | Transformar paquete | Transformar paquete | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:58.48",
+        "Validación de paquete",
+        "XSDValidationHandler",
+        "Validación de paquete",
+        "Valida el esquema del paquete de solución.",
+        "Procesado"
+      ],
+      "text": "12:48:58.48 | Validación de paquete | XSDValidationHandler | Validación de paquete | Valida el esquema del paquete de solución. | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:59.34",
+        "Etiquetas",
+        "Procesado"
+      ],
+      "text": "12:48:59.34 | Etiquetas | Procesado"
+    },
+    {
+      "cells": [
+        "12:48:59.34",
+        "Procesado"
+      ],
+      "text": "12:48:59.34 | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:01.45",
+        "Solución",
+        "PMO_v11_Tarefas",
+        "PMO v1.1 - Task Management Topics",
+        "Procesado"
+      ],
+      "text": "12:49:01.45 | Solución | PMO_v11_Tarefas | PMO v1.1 - Task Management Topics | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:04.68",
+        "Flujo de trabajo",
+        "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+        "PMO_PA_ListarTarefas",
+        "PMO_PA_ListarTarefas",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:04.68 | Flujo de trabajo | {9544f14b-3748-f111-bec7-6045bdf42cae} | PMO_PA_ListarTarefas | PMO_PA_ListarTarefas | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:07.43",
+        "Flujo de trabajo",
+        "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+        "PMO_PA_ListarTarefas",
+        "PMO_PA_ListarTarefas",
+        "Procesado"
+      ],
+      "text": "12:49:07.43 | Flujo de trabajo | {9544f14b-3748-f111-bec7-6045bdf42cae} | PMO_PA_ListarTarefas | PMO_PA_ListarTarefas | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:07.45",
+        "Flujo de trabajo",
+        "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_AtualizarTarefa",
+        "PMO_PA_AtualizarTarefa",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:07.45 | Flujo de trabajo | {98408d55-3748-f111-bec7-000d3abc5cc6} | PMO_PA_AtualizarTarefa | PMO_PA_AtualizarTarefa | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:09.35",
+        "Flujo de trabajo",
+        "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_AtualizarTarefa",
+        "PMO_PA_AtualizarTarefa",
+        "Procesado"
+      ],
+      "text": "12:49:09.35 | Flujo de trabajo | {98408d55-3748-f111-bec7-000d3abc5cc6} | PMO_PA_AtualizarTarefa | PMO_PA_AtualizarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:09.37",
+        "Flujo de trabajo",
+        "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_ConsultarPortfolio",
+        "PMO_PA_ConsultarPortfolio",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:09.37 | Flujo de trabajo | {39cf292d-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_ConsultarPortfolio | PMO_PA_ConsultarPortfolio | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:11.17",
+        "Flujo de trabajo",
+        "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_ConsultarPortfolio",
+        "PMO_PA_ConsultarPortfolio",
+        "Procesado"
+      ],
+      "text": "12:49:11.17 | Flujo de trabajo | {39cf292d-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_ConsultarPortfolio | PMO_PA_ConsultarPortfolio | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:11.18",
+        "Flujo de trabajo",
+        "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_ConsultarProjeto",
+        "PMO_PA_ConsultarProjeto",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:11.18 | Flujo de trabajo | {4a33b53e-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_ConsultarProjeto | PMO_PA_ConsultarProjeto | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:13.03",
+        "Flujo de trabajo",
+        "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_ConsultarProjeto",
+        "PMO_PA_ConsultarProjeto",
+        "Procesado"
+      ],
+      "text": "12:49:13.03 | Flujo de trabajo | {4a33b53e-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_ConsultarProjeto | PMO_PA_ConsultarProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:13.04",
+        "Flujo de trabajo",
+        "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_RegistrarRiscoBot",
+        "PMO_PA_RegistrarRiscoBot",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:13.04 | Flujo de trabajo | {ee732d46-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_RegistrarRiscoBot | PMO_PA_RegistrarRiscoBot | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:14.78",
+        "Flujo de trabajo",
+        "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_RegistrarRiscoBot",
+        "PMO_PA_RegistrarRiscoBot",
+        "Procesado"
+      ],
+      "text": "12:49:14.78 | Flujo de trabajo | {ee732d46-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_RegistrarRiscoBot | PMO_PA_RegistrarRiscoBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:14.79",
+        "Flujo de trabajo",
+        "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_RegistrarBloqueioBot",
+        "PMO_PA_RegistrarBloqueioBot",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:14.79 | Flujo de trabajo | {3ec37952-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_RegistrarBloqueioBot | PMO_PA_RegistrarBloqueioBot | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:16.78",
+        "Flujo de trabajo",
+        "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_RegistrarBloqueioBot",
+        "PMO_PA_RegistrarBloqueioBot",
+        "Procesado"
+      ],
+      "text": "12:49:16.78 | Flujo de trabajo | {3ec37952-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_RegistrarBloqueioBot | PMO_PA_RegistrarBloqueioBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:16.79",
+        "Flujo de trabajo",
+        "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_PedirDecisaoBot",
+        "PMO_PA_PedirDecisaoBot",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:16.79 | Flujo de trabajo | {feb79d54-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_PedirDecisaoBot | PMO_PA_PedirDecisaoBot | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:18.54",
+        "Flujo de trabajo",
+        "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_PedirDecisaoBot",
+        "PMO_PA_PedirDecisaoBot",
+        "Procesado"
+      ],
+      "text": "12:49:18.54 | Flujo de trabajo | {feb79d54-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_PedirDecisaoBot | PMO_PA_PedirDecisaoBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:18.56",
+        "Flujo de trabajo",
+        "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+        "PMO_PA_AtualizarStatus",
+        "PMO_PA_AtualizarStatus",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:18.56 | Flujo de trabajo | {c11a165b-c64c-f111-bec7-7ced8d9559c1} | PMO_PA_AtualizarStatus | PMO_PA_AtualizarStatus | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:20.59",
+        "Flujo de trabajo",
+        "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+        "PMO_PA_AtualizarStatus",
+        "PMO_PA_AtualizarStatus",
+        "Procesado"
+      ],
+      "text": "12:49:20.59 | Flujo de trabajo | {c11a165b-c64c-f111-bec7-7ced8d9559c1} | PMO_PA_AtualizarStatus | PMO_PA_AtualizarStatus | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:20.61",
+        "Flujo de trabajo",
+        "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+        "PMO_PA_ExcluirProjeto",
+        "PMO_PA_ExcluirProjeto",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:20.61 | Flujo de trabajo | {16fbe313-2edc-406e-ad7f-d08cee0edc43} | PMO_PA_ExcluirProjeto | PMO_PA_ExcluirProjeto | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:22.76",
+        "Flujo de trabajo",
+        "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+        "PMO_PA_ExcluirProjeto",
+        "PMO_PA_ExcluirProjeto",
+        "Procesado"
+      ],
+      "text": "12:49:22.76 | Flujo de trabajo | {16fbe313-2edc-406e-ad7f-d08cee0edc43} | PMO_PA_ExcluirProjeto | PMO_PA_ExcluirProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:22.78",
+        "Flujo de trabajo",
+        "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+        "PMO_PA_ExcluirTarefa",
+        "PMO_PA_ExcluirTarefa",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:22.78 | Flujo de trabajo | {70b39334-5926-4fb1-bd22-f10bd99f0f6d} | PMO_PA_ExcluirTarefa | PMO_PA_ExcluirTarefa | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:24.50",
+        "Flujo de trabajo",
+        "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+        "PMO_PA_ExcluirTarefa",
+        "PMO_PA_ExcluirTarefa",
+        "Procesado"
+      ],
+      "text": "12:49:24.50 | Flujo de trabajo | {70b39334-5926-4fb1-bd22-f10bd99f0f6d} | PMO_PA_ExcluirTarefa | PMO_PA_ExcluirTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:24.51",
+        "Flujo de trabajo",
+        "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_CriarProjeto",
+        "PMO_PA_CriarProjeto",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:24.51 | Flujo de trabajo | {3104124d-364a-f111-bec7-7ced8d955c6c} | PMO_PA_CriarProjeto | PMO_PA_CriarProjeto | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:26.36",
+        "Flujo de trabajo",
+        "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_CriarProjeto",
+        "PMO_PA_CriarProjeto",
+        "Procesado"
+      ],
+      "text": "12:49:26.36 | Flujo de trabajo | {3104124d-364a-f111-bec7-7ced8d955c6c} | PMO_PA_CriarProjeto | PMO_PA_CriarProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:26.37",
+        "Flujo de trabajo",
+        "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+        "PMO_PA_CriarTarefa",
+        "PMO_PA_CriarTarefa",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:26.37 | Flujo de trabajo | {0a5d2a41-24c0-4d5e-9f6d-000000000241} | PMO_PA_CriarTarefa | PMO_PA_CriarTarefa | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:28.30",
+        "Flujo de trabajo",
+        "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+        "PMO_PA_CriarTarefa",
+        "PMO_PA_CriarTarefa",
+        "Procesado"
+      ],
+      "text": "12:49:28.30 | Flujo de trabajo | {0a5d2a41-24c0-4d5e-9f6d-000000000241} | PMO_PA_CriarTarefa | PMO_PA_CriarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:28.36",
+        "Flujo de trabajo",
+        "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_AtualizarStatus",
+        "PM0_PA_Card_AtualizarStatus",
+        "Procesado"
+      ],
+      "text": "12:49:28.36 | Flujo de trabajo | {1721e0a3-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_AtualizarStatus | PM0_PA_Card_AtualizarStatus | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:28.37",
+        "Flujo de trabajo",
+        "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_AtualizarTarefa",
+        "PM0_PA_Card_AtualizarTarefa",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:28.37 | Flujo de trabajo | {7c6300c2-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_AtualizarTarefa | PM0_PA_Card_AtualizarTarefa | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:30.42",
+        "Flujo de trabajo",
+        "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_AtualizarTarefa",
+        "PM0_PA_Card_AtualizarTarefa",
+        "Procesado"
+      ],
+      "text": "12:49:30.42 | Flujo de trabajo | {7c6300c2-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_AtualizarTarefa | PM0_PA_Card_AtualizarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:30.44",
+        "Flujo de trabajo",
+        "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:30.44 | Flujo de trabajo | {8333bd91-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ResumoExecutivoPortfolio | PM0_PA_Card_ResumoExecutivoPortfolio | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:32.53",
+        "Flujo de trabajo",
+        "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "Procesado"
+      ],
+      "text": "12:49:32.53 | Flujo de trabajo | {8333bd91-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ResumoExecutivoPortfolio | PM0_PA_Card_ResumoExecutivoPortfolio | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:32.55",
+        "Flujo de trabajo",
+        "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_CriarTarefa",
+        "PM0_PA_Card_CriarTarefa",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:32.55 | Flujo de trabajo | {7f662db7-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_CriarTarefa | PM0_PA_Card_CriarTarefa | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:34.58",
+        "Flujo de trabajo",
+        "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_CriarTarefa",
+        "PM0_PA_Card_CriarTarefa",
+        "Procesado"
+      ],
+      "text": "12:49:34.58 | Flujo de trabajo | {7f662db7-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_CriarTarefa | PM0_PA_Card_CriarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:34.59",
+        "Flujo de trabajo",
+        "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ListarTarefas",
+        "PM0_PA_Card_ListarTarefas",
+        "Procesado",
+        "0x80045042",
+        "The original workflow definition has been deactivated and replaced."
+      ],
+      "text": "12:49:34.59 | Flujo de trabajo | {e0e3c6b0-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ListarTarefas | PM0_PA_Card_ListarTarefas | Procesado | 0x80045042 | The original workflow definition has been deactivated and replaced."
+    },
+    {
+      "cells": [
+        "12:49:36.78",
+        "Flujo de trabajo",
+        "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ListarTarefas",
+        "PM0_PA_Card_ListarTarefas",
+        "Procesado"
+      ],
+      "text": "12:49:36.78 | Flujo de trabajo | {e0e3c6b0-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ListarTarefas | PM0_PA_Card_ListarTarefas | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:56.74",
+        "Inserciones de componentes raíz",
+        "Procesado"
+      ],
+      "text": "12:49:56.74 | Inserciones de componentes raíz | Procesado"
+    },
+    {
+      "cells": [
+        "12:49:56.76",
+        "Procesado"
+      ],
+      "text": "12:49:56.76 | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:58.24",
+        "Procesado"
+      ],
+      "text": "12:50:58.24 | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:03.99",
+        "Cálculo de dependencias",
+        "Procesado"
+      ],
+      "text": "12:50:03.99 | Cálculo de dependencias | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:16.68",
+        "Activación de flujo de trabajo",
+        "{9544f14b-3748-f111-bec7-6045bdf42cae}",
+        "PMO_PA_ListarTarefas",
+        "PMO_PA_ListarTarefas",
+        "Procesado"
+      ],
+      "text": "12:50:16.68 | Activación de flujo de trabajo | {9544f14b-3748-f111-bec7-6045bdf42cae} | PMO_PA_ListarTarefas | PMO_PA_ListarTarefas | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:19.40",
+        "Activación de flujo de trabajo",
+        "{98408d55-3748-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_AtualizarTarefa",
+        "PMO_PA_AtualizarTarefa",
+        "Procesado"
+      ],
+      "text": "12:50:19.40 | Activación de flujo de trabajo | {98408d55-3748-f111-bec7-000d3abc5cc6} | PMO_PA_AtualizarTarefa | PMO_PA_AtualizarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:21.96",
+        "Activación de flujo de trabajo",
+        "{39cf292d-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_ConsultarPortfolio",
+        "PMO_PA_ConsultarPortfolio",
+        "Procesado"
+      ],
+      "text": "12:50:21.96 | Activación de flujo de trabajo | {39cf292d-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_ConsultarPortfolio | PMO_PA_ConsultarPortfolio | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:24.59",
+        "Activación de flujo de trabajo",
+        "{4a33b53e-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_ConsultarProjeto",
+        "PMO_PA_ConsultarProjeto",
+        "Procesado"
+      ],
+      "text": "12:50:24.59 | Activación de flujo de trabajo | {4a33b53e-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_ConsultarProjeto | PMO_PA_ConsultarProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:27.07",
+        "Activación de flujo de trabajo",
+        "{ee732d46-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_RegistrarRiscoBot",
+        "PMO_PA_RegistrarRiscoBot",
+        "Procesado"
+      ],
+      "text": "12:50:27.07 | Activación de flujo de trabajo | {ee732d46-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_RegistrarRiscoBot | PMO_PA_RegistrarRiscoBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:29.53",
+        "Activación de flujo de trabajo",
+        "{3ec37952-c64c-f111-bec7-000d3abc5cc6}",
+        "PMO_PA_RegistrarBloqueioBot",
+        "PMO_PA_RegistrarBloqueioBot",
+        "Procesado"
+      ],
+      "text": "12:50:29.53 | Activación de flujo de trabajo | {3ec37952-c64c-f111-bec7-000d3abc5cc6} | PMO_PA_RegistrarBloqueioBot | PMO_PA_RegistrarBloqueioBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:32.17",
+        "Activación de flujo de trabajo",
+        "{feb79d54-c64c-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_PedirDecisaoBot",
+        "PMO_PA_PedirDecisaoBot",
+        "Procesado"
+      ],
+      "text": "12:50:32.17 | Activación de flujo de trabajo | {feb79d54-c64c-f111-bec7-7ced8d955c6c} | PMO_PA_PedirDecisaoBot | PMO_PA_PedirDecisaoBot | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:35.42",
+        "Activación de flujo de trabajo",
+        "{c11a165b-c64c-f111-bec7-7ced8d9559c1}",
+        "PMO_PA_AtualizarStatus",
+        "PMO_PA_AtualizarStatus",
+        "Procesado"
+      ],
+      "text": "12:50:35.42 | Activación de flujo de trabajo | {c11a165b-c64c-f111-bec7-7ced8d9559c1} | PMO_PA_AtualizarStatus | PMO_PA_AtualizarStatus | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:38.22",
+        "Activación de flujo de trabajo",
+        "{16fbe313-2edc-406e-ad7f-d08cee0edc43}",
+        "PMO_PA_ExcluirProjeto",
+        "PMO_PA_ExcluirProjeto",
+        "Procesado"
+      ],
+      "text": "12:50:38.22 | Activación de flujo de trabajo | {16fbe313-2edc-406e-ad7f-d08cee0edc43} | PMO_PA_ExcluirProjeto | PMO_PA_ExcluirProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:40.91",
+        "Activación de flujo de trabajo",
+        "{70b39334-5926-4fb1-bd22-f10bd99f0f6d}",
+        "PMO_PA_ExcluirTarefa",
+        "PMO_PA_ExcluirTarefa",
+        "Procesado"
+      ],
+      "text": "12:50:40.91 | Activación de flujo de trabajo | {70b39334-5926-4fb1-bd22-f10bd99f0f6d} | PMO_PA_ExcluirTarefa | PMO_PA_ExcluirTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:43.72",
+        "Activación de flujo de trabajo",
+        "{3104124d-364a-f111-bec7-7ced8d955c6c}",
+        "PMO_PA_CriarProjeto",
+        "PMO_PA_CriarProjeto",
+        "Procesado"
+      ],
+      "text": "12:50:43.72 | Activación de flujo de trabajo | {3104124d-364a-f111-bec7-7ced8d955c6c} | PMO_PA_CriarProjeto | PMO_PA_CriarProjeto | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:47.08",
+        "Activación de flujo de trabajo",
+        "{0a5d2a41-24c0-4d5e-9f6d-000000000241}",
+        "PMO_PA_CriarTarefa",
+        "PMO_PA_CriarTarefa",
+        "Procesado"
+      ],
+      "text": "12:50:47.08 | Activación de flujo de trabajo | {0a5d2a41-24c0-4d5e-9f6d-000000000241} | PMO_PA_CriarTarefa | PMO_PA_CriarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:50.02",
+        "Activación de flujo de trabajo",
+        "{7c6300c2-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_AtualizarTarefa",
+        "PM0_PA_Card_AtualizarTarefa",
+        "Procesado"
+      ],
+      "text": "12:50:50.02 | Activación de flujo de trabajo | {7c6300c2-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_AtualizarTarefa | PM0_PA_Card_AtualizarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:52.52",
+        "Activación de flujo de trabajo",
+        "{8333bd91-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "PM0_PA_Card_ResumoExecutivoPortfolio",
+        "Procesado"
+      ],
+      "text": "12:50:52.52 | Activación de flujo de trabajo | {8333bd91-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ResumoExecutivoPortfolio | PM0_PA_Card_ResumoExecutivoPortfolio | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:55.36",
+        "Activación de flujo de trabajo",
+        "{7f662db7-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_CriarTarefa",
+        "PM0_PA_Card_CriarTarefa",
+        "Procesado"
+      ],
+      "text": "12:50:55.36 | Activación de flujo de trabajo | {7f662db7-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_CriarTarefa | PM0_PA_Card_CriarTarefa | Procesado"
+    },
+    {
+      "cells": [
+        "12:50:58.22",
+        "Activación de flujo de trabajo",
+        "{e0e3c6b0-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_ListarTarefas",
+        "PM0_PA_Card_ListarTarefas",
+        "Procesado"
+      ],
+      "text": "12:50:58.22 | Activación de flujo de trabajo | {e0e3c6b0-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_ListarTarefas | PM0_PA_Card_ListarTarefas | Procesado"
+    },
+    {
+      "cells": [
+        "Activación de flujo de trabajo",
+        "{1721e0a3-a250-f111-bec7-000d3abc5cc6}",
+        "PM0_PA_Card_AtualizarStatus",
+        "PM0_PA_Card_AtualizarStatus",
+        "Sin procesar"
+      ],
+      "text": "Activación de flujo de trabajo | {1721e0a3-a250-f111-bec7-000d3abc5cc6} | PM0_PA_Card_AtualizarStatus | PM0_PA_Card_AtualizarStatus | Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    },
+    {
+      "cells": [
+        "Sin procesar"
+      ],
+      "text": "Sin procesar"
+    }
+  ],
+  "rawHits": {
+    "code_0x80040216": 0,
+    "code_0x80045042": 16,
+    "errorCodes": {
+      "code": "0x80045042",
+      "count": 16
+    },
+    "OrigemEntrada": 0,
+    "emptyInteger": 0,
+    "StatusID": 0,
+    "Skipped": 0,
+    "SinProcesar": 8
+  }
+}

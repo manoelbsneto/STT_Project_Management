@@ -1,0 +1,443 @@
+﻿{
+    "sourceRoot":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2",
+    "generatedAt":  "2026-05-23 16:33:24 -03:00",
+    "passed":  true,
+    "failedCheckCount":  0,
+    "checks":  [
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\actions\\PM0_PA_Card_AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarStatus topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\topics\\AtualizarStatus.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarStatus-1721e0a3-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 1721e0a3-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "AtualizarStatus calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input routeKey",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input routeKey",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input rag",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input rag",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarStatus declares action input resumo",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: routeKey, projectId, rag, resumo."
+                   },
+                   {
+                       "name":  "AtualizarStatus maps topic input resumo",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input routeKey",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input rag",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input resumo",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input percentual",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input risco",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input bloqueio",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "AtualizarStatus maps declared action input proximaAcao",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: invokeFlowAction_atualizar_status\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  routeKey: =Topic.RouteKey\n                  status: =Topic.RAG\n                  rag: =Topic.RAG\n                  resumo: =Topic.Resumo\n                  percentual: =Topic.Percentual\n                  risco: =Topic.Risco\n                  bloqueio: =Topic.Bloqueio\n                  proximaAcao: =Topic.ProximaAcao\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus\n              output:\n                binding:\n                  result: Topic.AtualizarStatusResult\n\r\n            - kind: SendActivity\r\n              id: atualizar_status_done\r\n              activity: \"{Topic.AtualizarStatusResult}\"\r\n\r\n            - kind: EndDialog\r\n              id: end_atualizar_status\r\n              clearTopicQueue: true\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_status_cancelled\r\n          activity: Ok, atualizacao de status cancelada.\r\n\r\n        - kind: EndDialog\r\n          id: end_atualizar_status_cancelled\r\n          clearTopicQueue: true\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\actions\\PM0_PA_Card_AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "AtualizarTarefa topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\topics\\AtualizarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_AtualizarTarefa-7c6300c2-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 7c6300c2-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "AtualizarTarefa calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_AtualizarTarefa declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action."
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input spItemId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input taskId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input status",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input taskStatus",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input comments",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input horasRealizadas",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input responsavel",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input dataFim",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "AtualizarTarefa maps declared action input prioridade",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_atualizar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  spItemId: =Text(Topic.TaskID)\n                  taskId: =Text(Topic.TaskID)\n                  status: =Topic.Status\n                  taskStatus: =Topic.Status\n                  comments: =Blank()\n                  horasRealizadas: =Topic.HorasRealizadas\n                  responsavel: =Topic.Responsavel\n                  dataFim: =Topic.DataFim\n                  prioridade: =Topic.Prioridade\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa\n              output:\n                binding:\n                  result: Topic.message\n\r\n            - kind: SendActivity\r\n              id: atualizar_done\r\n              activity: Tarefa atualizada com sucesso.\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: atualizar_cancelled\r\n          activity: Ok, atualizacao cancelada. Se quiser tentar novamente, diga \"atualizar tarefa\".\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\actions\\PM0_PA_Card_ResumoExecutivoPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "ConsultarPortfolio topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\topics\\ConsultarPortfolio.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333bd91-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 8333bd91-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "ConsultarPortfolio calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ResumoExecutivoPortfolio has no required workflow inputs to propagate",
+                       "passed":  true,
+                       "evidence":  "Workflow trigger required list is empty."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\actions\\PM0_PA_Card_CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "CriarTarefa topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\topics\\CriarTarefa.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_CriarTarefa-7f662db7-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow 7f662db7-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "CriarTarefa calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: projectId, action."
+                   },
+                   {
+                       "name":  "CriarTarefa maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_CriarTarefa declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: projectId, action."
+                   },
+                   {
+                       "name":  "CriarTarefa maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input title",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input taskTitle",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input responsavel",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input prazo",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input horas",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input prioridade",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input bucket",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input dueDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input endDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input startDate",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "CriarTarefa maps declared action input plannerBucketName",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n              id: call_criar_tarefa\n              input:\n                binding:\n                  action: =Topic.Action\n                  projectId: =Topic.ResolvedProjectID\n                  title: =Topic.Titulo\n                  taskTitle: =Topic.Titulo\n                  responsavel: =Topic.Responsavel\n                  prazo: =Topic.Prazo\n                  horas: =Topic.Horas\n                  prioridade: =Topic.Prioridade\n                  dueDate: =Topic.Prazo\n                  endDate: =Topic.Prazo\n                  bucket: =Blank()\n                  startDate: =Blank()\n                  plannerBucketName: =Blank()\n              dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa\n              output:\n                binding:\n                  result: Topic.Result\n\r\n            - kind: SendActivity\r\n              id: done\r\n              activity: \"{Topic.Result}\"\r\n\r\n      elseActions:\r\n        - kind: SendActivity\r\n          id: cancelled\r\n          activity: Criacao cancelada.\r\n\r\ninputType: {}\r\noutputType: {}\n"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas action file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\actions\\PM0_PA_Card_ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "ListarTarefas topic file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\topics\\ListarTarefas.mcs.yml"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow file exists",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow JSON parses",
+                       "passed":  true,
+                       "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\Local_Repo\\Assistente PMO V2\\workflows\\PM0_PA_Card_ListarTarefas-e0e3c6b0-a250-f111-bec7-000d3abc5cc6\\workflow.json"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas uses expected workflow id",
+                       "passed":  true,
+                       "evidence":  "Action wrapper must bind to workflow e0e3c6b0-a250-f111-bec7-000d3abc5cc6."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas workflow uses Skills trigger",
+                       "passed":  true,
+                       "evidence":  "PM0 actions must be agent-callable Skills flows."
+                   },
+                   {
+                       "name":  "ListarTarefas calls expected PM0 action",
+                       "passed":  true,
+                       "evidence":  "Topic must call pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas."
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas declares action input action",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action, projectId."
+                   },
+                   {
+                       "name":  "ListarTarefas maps topic input action",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "PM0_PA_Card_ListarTarefas declares action input projectId",
+                       "passed":  true,
+                       "evidence":  "Required by workflow trigger schema: action, projectId."
+                   },
+                   {
+                       "name":  "ListarTarefas maps topic input projectId",
+                       "passed":  true,
+                       "evidence":  "BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "ListarTarefas maps declared action input action",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   },
+                   {
+                       "name":  "ListarTarefas maps declared action input projectId",
+                       "passed":  true,
+                       "evidence":  "Every declared action input must be passed by the topic BeginDialog call. BeginDialog call block: - kind: BeginDialog\n      id: call_listar_tarefas\n      input:\n        binding:\n          action: =Topic.Action\n          projectId: =Topic.ResolvedProjectID\n      dialog: pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas\n      output:\n        binding:\n          result: Topic.tarefas\n\r"
+                   }
+               ]
+}

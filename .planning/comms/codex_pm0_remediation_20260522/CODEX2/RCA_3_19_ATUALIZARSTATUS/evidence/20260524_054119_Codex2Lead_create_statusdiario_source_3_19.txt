@@ -1,0 +1,52 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-24 02:41:19 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054119_Codex2Lead_create_statusdiario_source_3_19.png
+
+Step 3.1 source 3.19 inspection
+Source ZIP SHA256: 43A33783ABC30E7A3DC74EAED162558FBA0781AC163804F85FDC559023D514BF
+Workflow JSON: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\work\3_19_source_extract\Workflows\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json
+Create_StatusDiario item/StatusID present: False
+
+item.* properties present:
+- item/Title = @concat('Status ', triggerBody()?['projectId'], ' ', utcNow())
+- item/ProjectID = @triggerBody()?['projectId']
+- item/DataRegistro = @utcNow()
+- item/RAG/Value = @triggerBody()?['rag']
+- item/Resumo = @triggerBody()?['resumo']
+- item/Percentual = @coalesce(triggerBody()?['percentual'], 0)
+- item/Risco = @coalesce(triggerBody()?['risco'], '')
+- item/Bloqueio = @coalesce(triggerBody()?['bloqueio'], '')
+- item/ProximaAcao = @coalesce(triggerBody()?['proximaAcao'], '')
+- item/OrigemEntrada/Value = CopilotStudio
+
+Full Create_StatusDiario action JSON:
+{
+  "runAfter": {
+    "Get_Projeto_Item": [
+      "Succeeded"
+    ]
+  },
+  "type": "OpenApiConnection",
+  "inputs": {
+    "parameters": {
+      "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+      "table": "Status Diario",
+      "item/Title": "@concat('Status ', triggerBody()?['projectId'], ' ', utcNow())",
+      "item/ProjectID": "@triggerBody()?['projectId']",
+      "item/DataRegistro": "@utcNow()",
+      "item/RAG/Value": "@triggerBody()?['rag']",
+      "item/Resumo": "@triggerBody()?['resumo']",
+      "item/Percentual": "@coalesce(triggerBody()?['percentual'], 0)",
+      "item/Risco": "@coalesce(triggerBody()?['risco'], '')",
+      "item/Bloqueio": "@coalesce(triggerBody()?['bloqueio'], '')",
+      "item/ProximaAcao": "@coalesce(triggerBody()?['proximaAcao'], '')",
+      "item/OrigemEntrada/Value": "CopilotStudio"
+    },
+    "host": {
+      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "connectionName": "shared_sharepointonline",
+      "operationId": "PostItem"
+    },
+    "authentication": "@parameters('$authentication')"
+  }
+}

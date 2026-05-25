@@ -1,0 +1,16 @@
+
+path
+----                                                                                                                    
+.planning\GOLDEN_RULES.md                                                                                               
+.planning\CURRENT_BASELINE.md                                                                                           
+.planning\AGENT_CHECKIN_REGISTRY.md                                                                                     
+.planning\comms\SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md                                                       
+.planning\comms\codex_pm0_remediation_20260522\T0_PROGRESS_BOARD.md                                                     
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\BUILD_REPORT.md                                     
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\RCA_3_19_ATUALIZARSTATUS_VERDICT.md      
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\REMEDIATION.md                           
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_19\T0_IMPORT_LOG_DEEP_DIV…
+tests\Test-Aq08PostRemediationReverify.ps1                                                                              
+docs\SCHEMA_SHAREPOINT_PMO.md                                                                                           
+
+

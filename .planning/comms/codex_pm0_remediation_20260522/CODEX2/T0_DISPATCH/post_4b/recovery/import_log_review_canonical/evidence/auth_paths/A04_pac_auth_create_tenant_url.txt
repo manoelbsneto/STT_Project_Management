@@ -1,0 +1,21 @@
+# A.4 pac auth create tenant plus URL
+
+- ID: A04_pac_auth_create_tenant_url
+- Started BRT: 2026-05-24 10:49:05 BRT
+- Status: CAPTURED
+- Capture exit: 0
+
+```powershell
+pac auth create --tenant 7808e005-1489-4374-954b-d3b08f193920 --environment https://colofertasbrasilpro.crm4.dynamics.com/
+```
+
+```text
+'mbenicios@minsait.com' authenticated successfully.
+Validating connection...
+Connected to... ColOfertasBrasilPro
+Default organization: ColOfertasBrasilPro
+Authentication profile created
+    * UNIVERSAL                                : mbenicios@minsait.com                    Public https://colofertasbrasilpro.crm4.dynamics.com/
+
+
+```

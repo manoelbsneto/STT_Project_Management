@@ -1,0 +1,585 @@
+{
+  "generatedAt": "2026-05-24T15:14:26.928Z",
+  "summary": {
+    "sourceZip": "C:/Users/dataops-lab/Downloads/PMO_v11_Tarefas_3_20_0_1.zip",
+    "sha256": "ADD7FD64F23BFE6363265A0C642B9FFA3BEB8C00551AD65093284A2E6070D872",
+    "solutionVersion": "3.20.0.1",
+    "workflowCount": 17,
+    "botcomponentCount": 27,
+    "actionCount": 10,
+    "topicCount": 16,
+    "workflowsetBindingCount": 15,
+    "connectionReferenceCount": 6,
+    "missingDependencyCount": 2,
+    "redFlags": [
+      "3.20.0.1 package still includes legacy PMO_PA_* workflows/actions alongside PM0_PA_Card_* components.",
+      "PM0_PA_OpsFailureHandling action points to flowId 9531fbc7-a250-f111-bec7-000d3abc5cc6, but that workflow is not present in the package.",
+      "gstf_sharepoint connection reference is present but unused by workflow JSON.",
+      "solution.xml still lists MissingDependency rows for cat_DataverseIndexerSharePoint and cat_sharedteams_1ef7e from CopilotStudioAccelerator."
+    ]
+  },
+  "workflowRows": [
+    {
+      "name": "PM0_PA_Card_AtualizarStatus",
+      "id": "1721e0a3-a250-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "cat_DataverseIndexerSharePoint",
+        "cat_sharedteams_1ef7e"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa",
+      "id": "7c6300c2-a250-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "cat_DataverseIndexerSharePoint",
+        "pmo_sharedplanner_87b5f"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa",
+      "id": "7f662db7-a250-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "cat_DataverseIndexerSharePoint",
+        "pmo_sharedplanner_87b5f"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas",
+      "id": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "cat_DataverseIndexerSharePoint",
+        "pmo_sharedplanner_87b5f"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "id": "8333bd91-a250-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "pmo_cat_DataverseIndexerSharePoint"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_AtualizarStatus",
+      "id": "c11a165b-c64c-f111-bec7-7ced8d9559c1",
+      "file": "Workflows\\PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": false,
+      "referencedByBotComponentFlowId": false,
+      "classification": "DELETE_CANDIDATE",
+      "reason": "workflow not bound by workflowset and not referenced by botcomponent action/topic data; legacy workflow appears superseded and no package action/topic reference found"
+    },
+    {
+      "name": "PMO_PA_AtualizarTarefa",
+      "id": "98408d55-3748-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_ConsultarPortfolio",
+      "id": "39cf292d-c64c-f111-bec7-7ced8d955c6c",
+      "file": "Workflows\\PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": false,
+      "referencedByBotComponentFlowId": false,
+      "classification": "DELETE_CANDIDATE",
+      "reason": "workflow not bound by workflowset and not referenced by botcomponent action/topic data; legacy workflow appears superseded and no package action/topic reference found"
+    },
+    {
+      "name": "PMO_PA_ConsultarProjeto",
+      "id": "4a33b53e-c64c-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_CriarProjeto",
+      "id": "3104124d-364a-f111-bec7-7ced8d955c6c",
+      "file": "Workflows\\PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_CriarTarefa",
+      "id": "0a5d2a41-24c0-4d5e-9f6d-000000000241",
+      "file": "Workflows\\PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_ExcluirProjeto",
+      "id": "16fbe313-2edc-406e-ad7f-d08cee0edc43",
+      "file": "Workflows\\PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_ExcluirTarefa",
+      "id": "70b39334-5926-4fb1-bd22-f10bd99f0f6d",
+      "file": "Workflows\\PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_ListarTarefas",
+      "id": "9544f14b-3748-f111-bec7-6045bdf42cae",
+      "file": "Workflows\\PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_PedirDecisaoBot",
+      "id": "feb79d54-c64c-f111-bec7-7ced8d955c6c",
+      "file": "Workflows\\PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_RegistrarBloqueioBot",
+      "id": "3ec37952-c64c-f111-bec7-000d3abc5cc6",
+      "file": "Workflows\\PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    },
+    {
+      "name": "PMO_PA_RegistrarRiscoBot",
+      "id": "ee732d46-c64c-f111-bec7-7ced8d955c6c",
+      "file": "Workflows\\PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+      "connectionRefs": [
+        "pmo_sharedsharepointonline_6e373"
+      ],
+      "boundInWorkflowset": true,
+      "referencedByBotComponentFlowId": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "bound in workflowset; referenced by action/topic flowId"
+    }
+  ],
+  "actionRows": [
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+      "flowIds": [
+        "1721e0a3-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.AtualizarStatus"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+      "flowIds": [
+        "7c6300c2-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.AtualizarTarefa"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+      "flowIds": [
+        "7f662db7-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.CriarTarefa"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+      "flowIds": [
+        "e0e3c6b0-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.ListarTarefas"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+      "flowIds": [
+        "8333bd91-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.ConsultarPortfolio"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling",
+      "flowIds": [
+        "9531fbc7-a250-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [],
+      "boundInWorkflowset": false,
+      "classification": "INVESTIGATE_FIRST",
+      "reason": "action not called by any topic and not in workflowset; action points to flowId not present as workflow JSON/root component"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa",
+      "flowIds": [
+        "98408d55-3748-f111-bec7-000d3abc5cc6"
+      ],
+      "calledByTopics": [],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_UNTIL_REBIND_OR_CONFIRM_UNUSED",
+      "reason": "bound in workflowset but no topic references it; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto",
+      "flowIds": [
+        "3104124d-364a-f111-bec7-7ced8d955c6c"
+      ],
+      "calledByTopics": [
+        "pmo_AssistentePMO_V2.topic.CriarProjeto"
+      ],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_REQUIRED",
+      "reason": "called by topic; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa",
+      "flowIds": [
+        "0a5d2a41-24c0-4d5e-9f6d-000000000241"
+      ],
+      "calledByTopics": [],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_UNTIL_REBIND_OR_CONFIRM_UNUSED",
+      "reason": "bound in workflowset but no topic references it; bound in botcomponent_workflowset"
+    },
+    {
+      "schema": "pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas",
+      "flowIds": [
+        "9544f14b-3748-f111-bec7-6045bdf42cae"
+      ],
+      "calledByTopics": [],
+      "boundInWorkflowset": true,
+      "classification": "KEEP_UNTIL_REBIND_OR_CONFIRM_UNUSED",
+      "reason": "bound in workflowset but no topic references it; bound in botcomponent_workflowset"
+    }
+  ],
+  "connRows": [
+    {
+      "logicalName": "cat_DataverseIndexerSharePoint",
+      "displayName": "SharePoint PMO Dataverse Indexer",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "users": [
+        "PM0_PA_Card_AtualizarStatus",
+        "PM0_PA_Card_AtualizarTarefa",
+        "PM0_PA_Card_CriarTarefa",
+        "PM0_PA_Card_ListarTarefas"
+      ],
+      "classification": "KEEP_REQUIRED",
+      "reason": "used by workflows: PM0_PA_Card_AtualizarStatus, PM0_PA_Card_AtualizarTarefa, PM0_PA_Card_CriarTarefa, PM0_PA_Card_ListarTarefas; listed as MissingDependency from CopilotStudioAccelerator"
+    },
+    {
+      "logicalName": "cat_sharedteams_1ef7e",
+      "displayName": "Teams PMO",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_teams",
+      "users": [
+        "PM0_PA_Card_AtualizarStatus"
+      ],
+      "classification": "KEEP_REQUIRED",
+      "reason": "used by workflows: PM0_PA_Card_AtualizarStatus; listed as MissingDependency from CopilotStudioAccelerator"
+    },
+    {
+      "logicalName": "gstf_sharepoint",
+      "displayName": "sharepoint",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "users": [],
+      "classification": "DELETE_CANDIDATE",
+      "reason": "no workflow JSON uses this connectionReferenceLogicalName"
+    },
+    {
+      "logicalName": "pmo_cat_DataverseIndexerSharePoint",
+      "displayName": "SharePoint PMO Dataverse Indexer pmo",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "users": [
+        "PM0_PA_Card_ResumoExecutivoPortfolio"
+      ],
+      "classification": "KEEP_REQUIRED",
+      "reason": "used by workflows: PM0_PA_Card_ResumoExecutivoPortfolio"
+    },
+    {
+      "logicalName": "pmo_sharedplanner_87b5f",
+      "displayName": "Planner PMO",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_planner",
+      "users": [
+        "PM0_PA_Card_AtualizarTarefa",
+        "PM0_PA_Card_CriarTarefa",
+        "PM0_PA_Card_ListarTarefas"
+      ],
+      "classification": "KEEP_REQUIRED",
+      "reason": "used by workflows: PM0_PA_Card_AtualizarTarefa, PM0_PA_Card_CriarTarefa, PM0_PA_Card_ListarTarefas"
+    },
+    {
+      "logicalName": "pmo_sharedsharepointonline_6e373",
+      "displayName": "SharePoint PMO_v11_Tarefas-6e373",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+      "users": [
+        "PMO_PA_AtualizarStatus",
+        "PMO_PA_AtualizarTarefa",
+        "PMO_PA_ConsultarPortfolio",
+        "PMO_PA_ConsultarProjeto",
+        "PMO_PA_CriarProjeto",
+        "PMO_PA_CriarTarefa",
+        "PMO_PA_ExcluirProjeto",
+        "PMO_PA_ExcluirTarefa",
+        "PMO_PA_ListarTarefas",
+        "PMO_PA_PedirDecisaoBot",
+        "PMO_PA_RegistrarBloqueioBot",
+        "PMO_PA_RegistrarRiscoBot"
+      ],
+      "classification": "KEEP_REQUIRED",
+      "reason": "used by workflows: PMO_PA_AtualizarStatus, PMO_PA_AtualizarTarefa, PMO_PA_ConsultarPortfolio, PMO_PA_ConsultarProjeto, PMO_PA_CriarProjeto, PMO_PA_CriarTarefa, PMO_PA_ExcluirProjeto, PMO_PA_ExcluirTarefa, PMO_PA_ListarTarefas, PMO_PA_PedirDecisaoBot, PMO_PA_RegistrarBloqueioBot, PMO_PA_RegistrarRiscoBot"
+    }
+  ],
+  "workflowset": [
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus",
+      "workflowId": "1721e0a3-a250-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa",
+      "workflowId": "7c6300c2-a250-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa",
+      "workflowId": "7f662db7-a250-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas",
+      "workflowId": "e0e3c6b0-a250-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio",
+      "workflowId": "8333bd91-a250-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa",
+      "workflowId": "98408d55-3748-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto",
+      "workflowId": "3104124d-364a-f111-bec7-7ced8d955c6c"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa",
+      "workflowId": "0a5d2a41-24c0-4d5e-9f6d-000000000241"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas",
+      "workflowId": "9544f14b-3748-f111-bec7-6045bdf42cae"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.ConsultarProjeto",
+      "workflowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.ExcluirProjeto",
+      "workflowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.ExcluirTarefa",
+      "workflowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.PedirDecisao",
+      "workflowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.RegistrarBloqueio",
+      "workflowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "botcomponent": "pmo_AssistentePMO_V2.topic.RegistrarRisco",
+      "workflowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c"
+    }
+  ],
+  "topicRefs": [
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.AtualizarStatus",
+      "dialog": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.AtualizarTarefa",
+      "dialog": "pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.ConsultarPortfolio",
+      "dialog": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.ConsultarProjeto",
+      "flowId": "4a33b53e-c64c-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.CriarProjeto",
+      "dialog": "pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.CriarTarefa",
+      "dialog": "pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.ExcluirProjeto",
+      "flowId": "16fbe313-2edc-406e-ad7f-d08cee0edc43"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.ExcluirTarefa",
+      "flowId": "70b39334-5926-4fb1-bd22-f10bd99f0f6d"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.ListarTarefas",
+      "dialog": "pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.CriarProjeto"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.CriarTarefa"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.AtualizarStatus"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.AtualizarTarefa"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.ConsultarPortfolio"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.ConsultarProjeto"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.ListarTarefas"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.RegistrarRisco"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.RegistrarBloqueio"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.LowConfidence",
+      "dialog": "pmo_AssistentePMO_V2.topic.PedirDecisao"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.PedirDecisao",
+      "flowId": "feb79d54-c64c-f111-bec7-7ced8d955c6c"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.RegistrarBloqueio",
+      "flowId": "3ec37952-c64c-f111-bec7-000d3abc5cc6"
+    },
+    {
+      "topic": "pmo_AssistentePMO_V2.topic.RegistrarRisco",
+      "flowId": "ee732d46-c64c-f111-bec7-7ced8d955c6c"
+    }
+  ],
+  "missing": [
+    {
+      "type": "connectionreference",
+      "displayName": "cat_DataverseIndexerSharePoint",
+      "logicalName": "cat_DataverseIndexerSharePoint"
+    },
+    {
+      "type": "connectionreference",
+      "displayName": "cat_sharedteams_1ef7e",
+      "logicalName": "cat_sharedteams_1ef7e"
+    }
+  ]
+}

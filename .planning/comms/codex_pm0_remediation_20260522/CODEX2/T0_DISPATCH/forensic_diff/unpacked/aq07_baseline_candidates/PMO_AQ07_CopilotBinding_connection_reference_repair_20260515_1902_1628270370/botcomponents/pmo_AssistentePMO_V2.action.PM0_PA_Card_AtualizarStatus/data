@@ -1,0 +1,11 @@
+kind: TaskDialog
+outputs:
+  - propertyName: result
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 1721e0a3-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Embedded
+outputMode: All

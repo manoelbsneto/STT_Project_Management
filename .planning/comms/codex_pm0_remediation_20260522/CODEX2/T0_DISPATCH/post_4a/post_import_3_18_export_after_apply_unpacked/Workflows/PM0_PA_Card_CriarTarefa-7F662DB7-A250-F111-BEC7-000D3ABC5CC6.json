@@ -1,0 +1,223 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "connectionReferenceLogicalName": "cat_DataverseIndexerSharePoint",
+        "source": "Embedded",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+        "displayName": "SharePoint",
+        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+        "brandColor": "",
+        "tier": "Standard",
+        "apiName": "sharepointonline",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      },
+      "shared_planner": {
+        "connectionReferenceLogicalName": "pmo_sharedplanner_87b5f",
+        "source": "Embedded",
+        "id": "/providers/Microsoft.PowerApps/apis/shared_planner",
+        "displayName": "Planner",
+        "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1808/1.0.1808.4692/planner/icon.png",
+        "brandColor": "",
+        "tier": "Standard",
+        "apiName": "planner",
+        "isProcessSimpleApiReferenceConversionAlreadyDone": false
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dueDate": {
+                  "type": "string",
+                  "description": "Due date from card"
+                },
+                "action": {
+                  "type": "string",
+                  "description": "Action"
+                },
+                "taskTitle": {
+                  "type": "string",
+                  "description": "Task title from card"
+                },
+                "projectId": {
+                  "type": "string",
+                  "description": "Project ID"
+                },
+                "endDate": {
+                  "type": "string",
+                  "description": "End date"
+                },
+                "startDate": {
+                  "type": "string",
+                  "description": "Start date"
+                },
+                "bucket": {
+                  "type": "string",
+                  "description": "Bucket"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Task title"
+                },
+                "plannerBucketName": {
+                  "type": "string",
+                  "description": "Bucket from card"
+                },
+                "responsavel": {
+                  "type": "string",
+                  "description": "Task responsible"
+                },
+                "prazo": {
+                  "type": "string",
+                  "description": "Task due date"
+                },
+                "horas": {
+                  "type": "number",
+                  "description": "Estimated hours"
+                },
+                "prioridade": {
+                  "type": "string",
+                  "description": "Task priority"
+                }
+              },
+              "required": [
+                "projectId",
+                "action"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Create_Planner_Task": {
+          "runAfter": {
+            "Get_Project_By_Name": [
+              "Succeeded"
+            ],
+            "Determine_Bucket_and_Status": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "body/groupId": "96c5b0c4-46cc-46cd-8695-50451db74994",
+              "body/planId": "-1kBj1PLv0qQM-R4PwkqbpcABv_P",
+              "body/title": "@coalesce(triggerBody()?['title'],triggerBody()?['taskTitle'])"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_planner",
+              "connectionName": "shared_planner",
+              "operationId": "CreateTask_V3"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Determine_Bucket_and_Status": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@if(equals(coalesce(triggerBody()?['bucket'],triggerBody()?['plannerBucketName']), 'Piloto e Implantacao'), json('{\"bucketId\":\"4YAXH7iU9E-6jZE2P1DbG5cAMAzH\",\"status\":\"Piloto e Implantacao\"}'), if(equals(coalesce(triggerBody()?['bucket'],triggerBody()?['plannerBucketName']), 'Testes'), json('{\"bucketId\":\"7QYPufh54kum7MP4KUzzAZcAL6Ik\",\"status\":\"Testes\"}'), if(equals(coalesce(triggerBody()?['bucket'],triggerBody()?['plannerBucketName']), 'Cancelado'), json('{\"bucketId\":\"90TcFTFup0CjiHIdzY4gG5cALWKL\",\"status\":\"Cancelado\"}'), if(equals(coalesce(triggerBody()?['bucket'],triggerBody()?['plannerBucketName']), 'Concluido'), json('{\"bucketId\":\"F2WYUsnXeEue5qlwQuu3GJcAN1Ns\",\"status\":\"Concluido\"}'), if(equals(coalesce(triggerBody()?['bucket'],triggerBody()?['plannerBucketName']), 'Em Andamento'), json('{\"bucketId\":\"ugZSNxsYW0WWCJ5Dtx0-l5cALVXG\",\"status\":\"Em Andamento\"}'), json('{\"bucketId\":\"HmzyGOgC4k6uOPm_cwG3zZcAGiAG\",\"status\":\"Pendente\"}'))))))"
+        },
+        "Get_Project_By_Name": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "table": "Projetos",
+              "$filter": "ProjectID eq '@{replace(triggerBody()?['projectId'],'''','''''')}' or Title eq '@{replace(triggerBody()?['projectId'],'''','''''')}' or NomeProjeto eq '@{replace(triggerBody()?['projectId'],'''','''''')}'",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "GetItems"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_SharePoint_Item": {
+          "runAfter": {
+            "Create_Planner_Task": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital",
+              "item/PlannerLastSyncAt": "@utcNow()",
+              "item/Title": "@coalesce(triggerBody()?['title'],triggerBody()?['taskTitle'])",
+              "item/PlannerSyncStatus/Value": "OK",
+              "table": "Tarefas",
+              "item/ProjectID": "@coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId'])",
+              "item/PlannerBucketId": "@outputs('Determine_Bucket_and_Status')?['bucketId']",
+              "item/PlannerTaskId": "@body('Create_Planner_Task')?['id']",
+              "item/Status/Value": "@outputs('Determine_Bucket_and_Status')?['status']",
+              "item/PlannerSyncError": "",
+              "item/Responsavel": "@coalesce(triggerBody()?['responsavel'], '')",
+              "item/DataFim": "@coalesce(triggerBody()?['prazo'], triggerBody()?['dueDate'], triggerBody()?['endDate'])",
+              "item/HorasEstimadas": "@coalesce(triggerBody()?['horas'], 0)",
+              "item/Prioridade/Value": "@if(empty(triggerBody()?['prioridade']), 'Media', if(startsWith(toLower(triggerBody()?['prioridade']), 'cr'), 'Critica', if(startsWith(toLower(triggerBody()?['prioridade']), 'al'), 'Alta', if(startsWith(toLower(triggerBody()?['prioridade']), 'ba'), 'Baixa', 'Media'))))"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "PostItem"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Respond_Success": {
+          "runAfter": {
+            "Create_SharePoint_Item": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "result": "@{concat('Tarefa criada: ', coalesce(triggerBody()?['title'], triggerBody()?['taskTitle'], string(body('Create_SharePoint_Item')?['Title']), ''), ' (Projeto ', coalesce(body('Get_Project_By_Name')?['value']?[0]?['ProjectID'], triggerBody()?['projectId']), ', Item SP ', string(body('Create_SharePoint_Item')?['ID']), ', Planner ', coalesce(string(body('Create_Planner_Task')?['id']), ''), ', Bucket ', outputs('Determine_Bucket_and_Status')?['status'], ').')}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "title": "result",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

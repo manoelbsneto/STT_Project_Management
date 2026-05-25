@@ -13,6 +13,9 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 function Resolve-RepoPath {
     param([string]$Path)
+    if ([System.IO.Path]::IsPathRooted($Path)) {
+        return [System.IO.Path]::GetFullPath($Path)
+    }
     [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $Path))
 }
 

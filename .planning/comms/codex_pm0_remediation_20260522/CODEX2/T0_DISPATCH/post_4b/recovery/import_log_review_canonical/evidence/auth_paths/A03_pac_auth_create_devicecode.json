@@ -1,0 +1,9 @@
+{
+  "id": "A03_pac_auth_create_devicecode",
+  "title": "A.3 pac auth create with deviceCode",
+  "startedBrt": "2026-05-24 10:47:35 BRT",
+  "status": "TIMEOUT_OR_INTERACTIVE",
+  "captureExit": 124,
+  "command": "pac auth create --environment ColOfertasBrasilPro --deviceCode",
+  "output": "TIMEOUT after 90 seconds; likely interactive prompt or blocked command.\r\n"
+}

@@ -1,0 +1,94 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp": "2026-05-23 21:45:40 BRT",
+  "verdictImpact": "PASS_WITH_NOTES",
+  "targetedDefectsPassed": true,
+  "solutionChecksPassed": true,
+  "emptyTriggerBodyFindings": [
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "responsavel",
+      "match": "empty(triggerBody()?['responsavel'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "dataFim",
+      "match": "empty(triggerBody()?['dataFim'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "prioridade",
+      "match": "empty(triggerBody()?['prioridade'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "responsavel",
+      "match": "empty(triggerBody()?['responsavel'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "dataFim",
+      "match": "empty(triggerBody()?['dataFim'])"
+    },
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "type": "empty(triggerBody)",
+      "field": "prioridade",
+      "match": "empty(triggerBody()?['prioridade'])"
+    }
+  ],
+  "emptyTriggerBodyFindingCount": 6,
+  "lengthTriggerBodyFindingCount": 0,
+  "bareChoiceLookupPersonRaw": [
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "type": "bare Choice/Lookup/Person binding",
+      "field": "Responsavel",
+      "match": "\"item/Responsavel\":"
+    },
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "type": "bare Choice/Lookup/Person binding",
+      "field": "Responsavel",
+      "match": "\"item/Responsavel\":"
+    }
+  ],
+  "bareChoiceLookupPersonAfterSchema": [],
+  "bareChoiceLookupPersonAfterSchemaCount": 0,
+  "schemaBasis": "docs/SCHEMA_SHAREPOINT_PMO.md:68 and .planning/comms/AQ02_SHAREPOINT_TAREFAS_SCHEMA_READONLY_20260515.md:71 define Responsavel as Text, not Person.",
+  "functionalActionManualTaskInputPassed": 4,
+  "functionalActionManualTaskInputCount": 4,
+  "functionalTopicInputBindingPassed": 4,
+  "functionalTopicInputBindingCount": 4,
+  "portfolioNote": "ResumoExecutivoPortfolio action lacks ManualTaskInput and ConsultarPortfolio topic uses input:{} in both 3.18 and 3.19; this preserves 3.18 behavior but does not satisfy a literal 5/5 ManualTaskInput/input.binding wording.",
+  "portfolioRows": [
+    {
+      "kind": "action-data",
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\\data",
+      "exists": true,
+      "hasManualTaskInput": false,
+      "passed": false
+    },
+    {
+      "kind": "topic-data",
+      "name": "ConsultarPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio\\data",
+      "exists": true,
+      "hasInputBinding": false,
+      "passed": false
+    },
+    {
+      "kind": "workflow-json",
+      "name": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "passed": true
+    }
+  ]
+}

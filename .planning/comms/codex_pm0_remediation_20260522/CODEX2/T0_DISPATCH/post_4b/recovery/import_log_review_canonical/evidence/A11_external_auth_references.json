@@ -1,0 +1,12 @@
+{
+  "artifact": "A11_external_auth_references",
+  "generatedAt": "2026-05-24T13:57:24.4403753Z",
+  "sources": [
+    "https://github.com/microsoft/PowerPlatform-Cli/issues?q=AADSTS70043",
+    "https://github.com/microsoft/PowerPlatform-Cli/issues?q=is%3Aopen+auth",
+    "https://learn.microsoft.com/en-us/troubleshoot/azure/active-directory/error-code-aadsts70043",
+    "https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/auth",
+    "https://github.com/microsoft/powerplatform-build-tools/discussions"
+  ],
+  "applied": "A.4 pac auth create with tenant and environment URL succeeded"
+}

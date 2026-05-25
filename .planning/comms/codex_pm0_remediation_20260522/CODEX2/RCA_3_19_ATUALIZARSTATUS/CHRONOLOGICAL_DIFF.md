@@ -1,0 +1,21 @@
+# CHRONOLOGICAL_DIFF
+
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-24 02:42:22 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054222_Codex2Lead_create_statusdiario_chronological_diff.png
+
+| Version | Label | StatusID present? | Other item props present | Hash do bloco item | Workflow evidence |
+|---|---|---:|---|---|---|
+| 3.10 | POST_WFSET_CLEAN | False |  |  |  |
+| 3.15.1 | HOTFIX_TOPICS | False |  |  |  |
+| 3.17 | Owner live export | False |  |  |  |
+| 3.18 | rebuild | False | item/Bloqueio, item/DataRegistro, item/OrigemEntrada, item/Percentual, item/ProjectID, item/ProximaAcao, item/RAG/Value, item/Resumo, item/Risco, item/Title | 249BF1D07F790D865047C4475B05CD6F30388DA14DFD2A216717AFA59D23100A | .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\work\chronological\3_18\Workflows\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json |
+| 3.19 | runtime fix | False | item/Bloqueio, item/DataRegistro, item/OrigemEntrada/Value, item/Percentual, item/ProjectID, item/ProximaAcao, item/RAG/Value, item/Resumo, item/Risco, item/Title | C967803EF7D25BEE9EBEDE920344DF0822C1FA12CA1007D70BFADF38EB1C239D | .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\work\chronological\3_19\Workflows\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json |
+
+Evidence triplet:
+- 
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054222_Codex2Lead_create_statusdiario_chronological_diff.txt
+- 
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054222_Codex2Lead_create_statusdiario_chronological_diff.json
+- 
+.planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054222_Codex2Lead_create_statusdiario_chronological_diff.png

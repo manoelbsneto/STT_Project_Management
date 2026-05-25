@@ -1,0 +1,8 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestamp_brt": "2026-05-23 16:40:00 BRT",
+  "screenshot_path": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164000_Codex2Lead_waiting_2A_current.png",
+  "status": "IN_PROGRESS",
+  "blocker": "Pending Sub 2A Dataverse 403 clear",
+  "ready_command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\Run-Gate4-Preflight.ps1 -ResumeFromStep03"
+}

@@ -1,0 +1,16 @@
+Agent name: Codex #1 Lead
+Timestamp BRT: 
+2026-05-24 08:02:59 BRT
+Screenshot path: D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\evidence\20260524_110259_Codex1Lead_3_20_static_gates_rerun.png
+3.20 static gates rerun:
+[0] Test-SolutionXmlSchemaValidity :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionXmlSchemaValidity.ps1 -Path D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+[0] PM0 placeholder scan :: rg -n TODO_BACKFILL... D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\work\pm0_source_from_package_3_20_peer_review
+[0] Test-Pm0WorkflowResponseSemantics :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-Pm0WorkflowResponseSemantics.ps1 -SourceRoot D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\work\pm0_source_from_package_3_20_peer_review
+[0] Test-Pm0TopicActionFlowContract :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-Pm0TopicActionFlowContract.ps1 -SourceRoot D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\work\pm0_source_from_package_3_20_peer_review
+[0] Test-PMOFlowStopShipAudit :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-PMOFlowStopShipAudit.ps1 -SolutionSourcePath D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\work\unpacked_3_20_peer_review
+[0] Test-SolutionZipP0Contracts :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionZipP0Contracts.ps1 -PackagePath D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+[0] Test-SolutionZipP24Contracts :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-SolutionZipP24Contracts.ps1 -PackagePath D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip -ExpectedVersion 3.20.0.0
+[0] Test-CopilotRoutingInstructions :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-CopilotRoutingInstructions.ps1 -PackagePath D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+[0] Test-CopilotPowerFxRegexSafety :: powershell -NoProfile -ExecutionPolicy Bypass -File D:\VMs\Projetos\STT_Project_Management\tests\Test-CopilotPowerFxRegexSafety.ps1 -PackagePath D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+[0] Status Diario required-field gap check :: independent JSON parameter required-field scan
+

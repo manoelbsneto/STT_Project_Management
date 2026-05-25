@@ -1,0 +1,15 @@
+
+id                               title                                                  status                 captureEx
+                                                                                                                      it
+--                               -----                                                  ------                 ---------
+A02_pac_auth_select_profile1     A.2 select each PAC profile then pac org who           FAILED_OR_AUTH_BLOCKED         0
+A03_pac_auth_create_devicecode   A.3 pac auth create with deviceCode                    TIMEOUT_OR_INTERACTIVE       124
+A04_pac_auth_create_tenant_url   A.4 pac auth create tenant plus URL                    CAPTURED                       0
+A05_az_login_tenant_then_pac     A.5 az login tenant fallback then pac auth create      FAILED_OR_AUTH_BLOCKED         0
+A06_personal_guest_pattern_probe A.6 personal guest access pattern probe                CAPTURED                       0
+A07_powerapps_module_getflow     A.7 Microsoft.PowerApps.PowerShell Get-Flow path       CAPTURED                       0
+A08_powerapps_admin_module       A.8 Microsoft.PowerApps.Administration.PowerShell path CAPTURED                       0
+A09_pac_mcp                      A.9 PAC MCP server probes                              FAILED_OR_AUTH_BLOCKED         0
+A10_auth_cache_probe             A.10 auth cache discovery                              CAPTURED                       0
+
+

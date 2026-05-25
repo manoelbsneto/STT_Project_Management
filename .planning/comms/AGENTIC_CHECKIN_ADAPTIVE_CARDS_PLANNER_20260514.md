@@ -1,6 +1,6 @@
 # Agentic Check-In Board: Adaptive Cards + Planner P0 Delivery
 
-Last updated: 2026-05-22 20:55 BRT | Codex #2 Bravo | Registered Gate 4 read-only preflight access plan before tenant access.
+Last updated: 2026-05-23 16:43:22 BRT | Codex #2 Sub 2A | Posted Track B read-only Dataverse 403 unblock access plan before tenant probes.
 
 Created: 2026-05-14  
 Status: ACTIVE  
@@ -118,6 +118,20 @@ Every update must use this format:
 ```
 
 ## 7. Check-In Log
+
+### 2026-05-23 16:43:22 BRT — CODEX #2 SUB 2A — T0_BETA_2A_DATAVERSE_403_READONLY_PLAN
+- **Agent name:** Codex #2 Sub 2A.
+- **Timestamp BRT:** 2026-05-23 16:43:22 BRT.
+- **Screenshot path:** `.planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164322_Codex2Sub2A_command_plan_readonly.png`.
+- **Task ID:** T0-BETA-2A.
+- **Current action:** Starting the Dataverse 403 unblock with read-only AZ identity and Dataverse/PAC role discovery.
+- **Master documents read:** `.planning/GOLDEN_RULES.md`, `.planning/CURRENT_BASELINE.md`, `.planning/AGENT_CHECKIN_REGISTRY.md`, `T0_FANOUT_DISPATCH_20260523_1615.md` Track B, `T0_PROGRESS_BOARD.md`, `PREFLIGHT_HALT_20260523_022727.md`, `.planning/TENANT_COMMAND_RUNBOOK.md`, `.planning/SHAREPOINT_ACCESS_RUNBOOK.md`, `docs/TAILSCALE_SSH_CONNECTIVITY_GUIDE.md`, `.planning/comms/AGENT_ACCESS_PROTOCOL_P0_20260514.md`, `.planning/comms/SEV0_STOP_SHIP_QUALITY_GATES_PROTOCOL_20260514.md`, and `docs/MANUAL_OPERACIONAL_PMO.md`.
+- **Exact read-only command plan:** `az account show --output json`; `pac auth list`; `pac env who`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\fetchxml\systemuser_roles_by_upn.xml`; `pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\fetchxml\role_names_probe.xml`.
+- **Action classification:** Read-only tenant discovery only. No permission write is included in this batch.
+- **Owner approval reference:** Current user instruction for Codex #2 Sub 2A Track B Dataverse 403 unblock.
+- **Expected evidence:** `.planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/evidence/20260523_164322_Codex2Sub2A_command_plan_readonly.{txt,json}` and per-command triplets under the same T0 dispatch evidence/screenshots folders.
+- **Risks / blockers:** If the current UPN lacks the needed role and no admin rights are proven, halt and write `T0_DATAVERSE_403_OWNER_REQUEST.md`. Any permission write requires a separate pre-write command-plan triplet.
+- **Next 5 minutes:** Run the read-only identity and role-discovery probes and capture triplets.
 
 ### 2026-05-22 23:26 BRT — CODEX #2 BRAVO — GATE4_PREFLIGHT_SECTION67_RESUME
 - **Task ID:** Gate 4 Preflight read-only baseline for PM0 3.16.

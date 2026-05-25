@@ -1,0 +1,3149 @@
+{
+  "generated_brt": "2026-05-23 18:14:29 BRT",
+  "hashes": {
+    "owner_pmo_source": {
+      "path": "C:\\Users\\dataops-lab\\Downloads\\PMO_v11_Tarefas_3_17.zip",
+      "sha256": "648B8484ADC3E3A690A3FBC4D51B0E6854E5341BDB75E62E0DA4FC3B5F2ED253",
+      "bytes": 71807
+    },
+    "owner_aq07_source": {
+      "path": "C:\\Users\\dataops-lab\\Downloads\\PMO_AQ07_CopilotBinding_1_0_0_2.zip",
+      "sha256": "118DFCAA4BBE78D190D3314D7789B699090B31D8634105BDE527C9E7158ECA37",
+      "bytes": 76817
+    },
+    "working_pmo_live": {
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\live_3_17_export.zip",
+      "sha256": "648B8484ADC3E3A690A3FBC4D51B0E6854E5341BDB75E62E0DA4FC3B5F2ED253",
+      "bytes": 71807
+    },
+    "working_aq07_live": {
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\live_aq07_1_0_0_2_export.zip",
+      "sha256": "118DFCAA4BBE78D190D3314D7789B699090B31D8634105BDE527C9E7158ECA37",
+      "bytes": 76817
+    },
+    "pmo_3_15_1_baseline": {
+      "path": "Solution\\PMO_v11_Tarefas_3_15_1_HOTFIX_TOPICS.zip",
+      "sha256": "661606EDB9E92A2D0B9606A91831D0F93079D6F76BC5368DF1C342FB595E7403",
+      "bytes": 65951
+    },
+    "pmo_3_16_fix": {
+      "path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\package\\PMO_v11_Tarefas_3_16_PM0_FUNCTIONAL_FIX.zip",
+      "sha256": "3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB",
+      "bytes": 81627
+    }
+  },
+  "solution_info": {
+    "pmo_live": {
+      "UniqueName": "PMO_v11_Tarefas",
+      "Version": "3.17",
+      "Managed": "0",
+      "Path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\unpacked\\3_17_live_unpacked\\solution.xml"
+    },
+    "aq07_live": {
+      "UniqueName": "PMO_AQ07_CopilotBinding",
+      "Version": "1.0.0.2",
+      "Managed": "0",
+      "Path": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\T0_DISPATCH\\forensic_diff\\unpacked\\aq07_1_0_0_2_live_unpacked\\solution.xml"
+    },
+    "pmo_live_managed": "0"
+  },
+  "diff": {
+    "left": "3.15.1 baseline",
+    "right": "3.17 live Owner export",
+    "files": [
+      {
+        "file": "[Content_Types].xml",
+        "category": "root",
+        "status": "MODIFIED",
+        "left_sha256": "1BDB0986500D77941BC378FF035E79555BBDF22F76B3BB93F58DA8670E22EC0A",
+        "right_sha256": "9981F9678C8E5F1E341D290D4BDA1979934BD3009FF6702524C4D4D490E09A38",
+        "left_bytes": 2883,
+        "right_bytes": 3712,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/octet-stream\" /><Default Extension=\"json\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ConsultarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ExcluirProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.PedirDecisao/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.gpt.default/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.SeHouverErro/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.RegistrarRisco/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.RegistrarBloqueio/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.LowConfidence/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.CriarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.Greeting/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ExcluirTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data\" ContentType=\"application/octet-stream\" /></Types>"
+          },
+          {
+            "side": "<=",
+            "line": "<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"xml\" ContentType=\"application/octet-stream\" /><Default Extension=\"json\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ConsultarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ExcluirProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.PedirDecisao/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.gpt.default/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.SeHouverErro/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.RegistrarRisco/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.RegistrarBloqueio/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.LowConfidence/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.CriarProjeto/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.Greeting/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data\" ContentType=\"application/octet-stream\" /><Override PartName=\"/botcomponents/pmo_AssistentePMO_V2.topic.ExcluirTarefa/data\" ContentType=\"application/octet-stream\" /></Types>"
+          }
+        ]
+      },
+      {
+        "file": "Assets/botcomponent_workflowset.xml",
+        "category": "Assets",
+        "status": "MODIFIED",
+        "left_sha256": "1363646B0D616DEDD07AD9D55D83200680B3DB7C7C2EF9D1706219F3FD0515B0",
+        "right_sha256": "70309125D9EE157981E7D0B674A4FA4887FFD1AABF6A2D08A5A0CA0E2B801BF9",
+        "left_bytes": 2801,
+        "right_bytes": 2344,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "<=",
+            "line": "  <botcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.topic.AtualizarStatus\" workflowid.workflowid=\"c11a165b-c64c-f111-bec7-7ced8d9559c1\">"
+          },
+          {
+            "side": "<=",
+            "line": "  <botcomponent_workflow botcomponentid.schemaname=\"pmo_AssistentePMO_V2.topic.ConsultarPortfolio\" workflowid.workflowid=\"39cf292d-c64c-f111-bec7-7ced8d955c6c\">"
+          },
+          {
+            "side": "<=",
+            "line": "    <iscustomizable>1</iscustomizable>"
+          },
+          {
+            "side": "<=",
+            "line": "  </botcomponent_workflow>"
+          },
+          {
+            "side": "<=",
+            "line": "    <iscustomizable>1</iscustomizable>"
+          },
+          {
+            "side": "<=",
+            "line": "  </botcomponent_workflow>"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "C5CF870C0350FE0ECA928B6F4AF366AF5CB824B350AF38C4CC29A09436B79D7D",
+        "left_bytes": null,
+        "right_bytes": 362,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "8CEDEA1A0A45235FD3C5BDB1EBE254B791A8AA41D0369B57300362062EECEFF5",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "A24C975E722D18F79624F0065B6712F90DA44D86A507C2F3482C3397F20A0E6E",
+        "left_bytes": null,
+        "right_bytes": 362,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "6A9B4717026A8355D616A6DDE98FAF4AF9E4453F00E9A420F58006C21C39E8B1",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "083D3779D08AE7CFA4DE52D0CD421CC6344E8C6DA5F826ED5B1C31BAC4C4AEFD",
+        "left_bytes": null,
+        "right_bytes": 354,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "2B8E89DCACBAD8EC5F9AB4AAD9224E7BE23C63ADD32316083B398A7447E394C0",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "1C19677979C2C5C9B996A0A41A10F2271A9329D12A7B0AAC7D92DB184891BFB6",
+        "left_bytes": null,
+        "right_bytes": 358,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "002704B9DE5C38FABDC86921CD5B4FAC355A7022B440CDB84709052D23C1993C",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "ED9099A75A1691E029E46F7DF8D8D6D2470D79E621266D2FA53FE21E54A6F1A4",
+        "left_bytes": null,
+        "right_bytes": 380,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "DC5781A1F529AA5F35C01AB6FB1190837CBE983FA4E436472ACDA496D6A0AD1F",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+        "left_bytes": null,
+        "right_bytes": 358,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/data",
+        "category": "botcomponents",
+        "status": "ADDED",
+        "left_sha256": null,
+        "right_sha256": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+        "left_bytes": null,
+        "right_bytes": 255,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "A24809A7486B42201CD5A79B9636B0E4D9DBEC83992F34F16523C88E01BD8610",
+        "right_sha256": "A24809A7486B42201CD5A79B9636B0E4D9DBEC83992F34F16523C88E01BD8610",
+        "left_bytes": 497,
+        "right_bytes": 497,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "6214F2CF3AC78DA07807870802C11319C471F378B7794017D7E9337A8E32BC87",
+        "right_sha256": "41EDBD692FB72BD8771FDAEA41BA0B12595E39105D41F40DFA7117B90F0DA2E4",
+        "left_bytes": 1033,
+        "right_bytes": 1030,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "    mode: Invoker"
+          },
+          {
+            "side": "<=",
+            "line": "    mode: Embedded"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "CE95FD83436FE426579AB4FAA4D4B5E7750A6AB66CB66050DB2C9A8F126E047B",
+        "right_sha256": "CE95FD83436FE426579AB4FAA4D4B5E7750A6AB66CB66050DB2C9A8F126E047B",
+        "left_bytes": 469,
+        "right_bytes": 469,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "E0D99E27DC9FD0A0F06ADFEF1B343389F5D599EDEC71BCD67681F44A2BF06F49",
+        "right_sha256": "BC292F16D2F316725176E730AB49E2302D55F27B82C34D0A6B01CF228B6C0183",
+        "left_bytes": 923,
+        "right_bytes": 963,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "    mode: Invoker"
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "<=",
+            "line": "    mode: Embedded"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "B5E7F3DF54A16830D48DB8856CA8C1AFA679051CA3E4EB8A233C5FF6564FC485",
+        "right_sha256": "B5E7F3DF54A16830D48DB8856CA8C1AFA679051CA3E4EB8A233C5FF6564FC485",
+        "left_bytes": 464,
+        "right_bytes": 464,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarTarefa/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "0587D9A07FEDF8E999851499202F04C84CAEE41FEA8A2604BCB36601E1FF350C",
+        "right_sha256": "D76F5F48DBC687719B96115A98802415A9A538A3E8C7CDE1C79AA3073445AD16",
+        "left_bytes": 877,
+        "right_bytes": 915,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "    mode: Invoker"
+          },
+          {
+            "side": "<=",
+            "line": "    mode: Embedded"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "98E73036A50916C1692123FA08DDCA1C985CA333777590FF8BCFE219176774D7",
+        "right_sha256": "98E73036A50916C1692123FA08DDCA1C985CA333777590FF8BCFE219176774D7",
+        "left_bytes": 469,
+        "right_bytes": 469,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_ListarTarefas/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "DEBD985C6B25AB5EB046173BE4A89C73F56F53CF7C7F59051F94E79D1F9802BB",
+        "right_sha256": "8B9D244965D8603B7591120F1CDB80D7F08CDCBB232D6B424DC5F6223D9C9204",
+        "left_bytes": 565,
+        "right_bytes": 572,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "    mode: Invoker"
+          },
+          {
+            "side": "<=",
+            "line": "    mode: Embedded"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.gpt.default/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "A438BE103784D2D1E73BF4CB80DA0225ACAC46BCA3DD2F263A923D895ED8E4C2",
+        "right_sha256": "A438BE103784D2D1E73BF4CB80DA0225ACAC46BCA3DD2F263A923D895ED8E4C2",
+        "left_bytes": 330,
+        "right_bytes": 330,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.gpt.default/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "1EB7788D67A29F14D63EC88EB3F4D3748AC690EF727989E427B8004A995DF577",
+        "right_sha256": "53926C6BE88B2F3BBB525E88F79E7D71C0CBFBBC4EDA8F04108092066A8B35EC",
+        "left_bytes": 1332,
+        "right_bytes": 1421,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "responseInstructions:"
+          },
+          {
+            "side": "=>",
+            "line": "gptCapabilities:"
+          },
+          {
+            "side": "=>",
+            "line": "  webBrowsing: false"
+          },
+          {
+            "side": "=>",
+            "line": "  codeInterpreter: false"
+          },
+          {
+            "side": "=>",
+            "line": "  model: {}"
+          },
+          {
+            "side": "=>",
+            "line": "  extensionData:"
+          },
+          {
+            "side": "=>",
+            "line": "    lastUsedCustomModel: {}"
+          },
+          {
+            "side": "<=",
+            "line": "  model:"
+          },
+          {
+            "side": "<=",
+            "line": "    modelNameHint: GPT41"
+          },
+          {
+            "side": "<=",
+            "line": "declarativeSkillsMetadata:"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "096A9DA3F0449B07EEAF4B60FE7CE31B621FA0A0AF6DFECFA76DB05399D73E7D",
+        "right_sha256": "096A9DA3F0449B07EEAF4B60FE7CE31B621FA0A0AF6DFECFA76DB05399D73E7D",
+        "left_bytes": 432,
+        "right_bytes": 432,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "14106C5D59D7E76A35E29F6CE95B753A5AC8D8EBDA44B402CB830E34641D9622",
+        "right_sha256": "46AF5CA427E6DBE7CED69F9AB181080A31043519EDC07E31E8F67D74F17A68B0",
+        "left_bytes": 8605,
+        "right_bytes": 8467,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "<=",
+            "line": "# AtualizarStatus topic"
+          },
+          {
+            "side": "<=",
+            "line": "# Deploy: paste this YAML in Copilot Studio Code Editor for topic AtualizarStatus."
+          },
+          {
+            "side": "<=",
+            "line": "# After creating the flow in Power Automate Classic Designer, replace flowId."
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "2829057CB2BA747D9DB0D0AD4D92A32887AE558E7E6C95282A0FD44BAE2D22E6",
+        "right_sha256": "2829057CB2BA747D9DB0D0AD4D92A32887AE558E7E6C95282A0FD44BAE2D22E6",
+        "left_bytes": 492,
+        "right_bytes": 492,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "5BF9D09898FA24231D4234260FCCC298C0202B29B7D36D18F681104C9FF763D4",
+        "right_sha256": "AE2B9EEA90FF65E5A1DB24A0A2CB2BE40254AF3C55925AC149957FDF59D68E4D",
+        "left_bytes": 15260,
+        "right_bytes": 16088,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:tarefa|task|id)\\\\s*[:=]?\\\\s*#?(?<v>\\\\d+)\\\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:tarefa|task|id)\\\\s*[:=]?\\\\s*#?(?<v>\\\\d+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?(?<v>\\\\d+)(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?(?<v>\\\\d+)(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase).v), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "              value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:tarefa|task|id)\\\\s*[:=]?\\\\s*#?(?<v>\\\\d+)\\\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:tarefa|task|id)\\\\s*[:=]?\\\\s*#?(?<v>\\\\d+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?(?<v>\\\\d+)(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?(?<v>\\\\d+)(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase).v), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*status\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*status\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*horas(?:\\\\s+realizadas)?\\\\s*[:=]\\\\s*(?<v>\\\\d+(?:[.,]\\\\d+)?)\\\", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*horas(?:\\\\s+realizadas)?\\\\s*[:=]\\\\s*(?<v>\\\\d+(?:[.,]\\\\d+)?)\\\", MatchOptions.IgnoreCase).v, \\\",\\\", \\\".\\\")), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>\\\\d+(?:[.,]\\\\d+)?)\\\", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>\\\\d+(?:[.,]\\\\d+)?)\\\", MatchOptions.IgnoreCase).v, \\\",\\\", \\\".\\\")), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*responsavel\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*responsavel\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:prazo|datafim|fim)\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:prazo|datafim|fim)\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase).v), Blank()))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*prioridade\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*prioridade\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\\\s*(?:,|;|\\\\r?\\\\n)|\\\\s*$)\\\", MatchOptions.IgnoreCase).v), Blank())))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      value: \"=If(IsMatch(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:confirmar|confirma)\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"(?:^|,|;|\\\\r?\\\\n)\\\\s*(?:confirmar|confirma)\\\\s*[:=]\\\\s*(?<v>[^,;\\\\r\\\\n]+)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:baixa|media|alta|critica|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:baixa|media|alta|critica|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:baixa|media|alta|critica|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:baixa|media|alta|critica|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?:\\\\d{1,2}/\\\\d{1,2}/\\\\d{4}|\\\\d{4}-\\\\d{1,2}-\\\\d{1,2}|n|no|nao)\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \\\"^\\\\s*(?:atualizar\\\\s+tarefa\\\\s*[:=]?\\\\s*)?#?\\\\d+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*\\\\d+(?:[.,]\\\\d+)?\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*[^,;\\\\r\\\\n]+\\\\s*(?:,|;|\\\\r?\\\\n)\\\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\\\s*$)\\\", MatchOptions.IgnoreCase).v), Blank())))))\""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "              activity: Tarefa atualizada com sucesso."
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:tarefa|task|id)\\s*[:=]?\\s*#?(?<v>\\d+)\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:tarefa|task|id)\\s*[:=]?\\s*#?(?<v>\\d+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?(?<v>\\d+)(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?(?<v>\\d+)(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase).v), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "              value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:tarefa|task|id)\\s*[:=]?\\s*#?(?<v>\\d+)\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:tarefa|task|id)\\s*[:=]?\\s*#?(?<v>\\d+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?(?<v>\\d+)(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase), Value(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?(?<v>\\d+)(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase).v), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*status\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*status\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*horas(?:\\s+realizadas)?\\s*[:=]\\s*(?<v>\\d+(?:[.,]\\d+)?)\", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*horas(?:\\s+realizadas)?\\s*[:=]\\s*(?<v>\\d+(?:[.,]\\d+)?)\", MatchOptions.IgnoreCase).v, \",\", \".\")), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>\\d+(?:[.,]\\d+)?)\", MatchOptions.IgnoreCase), Value(Substitute(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>\\d+(?:[.,]\\d+)?)\", MatchOptions.IgnoreCase).v, \",\", \".\")), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*responsavel\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*responsavel\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:prazo|datafim|fim)\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:prazo|datafim|fim)\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase).v), Blank()))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*prioridade\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*prioridade\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:baixa|media|alta|critica|n|no|nao))(?:\\s*(?:,|;|\\r?\\n)|\\s*$)\", MatchOptions.IgnoreCase).v), Blank())))"
+          },
+          {
+            "side": "<=",
+            "line": "      value: =If(IsMatch(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:confirmar|confirma)\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"(?:^|,|;|\\r?\\n)\\s*(?:confirmar|confirma)\\s*[:=]\\s*(?<v>[^,;\\r\\n]+)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?:baixa|media|alta|critica|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?:baixa|media|alta|critica|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:baixa|media|alta|critica|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:baixa|media|alta|critica|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?:\\d{1,2}/\\d{1,2}/\\d{4}|\\d{4}-\\d{1,2}-\\d{1,2}|n|no|nao)\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase).v), If(IsMatch(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase), Trim(Match(Topic.WorkingInput, \"^\\s*(?:atualizar\\s+tarefa\\s*[:=]?\\s*)?#?\\d+\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*\\d+(?:[.,]\\d+)?\\s*(?:,|;|\\r?\\n)\\s*[^,;\\r\\n]+\\s*(?:,|;|\\r?\\n)\\s*(?<v>(?:sim|s|yes|y|confirmo|ok|nao|no|n))(?:\\s*$)\", MatchOptions.IgnoreCase).v), Blank())))))"
+          },
+          {
+            "side": "<=",
+            "line": "              activity: Tarefa atualizada com sucesso. Dados gravados no SharePoint. Use listar tarefas para conferir os IDs ativos."
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "71F54F6B6251B53DC91A91DA110C722FEC74509246A4C99487C29B4973702DD8",
+        "right_sha256": "71F54F6B6251B53DC91A91DA110C722FEC74509246A4C99487C29B4973702DD8",
+        "left_bytes": 398,
+        "right_bytes": 398,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "82502F0B75DE8D94C9045B95967312BF7831C467706285F5F1B721FFF5059BED",
+        "right_sha256": "C9870CEAB7CBBA076C7AD40A479B00F7645DC43593FE9C8F16D234C38E54A812",
+        "left_bytes": 1218,
+        "right_bytes": 1032,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "<=",
+            "line": "# ConsultarPortfolio topic"
+          },
+          {
+            "side": "<=",
+            "line": "# Deploy: paste this YAML in Copilot Studio Code Editor for topic ConsultarPortfolio."
+          },
+          {
+            "side": "<=",
+            "line": "# After creating the flow in Power Automate Classic Designer, replace flowId."
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarProjeto/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "F1CE0706D50ABBACAFCF24EC425375E92CB813B87BF2CC4910E992E687AB7BB8",
+        "right_sha256": "F1CE0706D50ABBACAFCF24EC425375E92CB813B87BF2CC4910E992E687AB7BB8",
+        "left_bytes": 412,
+        "right_bytes": 412,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarProjeto/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "708D8AD6F7860C450F68AB59D1B9EC728B74A9763AE7B120A6B1A3F125DED499",
+        "right_sha256": "708D8AD6F7860C450F68AB59D1B9EC728B74A9763AE7B120A6B1A3F125DED499",
+        "left_bytes": 2749,
+        "right_bytes": 2749,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.CriarProjeto/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "AD86AADE281BDD8EF416BA40F78D8D4EA80D4466386CAA41332A34FAEF4D71AF",
+        "right_sha256": "AD86AADE281BDD8EF416BA40F78D8D4EA80D4466386CAA41332A34FAEF4D71AF",
+        "left_bytes": 393,
+        "right_bytes": 393,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.CriarProjeto/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "0F14A734B520544F23821943F57FC48CF117AE3D7EA6A695ACDF0976FFC1B775",
+        "right_sha256": "0F14A734B520544F23821943F57FC48CF117AE3D7EA6A695ACDF0976FFC1B775",
+        "left_bytes": 6614,
+        "right_bytes": 6614,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "BC5C7E379EFDDDCCB8882981FBCDF21609A3F09B2594CB2BB7B60A25C1ECD0D6",
+        "right_sha256": "BC5C7E379EFDDDCCB8882981FBCDF21609A3F09B2594CB2BB7B60A25C1ECD0D6",
+        "left_bytes": 415,
+        "right_bytes": 415,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "0A723099D7F4047F9919F61BC5BDED355DC4CA4B186806FC21B9137479B17A35",
+        "right_sha256": "6CC077D85B2C5058A442BB15C0ED33E0DE3EABE29D1FD7115EDBB345559153A3",
+        "left_bytes": 6893,
+        "right_bytes": 6929,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      prompt: Vou criar a tarefa {Topic.Titulo} no projeto {Topic.NomeProjeto}. Confirma?"
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "<=",
+            "line": "      prompt: |-"
+          },
+          {
+            "side": "<=",
+            "line": "        Vou criar a tarefa {Topic.Titulo} no projeto {Topic.NomeProjeto}. Confirma?"
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ExcluirProjeto/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "39CC8753108703F8343599F4A67939D3F953CD0FFC5C22BCF6B9A10957CB47A1",
+        "right_sha256": "39CC8753108703F8343599F4A67939D3F953CD0FFC5C22BCF6B9A10957CB47A1",
+        "left_bytes": 436,
+        "right_bytes": 436,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ExcluirProjeto/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "2BF0F2A2626D14BE7EE55E5886A5B3D9CCD6DA8958604D2A86DB975F7656C52A",
+        "right_sha256": "2BF0F2A2626D14BE7EE55E5886A5B3D9CCD6DA8958604D2A86DB975F7656C52A",
+        "left_bytes": 3505,
+        "right_bytes": 3505,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ExcluirTarefa/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "95DAD1F1E40060B9F9E5A8564195798084353BDEE9FFEC02FA0300B5353756A3",
+        "right_sha256": "95DAD1F1E40060B9F9E5A8564195798084353BDEE9FFEC02FA0300B5353756A3",
+        "left_bytes": 429,
+        "right_bytes": 429,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ExcluirTarefa/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "FEEA2FD33BE81B2D5E9D77FA9C513C6EDCCC26E793AF855640B0B5957198FA31",
+        "right_sha256": "FEEA2FD33BE81B2D5E9D77FA9C513C6EDCCC26E793AF855640B0B5957198FA31",
+        "left_bytes": 5064,
+        "right_bytes": 5064,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "195C6247242D13914C383E51D1905D0F740F092CFB2D80D92D7529DD58F1322C",
+        "right_sha256": "195C6247242D13914C383E51D1905D0F740F092CFB2D80D92D7529DD58F1322C",
+        "left_bytes": 441,
+        "right_bytes": 441,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.Gerar_Multiplos_Projetos/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "B0BE2A6386CC75B8FBEF4CEC1F49625157305423E4C8C622EE484A703FF093DC",
+        "right_sha256": "B0BE2A6386CC75B8FBEF4CEC1F49625157305423E4C8C622EE484A703FF093DC",
+        "left_bytes": 1141,
+        "right_bytes": 1141,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.Greeting/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "B85AC9EA0F95D1DECFDD10D639C060C8BC4128EB10D8CC1AC969F6511A79B802",
+        "right_sha256": "B85AC9EA0F95D1DECFDD10D639C060C8BC4128EB10D8CC1AC969F6511A79B802",
+        "left_bytes": 385,
+        "right_bytes": 385,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.Greeting/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "0948C6E348A77CDB2BA6EB57EE61FC18B7434B1ACB15F4FE0AD327CBA65D1C62",
+        "right_sha256": "0948C6E348A77CDB2BA6EB57EE61FC18B7434B1ACB15F4FE0AD327CBA65D1C62",
+        "left_bytes": 260,
+        "right_bytes": 260,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "03313DEEC908A2F49B662B9ED1C50E0905D86E2B8507619F5C5EA592BB71EBDF",
+        "right_sha256": "03313DEEC908A2F49B662B9ED1C50E0905D86E2B8507619F5C5EA592BB71EBDF",
+        "left_bytes": 438,
+        "right_bytes": 438,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data",
+        "category": "botcomponents",
+        "status": "MODIFIED",
+        "left_sha256": "D4E0198C23A6C9B5B6F08CB835338DC431E5E2B620A3242A1B6101AD12D5BB21",
+        "right_sha256": "7AA6431EE73AC799A9508D810798B7E015AD5957F5B581F463FDBC7A1A100BE5",
+        "left_bytes": 2100,
+        "right_bytes": 2037,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": ""
+          },
+          {
+            "side": "=>",
+            "line": "      activity: \"{Topic.tarefas}\""
+          },
+          {
+            "side": "<=",
+            "line": "      activity: Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA."
+          }
+        ]
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.LowConfidence/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "CE7A9AC79FE33A2DFEDA527264E79B4D7516282AE10DF804BC69ABD9091D47AA",
+        "right_sha256": "CE7A9AC79FE33A2DFEDA527264E79B4D7516282AE10DF804BC69ABD9091D47AA",
+        "left_bytes": 411,
+        "right_bytes": 411,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.LowConfidence/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "0F0719AFB66C5DA16E035DF253845A55CAB18B146A22F87D7789FD2BF087C4A1",
+        "right_sha256": "0F0719AFB66C5DA16E035DF253845A55CAB18B146A22F87D7789FD2BF087C4A1",
+        "left_bytes": 10508,
+        "right_bytes": 10508,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.PedirDecisao/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "BCB6CBB647190AD1C1B88CF63DAEB87757C8F89F45CF6BF6418A697DB7D960B3",
+        "right_sha256": "BCB6CBB647190AD1C1B88CF63DAEB87757C8F89F45CF6BF6418A697DB7D960B3",
+        "left_bytes": 430,
+        "right_bytes": 430,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.PedirDecisao/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "3D72275D0EA93234DE39EE784C392AA9D41DCE54847CC026C220DA38C4C64A91",
+        "right_sha256": "3D72275D0EA93234DE39EE784C392AA9D41DCE54847CC026C220DA38C4C64A91",
+        "left_bytes": 8100,
+        "right_bytes": 8100,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.RegistrarBloqueio/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "4F64CBE4419A252A8EF0435E8DAF7ED40353987F184411EC48E58FED5E52AF85",
+        "right_sha256": "4F64CBE4419A252A8EF0435E8DAF7ED40353987F184411EC48E58FED5E52AF85",
+        "left_bytes": 426,
+        "right_bytes": 426,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.RegistrarBloqueio/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "8C8621CA4A0BD8036931793817FD0E57215550B48C893AEEFDE726D99A384911",
+        "right_sha256": "8C8621CA4A0BD8036931793817FD0E57215550B48C893AEEFDE726D99A384911",
+        "left_bytes": 5580,
+        "right_bytes": 5580,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.RegistrarRisco/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "BCA478A99042ED174C10734220408B85CAEED1573D0DDFFBE705EB887AC9BEB7",
+        "right_sha256": "BCA478A99042ED174C10734220408B85CAEED1573D0DDFFBE705EB887AC9BEB7",
+        "left_bytes": 417,
+        "right_bytes": 417,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.RegistrarRisco/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "8186032D4C9AD6378310AAB3398F9D65352DFD2280E28095FEF84B72B874B97D",
+        "right_sha256": "8186032D4C9AD6378310AAB3398F9D65352DFD2280E28095FEF84B72B874B97D",
+        "left_bytes": 6081,
+        "right_bytes": 6081,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.SeHouverErro/botcomponent.xml",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "3902F0B2D5D39035D1327C6E946D6560EF278DE0931026B75F5E6C23F6D2FA51",
+        "right_sha256": "3902F0B2D5D39035D1327C6E946D6560EF278DE0931026B75F5E6C23F6D2FA51",
+        "left_bytes": 391,
+        "right_bytes": 391,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "botcomponents/pmo_AssistentePMO_V2.topic.SeHouverErro/data",
+        "category": "botcomponents",
+        "status": "UNCHANGED",
+        "left_sha256": "ED4D038B356158615730EA7AABC6B835F62AC5720090C79F60249098F466AC98",
+        "right_sha256": "ED4D038B356158615730EA7AABC6B835F62AC5720090C79F60249098F466AC98",
+        "left_bytes": 291,
+        "right_bytes": 291,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "bots/pmo_AssistentePMO_V2/bot.xml",
+        "category": "bots",
+        "status": "UNCHANGED",
+        "left_sha256": "2CA1A02647F6ED9455D6BA43904624D5D66BB0E3304776FA6F998B2B7AC1354B",
+        "right_sha256": "2CA1A02647F6ED9455D6BA43904624D5D66BB0E3304776FA6F998B2B7AC1354B",
+        "left_bytes": 394,
+        "right_bytes": 394,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "bots/pmo_AssistentePMO_V2/configuration.json",
+        "category": "bots",
+        "status": "MODIFIED",
+        "left_sha256": "BABCBF6FFA5780DB719F6EC705EF58B26DDE05E524C4A4BCD8FB56570042B2CD",
+        "right_sha256": "101B2CCC55B44D04C0413A588FCFDCF4DD1B82FD361C4F64F25DE2E61E9A0CB9",
+        "left_bytes": 276,
+        "right_bytes": 505,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "  \"aISettings\": {"
+          },
+          {
+            "side": "=>",
+            "line": "    \"$kind\": \"AISettings\","
+          },
+          {
+            "side": "=>",
+            "line": "    \"useModelKnowledge\": false,"
+          },
+          {
+            "side": "=>",
+            "line": "    \"isFileAnalysisEnabled\": false,"
+          },
+          {
+            "side": "=>",
+            "line": "    \"isSemanticSearchEnabled\": false,"
+          },
+          {
+            "side": "=>",
+            "line": "    \"contentModeration\": \"Low\","
+          },
+          {
+            "side": "=>",
+            "line": "    \"optInUseLatestModels\": true"
+          },
+          {
+            "side": "=>",
+            "line": "  },"
+          }
+        ]
+      },
+      {
+        "file": "customizations.xml",
+        "category": "root",
+        "status": "MODIFIED",
+        "left_sha256": "13B2517229D2F8CCFF289AA7A363F61E55224518438875D4E6781B9D45D8169C",
+        "right_sha256": "5BCC87AD4BFC5EDEB9661BD959863ACCF9A3F9B09ABFA5C3FF6B7A0E97787500",
+        "left_bytes": 15191,
+        "right_bytes": 15627,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "<ImportExportXml xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" OrganizationVersion=\"9.2.26044.163\" OrganizationSchemaType=\"Standard\" CRMServerServiceabilityVersion=\"9.2.26044.00163\">"
+          },
+          {
+            "side": "=>",
+            "line": "    <connectionreference connectionreferencelogicalname=\"gstf_sharepoint\">"
+          },
+          {
+            "side": "=>",
+            "line": "      <connectionreferencedisplayname>sharepoint</connectionreferencedisplayname>"
+          },
+          {
+            "side": "=>",
+            "line": "      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sharepointonline</connectorid>"
+          },
+          {
+            "side": "=>",
+            "line": "      <iscustomizable>1</iscustomizable>"
+          },
+          {
+            "side": "=>",
+            "line": "      <promptingbehavior>0</promptingbehavior>"
+          },
+          {
+            "side": "=>",
+            "line": "      <statecode>0</statecode>"
+          },
+          {
+            "side": "=>",
+            "line": "      <statuscode>1</statuscode>"
+          },
+          {
+            "side": "=>",
+            "line": "    </connectionreference>"
+          },
+          {
+            "side": "<=",
+            "line": "<ImportExportXml xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" OrganizationVersion=\"9.2.26042.165\" OrganizationSchemaType=\"Standard\" CRMServerServiceabilityVersion=\"9.2.26042.00165\">"
+          }
+        ]
+      },
+      {
+        "file": "solution.xml",
+        "category": "root",
+        "status": "MODIFIED",
+        "left_sha256": "B08D1AEBA75634E12F859350DB32E51EDBBFA18C4A355884B22E555CE43AFDA5",
+        "right_sha256": "3C86BD1D654E62A116272645C98917A4558FFA3CD0593B9554464255DD65E865",
+        "left_bytes": 3125,
+        "right_bytes": 2611,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "<ImportExportXml version=\"9.2.26044.163\" SolutionPackageVersion=\"9.2\" languagecode=\"3082\" generatedBy=\"CrmLive\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" OrganizationVersion=\"9.2.26044.163\" OrganizationSchemaType=\"Standard\" CRMServerServiceabilityVersion=\"9.2.26044.00163\">"
+          },
+          {
+            "side": "=>",
+            "line": "    <Version>3.17</Version>"
+          },
+          {
+            "side": "<=",
+            "line": "<ImportExportXml version=\"9.2.26042.165\" SolutionPackageVersion=\"9.2\" languagecode=\"3082\" generatedBy=\"CrmLive\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" OrganizationVersion=\"9.2.26042.165\" OrganizationSchemaType=\"Standard\" CRMServerServiceabilityVersion=\"9.2.26042.00165\">"
+          },
+          {
+            "side": "<=",
+            "line": "    <Version>3.15.1</Version>"
+          },
+          {
+            "side": "<=",
+            "line": "      <RootComponent type=\"botcomponent\" id=\"{ec4416d0-0744-4e8c-b937-aae4ad9c605b}\" behavior=\"0\" />"
+          },
+          {
+            "side": "<=",
+            "line": "      <RootComponent type=\"botcomponent\" id=\"{6750ff2f-822b-45ab-83ec-058704c7808a}\" behavior=\"0\" />"
+          },
+          {
+            "side": "<=",
+            "line": "      <RootComponent type=\"botcomponent\" id=\"{74c5fdcc-c121-452e-85af-24d3f260b3c7}\" behavior=\"0\" />"
+          },
+          {
+            "side": "<=",
+            "line": "      <RootComponent type=\"botcomponent\" id=\"{bcbecd76-3158-40ac-b225-5ae7c3874ed1}\" behavior=\"0\" />"
+          },
+          {
+            "side": "<=",
+            "line": "      <RootComponent type=\"botcomponent\" id=\"{d58258b4-b17f-4bb9-9e1f-161287a041c4}\" behavior=\"0\" />"
+          },
+          {
+            "side": "<=",
+            "line": ""
+          }
+        ]
+      },
+      {
+        "file": "Workflows/PMO_PA_AtualizarStatus-C11A165B-C64C-F111-BEC7-7CED8D9559C1.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "F17FEF9353A26FCDBBDBD6859D30B59167B6535A1F19473B77DB79645B6ABEB9",
+        "right_sha256": "F17FEF9353A26FCDBBDBD6859D30B59167B6535A1F19473B77DB79645B6ABEB9",
+        "left_bytes": 13378,
+        "right_bytes": 13378,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_AtualizarTarefa-98408D55-3748-F111-BEC7-000D3ABC5CC6.json",
+        "category": "Workflows",
+        "status": "MODIFIED",
+        "left_sha256": "33BF261D9F5AFCBBE8DDF13F83E5249A19B0E2B2B2374D7CDDE361534B15DA09",
+        "right_sha256": "78BB7702100F3EF6773F4BCE95EE67FF06254A724A10481C7DDE4A07F2AE029C",
+        "left_bytes": 56256,
+        "right_bytes": 16792,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "  \"properties\": {"
+          },
+          {
+            "side": "=>",
+            "line": "    \"connectionReferences\": {"
+          },
+          {
+            "side": "=>",
+            "line": "      \"shared_sharepointonline\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"runtimeSource\": \"embedded\","
+          },
+          {
+            "side": "=>",
+            "line": "        \"connection\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"connectionReferenceLogicalName\": \"pmo_sharedsharepointonline_6e373\""
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"api\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"name\": \"shared_sharepointonline\""
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      }"
+          },
+          {
+            "side": "=>",
+            "line": "    },"
+          },
+          {
+            "side": "=>",
+            "line": "    \"definition\": {"
+          },
+          {
+            "side": "=>",
+            "line": "      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#\","
+          },
+          {
+            "side": "=>",
+            "line": "      \"contentVersion\": \"1.0.0.0\","
+          },
+          {
+            "side": "=>",
+            "line": "      \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"$authentication\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"defaultValue\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"SecureObject\""
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"$connections\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"defaultValue\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Object\""
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      },"
+          },
+          {
+            "side": "=>",
+            "line": "      \"triggers\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"manual\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Request\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"kind\": \"Skills\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"schema\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"type\": \"object\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"properties\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"number\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"number\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"TaskID\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"ID da tarefa a atualizar\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"NUMBER\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"text\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"Status\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Novo status: Pendente, Em Andamento, Concluida, Cancelada\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"number_1\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"number\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"HorasRealizadas\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Horas realizadas\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"NUMBER\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"text_1\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"Responsavel\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Email do novo responsavel\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"text_2\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"DataFim\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Nova data de fim (YYYY-MM-DD)\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"text_3\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"Prioridade\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Nova prioridade: Baixa, Media, Alta, Critica\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"number_2\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"number\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"HorasEstimadas\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Horas estimadas atualizadas\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"NUMBER\""
+          },
+          {
+            "side": "=>",
+            "line": "                }"
+          },
+          {
+            "side": "=>",
+            "line": "              },"
+          },
+          {
+            "side": "=>",
+            "line": "              \"required\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                \"number\""
+          },
+          {
+            "side": "=>",
+            "line": "              ]"
+          },
+          {
+            "side": "=>",
+            "line": "            }"
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      },"
+          },
+          {
+            "side": "=>",
+            "line": "      \"actions\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Get_Tarefa_Atual\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"OpenApiConnection\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"dataset\": \"https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"table\": \"Tarefas\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"id\": \"@triggerBody()?['number']\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"host\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"connectionName\": \"shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"operationId\": \"GetItem\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"authentication\": \"@parameters('$authentication')\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Update_Tarefa\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_Tarefa_Atual\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"OpenApiConnection\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"dataset\": \"https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"table\": \"Tarefas\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"id\": \"@triggerBody()?['number']\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/Title\": \"@body('Get_Tarefa_Atual')?['Title']\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/ProjectID\": \"@body('Get_Tarefa_Atual')?['ProjectID']\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/Status/Value\": \"@if(empty(triggerBody()?['text']), coalesce(body('Get_Tarefa_Atual')?['Status']?['Value'], body('Get_Tarefa_Atual')?['Status'], 'Pendente'), if(startsWith(toLower(triggerBody()?['text']), 'conclu'), 'Concluida', if(startsWith(toLower(triggerBody()?['text']), 'cancel'), 'Cancelada', if(startsWith(toLower(triggerBody()?['text']), 'em'), 'Em Andamento', 'Pendente'))))\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/HorasRealizadas\": \"@if(or(equals(triggerBody()?['number_1'], null), equals(triggerBody()?['number_1'], 0)), coalesce(body('Get_Tarefa_Atual')?['HorasRealizadas'], 0), triggerBody()?['number_1'])\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/Responsavel\": \"@if(or(empty(triggerBody()?['text_1']), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_1'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_1'], '')))), 3))), trim(coalesce(body('Get_Tarefa_Atual')?['Responsavel'], '')), trim(coalesce(triggerBody()?['text_1'], '')))\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/DataFim\": \"@if(or(empty(triggerBody()?['text_2']), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_2'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_2'], '')))), 3))), body('Get_Tarefa_Atual')?['DataFim'], if(equals(length(trim(coalesce(triggerBody()?['text_2'], ''))), 10), if(and(equals(substring(trim(coalesce(triggerBody()?['text_2'], '')), 2, 1), '/'), equals(substring(trim(coalesce(triggerBody()?['text_2'], '')), 5, 1), '/')), concat(substring(trim(coalesce(triggerBody()?['text_2'], '')), 6, 4), '-', substring(trim(coalesce(triggerBody()?['text_2'], '')), 3, 2), '-', substring(trim(coalesce(triggerBody()?['text_2'], '')), 0, 2)), trim(coalesce(triggerBody()?['text_2'], ''))), trim(coalesce(triggerBody()?['text_2'], ''))))\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/Prioridade/Value\": \"@if(or(empty(triggerBody()?['text_3']), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'n'), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'no'), equals(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'nao'), and(startsWith(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'n'), lessOrEquals(length(toLower(trim(coalesce(triggerBody()?['text_3'], '')))), 3))), coalesce(body('Get_Tarefa_Atual')?['Prioridade']?['Value'], body('Get_Tarefa_Atual')?['Prioridade'], 'Media'), if(startsWith(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'cr'), 'Critica', if(startsWith(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'al'), 'Alta', if(startsWith(toLower(trim(coalesce(triggerBody()?['text_3'], ''))), 'ba'), 'Baixa', 'Media'))))\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"item/HorasEstimadas\": \"@if(equals(triggerBody()?['number_2'], null), coalesce(body('Get_Tarefa_Atual')?['HorasEstimadas'], 0), triggerBody()?['number_2'])\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"host\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"connectionName\": \"shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"operationId\": \"PatchItem\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"authentication\": \"@parameters('$authentication')\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Get_All_Tarefas_Projeto\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Update_Tarefa\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"OpenApiConnection\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"dataset\": \"https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"table\": \"Tarefas\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"$filter\": \"ProjectID eq '@{replace(body('Get_Tarefa_Atual')?['ProjectID'],'''','''''')}' and Deleted eq 0\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"$top\": 500"
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"host\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"connectionName\": \"shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"operationId\": \"GetItems\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"authentication\": \"@parameters('$authentication')\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Filter_Nao_Canceladas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_All_Tarefas_Projeto\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Query\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"from\": \"@body('Get_All_Tarefas_Projeto')?['value']\","
+          },
+          {
+            "side": "=>",
+            "line": "            \"where\": \"@not(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Cancelada'))\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Filter_Concluidas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Filter_Nao_Canceladas\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Query\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"from\": \"@body('Filter_Nao_Canceladas')\","
+          },
+          {
+            "side": "=>",
+            "line": "            \"where\": \"@equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Filter_Abertas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_All_Tarefas_Projeto\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Query\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"from\": \"@body('Get_All_Tarefas_Projeto')?['value']\","
+          },
+          {
+            "side": "=>",
+            "line": "            \"where\": \"@or(equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Pendente'), equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Em Andamento'))\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Filter_Atrasadas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_All_Tarefas_Projeto\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          }
+        ]
+      },
+      {
+        "file": "Workflows/PMO_PA_ConsultarPortfolio-39CF292D-C64C-F111-BEC7-7CED8D955C6C.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "CABBD51C199503DA8B4EE40A88230F75FBC0A8288C61FFE36938469D08D8284A",
+        "right_sha256": "CABBD51C199503DA8B4EE40A88230F75FBC0A8288C61FFE36938469D08D8284A",
+        "left_bytes": 9932,
+        "right_bytes": 9932,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_ConsultarProjeto-4A33B53E-C64C-F111-BEC7-000D3ABC5CC6.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "9FE7F484AAB05676BD30AEB1696C3AB64FA995F0CBB86A816F4D4071F9AA3EFD",
+        "right_sha256": "9FE7F484AAB05676BD30AEB1696C3AB64FA995F0CBB86A816F4D4071F9AA3EFD",
+        "left_bytes": 8329,
+        "right_bytes": 8329,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_CriarProjeto-3104124D-364A-F111-BEC7-7CED8D955C6C.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "60C38CC093DC6461A0EC01A46D05F17600560FE77EA6FBA262929F58E074A84C",
+        "right_sha256": "60C38CC093DC6461A0EC01A46D05F17600560FE77EA6FBA262929F58E074A84C",
+        "left_bytes": 11636,
+        "right_bytes": 11636,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_CriarTarefa-0A5D2A41-24C0-4D5E-9F6D-000000000241.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "3446C3D89DC366E7A7269BFA246455CAD621E407F03C6F96D5E3B207C5C351C5",
+        "right_sha256": "3446C3D89DC366E7A7269BFA246455CAD621E407F03C6F96D5E3B207C5C351C5",
+        "left_bytes": 10767,
+        "right_bytes": 10767,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_ExcluirProjeto-16FBE313-2EDC-406E-AD7F-D08CEE0EDC43.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "EE2E5386286A022A69DD1FAAD60DCE2906EFEB4BB4A4BED4C280FAB57AB43C6C",
+        "right_sha256": "EE2E5386286A022A69DD1FAAD60DCE2906EFEB4BB4A4BED4C280FAB57AB43C6C",
+        "left_bytes": 10167,
+        "right_bytes": 10167,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_ExcluirTarefa-70B39334-5926-4FB1-BD22-F10BD99F0F6D.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "AD4213350CD04F2BE9467C1833CCBC776BEB994C30122B33C2A2C975DB5301CD",
+        "right_sha256": "AD4213350CD04F2BE9467C1833CCBC776BEB994C30122B33C2A2C975DB5301CD",
+        "left_bytes": 19331,
+        "right_bytes": 19331,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_ListarTarefas-9544F14B-3748-F111-BEC7-6045BDF42CAE.json",
+        "category": "Workflows",
+        "status": "MODIFIED",
+        "left_sha256": "1555A318576BAA0C483FC2903F3BD360646F06FDA76774F5D13AE702FBEEDD93",
+        "right_sha256": "2F6FD75EAE693494EAFCCA555B397808BBB7BAEB7A379451CBF03A8F7EA2793E",
+        "left_bytes": 47930,
+        "right_bytes": 10030,
+        "normalized_metadata_equal": false,
+        "line_diff": [
+          {
+            "side": "=>",
+            "line": "  \"properties\": {"
+          },
+          {
+            "side": "=>",
+            "line": "    \"connectionReferences\": {"
+          },
+          {
+            "side": "=>",
+            "line": "      \"shared_sharepointonline\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"runtimeSource\": \"embedded\","
+          },
+          {
+            "side": "=>",
+            "line": "        \"connection\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"connectionReferenceLogicalName\": \"pmo_sharedsharepointonline_6e373\""
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"api\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"name\": \"shared_sharepointonline\""
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      }"
+          },
+          {
+            "side": "=>",
+            "line": "    },"
+          },
+          {
+            "side": "=>",
+            "line": "    \"definition\": {"
+          },
+          {
+            "side": "=>",
+            "line": "      \"$schema\": \"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#\","
+          },
+          {
+            "side": "=>",
+            "line": "      \"contentVersion\": \"1.0.0.0\","
+          },
+          {
+            "side": "=>",
+            "line": "      \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"$authentication\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"defaultValue\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"SecureObject\""
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"$connections\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"defaultValue\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Object\""
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      },"
+          },
+          {
+            "side": "=>",
+            "line": "      \"triggers\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"manual\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Request\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"kind\": \"Skills\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"schema\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"type\": \"object\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"properties\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"text\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"ProjectID\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Codigo do projeto (ex: PRJ-001)\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"NomeProjeto\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"NomeProjeto\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Nome ou codigo do projeto (ex: Projeto Alpha ou PRJ-001)\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"ProjectID\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"title\": \"ProjectID\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"description\": \"Codigo do projeto (ex: PRJ-001)\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                }"
+          },
+          {
+            "side": "=>",
+            "line": "              },"
+          },
+          {
+            "side": "=>",
+            "line": "              \"required\": []"
+          },
+          {
+            "side": "=>",
+            "line": "            }"
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        }"
+          },
+          {
+            "side": "=>",
+            "line": "      },"
+          },
+          {
+            "side": "=>",
+            "line": "      \"actions\": {"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Compose_ProjectInput\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"Compose\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": \"@trim(coalesce(triggerBody()?['NomeProjeto'], triggerBody()?['nomeProjeto'], triggerBody()?['ProjectID'], triggerBody()?['projectId'], triggerBody()?['text'], ''))\""
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Get_Projeto\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Compose_ProjectInput\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"OpenApiConnection\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"dataset\": \"https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"table\": \"Projetos\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"$filter\": \"@{if(startsWith(toLower(outputs('Compose_ProjectInput')), 'prj-'), concat('ProjectID eq ''', replace(outputs('Compose_ProjectInput'),'''',''''''), ''' and Ativo eq 1 and Deleted eq 0'), concat('NomeProjeto eq ''', replace(outputs('Compose_ProjectInput'),'''',''''''), ''' and Ativo eq 1 and Deleted eq 0'))}\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"$top\": 1"
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"host\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"connectionName\": \"shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"operationId\": \"GetItems\""
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"authentication\": \"@parameters('$authentication')\""
+          },
+          {
+            "side": "=>",
+            "line": "          }"
+          },
+          {
+            "side": "=>",
+            "line": "        },"
+          },
+          {
+            "side": "=>",
+            "line": "        \"Condition_Projeto_Encontrado\": {"
+          },
+          {
+            "side": "=>",
+            "line": "          \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_Projeto\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"type\": \"If\","
+          },
+          {
+            "side": "=>",
+            "line": "          \"expression\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"greater\": ["
+          },
+          {
+            "side": "=>",
+            "line": "              \"@length(body('Get_Projeto')?['value'])\","
+          },
+          {
+            "side": "=>",
+            "line": "              0"
+          },
+          {
+            "side": "=>",
+            "line": "            ]"
+          },
+          {
+            "side": "=>",
+            "line": "          },"
+          },
+          {
+            "side": "=>",
+            "line": "          \"actions\": {"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Get_Tarefas_Projeto\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "              \"type\": \"OpenApiConnection\","
+          },
+          {
+            "side": "=>",
+            "line": "              \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"parameters\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"dataset\": \"https://indra365.sharepoint.com/sites/Grp_T_DN_Transformacao_Digital\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"table\": \"Tarefas\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"$filter\": \"ProjectID eq '@{replace(body('Get_Projeto')?['value']?[0]?['ProjectID'],'''','''''')}' and Deleted eq 0\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"$top\": 100,"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"$orderby\": \"DataFim asc\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"host\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"connectionName\": \"shared_sharepointonline\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"operationId\": \"GetItems\""
+          },
+          {
+            "side": "=>",
+            "line": "                },"
+          },
+          {
+            "side": "=>",
+            "line": "                \"authentication\": \"@parameters('$authentication')\""
+          },
+          {
+            "side": "=>",
+            "line": "              }"
+          },
+          {
+            "side": "=>",
+            "line": "            },"
+          },
+          {
+            "side": "=>",
+            "line": "            \"Check_Tarefas_Exist\": {"
+          },
+          {
+            "side": "=>",
+            "line": "              \"actions\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"Respond_Empty\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"type\": \"Response\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"kind\": \"Skills\","
+          },
+          {
+            "side": "=>",
+            "line": "                  \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"statusCode\": 200,"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"body\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"result\": \"Consulta concluida. Dados lidos no SharePoint. Use os IDs ativos validados no roteiro de QA.\""
+          },
+          {
+            "side": "=>",
+            "line": "                    },"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"schema\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"type\": \"object\","
+          },
+          {
+            "side": "=>",
+            "line": "                      \"properties\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                        \"result\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                          \"type\": \"string\","
+          },
+          {
+            "side": "=>",
+            "line": "                          \"title\": \"Result\","
+          },
+          {
+            "side": "=>",
+            "line": "                          \"x-ms-dynamically-added\": true,"
+          },
+          {
+            "side": "=>",
+            "line": "                          \"x-ms-content-hint\": \"TEXT\""
+          },
+          {
+            "side": "=>",
+            "line": "                        }"
+          },
+          {
+            "side": "=>",
+            "line": "                      }"
+          },
+          {
+            "side": "=>",
+            "line": "                    }"
+          },
+          {
+            "side": "=>",
+            "line": "                  }"
+          },
+          {
+            "side": "=>",
+            "line": "                }"
+          },
+          {
+            "side": "=>",
+            "line": "              },"
+          },
+          {
+            "side": "=>",
+            "line": "              \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"Get_Tarefas_Projeto\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "                ]"
+          },
+          {
+            "side": "=>",
+            "line": "              },"
+          },
+          {
+            "side": "=>",
+            "line": "              \"else\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                \"actions\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Count_Total\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"type\": \"Compose\","
+          },
+          {
+            "side": "=>",
+            "line": "                    \"inputs\": \"@length(body('Get_Tarefas_Projeto')?['value'])\""
+          },
+          {
+            "side": "=>",
+            "line": "                  },"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Filter_Concluidas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"type\": \"Query\","
+          },
+          {
+            "side": "=>",
+            "line": "                    \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"from\": \"@body('Get_Tarefas_Projeto')?['value']\","
+          },
+          {
+            "side": "=>",
+            "line": "                      \"where\": \"@equals(coalesce(item()?['Status']?['Value'], item()?['Status']), 'Concluida')\""
+          },
+          {
+            "side": "=>",
+            "line": "                    }"
+          },
+          {
+            "side": "=>",
+            "line": "                  },"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Count_Concluidas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"Filter_Concluidas\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                        \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "                      ]"
+          },
+          {
+            "side": "=>",
+            "line": "                    },"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"type\": \"Compose\","
+          },
+          {
+            "side": "=>",
+            "line": "                    \"inputs\": \"@length(body('Filter_Concluidas'))\""
+          },
+          {
+            "side": "=>",
+            "line": "                  },"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Select_Tarefas\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {},"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"type\": \"Select\","
+          },
+          {
+            "side": "=>",
+            "line": "                    \"inputs\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"from\": \"@body('Get_Tarefas_Projeto')?['value']\","
+          },
+          {
+            "side": "=>",
+            "line": "                      \"select\": \"@string(item()?['ID'])\""
+          },
+          {
+            "side": "=>",
+            "line": "                    }"
+          },
+          {
+            "side": "=>",
+            "line": "                  },"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Compose_Lista\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"Select_Tarefas\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                        \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "                      ],"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"Count_Total\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                        \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "                      ],"
+          },
+          {
+            "side": "=>",
+            "line": "                      \"Count_Concluidas\": ["
+          },
+          {
+            "side": "=>",
+            "line": "                        \"Succeeded\""
+          },
+          {
+            "side": "=>",
+            "line": "                      ]"
+          },
+          {
+            "side": "=>",
+            "line": "                    },"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"type\": \"Compose\","
+          },
+          {
+            "side": "=>",
+            "line": "                    \"inputs\": \"@concat('Projeto ', body('Get_Projeto')?['value']?[0]?['ProjectID'], '. Total ', string(outputs('Count_Total')), '. Concluidas ', string(outputs('Count_Concluidas')), '. IDs ', join(body('Select_Tarefas'), ', '), '.')\""
+          },
+          {
+            "side": "=>",
+            "line": "                  },"
+          },
+          {
+            "side": "=>",
+            "line": "                  \"Respond_Lista\": {"
+          },
+          {
+            "side": "=>",
+            "line": "                    \"runAfter\": {"
+          }
+        ]
+      },
+      {
+        "file": "Workflows/PMO_PA_PedirDecisaoBot-FEB79D54-C64C-F111-BEC7-7CED8D955C6C.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "32F0FE5B52E2889B20BFE83E084A74CC39AD2A3770A3ED489686AF89BED04829",
+        "right_sha256": "32F0FE5B52E2889B20BFE83E084A74CC39AD2A3770A3ED489686AF89BED04829",
+        "left_bytes": 11865,
+        "right_bytes": 11865,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_RegistrarBloqueioBot-3EC37952-C64C-F111-BEC7-000D3ABC5CC6.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "71D33E2C49049644E90ECDB3B39059E59621CEEC1966D3E355C88607FEA37E21",
+        "right_sha256": "71D33E2C49049644E90ECDB3B39059E59621CEEC1966D3E355C88607FEA37E21",
+        "left_bytes": 9982,
+        "right_bytes": 9982,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      },
+      {
+        "file": "Workflows/PMO_PA_RegistrarRiscoBot-EE732D46-C64C-F111-BEC7-7CED8D955C6C.json",
+        "category": "Workflows",
+        "status": "UNCHANGED",
+        "left_sha256": "2F9E3E2572B633F8E1523B366B7A3EAAB946692E7D724D874599B448140E0BE4",
+        "right_sha256": "2F9E3E2572B633F8E1523B366B7A3EAAB946692E7D724D874599B448140E0BE4",
+        "left_bytes": 9799,
+        "right_bytes": 9799,
+        "normalized_metadata_equal": false,
+        "line_diff": []
+      }
+    ]
+  }
+}

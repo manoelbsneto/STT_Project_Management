@@ -1,0 +1,8 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-23 17:09:00 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_170900_Codex2Lead_pac_fallback_patch_rerun.png
+Status: IN_PROGRESS
+Current action: Patched Run-Gate4-Preflight.ps1 to use PAC FetchXML fallback for Dataverse reads when AZ and PAC identities differ.
+Evidence: PAC FetchXML proved Step 03 solutioncomponent read succeeds as mbenicios@minsait.com; AZ CLI remains manoel.benicio@icloud.com and cannot be used for Dataverse token.
+Additional fix: previous rerun hung at Step 05 Get-Flow; Step 05 now uses PAC FetchXML workflow inventory in fallback mode.
+Next command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Run-Gate4-Preflight.ps1 -ResumeFromStep03

@@ -1,0 +1,60 @@
+
+===== pac env who =====
+COMMAND: pac env who
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: be42f3c6-c217-4f5a-8389-1022b4f62100 Correlation ID: 0ae764b9-a3e9-472c-8b2c-a8f6ca3f8a04 Timestamp: 2026-05-24 12:15:34Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: be42f3c6-c217-4f5a-8389-1022b4f62100 Correlation ID: 0ae764b9-a3e9-472c-8b2c-a8f6ca3f8a04 Timestamp: 2026-05-24 12:15:34Z
+
+EXIT: 0
+
+===== pac solution list =====
+COMMAND: pac solution list
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 3be6deaa-fea1-428f-8ed0-e1600d371200 Correlation ID: 055b4c0a-34fa-4b06-b4e2-66c926f59d57 Timestamp: 2026-05-24 12:15:39Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 3be6deaa-fea1-428f-8ed0-e1600d371200 Correlation ID: 055b4c0a-34fa-4b06-b4e2-66c926f59d57 Timestamp: 2026-05-24 12:15:39Z
+
+EXIT: 0
+
+===== pac solution export unmanaged =====
+COMMAND: pac solution export --name PMO_v11_Tarefas --path '.planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4a\import_log_review_3_20\post_import_3_20_export.zip' --managed false
+Connected as mbenicios@minsait.com
+Connected to... 
+Could not connect to the Dataverse organization at https://colofertasbrasilpro.crm4.dynamics.com/.
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Failed to connect to Dataverse
+    ExternalTokenManagement Authentication Requested but not configured correctly. 003
+        AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 0f261a8c-f56b-41ee-96f9-50bba8a71200 Correlation ID: 8905a18d-a9a1-402b-a500-c7bb7247d6db Timestamp: 2026-05-24 12:15:44Z
+
+Failed to connect to Dataverse
+ExternalTokenManagement Authentication Requested but not configured correctly. 003
+AADSTS70043: The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on 2026-04-24T02:04:25.9745399Z and the maximum allowed lifetime for this request is 2592000. Trace ID: 0f261a8c-f56b-41ee-96f9-50bba8a71200 Correlation ID: 8905a18d-a9a1-402b-a500-c7bb7247d6db Timestamp: 2026-05-24 12:15:44Z
+
+EXIT: 0

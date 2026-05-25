@@ -1,0 +1,11 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestampBrt": "2026-05-24 09:19:08 BRT",
+  "mission": "PM0-3_20-POST-IMPORT-VERIFY",
+  "verdict": "HOLD",
+  "reason": "PAC Dataverse auth expired (AADSTS70043); tenant runtime/export checks unavailable; AQ-08 live reverify invalid/auth-blocked.",
+  "importLogSha256": "0397356A0460837506B26B65896E278B55007FE7507423F510911DF3EF6F7D5F",
+  "zero0x80040216": true,
+  "importLogFinding": "One real nonblank Sin procesar activation row for PM0_PA_Card_AtualizarStatus; no 0x80040216.",
+  "pacAuth": "Token Expires 24/04/2026 03:16:36 +00:00; Dataverse commands report AADSTS70043."
+}

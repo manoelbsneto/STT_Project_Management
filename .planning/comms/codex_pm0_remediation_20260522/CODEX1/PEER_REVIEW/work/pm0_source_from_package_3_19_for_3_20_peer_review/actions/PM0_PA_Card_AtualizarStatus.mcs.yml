@@ -1,0 +1,48 @@
+mcs.metadata:
+  componentName: PM0_PA_Card_AtualizarStatus
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: routeKey
+    value: ="AtualizarStatus"
+
+  - kind: ManualTaskInput
+    propertyName: projectId
+    value: =Global.PMO_Status_Projeto
+
+  - kind: ManualTaskInput
+    propertyName: rag
+    value: =Global.PMO_Status_RAG
+
+  - kind: ManualTaskInput
+    propertyName: resumo
+    value: =Global.PMO_Status_Resumo
+
+  - kind: ManualTaskInput
+    propertyName: percentual
+    value: =Global.PMO_Status_Percentual
+
+  - kind: ManualTaskInput
+    propertyName: risco
+    value: =Global.PMO_Status_Risco
+
+  - kind: ManualTaskInput
+    propertyName: bloqueio
+    value: =Global.PMO_Status_Bloqueio
+
+  - kind: ManualTaskInput
+    propertyName: proximaAcao
+    value: =Global.PMO_Status_ProximaAcao
+
+outputs:
+  - propertyName: result
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 1721e0a3-a250-f111-bec7-000d3abc5cc6
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

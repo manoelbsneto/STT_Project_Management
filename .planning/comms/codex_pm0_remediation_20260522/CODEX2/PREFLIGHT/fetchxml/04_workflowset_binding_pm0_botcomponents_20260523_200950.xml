@@ -1,0 +1,12 @@
+<fetch>
+  <entity name="botcomponent">
+    <attribute name="botcomponentid" />
+    <attribute name="name" />
+    <attribute name="componenttype" />
+    <attribute name="statecode" />
+    <attribute name="statuscode" />
+    <filter>
+      <condition attribute="name" operator="like" value="%PM0_PA_Card%" />
+    </filter>
+  </entity>
+</fetch>

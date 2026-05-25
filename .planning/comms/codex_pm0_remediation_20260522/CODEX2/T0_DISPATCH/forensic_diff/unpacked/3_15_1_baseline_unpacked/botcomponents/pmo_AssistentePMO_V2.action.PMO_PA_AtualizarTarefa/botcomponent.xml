@@ -1,0 +1,11 @@
+<botcomponent schemaname="pmo_AssistentePMO_V2.action.PMO_PA_AtualizarTarefa">
+  <componenttype>9</componenttype>
+  <description>Acao vinculada ao fluxo Power Automate PMO_PA_AtualizarTarefa - atualiza tarefa e recalcula percentual do projeto.</description>
+  <iscustomizable>1</iscustomizable>
+  <name>PMO_PA_AtualizarTarefa</name>
+  <parentbotid>
+    <schemaname>pmo_AssistentePMO_V2</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

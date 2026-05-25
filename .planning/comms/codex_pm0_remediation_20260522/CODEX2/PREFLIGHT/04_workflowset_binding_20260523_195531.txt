@@ -1,0 +1,7 @@
+{
+    "fetchXmlPath":  ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\04_workflowset_binding_pm0_botcomponents_20260523_195525.xml",
+    "command":  "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\04_workflowset_binding_pm0_botcomponents_20260523_195525.xml",
+    "exitCode":  0,
+    "stdout":  "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nbotcomponentid                       statecode componenttype name                                 statuscode\r\n3f9abdf2-8801-4602-83dd-002a31f0b53e Activo    Tema (V2)     PM0_PA_Card_CriarTarefa              Activo\r\nf6afac82-ec2b-47fb-a3d6-4aebad708702 Activo    Tema (V2)     PM0_PA_Card_AtualizarTarefa          Activo\r\n0956d0c0-05f1-429c-8893-6352a927d535 Activo    Tema (V2)     PM0_PA_Card_ListarTarefas            Activo\r\nbeb83cc5-c09c-4cd3-a279-20846686ea3e Activo    Tema (V2)     PM0_PA_Card_AtualizarStatus          Activo\r\n0635831a-6b13-45d6-b10e-983fcc63eefe Activo    Tema (V2)     PM0_PA_Card_ResumoExecutivoPortfolio Activo\r\n\r\n",
+    "stderr":  ""
+}

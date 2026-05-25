@@ -1,0 +1,34 @@
+Agent: Codex #2 Lead
+Timestamp: 2026-05-23 17:48:40 BRT
+Task: Read-only pac solution export for forensic diff
+PAC: C:\Users\dataops-lab\AppData\Local\Microsoft\PowerAppsCli\Microsoft.PowerApps.CLI.2.6.4\tools\pac.exe
+--- COMMAND PMO_v11_Tarefas ---
+C:\Users\dataops-lab\AppData\Local\Microsoft\PowerAppsCli\Microsoft.PowerApps.CLI.2.6.4\tools\pac.exe solution export --name PMO_v11_Tarefas --path .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\forensic_diff\live_3_17_export.zip --managed false --include canvas
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: An unknown argument value for --include was passed.
+
+Usage: pac solution export [--environment] --name [--path] [--managed] [--include] [--async] [--max-async-wait-time] [--overwrite] [--targetversion]
+
+  --environment               Specifies the target Dataverse. The value may be a Guid or absolute https URL. When not specified, the active organization selected for the current auth profile will be used. (alias: -env)
+  --name                      The name of the solution to be exported. (alias: -n)
+  --path                      Path where the exported solution zip file is written. (alias: -p)
+  --managed                   Whether the solution should be exported as a managed solution. (alias: -m)
+  --include                   Which settings should be included in the solution being exported. (alias: -i)
+                              Values: autonumbering, calendar, customization, emailtracking, externalapplications, general, isvconfig, marketing, outlooksynchronization, relationshiproles, sales
+  --async                     Exports the solution asynchronously. (alias: -a)
+  --max-async-wait-time       Max asynchronous wait time in minutes. The default value is 60 minutes. (alias: -wt)
+  --overwrite                 The exported solution file can overwrite the solution zip file on the local file system. (alias: -ow)
+  --targetversion             (deprecated) The version that the exported solution will support (alias: -v)
+EXIT_CODE=1
+--- COMMAND PMO_AQ07_CopilotBinding ---
+C:\Users\dataops-lab\AppData\Local\Microsoft\PowerAppsCli\Microsoft.PowerApps.CLI.2.6.4\tools\pac.exe solution export --name PMO_AQ07_CopilotBinding --path .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\forensic_diff\live_aq07_1_0_0_2_export.zip --managed false
+Connected as mbenicios@minsait.com
+Connected to... ColOfertasBrasilPro
+
+Starting Solution Export...
+Solution export succeeded.
+EXIT_CODE=0

@@ -1,0 +1,18 @@
+Agent name: Codex #2 Sub 2A
+Timestamp BRT: 2026-05-23 16:43:22 BRT
+Screenshot path: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/screenshots/20260523_164322_Codex2Sub2A_command_plan_readonly.png
+Task: Dataverse 403 unblock command plan before tenant/access commands.
+Action classification: READ-ONLY tenant discovery only for this batch.
+Owner/user authorization reference: current user instruction for Track B Sub 2A Dataverse 403 unblock; no import, publish, delete, PATCH, POST, SharePoint write, Planner write, Teams post, Graph direct, m365, service principal, ClientId/certificate auth, or HTTP Premium.
+Environment: ColOfertasBrasilPro / e2d10003-4d8e-e007-9d63-76d5fe89ef56
+Target UPN verification: az account show output user.name must match PAC/Dataverse active user UPN before any role action.
+
+Exact planned commands:
+1. az account show --output json
+2. pac auth list
+3. pac env who
+4. pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\fetchxml\systemuser_roles_by_upn.xml
+5. pac org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\fetchxml\role_names_probe.xml
+
+Write/permission-change rule: no permission write is included in this batch. If read-only evidence proves the UPN lacks the needed Dataverse role and the current identity has admin rights, Codex #2 Sub 2A will create a separate write command-plan triplet before any pac admin assign-user attempt. If admin rights are absent or the write path exceeds standing authorization, halt and write T0_DATAVERSE_403_OWNER_REQUEST.md.
+Expected evidence triplets: one .txt/.json/.png for command plan, then one .txt/.json/.png per command attempt.

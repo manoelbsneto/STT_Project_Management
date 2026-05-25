@@ -1,0 +1,23 @@
+
+artifact                                 : post_import_export_structural_check_v2
+generatedAt                              : 2026-05-24T13:55:00.3003855Z
+exportSha256                             : AA21BCBBC9289499B6F0EB669D1FF3B228862477DC844B168D76A5AC45DB5696
+tenantRaw                                : .planning\comms\codex_pm0_remediation_20260522\CODEX2\T0_DISPATCH\post_4b\recovery\import_log_review_canonical\post_canonical_import_export_raw
+solutionVersion                          : 3.20.0.0
+managed                                  : 0
+atualizarStatusItemStatusIDPresent       : True
+atualizarStatusExpectedExpressionPresent : True
+workflowHashes                           : {@{workflow=PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json; sourceExists=True; tenantExists=True; sourceSha=4D7737960092254D96750F400635294647524252B6826EC559747916734C30BA; tenantSha=AA12DBC0CEF460F6D0861BF4A26180833E04B825499BDECD7764178FFFA23E04; byteEqual=False}, @{workflow=PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json; sourceExists=True; tenantExists=True; sourceSha=9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443; tenantSha=0F5F84D51DC9867CEE42EFC837EB63C2328F3027AF27BD9CB9EDF5712047E922; byteEqual=False}, @{workflow=PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json; sourceExists=True; tenantExists=True; sourceSha=EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE; tenantSha=819D6EE3582C96444D42D9D94752C8B7F5E8FF3C776585D6D6410A4412F3D0E4; byteEqual=False}, @{workflow=PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json; sourceExists=True; tenantExists=True; sourceSha=2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101; tenantSha=2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101; byteEqual=True}…}
+
+
+Workflow hashes:
+
+workflow                                                                       sourceExists tenantExists sourceSha
+--------                                                                       ------------ ------------ ---------      
+PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json                  True         True 4D773796009225…
+PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json                  True         True 9FDE7EA0137375…
+PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json                      True         True EC2E978ED5A22A…
+PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json                    True         True 2E38E4D916CEB3…
+PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json         True         True 694744EDE481DC…
+
+

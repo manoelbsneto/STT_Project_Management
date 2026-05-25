@@ -1,0 +1,225 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp": "2026-05-23 19:21:35 BRT",
+  "source316": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/forensic_diff/unpacked/3_16_fix_unpacked",
+  "source317": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/forensic_diff/unpacked/3_17_live_unpacked",
+  "target318": ".planning/comms/codex_pm0_remediation_20260522/CODEX2/PACKAGE/v3_18/work/unpacked_3_18",
+  "expected316Count": 13,
+  "expected316Matched": 13,
+  "opsFailureFiles": 2,
+  "opsFailureMatched": 2,
+  "rootCheckCount": 17,
+  "rootFailedCount": 5,
+  "failedRecipeCount": 0,
+  "recipeRows": [
+    {
+      "rel": "Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "expectedSource": "3.16_fix",
+      "sha316": "31D6FFA24E75DF3EE9013E038B23ACECEED150B4D79BD21E7B1FA7FFF728B03B",
+      "sha317": "ABSENT",
+      "sha318": "31D6FFA24E75DF3EE9013E038B23ACECEED150B4D79BD21E7B1FA7FFF728B03B",
+      "match": true
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "expectedSource": "3.16_fix",
+      "sha316": "6BF6D6C4FBB38BB5972A8CB22E6066EFD76460E46128968BA7BE89D37BE2E01E",
+      "sha317": "ABSENT",
+      "sha318": "6BF6D6C4FBB38BB5972A8CB22E6066EFD76460E46128968BA7BE89D37BE2E01E",
+      "match": true
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "expectedSource": "3.16_fix",
+      "sha316": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "sha317": "ABSENT",
+      "sha318": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "match": true
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "expectedSource": "3.16_fix",
+      "sha316": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "sha317": "ABSENT",
+      "sha318": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "match": true
+    },
+    {
+      "rel": "Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "expectedSource": "3.16_fix",
+      "sha316": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "sha317": "ABSENT",
+      "sha318": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F",
+      "sha317": "8CEDEA1A0A45235FD3C5BDB1EBE254B791A8AA41D0369B57300362062EECEFF5",
+      "sha318": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644",
+      "sha317": "6A9B4717026A8355D616A6DDE98FAF4AF9E4453F00E9A420F58006C21C39E8B1",
+      "sha318": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19",
+      "sha317": "2B8E89DCACBAD8EC5F9AB4AAD9224E7BE23C63ADD32316083B398A7447E394C0",
+      "sha318": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D",
+      "sha317": "002704B9DE5C38FABDC86921CD5B4FAC355A7022B440CDB84709052D23C1993C",
+      "sha318": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7",
+      "sha317": "46AF5CA427E6DBE7CED69F9AB181080A31043519EDC07E31E8F67D74F17A68B0",
+      "sha318": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1",
+      "sha317": "AE2B9EEA90FF65E5A1DB24A0A2CB2BE40254AF3C55925AC149957FDF59D68E4D",
+      "sha318": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319",
+      "sha317": "6CC077D85B2C5058A442BB15C0ED33E0DE3EABE29D1FD7115EDBB345559153A3",
+      "sha318": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data",
+      "expectedSource": "3.16_fix",
+      "sha316": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA",
+      "sha317": "7AA6431EE73AC799A9508D810798B7E015AD5957F5B581F463FDBC7A1A100BE5",
+      "sha318": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA",
+      "match": true
+    }
+  ],
+  "opsFailureRows": [
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/botcomponent.xml",
+      "expectedSource": "3.17_live",
+      "sha316": "ABSENT",
+      "sha317": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "sha318": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "match": true
+    },
+    {
+      "rel": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling/data",
+      "expectedSource": "3.17_live",
+      "sha316": "ABSENT",
+      "sha317": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "sha318": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "match": true
+    }
+  ],
+  "rootChecks": [
+    {
+      "name": "solution.xml Version=3.18.0.0",
+      "passed": true,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "solution.xml Managed=0",
+      "passed": true,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "customizations.xml includes PM0_PA_Card_AtualizarStatus",
+      "passed": true,
+      "evidence": "customizations.xml"
+    },
+    {
+      "name": "solution.xml root component includes PM0_PA_Card_AtualizarStatus",
+      "passed": false,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "workflowset includes PM0_PA_Card_AtualizarStatus",
+      "passed": true,
+      "evidence": "Assets/botcomponent_workflowset.xml"
+    },
+    {
+      "name": "customizations.xml includes PM0_PA_Card_AtualizarTarefa",
+      "passed": true,
+      "evidence": "customizations.xml"
+    },
+    {
+      "name": "solution.xml root component includes PM0_PA_Card_AtualizarTarefa",
+      "passed": false,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "workflowset includes PM0_PA_Card_AtualizarTarefa",
+      "passed": true,
+      "evidence": "Assets/botcomponent_workflowset.xml"
+    },
+    {
+      "name": "customizations.xml includes PM0_PA_Card_CriarTarefa",
+      "passed": true,
+      "evidence": "customizations.xml"
+    },
+    {
+      "name": "solution.xml root component includes PM0_PA_Card_CriarTarefa",
+      "passed": false,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "workflowset includes PM0_PA_Card_CriarTarefa",
+      "passed": true,
+      "evidence": "Assets/botcomponent_workflowset.xml"
+    },
+    {
+      "name": "customizations.xml includes PM0_PA_Card_ListarTarefas",
+      "passed": true,
+      "evidence": "customizations.xml"
+    },
+    {
+      "name": "solution.xml root component includes PM0_PA_Card_ListarTarefas",
+      "passed": false,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "workflowset includes PM0_PA_Card_ListarTarefas",
+      "passed": true,
+      "evidence": "Assets/botcomponent_workflowset.xml"
+    },
+    {
+      "name": "customizations.xml includes PM0_PA_Card_ResumoExecutivoPortfolio",
+      "passed": true,
+      "evidence": "customizations.xml"
+    },
+    {
+      "name": "solution.xml root component includes PM0_PA_Card_ResumoExecutivoPortfolio",
+      "passed": false,
+      "evidence": "solution.xml"
+    },
+    {
+      "name": "workflowset includes PM0_PA_Card_ResumoExecutivoPortfolio",
+      "passed": true,
+      "evidence": "Assets/botcomponent_workflowset.xml"
+    }
+  ]
+}

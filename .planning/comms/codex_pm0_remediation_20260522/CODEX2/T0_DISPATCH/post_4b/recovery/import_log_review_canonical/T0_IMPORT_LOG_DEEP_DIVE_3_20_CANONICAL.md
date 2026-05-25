@@ -1,0 +1,199 @@
+# T0 Import Log Deep Dive 3.20 Canonical (Recovery) - V2 Runtime Revalidation
+
+## Header
+
+- Agent: Codex #2 Lead
+- Mission ID: PM0-3_20-CANONICAL-FULL-VALIDATE-V2
+- Timestamp: 2026-05-24 11:01:24 BRT
+- Screenshot: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4b/recovery/import_log_review_canonical/screenshots/20260524T140124Z_Codex2Lead_full_validate_v2_hold_publish_all_customizations.png
+- Evidence copy: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4b/recovery/import_log_review_canonical/import_41.xml
+- Evidence copy SHA256: C596F47E997E3F9B4009DF00EE2D769BB3EB22AF7A2362CD168999EA32015B5E
+- Proof of reading: READING_LOG.md, READING_SUMMARY.md, RULES_INTERNALIZED.md
+
+## Executive Verdict
+
+HOLD_PENDING_OWNER_PUBLISH_ALL_CUSTOMIZATIONS. The tenant now verifies as PMO_v11_Tarefas 3.20.0.0 unmanaged, AQ-08 is PASS with blockingTopicCount=0, tenant export contains item/StatusID, and source-vs-tenant PM0 workflow diffs have zero functional differences after expected Dataverse normalization. Gate 4B still must not be cleared because live workflow inventory shows PM0_PA_Card_AtualizarStatus as Borrador/Borrador; Owner clarified that Publicar todas as personalizacoes has not yet been executed after import.
+
+No rebuild is indicated by the evidence. The remaining action is an Owner-authorized tenant publish/customization propagation step, followed by a focused read-only recheck.
+
+## Recovery Comparison Table (import 39 vs import 41)
+
+| Componente | Status import (39) | Status import (41) | Delta |
+|---|---|---|---|
+| PM0_PA_Card_AtualizarStatus | activation=Sin procesar; failed=0 | activation=Sin procesar; failed=0 | NO_CHANGE_IMPORT_LOG |
+| PM0_PA_Card_AtualizarTarefa | replacement notice; activation clean | replacement notice; activation clean | NO_CHANGE |
+| PM0_PA_Card_CriarTarefa | replacement notice; activation clean | replacement notice; activation clean | NO_CHANGE |
+| PM0_PA_Card_ListarTarefas | replacement notice; activation clean | replacement notice; activation clean | NO_CHANGE |
+| PM0_PA_Card_ResumoExecutivoPortfolio | replacement notice; activation clean | replacement notice; activation clean | NO_CHANGE |
+
+Canonical recovery did improve installed tenant identity: PAC now reports PMO_v11_Tarefas version 3.20.0.0, unmanaged, and export content matches the canonical 3.20 package functionally.
+
+## Final Solution Version Reported
+
+| Check | Result |
+|---|---|
+| Import log solution unique name | PMO_v11_Tarefas |
+| Import log version | 3.20.0.0 |
+| Import log package type | No administrada |
+| PAC solution list | PMO_v11_Tarefas 3.20.0.0 Managed=False |
+| Tenant export solution.xml | Version=3.20.0.0, Managed=0 |
+| Tenant export SHA256 | AA21BCBBC9289499B6F0EB669D1FF3B228862477DC844B168D76A5AC45DB5696 |
+
+## Component Status Table
+
+Total component worksheet rows parsed: 70.
+
+| Classification | Count | Notes |
+|---|---:|---|
+| Rows containing Procesado | 62 | Import processed rows, including replacement notices |
+| Workflow replacement notices | 16 | 0x80045042, expected deactivated-and-replaced warning |
+| Blocking activation failures | 0 | Zero 0x80040216 rows |
+| Other error-code rows | 0 | No other 0xNNNNNNNN code found |
+| Blank workbook padding | 7 | Sin procesar rows with no component identity |
+| Real nonblank Sin procesar rows | 1 | PM0_PA_Card_AtualizarStatus activation row |
+| Skipped real components | 0 | No skipped nonblank PM0 component rows found |
+
+## Errors And Warnings, Classified
+
+| Class | Count | Meaning |
+|---|---:|---|
+| BLOCKER_ACTIVATION_FAILURE | 0 | 0x80040216; cleared |
+| INFO_EXPECTED_REPLACEMENT | 16 | 0x80045042; replacement notice after workflow definition replacement |
+| UNKNOWN_ERROR_CODE | 0 | No unclassified error codes |
+| OrigemEntrada log hits | 0 | Prior 3.19 diagnostic cleared |
+| empty()/integer log hits | 0 | Prior numeric diagnostics absent |
+| StatusID-related log hits | 0 | StatusID import-log diagnostic absent |
+| REAL_SIN_PROCESAR_ACTIVATION | 1 | AtualizarStatus activation row not processed in import log |
+
+## Five PM0 Component Verification
+
+| PM0 workflow | Import presence | Import classification | Import activation row | PAC activation status |
+|---|---|---|---|---|
+| PM0_PA_Card_AtualizarStatus | Present | IMPORTED_WITH_UNPROCESSED_ACTIVATION_ROW | Sin procesar | Borrador/Borrador |
+| PM0_PA_Card_AtualizarTarefa | Present | UPDATED_REPLACED | Clean | Activado/Activado |
+| PM0_PA_Card_CriarTarefa | Present | UPDATED_REPLACED | Clean | Activado/Activado |
+| PM0_PA_Card_ListarTarefas | Present | UPDATED_REPLACED | Clean | Activado/Activado |
+| PM0_PA_Card_ResumoExecutivoPortfolio | Present | UPDATED_REPLACED | Clean | Activado/Activado |
+
+PowerApps Get-Flow independently confirms the same operational state: AtualizarStatus Enabled=False; the other four PM0 flows are Enabled=True.
+
+## Cross-Check Vs 3.20 Canonical Package
+
+| Check | Source 3.20 | Tenant export | Result |
+|---|---|---|---|
+| Package SHA | ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC | N/A | PASS |
+| solution.xml Version | 3.20.0.0 | 3.20.0.0 | PASS |
+| solution.xml Managed | 0 | 0 | PASS |
+| AtualizarStatus item/StatusID | Present | Present | PASS |
+| AtualizarStatus expected StatusID expression | Present | Present | PASS |
+| Five PM0 workflow JSONs present | Yes | Yes | PASS |
+| Other 4 PM0 flows hash equivalence | Yes modulo normalization | Yes modulo normalization | PASS |
+| 5 topic YAML/action binding correctness | Expected action references | Tenant byte-equal + expected references present | PASS |
+
+## Post-Import Verification Results
+
+| Check | Result |
+|---|---|
+| Auth resolution | PASS via A.4 profile recreation |
+| pac env who | PASS |
+| pac solution list | PASS: PMO_v11_Tarefas 3.20.0.0 Managed=False |
+| pac solution export | PASS |
+| Tenant export SHA256 | AA21BCBBC9289499B6F0EB669D1FF3B228862477DC844B168D76A5AC45DB5696 |
+| Export structural check | PASS |
+| Source-vs-tenant workflow diff | PASS, zero functional diffs after connectionName/templateName normalization |
+| AQ-08 reverify | PASS, blockingTopicCount=0 |
+| Workflow activation inventory | FAIL_CURRENT_RUNTIME: AtualizarStatus still Borrador/Borrador |
+| pac copilot list | PASS: Assistente PMO V2 Published / Active / Provisioned |
+| Bot row fetch | PASS: Activo / Publicado / Aprovisionado, publishedon 22/05/2026 14:40 |
+
+## Hypothesis Verdict Table
+
+| Hypothesis | Status | Evidence |
+|---|---|---|
+| H1: import (41) confirms version 3.20.0.0 | CONFIRMED | import_41.xml, import_41_parsed.json |
+| H2: zero 0x80040216 | CONFIRMED | evidence/import_41_analysis.json |
+| H3: only expected 0x80045042 warnings | CONFIRMED | evidence/import_41_analysis.json |
+| H4: tenant active solution is 3.20.0.0 unmanaged | CONFIRMED | evidence/runtime_pac_solution_identity.{txt,json,png} |
+| H5: five PM0 workflows Activado/Activado | REFUTED_CURRENT_RUNTIME | evidence/runtime_pac_workflow_inventory.{txt,json,png} |
+| H6: tenant export keeps item/StatusID | CONFIRMED | evidence/post_import_export_structural_check_v2.{txt,json,png} |
+| H7: AQ-08 reverify PASS | CONFIRMED | aq08_post_canonical_import_v2/aq08_post_remediation_reverify_report.json |
+| H8: five in-scope topics no longer show validation defects | CONFIRMED_BY_EXPORT_AND_AQ08; UI_VISUAL_NOT_EXECUTED | evidence/topic_action_binding_check_v2.{txt,json,png}, AQ-08 report |
+| H9: bot still Published / Active / Provisioned | CONFIRMED | evidence/runtime_pac_copilot_list.{txt,json,png}, runtime_bot_row_fetch_publishedon |
+| H10: state better than after _3_18.zip import | CONFIRMED_FOR_VERSION_AND_CONTENT; RUNTIME_ACTIVATION_PENDING | PAC solution list/export and workflow inventory |
+
+## Red/Yellow Flags Found
+
+| Flag | Status | Evidence |
+|---|---|---|
+| RED-001 | Clear | zero 0x80040216 |
+| RED-002 | Clear | no failed activation/validation error code rows |
+| RED-003 | ACTIVE_CURRENT_RUNTIME | AtualizarStatus is Borrador/Borrador; Owner says publish-all-customizations has not yet run |
+| RED-004 | Clear | tenant solution version is 3.20.0.0 |
+| RED-005 | Clear | item/StatusID present in tenant export |
+| RED-006 | Clear | AQ-08 PASS, exit code 0 |
+| RED-007 | Not observed by AQ/export; UI visual not executed | AQ-08 PASS and topic action bindings byte-equal |
+| RED-008 | Clear | bot Published / Active / Provisioned |
+| RED-009 | Clear | zero functional source-vs-tenant workflow diffs after expected normalization |
+| RED-010 | Clear | import metadata and PAC identity agree with canonical 3.20 |
+| YEL-001 | Active expected | Dataverse export normalized connectionName/templateName |
+| YEL-002 | Resolved | Auth refresh needed; A.4 resolved it |
+| YEL-003 | Active expected | Residual 3.19 notes remain out of scope |
+| PROC-07 | Active | Owner import completed before Publicar todas as personalizacoes; runtime propagation still pending |
+
+## Recovery Effectiveness Assessment
+
+The canonical import recovered package/version/content state. The 40-topic publish failure after the wrong _3_18.zip import is not reproduced in AQ-08: all five in-scope topics PASS and contain expected action references. The remaining non-clean state is workflow activation/publication propagation for PM0_PA_Card_AtualizarStatus, which is consistent with the unexecuted Publicar todas as personalizacoes step and with the import-log replacement warning.
+
+## Risk Assessment For Gate 4B Publish
+
+| Risk | Assessment |
+|---|---|
+| AtualizarStatus runtime | Pending publish-all-customizations; currently Borrador/Borrador |
+| Topic-to-action routing | Intact by AQ-08 and tenant export |
+| Prior OrigemEntrada defect | Cleared |
+| Prior numeric coalesce defects | Cleared for in-scope checks |
+| Prior StatusID activation defect | Source/content fixed; runtime activation still pending |
+| Tenant package/version drift | None observed |
+| Bot state | Published / Active / Provisioned; publishedon unchanged at 22/05/2026 14:40 |
+
+## Final Verdict
+
+HOLD_PENDING_OWNER_PUBLISH_ALL_CUSTOMIZATIONS. Do not rebuild. Do not proceed to Gate 4B Copilot Studio publish yet. Owner should run Publicar todas as personalizacoes in Power Platform/Power Automate, then Codex #2 should rerun the read-only mini-check: PAC workflow inventory, AQ-08, pac copilot list, and bot row fetch. If PM0_PA_Card_AtualizarStatus becomes Activado/Activado, the evidence supports Gate 4B publish.
+
+## Delta Recheck After Publicar Todas As Personalizacoes
+
+- Timestamp: 2026-05-24 11:55:06 BRT
+- Mission: PM0-3_20-POST-PUBLISH-ALL-RECHECK
+- Report: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4b/recovery/import_log_review_canonical/post_publish_all/POST_PUBLISH_ALL_RECHECK.md
+- Halt: .planning/comms/codex_pm0_remediation_20260522/CODEX2/T0_DISPATCH/post_4b/recovery/import_log_review_canonical/post_publish_all/HALT_REPORT_DELTA.md
+
+Post-publish-all recheck did not clear Gate 4B. PM0_PA_Card_AtualizarStatus remained Borrador/Borrador, while the other four PM0 flows remained Activado/Activado. AQ-08 returned overall=BLOCK with blockingTopicCount=3 for AtualizarTarefa, ConsultarPortfolio, and CriarTarefa expected action references. Tenant solution identity remains PMO_v11_Tarefas 3.20.0.0 unmanaged, and Assistente PMO V2 remains Published / Active / Provisioned with publishedon 22/05/2026 14:40.
+
+Updated verdict: HOLD. Gate 4B must not proceed until the runtime activation and AQ-08 blockers are investigated and cleared.
+
+## Evidence Index
+
+- READING_LOG.md
+- READING_SUMMARY.md
+- RULES_INTERNALIZED.md
+- AUTH_RESOLUTION_TRAIL.md
+- RUNTIME_EVIDENCE.md
+- import_41.xml
+- import_41_parsed.json
+- evidence/import_41_analysis.{txt,json,png}
+- evidence/import_39_vs_41_comparison.{txt,json,png}
+- evidence/auth_paths/A01_pac_auth_list_winps51.{txt,json,png} through A10_auth_cache_probe.{txt,json,png}
+- evidence/A11_external_auth_references.{txt,json,png}
+- evidence/runtime_pac_solution_identity.{txt,json,png}
+- evidence/runtime_pac_solution_export.{txt,json,png}
+- post_canonical_import_export.zip
+- post_canonical_import_export_raw/
+- evidence/post_import_export_structural_check_v2.{txt,json,png}
+- evidence/source_vs_tenant_workflow_diff_v2.{txt,json,png}
+- evidence/topic_action_binding_check_v2.{txt,json,png}
+- aq08_post_canonical_import_v2/aq08_post_remediation_reverify_report.json
+- evidence/runtime_aq08_reverify.{txt,json,png}
+- evidence/runtime_pac_workflow_inventory.{txt,json,png}
+- evidence/runtime_pac_copilot_list.{txt,json,png}
+- evidence/runtime_bot_row_fetch_publishedon.{txt,json,png}
+- HALT_REPORT.md

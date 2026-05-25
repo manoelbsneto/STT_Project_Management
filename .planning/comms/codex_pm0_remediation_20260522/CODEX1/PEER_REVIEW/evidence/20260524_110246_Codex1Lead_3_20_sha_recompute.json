@@ -1,0 +1,18 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp_brt": "2026-05-24 08:02:46 BRT",
+  "expected_sha256": "ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC",
+  "package_rows": [
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\package\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+      "sha256": "ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC",
+      "matchesExpected": true
+    },
+    {
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\Solution\\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip",
+      "sha256": "ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC",
+      "matchesExpected": true
+    }
+  ],
+  "package_copy_match": true
+}

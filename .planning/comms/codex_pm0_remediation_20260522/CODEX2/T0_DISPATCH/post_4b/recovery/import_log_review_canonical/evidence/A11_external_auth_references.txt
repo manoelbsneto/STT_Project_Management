@@ -1,0 +1,16 @@
+A.11 External auth references checked
+
+Sources:
+- https://github.com/microsoft/PowerPlatform-Cli/issues?q=AADSTS70043
+- https://github.com/microsoft/PowerPlatform-Cli/issues?q=is%3Aopen+auth
+- https://learn.microsoft.com/en-us/troubleshoot/azure/active-directory/error-code-aadsts70043
+- https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/auth
+- https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Findings:
+1. Microsoft Learn pac auth confirms pac auth create creates a local auth profile and --environment can target an environment by ID, URL, unique name, or partial name.
+2. Microsoft Learn pac auth confirms --deviceCode is available for interactive sign-in when browser-based auth is not practical.
+3. Microsoft Learn pac auth confirms pac auth list/select are the supported profile switching commands.
+4. AADSTS70043 is consistent with expired/invalid refresh token/session frequency, so interactive re-authentication or profile recreation is the compatible mitigation.
+5. The direct GitHub PowerPlatform-Cli issue URLs did not provide an actionable exact issue in public browsing; broader Microsoft build-tools discussions are the visible feedback channel for PAC CLI related questions.
+6. Applied compatible action locally: A.4 recreated a PAC profile against tenant 7808e005-1489-4374-954b-d3b08f193920 and environment URL https://colofertasbrasilpro.crm4.dynamics.com/; auth succeeded.

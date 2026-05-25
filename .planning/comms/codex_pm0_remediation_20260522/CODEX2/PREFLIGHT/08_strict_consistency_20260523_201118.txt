@@ -1,0 +1,7 @@
+{
+    "evidence":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\20260523_171117_Codex2_package_consistency_strict.md",
+    "screenshot":  "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\20260523_171117_Codex2_package_consistency_strict.png",
+    "packageSha256":  "3327BD0F2E7FB3805BEA9C70D23F564F15714DAC5B6CD8451958D430F991E7EB",
+    "workflowsetPm0Lines":  5,
+    "unexplainedDiffs":  0
+}

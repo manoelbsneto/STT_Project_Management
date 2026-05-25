@@ -1,0 +1,15 @@
+# A.3 pac auth create with deviceCode
+
+- ID: A03_pac_auth_create_devicecode
+- Started BRT: 2026-05-24 10:47:35 BRT
+- Status: TIMEOUT_OR_INTERACTIVE
+- Capture exit: 124
+
+```powershell
+pac auth create --environment ColOfertasBrasilPro --deviceCode
+```
+
+```text
+TIMEOUT after 90 seconds; likely interactive prompt or blocked command.
+
+```

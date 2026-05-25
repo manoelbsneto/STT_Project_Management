@@ -1,0 +1,21 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-24 02:47:48 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054740_Codex2Lead_status_diario_field_schema.png
+
+Step 3.3 Status Diario field schema read-only
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File work/get_status_diario_schema_to_file.ps1
+Exit code: 0
+Parse OK: True
+Auth error: 
+Full field count: 102
+
+Required=True fields:
+- Title | T?tulo | Text
+- StatusID | StatusID | Text
+- ProjectID | ProjectID | Text
+- DataRegistro | DataRegistro | DateTime
+- RAG | RAG | Choice
+- Resumo | Resumo | Note
+- OrigemEntrada | OrigemEntrada | Choice
+
+Full raw JSON snapshot: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054740_Codex2Lead_status_diario_field_schema.raw.json

@@ -1,0 +1,207 @@
+{
+  "agent": "Codex #1 Lead",
+  "timestamp_brt": "2026-05-24 08:02:59 BRT",
+  "unpacked": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review",
+  "source_root": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\pm0_source_from_package_3_20_peer_review",
+  "workflow_results": [
+    {
+      "name": "ResumoExecutivoPortfolio",
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "sha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0
+    },
+    {
+      "name": "ListarTarefas",
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "sha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0
+    },
+    {
+      "name": "CriarTarefa",
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "sha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "emptyTriggerBodyCount": 1,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 1
+    },
+    {
+      "name": "AtualizarStatus",
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "sha256": "4D7737960092254D96750F400635294647524252B6826EC559747916734C30BA",
+      "emptyTriggerBodyCount": 0,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 0
+    },
+    {
+      "name": "AtualizarTarefa",
+      "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "exists": true,
+      "sha256": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "emptyTriggerBodyCount": 5,
+      "lengthTriggerBodyCount": 0,
+      "bareChoiceLookupPersonCount": 1
+    }
+  ],
+  "defect_checks": [
+    {
+      "check": "AtualizarStatus OrigemEntrada Value = CopilotStudio",
+      "passed": true,
+      "evidence": "grep item/OrigemEntrada/Value"
+    },
+    {
+      "check": "AtualizarStatus no bare item/OrigemEntrada string binding",
+      "passed": true,
+      "evidence": "grep bare item/OrigemEntrada"
+    },
+    {
+      "check": "AtualizarStatus no empty percentual",
+      "passed": true,
+      "evidence": "grep empty percentual"
+    },
+    {
+      "check": "AtualizarStatus coalesce percentual",
+      "passed": true,
+      "evidence": "grep coalesce percentual"
+    },
+    {
+      "check": "AtualizarTarefa no empty horasRealizadas",
+      "passed": true,
+      "evidence": "grep empty horasRealizadas"
+    },
+    {
+      "check": "AtualizarTarefa coalesce horasRealizadas",
+      "passed": true,
+      "evidence": "grep coalesce horasRealizadas"
+    },
+    {
+      "check": "AtualizarStatus Create_StatusDiario has item/StatusID",
+      "passed": true,
+      "evidence": "grep item/StatusID"
+    }
+  ],
+  "other_four_hash_compare": [
+    {
+      "workflow": "PM0_PA_Card_CriarTarefa",
+      "sha319": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "sha320": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_ListarTarefas",
+      "sha319": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "sha320": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_AtualizarTarefa",
+      "sha319": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "sha320": "9FDE7EA01373755A04B770FB1B2DB0ED62C3DBC530C87487620984DE6B9CF443",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json"
+    },
+    {
+      "workflow": "PM0_PA_Card_ResumoExecutivoPortfolio",
+      "sha319": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "sha320": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "match": true,
+      "path319": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_19_for_3_20_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "path320": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\Workflows\\PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json"
+    }
+  ],
+  "actions_functional": [
+    {
+      "name": "PM0_PA_Card_AtualizarStatus",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "name": "PM0_PA_Card_AtualizarTarefa",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "name": "PM0_PA_Card_CriarTarefa",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    },
+    {
+      "name": "PM0_PA_Card_ListarTarefas",
+      "exists": true,
+      "hasManualTaskInput": true,
+      "passed": true
+    }
+  ],
+  "topics_functional": [
+    {
+      "name": "AtualizarStatus",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "name": "AtualizarTarefa",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "name": "CriarTarefa",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    },
+    {
+      "name": "ListarTarefas",
+      "exists": true,
+      "hasInputBinding": true,
+      "passed": true
+    }
+  ],
+  "portfolio_action": {
+    "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio\\data",
+    "exists": true,
+    "hasManualTaskInput": false
+  },
+  "portfolio_topic": {
+    "path": "D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX1\\PEER_REVIEW\\work\\unpacked_3_20_peer_review\\botcomponents\\pmo_AssistentePMO_V2.topic.ConsultarPortfolio\\data",
+    "exists": true,
+    "hasInputBinding": false
+  },
+  "ops_failure_preservation": [
+    {
+      "rel": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling\\botcomponent.xml",
+      "sha317": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "sha320": "83C35FF81AEEB16EA9E542A735881A1300471BBA832B5A5C24FF4E7526BE12C5",
+      "match": true
+    },
+    {
+      "rel": "botcomponents\\pmo_AssistentePMO_V2.action.PM0_PA_OpsFailureHandling\\data",
+      "sha317": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "sha320": "51D0770CCB0EA66EA55B842EF8F0D9F8349B5B8B51E61B67FB5CAB3E75D67F83",
+      "match": true
+    }
+  ],
+  "solution_metadata": {
+    "version": "3.20.0.0",
+    "managed": "0"
+  },
+  "failed_defect_count": 0,
+  "other_four_changed_count": 0,
+  "ops_failure_changed_count": 0
+}

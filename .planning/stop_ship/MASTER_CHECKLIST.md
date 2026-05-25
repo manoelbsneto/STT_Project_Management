@@ -1,8 +1,8 @@
 # MASTER CHECKLIST
 
-Status: 🔴 **NO-SHIP** — PM0 local source and scoped 3.16 package static gates pass, but no tenant import/publish/runtime smoke has been approved or run. AQ-08 routing PASS remains structural only. See `.planning/comms/codex_pm0_remediation_20260522/`.
+Status: 🔴 **NO-SHIP** — Live tenant on PMO_v11_Tarefas 3.19.0.0 with `PM0_PA_Card_AtualizarStatus` failing activation (`0x80040216`). RCA H1 CONFIRMED 2026-05-24 02:55:01 BRT — root cause = missing `item/StatusID` in Create_StatusDiario. 3.20 BUILD COMPLETE 2026-05-24 03:16:05 BRT — SHA `ADE54BF23F60F7A9EA5AB054680640F00F4971BC201C82E130640AC1F3B28DAC` — pending Codex #1 Lead peer review and Owner Gate 4A.
 Active plan: `.planning/architecture/ADR_AQ08_HYBRID_CARD_FIRST_MIGRATION_20260520.md`
-Last updated: 2026-05-22 17:13:10 BRT | Codex | PM0 local package static gates passed; runtime remains blocked.
+Last updated: 2026-05-24 03:16:05 BRT | Codex #2 Lead via Kiro | RCA done; 3.20 built; awaits peer review.
 
 ## 🚨 CRITICAL DISCOVERY 2026-05-22 14:42 BRT
 

@@ -1,0 +1,17 @@
+Agent name: Codex #1 Lead
+Timestamp BRT: 
+2026-05-24 08:02:59 BRT
+Screenshot path: D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX1\PEER_REVIEW\evidence\20260524_110259_Codex1Lead_3_20_runtime_recipe_scan.png
+3.20 runtime recipe scan:
+True :: AtualizarStatus OrigemEntrada Value = CopilotStudio
+True :: AtualizarStatus no bare item/OrigemEntrada string binding
+True :: AtualizarStatus no empty percentual
+True :: AtualizarStatus coalesce percentual
+True :: AtualizarTarefa no empty horasRealizadas
+True :: AtualizarTarefa coalesce horasRealizadas
+True :: AtualizarStatus Create_StatusDiario has item/StatusID
+hash True :: PM0_PA_Card_CriarTarefa
+hash True :: PM0_PA_Card_ListarTarefas
+hash True :: PM0_PA_Card_AtualizarTarefa
+hash True :: PM0_PA_Card_ResumoExecutivoPortfolio
+

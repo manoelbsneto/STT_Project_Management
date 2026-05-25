@@ -1,0 +1,7 @@
+{
+    "fetchXmlPath":  ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\06_bot_row_assistente_pmo_v2_bot_20260523_201111.xml",
+    "command":  "C:\\Users\\dataops-lab\\AppData\\Local\\Microsoft\\PowerAppsCli\\Microsoft.PowerApps.CLI.2.6.4\\tools\\pac.exe org fetch --environment e2d10003-4d8e-e007-9d63-76d5fe89ef56 --xmlFile D:\\VMs\\Projetos\\STT_Project_Management\\.planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PREFLIGHT\\fetchxml\\06_bot_row_assistente_pmo_v2_bot_20260523_201111.xml",
+    "exitCode":  0,
+    "stdout":  "Connected as mbenicios@minsait.com\r\nConnected to... ColOfertasBrasilPro\r\n\r\nname              statecode statuscode    publishedon      botid\r\nAssistente PMO V2 Activo    Aprovisionado 22/05/2026 14:40 df148bf8-0a3e-495b-80c4-841dcb61d9a4\r\n\r\n",
+    "stderr":  ""
+}

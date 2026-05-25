@@ -1,0 +1,170 @@
+[
+  {
+    "path": "Assets/botcomponent_workflowset.xml",
+    "status": "MODIFIED",
+    "classification": "RECONCILED",
+    "liveSha256": "70309125D9EE157981E7D0B674A4FA4887FFD1AABF6A2D08A5A0CA0E2B801BF9",
+    "buildSha256": "D0224CA2BC093B9042FF8EE14D4170EEF1AA334483568F39E01DBF37B8DB569D"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/botcomponent.xml",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "C5CF870C0350FE0ECA928B6F4AF366AF5CB824B350AF38C4CC29A09436B79D7D",
+    "buildSha256": "D5C71838FC383B2E5B29754700B1707652FB06D24E0FA4DB4DA07E72A376E508"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "8CEDEA1A0A45235FD3C5BDB1EBE254B791A8AA41D0369B57300362062EECEFF5",
+    "buildSha256": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/botcomponent.xml",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "A24C975E722D18F79624F0065B6712F90DA44D86A507C2F3482C3397F20A0E6E",
+    "buildSha256": "4780FDF9BF624A9F790CE74A228058FB0619D8397225C01D5E66201991F71963"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "6A9B4717026A8355D616A6DDE98FAF4AF9E4453F00E9A420F58006C21C39E8B1",
+    "buildSha256": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/botcomponent.xml",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "083D3779D08AE7CFA4DE52D0CD421CC6344E8C6DA5F826ED5B1C31BAC4C4AEFD",
+    "buildSha256": "12BD1E82DDB6F70A2329E08121D44E97B486C37EECD2586C385410845294EE3C"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "2B8E89DCACBAD8EC5F9AB4AAD9224E7BE23C63ADD32316083B398A7447E394C0",
+    "buildSha256": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/botcomponent.xml",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "1C19677979C2C5C9B996A0A41A10F2271A9329D12A7B0AAC7D92DB184891BFB6",
+    "buildSha256": "C4EAB635F9AE040DDB5D882EB7C39FA597717A1F02307F17DABFB1C681071809"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "002704B9DE5C38FABDC86921CD5B4FAC355A7022B440CDB84709052D23C1993C",
+    "buildSha256": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/botcomponent.xml",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "ED9099A75A1691E029E46F7DF8D8D6D2470D79E621266D2FA53FE21E54A6F1A4",
+    "buildSha256": "E48421BA775F5001B4FE76F9BCECCA9BD64BA23EF2C4583FB21FED4559798CA8"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "DC5781A1F529AA5F35C01AB6FB1190837CBE983FA4E436472ACDA496D6A0AD1F",
+    "buildSha256": "DC6C216ACD5D723C12B458B2B055C5E0848832C1BEA0DEB0B1E2FD4F00D20901"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.action.PMO_PA_CriarProjeto/data",
+    "status": "MODIFIED",
+    "classification": "P24_PUBLISH_BINDING_RESTORE",
+    "liveSha256": "BC292F16D2F316725176E730AB49E2302D55F27B82C34D0A6B01CF228B6C0183",
+    "buildSha256": "E0D99E27DC9FD0A0F06ADFEF1B343389F5D599EDEC71BCD67681F44A2BF06F49"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "46AF5CA427E6DBE7CED69F9AB181080A31043519EDC07E31E8F67D74F17A68B0",
+    "buildSha256": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "AE2B9EEA90FF65E5A1DB24A0A2CB2BE40254AF3C55925AC149957FDF59D68E4D",
+    "buildSha256": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "C9870CEAB7CBBA076C7AD40A479B00F7645DC43593FE9C8F16D234C38E54A812",
+    "buildSha256": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "6CC077D85B2C5058A442BB15C0ED33E0DE3EABE29D1FD7115EDBB345559153A3",
+    "buildSha256": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319"
+  },
+  {
+    "path": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data",
+    "status": "MODIFIED",
+    "classification": "PM0_FIX_BINDING_OR_METADATA",
+    "liveSha256": "7AA6431EE73AC799A9508D810798B7E015AD5957F5B581F463FDBC7A1A100BE5",
+    "buildSha256": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA"
+  },
+  {
+    "path": "customizations.xml",
+    "status": "MODIFIED",
+    "classification": "RECONCILED",
+    "liveSha256": "5BCC87AD4BFC5EDEB9661BD959863ACCF9A3F9B09ABFA5C3FF6B7A0E97787500",
+    "buildSha256": "EAF5805A6DB22318466B805A63A8B03F1D4698132F04171532206E781576A593"
+  },
+  {
+    "path": "solution.xml",
+    "status": "MODIFIED",
+    "classification": "RECONCILED",
+    "liveSha256": "3C86BD1D654E62A116272645C98917A4558FFA3CD0593B9554464255DD65E865",
+    "buildSha256": "4982439FFBE2AC36D43BDE5F57CC582E101BF806CEF01084B061179493725167"
+  },
+  {
+    "path": "Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+    "status": "ADDED",
+    "classification": "PM0_FIX_ADD",
+    "liveSha256": "",
+    "buildSha256": "31D6FFA24E75DF3EE9013E038B23ACECEED150B4D79BD21E7B1FA7FFF728B03B"
+  },
+  {
+    "path": "Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+    "status": "ADDED",
+    "classification": "PM0_FIX_ADD",
+    "liveSha256": "",
+    "buildSha256": "6BF6D6C4FBB38BB5972A8CB22E6066EFD76460E46128968BA7BE89D37BE2E01E"
+  },
+  {
+    "path": "Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+    "status": "ADDED",
+    "classification": "PM0_FIX_ADD",
+    "liveSha256": "",
+    "buildSha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE"
+  },
+  {
+    "path": "Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+    "status": "ADDED",
+    "classification": "PM0_FIX_ADD",
+    "liveSha256": "",
+    "buildSha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101"
+  },
+  {
+    "path": "Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+    "status": "ADDED",
+    "classification": "PM0_FIX_ADD",
+    "liveSha256": "",
+    "buildSha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF"
+  }
+]

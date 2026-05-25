@@ -1,0 +1,236 @@
+{
+  "generated_brt": "2026-05-23 18:14:29 BRT",
+  "fix_changed_file_count": 23,
+  "conflicts": [
+    {
+      "file": "Assets/botcomponent_workflowset.xml",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "1363646B0D616DEDD07AD9D55D83200680B3DB7C7C2EF9D1706219F3FD0515B0",
+      "fix_sha256": "A8CED43A30960AED27C9FB1CFB3255434CB22FF5BF704E71A75078416088D0EB",
+      "live_sha256": "70309125D9EE157981E7D0B674A4FA4887FFD1AABF6A2D08A5A0CA0E2B801BF9"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/botcomponent.xml",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "D5C71838FC383B2E5B29754700B1707652FB06D24E0FA4DB4DA07E72A376E508",
+      "live_sha256": "C5CF870C0350FE0ECA928B6F4AF366AF5CB824B350AF38C4CC29A09436B79D7D"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarStatus/data",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "13D86FF50040DCF2753A3FC7C1A23FA3A1F45D36DC5FE0A3021EA3542DF04C2F",
+      "live_sha256": "8CEDEA1A0A45235FD3C5BDB1EBE254B791A8AA41D0369B57300362062EECEFF5"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/botcomponent.xml",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "4780FDF9BF624A9F790CE74A228058FB0619D8397225C01D5E66201991F71963",
+      "live_sha256": "A24C975E722D18F79624F0065B6712F90DA44D86A507C2F3482C3397F20A0E6E"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_AtualizarTarefa/data",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "CAFE0638867B83C6A702C50BA185F6F3DAB8B7DBFC463DE10812799749F64644",
+      "live_sha256": "6A9B4717026A8355D616A6DDE98FAF4AF9E4453F00E9A420F58006C21C39E8B1"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/botcomponent.xml",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "12BD1E82DDB6F70A2329E08121D44E97B486C37EECD2586C385410845294EE3C",
+      "live_sha256": "083D3779D08AE7CFA4DE52D0CD421CC6344E8C6DA5F826ED5B1C31BAC4C4AEFD"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_CriarTarefa/data",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "DD99D09630B59E62CB84469A4C32A2E4DA33A729C3A9BAE5216227D9268E3D19",
+      "live_sha256": "2B8E89DCACBAD8EC5F9AB4AAD9224E7BE23C63ADD32316083B398A7447E394C0"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/botcomponent.xml",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "C4EAB635F9AE040DDB5D882EB7C39FA597717A1F02307F17DABFB1C681071809",
+      "live_sha256": "1C19677979C2C5C9B996A0A41A10F2271A9329D12A7B0AAC7D92DB184891BFB6"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ListarTarefas/data",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "207DA01727D3C5DB0D67D2E07F7F80F993918C3731004B42D22E25C7732CB05D",
+      "live_sha256": "002704B9DE5C38FABDC86921CD5B4FAC355A7022B440CDB84709052D23C1993C"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/botcomponent.xml",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "E48421BA775F5001B4FE76F9BCECCA9BD64BA23EF2C4583FB21FED4559798CA8",
+      "live_sha256": "ED9099A75A1691E029E46F7DF8D8D6D2470D79E621266D2FA53FE21E54A6F1A4"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.action.PM0_PA_Card_ResumoExecutivoPortfolio/data",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "ADDED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": null,
+      "fix_sha256": "DC6C216ACD5D723C12B458B2B055C5E0848832C1BEA0DEB0B1E2FD4F00D20901",
+      "live_sha256": "DC5781A1F529AA5F35C01AB6FB1190837CBE983FA4E436472ACDA496D6A0AD1F"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarStatus/data",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "14106C5D59D7E76A35E29F6CE95B753A5AC8D8EBDA44B402CB830E34641D9622",
+      "fix_sha256": "F4A2CBFA3D866E64093BA91C9D6605A3073BF08BDA470106A5512A64346FD1D7",
+      "live_sha256": "46AF5CA427E6DBE7CED69F9AB181080A31043519EDC07E31E8F67D74F17A68B0"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.topic.AtualizarTarefa/data",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "5BF9D09898FA24231D4234260FCCC298C0202B29B7D36D18F681104C9FF763D4",
+      "fix_sha256": "79BA5B6E70ED4C6947A4F2CE350EFEDABEF32DD0906E29E7EBCB31197128CAB1",
+      "live_sha256": "AE2B9EEA90FF65E5A1DB24A0A2CB2BE40254AF3C55925AC149957FDF59D68E4D"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.topic.ConsultarPortfolio/data",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "82502F0B75DE8D94C9045B95967312BF7831C467706285F5F1B721FFF5059BED",
+      "fix_sha256": "13DAEF282BD205E514403756D5C13B236F8303C2609F14AE1A3F48E94DE83AFC",
+      "live_sha256": "C9870CEAB7CBBA076C7AD40A479B00F7645DC43593FE9C8F16D234C38E54A812"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.topic.CriarTarefa/data",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "0A723099D7F4047F9919F61BC5BDED355DC4CA4B186806FC21B9137479B17A35",
+      "fix_sha256": "E7CB97098E68C6AFEB94FD652B7965DFC80C515584ADFD9C426D8EDC3C198319",
+      "live_sha256": "6CC077D85B2C5058A442BB15C0ED33E0DE3EABE29D1FD7115EDBB345559153A3"
+    },
+    {
+      "file": "botcomponents/pmo_AssistentePMO_V2.topic.ListarTarefas/data",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "D4E0198C23A6C9B5B6F08CB835338DC431E5E2B620A3242A1B6101AD12D5BB21",
+      "fix_sha256": "192C4F2DC3ED3B56EE39D50AABA3828E5822FB8DA51F83970516C38EFF58AEEA",
+      "live_sha256": "7AA6431EE73AC799A9508D810798B7E015AD5957F5B581F463FDBC7A1A100BE5"
+    },
+    {
+      "file": "customizations.xml",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "13B2517229D2F8CCFF289AA7A363F61E55224518438875D4E6781B9D45D8169C",
+      "fix_sha256": "890191DDEC3007AE34EC0E3C51469BE8AF852969A193D3E533164042FFD02911",
+      "live_sha256": "5BCC87AD4BFC5EDEB9661BD959863ACCF9A3F9B09ABFA5C3FF6B7A0E97787500"
+    },
+    {
+      "file": "solution.xml",
+      "fix_delta_status": "MODIFIED",
+      "live_delta_status": "MODIFIED",
+      "classification": "SUBSTANTIVE",
+      "reason": "3.17 has a real content delta versus 3.15.1 for this 3.16-changed file.",
+      "baseline_sha256": "B08D1AEBA75634E12F859350DB32E51EDBBFA18C4A355884B22E555CE43AFDA5",
+      "fix_sha256": "7FA9ED4F9D3BD11882DF9428C892CBCD10D6DC7BBA28B5F28C16EAA9D13D4B5A",
+      "live_sha256": "3C86BD1D654E62A116272645C98917A4558FFA3CD0593B9554464255DD65E865"
+    },
+    {
+      "file": "Workflows/PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "MISSING_IN_DIFF",
+      "classification": "SUBSTANTIVE",
+      "reason": "File changed by 3.16 fix is absent from live/baseline comparison.",
+      "baseline_sha256": null,
+      "fix_sha256": "31D6FFA24E75DF3EE9013E038B23ACECEED150B4D79BD21E7B1FA7FFF728B03B",
+      "live_sha256": null
+    },
+    {
+      "file": "Workflows/PM0_PA_Card_AtualizarTarefa-7C6300C2-A250-F111-BEC7-000D3ABC5CC6.json",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "MISSING_IN_DIFF",
+      "classification": "SUBSTANTIVE",
+      "reason": "File changed by 3.16 fix is absent from live/baseline comparison.",
+      "baseline_sha256": null,
+      "fix_sha256": "6BF6D6C4FBB38BB5972A8CB22E6066EFD76460E46128968BA7BE89D37BE2E01E",
+      "live_sha256": null
+    },
+    {
+      "file": "Workflows/PM0_PA_Card_CriarTarefa-7F662DB7-A250-F111-BEC7-000D3ABC5CC6.json",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "MISSING_IN_DIFF",
+      "classification": "SUBSTANTIVE",
+      "reason": "File changed by 3.16 fix is absent from live/baseline comparison.",
+      "baseline_sha256": null,
+      "fix_sha256": "EC2E978ED5A22A42D70F8A1A0215EDF7F624E3E44E2650A2E3648CCED171EABE",
+      "live_sha256": null
+    },
+    {
+      "file": "Workflows/PM0_PA_Card_ListarTarefas-E0E3C6B0-A250-F111-BEC7-000D3ABC5CC6.json",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "MISSING_IN_DIFF",
+      "classification": "SUBSTANTIVE",
+      "reason": "File changed by 3.16 fix is absent from live/baseline comparison.",
+      "baseline_sha256": null,
+      "fix_sha256": "2E38E4D916CEB3A3083245CE4C5FBBD9CD6E5BC217976C7E79F7239073CE4101",
+      "live_sha256": null
+    },
+    {
+      "file": "Workflows/PM0_PA_Card_ResumoExecutivoPortfolio-8333BD91-A250-F111-BEC7-000D3ABC5CC6.json",
+      "fix_delta_status": "ADDED",
+      "live_delta_status": "MISSING_IN_DIFF",
+      "classification": "SUBSTANTIVE",
+      "reason": "File changed by 3.16 fix is absent from live/baseline comparison.",
+      "baseline_sha256": null,
+      "fix_sha256": "694744EDE481DC1F7B12B627C1AD090D49E66FDEBC9619E4A2D12C748A9757EF",
+      "live_sha256": null
+    }
+  ]
+}

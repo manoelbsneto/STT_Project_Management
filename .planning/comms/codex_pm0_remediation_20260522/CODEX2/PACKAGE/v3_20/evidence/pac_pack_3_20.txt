@@ -1,0 +1,15 @@
+
+Packing Solution...
+
+Packing D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\unpacked_3_20 to D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\package\PMO_v11_Tarefas_3_20_PM0_STATUSID_FIX.zip
+
+Microsoft PowerPlatform CLI
+Version: 2.6.4+ga488322 (.NET Framework 4.8.9325.0)
+Online documentation: https://aka.ms/PowerPlatformCLI
+Feedback, Suggestions, Issues: https://github.com/microsoft/powerplatform-build-tools/discussions
+
+Error: Cannot find required file 'D:\VMs\Projetos\STT_Project_Management\.planning\comms\codex_pm0_remediation_20260522\CODEX2\PACKAGE\v3_20\work\unpacked_3_20\Other\Customizations.xml'.
+
+
+
+

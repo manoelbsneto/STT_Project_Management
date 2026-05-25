@@ -1,0 +1,43 @@
+# HALT REPORT - PM0 3.20 Canonical Full Validate V2
+
+- Agent: Codex #2 Lead
+- Timestamp: 2026-05-24 11:01:24 BRT
+- Mission ID: PM0-3_20-CANONICAL-FULL-VALIDATE-V2
+
+## Halt Classification
+
+HOLD_PENDING_OWNER_PUBLISH_ALL_CUSTOMIZATIONS, not auth-blocked and not rebuild-required.
+
+## Reason
+
+Runtime validation is now available. PAC confirms PMO_v11_Tarefas version 3.20.0.0 unmanaged and tenant export confirms the 3.20 item/StatusID fix. AQ-08 passes with blockingTopicCount=0. However, PM0_PA_Card_AtualizarStatus is currently Borrador/Borrador in Dataverse workflow inventory and Enabled=False through Microsoft.PowerApps.PowerShell.
+
+Owner clarified during the mission that the solution was imported but Publicar todas as personalizacoes has not yet been executed. That action is a tenant write/publish action and was outside this read-only mission authorization.
+
+## Current Evidence
+
+| Finding | Result |
+|---|---|
+| Auth | Resolved by A.4; no longer blocked |
+| Tenant solution | PMO_v11_Tarefas 3.20.0.0 Managed=False |
+| Tenant export | Produced: post_canonical_import_export.zip |
+| Tenant export SHA256 | AA21BCBBC9289499B6F0EB669D1FF3B228862477DC844B168D76A5AC45DB5696 |
+| StatusID fix | Present in tenant export |
+| Source-vs-tenant functional workflow diff | 0 functional diffs after expected normalization |
+| AQ-08 | PASS, blockingTopicCount=0 |
+| Bot | Published / Active / Provisioned, publishedon 22/05/2026 14:40 |
+| Runtime blocker | PM0_PA_Card_AtualizarStatus is Borrador/Borrador |
+
+## Required Owner Action
+
+Run Publicar todas as personalizacoes in the Power Platform/Power Automate solution UI, then request a read-only recheck. Do not rebuild 3.20 from the current evidence.
+
+## Recheck Scope After Owner Action
+
+1. pac org fetch workflow inventory for PM0_PA_Card_%.
+2. Test-Aq08PostRemediationReverify.ps1.
+3. pac copilot list.
+4. Bot row fetch with publishedon verification.
+
+Gate 4B should be cleared only if PM0_PA_Card_AtualizarStatus becomes Activado/Activado and AQ-08 remains PASS.
+

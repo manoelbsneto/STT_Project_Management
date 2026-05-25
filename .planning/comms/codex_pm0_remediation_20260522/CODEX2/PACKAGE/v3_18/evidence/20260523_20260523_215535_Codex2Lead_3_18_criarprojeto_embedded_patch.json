@@ -1,0 +1,9 @@
+{
+  "agent": "Codex #2 Lead",
+  "timestampBrt": "2026-05-23 18:55:35 BRT",
+  "screenshotPath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\screenshots\\20260523_20260523_215535_Codex2Lead_3_18_criarprojeto_embedded_patch.png",
+  "action": "Restored PMO_PA_CriarProjeto action data from 3.16 fix",
+  "reason": "P24 contract requires Embedded connection mode",
+  "packagePath": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_18\\package\\PMO_v11_Tarefas_3_18_PM0_FUNCTIONAL_FIX.zip",
+  "sha256": "270F569A0D34CB596115B8776A8354F88F184F1D2F772755416175A80D0A12FD"
+}

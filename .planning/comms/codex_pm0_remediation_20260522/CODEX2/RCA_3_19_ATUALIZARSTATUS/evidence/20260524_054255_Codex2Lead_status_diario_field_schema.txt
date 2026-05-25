@@ -1,0 +1,167 @@
+Agent name: Codex #2 Lead
+Timestamp BRT: 2026-05-24 02:44:26 BRT
+Screenshot path: .planning\comms\codex_pm0_remediation_20260522\CODEX2\RCA_3_19_ATUALIZARSTATUS\evidence\20260524_054255_Codex2Lead_status_diario_field_schema.png
+
+Step 3.3 Status Diario field schema read-only attempt
+Command: powershell.exe -NoProfile -ExecutionPolicy Bypass -File work/get_status_diario_schema_readonly.ps1
+Exit code: TIMEOUT
+Auth halt: True
+
+STDOUT:
+[
+    {
+        "Title":  "Id. de tipos de contenido",
+        "InternalName":  "ContentTypeId",
+        "TypeAsString":  "ContentTypeId",
+        "Required":  false
+    },
+    {
+        "Title":  "T?tulo",
+        "InternalName":  "Title",
+        "TypeAsString":  "Text",
+        "Required":  true
+    },
+    {
+        "Title":  "Comentarios del aprobador",
+        "InternalName":  "_ModerationComments",
+        "TypeAsString":  "Note",
+        "Required":  false
+    },
+    {
+        "Title":  "Tipo de archivo",
+        "InternalName":  "File_x0020_Type",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "Color",
+        "InternalName":  "_ColorHex",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "Etiqueta de color",
+        "InternalName":  "_ColorTag",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "Emoji",
+        "InternalName":  "_Emoji",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "Id. de activo de cumplimiento normativo",
+        "InternalName":  "ComplianceAssetId",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "StatusID",
+        "InternalName":  "StatusID",
+        "TypeAsString":  "Text",
+        "Required":  true
+    },
+    {
+        "Title":  "ProjectID",
+        "InternalName":  "ProjectID",
+        "TypeAsString":  "Text",
+        "Required":  true
+    },
+    {
+        "Title":  "DataRegistro",
+        "InternalName":  "DataRegistro",
+        "TypeAsString":  "DateTime",
+        "Required":  true
+    },
+    {
+        "Title":  "PM",
+        "InternalName":  "PM",
+        "TypeAsString":  "User",
+        "Required":  false
+    },
+    {
+        "Title":  "RAG",
+        "InternalName":  "RAG",
+        "TypeAsString":  "Choice",
+        "Required":  true
+    },
+    {
+        "Title":  "Resumo",
+        "InternalName":  "Resumo",
+        "TypeAsString":  "Note",
+        "Required":  true
+    },
+    {
+        "Title":  "Risco",
+        "InternalName":  "Risco",
+        "TypeAsString":  "Note",
+        "Required":  false
+    },
+    {
+        "Title":  "Bloqueio",
+        "InternalName":  "Bloqueio",
+        "TypeAsString":  "Note",
+        "Required":  false
+    },
+    {
+        "Title":  "ProximaAcao",
+        "InternalName":  "ProximaAcao",
+        "TypeAsString":  "Note",
+        "Required":  false
+    },
+    {
+        "Title":  "Percentual",
+        "InternalName":  "Percentual",
+        "TypeAsString":  "Number",
+        "Required":  false
+    },
+    {
+        "Title":  "OrigemEntrada",
+        "InternalName":  "OrigemEntrada",
+        "TypeAsString":  "Choice",
+        "Required":  true
+    },
+    {
+        "Title":  "ResumoTarefas",
+        "InternalName":  "ResumoTarefas",
+        "TypeAsString":  "Note",
+        "Required":  false
+    },
+    {
+        "Title":  "CardVersion",
+        "InternalName":  "CardVersion",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "Deleted",
+        "InternalName":  "Deleted",
+        "TypeAsString":  "Boolean",
+        "Required":  false
+    },
+    {
+        "Title":  "DeletedAt",
+        "InternalName":  "DeletedAt",
+        "TypeAsString":  "DateTime",
+        "Required":  false
+    },
+    {
+        "Title":  "DeletedReason",
+        "InternalName":  "DeletedReason",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "DeletedByUPN",
+        "InternalName":  "DeletedByUPN",
+        "TypeAsString":  "Text",
+        "Required":  false
+    },
+    {
+        "Title":  "ID",
+  
+
+STDERR:
+

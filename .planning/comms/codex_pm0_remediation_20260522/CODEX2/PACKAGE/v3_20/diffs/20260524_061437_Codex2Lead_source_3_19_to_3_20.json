@@ -1,0 +1,12 @@
+{
+  "Name": "source_3_19_to_3_20",
+  "Old": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_19\\work\\unpacked_3_19\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+  "New": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\work\\unpacked_3_20\\Workflows\\PM0_PA_Card_AtualizarStatus-1721E0A3-A250-F111-BEC7-000D3ABC5CC6.json",
+  "ExitCode": 1,
+  "Added": [
+    "+              \"item/StatusID\": \"@concat('STATUS-', triggerBody()?['projectId'], '-', formatDateTime(utcNow(), 'yyyyMMddHHmmssfff'))\","
+  ],
+  "Removed": [],
+  "Authorized": true,
+  "Txt": ".planning\\comms\\codex_pm0_remediation_20260522\\CODEX2\\PACKAGE\\v3_20\\diffs\\20260524_061437_Codex2Lead_source_3_19_to_3_20.txt"
+}
